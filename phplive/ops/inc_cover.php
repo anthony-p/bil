@@ -1,0 +1,1 @@
+<div id="div_cover" style="display: none; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: url( ../themes/<?php echo $opinfo["theme"] ?>/bg_chat_canvas.gif ) repeat-x; overflow: hidden; z-index: 200;"></div>

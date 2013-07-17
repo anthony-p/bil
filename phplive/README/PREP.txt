@@ -1,0 +1,66 @@
+PHP LIVE! MANUAL PRE INSTALL STEPS
+===========================================
+
+A server may require a manual pre installation step due to the nature
+of the server's configuration. These steps are generally not required
+UNLESS you were directed here from the web installer.
+
+Please refer to the INSTALL.txt
+
+-------------------------------------------
+
+Step 1.
+----------------
+Remove ALL the files and folders located in the phplive/web/ directory.
+It is important that the phplive/web/ directory is completely empty.
+
+
+Step 2.
+----------------
+In the phplive/web/ directory, create the following sub directories:
+
+chat_initiate
+chat_sessions
+patches
+
+
+Step 3.
+----------------
+Set the permissions on all of the folders you've just created to be
+fully read and writeable by the web server.
+
+[ METHODS TO SET PERMISSIONS ]
+
+* COMMAND LINE METHOD
+On a unix systems the permissions will need to be 777. A quick
+command to set the permissions:
+
+% chmod -R 777 phplive/web/
+
+* WINDOWS SERVER METHOD
+On a Windows IIS system you will need to set the NTFS permissions for the
+phplive/web/ directory and it's contents to "Full Control" for the Web
+User account and also set the write permission on the created sub folders.
+
+* FTP METHOD
+Right click on each of the folders created and choose the "File Permissions"
+or "Permissions".  Then check ALL the boxes and submit.  Make sure you do
+this for the directories created (chat_initate, chat_sessions, patches) and
+double check that the phplive/web/ has all permissions chcked as well.
+
+
+Step 4.
+----------------
+You can now attempt the PHP Live! web installation again. Once you have
+completed the installation, your PHP Live! system should function as normal.
+
+
+
+general support:
+	- support@osicodesinc.com
+
+tech support:
+	- tech@osicodesinc.com
+
+billing support:
+	- billing@osicodesinc.com

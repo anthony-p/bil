@@ -1,0 +1,148 @@
+﻿<?xml version="1.0"?>
+<configuration date="2012/12/12" author="e.World Technology Ltd.">
+<project id="{1970966F-5C22-4F67-9D47-2A354E499C8D}" file="C:\Users\mark\Documents\PHPReportMaker\Projects\click_through_test_reports_projectlive1.prp" name="click_through_test_reports_projectlive1" product="PHPReportMaker" version="6.0" datetime="2012/12/12 20:25:23" languagefolder="phprptlang" userlevel="0,&quot;Default&quot;,0">
+<table id="amazon_tracking_links" name="amazon_tracking_links" caption="amazon tracking links" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="giveback_amazon_invoices" name="giveback_amazon_invoices" caption="giveback amazon invoices" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="giveback_conversion" name="giveback_conversion" caption="giveback conversion" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="giveback_invoices" name="giveback_invoices" caption="giveback invoices" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="np_iphistory" name="np_iphistory" caption="np iphistory" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="np_news" name="np_news" caption="np news" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="np_users" name="np_users" caption="np users" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="pps_integration" name="pps_integration" caption="pps integration" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="pps_users" name="pps_users" caption="pps users" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_abuses" name="proads_abuses" caption="proads abuses" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_admins" name="proads_admins" caption="proads admins" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_adverts" name="proads_adverts" caption="proads adverts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_banned" name="proads_banned" caption="proads banned" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_blocked_domains" name="proads_blocked_domains" caption="proads blocked domains" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_blocked_users" name="proads_blocked_users" caption="proads blocked users" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_categories" name="proads_categories" caption="proads categories" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_content_pages" name="proads_content_pages" caption="proads content pages" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_countries" name="proads_countries" caption="proads countries" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_currencies" name="proads_currencies" caption="proads currencies" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_custom_fields" name="proads_custom_fields" caption="proads custom fields" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_custom_fields_boxes" name="proads_custom_fields_boxes" caption="proads custom fields boxes" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_custom_fields_data" name="proads_custom_fields_data" caption="proads custom fields data" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_custom_fields_sections" name="proads_custom_fields_sections" caption="proads custom fields sections" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_custom_fields_special" name="proads_custom_fields_special" caption="proads custom fields special" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_custom_fields_types" name="proads_custom_fields_types" caption="proads custom fields types" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_dateformat" name="proads_dateformat" caption="proads dateformat" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_favourite_stores" name="proads_favourite_stores" caption="proads favourite stores" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_fees" name="proads_fees" caption="proads fees" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_fees_tiers" name="proads_fees_tiers" caption="proads fees tiers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_gc_transactions" name="proads_gc_transactions" caption="proads gc transactions" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_gen_setts" name="proads_gen_setts" caption="proads gen setts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_invoices" name="proads_invoices" caption="proads invoices" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_iphistory" name="proads_iphistory" caption="proads iphistory" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_item_durations" name="proads_item_durations" caption="proads item durations" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_item_media" name="proads_item_media" caption="proads item media" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_item_offers" name="proads_item_offers" caption="proads item offers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_item_rollbacks" name="proads_item_rollbacks" caption="proads item rollbacks" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_item_watch" name="proads_item_watch" caption="proads item watch" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_items" name="proads_items" caption="proads items" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_keywords_watch" name="proads_keywords_watch" caption="proads keywords watch" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_layout_setts" name="proads_layout_setts" caption="proads layout setts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_messaging" name="proads_messaging" caption="proads messaging" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_newsletter_recipients" name="proads_newsletter_recipients" caption="proads newsletter recipients" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_newsletters" name="proads_newsletters" caption="proads newsletters" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_pa_friends" name="proads_pa_friends" caption="proads pa friends" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_pa_friends_requests" name="proads_pa_friends_requests" caption="proads pa friends requests" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_pa_photo_comments" name="proads_pa_photo_comments" caption="proads pa photo comments" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_pa_profile_comments" name="proads_pa_profile_comments" caption="proads pa profile comments" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_payment_gateways" name="proads_payment_gateways" caption="proads payment gateways" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_payment_options" name="proads_payment_options" caption="proads payment options" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_postage_calc_tiers" name="proads_postage_calc_tiers" caption="proads postage calc tiers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_reputation" name="proads_reputation" caption="proads reputation" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_sessions" name="proads_sessions" caption="proads sessions" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_shipping_carriers" name="proads_shipping_carriers" caption="proads shipping carriers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_shipping_locations" name="proads_shipping_locations" caption="proads shipping locations" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_shipping_options" name="proads_shipping_options" caption="proads shipping options" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_shopping_carts" name="proads_shopping_carts" caption="proads shopping carts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_shopping_carts_items" name="proads_shopping_carts_items" caption="proads shopping carts items" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_suggested_categories" name="proads_suggested_categories" caption="proads suggested categories" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_swaps" name="proads_swaps" caption="proads swaps" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_tax_settings" name="proads_tax_settings" caption="proads tax settings" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_timesettings" name="proads_timesettings" caption="proads timesettings" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_user_accounts" name="proads_user_accounts" caption="proads user accounts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_users" name="proads_users" caption="proads users" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_vouchers" name="proads_vouchers" caption="proads vouchers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_winners" name="proads_winners" caption="proads winners" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="proads_wordfilter" name="proads_wordfilter" caption="proads wordfilter" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_abuses" name="probid_abuses" caption="probid abuses" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_admin_notes" name="probid_admin_notes" caption="probid admin notes" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_admins" name="probid_admins" caption="probid admins" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_adverts" name="probid_adverts" caption="probid adverts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_auction_durations" name="probid_auction_durations" caption="probid auction durations" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_auction_media" name="probid_auction_media" caption="probid auction media" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_auction_offers" name="probid_auction_offers" caption="probid auction offers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_auction_rollbacks" name="probid_auction_rollbacks" caption="probid auction rollbacks" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_auction_watch" name="probid_auction_watch" caption="probid auction watch" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_auctions" name="probid_auctions" caption="probid auctions" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_banned" name="probid_banned" caption="probid banned" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_bid_increments" name="probid_bid_increments" caption="probid bid increments" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_bids" name="probid_bids" caption="probid bids" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_blocked_domains" name="probid_blocked_domains" caption="probid blocked domains" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_blocked_users" name="probid_blocked_users" caption="probid blocked users" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_bulktmp" name="probid_bulktmp" caption="probid bulktmp" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_categories" name="probid_categories" caption="probid categories" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_content_pages" name="probid_content_pages" caption="probid content pages" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_countries" name="probid_countries" caption="probid countries" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_currencies" name="probid_currencies" caption="probid currencies" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_custom_fields" name="probid_custom_fields" caption="probid custom fields" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_custom_fields_boxes" name="probid_custom_fields_boxes" caption="probid custom fields boxes" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_custom_fields_data" name="probid_custom_fields_data" caption="probid custom fields data" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_custom_fields_sections" name="probid_custom_fields_sections" caption="probid custom fields sections" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_custom_fields_special" name="probid_custom_fields_special" caption="probid custom fields special" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_custom_fields_types" name="probid_custom_fields_types" caption="probid custom fields types" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_dateformat" name="probid_dateformat" caption="probid dateformat" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_favourite_stores" name="probid_favourite_stores" caption="probid favourite stores" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_fees" name="probid_fees" caption="probid fees" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_fees_tiers" name="probid_fees_tiers" caption="probid fees tiers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_gc_transactions" name="probid_gc_transactions" caption="probid gc transactions" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_gen_setts" name="probid_gen_setts" caption="probid gen setts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_invoices" name="probid_invoices" caption="probid invoices" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_iphistory" name="probid_iphistory" caption="probid iphistory" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_keywords_watch" name="probid_keywords_watch" caption="probid keywords watch" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_layout_setts" name="probid_layout_setts" caption="probid layout setts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_messaging" name="probid_messaging" caption="probid messaging" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_newsletter_recipients" name="probid_newsletter_recipients" caption="probid newsletter recipients" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_newsletters" name="probid_newsletters" caption="probid newsletters" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_partners" name="probid_partners" caption="probid partners" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_payment_gateways" name="probid_payment_gateways" caption="probid payment gateways" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_payment_options" name="probid_payment_options" caption="probid payment options" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_postage_calc_tiers" name="probid_postage_calc_tiers" caption="probid postage calc tiers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_proxybid" name="probid_proxybid" caption="probid proxybid" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_referrals" name="probid_referrals" caption="probid referrals" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_reputation" name="probid_reputation" caption="probid reputation" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_reserve_offers" name="probid_reserve_offers" caption="probid reserve offers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_reverse_auctions" name="probid_reverse_auctions" caption="probid reverse auctions" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_reverse_bids" name="probid_reverse_bids" caption="probid reverse bids" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_reverse_budgets" name="probid_reverse_budgets" caption="probid reverse budgets" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_reverse_categories" name="probid_reverse_categories" caption="probid reverse categories" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_reverse_winners" name="probid_reverse_winners" caption="probid reverse winners" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_shipping_locations" name="probid_shipping_locations" caption="probid shipping locations" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_shipping_options" name="probid_shipping_options" caption="probid shipping options" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_shopping_carts" name="probid_shopping_carts" caption="probid shopping carts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_shopping_carts_items" name="probid_shopping_carts_items" caption="probid shopping carts items" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_stores_accounting" name="probid_stores_accounting" caption="probid stores accounting" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_suggested_categories" name="probid_suggested_categories" caption="probid suggested categories" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_swaps" name="probid_swaps" caption="probid swaps" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_tax_settings" name="probid_tax_settings" caption="probid tax settings" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_timesettings" name="probid_timesettings" caption="probid timesettings" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_user_activities" name="probid_user_activities" caption="probid user activities" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_user_points" name="probid_user_points" caption="probid user points" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_users" name="probid_users" caption="probid users" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_vat_rates" name="probid_vat_rates" caption="probid vat rates" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_vat_setts" name="probid_vat_setts" caption="probid vat setts" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_vouchers" name="probid_vouchers" caption="probid vouchers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_wanted_ads" name="probid_wanted_ads" caption="probid wanted ads" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_wanted_offers" name="probid_wanted_offers" caption="probid wanted offers" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_winners" name="probid_winners" caption="probid winners" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="probid_wordfilter" name="probid_wordfilter" caption="probid wordfilter" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="shop_tracking_links" name="shop_tracking_links" caption="shop tracking links" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="user_submit" name="user_submit" caption="user submit" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="vendor_click_reports" name="vendor_click_reports" caption="vendor click reports" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="Clickthrough_details_report" name="Clickthrough details report" caption="Clickthrough details report" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="Clickthrough_summary_report" name="Clickthrough summary report" caption="Clickthrough summary report" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+<table id="sales_by_month" name="sales by month" caption="sales by month" userlevel="0,&quot;Default&quot;,0" priv="1"/>
+</project></configuration>

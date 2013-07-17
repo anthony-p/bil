@@ -1,0 +1,40 @@
+
+            body {margin: 0; padding: 0;}
+            .bring_frame img {border: 0; margin: 0; padding: 0;}
+            .bring_frame {background: #fff; font: bold 12px/16px Arial, sans-serif;}
+            .bring_frame a {color: #000;}
+            .bring_frame .header {width: 100%; background: #000 url("/images/widget_logo_sm.png") 0 0 no-repeat; height: 25px;}
+
+            .bring_frame .content {border: 1px solid #b9b9b9; border-top: 0;}
+            .bring_frame .searchBox {background: #ececec; text-align: center; padding: 0 0 10px;}
+            .bring_frame .search_title {padding: 8px 0 6px; line-height: 18px;}
+            .bring_frame .searchBox fieldset {display: inline; background: transparent; border: 0; margin: 0; padding: 0;}
+            .bring_frame .searchBox input[type="text"] {display: inline-block; width: 198px; height: 21px; border: 1px solid #ccc; background: #fff; margin: 0; padding: 0;}
+            .bring_frame .searchBox input[type="button"] {display: inline-block; height: 23px; border: 0; background: #8ac132; font: bold 12px/21px Arial, sans-serif; margin: 0 0 0 9px; padding: 0 14px;}
+            .bring_frame .logos {padding: 8px 8px 4px; text-align: center;}
+            .bring_frame .logos fieldset {display: inline; background: transparent; border: 0; margin: 0; padding: 0;}
+            .bring_frame .logo_box {float: left; margin: 2px;}
+            .bring_frame .footer {border-top: 1px dotted #b5b5b5; font-weight: normal; padding: 6px 0; text-align: center;}
+            .bring_frame .footer a {color: #000; text-decoration: none;}
+            .bring_frame .footer a:hover {text-decoration: underline;}
+
+            .bgblack, .bgblack .bring_frame, .bgblack .bring_frame .searchBox {background: #000000; color: #686868;}
+            .bgblack .bring_frame a, .bgblack .bring_frame .footer a {color: #686868;}
+            .bgblack .bring_frame .content, .bgblack .bring_frame .footer {border-color: #000000;}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+    font-weight: bold;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+    font-weight: bold;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+    font-weight: bold;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #999;
+    font-weight: bold;
+}

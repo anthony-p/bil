@@ -1,0 +1,47 @@
+* { margin: 0; }
+html, body { margin-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; font-family: Arial; font-size: 12px; color: #686868; background: #FDFDFD; height: 100%; width: 100%; overflow: hidden; }
+
+a:link {color: #A0A0A0; }
+a:active {color: #A0A0A0; }
+a:visited {color: #A0A0A0; }
+a:hover {color: #686868; }
+.nounder{ text-decoration: none; cursor: pointer; }
+
+.co, .cv, .ca, .cl, .cn{ padding: 5px; }
+.co{ background: url(chat_co.png) no-repeat; padding-left: 20px; color: #686868; }
+.cv{ color: #686868; }
+.ca{ background: transparent; color: #737373; margin-bottom: 5px; }
+.cl{ background: #EFEFF1; color: #939393; margin-bottom: 5px; }
+.cn{ background: #EFEFF1; color: #939393; margin-bottom: 5px; }
+.ctitle{ font-size: 14px; font-weight: bold; }
+.ct{ font-weight: normal; font-size: 10px; } /* timestamp */
+
+#chat_vname, #chat_vtimer, #chat_vistyping{ color: #686868; }
+#chat_canvas{ background: #FDFDFD; border-top: 1px solid #DFDFE1; } -
+
+input[type=text], .input_text, #input_text, select, textarea, #chat_body, #tooltip, .info_box, .info_error, .info_good, .info_warning, .info_neutral, .info_content, .info_close, .cn, .sound_box_on, .sound_box_off, .cl{ -moz-border-radius: 5px; border-radius: 5px; }
+
+/* for #chat_body don't go past 10px padding or layout error */
+#chat_body{ background: #FFFFFF; color: #686868; border: 1px solid transparent; }
+#chat_input{ background: url( banner.gif ) no-repeat;}
+
+.info_box{ background: #E5E5E7; padding: 5px; color: #939393; }
+.info_error{ background: #F55054; padding: 5px; color: #FFFFFF; }
+.info_good{ background: #43CB00; padding: 5px; color: #FFFFFF; }
+.info_neutral{ background: #FAFAFA; padding: 5px; color: #6D6D71; }
+.info_warning{ background: #FFE8C4; padding: 5px; color: #5A5245; }
+.info_content{ background: #F0F0F0; padding: 5px; color: #5A5245; border: 1px solid #DFDFDF; }
+
+.info_disconnect{ padding: 3px; background: #FC8400; color: #FFFFFF; border: 1px solid #C36600; border-bottom-left-radius: 5px 5px; -moz-border-radius-bottomleft: 5px 5px; cursor: pointer; }
+.info_disconnect_hover{ padding: 3px; background: #EE3C3C; color: #FFFFFF; border: 1px solid #C36600; border-bottom-left-radius: 5px 5px; -moz-border-radius-bottomleft: 5px 5px; cursor: pointer; }
+
+#input_text{ background: #FFFFFF; border: 1px solid #DFDFE1; }
+.input_text{ background: #FFFFFF; border: 1px solid #DFDFE1; }
+input[type=text], .input_text, #input_text{ padding: 2px; }
+select{ border: 1px solid #ABADB5; padding: 3px; }
+textarea{ border: 1px solid #ABADB5; padding: 3px; }
+#tooltip { position: absolute; z-index: 3000; background: #FAFAA6; padding: 5px; color: #8B6824; white-space: nowrap; }
+#tooltip h3, #tooltip div { margin: 0; }
+
+.help_tooltip{ text-decoration: none; cursor: pointer; }
+#tooltip.urls { }

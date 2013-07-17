@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>User Submit Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;User Submit&rdquo; Documentation by &ldquo;Stefan Carcu&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;User Submit&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 26/07/2010<br>
+					By: Stefan Carcu<br>
+					Email: <a href="mailto:zmeutz@yahoo.com">zmeutz@yahoo.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://codecanyon.net/user/zmeutz">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#htmlStructure">HTML Structure</a></li>
+			<li><a href="#cssFiles">CSS Files and Structure</a></li>
+			<li><a href="#javascript">JavaScript</a></li>
+			<li><a href="#psdFiles">PSD Files</a></li>			
+			<li><a href="#php_files">PHP Code Explanation</a></li>
+            <li><a href="#sql_file">SQL File</a></li>
+			<li><a href="#integration">Integration</a></li>
+            <li><a href="#credits">Sources and Credits</a></li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="htmlStructure"><strong>A) HTML Structure</strong> - <a href="#toc">top</a></h3>
+		<p>This script theme is a fixed layout with one column. All of the information is nested within a div with an id of "content". The general template structure is the same throughout the template. Here is the general structure.</p>
+		
+		<img src="assets/images/htmlstructure.png" alt="HTML Structure" />
+		
+		<p>If you would like to edit the color, font, or style of any elements in one of these columns, you would do the following:</p>
+
+<pre>body { background-color: #31373d;  padding:0; margin:20px 0; color:#333; font-size: 12px;
+line-height: 18px; font-family:Verdana, Tahoma,  Arial, Helvetica, sans-serif;
+}
+</pre>
+
+		<p>If you find that your new style is not overriding, it is most likely because of a specificity problem. Scroll down in your CSS file and make sure that there isn't a similar style that has more weight.</p>
+
+		<p>I.E.</p>
+
+<pre>#content { background-color:#FFF; width:570px; padding:15px; margin:0;
+position:relative; margin:auto; }
+</pre>
+
+		<p>So, to ensure that your new styles are applied, make sure that they carry enough "weight" and that there isn't a style lower in the CSS file that is being applied after yours.</p> 
+
+		<hr>
+
+		<h3 id="cssFiles"><strong>B) CSS Files and Structure</strong> - <a href="#toc">top</a></h3>
+
+		<p>I'm using one CSS file. This file also contains some general styling, such as anchor tag colors, font-sizes, etc. Keep in mind, that these values might be overridden somewhere else in the file.</p> 
+
+		<p>The second file contains all of the specific stylings for the page. The file is separated into sections using:</p>  
+
+<pre>/* reset */
+img { border: 0px; }
+
+/* content */
+#content { background-color:#FFF; width:570px; padding:15px; margin:0;
+position:relative; margin:auto; }
+	
+/* form */
+label { text-transform:uppercase; }
+.fluid_input { background-color:#f1f5f9; border:1px solid #e1e5e9; width:100%; height:32px; }
+	
+/* info messages */
+.success { background: url(../img/success.png) no-repeat; height:32px;
+padding:8px 0 0 40px; margin:0; color:#90c011; }
+.wrong { background: url(../img/error.png) no-repeat; height:32px;
+padding:8px 0 0 40px; margin:0; color:#e96814; }
+	
+	etc, etc. 
+</pre>
+		
+		<p>If you would like to edit a specific section of the site, simply find the appropriate label in the CSS file, and then scroll down until you find the appropriate style that needs to be edited.</p> 
+
+		<hr>
+		
+		<h3 id="javascript"><strong>C) JavaScript</strong> - <a href="#toc">top</a></h3>
+		
+		<p>This script imports one Javascript file.</p>
+		
+		<ol>
+			<li>Ajax - ajax.js</li>
+		</ol>
+		  
+		<ol>
+			<li>Used to send and receive data information from insert.php</li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="psdFiles"><strong>D) PSD Files</strong> - <a href="#toc">top</a></h3>
+		
+		<p>I've included one psd:</p>
+		
+			<ol>
+				<li>The main layout</li>
+			</ol>
+		
+		<hr>
+
+		<h3 id="php_files"><strong>E) PHP Files</strong> - <a href="#toc">top</a></h3>
+		
+<p>Database connection, the file with connection details is db.inc.php
+Fill here with your information.</p>
+<pre>&lt;?php
+$username = "name";
+$password = "password";
+$hostname = "localhost";
+$database = "database";
+
+
+mysql_connect($hostname, $username, $password) or die(mysql_error());
+mysql_select_db($database) or die(mysql_error(());
+?&gt;</pre>
+
+<p>In are a few lines to edit insert.php.</p>
+
+<pre>
+// font director to create captcha
+$dir = 'inc/font/';
+
+//maxim image limit
+$maxlimit = 1048576;
+
+//folder where to save images
+$folder = "images";
+
+// resize image uploaded image to: 400 x 400
+$newwidth = 400;
+$newheight = ($height/$width)*400;
+
+// create thumbnail image - resize to 105 x 105
+$newheight = 105;
+$newwidth = 105;</pre>
+
+<p>!!! IMPORTANT !!!<br>
+CHMOD 777 "images/" folder</p>
+
+<hr>
+		<h3 id="sql_file"><strong>F) SQL File</strong> - <a href="#toc">top</a></h3>
+		
+		<p>I've used one SQL database file with one table(user_submit) and 5 fields.</p>
+		
+          <pre>CREATE TABLE IF NOT EXISTS `user_submit` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(50) NOT NULL,
+  `description` text NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `captcha` varchar(5) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;</pre>
+		<ul>
+        	<li>id - unique filed id</li>
+            <li>title - text from title field</li>
+            <li>description - text from description field</li>
+            <li>image - image name</li>
+            <li>captcha - captcha code used on submition</li>
+        </ul>
+		<hr>
+		
+		<h3 id="integration"><strong>G) Integration</strong> - <a href="#toc">top</a></h3>
+<p>You need to insert this javascript line in &lt;head&gt; &lt;/head&gt; of your page</p>
+<pre>&lt;script type="text/javascript" src="js/ajax.js"&gt;&lt;/script&gt;</pre>
+
+and the full form from index.html in &lt;body&gt; &lt;/body&gt;
+<p>form begin:</p>
+<pre>&lt;form action="inc/insert.inc.php" method="post" name="user_submit" id="user_submit" 
+enctype="multipart/form-data"&gt;</pre>
+
+		<p>title label and input field</p>
+		&lt;label&gt;Title&lt;/label&gt;
+		&lt;input type="text" name="title" id="title" value="" class="fluid_input corners
+         margin_5_0" /&gt;&lt;br /&gt;</pre>
+         
+        <p>description label and textarea field</p>
+		<pre>&lt;label&gt;Description&lt;/label&gt;
+		&lt;textarea name="description" id="description" cols="10" rows="5" class="fluid_textarea 
+        corners margin_5_0" onKeyDown="limitText(this.form.description,this.form.countdown,225);" 
+onKeyUp="limitText(this.form.description,this.form.countdown,225);"&gt;&lt;/textarea&gt;</pre>
+		
+		<p>image upload label and file field</p>
+		<pre>&lt;label&gt;Image (gif, jpg, png)&lt;/label&gt;&lt;br /&gt;
+		&lt;input type="file" name="uploadfile" class="file margin_5_0" onchange="ajaxSend(this.form,
+        'insert.php?do=upload','upload_area','&lt;img src=\'img/loading.gif\' /&gt;','&lt;img src=\
+        'img/error.gif\' border=\'0\' /&gt; Error'); return false;" /&gt;</pre>
+        
+        <p>captcha label, input field and image</p>
+        <pre>&lt;label&gt;Captcha&lt;/label&gt;&lt;br /&gt;
+        &lt;input type="text" name="code" id="code" class="fluid_input corners" /&gt;
+        &lt;img src="insert.php?do=captcha"/&gt;</pre>
+        <p>this div is for upload image result div</p>
+        <pre>&lt;div id="upload_area" class="corners align_center"&gt;
+            	select image
+			&lt;/div&gt;</pre>
+        <p>this div is to load success/error message from insert.php after form is submited</p>
+        <pre>&lt;div class="float_left margin_5_0" style="width:420px;" id="info_message"&gt;&lt;/div&gt;</pre>
+        
+        <p>input button to submit form</p>
+        <pre>&lt;input name="send" type="button" value="Send" onclick="ajaxSend(this.form,'insert.php?do=insert',
+        'info_message','&lt;img src=\'img/loading.gif\' /&gt;','&lt;img src=\'img/error.gif\' border=\'0\'
+         /&gt; Error'); return false;" class="button" /&gt;</pre>
+         <p>end form</p>
+         <pre>&lt;/form&gt;</pre>
+
+<p>FILE STRUCTURE</p>
+<pre>images/ &lt;- CHMOD TO 777, here images will be uploaded
+img/error.png
+img/loading.gif
+img/success.png
+inc/fonts/font.tff
+inc/db.inc.php
+insert.php
+</pre>
+
+		<hr>
+		
+		<h3 id="credits"><strong>H) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+		
+		<p>I've used the following images, icons or other files as listed.</p>
+		
+		<ul>
+			<li>Icons from http://pixel-mixer.com/</li>
+		</ul>
+		
+		<hr>
+		
+		<p>Once again, thank you so much for purchasing. As I said at the beginning, I'd be glad to help you if you have any questions relating to this. No guarantees, but I'll do my best to assist. If you have a more general question relating to the scripts on Codecanyon, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p> 
+		
+		<p class="append-bottom alt large"><strong>Stefan Carcu</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>

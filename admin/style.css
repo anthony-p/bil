@@ -1,0 +1,402 @@
+
+a {	color: #003399; text-decoration: underline;}
+a:hover { color: #0099FF; text-decoration: none;}
+
+
+.menulink {	font-family: Helvetica, Arial, sans-serif; font-size: 11px;  padding-left: 8px;}
+.menulink a {	color: #003399; text-decoration: none;}
+.menulink a:hover { color: #0099FF; text-decoration: underline;}
+
+.login {font-family: Tahoma, Verdana, sans-serif; font-size: 11px; }
+.explain { border-bottom: 1px dotted #aaaaaa;}
+.sh { 
+  font-size: 10px; 
+  color: #000000; 
+  font-weight: bold; 
+	background-image: url(images/sh.gif); 
+	background-repeat: no-repeat; 
+	background-position: center;
+	}
+.sysmessage { background-color: #FFFFE1; border: 1px dashed #CFCFCF; margin-top: 3px; margin-bottom: 3px; padding: 6px; line-height: 18px; }
+
+.sh a { font-size: 10px; color: #000000; text-decoration: none; font-weight: normal;}
+.sh a:hover {	font-size: 10px; color: #000000; text-decoration: none;  font-weight: normal;}
+
+.atitle { color: #003399; font-size: 11px; font-weight: bold; 
+	background-image: url(images/a.gif); 
+	background-repeat: no-repeat; 
+	background-position: 5px;
+	padding-left: 20px;
+	height: 17px;
+}
+.atitle a { color: #003399; font-size: 11px;}
+.atitle a:hover { color: #0099FF; font-size: 11px; text-decoration: none; }
+
+
+.alink { font-family: Helvetica, Arial, sans-serif; color: #003399; font-size: 11px; font-weight: normal; 
+	background-image: url(images/ay.gif); 
+	background-repeat: no-repeat; 
+	background-position: 6px 3px;
+	padding-left: 18px;
+	padding-bottom: 3px;
+	text-decoration: none;
+}
+.alink a { color: #003399; font-size: 11px; font-weight: normal; text-decoration: none;}
+.alink a:hover { color: #0099FF; font-size: 11px; font-weight: normal; text-decoration: underline;}
+
+
+	
+/* frame borders */
+.ftop {border-top: 1px solid #cdcfdc; background-color: #f6f8fa;}
+.fside {border-left: 1px solid #cdcfdc; border-right: 1px solid #cdcfdc; background-color: #f6f8fa;}
+.fbottom {border-bottom: 1px solid #cdcfdc; background-color: #f6f8fa;}
+
+
+.ftopw {border-top: 1px solid #cdcfdc; background-color: #ffffff;}
+.fsidew {border-left: 1px solid #cdcfdc; border-right: 1px solid #cdcfdc; background-color: #ffffff;}
+.fbottomw {border-bottom: 1px solid #cdcfdc; background-color: #ffffff;}
+
+.mainhead { 
+	font-family: Helvetica, Arial,  sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	color: #464a51; 
+	padding-top: 3px; 
+	padding-bottom: 2px; 
+	padding-left: 10px;
+	border-top: 2px solid #2fb4de;
+	background-image: url(images/bg_p.gif); 
+	background-repeat: repeat-x; 
+	background-position: top;
+}
+.mainhead1 { 
+	font-family: Helvetica, Arial,  sans-serif;
+	font-size: 17px;
+	font-weight: normal;
+	color: #464a51; 
+	padding-top: 3px; 
+	padding-bottom: 2px; 
+	padding-left: 10px;
+	border-top: 2px solid #ff8800;
+	background-image: url(images/bg_p.gif); 
+	background-repeat: repeat-x; 
+	background-position: top;
+}
+.version { font-family: Helvetica, Arial,  sans-serif; font-size: 10px; font-weight: light; color: #555555; padding-top: 4px; letter-spacing: 3px;}
+.icontext { font-family: Helvetica, Arial,  sans-serif; font-size: 10px; font-weight: light; color: #555555; padding-top: 3px; letter-spacing: 1px; }
+.errormessage { background-color: #FFFFE1; border: 1px dashed #CFCFCF; margin-top: 8px; margin-bottom: 16px; padding: 6px; line-height: 18px; }
+.copy { font-family: Helvetica, Arial,  sans-serif; font-size: 10px; font-weight: light; color: #555555; padding-top: 10px;}
+
+
+.head {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #777777;
+}
+.header {
+	background-color: #4192DE;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.header a:link { font-size: 10px; color: #FFFFFF; text-decoration: underline; }
+.header a:hover { font-size: 10px; color: #00FF00; text-decoration: underline; }
+.header a:visited { font-size: 10px; color: #FFFFFF; text-decoration: underline; }
+
+input {
+	font-family: Helvetica,Arial, sans-serif;
+	font-size: 10px;
+}
+select {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
+}
+textarea {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+}
+
+.c1 { background-color: #ffffff; }
+.c2 { background-color: #f1f1f1; }
+.c3 { background-color: #2fb4de; color: #FFFFFF; }
+.c3 a { font-size: 10px; color: #FFFFFF; text-decoration: underline; }
+.c3 a:link { font-size: 10px; color: #FFFFFF; text-decoration: underline; }
+.c3 a:hover { font-size: 10px; color: #FFCC00; text-decoration: none; }
+.c3 a:visited { font-size: 10px; color: #FFFFFF; text-decoration: underline; }
+
+.c4 { background-color: #4192DE; color: #FFFFFF; font-weight: bold;}
+/*.c4 { background-color: #3366CC; color: #FFFFFF; font-weight: bold;}*/
+.c4 a:link { font-size: 10px; color: #FFFFFF; text-decoration: underline; }
+.c4 a:hover { font-size: 10px; color: #FFCC00; text-decoration: none; }
+.c4 a:visited { font-size: 10px; color: #FFFFFF; text-decoration: underline; }
+.white  { background-color: #ffffff; }
+
+.grey { background-color: #E0E0E0; }
+
+.c5 {background-color: #8BC6EF;}
+.c6 {background-color: #EEF2F9; color: #003399;}
+.c7 {background-color: #E3E4EB;}
+.c8 {
+  background-color: #0C6CBB;
+  color: white;
+  font-weight: bold;
+}
+.c9 {
+  background-color: #acc7ef;
+}
+.reguser { font-size: 9px; background-color: #FFFFFF; color: #666666;} /* small text for comments*/
+.border {border: 1px solid #ACC7EF;}
+/*.border { border: 1px solid #4192DE;}*/
+h2 { color: #888888;}
+
+.boxmain {
+background-color: #F4F6F8;
+border: 1px solid #93A5BC;
+}
+
+TD {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+}
+
+TH {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+}
+
+.borderright {
+	border-right: 1px dashed #777777;
+}
+
+.bordertop {
+	border-top: 1px solid red;
+
+}
+.borderbottom {
+	border-bottom: 1px dashed #e9e9eb;
+}
+
+
+table.tablesorter thead tr .header {
+	background-image: url(/img/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(/img/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(/img/desc.gif);
+}
+
+
+.selectME ul{ /* remove unwanted focus outlines from links */
+    noFocusLine: expression(this.onFocus=this.blur())
+    outline: none;
+}
+*.selectME:focus ul, *.selectME:focus .cornerstop{
+    outline: none;
+}
+
+div.clears, span.clears {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+#arrowImg {
+    background: transparent url('images/arrow_down_6x3.gif') no-repeat right center scroll;
+    width: 16px;
+    _width:13px;
+    height:20px;
+    _height: 18px;
+    z-index: 10000;
+
+    display: inline-block;
+    margin:0;
+    padding: 0;
+
+
+}
+div.selectME a:hover {
+    color: red !important;
+}
+div.selectME div.cornerstop {
+    height: 3px;
+    margin: 0;
+    background: transparent url('images/selecttopleft_3x3.gif') top left no-repeat;
+    padding: 0px 0px 0px 3px;
+}
+div.selectME div.cornerstop div {
+    height: 3px;
+    margin: 0;
+    background: transparent url('images/selecttopright_3x3.gif') top right no-repeat;
+    padding: 0px 3px 0px 0px;
+}
+div.selectME div.cornerstop div div {
+    height: 3px;
+    margin: 0;
+    background: transparent url('images/selecttop_100x3.gif') top right repeat-x;
+    *overflow: hidden;
+}
+div.selectME div.cornersbottom {
+    height: 3px;
+    margin:0;
+    background: transparent url('images/selectbottomleft_3x3.gif') top left no-repeat;
+    padding: 0px 0px 0px 3px;
+}
+div.selectME div.cornersbottom div {
+    height: 3px;
+    margin: 0;
+    background: transparent url('images/selectbottomright_3x3.gif') top right no-repeat;
+    padding: 0px 3px 0px 0px;
+}
+div.selectME div.cornersbottom div div {
+    height: 3px;
+    margin: 0;
+    background: transparent url('images/selectbottom_100x3.gif') top right repeat-x;
+    *overflow: hidden;
+}
+div.selectME div.middle {
+    background: url('images/selectleft_3x20.gif') top left no-repeat;
+    margin: 0;
+    padding: 0px 0px 0px 3px;
+}
+div.selectME div.middle div {
+    background: transparent url('images/selectright_3x20.gif') top right no-repeat;
+    margin: 0;
+    padding: 0px 3px 0px 0px;
+}
+div.selectME div.middle div div {
+    padding: 0;
+    margin:0;
+    background: transparent url('images/selectmiddle_235x20.gif') top right repeat-x;
+
+
+
+}
+
+
+div.selectME div.first {
+    display: block;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    position: static;
+
+    height: 18px;
+
+
+
+    *margin-bottom: -1px;
+}
+div.selectME div.first span.selectME {
+    float: left;
+    display:block;
+    font: 8pt Arial;
+    line-height: 18px;
+    color: #8a8a8a;
+    border-right: 1px solid #d4d4d4;
+    left: 4px;
+    position: relative;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+
+
+}
+
+
+
+div.selectME div.first a, div.selectME div.first a:visited {
+    display:block;
+    padding:0;
+}
+
+
+
+div.selectME ul {
+    list-style-type:none;
+    line-height: normal;
+    padding:0;
+    margin: 0 0 0 -3px;
+    z-index: 103;
+
+
+    position: absolute;
+    float: left;
+    clear: none;
+}
+
+
+
+div.selectME ul li {
+    display:none;
+    clear:left;
+    margin:0;
+    padding:0;
+    color: #8a8a8a;
+    text-align:left;
+
+    background: transparent url('images/selectopenbg_400x40.gif') repeat-x left top;
+    position: static;
+    float: left;
+    z-index: 104;
+
+}
+
+div.selectME ul li a, div.selectME ul li a:visited {
+    qwhite-space: nowrap;
+    font: 8pt Arial;
+    background: transparent url('images/selectopenbgr_1x40.gif') no-repeat right top;
+    color:#8a8a8a;
+    text-decoration:none;
+    display:block;
+
+    padding: 4px 8px 4px 8px;
+    margin: 0;
+    qbackground: Red;
+}
+
+div.selectME ul li a:hover {
+    background: #e8e8e8;
+
+}
+
+
+
+div.selectME ul li:hover {
+    background: transparent url('images/selectopenhoverbg_400x40.gif') repeat-x left top;
+}
+div.selectME ul li:hover a, div.selectME ul li:hover a:visited {
+    background: transparent url('images/selectopenbgr_1x40.gif') no-repeat right top;
+}
+
+div.selectME ul li.first {
+    background: transparent url('images/selectopenfirstbg_400x40.gif') repeat-x left top;
+}
+div.selectME ul li.first a:hover {
+    background: transparent url('images/selectopenfirsthoverbg_400x40.gif') repeat-x left top;
+}
+
+div.selectME ul li.last {
+    margin: 0;
+
+    background: transparent url('images/selectopenlastbg_400x40.gif') repeat-x left bottom;
+}
+div.selectME ul li.last a {
+    margin: 0;
+
+    background: transparent url('images/selectopenlastbgr_3x40.gif') no-repeat right bottom;
+}
+div.selectME ul li.last a span{
+    margin: 0;
+    background: transparent url('images/selectopensepa_400x1.gif') repeat-x top left;
+}
+div.selectME ul li.last:hover {
+    background: transparent url('images/selectopenlasthoverbg_400x40.gif') repeat-x left bottom;
+}
+div.selectME ul li.last:hover a {
+    background: transparent url('images/selectopenlasthoverbgr_3x40.gif') no-repeat right bottom;
+}

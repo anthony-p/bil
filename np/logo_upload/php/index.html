@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>PHP / Ajax - Insert data into MySQL and Image Upload</title>
+	<meta name="description" content="PHP / Ajax - Insert data into MySQL and Image Upload, Check if are empty fields, Image resizer, Enable field by field once it's filled" />
+	<meta name="keywords" content="PHP / Ajax, Insert data into MySQL, Image Upload" />
+	<meta name="author" content="zmeutz - http://www.zmeutz.com/" />
+	<meta name="robots" content="index,follow" />
+
+	<!-- begin styles -->
+	<link href="css/styles.css" rel="stylesheet" type="text/css" media="all" /><!-- end styles -->
+
+    <!-- begin javascript -->
+    <script type="text/javascript" src="js/ajax.js"></script><!-- end javascript -->
+
+  </head>
+  <body>
+  
+    <!-- begin content -->
+	<div id="content" class="corners">
+
+      <!-- begin form -->
+	  <form action="xx" method="post" name="ee" id="www">
+
+      <!-- begin title label and input -->
+		<label>Title</label>
+		<input type="text" name="title" id="title" class="fluid_input corners margin_5_0" /><br /><!-- end title label and input -->
+
+      <!-- begin email label and input -->
+		<label>Your Email</label>
+		<input type="text" name="email" id="email" class="fluid_input corners margin_5_0" /><br /><!-- end email label and input -->
+
+		<!-- begin web site label and input -->
+		<label>Your Website</label>
+		<input type="text" name="website" id="website" class="fluid_input corners margin_5_0" /><br /><!-- end web site label and input -->
+
+        <!-- begin description label and input -->
+		<label>Description</label>
+		<textarea name="description" id="description" cols="10" rows="5" class="fluid_textarea corners margin_5_0" onkeydown="limitText(this.form.description,this.form.countdown,225);" onkeyup="limitText(this.form.description,this.form.countdown,225);"></textarea><!-- end description label and input -->
+
+        <!-- begin content left -->
+        <div class="float_left margin_5_0" style="width:420px;">
+
+        <!-- begin image label and input -->
+		<label>Image (gif, jpg, png)</label><br />
+		<input type="file" name="uploadfile" id="uploadfile" class="file margin_5_0" onchange="ajaxUpload(this.form);" /><!-- end image label and input -->
+
+		<!-- begin captcha label and input -->
+        <div><label>Captcha</label><br />
+    <div class="float_left" style="width:70%;">
+		<input type="text" name="code" id="code" class="fluid_input captcha corners" /><!-- begin captcha label and input -->
+	</div>
+
+    	<!-- begin captcha image -->
+        <div class="float_right"><a href="javascript:refreshCaptcha();"><img src="insert.php?do=captcha" id="captcha"/></a></div><!-- end captcha image -->
+        <div class="clear"></div></div>
+
+      	</div><!-- end content left -->
+
+        <!-- begin content right -->
+      	<div class="float_right margin_0_5 margin_5_0" style="width:108px;">
+
+        	<!-- begin display uploaded image -->
+			<div id="upload_area" class="corners align_center">
+            	select image
+			</div><!-- begin display uploaded image -->
+
+        </div><!-- end content right -->
+      <div class="clear"></div>
+
+      <!-- begin info message -->
+      <div class="float_left margin_5_0" style="width:420px;" id="info_message"></div><!-- end info message -->
+
+      <div class="float_right margin_5_0" style="width:120px;">
+      
+      	<!-- begin submit button -->
+      	<input name="send" id="send" type="button" value="Send" onclick="ajaxSend(this.form);" class="button"/><!-- end submit button -->
+        </div>
+      <div class="clear"></div>
+     </form><!-- end form -->
+
+	</div><!-- end content -->
+  </body>
+  </html>

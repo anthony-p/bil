@@ -1,0 +1,8 @@
+uplimg/
+error.log
+error_log
+.DS_Store
+admin/np_reports/*
+admin/report/*
+cache/
+

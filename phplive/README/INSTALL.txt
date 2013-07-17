@@ -1,0 +1,52 @@
+PHP LIVE! SUPPORT INSTALLATION
+===========================================
+requirements:
+	- web server (apache, IIS, etc)
+	- PHP and MySQL enabled web server
+	- PHP >= 4.1
+	- MySQL >= 3.2
+
+installing:
+	[ FTP METHOD ]
+
+	- unzip/untar the downloaded package
+	- ftp the ENTIRE phplive/ directory to your website directory
+	- SKIP BELOW to DIRECTORY PERMISSIONS
+
+	[ DIRECT SERVER INSTALL - SHELL ]
+
+	- go to your website directory
+	- unzip/untar the downloaded package
+	- continue to DIRECTORY PERMISSIONS
+
+
+
+	[ DIRECTORY PERMISSIONS ]
+
+	* setting the phplive/web/ directory to read-write *
+	- FTP METHOD: right click on the phplive/web/ folder
+	- select "File permissions" or "Permissions" option
+	- check ALL boxes and submit
+	- SHELL METHOD: type "chmod a+rw phplive/web/"
+
+	[ CREATE A DATABASE ]
+
+	- create a database for PHP Live!
+
+	[ Web Installation ]
+
+	- launch a web browser
+	- access the phplive/ directory from your browser...
+		* example: www.YourSite.com/phplive
+	- continue with the web based installation
+
+
+
+general support:
+	- support@osicodesinc.com
+
+tech support:
+	- tech@osicodesinc.com
+
+billing support:
+	- billing@osicodesinc.com

@@ -1,0 +1,65 @@
+<html><head><title>PHP Live! Support Upgrade Procedures</title></head><body><pre style="white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;">
+PHP LIVE! SUPPORT UPGRADE PROCEDURES
+===========================================
+
+If you have already installed PHP Live!, please follow these steps to upgrade your system.  The upgrading of
+PHP Live! requires replacing your current PHP Live! files to that of the newly downloaded PHP Live! files.
+Before you start, please note the following possible issues to streamline the process.
+
+THINGS TO NOTE BEFORE UPGRADING
+
+* Take a moment to review the important notes regarding modified PHP Live! systems
+
+<a href="http://www.phplivesupport.com/help_desk.php?pid=1309055963" target="_blank">http://www.phplivesupport.com/help_desk.php?pid=1309055963</a>
+
+* Possible FTP program settings
+
+Some FTP programs may have a setting to "override" an empty directory rather than "merge" or "skip" the empty
+directory.  You'll want to set the setting to "merge" or "skip" so that the newly downloaded empty phplive/web/
+directory does not replace your current web/ directory containing the configuration files.  Most FTP programs
+should have "merge" or "skip" by default.
+
+* If the above FTP setting cannot be located
+
+If the above FTP setting cannot be located, before upgrading (FTP), remove the NEWLY downloaded empty phplive/web/
+directory.  This will ensure the above FTP issue will not happen.  As a safe measure, this should be done anyway.
+Your server copy of the phplive/web/ directory should not be altered in any way.
+
+
+
+upgrading steps:
+	[ FTP METHOD ]
+
+	- open an FTP connection to your web server
+	- change directory to where PHP Live! is installed
+	--- [note] make sure you are not inside the phplive/ directory but one level up
+	- ftp this ENTIRE phplive/ folder to your current phplive/ system
+	- if asked to "override" or "replace", choose "yes" to override all previous files
+	- when FTP of files has finished, upgrade process has completed
+	- proceed to login to your PHP Live! setup area to check that everything is working
+	- done!
+
+	[ DIRECT SERVER INSTALL - SHELL ]
+
+	- change directory to where phplive/ is located
+	--- [note] make sure you are not inside the phplive/ directory but one level up
+	- copy or move the newly download PHP Live! compressed file to this location
+	- unzip/untar the compressed package
+	- if asked to "override" or "replace", choose "yes" to override all previous files
+	- proceed to login to the setup area to check that everything is working
+	- done!
+
+
+Thank you for choosing PHP Live! Support.
+
+
+general support:
+	- support@osicodesinc.com
+
+tech support:
+	- tech@osicodesinc.com
+
+billing support:
+	- billing@osicodesinc.com
+
+</pre></body></html>

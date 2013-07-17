@@ -1,0 +1,3 @@
+<?php if ( !defined('INCLUDED') ) { die("Access Denied"); }
+?>
+You have been canceled your donation ...

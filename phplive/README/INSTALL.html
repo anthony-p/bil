@@ -1,0 +1,81 @@
+<html><head><title>PHP Live! Support Installation</title></head><body><pre style="white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;">
+PHP LIVE! SUPPORT INSTALLATION
+===========================================
+
+If this is the first time installing PHP Live!, please follow these steps.  If your PHP Live! system has already
+been installed, refer to the UPGRADE.txt for upgrade procedures.
+
+NEW PHP LIVE! INSTALLATION
+
+requirements:
+	- web server (apache, IIS, etc)
+	- PHP and MySQL enabled web server
+	- PHP >= 4.1
+	- MySQL >= 3.2
+
+installing:
+	Step 1. [ TRANSFER PHP LIVE! FILES TO WEB SERVER ]
+
+	[ FTP METHOD ]
+
+	- open an FTP connection to your web server
+	- change directory to where PHP Live! should be installed
+	--- [note] the above directory should be accessible from a web URL
+	--- [example] http://www.YourSite.com/phplive
+	- ftp this ENTIRE phplive/ folder to the server
+	- SKIP BELOW to step 2. DIRECTORY PERMISSIONS
+
+	[ DIRECT SERVER INSTALL - SHELL ]
+
+	- change directory to where PHP Live! should be installed
+	--- [note] the above directory should be accessible from a web URL
+	--- [example] http://www.YourSite.com/phplive
+	- unzip/untar the PHP Live! compressed package within the directory
+	- continue to step 2. DIRECTORY PERMISSIONS
+
+
+
+	Step 2. [ DIRECTORY PERMISSIONS ]
+
+	* set the phplive/web/ directory to read-write *
+
+	[ FTP METHOD ]
+	- right click on the phplive/web/ folder
+	- select "File permissions" or "Permissions" option
+	- check ALL boxes and submit
+
+	[ SHELL METHOD ]
+	- type "chmod a+rw phplive/web/"
+
+
+
+	Step 3. [ CREATE A DATABASE ]
+
+	- create a MySQL database for PHP Live!
+	- contact your server tech for MySQL DB creation
+	- obtain the MySQL host, DB name, DB login and DB password
+	--- [note] you will need this information for web installation step
+
+
+
+	Step 4. [ Web Installation ]
+
+	- launch a web browser
+	- access the phplive/ directory from the web browser
+	--- [example] http://www.YourSite.com/phplive
+	- continue with the web based installation
+
+
+Thank you for choosing PHP Live! Support.
+
+
+general support:
+	- support@osicodesinc.com
+
+tech support:
+	- tech@osicodesinc.com
+
+billing support:
+	- billing@osicodesinc.com
+
+</pre></body></html>

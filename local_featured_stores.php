@@ -1,0 +1,114 @@
+<?
+
+
+if ($setts['enable_stores'])
+{
+	
+		
+	
+	
+	## now renew all store counters
+	
+	$sql_update_store_counters = $db->query_silent("UPDATE " . DB_PREFIX . "users SET shop_nb_items=(SELECT count(*) FROM " . DB_PREFIX . "auctions WHERE 
+		active=1 AND closed=0 AND deleted=0 AND approved=1 AND list_in!='auction' AND creation_in_progress=0 AND owner_id=user_id) WHERE active=1 AND shop_active=1");
+	
+	if (!$sql_update_store_counters)
+	{
+		$db->query("UPDATE " . DB_PREFIX . "users SET shop_nb_items=0");
+		
+		$sql_select_store_items = $db->query("SELECT count(a.auction_id) AS nb_auctions, u.user_id FROM 
+			" . DB_PREFIX . "auctions a, " . DB_PREFIX . "users u WHERE 
+			u.active=1 AND u.shop_active=1 AND u.user_id=a.owner_id AND 
+			a.active=1 AND a.closed=0 AND a.deleted=0 AND a.approved=1 AND a.list_in!='auction' AND a.creation_in_progress=0 GROUP BY u.user_id");
+		
+		while ($counter_details = $db->fetch_array($sql_select_store_items))
+		{			
+			$db->query("UPDATE " . DB_PREFIX . "users SET shop_nb_items='" . $counter_details['nb_auctions'] . "' WHERE 
+				user_id='" . $counter_details['user_id'] . "'");
+		}
+	}
+	
+	## featured stores (show)
+
+		
+	$select_localcondition = "LEFT JOIN " . DB_PREFIX . "fees_tiers s ON u.shop_account_id=s.tier_id 
+		WHERE	u.active=1 AND u.shop_active=1 AND s.store_featured=1 AND u.npuser_id='$np_userid'"; 
+
+	$nb_featured_stores = $db->count_rows('users u', $select_localcondition);
+	$template->set('nb_featured_stores', $nb_featured_stores);
+	
+	$feat_stores_details = $db->random_rows('users u', 'u.user_id, u.shop_name, u.shop_logo_path, u.shop_mainpage, u.username, u.shop_nb_items', $select_localcondition, 5);
+	
+	$max_featured_stores = min($nb_featured_stores, 5);
+	
+	(string) $featured_stores_table = null;
+	for ($i=0; $i<$max_featured_stores; $i++)
+	{
+		$store_link = process_link('shop', array('name' => $feat_stores_details[$i]['shop_name'], 'user_id' => $feat_stores_details[$i]['user_id']));
+		$store_logo = (!empty($feat_stores_details[$i]['shop_logo_path'])) ? $feat_stores_details[$i]['shop_logo_path'] : 'images/noimg.gif';
+
+   	$featured_stores_table .= '<tr> '.
+      	'	<td class="c1"><a href="' . $store_link . '"><img src="thumbnail.php?pic=' . $store_logo . '&w=80&sq=Y&b=Y" border="0" alt="' . $feat_stores_details[$i]['shop_name'] . '"></a></td> '.
+      	'	<td valign="top" width="100%" class="c2"><table width="100%" border="0" cellspacing="0" cellpadding="3"> '.
+         '		<tr> '.
+			'			<td class="contentfont" width="100%"><a href="' . $store_link . '">' . $feat_stores_details[$i]['shop_name'] . '</a></td> '.
+			'			<td nowrap>' . $feat_stores_details[$i]['shop_nb_items'] . ' ' . MSG_ITEMS . '</td> '.
+         '		</tr> '.
+         '		<tr class="c4"> '.
+			'			<td colspan="2"></td> '.
+			'		</tr> '.
+         '		<tr> '.
+			'			<td colspan="2">' . substr(strip_tags($db->add_special_chars($feat_stores_details[$i]['shop_mainpage']), '<br>'),0,300) . '...</td> '.
+			'		</tr> '.
+      	'	</table></td> '.
+   		'</tr> ';
+	}
+	
+	$template->set('featured_stores_table', $featured_stores_table);## PHP Pro Bid v6.00 all stores (show
+	$order_field = 'shop_nb_items';
+	$order_type = 'DESC';
+	$limit = 20;
+	
+	$additional_vars = '&shop_name=' . $_REQUEST['shop_name'];
+	$order_link = '&order_field=' . $order_field . '&order_type=' . $order_type;
+	$limit_link = '&start=' . $start . '&limit=' . $limit;
+	
+	$pagination = paginate($start, $limit, $nb_stores, 'stores.php', $additional_vars . $order_link);
+	$template->set('pagination', $pagination);
+	
+	$sql_select_stores = $db->query("SELECT user_id, shop_name, shop_logo_path, shop_mainpage, username, shop_nb_items FROM " . DB_PREFIX . "users WHERE
+		active=1 AND shop_active=1 " . $addl_store_query . " 
+		ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
+	
+	(string) $store_browse_table = null;
+	while ($store_details = $db->fetch_array($sql_select_stores))
+	{
+		$background = ($counter++%2) ? 'c1' : 'c2';
+		
+		$store_link = process_link('shop', array('name' => $store_details['shop_name'], 'user_id' => $store_details['user_id']));
+		$store_logo = (!empty($store_details['shop_logo_path'])) ? $store_details['shop_logo_path'] : 'images/noimg.gif';
+		
+		$store_browse_table .= '<tr valign="top" class="contentfont"> '.
+			'	<td align="center" width="120"><a href="' . $store_link . '"><img src="thumbnail.php?pic=' . $store_logo . '&w=80&sq=Y" border="0" alt="' . $store_details['shop_name'] . '"></a></td> '.
+			'	<td><b><a href="' . $store_link . '">' . $store_details['shop_name'] . '</a></b><br>' . substr(strip_tags($db->add_special_chars($store_details['shop_mainpage']), '<br>'),0,110) . '...<br> '.
+			'		<b>'. MSG_OWNER .'</b>: <a href="' . $store_link . '">' . $store_details['username'] . '</a><br> '.
+			'		<b>'. MSG_ITEMS_LISTED .'</b>: ' . $store_details['shop_nb_items'] . '</td> '.
+			'</tr> '.
+			'<tr> '.
+			'	<td colspan="2" class="c4"><img src="themes/' . $setts['default_theme'] . '/img/pixel.gif" width="1" height="1"></td> '.
+			'</tr> ';
+	}
+	
+	$template->set('store_browse_table', $store_browse_table);
+	
+#	$template_output .= $template->process('browse_local_stores.tpl.php');
+	
+
+	
+#	echo $template_output;
+}
+else 
+{
+#	header_redirect('index.php');
+}
+?>
