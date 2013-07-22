@@ -76,7 +76,7 @@ if($probid_user['probid_user_id']){
 
 
 #Coupons (magento) recent deals
-
+/*
     $coupons_recent_deals_header = header1('Local merchants' . ' <span class="viewAll"><a href="'.$coupon_url.'/index.php/active-deals.html?id='.$np_userid.'">' . MSG_VIEW_ALL . '</a></span>');
 
     $magento_items_nr = 6;
@@ -96,7 +96,7 @@ if($probid_user['probid_user_id']){
     );
 
     $magento_items = $proxy->call($sessionId, 'bcustomer_authentication.getRecentDeals', array($filters));
-
+*/
 /*
     $filters = array(
         'featured' => 1,
@@ -128,7 +128,7 @@ if($probid_user['probid_user_id']){
 
 #Coupons (magento) recent deals end.
 
-
+/*
 $localauctions="1";
 if ($localauctions=="1")## landing page featured local auctions
 {
@@ -147,6 +147,7 @@ if ($localauctions=="1")## landing page featured local auctions
 	$item_localdetails = $db->random_rows('auctions', 'auction_id, name, start_price, max_bid, currency, end_time', $select_localcondition, $layout['hpfeat_max']);
 	$template->set('item_localdetails', $item_localdetails);
 }
+*/
 
 $localshops="1";
 if ($localshops=="1")## landing page featured local shops

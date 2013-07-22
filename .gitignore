@@ -5,4 +5,4 @@ error_log
 admin/np_reports/*
 admin/report/*
 cache/
-
+online_users.txt
