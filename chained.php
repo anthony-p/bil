@@ -14,7 +14,7 @@ $user_details = $session->value('user_id') ? $session->value('user_id') : null;;
 
 
 if (!isset($_POST["amount"]))
-    header('location: http://dev.bringitlocal.com/');
+    header('location: http://dev2.bringitlocal.com/');
 
 require_once ("paypalplatform.php");
 
@@ -65,10 +65,10 @@ if ($beneficiar_amount >= $bring_it_local_amount) {
 
 // Request specific required fields
 $actionType			= "PAY";
-$cancelUrl			= "http://dev.bringitlocal.com/donate_cancel.php";	// TODO - If you are not executing the Pay call for a preapproval,
+$cancelUrl			= "http://dev2.bringitlocal.com/donate_cancel.php";	// TODO - If you are not executing the Pay call for a preapproval,
 //        then you must set a valid cancelUrl for the web approval flow
 //        that immediately follows this Pay call
-$returnUrl			= "http://dev.bringitlocal.com/donate_success.php";	// TODO - If you are not executing the Pay call for a preapproval,
+$returnUrl			= "http://dev2.bringitlocal.com/donate_success.php";	// TODO - If you are not executing the Pay call for a preapproval,
 //        then you must set a valid returnUrl for the web approval flow
 //        that immediately follows this Pay call
 $currencyCode		= "USD";

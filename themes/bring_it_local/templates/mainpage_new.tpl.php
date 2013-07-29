@@ -104,11 +104,11 @@ global $coupon_url;
            </p>
        </div>
         <div class="content-buttons">
-            <a href="http://dev.bringitlocal.com/campaigns.php">
+            <a href="http://dev2.bringitlocal.com/campaigns.php">
               <span class="uper">Browse </span>
               <span>our campaigns</span>
             </a>
-            <a href="http://dev.bringitlocal.com/about_us,page,content_pages">
+            <a href="http://dev2.bringitlocal.com/about_us,page,content_pages">
                 <span class="uper">Learn </span>
                 <span>how it works</span>
             </a>
@@ -151,7 +151,7 @@ global $coupon_url;
                 <ul class="list">
                     <?php foreach( $campaigns_list as $row):?>
                     <li>
-					<a href="http://dev.bringitlocal.com/<?php echo $row['username']; ?>" target="_blank">
+					<a href="http://dev2.bringitlocal.com/<?php echo $row['username']; ?>" target="_blank">
                         <div class="img"><img src="<?php echo $row['banner'];?>"/></div>
                         <div class="clear"></div>
 					</a>

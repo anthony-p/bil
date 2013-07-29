@@ -88,8 +88,8 @@ function submit_form(form_name) {
             <div class="clear"></div>
             <fieldset>
                 <div class="campaignsButtons">
-                    <a href="http://dev.bringitlocal.com/<?php echo $row['username']; ?>" target="_blank"class="view">view</a>
-                    <a href="http://dev.bringitlocal.com/campaigns,page,edit,section,<?php echo $row["user_id"]?>,campaign_id,members_area?keyword=#<?php echo $row['user_id'];?>;?>" class="edit">edit</a>
+                    <a href="http://dev2.bringitlocal.com/<?php echo $row['username']; ?>" target="_blank"class="view">view</a>
+                    <a href="http://dev2.bringitlocal.com/campaigns,page,edit,section,<?php echo $row["user_id"]?>,campaign_id,members_area?keyword=#<?php echo $row['user_id'];?>;?>" class="edit">edit</a>
                     <a href="/np/npdelete.php?np_userid=<?php echo $row["user_id"]?>" id="<?php echo $row["user_id"]?>" class="delete">delete</a>
                 </div>
             </fieldset>
