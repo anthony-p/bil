@@ -242,10 +242,10 @@ function projectRewardDelete( id )
         <li id="p_account" class="selected">
             <a href="#">Account</a>
         <li id="p_projectDetail">
-            <a href="#">Campaign Details</a>
+            <a href="#">Details</a>
         </li>
         <li id="p_projectEdit">
-            <a href="#">Campaign Edit</a>
+            <a href="#">Enhancements</a>
         </li>
         <li id="p_projectUpdates">
             <a href="#">Updates</a>

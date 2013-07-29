@@ -323,10 +323,10 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <a href="#">Account</a>
         </li>
         <li id="p_projectDetail">
-            <a href="#">Campaign Details</a>
+            <a href="#">Details</a>
         </li>
         <li id="p_projectEdit">
-            <a href="#">Project Edit</a>
+            <a href="#">Enhancements</a>
         </li>
        <!-- <li id="p_projectPitch">
             <a href="#">Pitch</a>
