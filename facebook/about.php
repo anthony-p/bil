@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>About Us | Bring It Local</title>
+<title>About Us | Bring It Local...</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="description" content="non-profit fundraising - buy sell and swap online and support your local community and favorite non-profit">
 <meta name="keywords" content="non-profit community fundraising "><script type="text/javascript">
