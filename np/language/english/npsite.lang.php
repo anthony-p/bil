@@ -41,7 +41,7 @@ define ('MSG_ACTIVITY_STATUS_DRAFT', 'Draft');
 define ('MSG_ACTIVITY_STATUS_CLOSED', 'Closed');
 
 define ('MSG_CREATE_SUPPORTER_USERNAME', 'Recommend a community page address');
-define ('MSG_WEBSITE_ADDRESS', 'Set up your new campaign');
+define ('MSG_WEBSITE_ADDRESS', 'Dress up your new campaign');
 define ('MSG_WEBSITE_ADDRESS_INSTRUCTIONS', 'Enter your web address<br>(optional)');
 define ('MSG_FACEBOOK_PAGE_INSTRUCTIONS', 'Enter your facebook page<br>(optional)');
 define ('MSG_TWITTER_PAGE_INSTRUCTIONS', 'Enter your twitter page<br>(optional)');
