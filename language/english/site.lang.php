@@ -229,7 +229,7 @@ define ('MSG_SEARCH', 'Search and Select a Non Profit - Then clickthrough on any
 define ('MSG_QUICK_SELECT', 'Quick Select - choose a non profit here');
 define ('MSG_USER_ACCOUNT_DETAILS', 'User Account Details ');
 define ('MSG_PROJECT_ACCOUNT_DETAILS', 'Project Account Details ');
-define ('MSG_PROJECT_DETAILS', 'Project Details ');
+define ('MSG_PROJECT_DETAILS', 'Campaign Details ');
 define ('MSG_PROJECT_ACCOUNT', 'Project Account ');
 define ('MSG_ACCOUNT', 'Account ');
 define ('MSG_FRMCHK_DOB_CANNOT_BE_EMPTY', 'The "Date of Birth" field cannot be empty');
