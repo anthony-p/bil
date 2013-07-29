@@ -26,7 +26,7 @@ $mynp = $row_user['tax_company_name'];
 
 
 ?>
-<!--
+
 
       	<?=MSG_WELCOME_BACK;?>,<br><b><?=$mynp;?></b><br>
 
@@ -77,4 +77,3 @@ Non profit news</a></b>
 
 </table>
 <br>
--->
