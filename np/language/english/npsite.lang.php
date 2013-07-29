@@ -41,7 +41,7 @@ define ('MSG_ACTIVITY_STATUS_DRAFT', 'Draft');
 define ('MSG_ACTIVITY_STATUS_CLOSED', 'Closed');
 
 define ('MSG_CREATE_SUPPORTER_USERNAME', 'Recommend a community page address');
-define ('MSG_WEBSITE_ADDRESS', 'Website');
+define ('MSG_WEBSITE_ADDRESS', 'Set up your new campaign');
 define ('MSG_WEBSITE_ADDRESS_INSTRUCTIONS', 'Enter your web address<br>(optional)');
 define ('MSG_FACEBOOK_PAGE_INSTRUCTIONS', 'Enter your facebook page<br>(optional)');
 define ('MSG_TWITTER_PAGE_INSTRUCTIONS', 'Enter your twitter page<br>(optional)');
@@ -240,7 +240,7 @@ define ('MSG_PHONE_B', 'Phone Number');
 define ('MSG_MAIN_DETAILS', 'Main Details');
 define ('MSG_MAIN_DETAILS_USER_SUBMISSION', 'Fill out the details below to submit a non profit organization');
 define ('MSG_USER_ACCOUNT_DETAILS', 'User Account Details ');
-define ('MSG_PROJECT_ACCOUNT_DETAILS', 'Campaign Details ');
+define ('MSG_PROJECT_ACCOUNT_DETAILS', 'Campaign Details');
 define ('MSG_FRMCHK_DOB_CANNOT_BE_EMPTY', 'The "Date of Birth" field cannot be empty');
 define ('MSG_BIRTH_MONTH', 'Birth Month');
 define ('MSG_DAY_OF_BIRTH', 'Day of Birth');
