@@ -2,7 +2,6 @@
 # Redirect 302 /preview/index.html http://landings.bringitlocal.com/preview
 
 AuthName "public_html"
-AuthUserFile "/home/bringit/.htpasswds/public_html/passwd"
 RewriteEngine on
 
 #RewriteRule ^schools/([^/\.]+)/?$ landingpage.php?school=$1 [L]
@@ -30,3 +29,6 @@ RewriteRule ^(.*)$ $1.php
 order allow,deny
 deny from all
 </Files>
+AuthType Basic
+require valid-user
+AuthUserFile "/home/devbr0/.htpasswds/public_html/passwd"
