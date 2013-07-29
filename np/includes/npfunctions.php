@@ -603,23 +603,22 @@ function terms_box ($terms_type, $selected_value)
 	{
 		if ($new_table)
 		{
-			$display_output = '<br><table width="100%" border="0" cellpadding="3" cellspacing="2" class="border"> ';
+			$display_output = '<br><table width="100%" class="border"> ';
 		}
 
       $display_output .= '	<tr> '.
-         '		<td colspan="' . $colspan . '" class="c3">' . GMSG_TERMS_AND_CONDITIONS . '</td> '.
+         '		<td class="terms_conditions">' . GMSG_TERMS_AND_CONDITIONS . '</td> '.
       	'	</tr> '.
       	'	<tr class="c5"> '.
          '		<td><img src="themes/' . $db->setts['default_theme'] . '/img/pixel.gif" width="1" height="1" /></td> '.
          '		<td colspan="' . ($colspan-1) . '"><img src="themes/' . $db->setts['default_theme'] . '/img/pixel.gif" width="1" height="1" /></td> '.
       	'	</tr> '.
       	'	<tr class="c1"> '.
-         '		<td width="150" align="right" class="contentfont"></td> '.
-         '		<td colspan="' . ($colspan-1) . '"><textarea lname="terms_content" cols="50" rows="8" readonly class="smallfont" style="width: 100%; height: 200px;" />' . eregi_replace('<br>', "\n", $terms['content']) . '</textarea></td> '.
+         '		<td><textarea lname="terms_content" cols="50" rows="8" readonly class="smallfont" style="width: 100%; height: 200px;" />' . eregi_replace('<br>', "\n", $terms['content']) . '</textarea></td> '.
       	'	</tr> '.
       	'	<tr class="reguser"> '.
-         '		<td align="right" class="contentfont">&nbsp;</td> '.
-         '		<td colspan="' . ($colspan-1) . '">' . $agreement_msg . '</td> '.
+
+         '		<td>' . $agreement_msg . '</td> '.
       	'	</tr> ';
       if ($new_table)
       {

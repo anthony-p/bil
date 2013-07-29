@@ -2241,4 +2241,19 @@ function user_location($seller_id, $buyer_country, $buyer_state)
 	return $result;
 }
 
+function getProjectCategoryListToHTML()
+{
+    global $db;
+    $result = "<select name=\"project_category\" id=\"project_category\">";
+    $countries = array();
+    $sql_select_locations = $db->query("SELECT * FROM  `np_orgtype` ");
+    while($country = $db->fetch_array($sql_select_locations))
+    {
+        $countries[$country['id']] = $country['name'];
+        $result .="<option value='{$country['id']}'> {$country['name']} </option>";
+    }
+    $result .= "</select>";
+    return $result;
+}
+
 ?>

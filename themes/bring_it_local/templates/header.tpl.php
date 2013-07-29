@@ -198,8 +198,8 @@ global $coupon_url;
                 <nav>
                     <ul>
                         <li class="level"><a href="#" id="menu">Browse</a></li>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Start</a></li>
+                        <li><a href="http://dev.bringitlocal.com/about_us,page,content_pages">Learn</a></li>
+                        <li><a href="/np/npregister.php">Start</a></li>
                     </ul>
                 </nav>
                 <div class="topNav">

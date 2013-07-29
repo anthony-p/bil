@@ -272,6 +272,7 @@ margin: 20px 0 40px;
     padding: 5px 20px;
     border: 0;
     background: #0077c0;
+
     text-shadow: 0px 0px 1px #60aad8;
     font: 12px/17px "OpenSans";
     text-align: center;
@@ -2753,7 +2754,7 @@ h2.resp-accordion:first-child { border-top: 1px solid #c1c1c1 !important;}
 aside.announcement h3{font:15px "OpenSans-SemiBold" ; color:#7eb041; text-transform: uppercase;}
 aside.announcement .write_post{background:#ececec;width:100%; margin-top: 18px; padding: 15px 0 10px 0; float:left;}
 aside.announcement .write_post .user-photo{margin: 0 15px;}
-aside.announcement .write_post form{float:left; width:465px;}
+aside.announcement .write_post form{float:left; width:465px;padding-right: 15px;}
 aside.announcement .write_post form textarea{width:463px;height:113px;margin-bottom: 10px;}
 aside.announcement .write_post form label{font:12px/14px "OpenSans-SemiBold"; color:#666666;margin-left: 10px;}
 aside.announcement .write_post form input[type="submit"]{white-space: nowrap;float: right; background: #272727; color:#fff; border: 0; border-radius: 4px; font:15px/29px "OpenSans-SemiBold";padding: 0 20px;text-transform: uppercase; cursor: pointer;}
@@ -3003,7 +3004,8 @@ div.selectME ul li {  display:none;  clear:left;   margin:0;    padding:0;text-a
 div.selectME ul li a, div.selectME ul li a:visited {text-transform: capitalize;font:12px/24px "OpenSans-SemiBold"; color: #333; background:#fff;   text-decoration:none;  display:block; border: 2px solid #dedede; border-top: 0;border-bottom: 0;width: 200px !important;padding-left: 10px; margin-left: 4px;}
 div.selectME ul li.last {border-bottom: 2px solid #dedede;width: 214px !important;margin-left: 4px;}
 div.selectME ul li.last a { margin: 0;}
-#arrowImg{background: url("img/down_arrow.png") 0 0 no-repeat; float:right; width:11px; height:7px; line-height: 24px; margin: -14px 11px 0; }
+#arrowImg{background: url("img/down_arrow.png") 0 0 no-repeat; float:right; width:11px; height:7px; line-height: 24px; margin: 9px 11px 0; }
+#search_by_name #arrowImg{margin-top: -14px;}
 div.select{float:right; margin:10px 0 0 10px; width:222px;}
 .searchBox  form{float:right; margin:10px 0;}
 .searchBox form input{float:left; height:24px; border:0;width:150px;text-transform:capitalize; margin-left:16px; background: #fff;
@@ -3319,9 +3321,14 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 
 /*myCampaigs*/
-.myCampaigs {width:900px; margin: 0 auto; padding-top: 30px;}
+.myCampaigs {width:900px; margin: 0 auto; padding-top: 30px; position: relative;}
+.view_campaign_btn{position: absolute; top:0px; right: 0;background:#f21b43; text-shadow: 0px 0px 1px #ffdfc9;border-radius: 5px;box-shadow: inset 0px 0px 5px rgba(199, 199, 199, 0.5);}
+.view_campaign_btn span{display:block;color:#fff;text-transform:uppercase;font: 11px/29px "OpenSans-Light";padding: 0 15px;    }
+.view_campaign_btn:hover{background:#e2193f;}
 .myCampaigs h2{display:block; text-transform: uppercase; padding: 0 0 10px 0; margin-bottom:20px; border-bottom: 3px solid #dedede;font: 18px/29px "OpenSans-SemiBold"; color: #7eb041;}
-.myCampaigs form{float:right; margin:10px 0;}
+.myCampaigs form{float:right; margin:10px 0; display:inline-block;}
+.myCampaigs form .selectME{float:left; width:230px !important;}
+.myCampaigs form .search-input{float:left;}
 .myCampaigs form input{float:left; height:24px; border:0;width:150px;text-transform:capitalize; margin-left:16px; background: #fff;
                         border: 1px solid #dedede;  padding:0 30px 0 13px;font:11px/24px OpenSans-SemiBold; color:#222222; border-top-left-radius: 7px; border-bottom-left-radius: 7px;}
 .myCampaigs form button{float:left; height:26px; border:0;width:26px; background:#dedede url("img/input-arrow.png") center no-repeat; cursor: pointer;border-top-right-radius: 16px; border-bottom-right-radius: 16px;}
@@ -3345,7 +3352,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 .editCampaigns #wrapper{margin-top: 30px;}
 .editCampaigns #navigation{border-right: 1px solid #d9d9d9;}
-.editCampaigns{width:900px; margin: 30px auto 0;}
+.editCampaigns{width:900px; margin: 30px auto 0; position: relative;}
 .editCampaigns h2{display:block; text-transform: uppercase; padding: 0 0 10px 0; margin-bottom:20px; border-bottom: 3px solid #dedede;font: 18px/29px "OpenSans-SemiBold"; color: #7eb041;}
 .editCampaigns .step .tabs{box-shadow: inset 0 0px 2px rgb(0, 0, 0)}
 

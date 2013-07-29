@@ -21,12 +21,35 @@ class npuser extends npcustom_field
 		return $output;
 	}
 
+    function delete_campaign($id)
+    {
+        $select_query = $sql_select_query = "SELECT banner, logo FROM np_users " .
+            "WHERE user_id=" . $id;
+
+        $sql_select_result = $this->query($select_query);
+
+        $result_array = array();
+
+        while ($result =  mysql_fetch_array($sql_select_result)) {
+            if (isset($result['logo']) && file_exists('../..' . $result['logo'])) {
+                unlink('../..' . $result['logo']);
+            }
+            if (isset($result['banner']) && file_exists('../..' . $result['banner'])) {
+                unlink('../..' . $result['banner']);
+            }
+        }
+
+        $delete_query = "DELETE FROM " . NPDB_PREFIX . "users WHERE user_id=" . $id;
+        $this->query($delete_query);
+    }
+
     function selectAll()
     {
         if (isset($_GET["search"]) && $_GET["search"]) {
             $search = mysql_real_escape_string($_GET["search"]);
             $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
+                NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
                 NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 " bl2_users.last_name, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
@@ -44,7 +67,7 @@ class npuser extends npcustom_field
                 $order = $_GET["names"];
             }
             $search = mysql_real_escape_string($_GET["keyword"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 " bl2_users.last_name, bl2_users.email " .
@@ -53,7 +76,7 @@ class npuser extends npcustom_field
                 $search . "%' ORDER BY reg_date " . $order;
         } elseif (isset($_GET["category"]) && $_GET["category"]) {
             $search = mysql_real_escape_string($_GET["category"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 " bl2_users.last_name, bl2_users.email " .
@@ -61,12 +84,101 @@ class npuser extends npcustom_field
                 "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND " . NPDB_PREFIX .
                 "users.project_category=" . $search . " ORDER BY reg_date DESC";
         } else {
-            $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+            $order = "DESC";
+            if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
+                $order = $_GET["names"];
+            }
+            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, " .
                 " bl2_users.first_name, bl2_users.last_name, bl2_users.email FROM " .
                 NPDB_PREFIX . "users, bl2_users WHERE " . NPDB_PREFIX .
-                "users.probid_user_id=bl2_users.id ORDER BY reg_date DESC";
+                "users.probid_user_id=bl2_users.id ORDER BY reg_date " . $order;
+        }
+
+        $sql_select_result = $this->query($sql_select_query);
+
+        $result_array = array();
+
+        while ($result =  mysql_fetch_array($sql_select_result)) {
+            if (isset($result["end_date"]) && $result["end_date"]) {
+                $result["days_left"] = round(($result["end_date"] - time()) / 86400);
+                if ($result["days_left"] < 0)
+                    $result["days_left"] = 0;
+            } else {
+                $result["days_left"] = 0;
+            }
+            $end_time = $result['end_date'] ? $result['end_date'] : 0;
+            $create_time = $result['reg_date'] ? $result['reg_date'] : 1;
+            $current_time = time();
+            $completed = round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+            $percent=$completed*100/194;
+
+            $result["percent"] = $percent;
+
+            $result_array[] = $result;
+        }
+
+        return $result_array;
+    }
+
+    function selectAllLive()
+    {
+        $time = time();
+        if (isset($_GET["search"]) && $_GET["search"]) {
+            $search = mysql_real_escape_string($_GET["search"]);
+            $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
+                NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
+                NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
+                " bl2_users.last_name, bl2_users.email " .
+                " FROM " . NPDB_PREFIX . "users, bl2_users " .
+                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
+                " AND np_users.active=1 AND np_users.end_date>" . $time .
+                " AND (name LIKE '%" .
+                $search . "%' OR description LIKE '%" .
+                $search . "%' OR project_title LIKE '%" .
+                $search . "%' OR campaign_basic LIKE '%" .
+                $search . "%' OR orgtype LIKE '%" .
+                $search . "%' OR tax_company_name LIKE '%" .
+                $search . "%' OR pitch_text LIKE '%" .
+                $search . "%') ORDER BY reg_date DESC";
+        } elseif (isset($_GET["keyword"]) && $_GET["keyword"]) {
+            $order = "DESC";
+            if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
+                $order = $_GET["names"];
+            }
+            $search = mysql_real_escape_string($_GET["keyword"]);
+            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
+                NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
+                " bl2_users.last_name, bl2_users.email " .
+                " FROM " . NPDB_PREFIX . "users, bl2_users " .
+                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.active=1 AND np_users.end_date>" . $time .
+                "  AND name LIKE '%" .
+                $search . "%' ORDER BY reg_date " . $order;
+        } elseif (isset($_GET["category"]) && $_GET["category"]) {
+            $search = mysql_real_escape_string($_GET["category"]);
+            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
+                NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
+                " bl2_users.last_name, bl2_users.email " .
+                " FROM " . NPDB_PREFIX . "users, bl2_users " .
+                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND " . NPDB_PREFIX .
+                "users.project_category=" . $search . " AND np_users.active=1 AND np_users.end_date>" . $time .
+                "  ORDER BY reg_date DESC";
+        } else {
+            $order = "DESC";
+            if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
+                $order = $_GET["names"];
+            }
+            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
+                NPDB_PREFIX . "users.end_date, " .
+                " bl2_users.first_name, bl2_users.last_name, bl2_users.email FROM " .
+                NPDB_PREFIX . "users, bl2_users WHERE " . NPDB_PREFIX .
+                "users.probid_user_id=bl2_users.id AND np_users.active=1 AND np_users.end_date>" . $time .
+                "  ORDER BY reg_date " . $order;
         }
 
         $sql_select_result = $this->query($sql_select_query);
@@ -126,8 +238,9 @@ class npuser extends npcustom_field
 			(username, password, email, reg_date, payment_mode, balance, max_credit,
 			salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt, 
 			name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
-			pg_paypal_email, pg_worldpay_id, pg_checkout_id, pg_nochex_email, 
-			pg_ikobo_username, pg_ikobo_password, pg_protx_username, pg_protx_password, 
+			pg_paypal_email, pg_paypal_first_name, pg_paypal_last_name,
+			pg_worldpay_id, pg_checkout_id, pg_nochex_email,
+			pg_ikobo_username, pg_ikobo_password, pg_protx_username, pg_protx_password,
 			pg_authnet_username, pg_authnet_password, pg_mb_email, pg_paymate_merchant_id, 
 			pg_gc_merchant_id, pg_gc_merchant_key, pg_amazon_access_key, pg_amazon_secret_key,
 			pg_alertpay_id, pg_alertpay_securitycode, orgtype, lat, lng, logo, banner,
@@ -141,7 +254,8 @@ class npuser extends npcustom_field
 			'" . $user_details['address'] . "', '" . $user_details['city'] . "',
 			'" . $user_details['country'] . "', '" . $user_details['state'] . "', '" . $user_details['zip_code'] . "',
 			'" . $phone . "', '" . $birthdate . "', '" . $birthdate_year . "', '" . $user_details['newsletter'] . "', 
-			'" . $user_details['pg_paypal_email'] . "', '" . $user_details['pg_worldpay_id'] . "', '" . $user_details['pg_checkout_id'] . "',
+			'" . $user_details['pg_paypal_email'] . "', '" . $user_details['pg_paypal_first_name'] . "', '" . $user_details['pg_paypal_last_name'] . "',
+			'" . $user_details['pg_worldpay_id'] . "', '" . $user_details['pg_checkout_id'] . "',
 			'" . $user_details['pg_nochex_email'] . "', '" . $user_details['pg_ikobo_username'] . "',
 			'" . $user_details['pg_ikobo_password'] . "', '" . $user_details['pg_protx_username'] . "',
 			'" . $user_details['pg_protx_password'] . "', '" . $user_details['pg_authnet_username'] . "',
@@ -262,7 +376,7 @@ include 'includes/npgeocode_user.php';
 		$user_old = $this->get_sql_row("SELECT balance, payment_mode, tax_apply_exempt FROM
 			" . NPDB_PREFIX . "users WHERE user_id=" . $user_id);
 
-		if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']))
+		if (!$user_old['tax_apply_exempt'] && !empty($user_dlogoetails['tax_reg_number']))
 		{
 			$sql_update_query .= ", tax_apply_exempt=1";			
 		}

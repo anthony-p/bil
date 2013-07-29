@@ -91,6 +91,14 @@ if (!$frmchk_user_edit || !empty($frmchk_details['password']))
 }
 
 if ($frmchk_details['pg_paypal_email']) {
+    $fv->check_box($frmchk_details['pg_paypal_first_name'], MSG_PAYPAL_EMAIL_FIRST_NAME, array('field_empty'));
+}
+
+if ($frmchk_details['pg_paypal_email']) {
+    $fv->check_box($frmchk_details['pg_paypal_last_name'], MSG_PAYPAL_EMAIL_LAST_NAME, array('field_empty'));
+}
+
+if ($frmchk_details['pg_paypal_email']) {
     $fv->check_box($frmchk_details['pg_paypal_email'], MSG_PAYPAL_EMAIL_ADDRESS, array('is_paypal_email_address'));
 }
 

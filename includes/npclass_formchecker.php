@@ -255,7 +255,7 @@ class npformchecker extends npdatabase
 	// check whether input is a valid gif or jpg file
 	function field_image($value, $msg)
 	{
-		if(($value=="image/gif")||($value=="image/jpeg")||($value=="image/pjpeg"))
+		if(($value=="image/gif")||($value=="image/png")||($value=="image/jpeg")||($value=="image/pjpeg"))
 		{
 			return true;
 		}

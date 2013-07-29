@@ -40,8 +40,13 @@ $user_id = $_COOKIE["np_userid"];
 $_SESSION["np_userid"] = $user_id;
 
 //$email = '';
-$email = $db->get_sql_field("SELECT bl2_users.pg_paypal_email FROM np_users, bl2_users WHERE np_users.user_id=" .
+$email = $db->get_sql_field("SELECT np_users.pg_paypal_email FROM np_users, bl2_users WHERE np_users.user_id=" .
     $user_id . " AND np_users.probid_user_id=bl2_users.id", pg_paypal_email);
+
+if (!$email) {
+    $email = $db->get_sql_field("SELECT bl2_users.pg_paypal_email FROM np_users, bl2_users WHERE np_users.user_id=" .
+        $user_id . " AND np_users.probid_user_id=bl2_users.id", pg_paypal_email);
+}
 
 $beneficiar_account = $email ? $email : 'rlpc.test2@gmail.com';
 

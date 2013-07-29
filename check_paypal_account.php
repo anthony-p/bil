@@ -79,12 +79,12 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
         $paypal_email = $_POST['pg_paypal_email'];
     }
 
-    if (isset($_POST['fname']) && $_POST['fname']) {
-        $first_name = $_POST['fname'];
+    if (isset($_POST['pg_paypal_first_name']) && $_POST['pg_paypal_first_name']) {
+        $first_name = $_POST['pg_paypal_first_name'];
     }
 
-    if (isset($_POST['lname']) && $_POST['lname']) {
-        $last_name = $_POST['lname'];
+    if (isset($_POST['pg_paypal_last_name']) && $_POST['pg_paypal_last_name']) {
+        $last_name = $_POST['pg_paypal_last_name'];
     }
 
     $body_data  =  array(

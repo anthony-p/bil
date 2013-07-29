@@ -42,7 +42,9 @@ else
 
 	$page = (!empty($_REQUEST['page'])) ? $_REQUEST['page'] : $default_landing_page;
 	$section = (!empty($_REQUEST['section'])) ? $_REQUEST['section'] : $default_landing_section;
-	
+	$order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'DESC';
+	$name_keyword = (!empty($_REQUEST['keyword'])) ? $_REQUEST['keyword'] : '';
+
 	$section = ($page == 'wanted_ads' && !$setts['enable_wanted_ads']) ? $default_landing_section : $section;
 	$page = ($page == 'wanted_ads' && !$setts['enable_wanted_ads']) ? $default_landing_page : $page;
 	
@@ -2579,7 +2581,7 @@ else
 
 		if ($section == 'drafts')
 		{
-			$header_selling_page = headercat('<b>' . MSG_MM_SELLING . ' - ' . MSG_MM_DRAFTS . '</b>');
+            $header_selling_page = headercat('<b>' . MSG_MM_SELLING . ' - ' . MSG_MM_DRAFTS . '</b>');
 
 			$nb_items = $nb_drafts;
 
@@ -4934,6 +4936,7 @@ else
 
 
         $template->set('campaigns_list', $rows);
+        $template->set('section', $section);
 
         if ($section == 'live') {
             $members_area_page_content = $template->process('members_area_campaigns.tpl.php');

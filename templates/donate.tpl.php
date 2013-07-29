@@ -41,11 +41,24 @@
                 <h3>How much would you like to contribute?</h3>
             </div>
 			<div class="top-description">
-    <div class="left"><img src="<?// echo $compaigns[logo];?>../themes/bring_it_local/img/banner_.jpg" /></div>
+    <div class="left" style="width: 160px;"><img src="<? echo $campaign['logo'];?>" /></div>
+<!--    <div class="left">-->
+<!--        --><?//
+//        //var_dump($compaignData);
+//        if (file_exists(getcwd()."/".$campaign["banner"])) {
+//            echo '<img width="100%" src ="' . $campaign["banner"] . '" />';
+//        } else {
+//            $banner = $campaign["banner"];
+//            if (strpos($banner,"youtube"))
+//                $banner = str_replace("http:","",$banner);
+//            echo '<iframe width="100%"  src="' . $banner . '"frameborder="0" allowfullscreen></iframe>';
+//        }
+//        ?>
+<!--    </div>-->
     <div class="right">
-        <h2>Campaign Name <? //echo $compaigns[name];?>inna</h2>
+        <h2><? echo $campaign['name'];?></h2>
         <div class="clear"></div>
-        <p>Campaign Description <? //echo $compaigns[description];?>kkklklkkkklkklkl</p>
+        <p><? echo $campaign['description'];?></p>
     </div>
             </div>
             <div id="contribution_qty">
