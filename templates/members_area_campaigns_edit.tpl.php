@@ -232,7 +232,7 @@ function projectRewardDelete( id )
 
 </script>
 <div class="editCampaigns">
-<h2>Edit Campaigns</h2>
+<h2>Edit Campaign</h2>
 <div id="wrapper">
 <a href="/<?=$campaign['username']?>" class="view_campaign_btn" target="_blank"><span>view campaign</span></a>
 
