@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -27,7 +27,6 @@ $template->set('auction_print_header', $auction_print_header);
 
 $auction_print_footer = $template->process('empty_footer.tpl.php');
 $template->set('auction_print_footer', $auction_print_footer);
-
 (array) $user_details = null;
 
 $start_time_id = 1;
