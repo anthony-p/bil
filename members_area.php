@@ -3686,17 +3686,10 @@ else
                 $userId = $session->value('user_id');
             }
 
-            var_dump($userId);
-            die;
-
-			$user_details = $db->get_sql_row("SELECT user_id, username,  email,
-				enable_aboutme_page, aboutme_page_content, shop_account_id, shop_active FROM
-				" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
+			$user_details = $db->get_sql_row("SELECT * FROM
+				bl2_users WHERE user_id=" . $userId);
 
 			$template->set('user_details', $user_details);
-
-			$shop_status = $shop->shop_status($user_details);
-			$template->set('shop_status', $shop_status);
 
 			$members_area_page_content = $template->process('members_area_aboutme_view.tpl.php');
 			$template->set('members_area_page_content', $members_area_page_content);
