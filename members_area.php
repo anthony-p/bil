@@ -3703,7 +3703,7 @@ else
 			if (isset($_POST['form_aboutme_save']))
 			{
                 include_once('includes/generate_image_thumbnail.php');
-                if (isset ($_FILES["avatar"]) && is_uploaded_file($_FILES["avatar"]["tmp_name"])) {
+                if (isset ($_FILES["avatar"]) )) {
                     $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
                     var_dump($ext);
                     $logo_file_name = '/images/partner_logos/' . md5($_POST["first_name"] . 'logo') . '.' . $ext;
