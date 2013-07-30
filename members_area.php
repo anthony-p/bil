@@ -3682,11 +3682,14 @@ else
 		{
 			$shop = new shop();
 
-			if (isset($_POST['form_aboutme_save']))
-			{
-				$shop->save_aboutme($_POST, $session->value('user_id'));
-				$template->set('msg_changes_saved', $msg_changes_saved);
-			}
+			if (isset($_GET['user_id'])) {
+		        $userId = $_GET['user_id']
+			} else {
+                $userId = $session->value('user_id')
+            }
+
+            var_dump($userId);
+            die;
 
 			$user_details = $db->get_sql_row("SELECT user_id, username,  email,
 				enable_aboutme_page, aboutme_page_content, shop_account_id, shop_active FROM
