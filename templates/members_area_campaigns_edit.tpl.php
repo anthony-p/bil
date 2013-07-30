@@ -754,7 +754,7 @@ function projectRewardDelete( id )
         <div class="account-tab">
             <aside>
                 <div class="inner">
-                    <h3>Post a comment</h3>
+                    <h3>rewards will go here</h3>
                     <div class="write_post">
                         <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png"></div>
                         <input name="compaign" type="hidden" value="10275">
