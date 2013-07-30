@@ -3705,7 +3705,9 @@ else
                 include_once('includes/generate_image_thumbnail.php');
                 if (isset ($_FILES["avatar"]) && is_uploaded_file($_FILES["avatar"]["tmp_name"])) {
                     $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+                    var_dump($ext);
                     $logo_file_name = '/images/partner_logos/' . md5($_POST["first_name"] . 'logo') . '.' . $ext;
+                    var_dump($logo_file_name);
                     $upload_logo = generate_image_thumbnail(
                         $_FILES["avatar"]["tmp_name"], '..' . $logo_file_name, 640, 600
                     );
@@ -3717,14 +3719,14 @@ else
                 var_dump($_POST);
                 //avatar='" . $post_about_details['avatar'] . "',
                 $post_about_details = $db->rem_special_chars_array($_POST);
-				$db->query("UPDATE bl2_users SET
-					avatar='" . $logo_file_name . "',
+                $db->query("UPDATE bl2_users SET
+					avatar='" . $post_about_details['avatar] . "',
 					about_me='" . $post_about_details['about_me'] . "',
 					facebook_link='" . $post_about_details['facebook_link'] . "',
 					twitter_link='" . $post_about_details['twitter_link'] . "',
 					google_link='" . $post_about_details['google_link'] . "' WHERE
 					id='" . $session->value('user_id') . "'");
-				
+
 				$template->set('msg_changes_saved', $msg_changes_saved);
 			}
 
