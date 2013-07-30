@@ -3714,9 +3714,10 @@ else
                     exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
                     exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
                     $_POST["avatar"] = $logo_file_name;
+                    var_dump($_POST);
                 }
 
-                var_dump($_POST);
+
                 //avatar='" . $post_about_details['avatar'] . "',
                 $post_about_details = $db->rem_special_chars_array($_POST);
                 $db->query("UPDATE bl2_users SET
