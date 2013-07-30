@@ -3681,9 +3681,9 @@ else
 		if ($section == 'view')	{
 
 			if (isset($_GET['user_id'])) {
-		        $userId = $_GET['user_id']
+		        $userId = $_GET['user_id'];
 			} else {
-                $userId = $session->value('user_id')
+                $userId = $session->value('user_id');
             }
 
             var_dump($userId);
