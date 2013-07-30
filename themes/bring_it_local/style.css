@@ -2648,7 +2648,7 @@ ul.list li .campaigns-info .name a{font:13px/17px OpenSans; color:#7eb041;}
 ul.list li .campaigns-info .name a.name-camp{font:14px/17px "OpenSans-SemiBold"; color: #222;}
 ul.list li .campaigns-info .name a:hover{text-decoration: underline;}
 ul.list li .campaigns-info .description{width:170px; font:13px/14px OpenSans; color:#222;margin: 8px 0 12px 0; height:70px; overflow: hidden;}
-.location{padding-left:15px;font:13px/13px OpenSans; color:#7eb041; background: url("img/location.png") 0 0px no-repeat;}
+.location{text-transform:capitalize; padding-left:15px;font:13px/13px OpenSans; color:#7eb041; background: url("img/location.png") 0 0px no-repeat;}
 .location a:hover{text-decoration: underline;}
 ul.list li .campaign-details{float:left; width:88%; background: #f3f3f3; padding: 10px 13px;}
 ul.list li .campaign-details .price {font:16px/16px "OpenSans-SemiBold"; color:#222;}
@@ -2914,8 +2914,8 @@ position: relative; display: inline-table; }
 
 #members_area td{font:14px "OpenSans";padding: 2px;text-align: left;}
 #members_area .abuseReport td{padding: 0 20px;}
-#members_area  .c7 b{font:14px/29px "OpenSans-SemiBold";text-transform: uppercase; color: #7eb041; border-bottom: 1.5px solid #dedede; display: block;}
-
+#members_area  .c7 b, .tittle_tp{font:14px/29px "OpenSans-SemiBold";text-transform: uppercase; color: #7eb041; border-bottom: 1.5px solid #dedede; display: block;}
+.tittle_tp{margin:0 20px;}
 .summaryPageContent table{padding: 0 0 0 10px !important;}
 .membmenu.contentfont input{background: #f07722; text-shadow: 0px 0px 1px #9ec471;   font: 14px/18px "OpenSans-Light";    letter-spacing: .025em;
     text-align: center;    color: #fff;    text-transform: none;    cursor: pointer;    border:0; padding: 0 7px;}
@@ -2942,7 +2942,7 @@ position: relative; display: inline-table; }
 #members_area #middleColumn table.tbl .border td{padding: 0;}
 #members_area .tbl input[type="text"], #members_area .tbl input[type="password"]{border:0; height: 25px;   width: 250px;    border: 1px solid #ddd;    border-radius: 3px;    outline: none;   padding: 5px;    padding: 0 10px;}
 #members_area .tbl  input[type="submit"]{float:right;border: 0; width: auto; padding: 5px 18px;    background: #7eb041;    text-shadow: 0px 0px 1px #9ec471;   color: #fff;    text-transform: uppercase;cursor: pointer;}
-#members_area #terms .reguser{font:11px "OpenSans"; color: #222;}
+#members_area #terms .reguser{font:11px "OpenSans"; color: #2about_me_table22;}
 #members_area #terms input[type="checkbox"]{margin-right: 10px;}
 #members_area #middleColumn table.tbl .submit-proced td{padding: 0;}
 #members_area .tbl input[type="button"]{border: 0; width: auto; padding: 5px 18px;    background: #7eb041;    text-shadow: 0px 0px 1px #9ec471;   color: #fff;    text-transform: uppercase;cursor: pointer;}
@@ -2954,6 +2954,37 @@ position: relative; display: inline-table; }
 #members_area .sellingPrefilled td table td, #members_area .sellingPrefilled td table{padding: 0;}
 #members_area .manage-account td.c1{width:600px;}
 #members_area blockquote {padding:0 20px;}
+
+#members_area .info_tittle td h5{font:18px "OpenSans-Bold" ; padding:10px 0 10px 30px; color:#333; background: url("img/tittle_arrow.png") 0 17px no-repeat;}
+#members_area #middleColumn  .about_me_table{width:780px; margin:  0 auto;}
+#members_area .about_me_table tr td{padding:15px 0 5px 0;}
+#members_area .about_me_table label {width:192px; text-transform:capitalize; display: block;  float: left;    height: 28px;    background: url("img/website-icon.png") 0 0 no-repeat;    margin-left: 12px;  font: 13px/27px OpenSans;   margin-left: 6px;  color: #aaaab5;  padding-left: 35px;}
+#members_area .about_me_table label.twitter{background: url("img/twitter-icon.png") 0 0 no-repeat;}
+#members_area .about_me_table label.facebook{background: url("img/face-icon.png") 0 0 no-repeat;}
+#members_area .upload_logo{width:200px; height: 100px;border:1px solid #dedede; float: left; overflow: hidden;}
+#members_area .upload_logo img{text-align: center;}
+#members_area .about_me_table input[type="file"]{float:left;padding: 5px; margin: 69px 0 0 52px;  border: 1px solid #dedede;border-radius: 4px;}
+#members_area .about_me_table input[type="submit"]{float:right;}
+
+/*about*/.view_about_page{width:100%; margin: 0 auto;}
+.view_about_page .view_about_content{padding:0 20px; width: 900px;margin-top: 30px;}
+.view_about_page .view_about_logo{float:left; width:420px; position:relative; box-shadow: 0 0 5px rgba(0,0,0,0.7);  overflow: hidden;}
+.view_about_page .view_about_img{width:100%; height:200px;overflow: hidden;}
+.view_about_page span{display: block; width: 100%; position:absolute; bottom: 0;left:0; background: rgba(0,0,0,0.5);}
+.view_about_page span label{padding:0 20px;font:18px/40px "OpenSans-SemiBold"; color: #fff; text-transform: capitalize;}
+.view_about_page .view_about_info{width: 460px; float: right;}
+.view_about_page .view_about_info div.inner{padding:13px 10px 12px 0px;}
+.view_about_page .view_about_info div.inner h5{font: bold 12px/27px "OpenSans"; color:#797979; float:left;text-transform: capitalize; }
+.view_about_page .view_about_info div.inner ul{float:left;}
+.view_about_page .view_about_info div.inner ul li{float:left; display: inline-block;}
+.view_about_page .view_about_info div.inner ul li a{display: block; float:left; height:28px; background: url("img/website-icon.png") 0 0 no-repeat; margin-left: 12px;
+    font: 13px/27px OpenSans;  margin-left: 6px;   color: #aaaab5; padding-left: 35px;}
+.view_about_page .view_about_info div.inner ul li.a_facebook a{background: url("img/face-icon.png") 0 0 no-repeat;}
+.view_about_page .view_about_info div.inner ul li.a_twitter a{background: url("img/twitter-icon.png") 0 0 no-repeat;}
+.view_about_page .view_about_info div.inner ul li label{float:left; font:13px/27px OpenSans; margin-left: 6px; color:#aaaab5;}
+.view_about_page .view_about_info p{display: block; margin: 20px 0; padding-top: 20px; border-top: 1px solid #dedede;
+ font:13px/16px "OpenSans"; color:#333; text-align: justify; float:left; clear: both;}
+
 
 
 #content_pages .innerContainer{width:940px;margin: 0 auto;}
