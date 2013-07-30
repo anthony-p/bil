@@ -3679,7 +3679,7 @@ else
 	if ($page == 'about_me') /* BEGIN -> ABOUT ME PAGE(S) */
 	{
 		if ($section == 'view')	{
-            var_dump($_GET['user_id']);
+
 			if (isset($_GET['user_id'])) {
 		        $userId = $_GET['user_id'];
 			} else {
@@ -3697,28 +3697,27 @@ else
 			$members_area_page_content = $template->process('members_area_aboutme_view.tpl.php');
 			$template->set('members_area_page_content', $members_area_page_content);
 		}
-		if ($section == 'profile' && $setts['enable_profile_page'])
+		if ($section == 'edit')
 		{
-			if (isset($_POST['form_profile_save']))
+			if (isset($_POST['form_aboutme_save']))
 			{
-				$post_details = $db->rem_special_chars_array($_POST);
-				$db->query("UPDATE " . DB_PREFIX . "users SET 
-					enable_profile_page='" . $post_details['enable_profile_page'] . "',
-					profile_www='" . $post_details['profile_www'] . "', profile_msn='" . $post_details['profile_msn'] . "',
-					profile_icq='" . $post_details['profile_icq'] . "', profile_aim='" . $post_details['profile_aim'] . "',
-					profile_yim='" . $post_details['profile_yim'] . "', profile_skype='" . $post_details['profile_skype'] . "',
-					profile_show_birthdate='" . $post_details['profile_show_birthdate'] . "' WHERE 
+				$post_about_details = $db->rem_special_chars_array($_POST);
+				$db->query("UPDATE bl2_users SET
+					avatar='" . $post_about_details['avatar'] . "',
+					about_me='" . $post_about_details['about_me'] . "',
+					facebook_link='" . $post_about_details['facebook_link'] . "',
+					twitter_link='" . $post_about_details['twitter_link'] . "',
+					google_link='" . $post_about_details['google_link'] . "' WHERE
 					user_id='" . $session->value('user_id') . "'");
 				
 				$template->set('msg_changes_saved', $msg_changes_saved);
 			}
 
-			$user_details = $db->get_sql_row("SELECT * FROM
-				" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
+            $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $session->value('user_id'));
 
 			$template->set('user_details', $user_details);
 
-			$members_area_page_content = $template->process('members_area_aboutme_profile.tpl.php');
+			$members_area_page_content = $template->process('members_area_aboutme_edit.tpl.php');
 			$template->set('members_area_page_content', $members_area_page_content);
 		}
 	} /* END -> ABOUT ME PAGE(S) */

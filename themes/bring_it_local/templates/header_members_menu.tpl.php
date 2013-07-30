@@ -73,7 +73,7 @@ SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'management'));?>"><?=MSG_MM_MANAGE_ACCOUNT;?></a></li>
              <li><a href="javascript:void(0)">About Me</a>
                  <ul>
-                    <li><a href="/about_me,page,view,section,members_area">edit</a></li>
+                    <li><a href="/about_me,page,edit,section,members_area">edit</a></li>
                     <li><a href="/about_me,page,view,section,members_area">view</a></li>
                  </ul>
              </li>
