@@ -3688,6 +3688,7 @@ else
 
 			$user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $userId);
             //header_redirect('login.php');
+
 			$template->set('user_details', $user_details);
 
 			$members_area_page_content = $template->process('members_area_aboutme_view.tpl.php');
