@@ -201,7 +201,7 @@ global $coupon_url;
                 <? if ($layout['is_pp']) { ?>
                  <a href="<?=process_link('content_pages', array('page' => 'privacy'));?>"><?=MSG_BTN_PRIVACY;?></a><? } ?>
                 <p class="copiright-info">
-                    Copyright &copy;2013 Bring It Local LLC. All rights reserved
+                    Copyright &copy;2013 Bring It Local LLC. All rights reserved.
                 </p>
                 <a href="<?=process_link('site_fees');?>">SITE FEES</a>
                 <a class="last" href="<?=process_link('content_pages', array('page' => 'help'));?>">HELP</a>

@@ -236,7 +236,7 @@ global $coupon_url;
                 </p>
                 <a href="<?=process_link('site_fees');?>">SITE FEES</a>
                 <a class="last" href="<?=process_link('content_pages', array('page' => 'help'));?>">HELP</a>
-                <?php /*  Copyright &copy;2013 <a href="<?=process_link('content_pages', array('page' => 'about_us'));?>">Bring It Local, LLC</a>. All Rights Reserved.
+                <?php /*  Copyright &copy;2013 <a href="<?=process_link('content_pages', array('page' => 'about_us'));?>">Bring It Local, LLC</a>. All Rights Reserved
                 */?>
  </div>
         </div>
