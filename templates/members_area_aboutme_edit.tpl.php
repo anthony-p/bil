@@ -36,13 +36,13 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     <tr>
         <td>
             <label class="twitter">twitter</label>
-            <input type="text" name="facebook_link" value="<?=$user_details['twitter_link']?>" />
+            <input type="text" name="twitter_link" value="<?=$user_details['twitter_link']?>" />
         </td>
     </tr>
     <tr>
         <td>
             <label>google++</label>
-            <input type="text" value="<?=$user_details['google_link']?>" />
+            <input type="text" name="google_link" value="<?=$user_details['google_link']?>" />
         </td>
     </tr>
     <tr class="info_tittle">

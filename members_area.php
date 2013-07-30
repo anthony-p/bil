@@ -3702,6 +3702,7 @@ else
 
 			if (isset($_POST['form_aboutme_save']))
 			{
+                var_dump($_POST);
                 //avatar='" . $post_about_details['avatar'] . "',
                 $post_about_details = $db->rem_special_chars_array($_POST);
 				$db->query("UPDATE bl2_users SET
