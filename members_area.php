@@ -3678,9 +3678,7 @@ else
 	
 	if ($page == 'about_me') /* BEGIN -> ABOUT ME PAGE(S) */
 	{
-		if ($section == 'view')
-		{
-			$shop = new shop();
+		if ($section == 'view')	{
 
 			if (isset($_GET['user_id'])) {
 		        $userId = $_GET['user_id']
@@ -3700,8 +3698,8 @@ else
 			$shop_status = $shop->shop_status($user_details);
 			$template->set('shop_status', $shop_status);
 
-			$members_area_page_content = $template->process('members_area_aboutme_view.tpl.php');
-			$template->set('members_area_page_content', $members_area_page_content);
+			//$members_area_page_content = $template->process('members_area_aboutme_view.tpl.php');
+			//$template->set('members_area_page_content', $members_area_page_content);
 		}
 		if ($section == 'profile' && $setts['enable_profile_page'])
 		{
