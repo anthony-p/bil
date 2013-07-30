@@ -11,7 +11,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <link href="/css/tinyeditor.css" rel="stylesheet">
 <script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>
 <br>
-<form action="members_area.php?page=about_me&section=view" method="POST">
+<form action="members_area.php?page=about_me&section=edit" method="POST">
  <h6 class="tittle_tp">  <?=MSG_MM_ABOUT_ME_PAGE;?> </h6>
 <table width="100%" border="0" cellpadding="3" cellspacing="2" class="border about_me_table" >
 
