@@ -405,7 +405,7 @@ global $coupon_url;
                 </div>
                   <div class="nav-links">
                     <span><a href="">Click here to subscribe to updates Q</a></span>
-                    <span><a href="">Go to the Community fund4 </a><a href="" class="what">What's that?</a></span>
+                    <span><a href="">Go to the Community fund </a><a href="" class="what">What's that?</a></span>
                   </div>
               </li>
             </ul>
