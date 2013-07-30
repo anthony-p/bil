@@ -6,7 +6,7 @@
 ##-------------------------------------------------------------##
 #################################################################
 
-define ('LANG_CODEPAGE', 'iso-8859-1');
+define ('LANG_CODEPAGE', 'utf-8');
 
 define ('GMSG_LOGIN_SECURELY', 'Login Securely');
 define ('GMSG_PAGE_LOADED_IN', 'Page loaded in');
