@@ -24,6 +24,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <input type="file"  value="upload new logo"/>
         </td>
     </tr>
+    <?php var_dump($user_details); ?>
     <tr class="info_tittle">
         <td><h5>Social Account information</h5></td>
     </tr>
