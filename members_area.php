@@ -3703,6 +3703,7 @@ else
 			if (isset($_POST['form_aboutme_save']))
 			{
                 include_once('includes/generate_image_thumbnail.php');
+                var_dump($_FILES);
                 if (isset ($_FILES["avatar"]) ) {
                     $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
                     var_dump($ext);
