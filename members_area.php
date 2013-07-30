@@ -3706,6 +3706,7 @@ else
                 //avatar='" . $post_about_details['avatar'] . "',
                 $post_about_details = $db->rem_special_chars_array($_POST);
 				$db->query("UPDATE bl2_users SET
+					about_me='" . $post_about_details['about_me'] . "',
 					facebook_link='" . $post_about_details['facebook_link'] . "',
 					twitter_link='" . $post_about_details['twitter_link'] . "',
 					google_link='" . $post_about_details['google_link'] . "' WHERE
