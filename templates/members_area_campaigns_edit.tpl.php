@@ -712,7 +712,7 @@ function projectRewardDelete( id )
         <div class="account-tab">
             <aside>
                 <div class="inner">
-                <h3>Post a comment</h3>
+                <h3>Post an update to your campaign</h3>
                     <div class="write_post">
                         <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png"></div>
                         <textarea name="comment_text" id="project_update_textarea"></textarea>
