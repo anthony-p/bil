@@ -16,7 +16,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <title><?=$page_title;?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
 <?=$page_meta_tags;?>
-<link rel="shortcut icon" href="http://dev.bringitlocal.com/images/favicon.ico" />
+<link rel="shortcut icon" href="http://dev2.bringitlocal.com/images/favicon.ico" />
 <link href="themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--

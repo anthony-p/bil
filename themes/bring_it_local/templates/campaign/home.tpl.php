@@ -1,16 +1,18 @@
-<div class="video">
-<?
-//var_dump($compaignData);
- if (file_exists(getcwd()."/".$compaignData["banner"])) {
-     echo "<img src ='".$compaignData["banner"]."'/>";
-} else {
-     $baner = $compaignData["banner"];
-     if (strpos($baner,"youtube"))
-         $baner = str_replace("http:","",$baner);
-     echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
-}
-?>
-</div>
+<?php if (isset($compaignData["banner"]) && $compaignData["banner"]): ?>
+    <div class="video">
+        <?
+        //var_dump($compaignData);
+        if (file_exists(getcwd()."/".$compaignData["banner"])) {
+            echo "<img src ='".$compaignData["banner"]."'/>";
+        } else {
+            $baner = $compaignData["banner"];
+            if (strpos($baner,"youtube"))
+                $baner = str_replace("http:","",$baner);
+            echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
+        }
+        ?>
+    </div>
+<?php endif; ?>
 
 <aside class="social">
   <div class="inner">
@@ -50,17 +52,23 @@
 </aside>
 <aside class="donation">
   <div class="inner">
-      <p>Help make it happen! Support <span>Destiny Arts -Finance the move fund drive</p></span>
-      <a href="donate.php" class="donation">
+      <p>Help make it happen! Support <span><?php echo $compaignData['name']; ?> -Finance the move fund drive</p></span>
+      <a href="donate.php?np_userid=<?php echo $compaignData['user_id']; ?>" class="donation">
           <span class="uper">Donate Now</span>
           <span>make a donation</span>
       </a>
   </div>
 </aside>
 <aside class= nav-social>
+<?php
+    if ((isset($compaignData['facebook_url']) && $compaignData['facebook_url']) ||
+        (isset($compaignData['twitter_url']) && $compaignData['twitter_url']) ||
+        (isset($compaignData['url']) && $compaignData['url'])):
+?>
 <div class="inner">
     <h5>Also find this Campaign On:</h5>
     <ul>
+        <?php if (isset($compaignData['facebook_url']) && $compaignData['facebook_url']): ?>
         <li class="a_facebook">
             <a href="<?php
             if (isset($compaignData['facebook_url']) && $compaignData['facebook_url']) {
@@ -75,6 +83,8 @@
             ?>">Facebook</a>
 <!--            <label></label>-->
         </li>
+        <?php endif; ?>
+        <?php if (isset($compaignData['twitter_url']) && $compaignData['twitter_url']): ?>
         <li class="a_twitter">
             <a href="<?php
             if (isset($compaignData['twitter_url']) && $compaignData['twitter_url']) {
@@ -87,24 +97,28 @@
                 echo '#';
             }
             ?>">Twitter</a>
+            <?php endif; ?>
 <!--            <label></label>-->
         </li>
         <li>
-            <a href="<?
+<!--            <a href="<?
 //            if (!file_exists(getcwd()."/".$compaignData["banner"])) {
 //                echo "<img src ='".$compaignData["banner"]."'/>";
 //            } else {
 //                echo '<iframe  src="'.$compaignData["banner"].'"frameborder="0" allowfullscreen></iframe>';
 //            }
-//            ?>
+            ?>
             ">Youtube</a>
 <!--            <label></label>-->
-        </li>
+<!--        </li>-->
+        <?php if (isset($compaignData['url']) && $compaignData['url']): ?>
         <li>
             <a href="http://<? echo $compaignData["url"]; ?>" target="_blank">Website</a>
 <!--            <label></label>-->
         </li>
+        <?php endif; ?>
 
     </ul>
 </div>
+<?php endif; ?>
 </aside>

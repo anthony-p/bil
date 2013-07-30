@@ -498,6 +498,8 @@ class user extends custom_field
             city =  '{$user_details['city']}',
             tax_reg_number='{$user_details['tax_reg_number']}',
             address =  '{$user_details['address']}',
+            pg_paypal_first_name =  '{$user_details['pg_paypal_first_name']}',
+            pg_paypal_last_name =  '{$user_details['pg_paypal_last_name']}',
             pg_paypal_email = '{$user_details['pg_paypal_email']}'";
         /*
 		$sql_update_query = "UPDATE " . DB_PREFIX . "users SET
@@ -507,7 +509,7 @@ class user extends custom_field
 			phone='" . $user_details['phone'] . "', email='" . $user_details['email'] . "',
 			tax_account_type='" . $user_details['tax_account_type'] . "',
 			tax_company_name='" . $user_details['tax_company_name'] . "',
-			tax_reg_number='" . $user_details['tax_reg_number'] . "', 
+			tax_reg_number='" . $user_details['tax_reg_number'] . "',
 			newsletter='" . $user_details['newsletter'] . "',
 			pg_paypal_email = '" . $user_details['pg_paypal_email'] . "',
 			pg_worldpay_id = '" . $user_details['pg_worldpay_id'] . "',
@@ -518,14 +520,14 @@ class user extends custom_field
 			pg_protx_username = '" . $user_details['pg_protx_username'] . "',
 			pg_protx_password = '" . $user_details['pg_protx_password'] . "',
 			pg_authnet_username = '" . $user_details['pg_authnet_username'] . "',
-			pg_authnet_password = '" . $user_details['pg_authnet_password'] . "', 
+			pg_authnet_password = '" . $user_details['pg_authnet_password'] . "',
 			pg_mb_email = '" . $user_details['pg_mb_email'] . "',
-			pg_paymate_merchant_id = '" . $user_details['pg_paymate_merchant_id'] . "', 
-			pg_gc_merchant_id = '" . $user_details['pg_gc_merchant_id'] . "', 
-			pg_gc_merchant_key = '" . $user_details['pg_gc_merchant_key'] . "', 
-			pg_amazon_access_key = '" . $user_details['pg_amazon_access_key'] . "', 
-			pg_amazon_secret_key = '" . $user_details['pg_amazon_secret_key'] . "', 
-			pg_alertpay_id = '" . $user_details['pg_alertpay_id'] . "', 
+			pg_paymate_merchant_id = '" . $user_details['pg_paymate_merchant_id'] . "',
+			pg_gc_merchant_id = '" . $user_details['pg_gc_merchant_id'] . "',
+			pg_gc_merchant_key = '" . $user_details['pg_gc_merchant_key'] . "',
+			pg_amazon_access_key = '" . $user_details['pg_amazon_access_key'] . "',
+			pg_amazon_secret_key = '" . $user_details['pg_amazon_secret_key'] . "',
+			pg_alertpay_id = '" . $user_details['pg_alertpay_id'] . "',
 			pg_alertpay_securitycode = '" . $user_details['pg_alertpay_securitycode'] . "',
 			npuser_id = '" . $user_details['orgname'] . "',
 			clickreport = '" . $clickReport . "',
@@ -539,9 +541,9 @@ class user extends custom_field
 
 		if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']))
 		{
-			$sql_update_query .= ", tax_apply_exempt=1";			
+			$sql_update_query .= ", tax_apply_exempt=1";
 		}
-		
+
 		if ($admin_edit)
 		{
 			$sql_update_query .= ", payment_mode='" . $user_details['payment_mode'] . "'";
@@ -559,9 +561,9 @@ class user extends custom_field
 					// now we create the invoice row
 					$invoice_amount = $new_balance - $user_old['balance'];
 
-					$fee_name = GMSG_ADMIN_CREDIT_ADJUSTMENT . ' [ ' . (($invoice_amount>=0) ? GMSG_DEBIT : GMSG_CREDIT) . ' ] ' . 
+					$fee_name = GMSG_ADMIN_CREDIT_ADJUSTMENT . ' [ ' . (($invoice_amount>=0) ? GMSG_DEBIT : GMSG_CREDIT) . ' ] ' .
 						((!empty($user_details['adjustment_reason'])) ? ' - ' . $this->rem_special_chars($user_details['adjustment_reason']) : '');
-					
+
 					$sql_insert_invoice = $this->query("INSERT INTO " . DB_PREFIX . "invoices
 						(user_id, name, amount, invoice_date, current_balance, live_fee, credit_adjustment) VALUES
 						('" . $user_id . "', '" . $fee_name . "', '" . $invoice_amount . "',
@@ -592,7 +594,7 @@ class user extends custom_field
 			$mail_input_id = $user_id;
 			include('language/' . $this->setts['site_lang'] . '/mails/tax_apply_exempt_notification.php');
 		}
-		
+
 		$this->update_page_data($user_id, $page_handle, $user_details);
         } catch (Exception $e) {
             file_put_contents('user.log', $e->getMessage());
@@ -704,13 +706,26 @@ class user extends custom_field
 			{
 				case 'PayPal':
 					$display_output .= '<tr class="' . $background . '"> '.
+		      		'	<td>' . GMSG_PAYPAL_FIRST_NAME . '</td> '.
+						'	<td><input name="pg_paypal_first_name" type="text" value="' . $user_details['pg_paypal_first_name'] . '" size="50"></td> '.
+						'</tr> ';
+					$display_output .= '<tr class="' . $background . '"> '.
+		      		'	<td>' . GMSG_PAYPAL_LAST_NAME . '</td> '.
+						'	<td><input name="pg_paypal_last_name" type="text" value="' . $user_details['pg_paypal_last_name'] . '" size="50"></td> '.
+						'</tr> ';
+					$display_output .= '<tr class="' . $background . '"> '.
 		      		'	<td>' . GMSG_PAYPAL_EMAIL . '</td> '.
 						'	<td><input name="pg_paypal_email" type="text" value="' . $user_details['pg_paypal_email'] . '" size="50"></td> '.
 						'</tr> ';
-					$display_output .= '<tr> '.
-		      		'	<td></td> '.
-						'	<td class="' . $background . '">' . GMSG_PAYPAL_CALLBACK . ':<br><br><b>' . SITE_PATH . 'pp_paypal.php</b></td> '.
-						'</tr> ';
+
+
+
+
+
+//                    $display_output .= '<tr> '.
+//		      		'	<td></td> '.
+//						'	<td class="' . $background . '">' . GMSG_PAYPAL_CALLBACK . ':<br><br><b>' . SITE_PATH . 'pp_paypal.php</b></td> '.
+//						'</tr> ';
 					break;
 				case 'Worldpay':
 					$display_output .= '<tr class="' . $background . '"> '.

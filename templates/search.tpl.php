@@ -53,11 +53,16 @@
     <?php $counter=0; foreach ($campaigns as $campaign):  $counter++; ?>
         <li  class="<?php  if(($counter % 4)==0){ echo "fourth";}?>">
             <div class="img">
-                <a href=""><img src="<?php echo isset ($campaign["banner"]) ? $campaign["banner"] : '' ?>"></a></div>
+                <a href="<?php echo isset ($campaign["username"]) ? '/' . $campaign["username"] : '' ?>">
+                    <img src="<?php echo isset ($campaign["banner"]) ? $campaign["banner"] : '' ?>">
+                </a>
+            </div>
             <div class="clear"></div>
             <div class="campaigns-info">
                 <p class="name">
-                    <a href="" class="name-camp"><?php echo isset ($campaign["name"]) ? $campaign["name"] : '' ?></a>
+                    <a href="<?php echo isset ($campaign["username"]) ? '/' . $campaign["username"] : '' ?>" class="name-camp">
+                        <?php echo isset ($campaign["name"]) ? $campaign["name"] : '' ?>
+                    </a>
                     <br>by <a href="#"><?php echo isset ($campaign["first_name"]) ? $campaign["first_name"] : '' ?> <?php echo isset ($campaign["last_name"]) ? $campaign["last_name"] : '' ?></a>
                 </p>
                 <p class="description">
@@ -66,16 +71,29 @@
                 <a href="" class="location"><?php echo isset ($campaign["city"]) ? $campaign["city"] : '' ?></a>
             </div>
             <div class="campaign-details">
-                <span class="price"><?php echo isset ($campaign["price"]) ? $campaign["price"] : '' ?></span>
+                <span class="price"><?php echo isset ($campaign["payment"]) ? $campaign["payment"] : '0' ?>$</span>
                 <span class="day"><?php echo isset ($campaign["days_left"]) ? $campaign["days_left"] : '0' ?><span>days left</span></span>
                 <div class="clear"></div>
-                <div class="progress"><div style="width: <?php
-                    $end_time=$campaign['end_date'];
-                    $create_time=$campaign['reg_date'];
-                    $current_time=time();
-                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
-                    echo  $completed."%";
-                    ?>" class="bar"></div></div>
+                <?php
+                $end_time=$campaign['end_date'];
+                $create_time=$campaign['reg_date'];
+                $current_time=time();
+                $total_time = $end_time- $create_time;
+                if ($total_time)
+                    $completed =round((($current_time - $create_time) / ($total_time)) * 100);
+                else
+                    $completed = 100;
+                ?>
+                <?php if ($campaign['end_date'] > $current_time): ?>
+                    <div class="progress">
+                        <div style="width: <?php echo $completed < 100 ? $completed : 100; ?>%" class="bar">
+                        </div>
+                    </div>
+                <?php elseif ($campaign["payment"]): ?>
+                    <div class="project-successful">Successful</div>
+                <?php elseif (!$campaign["payment"]): ?>
+                    <div class="project-unsuccessful">Closed</div>
+                <?php endif; ?>
             </div>
            
         </li>

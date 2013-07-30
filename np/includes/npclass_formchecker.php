@@ -95,6 +95,10 @@ class npformchecker extends npdatabase
 						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_VALID_EMAIL;
 						$this->is_email_address($field_value, $msg);
 						break;
+                    case 'is_paypal_email_address':
+                        $msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_VALID_PAYPAL_EMAIL;
+                        $this->is_email_address($field_value, $msg, true);
+                        break;
 					case 'is_phone':
 						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_VALID_PHONE;
 						$this->is_phone($field_value, $msg);
@@ -274,17 +278,20 @@ class npformchecker extends npdatabase
 	function field_image($value, $msg)
 	{
         if (is_array($value)) {
-            if (($value["type"] == "image/gif")||($value["type"]=="image/jpeg")||($value["type"]=="image/pjpeg"))
+            if (($value["type"] == "image/gif")||
+                ($value["type"]=="image/png")||
+                ($value["type"]=="image/jpeg")||
+                ($value["type"]=="image/pjpeg"))
             {
-                if ($value["dimensions"]["width"] < $value["dimensions"]["max_width"] ||
-                    $value["dimensions"]["height"] < $value["dimensions"]["max_height"]) {
-                    $array_value = (string)$value["dimensions"]["width"] . "x" . (string)$value["dimensions"]["height"];
-                    $this->error_list[] = array("value" => $array_value, "msg" => $value["dimensions"]["error_message"]);
-                    return false;
-                } else {
+//                if ($value["dimensions"]["width"] < $value["dimensions"]["max_width"] ||
+//                    $value["dimensions"]["height"] < $value["dimensions"]["max_height"]) {
+//                    $array_value = (string)$value["dimensions"]["width"] . "x" . (string)$value["dimensions"]["height"];
+//                    $this->error_list[] = array("value" => $array_value, "msg" => $value["dimensions"]["error_message"]);
+//                    return false;
+//                } else {
                     $_SESSION[$value["field"]] = 'valid';
                     return true;
-                }
+//                }
             }
             else
             {
@@ -462,20 +469,51 @@ class npformchecker extends npdatabase
 		}
 	}
 
-	// check whether input is a valid email address
-	function is_email_address($value, $msg)
-	{
-		$pattern = "/^([a-zA-Z0-9])+([\.a-zA-Z0-9_-])*@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)+/";
-		if(preg_match($pattern, $value))
-		{
-			return true;
-		}
-		else
-		{
-			$this->error_list[] = array("value" => $value, "msg" => $msg);
-			return false;
-		}
-	}
+//	// check whether input is a valid email address
+//	function is_email_address($value, $msg)
+//	{
+//		$pattern = "/^([a-zA-Z0-9])+([\.a-zA-Z0-9_-])*@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)+/";
+//		if(preg_match($pattern, $value))
+//		{
+//			return true;
+//		}
+//		else
+//		{
+//			$this->error_list[] = array("value" => $value, "msg" => $msg);
+//			return false;
+//		}
+//	}
+
+    // check whether input is a valid email address
+    // if paypal parameter is set to tru then check if the email is a valid paypal address
+    function is_email_address($value, $msg, $paypal = false)
+    {
+        $pattern = "/^([a-zA-Z0-9])+([\.a-zA-Z0-9_-])*@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)+/";
+        if(preg_match($pattern, $value))
+        {
+            if ($paypal) {
+                if (file_exists('check_paypal_account.php')) {
+                    include_once('check_paypal_account.php');
+                } else {
+                    include_once('../check_paypal_account.php');
+                }
+                $response = checkPaypalAccount($value);
+                if ($response == "Success") {
+                    return true;
+                } else {
+                    $this->error_list[] = array("value" => $value, "msg" => $msg);
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        }
+        else
+        {
+            $this->error_list[] = array("value" => $value, "msg" => $msg);
+            return false;
+        }
+    }
 
 	// check whether input is a valid phone number (numbers and . , ( ) - allowed only)
 	function is_phone($value, $msg)

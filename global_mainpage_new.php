@@ -45,8 +45,6 @@
 
             $adult_cats_query = ' AND (category_id NOT IN (' . $adult_cats_list . ') AND addl_category_id NOT IN (' . $adult_cats_list . '))';
         }
-
-/*
         #Coupons (magento) recent deals
         $woptions['soap_version'] = SOAP_1_2;
         $woptions['login'] = $coupon_http_username;
@@ -76,7 +74,7 @@
 
         $template->set('magento_item', $item);
         #Coupons (magento) recent deals end.
-*/
+
 
         ## PHP Pro Bid v6.00 home page featured auctions
         $select_condition = "WHERE
@@ -172,7 +170,13 @@
         //*******************************************************************
 
 
-        $sql_query = $db->query("SELECT * FROM bl2_users Join np_users WHERE id = probid_user_id order by user_id desc Limit 4");
+        $time = time();
+
+        $sql_query = $db->query(
+            "SELECT * FROM bl2_users Join np_users
+            WHERE id = probid_user_id AND np_users.active=1 AND np_users.end_date>$time 
+            order by user_id desc Limit 4"
+        );
 
         $rows = array();
 

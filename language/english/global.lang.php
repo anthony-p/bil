@@ -36,7 +36,7 @@ define ('GMSG_FRMCHK_FIELD_JS', 'field cannot contain javascript');
 define ('GMSG_FRMCHK_FIELD_IFRAMES', 'field cannot contain iframe tags');
 define ('GMSG_FRMCHK_MIN_LENGTH_6_MAX_18', 'field must be have between 6 and 18 characters');
 define ('GMSG_FRMCHK_VALID_EMAIL', 'field must contain a valid email address');
-define ('GMSG_FRMCHK_VALID_PAYPAL_EMAIL', 'field must be a valid paypal email address');
+define ('GMSG_FRMCHK_VALID_PAYPAL_EMAIL', 'field must be a valid paypal email address and have to match paypal account firt name and last ame');
 define ('GMSG_FRMCHK_FIELD_HTML', 'field cannot contain html');
 define ('GMSG_POSITIVE_VALUE', 'must contain a positive value');
 
@@ -48,6 +48,8 @@ define ('GMSG_NO', 'No');
 define ('GMSG_ORDER', 'Order');
 define ('GMSG_CATEGORY', 'Category');
 
+define ('GMSG_PAYPAL_FIRST_NAME', 'PayPal Account First Name');
+define ('GMSG_PAYPAL_LAST_NAME', 'PayPal Account Last Name');
 define ('GMSG_PAYPAL_EMAIL', 'PayPal Email Address');
 define ('GMSG_WORLDPAY_ID', 'Worldpay ID');
 define ('GMSG_CHECKOUT_ID', '2Checkout ID');

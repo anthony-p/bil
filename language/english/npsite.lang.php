@@ -214,7 +214,7 @@ define ('MSG_PHONE_A', 'Phone Number Prefix');
 define ('MSG_PHONE_B', 'Phone Number');
 define ('MSG_MAIN_DETAILS', 'Main Details');
 define ('MSG_USER_ACCOUNT_DETAILS', 'User Account Details ');
-define ('MSG_PROJECT_ACCOUNT_DETAILS', 'Project Account Details ');
+define ('MSG_PROJECT_ACCOUNT_DETAILS', 'Campaign Details');
 define ('MSG_FRMCHK_DOB_CANNOT_BE_EMPTY', 'The "Date of Birth" field cannot be empty');
 define ('MSG_BIRTH_MONTH', 'Birth Month');
 define ('MSG_DAY_OF_BIRTH', 'Day of Birth');

@@ -1,22 +1,23 @@
-header .level2 .level2-inner .level-buttons ul li a,
-#wowslider-container1 a.ws_next,
-#wowslider-container1 a.ws_next,
-.content .p-contain span{font-size: 14.5px;}
-header .level2 .level2-inner .level-buttons ul li a span,
-.tabulation .resp-tabs-list li,
-.resp-tab-content aside,
-.resp-tab-content aside.social ul li.buttons a span,
-.resp-tab-content aside.donation a,
-aside.funders a.viewall,
-.campaign-content .nav-right,
-.content .content-buttons a,
-.content .campaigns ul li{ behavior: url(../themes/bring_it_local/ie/PIE.htc);}
-#register #middleColumn,
-#login #middleColumn,
-#retrieve_password #middleColumn{ behavior: url(../themes/bring_it_local/ie/PIE.htc);}
-.content .campaigns ul li .campaigns-info .location{background-position: 0;}
-.content .campaigns ul li .campaign-details{width:88.5%;}
-/*.progress-success.progress-striped .bar, .progress-striped .bar-success, .bar-green.progress-striped .bar{ behavior: url(../themes/bring_it_local/ie/PIE.htc);position: relative; z-index: 15;}*/
-#wowslider-container1 img{border: 0;}
-.campaign-content .nav-right .navigation-btn a{ behavior: url(../themes/bring_it_local/ie/PIE.htc);position: relative; z-index:15;}
-.resp-tabs-container{float:none;}
+header .level2 .level2-inner .level-buttons ul li a,
+#wowslider-container1 a.ws_next,
+#wowslider-container1 a.ws_next,
+.content .p-contain span{font-size: 14.5px;}
+header .level2 .level2-inner .level-buttons ul li a span,
+.tabulation .resp-tabs-list li,
+.resp-tab-content aside,
+.resp-tab-content aside.social ul li.buttons a span,
+.resp-tab-content aside.donation a,
+aside.funders a.viewall,
+.campaign-content .nav-right,
+.content .content-buttons a,
+.content .campaigns ul li{ behavior: url(../themes/bring_it_local/ie/PIE.htc);}
+#register #middleColumn,
+#login #middleColumn,
+#retrieve_password #middleColumn{ behavior: url(../themes/bring_it_local/ie/PIE.htc);}
+.content .campaigns ul li .campaigns-info .location{background-position: 0;}
+.content .campaigns ul li .campaign-details{width:88.5%;}
+/*.progress-success.progress-striped .bar, .progress-striped .bar-success, .bar-green.progress-striped .bar{ behavior: url(../themes/bring_it_local/ie/PIE.htc);position: relative; z-index: 15;}*/
+#wowslider-container1 img{border: 0;}
+.campaign-content .nav-right .navigation-btn a{ behavior: url(../themes/bring_it_local/ie/PIE.htc);position: relative; z-index:15;}
+.resp-tabs-container{float:none;}
+#steps form input[type=text]{width:230px;}

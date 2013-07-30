@@ -39,11 +39,11 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <?php $counter=0; foreach( $compaigns as $row): $counter++;?>
             <li class="<?php  if(($counter % 4)==0){ echo "fourth";}?>">
                 <div class="img">
-                    <a href=""><img src="<?php echo $row['banner'];?>"/></a></div>
+                    <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>"><img src="<?php echo $row['banner'];?>"/></a></div>
                 <div class="clear"></div>
                 <div class="campaigns-info">
                     <p class="name">
-                        <a href="" class="name-camp"><?php echo $row['name'];?></a>
+                        <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>" class="name-camp"><?php echo $row['name'];?></a>
                         <br/>by <a href="#"><?php echo $row['first_name']."  ".$row['last_name'];?></a>
                     </p>
                     <p class="description">
@@ -52,16 +52,24 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                     <a href="" class="location"><?php echo $row['city'];?></a>
                 </div>
                 <div class="campaign-details">
-                    <span class="price"><?php echo $row['price'];?>$</span>
+                    <span class="price"><?php echo $row['payment'];?>$</span>
                     <span class="day"><?php $unu=round(($row['end_date']-time())/86400); echo $unu; ?><span>days left</span></span>
                     <div class="clear"></div>
-                    <div class="progress"><div style="width: <?php
-                        $end_time=$row['end_date'];
-                        $create_time=$row['reg_date'];
-                        $current_time=time();
-                        $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
-                        echo  $completed."%";
-                        ?>" class="bar"></div></div>
+                    <?php
+                    $end_time=$row['end_date'];
+                    $create_time=$row['reg_date'];
+                    $current_time=time();
+                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+                    echo  $completed."%";
+                    ?>
+                    <?php if ($current_time > $end_time): ?>
+                        <div class="project-unsuccessful">Closed</div>
+                    <?php else: ?>
+                        <div class="progress">
+                            <div style="width: <?php echo  $completed."%"; ?>" class="bar">
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </li>
         <?php endforeach; ?>

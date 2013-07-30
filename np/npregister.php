@@ -125,13 +125,6 @@ else
 			}
 			else if ($fv->is_error())
 			{
-//                echo '<pre>';
-////                var_dump($fv->display_errors());
-//                var_dump($_SESSION);
-//                echo '</pre>';
-//
-//                exit;
-
                 include_once('../includes/generate_image_thumbnail.php');
                 if (isset($_SESSION["banner"]) && $_SESSION["banner"] == 'valid') {
                     if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
@@ -142,9 +135,12 @@ else
                             $_FILES["banner"]["tmp_name"], '..' . $banner_file_name, 600, 400
                         );
                         $template->set('banner_image', $banner_file_name);
+                        unset($_SESSION["banner"]);
                     } elseif (isset ($_POST["video_url"]) && !empty($_POST["video_url"])) {
-                        $template->set('banner_image', $_POST["video_url"]);
+                        $template->set('banner_video_url', $_POST["video_url"]);
                     }
+                } elseif(isset($_POST["valid_banner_image"]) && $_POST["valid_banner_image"]) {
+                    $template->set('banner_image', $_POST["valid_banner_image"]);
                 }
                 if (isset($_SESSION["logo"]) && $_SESSION["logo"] == 'valid') {
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
@@ -152,10 +148,13 @@ else
                         $logo_file_name = '/images/partner_logos/temp/' .
                             md5($_SESSION["probid_user_id"] . 'logo') . '.' . $ext;
                         $upload_logo = generate_image_thumbnail(
-                            $_FILES["logo"]["tmp_name"], '..' . $logo_file_name, 600, 400
+                            $_FILES["logo"]["tmp_name"], '..' . $logo_file_name, 160, 160
                         );
                         $template->set('logo_image', $logo_file_name);
+                        unset($_SESSION["logo"]);
                     }
+                } elseif(isset($_POST["valid_logo_image"]) && $_POST["valid_logo_image"]) {
+                    $template->set('logo_image', $_POST["valid_logo_image"]);
                 }
 				$template->set('display_formcheck_errors', $fv->display_errors());
 
@@ -171,23 +170,47 @@ else
                 include_once('../includes/generate_image_thumbnail.php');
 
                 if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
-                    $logo_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'logo');
+                    $ext = pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION);
+                    $logo_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'logo') . '.' . $ext;
                     $upload_logo = generate_image_thumbnail(
                         $_FILES["logo"]["tmp_name"], '..' . $logo_file_name, 160, 160
                     );
+                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
+                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
 //                    move_uploaded_file($_FILES["logo"]["tmp_name"], '..' . $logo_file_name);
                     $_POST["logo"] = $logo_file_name;
+                } elseif (isset($_POST["valid_logo_image"]) && $_POST["valid_logo_image"]) {
+                    $ext = pathinfo('..' . $_POST["valid_logo_image"], PATHINFO_EXTENSION);
+                    $logo_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'logo') . '.' . $ext;
+                    $upload_logo = generate_image_thumbnail(
+                        '..' . $_POST["valid_logo_image"], '..' . $logo_file_name, 160, 160
+                    );
+                    $_POST["logo"] = $logo_file_name;
+                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
+                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
                 }
 
                 if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
-                    $banner_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'banner');
+                    $ext = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
+                    $banner_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'banner') . '.' . $ext;
                     $upload_banner = generate_image_thumbnail(
                         $_FILES["banner"]["tmp_name"], '..' . $banner_file_name, 600, 400
                     );
+                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
+                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
 //                    move_uploaded_file($_FILES["banner"]["tmp_name"], '..' . $banner_file_name);
                     $_POST["banner"] = $banner_file_name;
+                } elseif (isset($_POST["valid_banner_image"]) && $_POST["valid_banner_image"]) {
+                    $ext = pathinfo('..' . $_POST["valid_banner_image"], PATHINFO_EXTENSION);
+                    $banner_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'banner') . '.' . $ext;
+                    $upload_banner = generate_image_thumbnail(
+                        '..' . $_POST["valid_banner_image"], '..' . $banner_file_name, 600, 400
+                    );
+                    $_POST["banner"] = $banner_file_name;
+                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
+                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
                 } elseif (isset ($_POST["video_url"]) && !empty($_POST["video_url"])) {
-                    $_POST["banner"] = $_POST["video_url"];
+                    $_POST["banner"] = str_replace("watch?v=","embed/",$_POST["video_url"]);
                 }
 
                 $_POST["probid_user_id"] =
@@ -297,7 +320,7 @@ else
 				
 			$template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
 
-            $template->set("project_country",getProjectCategoryListToHTML());
+            $template->set("project_category",getProjectCategoryList());
 
 			$template->set('state_box', $tax->states_box('state', $_POST['state'], $post_country));
 
