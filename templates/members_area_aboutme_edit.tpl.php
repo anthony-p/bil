@@ -11,7 +11,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <link href="/css/tinyeditor.css" rel="stylesheet">
 <script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>
 <br>
-<form action="members_area.php?page=about_me&section=view" method="POST">
+<form action="members_area.php?page=about_me&section=edit" method="POST">
  <h6 class="tittle_tp">  <?=MSG_MM_ABOUT_ME_PAGE;?> </h6>
 <table width="100%" border="0" cellpadding="3" cellspacing="2" class="border about_me_table" >
 
@@ -24,7 +24,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <input type="file"  value="upload new logo"/>
         </td>
     </tr>
-    <?php var_dump($user_details); ?>
     <tr class="info_tittle">
         <td><h5>Social Account information</h5></td>
     </tr>
@@ -37,13 +36,13 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     <tr>
         <td>
             <label class="twitter">twitter</label>
-            <input type="text" name="facebook_link" value="<?=$user_details['twitter_link']?>" />
+            <input type="text" name="twitter_link" value="<?=$user_details['twitter_link']?>" />
         </td>
     </tr>
     <tr>
         <td>
             <label>google++</label>
-            <input type="text" value="<?=$user_details['google_link']?>" />
+            <input type="text" name="google_link" value="<?=$user_details['google_link']?>" />
         </td>
     </tr>
     <tr class="info_tittle">

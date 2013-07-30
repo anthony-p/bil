@@ -3699,16 +3699,18 @@ else
 		}
 		if ($section == 'edit')
 		{
+
 			if (isset($_POST['form_aboutme_save']))
 			{
-				$post_about_details = $db->rem_special_chars_array($_POST);
+                var_dump($_POST);
+                //avatar='" . $post_about_details['avatar'] . "',
+                $post_about_details = $db->rem_special_chars_array($_POST);
 				$db->query("UPDATE bl2_users SET
-					avatar='" . $post_about_details['avatar'] . "',
 					about_me='" . $post_about_details['about_me'] . "',
 					facebook_link='" . $post_about_details['facebook_link'] . "',
 					twitter_link='" . $post_about_details['twitter_link'] . "',
 					google_link='" . $post_about_details['google_link'] . "' WHERE
-					user_id='" . $session->value('user_id') . "'");
+					id='" . $session->value('user_id') . "'");
 				
 				$template->set('msg_changes_saved', $msg_changes_saved);
 			}
