@@ -451,19 +451,19 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <?=$birthdate_box;?>
     </div>
     <div class="account-row">
-        <label><?=MSG_PG_PAYPAL_EMAIL_ADDRESS;?> *</label>
+        <label><?=MSG_PG_PAYPAL_EMAIL_ADDRESS;?></label>
         <input name="pg_paypal_email" type="text" id="pg_paypal_email"
                value="<?=$user_details['pg_paypal_email'];?>" size="40" />
         <span><?=MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL;?></span>
     </div>
     <div class="account-row">
-        <label><?=MSG_PG_PAYPAL_FIRST_NAME;?> *</label>
+        <label><?=MSG_PG_PAYPAL_FIRST_NAME;?></label>
         <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name"
                value="<?=$user_details['pg_paypal_first_name'];?>" size="40" />
         <span><?=MSG_PG_PAYPAL_FIRST_NAME_EXPL;?></span>
     </div>
     <div class="account-row">
-        <label><?=MSG_PG_PAYPAL_LAST_NAME;?> *</label>
+        <label><?=MSG_PG_PAYPAL_LAST_NAME;?></label>
         <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name"
                value="<?=$user_details['pg_paypal_last_name'];?>" size="40" />
         <span><?=MSG_PG_PAYPAL_LAST_NAME_EXPL;?></span>

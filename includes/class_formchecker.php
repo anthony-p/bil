@@ -21,7 +21,6 @@ class formchecker extends database
 	function formchecker()
 	{
 		$this->reset_error_list();
-        var_dump($this);
 	}
 
 	function check_box($field_value, $field_value_display, $methods, $field_value_two = NULL, $field_value_display_two = NULL)
