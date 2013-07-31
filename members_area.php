@@ -3720,8 +3720,8 @@ else
                         $upload_logo = generate_image_thumbnail(
                             $_FILES["avatar"]["tmp_name"], '..' . $logo_file_name, 640, 600
                         );
-                        exec('chmod 0777 ../images/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
-                        exec('rm ../images/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
+                        exec('chmod 0777 images/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
+                        exec('rm images/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
                         $_POST["avatar"] = $logo_file_name;
                         var_dump($_POST);
 
