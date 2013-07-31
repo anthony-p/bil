@@ -225,8 +225,6 @@ else
                         $_POST["end_date"] = strtotime($_POST["certain_date"]);
                 }
 
-                var_dump('insert_campaign1');
-
 				$user_id = $user->insert($_POST);
 
                 if ($user_id) {

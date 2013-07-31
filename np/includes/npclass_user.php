@@ -204,8 +204,6 @@ class npuser extends npcustom_field
 
 	function insert ($user_details, $page_handle = 'register')
 	{
-
-        var_dump('insert_campaign2');
 		$salt = $this->create_salt();
 		$password_hashed = password_hash($user_details['password'], $salt);
 
@@ -274,8 +272,6 @@ class npuser extends npcustom_field
 
 									                                 			
 		$user_id = $this->insert_id();
-
-        var_dump($user_id);
 
 		if ($tax_apply_exempt && IN_ADMIN != 1) ## if not in admin, notify admin of a tax exempt request.
 		{
