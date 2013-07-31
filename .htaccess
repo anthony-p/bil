@@ -29,6 +29,6 @@ RewriteRule ^(.*)$ $1.php
 order allow,deny
 deny from all
 </Files>
-AuthType Basic
-require valid-user
-AuthUserFile "/home/devbr0/.htpasswds/public_html/passwd"
+#AuthType Basic
+#require valid-user
+#AuthUserFile "/home/devbr0/.htpasswds/public_html/passwd"

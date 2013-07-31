@@ -7,3 +7,5 @@ admin/report/*
 cache/
 online_users.txt
 .ide/
+.idea/
+.htaccess/
