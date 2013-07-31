@@ -4976,8 +4976,8 @@ else
         }
 
         if ($section == 'edit') {
-            include_once('includes/class_npuser.php');
-/*
+            //include('includes/class_npuser.php');
+
             include_once ('includes/global.php');
             include_once ('np/includes/npclass_formchecker.php');
             include_once('includes/generate_image_thumbnail.php');
@@ -5536,7 +5536,7 @@ else
 
 
 
-            }*/
+            }
         }
 
     } /* BEGIN -> CAMPAIGNS PAGE */
