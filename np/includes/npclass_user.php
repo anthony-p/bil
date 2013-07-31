@@ -275,6 +275,8 @@ class npuser extends npcustom_field
 									                                 			
 		$user_id = $this->insert_id();
 
+        var_dump($user_id);
+
 		if ($tax_apply_exempt && IN_ADMIN != 1) ## if not in admin, notify admin of a tax exempt request.
 		{
 			$mail_input_id = $user_id;
