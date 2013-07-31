@@ -2748,7 +2748,7 @@ h2.resp-accordion:first-child { border-top: 1px solid #c1c1c1 !important;}
 .resp-tab-content aside.announcement .post{float:left;width: 100%;padding:10px 0 20px 0; border-top:1px solid #cccccc;}
 .resp-tab-content aside.announcement .post.first{border:0;}
 .resp-tab-content aside.announcement .user-photo{float:left; width:50px;margin-top: 7px}
-.resp-tab-content aside.announcement .posted-mess{float:right;width:494px;}
+.resp-tab-content aside.announcement .posted-mess{float:left;width:494px;}
 
 /*comments*/
 aside.announcement h3{font:15px "OpenSans-SemiBold" ; color:#7eb041; text-transform: uppercase;}
