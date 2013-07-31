@@ -3717,7 +3717,7 @@ else
                         $logo_file_name = '/images/partner_logos/' . md5($_POST["first_name"] . 'logo') . '.' . $ext;
                         var_dump($logo_file_name);
                         $upload_logo = generate_image_thumbnail(
-                            $_FILES["avatar"]["tmp_name"], '..' . $logo_file_name, 640, 600
+                            $_FILES["avatar"]["tmp_name"], $logo_file_name, 640, 600
                         );
                         exec('chmod 0777 images/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
                         exec('rm images/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
