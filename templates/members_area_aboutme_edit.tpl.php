@@ -20,7 +20,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </tr>
     <tr>
         <td>
-            <div class="upload_logo"><img src="<?=$user_details['first_name']?>"/></div>
+            <div class="upload_logo"><img src="<?=$user_details['avatar']?>"/></div>
             <input type="file" name="avatar" multiple title="avatar file" />
             <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
         </td>
