@@ -9,3 +9,4 @@ online_users.txt
 .ide/
 .idea/
 .htaccess
+includes/config.php
