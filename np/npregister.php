@@ -35,6 +35,8 @@ else
 
 	$voucher = new item();
 	$voucher->setts = &$setts;
+
+    $fv = new npformchecker();
 	
 	include_once ('npglobal_header.php');
 
