@@ -4976,7 +4976,7 @@ else
         }
 
         if ($section == 'edit') {
-            include('includes/class_npuser.php');
+            include_once('includes/class_npuser.php');
 /*
             include_once ('includes/global.php');
             include_once ('np/includes/npclass_formchecker.php');
