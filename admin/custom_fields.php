@@ -30,7 +30,6 @@ else
 	(string) $management_box = null;
 
 	$fv = new formchecker;
-    var_dump($fv);
 
 	$page_handle = (isset($_REQUEST['page'])) ? $_REQUEST['page'] : '';
 
