@@ -10,3 +10,4 @@ online_users.txt
 .idea/
 .htaccess
 includes/config.php
+/includes/config.php
