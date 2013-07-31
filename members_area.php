@@ -3699,7 +3699,7 @@ else
 		}
 		if ($section == 'edit')
 		{
-            include_once("includes/class_about_me.php")
+            include_once("includes/class_about_me.php");
 		}
 	} /* END -> ABOUT ME PAGE(S) */
 	
