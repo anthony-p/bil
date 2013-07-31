@@ -6,10 +6,10 @@
  * Creates a resized (e.g. thumbnail, small, medium, large)
  * version of an image file and saves it as another file
  */
-
+var_dump(20);
 define('THUMBNAIL_IMAGE_MAX_WIDTH', 150);
 define('THUMBNAIL_IMAGE_MAX_HEIGHT', 150);
-
+var_dump(30);
 function generate_image_thumbnail(
     $source_image_path,
     $thumbnail_image_path,
@@ -67,4 +67,5 @@ function generate_image_thumbnail(
     imagedestroy($thumbnail_gd_image);
     return true;
 }
+var_dump(40);
 ?>
