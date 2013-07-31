@@ -8,4 +8,4 @@ cache/
 online_users.txt
 .ide/
 .idea/
-.htaccess/
+.htaccess
