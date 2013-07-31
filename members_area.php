@@ -4976,15 +4976,7 @@ else
         }
 
         if ($section == 'edit') {
-            var_dump('asdsada');
             include_once('includes/class_npuser.php');
-//            $template->set('campaign', $campaign);
-//            $template->set('categories', $categories);
-//            $template->set('countries', $countries);
-//            $template->set('pitches', $pitches);
-//            $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
-//            $template->set('members_area_page_content', $members_area_page_content);
-
         }
 
     } /* BEGIN -> CAMPAIGNS PAGE */
