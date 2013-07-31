@@ -5123,7 +5123,7 @@ else
                 }
 
 
-                var_dump($_POST['active']); var_dump($_POST['active']); exit;
+                var_dump($_POST['active']); var_dump($_POST['active']);
 
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
 
