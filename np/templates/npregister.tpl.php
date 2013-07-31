@@ -674,7 +674,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <div class="upload">
                 <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label>Banner Image</label>
                 <div class="clear"></div>
-                <input type="radio" class="banner_type" id="banner_type_video" name="banner_type" value="1" ><label>Video(Youtube or Vimeo)</label>
+                <input type="radio" class="banner_type" id="banner_type_video" name="banner_type" value="1" ><label>Video (Youtube or Vimeo)</label>
             </div>
             <div class="clear"></div>
             <br />
