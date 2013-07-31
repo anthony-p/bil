@@ -23,8 +23,8 @@ switch($_SERVER['SERVER_NAME']) {
     break;
     case 'dev2.bringitlocal.com':
         $db_host = 'localhost'; 
-        $db_username = 'dev2brin_user'; 
-        $db_password = '^Xqh#^sqT%xC'; 
+        $db_username = 'root';
+        $db_password = 'root';
         define('DB_PREFIX', 'probid_'); ## Do not edit ! 
         define('SESSION_PREFIX', 'probid_'); 
         $db_name = 'dev2brin_bil';
