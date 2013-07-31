@@ -3714,7 +3714,7 @@ else
                     );
                     if (in_array($_FILES["avatar"]["type"], $allowed_image_mime_types)) {
                         $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-                        $logo_file_name = '/images/partner_logos/' . md5($_POST["first_name"] . 'logo') . '.' . $ext;
+                        $logo_file_name = 'images/partner_logos/' . md5($_POST["first_name"] . 'logo') . '.' . $ext;
                         var_dump($logo_file_name);
                         $upload_logo = generate_image_thumbnail(
                             $_FILES["avatar"]["tmp_name"], $logo_file_name, 640, 600
