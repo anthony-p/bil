@@ -4976,7 +4976,7 @@ else
         }
 
         if ($section == 'edit') {
-
+            var_dump('asdsada');
             include_once('includes/class_npuser.php');
 //            $template->set('campaign', $campaign);
 //            $template->set('categories', $categories);
