@@ -4977,7 +4977,7 @@ else
 
         if ($section == 'edit') {
 
-            include('includes/class_npuser.php');
+            include_once('includes/class_npuser.php');
 //            $template->set('campaign', $campaign);
 //            $template->set('categories', $categories);
 //            $template->set('countries', $countries);
