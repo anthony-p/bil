@@ -205,6 +205,7 @@ class npuser extends npcustom_field
 	function insert ($user_details, $page_handle = 'register')
 	{
 
+        var_dump('insert_campaign2');
 		$salt = $this->create_salt();
 		$password_hashed = password_hash($user_details['password'], $salt);
 
