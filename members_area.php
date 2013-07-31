@@ -4976,6 +4976,7 @@ else
         }
 
         if ($section == 'edit') {
+            var_dump('test');
             include_once('includes/class_npuser.php');
 //            $template->set('campaign', $campaign);
 //            $template->set('categories', $categories);
