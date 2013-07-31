@@ -5123,6 +5123,8 @@ else
                 }
 
 
+                var_dump($_POST['active']); var_dump($_POST['active']);
+
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
 
                 $banned_output = check_banned($_POST['email'], 2);
