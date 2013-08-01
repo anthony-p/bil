@@ -1,5 +1,4 @@
 <?
-var_dump(1); exit;
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
@@ -234,6 +233,9 @@ if ($setts['enable_skin_change'])
 	$template->set('site_skins_dropdown', list_skins('site', true, $session->value('site_theme')));
 }
 
+
+$template->set('login_link', process_link('login'));
+$template->set('login_link2', 'iabadabadu');
 
 
 
