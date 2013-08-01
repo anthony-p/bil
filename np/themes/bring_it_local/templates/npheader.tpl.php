@@ -213,12 +213,12 @@ global $coupon_url;
                     <span>browse campaigns</span>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="/search.php?order_by=reg_date&order_type=DESC">
                                 <span>New campaigns</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/search.php?order_by=end_date&order_type=ASC">
                                <span>Ending Soon</span>
                               </a>
                         </li>
