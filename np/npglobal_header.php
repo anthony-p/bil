@@ -234,8 +234,7 @@ if ($setts['enable_skin_change'])
 }
 
 
-$template->set('login_link', process_link('login'));
-$template->set('login_link2', 'iabadabadu');
+$template->set('logout_link', process_link('logout'));
 
 
 

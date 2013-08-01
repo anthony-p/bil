@@ -151,9 +151,10 @@ global $coupon_url;
 <!--                        --><?//=$login_btn_msg;?>
 <!--                        --><?//=$register_btn_msg;?>
                         <a href="<?=$login_link;?>">logout</a>
+                        <a href="<?=$logout_link;?>">logout</a>
                         <a href="<?=$register_link;?>">member area</a>
                         <?php
-var_dump($login_link2);
+
                         if($session->value('user_id')):?>
                             <a class="last" href="<?php global $coupon_url; echo $coupon_url."/customer/account/";?>">My Deals</a>
                         <?php endif;?>
