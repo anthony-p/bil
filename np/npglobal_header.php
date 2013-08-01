@@ -235,6 +235,7 @@ if ($setts['enable_skin_change'])
 
 
 $template->set('logout_link', process_link('logout'));
+$template->set('login_link', process_link('index', array('option' => 'logout')));
 
 
 
