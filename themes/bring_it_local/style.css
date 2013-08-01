@@ -2867,7 +2867,7 @@ aside.suport .merchants li .info span {display: block; font:16px "OpenSans-Bold"
 #register  input.buttons{min-width: 170px; margin: 0 auto;  box-shadow: inset 0px 0px 5px rgba(53, 48, 48, 0.5);    background: #7eb041; border-radius: 8px; cursor: pointer;
     text-shadow: 0px 0px 1px #9ec471; margin: 0 auto;font: 14px/29px "OpenSans-SemiBold";border: 0; display: block;  color: #fff;  text-transform: uppercase;    padding: 0 17px;}
 .login-cont input.buttons{width: 170px; margin: 0 auto;  box-shadow: inset 0px 0px 5px rgba(53, 48, 48, 0.5);    background: #7eb041; border-radius: 8px; cursor: pointer;
-    text-shadow: 0px 0px 1px #9ec471; margin: 0 auto;font: 11px/29px "OpenSans-SemiBold";border: 0; display: block;  color: #fff;  text-transform: uppercase;    padding: 0 17px;}
+    text-shadow: 0px 0px 1px #9ec471; margin: 0 auto;font: 11px "OpenSans-SemiBold";border: 0; display: block;  color: #fff;  text-transform: uppercase;    padding: 3px 17px;}
 #register .form-row span{float:left; clear: both; font:9px "OpenSans";margin-top: 10px;}
 #register .form-row.check{float:right; width: auto; margin-bottom: 15px;}
 #register .form-row.check input{float:left;}
