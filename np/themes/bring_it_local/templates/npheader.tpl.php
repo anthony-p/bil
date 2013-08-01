@@ -193,40 +193,21 @@ global $coupon_url;
         </div>
         <div class="level2" id="menu-cont">
             <ul class="level2-inner">
-                <li>
-                    <span>creative</span>
-                    <ul>
-                        <li><a href="">Art</a></li>
-                        <li><a href=""> Comic</a></li>
-                        <li><a href="">Dance</a></li>
-                        <li><a href="">Design</a></li>
-                        <li><a href="">Fashion</a></li>
-                        <li><a href="">Film</a></li>
-                        <li><a href="">Gaming</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <span>Cause</span>
-                    <ul>
-                        <li><a href="">Animals</a></li>
-                        <li><a href="">Community</a></li>
-                        <li><a href="">Education</a></li>
-                        <li><a href="">Environment</a></li>
-                        <li><a href="">Health</a></li>
-                        <li><a href="">Politics</a></li>
-                        <li><a href="">Religion</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <span>entrepreneurial</span>
-                <ul>
-                    <li><a href="">Food</a></li>
-                    <li><a href="">Small Business</a></li>
-                    <li><a href="">Sports</a></li>
-                    <li><a href="">Technology</a></li>
-                </ul>
+                <?php foreach ($np_org_types as $index => $np_org_type): ?>
+                    <li>
+                        <span><?php echo $index; ?></span>
+                        <ul>
+                            <?php foreach ($np_org_type as $org_type): ?>
+                                <li>
+                                    <a href="/search.php?category=<?php echo $org_type["id"] ?>">
+                                        <?php echo $org_type["name"] ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php endforeach; ?>
 
-                </li>
                 <li class="nav-buttons">
                 <div class="level-buttons">
                     <span>browse campaigns</span>
@@ -235,11 +216,6 @@ global $coupon_url;
                             <a href="#">
                                 <span>New campaigns</span>
                             </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               <span>New campaigns</span>
-                           </a>
                         </li>
                         <li>
                             <a href="#">
@@ -252,19 +228,14 @@ global $coupon_url;
                     <span>ways to give</span>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="/categories.php">
                                <span >Auctions</span>
                            </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="http://coupons.bringitlocal.com/">
                                <span>Local merchants</span>
                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>Local merchants</span>
-                             </a>
                         </li>
                     </ul>
                 </div>

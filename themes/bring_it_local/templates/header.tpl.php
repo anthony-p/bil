@@ -373,11 +373,6 @@ global $coupon_url;
                         </li>
                         <li>
                             <a href="#">
-                               <span>New campaigns</span>
-                           </a>
-                        </li>
-                        <li>
-                            <a href="#">
                                <span>Ending Soon</span>
                               </a>
                         </li>
@@ -387,19 +382,14 @@ global $coupon_url;
                     <span>ways to give</span>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="/categories.php">
                                <span >Auctions</span>
                            </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="http://coupons.bringitlocal.com/">
                                <span>Local merchants</span>
                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>Local merchants</span>
-                             </a>
                         </li>
                     </ul>
                 </div>

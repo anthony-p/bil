@@ -12,6 +12,8 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 $time_start = getmicrotime();
 $currentTime = time();
 
+global $db;
+
 $template->set('integration', $integration);
 
 include ('themes/'.$setts['default_theme'].'/nptitle.php');
@@ -235,6 +237,14 @@ if ($setts['enable_skin_change'])
 
 
 $template->set('login_link', process_link('index', array('option' => 'logout')));
+
+
+$sql_select_np_org_type = $db->query("SELECT * FROM " . NPDB_PREFIX . "orgtype");
+$np_org_types = array();
+while ($result =  mysql_fetch_array($sql_select_np_org_type)) {
+    $np_org_types[$result["category_group"]][] = $result;
+}
+$template->set('np_org_types', $np_org_types);
 
 
 
