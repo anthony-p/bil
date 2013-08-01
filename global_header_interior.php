@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 #################################################################
@@ -278,6 +278,13 @@ if ($session->value('user_id'))
 {
     $nonloggedin_check=" return;";
 }
+
+$sql_select_np_org_type = $db->query("SELECT * FROM " . NPDB_PREFIX . "orgtype");
+$np_org_types = array();
+while ($result =  mysql_fetch_array($sql_select_np_org_type)) {
+    $np_org_types[$result["category_group"]][] = $result;
+}
+$template->set('np_org_types', $np_org_types);
 
 $template_output .= $template->process('header.tpl.php');
 
