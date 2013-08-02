@@ -198,13 +198,13 @@ global $coupon_url;
                 <nav>
                     <ul>
                         <li class="level"><a href="#" id="menu">Browse</a></li>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Start</a></li>
+                        <li><a href="http://dev2.bringitlocal.com/about_us,page,content_pages">Learn</a></li>
+                        <li><a href="/np/npregister.php">Start</a></li>
                     </ul>
                 </nav>
                 <div class="topNav">
-                    <!-- <a onclick="alert('Drag me to the bookmarks bar'); return false;" href="http://dev.bringitlocal.com?npuser=1" > BringitLocal Bookmarklet</a>-->
-                    <?php //<a onclick="alert('Drag me to the bookmarks bar'); return false;" href="javascript:q=(document.location.href);void(open('http://dev.bringitlocal.com?npuser=1','_self','resizable,location,menubar,toolbar,scrollbars,status'));" > BringitLocal Bookmarklet</a> ?>
+                    <!-- <a onclick="alert('Drag me to the bookmarks bar'); return false;" href="http://dev2.bringitlocal.com?npuser=1" > BringitLocal Bookmarklet</a>-->
+                    <?php //<a onclick="alert('Drag me to the bookmarks bar'); return false;" href="javascript:q=(document.location.href);void(open('http://dev2.bringitlocal.com?npuser=1','_self','resizable,location,menubar,toolbar,scrollbars,status'));" > BringitLocal Bookmarklet</a> ?>
                     <?php global $session; if($session->value('user_id')) echo "<span class='user-log'>Welcome ".$session->value('username')."</span>"."<div class='clear'></div>";?>
 
                     <div class="links-nav"> <a href="<?=$login_link;?>"><?=$login_btn_msg;?></a> <a href="<?=$register_link;?>"><?=$register_btn_msg;?></a>
@@ -367,17 +367,12 @@ global $coupon_url;
                     <span>browse campaigns</span>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="/search.php?order_by=reg_date&order_type=DESC">
                                 <span>New campaigns</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                               <span>New campaigns</span>
-                           </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                            <a href="/search.php?order_by=end_date&order_type=ASC">
                                <span>Ending Soon</span>
                               </a>
                         </li>
@@ -387,25 +382,20 @@ global $coupon_url;
                     <span>ways to give</span>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="/categories.php">
                                <span >Auctions</span>
                            </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="http://coupons.bringitlocal.com/">
                                <span>Local merchants</span>
                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>Local merchants</span>
-                             </a>
                         </li>
                     </ul>
                 </div>
                   <div class="nav-links">
-                    <span><a href="">Click here to subscribe to updates Q</a></span>
-                    <span><a href="">Go to the Community fund4 </a><a href="" class="what">What's that?</a></span>
+                    <span><a href="">Click here to subscribe to updates</a></span>
+                    <span><a href="">Go to the Community fund </a><a href="" class="what">What's that?</a></span>
                   </div>
               </li>
             </ul>

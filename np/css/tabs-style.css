@@ -114,9 +114,9 @@ span.error{
 }
 #steps form p{
     float:left;
+    width:100%;
     clear:both;
     margin:15px 0px;
-
     border:1px solid #fff;
     padding:10px;
     border-radius: 5px;
@@ -132,7 +132,7 @@ span.error{
     text-shadow:1px 1px 1px #fff;
     font-weight:bold;
 }
-#steps form input:not([type=radio]),
+#steps form input,
 #steps form textarea,
 #steps form select{
     border: 1px solid #ddd;
@@ -144,6 +144,8 @@ span.error{
     /*width: 185px;*/
     float:left;
 }
+#steps form textarea{padding: 5px 0;}
+#steps form input[type="checkbox"]{padding: 0 !important;}
 #steps form input:focus{
     -moz-box-shadow:0px 0px 3px #aaa;
     -webkit-box-shadow:0px 0px 3px #aaa;
@@ -206,17 +208,24 @@ span.error{
 #pitch_template {float:left: clear:both; margin: 10px 0;}
 .pitch-add {width:600px; margin: 0 auto;}
 .add-button{float:left; margin: 10px 0;}
-.next {float:right; margin: 10px 0;}
-.add-button input{width:110px;border:0; background: #0077c0;  text-shadow: 0px 0px 1px #60aad8;font: 18px/20px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: none; cursor: pointer;}
-.next input{width:110px; padding: 5px 20px !important; background: #7eb041; text-shadow: 0px 0px 1px #9ec471;font: 18px/20px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: none;cursor: pointer;}
+/*.next {float:right; margin: 10px 0;}*/
+.add-button input{width:90px;border:0 !important; background: #0077c0;  text-shadow: 0px 0px 1px #60aad8;font:bold 18px/20px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: uppercase; cursor: pointer;}
+/*.next input{width:90px; padding: 5px 20px !important; background: #7eb041; text-shadow: 0px 0px 1px #9ec471;font:bold 18px/20px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: uppercase;cursor: pointer;}*/
 .removePitchButton{background: #f07722; text-shadow: 0px 0px 1px #9ec471;font: 20px/25px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: none;cursor: pointer;float: right !important; margin-top: 10px;}
 .account-row.enter-pin{width:450px; margin: 10px 0;}
 .account-row .img-pin{float:right; width:130px; height:20px; clear: none;}
 .account-row input[type="checkbox"]{width: 16px; margin-right: 10px;}
-#steps form #form_register_proceed{background: #7eb041; text-shadow: 0px 0px 1px #9ec471;font: 14px/25px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: none;cursor: pointer;}
+#steps form #form_register_proceed{float:right;padding: 5px !important;font:bold 10px/16px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: uppercase;cursor: pointer; border:0!important;  background: #7eb041; margin-top: 15px;}
 .pitch-tab .next {float:left;}
+#steps form .border .reguser input{margin-right: 10px;}
+.terms_conditions{font: 14px "OpenSans-Bold"; color:#333;}
 
 
-
-
-
+.next {float:left; margin: 20px 0 0;width: 100%; clear: both;}
+.next input{float:left;padding: 5px 10px !important;font:bold 13px/16px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: uppercase;cursor: pointer; border:0!important;}
+.next .right{float:right;}
+.next .right input{margin-left: 15px;}
+.next .next_btn{width:60px;  background: #7eb041; }
+.next .next_btn:hover{background: #76a43d;  }
+.next .save_btn{ background: #ffa800; margin-top: 20px;}
+.next .save_btn:hover{ background:#f39f00; }

@@ -29,13 +29,23 @@ if (!$session->value('user_id'))
 	header_redirect('login.php');
     die;
 }
+
+$tail_query_part = '';
+if (isset($name_keyword) && $name_keyword) {
+    $tail_query_part .= " AND np_users.name LIKE '%" . $name_keyword . "%'";
+}
+
+if (isset($order) && $order) {
+    $tail_query_part .= "  ORDER BY reg_date " . $order;
+}
+
 if ($section == 'drafts'){
    $title="drafts";
    $sql_query = $db->query(
         "SELECT * FROM bl2_users Join np_users
         on id = probid_user_id
         WHERE np_users.active='0'
-        AND np_users.probid_user_id=" . $session->value('user_id')
+        AND np_users.probid_user_id=" . $session->value('user_id') . $tail_query_part
     );
     $rows = array();
     while ($row = mysql_fetch_array($sql_query)) {
@@ -54,7 +64,7 @@ if ($section == 'live') {
         "SELECT * FROM bl2_users Join np_users
         on id = probid_user_id
         WHERE np_users.active='1'
-        AND np_users.probid_user_id=" . $session->value('user_id')
+        AND np_users.probid_user_id=" . $session->value('user_id') . $tail_query_part
     );
     $rows = array();
     while ($row = mysql_fetch_array($sql_query)) {
@@ -70,7 +80,7 @@ if ($section == 'live') {
     $sql_query = $db->query(
         "SELECT * FROM bl2_users Join np_users
         on id = probid_user_id
-        AND np_users.probid_user_id=" . $session->value('user_id')
+        AND np_users.probid_user_id=" . $session->value('user_id') . $tail_query_part
     );
     $rows = array();
     while ($row = mysql_fetch_array($sql_query)) {

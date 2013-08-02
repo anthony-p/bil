@@ -7,7 +7,7 @@
 ## (Mods-Store) -> Shopping Cart											##
 #################################################################
 
-define ('LANG_CODEPAGE', 'iso-8859-1');
+define ('LANG_CODEPAGE', 'utf-8');
 
 define ('GMSG_LOGIN_SECURELY', 'Login Securely');
 define ('GMSG_PAGE_LOADED_IN', 'Page loaded in');
@@ -36,7 +36,7 @@ define ('GMSG_FRMCHK_FIELD_JS', 'field cannot contain javascript');
 define ('GMSG_FRMCHK_FIELD_IFRAMES', 'field cannot contain iframe tags');
 define ('GMSG_FRMCHK_MIN_LENGTH_6_MAX_18', 'field must be have between 6 and 18 characters');
 define ('GMSG_FRMCHK_VALID_EMAIL', 'field must contain a valid email address');
-define ('GMSG_FRMCHK_VALID_PAYPAL_EMAIL', 'field must be a valid paypal email address');
+define ('GMSG_FRMCHK_VALID_PAYPAL_EMAIL', 'field must be a valid paypal email address and have to match paypal account firt name and last ame');
 define ('GMSG_FRMCHK_FIELD_HTML', 'field cannot contain html');
 define ('GMSG_POSITIVE_VALUE', 'must contain a positive value');
 
@@ -48,6 +48,8 @@ define ('GMSG_NO', 'No');
 define ('GMSG_ORDER', 'Order');
 define ('GMSG_CATEGORY', 'Category');
 
+define ('GMSG_PAYPAL_FIRST_NAME', 'PayPal Account First Name');
+define ('GMSG_PAYPAL_LAST_NAME', 'PayPal Account Last Name');
 define ('GMSG_PAYPAL_EMAIL', 'PayPal Email Address');
 define ('GMSG_WORLDPAY_ID', 'Worldpay ID');
 define ('GMSG_CHECKOUT_ID', '2Checkout ID');
@@ -393,8 +395,6 @@ define ('GMSG_FIRST_BIDDER', 'First Bidder');
 define ('GMSG_S', 's');
 define ('GMSG_EVERY', 'every');
 define ('GMSG_HOURS', 'hours');
-define ('GMSG_MINUTES', 'minutes');
-define ('GMSG_SECONDS', 'seconds');
 define ('GMSG_SELECTED_COUNTRIES', 'Selected Countries');
 define ('GMSG_REVERSE_ID', 'Reverse Auction ID');
 define ('GMSG_REVERSE_BID_FEE', 'Reverse Auction Bid Fee');
@@ -416,7 +416,6 @@ define ('GMSG_ALERTPAY_SECURITY_CODE', 'AlertPay IPN Encrypted Security Code');
 define ('GMSG_ALERTPAY_CALLBACK', 'AlertPay Callback (Alert) URL');
 define ('GMSG_ALERTPAY_DESCRIPTION', 'Click on the button on the right to proceed to AlertPay');
 define ('GMSG_CANCEL', 'Cancel');
-define ('GMSG_PENDING', 'Pending');
 define ('GMSG_SHOPPING_CART', 'Shopping Cart');
 define ('GMSG_NO_CARTS_MSG', 'There are no carts at the moment');
 define ('GMSG_CART_SALE_FEE_PAYMENT', 'Cart Sale Fee Payment');

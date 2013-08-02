@@ -24,6 +24,25 @@ if (isset($_POST["ammount"]) && !empty($_POST["ammount"])) {
     $status = "pay";
 }
 
+if (isset($_GET["np_userid"]) && !empty($_GET["np_userid"])) {
+    $user_id = $_GET["np_userid"];
+}
+
+
+if (!isset($user_id) || !$user_id) {
+    $user_id = $_COOKIE["np_userid"];
+}
+
+if (!$user_id)
+{
+    header_redirect('index.php');
+}
+
+$campaign = $db->get_sql_row(
+    "SELECT logo, banner, description, name  FROM np_users WHERE np_users.user_id=" . $user_id
+);
+
+$template->set('campaign', $campaign);
 $template->change_path('templates/');
 $template_output .= $template->process('donate.tpl.php');
 

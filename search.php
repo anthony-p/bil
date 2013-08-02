@@ -20,7 +20,7 @@ include_once("np/includes/npclass_user.php");
 
 $np_user = new npuser();
 
-$campaigns = $np_user->selectAll();
+$campaigns = $np_user->selectAllLive();
 
 $option = $db->rem_special_chars($_REQUEST['option']);
 $option = (empty($option)) ? 'auction_search' : $option;

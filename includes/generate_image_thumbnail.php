@@ -1,4 +1,4 @@
-<?php
+<?
 /*
  * PHP function to resize an image maintaining aspect ratio
  * http://salman-w.blogspot.com/2008/10/resize-images-using-phpgd-library.html
@@ -6,7 +6,6 @@
  * Creates a resized (e.g. thumbnail, small, medium, large)
  * version of an image file and saves it as another file
  */
-
 define('THUMBNAIL_IMAGE_MAX_WIDTH', 150);
 define('THUMBNAIL_IMAGE_MAX_HEIGHT', 150);
 

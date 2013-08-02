@@ -88,7 +88,7 @@ global $coupon_url;
 		<div class="leftLinks">
 		</div>
 		<div class="rightLinks">
-			Copyright &copy;2012 <a href="<?=process_link('content_pages', array('page' => 'about_us'));?>">Bring It Local, LLC</a>. All Rights Reserved<br>
+			Copyright &copy;2013 <a href="<?=process_link('content_pages', array('page' => 'about_us'));?>">Bring It Local, LLC</a>. All Rights Reserved.<br>
 			<? if ($layout['is_terms']) { ?>
 			<a href="<?=process_link('content_pages', array('page' => 'terms'));?>"><?=MSG_BTN_TERMS;?></a>
 			<? } ?>

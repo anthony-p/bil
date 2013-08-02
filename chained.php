@@ -14,7 +14,7 @@ $user_details = $session->value('user_id') ? $session->value('user_id') : null;;
 
 
 if (!isset($_POST["amount"]))
-    header('location: http://dev.bringitlocal.com/');
+    header('location: http://dev2.bringitlocal.com/');
 
 require_once ("paypalplatform.php");
 
@@ -40,8 +40,13 @@ $user_id = $_COOKIE["np_userid"];
 $_SESSION["np_userid"] = $user_id;
 
 //$email = '';
-$email = $db->get_sql_field("SELECT bl2_users.pg_paypal_email FROM np_users, bl2_users WHERE np_users.user_id=" .
+$email = $db->get_sql_field("SELECT np_users.pg_paypal_email FROM np_users, bl2_users WHERE np_users.user_id=" .
     $user_id . " AND np_users.probid_user_id=bl2_users.id", pg_paypal_email);
+
+if (!$email) {
+    $email = $db->get_sql_field("SELECT bl2_users.pg_paypal_email FROM np_users, bl2_users WHERE np_users.user_id=" .
+        $user_id . " AND np_users.probid_user_id=bl2_users.id", pg_paypal_email);
+}
 
 $beneficiar_account = $email ? $email : 'rlpc.test2@gmail.com';
 
@@ -60,10 +65,10 @@ if ($beneficiar_amount >= $bring_it_local_amount) {
 
 // Request specific required fields
 $actionType			= "PAY";
-$cancelUrl			= "http://dev.bringitlocal.com/donate_cancel.php";	// TODO - If you are not executing the Pay call for a preapproval,
+$cancelUrl			= "http://dev2.bringitlocal.com/donate_cancel.php";	// TODO - If you are not executing the Pay call for a preapproval,
 //        then you must set a valid cancelUrl for the web approval flow
 //        that immediately follows this Pay call
-$returnUrl			= "http://dev.bringitlocal.com/donate_success.php";	// TODO - If you are not executing the Pay call for a preapproval,
+$returnUrl			= "http://dev2.bringitlocal.com/donate_success.php";	// TODO - If you are not executing the Pay call for a preapproval,
 //        then you must set a valid returnUrl for the web approval flow
 //        that immediately follows this Pay call
 $currencyCode		= "USD";

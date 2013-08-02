@@ -71,6 +71,12 @@ SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
          <ul>
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'editinfo'));?>"><?=MSG_MM_PERSONAL_INFO;?></a></li>
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'management'));?>"><?=MSG_MM_MANAGE_ACCOUNT;?></a></li>
+             <li><a href="javascript:void(0)">About Me</a>
+                 <ul>
+                    <li><a href="/about_me,page,edit,section,members_area">edit</a></li>
+                    <li><a href="/about_me,page,view,section,members_area">view</a></li>
+                 </ul>
+             </li>
              <li><a href="javascript:void(0)">Messages</a>
                  <ul>
                      <li><a href="<?=process_link('members_area', array('page' => 'messaging', 'section' => 'received'));?>"><?=MSG_MM_RECEIVED;?></a></li>
@@ -91,7 +97,7 @@ SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
             <!--            <li><a href="/np/npmembers_news.php?news=news">Non profit news</a></li>-->
             <!--            <li><a href="/lilian.codreanu@gmail.com" target="_blank"> Your public landing page </a></li>-->
             <!--            <li><a href="/np/toolkit.doc" target="_blank"> Toolkit - download as word doc </a></li>-->
-<!--            <li><a href="http://dev.bringitlocal.com/widget,page,view,section,members_area#8ec3489f027e" target="_blank"> Widget </a></li>-->
+<!--            <li><a href="http://dev2.bringitlocal.com/widget,page,view,section,members_area#8ec3489f027e" target="_blank"> Widget </a></li>-->
         </ul>
     </li>
 
@@ -100,9 +106,9 @@ SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
         <a href="javascript:void(0)">My Campaigns</a>
         <ul>
             <li><a href="/np/npregister.php">New Campaign</a></li>
-            <li><a href="http://dev.bringitlocal.com/campaigns,page,drafts,section,members_area#8ec3489f027e">Drafts Campaigns</a></li>
-            <li><a href="http://dev.bringitlocal.com/campaigns,page,live,section,members_area#8ec3489f027e">Live Campaigns</a></li>
-            <li><a href="http://dev.bringitlocal.com/campaigns,page,closed,section,members_area#8ec3489f027e">Closed Campaigns</a></li>
+            <li><a href="http://dev2.bringitlocal.com/campaigns,page,drafts,section,members_area#8ec3489f027e">Drafts Campaigns</a></li>
+            <li><a href="http://dev2.bringitlocal.com/campaigns,page,live,section,members_area#8ec3489f027e">Live Campaigns</a></li>
+            <li><a href="http://dev2.bringitlocal.com/campaigns,page,closed,section,members_area#8ec3489f027e">Closed Campaigns</a></li>
         </ul>
     </li>
     <li>

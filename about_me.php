@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.00															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -26,7 +26,7 @@ $user_details = $db->get_sql_row("SELECT username, enable_aboutme_page, aboutme_
 $item = new item();
 $item->setts = &$setts;
 $item->layout = &$layout;
-
+/*
 $shop = new shop();
 
 $shop_status = $shop->shop_status($user_details);
@@ -56,12 +56,13 @@ else
 {
 	$message_header = MSG_ERROR;
 	$message_content = '<p align="center">' . MSG_USER_DOESNT_EXIST . '</p>';
-}
+}*/
 
 $template->set('message_header', header5($message_header));
 $template->set('message_content', $message_content);
 
-$template_output .= $template->process('single_message.tpl.php');
+//$template_output .= $template->process('single_message.tpl.php');
+$template_output .= $template->process('about_me.tpl.php');
 
 include_once ('global_footer.php');
 

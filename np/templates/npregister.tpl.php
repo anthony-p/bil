@@ -263,13 +263,16 @@ function processURL(url){
 function nextStepShow(id){
     $("#"+id).next().find("a").first().click();
 }
+function prevStepShow(id){
+    $("#"+id).prev().find("a").first().click();
+}
 
 /**
  *
  */
 
 var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_details["pitches_number"]; else { ?>0<?php } ?>;
-function addPitch(){
+/*function addPitch(){
 //    alert(2);
     var pitches = parseInt($("#pitches_number").val());
     $("#pitches_number").val(pitches + 1);
@@ -289,7 +292,7 @@ function addPitch(){
     });
 
 
-}
+}*/
 /**
  * <div id="pitch_template">
  <div style="display: block"><span>Amount *</span> <input id="amoun" type="text" value="" placeholder="" /> </div>
@@ -320,14 +323,14 @@ function addPitch(){
             <a href="#">Account</a>
         </li>
         <li id="p_projectDetail">
-            <a href="#">Project Details</a>
+            <a href="#">Details</a>
         </li>
         <li id="p_projectEdit">
-            <a href="#">Project Edit</a>
+            <a href="#">Enhancements</a>
         </li>
-        <li id="p_projectPitch">
+       <!-- <li id="p_projectPitch">
             <a href="#">Pitch</a>
-        </li>
+        </li>-->
         <li id="p_confirmation">
             <a href="#">Confirmation</a>
         </li>
@@ -447,9 +450,30 @@ function addPitch(){
         <div class="clear"></div>
         <?=$birthdate_box;?>
     </div>
+    <div class="account-row">
+        <label><?=MSG_PG_PAYPAL_EMAIL_ADDRESS;?></label>
+        <input name="pg_paypal_email" type="text" id="pg_paypal_email"
+               value="<?=$user_details['pg_paypal_email'];?>" size="40" />
+        <span><?=MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL;?></span>
+    </div>
+    <div class="account-row">
+        <label><?=MSG_PG_PAYPAL_FIRST_NAME;?></label>
+        <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name"
+               value="<?=$user_details['pg_paypal_first_name'];?>" size="40" />
+        <span><?=MSG_PG_PAYPAL_FIRST_NAME_EXPL;?></span>
+    </div>
+    <div class="account-row">
+        <label><?=MSG_PG_PAYPAL_LAST_NAME;?></label>
+        <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name"
+               value="<?=$user_details['pg_paypal_last_name'];?>" size="40" />
+        <span><?=MSG_PG_PAYPAL_LAST_NAME_EXPL;?></span>
+    </div>
     <div class="next">
-        <input type="button" onclick="nextStepShow('p_account')" value="Next" />    </div>
-</div>
+        <div class="right">
+            <input type="button" onclick="nextStepShow('p_account')" value="Next" class="next_btn" />    </div>
+        </div>
+    </div>
+
 
     </div>
 </fieldset>
@@ -469,7 +493,15 @@ function addPitch(){
         </div>
         <div class="account-row">
             <label><?=MSG_CREATE_PROJECT_CHOOSE_CATEGORY;?> *</label>
-            <?=$project_country?>
+<!--            --><?//=$project_country?>
+            <select name="project_category" id="project_category">
+                <?php foreach ($project_category as $key => $category): ?>
+                    <option value="<?php echo $key; ?>"
+                        <?php if (isset($user_details['project_category']) && $user_details['project_category'] == $key) echo 'selected' ?>>
+                        <?php echo $category; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div class="account-row">
             <label><?=MSG_CREATE_PROJECT_CAMPAIGN_BASIC;?> *</label>
@@ -495,20 +527,23 @@ function addPitch(){
                    value="<?php echo isset($user_details['founddrasing_goal']) ? $user_details['founddrasing_goal'] : '500' ?>"
                    id="founddrasing_goal" >(USD)
         </div>
-        <div class="account-row">
-            <label><?=MSG_FUNDING_TYPE;?> *</label>
+     <!--   <div class="account-row">
+            <label><?/*=MSG_FUNDING_TYPE;*/?> *</label>-->
 <!--            <input type="text" name="founddrasing_goal" value="500" id="founddrasing_goal" >-->
 <!--            <div class="clear"></div>-->
-            <div class="radio">
-                <input type="radio" name="funding_type" value="flexible" <?php if (isset($user_details["funding_type"]) && $user_details["funding_type"] == "flexible") echo 'checked="checked"' ?>>
-                <label><?=MSG_FUNDING_TYPE_FLEXIBLE?></label>
+           <!-- <div class="radio">
+                <input type="radio" name="funding_type" value="flexible" <?php /*if (isset($user_details["funding_type"]) && $user_details["funding_type"] == "flexible") echo 'checked="checked"' */?>>
+                <label><?/*=MSG_FUNDING_TYPE_FLEXIBLE*/?></label>
             </div>
-            <div class="radio"><input type="radio" name="funding_type" value="fixed" <?php if (!isset($user_details["funding_type"]) || $user_details["funding_type"] != "flexible") echo 'checked="checked"' ?> ><label><?=MSG_FUNDING_TYPE_FIXED?></label></div>
-        </div>
+            <div class="radio"><input type="radio" name="funding_type" value="fixed" <?php /*if (!isset($user_details["funding_type"]) || $user_details["funding_type"] != "flexible") echo 'checked="checked"' */?> ><label><?/*=MSG_FUNDING_TYPE_FIXED*/?></label></div>
+        </div>-->
         <div class="account-row deadline">
             <label><?="Deadline";?> </label>
+
+<!--            --><?php //var_dump($user_details['deadline_type_value']); ?>
                         <span>
-                        <input type="hidden" name="deadline_type_value" id="deadline_type_value" value="">
+                        <input type="hidden" name="deadline_type_value" id="deadline_type_value"
+                               value="<?php echo (isset($user_details['deadline_type_value'])) ? $user_details['deadline_type_value'] : '' ?>">
                         </span>
                         <span>
                       <span class="radio-span"> <input type="radio" name="deadline_type" value="deadline_type" onclick="changeDeadlineType(jQuery(this),'time_period')"
@@ -578,8 +613,12 @@ function addPitch(){
                 <input name="tax_reg_number" type="text" class="contentfont" id="tax_reg_number" value="<?=$user_details['tax_reg_number'];?>" size="40" />
                 <span><?=MSG_TAX_REG_NUMBER_DESC;?></span>
             </div>
+
                 <div class="next">
-                    <input type="button" onclick="nextStepShow('p_projectDetail')" value="Next" />
+                    <div class="right">
+                        <input type="button" onclick="prevStepShow('p_projectDetail')"  value="Prev" class="next_btn" />
+                        <input type="button" onclick="nextStepShow('p_projectDetail')" value="Next" class="next_btn" />
+                    </div>
                 </div>
         </div>
         <? } ?>
@@ -627,15 +666,15 @@ function addPitch(){
                 <span>For best results upload an image that is not more than 160 pixels wide.</span>
             </div>
         </div>
-        <h5>Your Story(<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>
+        <h5>Your Story (<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>
         <!--                 <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
         <!--                    <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
 
         <div class="account-row">
             <div class="upload">
-                <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label>Baner Image</label>
+                <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label>Banner Image</label>
                 <div class="clear"></div>
-                <input type="radio" class="banner_type" id="banner_type_video" name="banner_type" value="1" ><label>Video(Youtube or Vimeo)</label>
+                <input type="radio" class="banner_type" id="banner_type_video" name="banner_type" value="1" ><label>Video (Youtube or Vimeo)</label>
             </div>
             <div class="clear"></div>
             <br />
@@ -721,13 +760,17 @@ function addPitch(){
 
 
 
-        <div class="account-row">
+     <!--   <div class="account-row">
             <h5> Pitch text </h5>
-            <div class="pitch"><textarea rows="5" cols="30" name="pitch_text" id="pitch_text"><?php echo isset($user_details['pitch_text']) ? $user_details['pitch_text'] : '' ?></textarea> </div>
+            <div class="pitch"><textarea rows="5" cols="30" name="pitch_text" id="pitch_text"><?php /*echo isset($user_details['pitch_text']) ? $user_details['pitch_text'] : '' */?></textarea> </div>
             <span>*user has to be able to edit this until they have received donations.</span>
-        </div>
+        </div>-->
+
             <div class="next">
-                <input type="button" onclick="nextStepShow('p_projectEdit')" value="Next" />
+                <div class="right">
+                    <input type="button" onclick="prevStepShow('p_projectEdit')"  value="Prev" class="next_btn" />
+                    <input type="button" onclick="nextStepShow('p_projectEdit')" value="Next" class="next_btn" />
+                </div>
             </div>
 
     </div>
@@ -735,11 +778,11 @@ function addPitch(){
     </div>
 </fieldset>
 
-<fieldset class="step">
+<!--<fieldset class="step">
     <div class="tabs pitch-tab">
       <div class="pitch-add">
           <input type="hidden" name="pitches_number" id="pitches_number"
-                 value="<?php echo (isset($user_details["pitches_number"]) ? $user_details["pitches_number"] : '0') ?>">
+                 value="<?php /*echo (isset($user_details["pitches_number"]) ? $user_details["pitches_number"] : '0') */?>">
           <div class="add-button"> <input type="button" value="Add" onclick="addPitch()" /> </div>
           <br/>
           <div style="display: none" id="pitch_template">
@@ -750,28 +793,28 @@ function addPitch(){
               <input type="button" value="Delete" class="removePitchButton"/>
           </div>
           <div id="pitch_box">
-              <?php if (isset($user_details["pitch_amoun"])): ?>
-                  <?php foreach ($user_details["pitch_amoun"] as $key => $pitch_amoun): ?>
+              <?php /*if (isset($user_details["pitch_amoun"])): */?>
+                  <?php /*foreach ($user_details["pitch_amoun"] as $key => $pitch_amoun): */?>
                       <div class="pitch-content">
                           <div class="account-row">
                               <label>Amount *</label>
-                              <input id="pitch[<?php echo $key; ?>][0]" type="text" placeholder="Amoun" name="pitch_amoun[<?php echo $key; ?>]"
-                                     value="<?php echo isset($pitch_amoun) ? $pitch_amoun : ''; ?>">
+                              <input id="pitch[<?php /*echo $key; */?>][0]" type="text" placeholder="Amoun" name="pitch_amoun[<?php /*echo $key; */?>]"
+                                     value="<?php /*echo isset($pitch_amoun) ? $pitch_amoun : ''; */?>">
                           </div>
                           <div class="account-row">
                               <label>Name *</label>
-                              <input id="pitch[<?php echo $key; ?>][1]" type="text" placeholder="Name" name="pitch_name[<?php echo $key; ?>]"
-                                     value="<?php echo isset($user_details['pitch_name'][$key]) ? $user_details['pitch_name'][$key] : ''; ?>">
+                              <input id="pitch[<?php /*echo $key; */?>][1]" type="text" placeholder="Name" name="pitch_name[<?php /*echo $key; */?>]"
+                                     value="<?php /*echo isset($user_details['pitch_name'][$key]) ? $user_details['pitch_name'][$key] : ''; */?>">
                           </div>
                           <div class="account-row">
                               <label>Description *</label>
-                              <textarea id="pitch[<?php echo $key; ?>][2]" rows="5" cols="3" name="pitch_description[<?php echo $key; ?>]"><?php echo isset($user_details['pitch_description'][$key]) ? $user_details['pitch_description'][$key] : ''; ?></textarea>
+                              <textarea id="pitch[<?php /*echo $key; */?>][2]" rows="5" cols="3" name="pitch_description[<?php /*echo $key; */?>]"><?php /*echo isset($user_details['pitch_description'][$key]) ? $user_details['pitch_description'][$key] : ''; */?></textarea>
                           </div>
                           <br>
                           <input type="button" value="Delete" class="removePitchButton" onclick="deletePitch(this)">
                       </div>
-                  <?php endforeach; ?>
-              <?php endif; ?>
+                  <?php /*endforeach; */?>
+              <?php /*endif; */?>
           </div>
 
           <div class="next">
@@ -780,7 +823,7 @@ function addPitch(){
       </div>
     </div>
 </fieldset>
-<fieldset class="step">
+--><fieldset class="step">
     <div class="tabs">
         <div class="account-tab">
         <? if (IN_ADMIN != 1 && !$edit_user) { ?>
@@ -797,7 +840,6 @@ function addPitch(){
             </div>
 
         <? } ?>
-        <p>
             <? if (!empty($display_direct_payment_methods)) { ?>
         <h4><?=MSG_DIRECT_PAYMENT_SETTINGS;?></h4>
 
@@ -805,10 +847,9 @@ function addPitch(){
 
     <? } ?>
         <?=$signup_voucher_box;?>
+            <br />
         <?=$registration_terms_box;?>
-        <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=$proceed_button;?>" />
-        </p>
-
+        <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=$proceed_button;?>"/>
     </div>
     </div>
 </fieldset>

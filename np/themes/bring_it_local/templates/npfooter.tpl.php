@@ -201,11 +201,11 @@ global $coupon_url;
                 <? if ($layout['is_pp']) { ?>
                  <a href="<?=process_link('content_pages', array('page' => 'privacy'));?>"><?=MSG_BTN_PRIVACY;?></a><? } ?>
                 <p class="copiright-info">
-                    Copyright ©2012 Bring It Local LLC. All rights reserved.
+                    Copyright &copy;2013 Bring It Local LLC. All rights reserved
                 </p>
                 <a href="<?=process_link('site_fees');?>">SITE FEES</a>
                 <a class="last" href="<?=process_link('content_pages', array('page' => 'help'));?>">HELP</a>
-                <?php /*  Copyright &copy;2012 <a href="<?=process_link('content_pages', array('page' => 'about_us'));?>">Bring It Local, LLC</a>. All Rights Reserved
+                <?php /*  Copyright &copy;2013 <a href="<?=process_link('content_pages', array('page' => 'about_us'));?>">Bring It Local, LLC</a>. All Rights Reserved
                 */?>
  </div>
         </div>
