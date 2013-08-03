@@ -1324,7 +1324,7 @@ define ('MSG_VIEWS', 'Views');
 define ('MSG_LOGO', 'Upload your logo');
 define ('MSG_LOGO_UPLOAD_PROGRESS_TITLE', 'Upload progress');
 define ('MSG_LOGO_STOP_UPLOAD', 'Stop upload');
-define ('MSG_LOGO_DESC', 'Upload your logo! (optional) - it will display on your landing page');
+define ('MSG_LOGO_DESC', 'Upload your logo! (optional) - it will display on your campaign page');
 
 
 

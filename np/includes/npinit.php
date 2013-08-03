@@ -10,6 +10,8 @@ $current_version = '6.04';
 
 (array) $setts = NULL;
 
+date_default_timezone_set('America/Chicago');
+
 define ('CURRENT_TIME', time());
 
 define ('CURRENT_TIME_MYSQL', date("Y-m-d H:i:s", time()));

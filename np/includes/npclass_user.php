@@ -120,6 +120,12 @@ class npuser extends npcustom_field
     function selectAllLive()
     {
         $time = time();
+        $ordering = "  ORDER BY reg_date DESC";
+        if (isset($_GET["order_by"]) && $_GET["order_by"] &&
+            isset($_GET["order_type"]) && $_GET["order_type"] &&
+            in_array($_GET["order_type"], array("ASC", "DESC"))) {
+            $ordering = " ORDER BY " . $_GET["order_by"] . " " . $_GET["order_type"];
+        }
         if (isset($_GET["search"]) && $_GET["search"]) {
             $search = mysql_real_escape_string($_GET["search"]);
             $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
@@ -137,11 +143,11 @@ class npuser extends npcustom_field
                 $search . "%' OR orgtype LIKE '%" .
                 $search . "%' OR tax_company_name LIKE '%" .
                 $search . "%' OR pitch_text LIKE '%" .
-                $search . "%') ORDER BY reg_date DESC";
+                $search . "%') " . $ordering;
         } elseif (isset($_GET["keyword"]) && $_GET["keyword"]) {
-            $order = "DESC";
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
+                $ordering = " ORDER BY reg_date " . $order;
             }
             $search = mysql_real_escape_string($_GET["keyword"]);
             $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
@@ -151,7 +157,7 @@ class npuser extends npcustom_field
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
                 "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.active=1 AND np_users.end_date>" . $time .
                 "  AND name LIKE '%" .
-                $search . "%' ORDER BY reg_date " . $order;
+                $search . "%' " . $ordering;
         } elseif (isset($_GET["category"]) && $_GET["category"]) {
             $search = mysql_real_escape_string($_GET["category"]);
             $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
@@ -160,20 +166,20 @@ class npuser extends npcustom_field
                 " bl2_users.last_name, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
                 "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND " . NPDB_PREFIX .
-                "users.project_category=" . $search . " AND np_users.active=1 AND np_users.end_date>" . $time .
-                "  ORDER BY reg_date DESC";
+                "users.project_category=" . $search . " AND np_users.active=1 AND np_users.end_date>" .
+                $time . $ordering;
         } else {
-            $order = "DESC";
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
+                $ordering = " ORDER BY reg_date " . $order;
             }
             $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, " .
                 " bl2_users.first_name, bl2_users.last_name, bl2_users.email FROM " .
                 NPDB_PREFIX . "users, bl2_users WHERE " . NPDB_PREFIX .
-                "users.probid_user_id=bl2_users.id AND np_users.active=1 AND np_users.end_date>" . $time .
-                "  ORDER BY reg_date " . $order;
+                "users.probid_user_id=bl2_users.id AND np_users.active=1 AND np_users.end_date>" .
+                $time . $ordering;
         }
 
         $sql_select_result = $this->query($sql_select_query);
@@ -204,7 +210,6 @@ class npuser extends npcustom_field
 
 	function insert ($user_details, $page_handle = 'register')
 	{
-
 		$salt = $this->create_salt();
 		$password_hashed = password_hash($user_details['password'], $salt);
 

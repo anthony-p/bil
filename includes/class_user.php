@@ -128,57 +128,17 @@ class user extends custom_field
         $user_details = $this->sqlEscapeString($user_details);
         $salt = $this->create_salt();
         $password_hashed = password_hash($user_details['password'], $salt);
-
-        $this->query("INSERT INTO `devbr0_auction`.`bl2_users`
+      
+                        			
+                   $this->query("INSERT INTO " . $db_name . "bl2_users
         (`id`, `first_name`, `last_name`, `email`, `password`, `salt`, `active`, `create_date`, `last_login`, `is_subscribe_news`)
          VALUES (NULL, '{$user_details['fname']}', '{$user_details['lname']}', '{$user_details['email']}', '$password_hashed', '$salt', '0', '".time()."', '".time()."', '{$user_details['newsletter']}');");
 
         $user_id = $this->insert_id();
 
-        /* NewsLetter subscribe*/
+        /* NewsLetter subscribe constant contact code removed*/
 
-        if (isset($_POST['newsletter'])) {
-      		//begin constant contact api
-      		include_once('includes/constantContacts/ConstantContact.php');
-      		$username = 'bringitlocal';
-      		$userpassword = 'fortyone1795xX';
-      		$apiKey = 'c870c529-2ce7-4a5c-873f-c6f95c99040b';
-      		$consumerSecret = 'ddd354126123477faea722be2546241e';
-      		//$Datastore = new CTCTDataStore();
-      		//$DatastoreUser = $Datastore->lookupUser($username);
-
-      		//if($DatastoreUser){
-      		try {
-      		    $ConstantContact = new ConstantContact('basic', $apiKey, $username, $userpassword);
-      		    $ContactLists = $ConstantContact->getLists();
-
-      	        $Contact = new Contact();
-      	        $Contact->emailAddress = $user_details['email'];
-      	        $Contact->firstName = $user_details['fname'];
-      	        $Contact->lastName = $user_details['lname'];
-//      			$Contact->city = $user_details['city'];
-//      			$Contact->stateName = $user_details['state'];
-//      			$Contact->postalCode = $user_details['zip_code'];
-//      			$Contact->companyName = $user_details['npname'];
-      	       	$lists = array();
-      		    foreach($ContactLists['lists'] as $list){
-      		    	if ($list->name == 'Coupon newsletter subscription')
-      		        	$lists[] = $list->id;
-      		    }
-      			$Contact->lists = $lists;
-
-      			$contactSearch = $ConstantContact->searchContactsByEmail($user_details['email']);
-      			if(!$contactSearch){
-      	        	$NewContact = $ConstantContact->addContact($Contact);
-      			}
-
-      		} catch (Exception $e) {
-
-             }
-      		//}
-
-      	}
-        /*=========*/
+       
 
         return $user_id;
     }

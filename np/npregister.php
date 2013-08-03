@@ -333,7 +333,7 @@ else
 			$session->set('pin_value', md5(rand(2,99999999)));
 			$generated_pin = generate_pin($session->value('pin_value'));
 
-			$pin_image_output = show_pin_image($session->value('pin_value'), $generated_pin);
+			$pin_image_output = show_pin_image($session->value('pin_value'), $generated_pin, '../');
 
 			$template->set('pin_image_output', $pin_image_output);
 			$template->set('generated_pin', $generated_pin);

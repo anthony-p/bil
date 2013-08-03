@@ -666,15 +666,15 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 <span>For best results upload an image that is not more than 160 pixels wide.</span>
             </div>
         </div>
-        <h5>Your Story(<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>
+        <h5>Your Story (<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>
         <!--                 <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
         <!--                    <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
 
         <div class="account-row">
             <div class="upload">
-                <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label>Baner Image</label>
+                <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label>Banner Image</label>
                 <div class="clear"></div>
-                <input type="radio" class="banner_type" id="banner_type_video" name="banner_type" value="1" ><label>Video(Youtube or Vimeo)</label>
+                <input type="radio" class="banner_type" id="banner_type_video" name="banner_type" value="1" ><label>Video (Youtube or Vimeo)</label>
             </div>
             <div class="clear"></div>
             <br />

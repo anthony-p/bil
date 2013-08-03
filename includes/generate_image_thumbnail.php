@@ -46,21 +46,30 @@ function generate_image_thumbnail(
         $thumbnail_image_height = (int) ($thumbnail_image_max_width / $source_aspect_ratio);
     }
 
-    $thumbnail_gd_image = imagecreatetruecolor(
-        $thumbnail_image_max_width,
-        $thumbnail_image_max_height
-    );
+    if (($source_image_width / $source_image_height) <
+        ($thumbnail_image_max_width / $thumbnail_image_max_height)) {
+        $thumbnail_gd_image = imagecreatetruecolor(
+            $thumbnail_image_max_width,
+            $thumbnail_image_max_height
+        );
 
-    $background_color = imagecolorallocate($thumbnail_gd_image, 242, 242, 242);
-    imagefill($thumbnail_gd_image, 0, 0, $background_color);
+        $background_color = imagecolorallocate($thumbnail_gd_image, 242, 242, 242);
+        imagefill($thumbnail_gd_image, 0, 0, $background_color);
 
-    $dest_x = ($thumbnail_image_max_width - $thumbnail_image_width) / 2;
-    $dest_y = ($thumbnail_image_max_height - $thumbnail_image_height) / 2;
+        $dest_x = ($thumbnail_image_max_width - $thumbnail_image_width) / 2;
+        $dest_y = ($thumbnail_image_max_height - $thumbnail_image_height) / 2;
 
-    imagecopyresampled(
-        $thumbnail_gd_image, $source_gd_image, $dest_x, $dest_y, 0, 0, $thumbnail_image_width,
-        $thumbnail_image_height, $source_image_width, $source_image_height
-    );
+        imagecopyresampled(
+            $thumbnail_gd_image, $source_gd_image, $dest_x, $dest_y, 0, 0, $thumbnail_image_width,
+            $thumbnail_image_height, $source_image_width, $source_image_height
+        );
+    } else {
+        $thumbnail_gd_image = imagecreatetruecolor($thumbnail_image_width, $thumbnail_image_height);
+        imagecopyresampled(
+            $thumbnail_gd_image, $source_gd_image, 0, 0, 0, 0, $thumbnail_image_width,
+            $thumbnail_image_height, $source_image_width, $source_image_height
+        );
+    }
     imagejpeg($thumbnail_gd_image, $thumbnail_image_path, 90);
     imagedestroy($source_gd_image);
     imagedestroy($thumbnail_gd_image);
