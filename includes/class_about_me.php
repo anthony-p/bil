@@ -27,12 +27,12 @@ if (isset($_POST['form_aboutme_save'])) {
         insertAboutUserDetails($_POST, $db);
         $template->set('msg_changes_saved', $msg_changes_saved);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
-        $template->set('user_details', $user_details);
+        $template->set('user_details', $user_details, $user_id);
     } else {
         $_POST["avatart"] = $_POST["curr_avatar"];
         insertAboutUserDetails($_POST, $db);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
-        $template->set('user_details', $user_details);
+        $template->set('user_details', $user_details, $user_id);
     }
 } else {
     $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
@@ -55,7 +55,7 @@ function insertAboutUserDetails($data, $db)
                     facebook_link='" . $post_about_details['facebook_link'] . "',
                     twitter_link='" . $post_about_details['twitter_link'] . "',
                     google_link='" . $post_about_details['google_link'] . "' WHERE
-                    id='" . $session->value('user_id') . "'");
+                    id='" . $user_id . "'");
 }
 
 /**
