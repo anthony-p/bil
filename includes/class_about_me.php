@@ -29,7 +29,7 @@ if (isset($_POST['form_aboutme_save'])) {
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
     } else {
-        $_POST["avatart"] = $_POST["curr_avatar"];
+        $_POST["avatar"] = $_POST["curr_avatar"];
         insertAboutUserDetails($_POST, $db, $user_id);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
@@ -44,6 +44,8 @@ $template->set('members_area_page_content', $members_area_page_content);
 
 /**
  * @param $data
+ * @param $db
+ * @param $user_id
  */
 function insertAboutUserDetails($data, $db, $user_id)
 {
