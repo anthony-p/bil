@@ -1,5 +1,7 @@
 <?
 
+session_start();
+
 include_once ('global.php');
 include_once('generate_image_thumbnail.php');
 global $db;
@@ -22,13 +24,13 @@ if (isset($_POST['form_aboutme_save'])) {
         } else {
             $_POST["avatart"] = $_POST["curr_avatart"];
         }
-        insertAboutUserDetails($_POST);
+        insertAboutUserDetails($_POST, $db);
         $template->set('msg_changes_saved', $msg_changes_saved);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
     } else {
         $_POST["avatart"] = $_POST["curr_avatar"];
-        insertAboutUserDetails($_POST);
+        insertAboutUserDetails($_POST, $db);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
     }
@@ -43,9 +45,9 @@ $template->set('members_area_page_content', $members_area_page_content);
 /**
  * @param $data
  */
-function insertAboutUserDetails($data)
+function insertAboutUserDetails($data, $db)
 {
-    $post_about_details = $db->rem_special_chars_array($_POST);
+    $post_about_details = $db->rem_special_chars_array($data);
 
     $db->query("UPDATE bl2_users SET
                     avatar='" . $post_about_details['avatar'] . "',
