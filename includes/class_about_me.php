@@ -7,7 +7,7 @@ include_once('generate_image_thumbnail.php');
 global $db;
 
 define ('PATHINFO_EXTENSION', 4);
-define ('AVATAR_HEIGHT', 240);
+define ('AVATAR_HEIGHT', 200);
 define ('AVATAR_WIDTH', 240);
 
 $user_id = $session->value('user_id');
