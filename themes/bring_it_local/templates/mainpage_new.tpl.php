@@ -161,7 +161,7 @@ global $coupon_url;
                                     <?php echo $row['name'];?>
                                 </a>
                                 <br/>by 
-								<a href="/about_me,page,edit,section,members_area?user_id="<?=$row['id']?>>
+								<a href="/about_me,page,edit,section,members_area?user_id=20">
                                     <?php echo $row['first_name']."  ".$row['last_name'];?>
                                 </a>
                             </p>
