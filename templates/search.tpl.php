@@ -63,7 +63,7 @@
                     <a href="<?php echo isset ($campaign["username"]) ? '/' . $campaign["username"] : '' ?>" class="name-camp">
                         <?php echo isset ($campaign["name"]) ? $campaign["name"] : '' ?>
                     </a>
-                    <br>by <a href="#"><?php echo isset ($campaign["first_name"]) ? $campaign["first_name"] : '' ?> <?php echo isset ($campaign["last_name"]) ? $campaign["last_name"] : '' ?></a>
+                    <br>by <a href="/about_me,page,view,section,<?php echo isset($campaign['id']) ? $campaign['id'] : ''; ?>,user_id,members_area"><?php echo isset ($campaign["first_name"]) ? $campaign["first_name"] : '' ?> <?php echo isset ($campaign["last_name"]) ? $campaign["last_name"] : '' ?></a>
                 </p>
                 <p class="description">
                     <?php echo isset ($campaign["description"]) ? $campaign["description"] : '' ?>
