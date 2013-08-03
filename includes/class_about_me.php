@@ -8,7 +8,8 @@ define ('PATHINFO_EXTENSION', 4);
 define ('AVATAR_HEIGHT', 240);
 define ('AVATAR_WIDTH', 240);
 
-if (empty($session->value('user_id'))) {
+$user_id = $session->value('user_id');
+if (empty($user_id)) {
     header_redirect('login.php');
 }
 
@@ -23,16 +24,16 @@ if (isset($_POST['form_aboutme_save'])) {
         }
         insertAboutUserDetails($_POST);
         $template->set('msg_changes_saved', $msg_changes_saved);
-        $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $session->value('user_id'));
+        $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
     } else {
         $_POST["avatart"] = $_POST["curr_avatar"];
         insertAboutUserDetails($_POST);
-        $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $session->value('user_id'));
+        $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
     }
 } else {
-    $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $session->value('user_id'));
+    $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
     $template->set('user_details', $user_details);
 }
 
