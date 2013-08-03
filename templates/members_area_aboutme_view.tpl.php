@@ -12,11 +12,21 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <br>
 <div>
     <div id="avatar_about_me">
-        <div class="upload_logo"><img src="http://t3.gstatic.com/images?q=tbn:ANd9GcQXkPY0BlCjoorCHkAemUqNxL9tgZsSmI06sTG_xSIxa-kuAws7"/></div>
+        <?php if(!empty($user_details['avatar'])) :?>
+            <div class="upload_logo"><img src="<?=$user_details['avatar']?>"/></div>
+        <?php endif;?>
+    </div>
+    <div>
+        <p>
+            <?php echo isset ($campaign["first_name"]) ? $campaign["first_name"] : '' ?> <?php echo isset ($campaign["last_name"]) ? $campaign["last_name"] : '' ?>
+        </p>
     </div>
     <div id="about_me_content">
         <div>
-            Location : <?=$user_details['city'] . ', ' . $user_details['address']?>
+            <p>
+                Location:
+                <?php echo isset ($campaign["city"]) ? $campaign["city"] : '' ?> <?php echo isset ($campaign["address"]) ? $campaign["address"] : '' ?>
+            </p>
         </div>
         <div>
             Also Find Me on
@@ -37,7 +47,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <?php endif;?>
         </div>
         <div>
-            <?=$user_details['about_me']?>
+            <?php if (!empty($user_details['google_link'])) :?>
+                <?=$user_details['about_me']?>
+            <?php endif; ?>
         </div>
     </div>
 </div>
