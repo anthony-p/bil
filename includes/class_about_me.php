@@ -31,6 +31,7 @@ if (isset($_POST['form_aboutme_save'])) {
     } else {
         $_POST["avatar"] = $_POST["curr_avatar"];
         insertAboutUserDetails($_POST, $db, $user_id);
+        $template->set('msg_changes_saved', $msg_changes_saved);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
     }
