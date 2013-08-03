@@ -3680,10 +3680,8 @@ else
 	{
 		if ($section == 'view')	{
 
-            var_dump($_REQUEST['user_id']);
-            die;
-			if (isset($_GET['user_id'])) {
-		        $userId = $_GET['user_id'];
+			if (isset($_REQUEST['user_id'])) {
+		        $userId = $_REQUEST['user_id'];
 			} else {
                 $userId = $session->value('user_id');
             }
