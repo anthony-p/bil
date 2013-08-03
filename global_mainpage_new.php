@@ -46,34 +46,7 @@
             $adult_cats_query = ' AND (category_id NOT IN (' . $adult_cats_list . ') AND addl_category_id NOT IN (' . $adult_cats_list . '))';
         }
         #Coupons (magento) recent deals
-        $woptions['soap_version'] = SOAP_1_2;
-        $woptions['login'] = $coupon_http_username;
-        $woptions['password'] = $coupon_http_password;
-
-        $proxy = new SoapClient($coupon_url."/index.php/api/soap/?wsdl",$woptions);
-        $sessionId = $proxy->login($coupon_soap_username, $coupon_soap_password);
-
-        $filters = array(
-            'featured' => 1,
-            'status'   => 1
-        );
-
-        $products = $proxy->call($sessionId, 'product.list', array($filters));
-
-        $random_number = mt_rand(0, count($products)-1);
-        $item['name'] = $products[$random_number]['name'];
-        $product_images = $proxy->call($sessionId, 'catalog_product_attribute_media.list', $products[$random_number]['product_id']);
-        foreach($product_images as $product_image)
-        {
-            if(count($product_image['types']))
-                $item['image_url'] = $product_image['url'];
-        }
-        $product_info = $proxy->call($sessionId, 'product.info', $products[$random_number]['product_id']);
-        $item['url'] = $product_info['url_path'];
-        $item;
-
-        $template->set('magento_item', $item);
-        #Coupons (magento) recent deals end.
+         #Coupons (magento) recent deals end.
 
 
         ## PHP Pro Bid v6.00 home page featured auctions

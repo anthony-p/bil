@@ -198,13 +198,13 @@ global $coupon_url;
                 <nav>
                     <ul>
                         <li class="level"><a href="#" id="menu">Browse</a></li>
-                        <li><a href="http://dev2.bringitlocal.com/about_us,page,content_pages">Learn</a></li>
+                        <li><a href="/about_us,page,content_pages">Learn</a></li>
                         <li><a href="/np/npregister.php">Start</a></li>
                     </ul>
                 </nav>
                 <div class="topNav">
-                    <!-- <a onclick="alert('Drag me to the bookmarks bar'); return false;" href="http://dev2.bringitlocal.com?npuser=1" > BringitLocal Bookmarklet</a>-->
-                    <?php //<a onclick="alert('Drag me to the bookmarks bar'); return false;" href="javascript:q=(document.location.href);void(open('http://dev2.bringitlocal.com?npuser=1','_self','resizable,location,menubar,toolbar,scrollbars,status'));" > BringitLocal Bookmarklet</a> ?>
+                    <!-- <a onclick="alert('Drag me to the bookmarks bar'); return false;" href="http://www.bringitlocal.com?npuser=1" > BringitLocal Bookmarklet</a>-->
+                    <?php //<a onclick="alert('Drag me to the bookmarks bar'); return false;" href="javascript:q=(document.location.href);void(open('http://www.bringitlocal.com?npuser=1','_self','resizable,location,menubar,toolbar,scrollbars,status'));" > BringitLocal Bookmarklet</a> ?>
                     <?php global $session; if($session->value('user_id')) echo "<span class='user-log'>Welcome ".$session->value('username')."</span>"."<div class='clear'></div>";?>
 
                     <div class="links-nav"> <a href="<?=$login_link;?>"><?=$login_btn_msg;?></a> <a href="<?=$register_link;?>"><?=$register_btn_msg;?></a>
