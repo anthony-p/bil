@@ -16,7 +16,7 @@ if (empty($user_id)) {
 }
 
 if (isset($_POST['form_aboutme_save'])) {
-
+    var_dump(1);
     if (isset ($_FILES["avatar"]) ) {
         $logo_file_name = validateAvatar();
         if (!empty($logo_file_name)) {
@@ -29,6 +29,7 @@ if (isset($_POST['form_aboutme_save'])) {
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
     } else {
+        var_dump(2);
         $_POST["avatar"] = $_POST["curr_avatar"];
         var_dump($_POST);
         die;
