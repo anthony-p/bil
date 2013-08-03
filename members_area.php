@@ -3681,6 +3681,7 @@ else
 		if ($section == 'view')	{
 
             var_dump($_GET['user_id']);
+            die;
 			if (isset($_GET['user_id'])) {
 		        $userId = $_GET['user_id'];
 			} else {
