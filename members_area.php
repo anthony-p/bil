@@ -3680,7 +3680,7 @@ else
 	{
 		if ($section == 'view')	{
 
-			if (isset($_REQUEST['user_id'])) {
+			if (!empty($_REQUEST['user_id'])) {
 		        $userId = $_REQUEST['user_id'];
 			} else {
                 $userId = $session->value('user_id');
