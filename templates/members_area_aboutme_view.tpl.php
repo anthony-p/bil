@@ -18,14 +18,14 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </div>
     <div>
         <p>
-            <?php echo isset ($campaign["first_name"]) ? $campaign["first_name"] : '' ?> <?php echo isset ($campaign["last_name"]) ? $campaign["last_name"] : '' ?>
+            <?php echo isset ($user_details["first_name"]) ? $user_details["first_name"] : '' ?> <?php echo isset ($user_details["last_name"]) ? $user_details["last_name"] : '' ?>
         </p>
     </div>
     <div id="about_me_content">
         <div>
             <p>
                 Location:
-                <?php echo isset ($campaign["city"]) ? $campaign["city"] : '' ?> <?php echo isset ($campaign["address"]) ? $campaign["address"] : '' ?>
+                <?php echo isset ($user_details["city"]) ? $user_details["city"] : '' ?> <?php echo isset ($user_details["address"]) ? $user_details["address"] : '' ?>
             </p>
         </div>
         <div>
@@ -47,7 +47,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <?php endif;?>
         </div>
         <div>
-            <?php if (!empty($user_details['google_link'])) :?>
+            <?php if (!empty($user_details['about_me'])) :?>
                 <?=$user_details['about_me']?>
             <?php endif; ?>
         </div>
