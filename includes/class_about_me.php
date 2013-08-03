@@ -17,7 +17,7 @@ if (empty($user_id)) {
 
 if (isset($_POST['form_aboutme_save'])) {
     var_dump(1);
-    if (isset ($_FILES["avatar"]) ) {
+    if (!empty ($_FILES["avatar"]) ) {
         $logo_file_name = validateAvatar();
         if (!empty($logo_file_name)) {
             $_POST["avatar"] = $logo_file_name;
