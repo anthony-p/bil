@@ -1,5 +1,5 @@
 <?php if (isset($compaignData["banner"]) && $compaignData["banner"]): ?>
-    <div class="video">
+    <div class="video" style="width: auto;">
         <?
         //var_dump($compaignData);
         if (file_exists(getcwd()."/".$compaignData["banner"])) {
