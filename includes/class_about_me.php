@@ -8,6 +8,10 @@ define ('PATHINFO_EXTENSION', 4);
 define ('AVATAR_HEIGHT', 240);
 define ('AVATAR_WIDTH', 240);
 
+if (empty($session->value('user_id'))) {
+    header_redirect('login.php');
+}
+
 if (isset($_POST['form_aboutme_save'])) {
 
     if (isset ($_FILES["avatar"]) ) {
@@ -22,7 +26,7 @@ if (isset($_POST['form_aboutme_save'])) {
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $session->value('user_id'));
         $template->set('user_details', $user_details);
     } else {
-        $_POST["avatart"] = $_POST["curr_avatart"];
+        $_POST["avatart"] = $_POST["curr_avatar"];
         insertAboutUserDetails($_POST);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $session->value('user_id'));
         $template->set('user_details', $user_details);

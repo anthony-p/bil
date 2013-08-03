@@ -3686,6 +3686,10 @@ else
                 $userId = $session->value('user_id');
             }
 
+            if (empty($userId)) {
+                header_redirect('login.php');
+            }
+
 			$user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $userId);
 
             if (empty($user_details)) {
