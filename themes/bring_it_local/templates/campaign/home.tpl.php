@@ -84,7 +84,7 @@
 </aside>
 <aside class="donation">
   <div class="inner">
-      <p>Help make it happen! Support <span><?php echo $compaignData['name']; ?> -Finance the move fund drive</p></span>
+      <p>Help make it happen! Support <span><?php echo $compaignData['name']; ?></p></span>
       <a href="donate.php?np_userid=<?php echo $compaignData['user_id']; ?>" class="donation">
           <span class="uper">Donate Now</span>
           <span>make a donation</span>
