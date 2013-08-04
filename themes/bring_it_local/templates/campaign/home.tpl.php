@@ -20,7 +20,7 @@
         (isset($compaignData['url']) && $compaignData['url'])):
         ?>
         <div class="inner">
-            <h5>Also find this Campaign On:</h5>
+            <h5><?=MSG_FIND_THIS_CAMPAIGN?>:</h5>
             <ul>
                 <?php if (isset($compaignData['facebook_url']) && $compaignData['facebook_url']): ?>
                     <li class="a_facebook">

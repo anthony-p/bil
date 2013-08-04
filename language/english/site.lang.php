@@ -1381,6 +1381,7 @@ define ('MSG_SHIPPING_LOCATION_UNSUPPORTED_WARNING_SC', '<b>Error</b>: Purchase 
 define ('MSG_SHIPPING_METHOD', 'Shipping Method');
 define ('MSG_MM_SC_SETTS', 'Shopping Cart Settings');
 define ('MSG_FINALIZE_INVOICE', 'Finalize Invoice');
+define ('MSG_FIND_THIS_CAMPAIGN', 'Also find this Campaign On');
 
 //define ('', '');
 ?>
