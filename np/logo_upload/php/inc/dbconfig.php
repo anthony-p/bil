@@ -1,12 +1,14 @@
 <?php 
 switch($_SERVER['SERVER_NAME']) {
-    case 'local.bringit':
+      case 'localhost':
         $db_host = 'localhost'; 
         $db_username = 'root'; 
-        $db_password = 'toor'; 
+        $db_password = 'johilo9-4'; 
         define('DB_PREFIX', 'probid_'); ## Do not edit ! 
         define('SESSION_PREFIX', 'probid_'); 
-        $db_name = 'bringit_auction';
+        $db_name = 'devbrin';
+    break;
+    break;
     break;
     case 'dev.bringitlocal.com':
          $db_host = 'localhost'; 
@@ -21,7 +23,7 @@ switch($_SERVER['SERVER_NAME']) {
         $coupon_soap_username = 'glpc';
         $coupon_soap_password = 'glpc2012';
     break;
-	case 'dev2.bringitlocal.com':
+	 case 'dev2.bringitlocal.com':
         $db_host = 'localhost'; 
         $db_username = 'dev2brin_user'; 
         $db_password = '^Xqh#^sqT%xC'; 

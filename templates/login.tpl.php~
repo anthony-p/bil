@@ -17,7 +17,8 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 
 <div class="login-cont">
-    
+    <p><span>ATTENTION:</span> This page is for individuals who want to register for the first time or sign in to their account.<br />
+    If you are trying to enroll as a <span>non-profit organization</span> or logon to manage your <span>organization's</span> account you need to go <a href="/np/nplogin.php">here </a></p>
    <div class="log-form">
        <div class="left">
            <h2> <?=MSG_NEW_TO;?> <?=$setts['sitename'];?><?=MSG_REGISTRATION_MSG;?>?</h2>

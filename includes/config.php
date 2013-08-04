@@ -1,12 +1,13 @@
 <?php 
 switch($_SERVER['SERVER_NAME']) {
-    case 'local.bringit':
+   case 'localhost':
         $db_host = 'localhost'; 
         $db_username = 'root'; 
-        $db_password = 'toor'; 
+        $db_password = 'johilo9-4'; 
         define('DB_PREFIX', 'probid_'); ## Do not edit ! 
         define('SESSION_PREFIX', 'probid_'); 
-        $db_name = 'bringit_auction';
+        $db_name = 'devbrin';
+    break;
     break;
     case 'dev.bringitlocal.com':
          $db_host = 'localhost'; 

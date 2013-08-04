@@ -11,3 +11,5 @@ online_users.txt
 .htaccess
 includes/config.php
 /includes/config.php
+np/uplimg/
+*config.php
