@@ -25,7 +25,7 @@
             <div class="post first">
                 <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
                 <div class="posted-mess">
-                    <a href="" >
+                    <a href="/about_me,page,view,section,<?php echo isset($funder['id']) ? $funder['id'] : ''; ?>,user_id,members_area" >
                         <?php
                         echo ($funder["user_id"] != 0) ?
                             $funder["first_name"] . " " . $funder["last_name"] :
