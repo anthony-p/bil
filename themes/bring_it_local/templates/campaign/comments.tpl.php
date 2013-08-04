@@ -16,10 +16,15 @@
       </div>
       <?php foreach($comments as $comment): ?>
           <?php
-          if ($comment["first_name"] && $comment["last_name"])
+          if ($comment["first_name"] && $comment["last_name"]) {
                 $name = $comment["first_name"]." ".$comment["last_name"];
-          else
-              $name = "Anonymous";
+                $link_user = "/about_me,page,view,section," . $comment['id'] . ",user_id,members_area";
+          } else {
+                $name = "Anonymous";
+                $link_user = "#";
+          }
+
+
 
           $day = time() - $comment["create_at"];
           $day = floor($day/86400);
@@ -37,7 +42,7 @@
           <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
           <div class="posted-mess">
               <p>
-                  <a href=""><?=$name ?></a> posted a n announcement <?=$day?>
+                  <a href="<?=$link_user?>"><?=$name ?></a> posted a n announcement <?=$day?>
                   <?php /*<?=$name ?> posted an announcement <?=$day?> */ ?>
                   <?=$comment["comment"]?>
               </p>
