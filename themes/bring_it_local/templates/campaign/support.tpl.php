@@ -64,55 +64,55 @@
             </li>
         </ul>
     </div>
-    <div class="row ">
-            <div class="viewall">
-            <div class="text">
-                <h5>Local Merchants</h5>
-                <div class="slide">
-                    <ul><li class="border"></li></ul>
-                </div>
-            </div>
-            <a href=""> see all</a>
-        </div>
-        <ul class="rows-list merchants">
-            <li>
-                <div class="img">
-                    <img src="themes/bring_it_local/img/test3.png" />
-                </div>
-                <div class="info">
-                    <h3>Boxing For Health - Kids & Teen Classes </h3>
-                    <span>$40.00</span>
-                </div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="themes/bring_it_local/img/test3.png" />
-                </div>
-                <div class="info">
-                    <h3>Boxing For Health - Kids & Teen Classes </h3>
-                    <span>$40.00</span>
-                </div>
-            </li>
-            <li>
-                <div class="img">
-                    <img src="themes/bring_it_local/img/test3.png" />
-                </div>
-                <div class="info">
-                    <h3>Boxing For Health - Kids & Teen Classes </h3>
-                    <span>$40.00</span>
-                </div>
-            </li>
-            <li class="last">
-                <div class="img">
-                    <img src="themes/bring_it_local/img/test3.png" />
-                </div>
-                <div class="info">
-                    <h3>Boxing For Health - Kids & Teen Classes </h3>
-                    <span>$40.00</span>
-                </div>
-            </li>
-        </ul>
-    </div>
+<!--    <div class="row ">-->
+<!--            <div class="viewall">-->
+<!--            <div class="text">-->
+<!--                <h5>Local Merchants</h5>-->
+<!--                <div class="slide">-->
+<!--                    <ul><li class="border"></li></ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <a href=""> see all</a>-->
+<!--        </div>-->
+<!--        <ul class="rows-list merchants">-->
+<!--            <li>-->
+<!--                <div class="img">-->
+<!--                    <img src="themes/bring_it_local/img/test3.png" />-->
+<!--                </div>-->
+<!--                <div class="info">-->
+<!--                    <h3>Boxing For Health - Kids & Teen Classes </h3>-->
+<!--                    <span>$40.00</span>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="img">-->
+<!--                    <img src="themes/bring_it_local/img/test3.png" />-->
+<!--                </div>-->
+<!--                <div class="info">-->
+<!--                    <h3>Boxing For Health - Kids & Teen Classes </h3>-->
+<!--                    <span>$40.00</span>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="img">-->
+<!--                    <img src="themes/bring_it_local/img/test3.png" />-->
+<!--                </div>-->
+<!--                <div class="info">-->
+<!--                    <h3>Boxing For Health - Kids & Teen Classes </h3>-->
+<!--                    <span>$40.00</span>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="last">-->
+<!--                <div class="img">-->
+<!--                    <img src="themes/bring_it_local/img/test3.png" />-->
+<!--                </div>-->
+<!--                <div class="info">-->
+<!--                    <h3>Boxing For Health - Kids & Teen Classes </h3>-->
+<!--                    <span>$40.00</span>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
     <div class="row ">
            <div class="viewall">
             <div class="text">
