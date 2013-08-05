@@ -52,13 +52,17 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </tr>
 	<tr class="c1">
 
-      <td colspan="1"><textarea id="aboutme_page_content" name="about_me" style="width: 400px; height: 200px; overflow: hidden;"><?=$user_details['about_me'];?></textarea>
-        	<script>
+      <td colspan="1">
+          <textarea class="ckeditor" id="aboutme_page_content" name="about_me" style="width: 400px; height: 200px; overflow: hidden;">
+              <?=$user_details['about_me'];?>
+          </textarea>
+        <!--	<script>
 				var oEdit_1 = new InnovaEditor("oEdit_1");
 				oEdit_1.width="100%";//You can also use %, for example: oEdit1.width="100%"
 				oEdit_1.height=100;
 				oEdit_1.REPLACE("aboutme_page_content");//Specify the id of the textarea here
-			</script></td>
+			</script>-->
+      </td>
    </tr>
 <!--      <tr class="c5">
          <td><img src="themes/<?/*=$setts['default_theme'];*/?>/img/pixel.gif" width="150" height="1"></td>
@@ -72,7 +76,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <script language="javascript">
     /* == == == == == == == == == == == == == == == == == == == == == == ==*/
-    var editor = new TINY.editor.edit('editor', {
+ /*   var editor = new TINY.editor.edit('editor', {
         id: 'aboutme_page_content',
         width: 584,
         height: 175,
@@ -92,7 +96,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         footerclass: 'tinyeditor-footer',
         toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},
         resize: {cssclass: 'resize'}
-    });
+    });*/
     /* == == == == == == == == ==
     == == == == == == == == == == == == == ==*/
 </script>

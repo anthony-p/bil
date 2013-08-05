@@ -25,6 +25,7 @@ global $coupon_url;
     <script language=JavaScript src='/scripts/jquery/pagination.js'></script>
     <script language=JavaScript src='/scripts/jquery/sort.js'></script>
     <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
+    <script language=JavaScript src='/ckeditor/ckeditor.js'></script>
 
     <style type="text/css">
         <!--
