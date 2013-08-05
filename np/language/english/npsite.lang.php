@@ -2304,7 +2304,7 @@ define ('AMSG_UNIFIED_MAIN_PAGE_EXPL', 'Check the checkbox above if you wish for
 home pages of either of the softwares.');
 define ('AMSG_PPS_DEFAULT_SKIN', 'Unified Main Page Skin');
 define ('AMSG_PPS_DEFAULT_SKIN_EXPL', 'If unified main page is enabled, choose which skin to be applied to it.');
-de
+
 // define('')
 
 ?>
