@@ -411,8 +411,5 @@ define ('GMSG_ALERTPAY_SECURITY_CODE', 'AlertPay IPN Encrypted Security Code');
 define ('GMSG_ALERTPAY_CALLBACK', 'AlertPay Callback (Alert) URL');
 define ('GMSG_ALERTPAY_DESCRIPTION', 'Click on the button on the right to proceed to AlertPay');
 define ('GMSG_CANCEL', 'Cancel');
-define ('GMSG_NEXT', 'NEXT');
-define ('GMSG_PREV', 'PREV');
-define ('GMSG_SAVE_CHANGES', 'SAVE CHANGES');
 define ('', '');
 ?>
