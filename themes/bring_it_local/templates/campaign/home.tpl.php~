@@ -20,7 +20,7 @@
         (isset($compaignData['url']) && $compaignData['url'])):
         ?>
         <div class="inner">
-            <h5><?=MSG_FIND_THIS_CAMPAIGN?>:</h5>
+            <h5>Also find this Campaign On:</h5>
             <ul>
                 <?php if (isset($compaignData['facebook_url']) && $compaignData['facebook_url']): ?>
                     <li class="a_facebook">
@@ -84,7 +84,7 @@
 </aside>
 <aside class="donation">
   <div class="inner">
-      <p>Help make it happen! Support <span><?php echo $compaignData['name']; ?></p></span>
+      <p>Help make it happen! Support <span><?php echo $compaignData['name']; ?> -Finance the move fund drive</p></span>
       <a href="donate.php?np_userid=<?php echo $compaignData['user_id']; ?>" class="donation">
           <span class="uper">Donate Now</span>
           <span>make a donation</span>
