@@ -5178,6 +5178,8 @@ else
 
         phone='" . $_POST["phone"] . "',
 
+        orgtype='" . $_POST["orgtype"] . "',
+
         pg_paypal_email='" . $_POST["pg_paypal_email"] . "',
 
         pg_paypal_first_name='" . $_POST["pg_paypal_first_name"] . "',
