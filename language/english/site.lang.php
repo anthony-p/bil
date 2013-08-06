@@ -1421,6 +1421,11 @@ define ('MSG_SEND', 'Send');
 define ('MSG_BANNER_IMAGE', 'Banner Image');
 define ('MSG_VIDEO_YOUTUBE', 'Video (Youtube or Vimeo)');
 
+define ('MSG_BROWSE', 'Browse');
+define ('MSG_LEARN', 'Learn');
+define ('MSG_START', 'Start');
+define ('MSG_MY_DEALS', 'My Deals');
+
 
 
 //define ('', '');
