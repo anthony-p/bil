@@ -1383,5 +1383,12 @@ define ('MSG_MM_SC_SETTS', 'Shopping Cart Settings');
 define ('MSG_FINALIZE_INVOICE', 'Finalize Invoice');
 define ('MSG_FIND_THIS_CAMPAIGN', 'Also find this Campaign On');
 
+
+
+define ('MSG_PG_PAYPAL_EMAIL_ADDRESS', 'PayPal Email Address');
+define ('MSG_PG_PAYPAL_FIRST_NAME', 'PayPal Account First Name');
+define ('MSG_PG_PAYPAL_LAST_NAME', 'PayPal Account Last Name');
+
+
 //define ('', '');
 ?>

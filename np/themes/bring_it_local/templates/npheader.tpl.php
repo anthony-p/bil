@@ -154,9 +154,9 @@ global $coupon_url;
                         <a href="<?=$register_link;?>">member area</a>
                         <?php
 
-                        if($session->value('user_id')):?>
-                            <a class="last" href="<?php global $coupon_url; echo $coupon_url."/customer/account/";?>">My Deals</a>
-                        <?php endif;?>
+//                        if($session->value('user_id')):?>
+<!--                            <a class="last" href="--><?php //global $coupon_url; echo $coupon_url."/customer/account/";?><!--">My Deals</a>-->
+<!--                        --><?php //endif;?>
                         <!--                    <a class="last" href="--><?//=process_link('content_pages', array('page' => 'contact_us'));?><!--">--><?//=MSG_BTN_CONTACT_US;?><!--</a>-->
                         <!--
 		<? if ($setts['enable_stores']) { ?>
