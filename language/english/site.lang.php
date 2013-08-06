@@ -1417,6 +1417,7 @@ define ('MSG_POST_AN_UPDATE_TO_CAMPAIGN', 'Post an update to your campaign');
 define ('MSG_REWARDS', 'REWARDS');
 define ('MSG_REWARDS_HERE', 'rewards will go here');
 define ('MSG_YOUT_COMMENT', 'Your comments');
+define ('MSG_SEND', 'Send');
 
 
 
