@@ -26,7 +26,6 @@
                 <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
                 <div class="posted-mess">
                     <?php if  ($funder["user_id"] != 0) : ?>
-                        "/about_me.php?user_id=" . $comment['id']
                         <a href="/about_me.php?user_id=<?php echo isset($funder['id']) ? $funder['id'] : ''; ?>" >
                             <?php echo $funder["first_name"] . " " . $funder["last_name"]; ?>
                         </a>
