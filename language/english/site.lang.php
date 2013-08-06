@@ -1408,6 +1408,16 @@ define ('MSG_ACTIVITY_STATUS', 'Activity status');
 define ('MSG_ACTIVITY_STATUS_LIVE', 'Live');
 define ('MSG_ACTIVITY_STATUS_DRAFT', 'Draft');
 define ('MSG_ACTIVITY_STATUS_CLOSED', 'Closed');
+define ('MSG_NEXT', 'Next');
+define ('MSG_PREV', 'Prev');
+define ('MSG_WEBSITE_ADDRESS', 'Dress up your new campaign');
+define ('MSG_UPLOAD_IMAGE_INFORMATION', 'For best results upload an image that is not more than 600x400 pixels wide');
+define ('MSG_UPDATES', 'UPDATES');
+define ('MSG_POST_AN_UPDATE_TO_CAMPAIGN', 'Post an update to your campaign');
+define ('MSG_REWARDS', 'REWARDS');
+define ('MSG_REWARDS_HERE', 'rewards will go here');
+define ('MSG_YOUT_COMMENT', 'Your comments');
+
 
 
 //define ('', '');
