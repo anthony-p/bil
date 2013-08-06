@@ -2305,6 +2305,12 @@ home pages of either of the softwares.');
 define ('AMSG_PPS_DEFAULT_SKIN', 'Unified Main Page Skin');
 define ('AMSG_PPS_DEFAULT_SKIN_EXPL', 'If unified main page is enabled, choose which skin to be applied to it.');
 
+define ('MSG_NEXT', 'Next');
+define ('MSG_PREV', 'Prev');
+define ('MSG_UPLOAD_IMAGE_INFORMATION', 'For best results upload an image that is not more than 600x400 pixels wide');
+define ('MSG_BANNER_IMAGE', 'Banner Image');
+define ('MSG_VIDEO_YOUTUBE', 'Video (Youtube or Vimeo)');
+
 // define('')
 
 ?>

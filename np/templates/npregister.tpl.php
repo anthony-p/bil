@@ -470,7 +470,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     </div>
     <div class="next">
         <div class="right">
-            <input type="button" onclick="nextStepShow('p_account')" value="Next" class="next_btn" />    </div>
+            <input type="button" onclick="nextStepShow('p_account')" value="<?=MSG_NEXT?>" class="next_btn" />    </div>
         </div>
     </div>
 
@@ -616,8 +616,8 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
                 <div class="next">
                     <div class="right">
-                        <input type="button" onclick="prevStepShow('p_projectDetail')"  value="Prev" class="next_btn" />
-                        <input type="button" onclick="nextStepShow('p_projectDetail')" value="Next" class="next_btn" />
+                        <input type="button" onclick="prevStepShow('p_projectDetail')"  value="<?=MSG_PREV?>" class="next_btn" />
+                        <input type="button" onclick="nextStepShow('p_projectDetail')" value="<?=MSG_NEXT?>" class="next_btn" />
                     </div>
                 </div>
         </div>
@@ -672,9 +672,9 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
         <div class="account-row">
             <div class="upload">
-                <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label>Banner Image</label>
+                <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label><?=MSG_BANNER_IMAGE?></label>
                 <div class="clear"></div>
-                <input type="radio" class="banner_type" id="banner_type_video" name="banner_type" value="1" ><label>Video (Youtube or Vimeo)</label>
+                <input type="radio" class="banner_type" id="banner_type_video" name="banner_type" value="1" ><label><?=MSG_VIDEO_YOUTUBE?></label>
             </div>
             <div class="clear"></div>
             <br />
@@ -688,7 +688,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 <input type="button" id="loadVideo" value="Get">
             </div>
             <div class="banners_list">
-             <span> For best results upload an image that is not more than 600x400 pixels wide.</span>
+             <span> <?=MSG_UPLOAD_IMAGE_INFORMATION?>.</span>
                 <div id="prev_banner"></div>
             </div>
         </div>
@@ -768,8 +768,8 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
             <div class="next">
                 <div class="right">
-                    <input type="button" onclick="prevStepShow('p_projectEdit')"  value="Prev" class="next_btn" />
-                    <input type="button" onclick="nextStepShow('p_projectEdit')" value="Next" class="next_btn" />
+                    <input type="button" onclick="prevStepShow('p_projectEdit')"  value="<?=MSG_PREV?>" class="next_btn" />
+                    <input type="button" onclick="nextStepShow('p_projectEdit')" value="<?=MSG_NEXT?>" class="next_btn" />
                 </div>
             </div>
 
