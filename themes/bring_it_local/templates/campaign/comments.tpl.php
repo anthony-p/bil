@@ -18,7 +18,7 @@
           <?php
           if ($comment["first_name"] && $comment["last_name"]) {
                 $name = $comment["first_name"]." ".$comment["last_name"];
-                $link_user = "/about_me,page,view,section," . $comment['id'] . ",user_id,members_area";
+                $link_user = "/about_me.php?user_id=" . $comment['id'] ;
           } else {
                 $name = "Anonymous";
                 $link_user = "#";
