@@ -18,11 +18,12 @@ include_once ('includes/class_shop.php');
 
 include_once ('global_header.php');
 
-if (!empty($_REQUEST['user_id'])) {
-    $userId = $_REQUEST['user_id'];
+if (!empty($_GET['user_id'])) {
+    $userId = $_GET['user_id'];
 } else {
     $userId = null;
 }
+var_dump($userId);
 
 if (empty($userId)) {
     header_redirect('login.php');
