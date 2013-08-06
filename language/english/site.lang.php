@@ -1388,6 +1388,26 @@ define ('MSG_FIND_THIS_CAMPAIGN', 'Also find this Campaign On');
 define ('MSG_PG_PAYPAL_EMAIL_ADDRESS', 'PayPal Email Address');
 define ('MSG_PG_PAYPAL_FIRST_NAME', 'PayPal Account First Name');
 define ('MSG_PG_PAYPAL_LAST_NAME', 'PayPal Account Last Name');
+define ('MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL', 'Enter a valid paypal email to which the funds collected will be sent.');
+define ('MSG_PG_PAYPAL_FIRST_NAME_EXPL', 'Enter first name used in the paypal account to which the email address belongs.');
+define ('MSG_PG_PAYPAL_LAST_NAME_EXPL', 'Enter last name used in the paypal account to which the email address belongs.');
+define ('MSG_PROJECTURL_EXPLANATION', 'Example: <strong>CentralHighSchool</strong> (Don\'t use your email address) <br /><strong>NOTE: </strong>Your Project URL will form the url (web address) to your community page. Make sure it is simple and easy to remember. <strong>IMPORTANT: </strong>Make sure it is one word with no spaces or special characters');
+define ('MSG_CREATE_PROJECT_CHOOSE_CATEGORY', 'Choose category');
+define ('MSG_CREATE_PROJECT_CAMPAIGN_BASIC', 'Campaign Basics');
+define ('MSG_CREATE_PROJECT_CAMPAIGN_BASIC_EXPLANATION', '(* means required before you \'Go Live\') Add all the basic facts about your campaign here. Remember that your campaign title and short description show up both on your campaign card and your campaign profile page.');
+define ('MSG_CREATE_PROJECT_TITLE', 'Project Title');
+define ('MSG_CREATE_PROJECT_CAMPAIGN_BASIC_EXPLANATION', '(* means required before you \'Go Live\') Add all the basic facts about your campaign here. Remember that your campaign title and short description show up both on your campaign card and your campaign profile page.');
+define ('MSG_CREATE_PROJECT_SHORT_DESCRIPTION', 'Short description');
+define ('MSG_CREATE_PROJECT_QUESTION_FOUNDRAISING_GOAL', 'What is your fundraising goal?');
+define ('MSG_WEBSITE_ADDRESS_INSTRUCTIONS', 'Enter your web address<br>(optional)');
+define ('MSG_WEBSITE_ADDRESS_INSTRUCTIONS2', 'Enter your web address in the format - www.myaddress.com');
+define ('MSG_FACEBOOK_PAGE_INSTRUCTIONS', 'Enter your facebook page<br>(optional)');
+define ('MSG_TWITTER_PAGE_INSTRUCTIONS', 'Enter your twitter page<br>(optional)');
+define ('MSG_LOGO_DESC', 'Upload your logo! (optional) - it will display on your campaign page');
+define ('MSG_ACTIVITY_STATUS', 'Activity status');
+define ('MSG_ACTIVITY_STATUS_LIVE', 'Live');
+define ('MSG_ACTIVITY_STATUS_DRAFT', 'Draft');
+define ('MSG_ACTIVITY_STATUS_CLOSED', 'Closed');
 
 
 //define ('', '');
