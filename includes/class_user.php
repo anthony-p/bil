@@ -451,7 +451,7 @@ class user extends custom_field
     function extended_update_bl2_users($user_id, $user_details, $page_handle)
     {
         try{
-            var_dump($user_details); exit;
+//            var_dump($user_details); exit;
 
             $prefix = "bl2_";
 
@@ -525,6 +525,8 @@ class user extends custom_field
 //            }
 
             $sql_update_query .= " WHERE id=" . $user_id;
+
+            var_dump($sql_update_query);
 
             $sql_update_user = $this->query($sql_update_query);
 
@@ -948,6 +950,27 @@ class user extends custom_field
 					break;
 			}
 		}
+
+		return $display_output;
+	}
+
+	function direct_payment_data($user_details)
+	{
+		(string) $display_output = null;
+        $background = 'c1';
+
+        $display_output .= '<tr class="' . $background . '"> '.
+            '	<td>' . GMSG_PAYPAL_FIRST_NAME . '</td> '.
+            '	<td><input name="pg_paypal_first_name" type="text" value="' . $user_details['pg_paypal_first_name'] . '" size="50"></td> '.
+            '</tr> ';
+        $display_output .= '<tr class="' . $background . '"> '.
+            '	<td>' . GMSG_PAYPAL_LAST_NAME . '</td> '.
+            '	<td><input name="pg_paypal_last_name" type="text" value="' . $user_details['pg_paypal_last_name'] . '" size="50"></td> '.
+            '</tr> ';
+        $display_output .= '<tr class="' . $background . '"> '.
+            '	<td>' . GMSG_PAYPAL_EMAIL . '</td> '.
+            '	<td><input name="pg_paypal_email" type="text" value="' . $user_details['pg_paypal_email'] . '" size="50"></td> '.
+            '</tr> ';
 
 		return $display_output;
 	}
