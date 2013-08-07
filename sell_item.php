@@ -26,6 +26,9 @@ if ($session->value('user_id'))
 	$user_details = $db->get_sql_row("SELECT * FROM
 		" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
 $item_details['npuser_id'] = $user_details['npuser_id'];
+	$bl2_user_details = $db->get_sql_row("SELECT * FROM
+		bl2_users WHERE id=" . $session->value('user_id'));
+$item_details['npuser_id'] = $user_details['npuser_id'];
 
 }
 
