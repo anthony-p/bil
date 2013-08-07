@@ -952,6 +952,27 @@ class user extends custom_field
 		return $display_output;
 	}
 
+	function direct_payment_data($user_details)
+	{
+		(string) $display_output = null;
+        $background = 'c1';
+
+        $display_output .= '<tr class="' . $background . '"> '.
+            '	<td>' . GMSG_PAYPAL_FIRST_NAME . '</td> '.
+            '	<td><input name="pg_paypal_first_name" type="text" value="' . $user_details['pg_paypal_first_name'] . '" size="50"></td> '.
+            '</tr> ';
+        $display_output .= '<tr class="' . $background . '"> '.
+            '	<td>' . GMSG_PAYPAL_LAST_NAME . '</td> '.
+            '	<td><input name="pg_paypal_last_name" type="text" value="' . $user_details['pg_paypal_last_name'] . '" size="50"></td> '.
+            '</tr> ';
+        $display_output .= '<tr class="' . $background . '"> '.
+            '	<td>' . GMSG_PAYPAL_EMAIL . '</td> '.
+            '	<td><input name="pg_paypal_email" type="text" value="' . $user_details['pg_paypal_email'] . '" size="50"></td> '.
+            '</tr> ';
+
+		return $display_output;
+	}
+
 	function birthdate_box($variables_array)
 	{
 		(string) $display_output = null;
