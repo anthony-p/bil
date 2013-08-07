@@ -3409,3 +3409,9 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 #browsePartners .searchBox .selectME{float:left;}
 #browsePartners  #arrowImg, #categories #arrowImg{margin-top: -14px;}
+
+
+.about-me_block{width:800px; margin: 0 auto;}
+#avatar_about_me{float:left; width:200px;}
+#avatar_about_me .upload_logo img{border: 1px solid #dedede; border-radius: 8px;}
+#about_me_content{width:580px; float: right;}
