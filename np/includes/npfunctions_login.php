@@ -6,7 +6,7 @@
 ##-------------------------------------------------------------##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 #################################################################
-
+var_dump('login'); die;
 function login_user ($username, $password, $redirect_url = '', $admin_login = false)
 {
 	global $db, $setts, $signup_fee;
