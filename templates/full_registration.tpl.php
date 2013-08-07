@@ -188,7 +188,7 @@ function fetchstate($statecode){
 <?=$banned_email_output;?>
 <?=$display_formcheck_errors;?>
 <?=$check_voucher_message;?>
-
+<?=var_dump($register_post_url); die;?>
 <form action="<?=$register_post_url;?>" method="post" name="registration_form" class="registrationForm">
 <input type="hidden" name="operation" value="submit">
 <input type="hidden" name="do" value="<?=$do;?>">
