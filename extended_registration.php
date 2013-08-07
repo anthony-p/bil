@@ -95,6 +95,8 @@ include_once ('includes/functions_login.php');
 
                 var_dump($_SESSION);
                 echo '<br /><br />';
+                var_dump($session->value('user_id'));
+                echo '<br /><br />';
 
                 $user_id = $user->extended_update($session->value('user_id'), $_POST, $page_handle);
 
