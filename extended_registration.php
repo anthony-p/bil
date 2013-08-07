@@ -93,12 +93,10 @@ include_once ('includes/functions_login.php');
                 $form_submitted = TRUE;## PHP Pro Bid v6.00 atm we wont create any emails either until we decide how many ways of registration we have.
                 (string) $register_success_message = "You have updated your account successfully";
 
-                var_dump($_SESSION);
-                echo '<br /><br />';
-                var_dump($session->value('user_id'));
-                echo '<br /><br />';
-
-                $user_id = $user->extended_update($session->value('user_id'), $_POST, $page_handle);
+                $user_id = $user->extended_update_bl2_users(
+                    $session->value('user_id'), $_POST, $page_handle
+                );
+//                $user_id = $user->extended_update($session->value('user_id'), $_POST, $page_handle);
 
                 $template->set('register_success_header', header5("Update User Account"));## PHP Pro Bid v6.00 add signup fee procedure here.
 		
