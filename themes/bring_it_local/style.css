@@ -3410,7 +3410,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #browsePartners .searchBox .selectME{float:left;}
 #browsePartners  #arrowImg, #categories #arrowImg{margin-top: -14px;}
 
-.about-me_block{width:800px; margin: 0 auto;}
+.about-me_block{width:900px; margin: 0 auto;}
 #avatar_about_me{float:left; width:240px;}
 #avatar_about_me .upload_logo{border: 1px solid #dedede; border-radius: 8px; width:240px; height: 180px;overflow: hidden;}
 #avatar_about_me .upload_logo img{height:100%; width:100%;}
