@@ -36,7 +36,7 @@
           }else{
               $day =$day.' days ago<br />';
           }
-            var_dump($comment);
+          var_dump($comment);
           ?>
       <div class="post first">
           <div class="user-photo">
