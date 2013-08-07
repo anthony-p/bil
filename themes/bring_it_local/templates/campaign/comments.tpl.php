@@ -39,7 +39,14 @@
 
           ?>
       <div class="post first">
-          <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
+          <div class="user-photo">
+              <?php if (!empty($comment['avatar'])) {
+                  echo '<img src="'.$comment['avatar'].'" />';
+              } else {
+                  echo '<img src="themes/bring_it_local/img/incognito.png" />';
+              }
+              ?>
+          </div>
           <div class="posted-mess">
               <p>
                   <a href="<?=$link_user?>"><?=$name ?></a> <?=MSG_POSTED_A_COMMENT?> <?=$day?>
