@@ -93,6 +93,7 @@ include_once ('includes/functions_login.php');
                 $form_submitted = TRUE;## PHP Pro Bid v6.00 atm we wont create any emails either until we decide how many ways of registration we have.
                 (string) $register_success_message = "You have updated your account successfully";
 
+                $_POST["extended_registration"] = true;
                 $user_id = $user->extended_update_bl2_users(
                     $session->value('user_id'), $_POST, $page_handle
                 );
