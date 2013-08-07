@@ -46,7 +46,7 @@ else if (!$session->value('is_seller'))
 }
 
 else if(!$session->value('extended_registration') &&
-    (isset($user_details) && $user_details["extended_registration"]))
+    !(isset($user_details) && $user_details["extended_registration"]))
 {
     header_redirect('extended_registration.php?redirect=sell_item');
 }
