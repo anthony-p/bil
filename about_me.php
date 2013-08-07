@@ -23,7 +23,6 @@ if (!empty($_GET['user_id'])) {
 } else {
     $userId = null;
 }
-var_dump($userId);
 
 if (empty($userId)) {
     header_redirect('login.php');
