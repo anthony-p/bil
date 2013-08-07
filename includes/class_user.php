@@ -524,7 +524,7 @@ class user extends custom_field
 //                $sql_update_query .= ", tax_apply_exempt=1";
 //            }
 
-            $sql_update_query .= " WHERE user_id=" . $user_id;
+            $sql_update_query .= " WHERE id=" . $user_id;
 
             $sql_update_user = $this->query($sql_update_query);
 
@@ -553,8 +553,8 @@ class user extends custom_field
     {
         try{
             $prefix = "bl2_";
-            $user_info = $this->get_sql_row("SELECT username FROM
-            			" . $prefix . "users WHERE user_id=" . $user_id);
+            $user_info = $this->get_sql_row("SELECT * FROM
+            			" . $prefix . "users WHERE id=" . $user_id);
             return $user_info ? $user_info : null;
         } catch (Exception $e) {
             file_put_contents('user.log', $e->getMessage());
