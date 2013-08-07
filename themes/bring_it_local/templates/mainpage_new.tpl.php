@@ -100,7 +100,7 @@ global $coupon_url;
 <div class="content">
        <div class="p-contain">
            <p>Community crowdfunding<br/>
-            <span>Donations, auctions, gift certificates, click through shopping</span>
+            <span>Donations, auctions, click through shopping</span>
            </p>
        </div>
         <div class="content-buttons">
@@ -173,7 +173,7 @@ global $coupon_url;
                            <a href="" class="location"><?php echo $row['city'];?></a>
                         </div>
                         <div class="campaign-details">
-                            <span class="price">$<?php echo $row['payment'];?></span>
+                            <span class="price"><?php echo $row['payment'];?>$</span>
                             <span class="day">
 							<?php $days=round(($row['end_date']-time())/86400); 
 							    if($days>0){echo $days."<span>days left</span>"; }
