@@ -241,15 +241,15 @@ if ($globalads=="1")## featured ads
     <?php if (isset($compaigns["logo"]) && $compaigns["logo"]): ?>
     <div class="left"><img src="<? echo $compaigns["logo"];?>" /></div>
     <div class="right">
-        <h2><? echo $compaigns["name"];?></h2>
-        <a href="" class="location"><? echo $compaigns["city"];?></a>
+        <h2><? echo $compaigns["project_title"];?></h2>
+      <!--  <a href="" class="location"><?/* echo $compaigns["city"];*/?></a>-->
         <div class="clear"></div>
         <p><? echo $compaigns["description"];?></p>
     </div>
     <?php else: ?>
     <div class="right" style="float: left">
-        <h2><? echo $compaigns["name"];?></h2>
-        <a href="" class="location"><? echo $compaigns["city"];?></a>
+        <h2><? echo $compaigns["project_title"];?></h2>
+     <!--   <a href="" class="location"><?/* echo $compaigns["city"];*/?></a>-->
         <div class="clear"></div>
         <p><? echo $compaigns["description"];?></p>
     </div>

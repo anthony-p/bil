@@ -3410,8 +3410,15 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #browsePartners .searchBox .selectME{float:left;}
 #browsePartners  #arrowImg, #categories #arrowImg{margin-top: -14px;}
 
-
 .about-me_block{width:800px; margin: 0 auto;}
-#avatar_about_me{float:left; width:200px;}
-#avatar_about_me .upload_logo img{border: 1px solid #dedede; border-radius: 8px;}
-#about_me_content{width:580px; float: right;}
+#avatar_about_me{float:left; width:240px;}
+#avatar_about_me .upload_logo{border: 1px solid #dedede; border-radius: 8px; width:240px; height: 180px;overflow: hidden;}
+#avatar_about_me .upload_logo img{height:100%; width:100%;}
+#about_me_content{width:540px; float: right;}
+#about_me_content p{font:15px/26px "OpenSans"; color:#333;}
+#about_me_content p span{font-weight: bold;float: left; margin-right: 10px;}
+#about_me_content label {float: left;}
+#about_me_content label a{display: inline-block; width:28px; height: 28px;  margin-right: 10px; background: url("img/website-icon.png") 0 0 no-repeat;}
+#about_me_content label.facebook a{background: url("img/face-icon.png") 0 0 no-repeat;}
+#about_me_content label.facebook a{background: url("img/twitter-icon.png") 0 0 no-repeat;}
+.about-me_block .content_about{}
