@@ -388,45 +388,47 @@ class user extends custom_field
 			pg_paypal_email = '" . $user_details['pg_paypal_email']."'";
             var_dump($sql_update_query);
             echo '<br /><br />';
+            var_dump($user_id);
+            echo '<br /><br />';
 //            exit;
 
             //update magento phone
-            $user_info = $this->get_sql_row("SELECT username FROM
-            			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
-
-            global $coupon_http_username;
-            global $coupon_http_password;
-            global $coupon_url;
-            global $coupon_soap_username;
-            global $coupon_soap_password;
-            $woptions['soap_version'] = SOAP_1_2;
-            $woptions['login'] = $coupon_http_username;
-            $woptions['password'] = $coupon_http_password;
-
-            $proxy = new SoapClient($coupon_url."/index.php/api/soap/?wsdl",$woptions);
-            $sessionId = $proxy->login($coupon_soap_username, $coupon_soap_password);
-
-            $list = $proxy->call($sessionId, 'customer.list', array(array('username' => $user_info['username'])));
-            if(count($list))
-            {
-                $magento_customer_id = $list[0]['customer_id'];
-                $addresses = $proxy->call($sessionId, 'customer_address.list',$magento_customer_id);
-
-                $updateCustomerAddress = array(
-                    'telephone'  => $phone
-                );
-
-                $proxy->call($sessionId, 'customer_address.update', array($addresses[0]['customer_address_id'], $updateCustomerAddress));
-            }
-
-
-            $user_old = $this->get_sql_row("SELECT balance, payment_mode, tax_apply_exempt FROM
-			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
-
-            if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']))
-            {
-                $sql_update_query .= ", tax_apply_exempt=1";
-            }
+//            $user_info = $this->get_sql_row("SELECT username FROM
+//            			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
+//
+//            global $coupon_http_username;
+//            global $coupon_http_password;
+//            global $coupon_url;
+//            global $coupon_soap_username;
+//            global $coupon_soap_password;
+//            $woptions['soap_version'] = SOAP_1_2;
+//            $woptions['login'] = $coupon_http_username;
+//            $woptions['password'] = $coupon_http_password;
+//
+//            $proxy = new SoapClient($coupon_url."/index.php/api/soap/?wsdl",$woptions);
+//            $sessionId = $proxy->login($coupon_soap_username, $coupon_soap_password);
+//
+//            $list = $proxy->call($sessionId, 'customer.list', array(array('username' => $user_info['username'])));
+//            if(count($list))
+//            {
+//                $magento_customer_id = $list[0]['customer_id'];
+//                $addresses = $proxy->call($sessionId, 'customer_address.list',$magento_customer_id);
+//
+//                $updateCustomerAddress = array(
+//                    'telephone'  => $phone
+//                );
+//
+//                $proxy->call($sessionId, 'customer_address.update', array($addresses[0]['customer_address_id'], $updateCustomerAddress));
+//            }
+//
+//
+//            $user_old = $this->get_sql_row("SELECT balance, payment_mode, tax_apply_exempt FROM
+//			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
+//
+//            if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']))
+//            {
+//                $sql_update_query .= ", tax_apply_exempt=1";
+//            }
 
             $sql_update_query .= " WHERE user_id=" . $user_id;
 
