@@ -388,7 +388,7 @@ class user extends custom_field
 			pg_paypal_email = '" . $user_details['pg_paypal_email']."'";
             var_dump($sql_update_query);
             echo '<br /><br />';
-            exit;
+//            exit;
 
             //update magento phone
             $user_info = $this->get_sql_row("SELECT username FROM
@@ -429,6 +429,10 @@ class user extends custom_field
             }
 
             $sql_update_query .= " WHERE user_id=" . $user_id;
+
+            var_dump($sql_update_query);
+            echo '<br /><br />';
+            exit;
 
             $sql_update_user = $this->query($sql_update_query);
 
