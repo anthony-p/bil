@@ -27,7 +27,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         </td>
     </tr>
     <tr class="info_tittle">
-        <td><h5>Social Account information</h5></td>
+        <td><h5><?=MSG_SOCIAL_ACCOUNT_INFORMATION?></h5></td>
     </tr>
     <tr>
         <td>

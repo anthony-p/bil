@@ -1440,6 +1440,7 @@ define ('MSG_CREATE_AT', 'Create at');
 define ('MSG_CLOSED_ON', 'Closed on');
 define ('MSG_COLLECTED_MONEY', 'Collected money');
 define ('MSG_VIEW_CAMPAIGN', 'View Campaign');
+define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account information');
 
 
 
