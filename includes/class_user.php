@@ -453,7 +453,7 @@ class user extends custom_field
         try{
             var_dump($user_details); exit;
 
-            $prefix = "bl2";
+            $prefix = "bl2_";
 
             $user_details = $this->rem_special_chars_array($user_details);
             $phone = '(' . $user_details['phone_a'] . ') ' . $user_details['phone_b'];
@@ -552,7 +552,7 @@ class user extends custom_field
     function get_user_data($user_id)
     {
         try{
-            $prefix = "bl2";
+            $prefix = "bl2_";
             $user_info = $this->get_sql_row("SELECT username FROM
             			" . $prefix . "users WHERE user_id=" . $user_id);
             return $user_info ? $user_info : null;
