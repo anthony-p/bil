@@ -42,7 +42,7 @@
           <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
           <div class="posted-mess">
               <p>
-                  <a href="<?=$link_user?>"><?=$name ?></a> posted a n announcement <?=$day?>
+                  <a href="<?=$link_user?>"><?=$name ?></a> posted a comment <?=$day?>
                   <?php /*<?=$name ?> posted an announcement <?=$day?> */ ?>
                   <?=$comment["comment"]?>
               </p>
