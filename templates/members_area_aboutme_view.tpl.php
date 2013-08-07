@@ -10,7 +10,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 <link href="/css/tinyeditor.css" rel="stylesheet">
 <br>
-<div>
+<div class="about-me_block">
     <div id="avatar_about_me">
         <?php if(!empty($user_details['avatar'])) :?>
             <div class="upload_logo"><img src="<?=$user_details['avatar']?>"/></div>
@@ -18,19 +18,18 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </div>
     <div>
         <p>
-            <?php echo isset ($user_details["first_name"]) ? $user_details["first_name"] : '' ?> <?php echo isset ($user_details["last_name"]) ? $user_details["last_name"] : '' ?>
+            <span><?php echo isset ($user_details["first_name"]) ? $user_details["first_name"] : '' ?></span> <?php echo isset ($user_details["last_name"]) ? $user_details["last_name"] : '' ?>
         </p>
     </div>
     <div id="about_me_content">
         <div>
             <p>
-                Location:
+                <span>Location:</span>
                 <?php echo isset ($user_details["city"]) ? $user_details["city"] : '' ?> <?php echo isset ($user_details["address"]) ? $user_details["address"] : '' ?>
             </p>
         </div>
         <div>
-            Also Find Me on
-            <?php if (!empty($user_details['facebook_link'])) :?>
+            <span>  Also Find Me on</span><?php if (!empty($user_details['facebook_link'])) :?>
                 <label class="facebook">
                     <a href="<?=$user_details['facebook_link']?>" target="_blank">Facebook</a>
                 </label>
