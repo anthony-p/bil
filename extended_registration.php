@@ -112,6 +112,12 @@ include_once ('includes/functions_login.php');
         {
             $template->set('register_post_url', 'extended_registration.php');
             $template->set('proceed_button', GMSG_REGISTER_BTN);
+
+            $user_data = $user->get_user_data($session->value('user_id'));
+
+            var_dump($user_data); exit;
+
+
             $template->set('user_details', $_POST);
 
             $template->set('birthdate_box', $user->birthdate_box($_POST));
