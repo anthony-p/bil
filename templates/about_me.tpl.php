@@ -29,7 +29,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             </p>
         </div>
         <div>
-            Also Find Me on
+           <?=MSG_ALSO_FIND_ME?>
             <?php if (!empty($user_details['facebook_link'])) :?>
                 <label class="facebook">
                     <a href="<?=$user_details['facebook_link']?>" target="_blank">Facebook</a>

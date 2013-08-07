@@ -115,10 +115,27 @@ include_once ('includes/functions_login.php');
 
             $user_data = $user->get_user_data($session->value('user_id'));
 
-            var_dump($user_data); exit;
+            if ($user_data) {
+                $phone = explode(')', $user_data["phone"]);
+                $user_data["phone_b"] = (is_array($phone) && isset($phone[1])) ? $phone[1] : '';
+                $user_data["phone_a"] = (is_array($phone) && isset($phone[0])) ?
+                    str_replace('(', '', $phone[0]) : '';
+                $birth_date = explode('-', $user_data["birthdate"]);
+                $user_data["dob_year"] = (is_array($birth_date) && isset($birth_date[0])) ?
+                    $birth_date[0] : '';
+                $user_data["dob_month"] = (is_array($birth_date) && isset($birth_date[1])) ?
+                    $birth_date[0] : '';
+                $user_data["dob_day"] = (is_array($birth_date) && isset($birth_date[2])) ?
+                    $birth_date[0] : '';
+            } else {
+                $user_data = $_POST;
+            }
+            echo '<pre>';
+            var_dump($user_data);
+            echo '</pre>';
 
 
-            $template->set('user_details', $_POST);
+            $template->set('user_details', $user_data);
 
             $template->set('birthdate_box', $user->birthdate_box($_POST));
 
