@@ -10,7 +10,8 @@
 $fileExtension = (file_exists('includes/global.php')) ? '' : '../';
 
 include_once ($fileExtension.'includes/config.php');
-
+var_dump('test');
+die;
 
 define('INCLUDED', 1);
 
