@@ -376,6 +376,8 @@ class user extends custom_field
             }
 
             $tax_apply_exempt = (!empty($user_details['tax_reg_number'])) ? 1 : 0;
+            var_dump(DB_PREFIX);
+            echo '<br /><br />';
             $sql_update_query = "UPDATE " . DB_PREFIX . "users SET
 			phone='" . $phone . "',
 			birthdate='" . $birthdate . "',
@@ -384,6 +386,9 @@ class user extends custom_field
 			tax_company_name='" . $user_details['tax_company_name'] . "',
 			tax_reg_number='" . $user_details['tax_reg_number'] . "',
 			pg_paypal_email = '" . $user_details['pg_paypal_email']."'";
+            var_dump($sql_update_query);
+            echo '<br /><br />';
+            exit;
 
             //update magento phone
             $user_info = $this->get_sql_row("SELECT username FROM
