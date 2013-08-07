@@ -47,7 +47,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 </label>
             <?php endif;?>
         </div>
-        <div>
+        <div class="content_about">
             <?php if (!empty($user_details['about_me'])) :?>
                 <?=html_entity_decode($user_details['about_me'])?>
             <?php endif; ?>
