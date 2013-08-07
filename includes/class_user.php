@@ -526,6 +526,8 @@ class user extends custom_field
 
             $sql_update_query .= " WHERE id=" . $user_id;
 
+            var_dump($sql_update_query);
+
             $sql_update_user = $this->query($sql_update_query);
 
 //            if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']) && IN_ADMIN != 1)
