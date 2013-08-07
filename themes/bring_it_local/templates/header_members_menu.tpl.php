@@ -67,17 +67,17 @@ SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
 
 <? if ($member_active == 'Active') { ?>
     <li>
-        <a href="javascript:void(0)">My Profile</a>
+        <a href="javascript:void(0)"><?=MSG_MM_PROFILE?></a>
          <ul>
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'editinfo'));?>"><?=MSG_MM_PERSONAL_INFO;?></a></li>
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'management'));?>"><?=MSG_MM_MANAGE_ACCOUNT;?></a></li>
-             <li><a href="javascript:void(0)">About Me</a>
+             <li><a href="javascript:void(0)"><?=MSG_MM_ABOUT_ME?></a>
                  <ul>
-                    <li><a href="/about_me,page,edit,section,members_area">edit</a></li>
-                    <li><a href="/about_me,page,view,section,members_area">view</a></li>
+                    <li><a href="/about_me,page,edit,section,members_area"><?=MSG_MM_EDIT?></a></li>
+                    <li><a href="/about_me,page,view,section,members_area"><?=MSG_MM_VIEW?></a></li>
                  </ul>
              </li>
-             <li><a href="javascript:void(0)">Messages</a>
+             <li><a href="javascript:void(0)"><?=MSG_MESSAGES?></a>
                  <ul>
                      <li><a href="<?=process_link('members_area', array('page' => 'messaging', 'section' => 'received'));?>"><?=MSG_MM_RECEIVED;?></a></li>
                      <li><a href="<?=process_link('members_area', array('page' => 'messaging', 'section' => 'sent'));?>"><?=MSG_MM_SENT;?></a></li>
@@ -103,20 +103,20 @@ SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
 
 <!--<li><a href="--><?//=process_link('members_area', array('page' => 'summary'));?><!--">--><?//=MSG_MM_SUMMARY;?><!--</a></li>-->
     <li>
-        <a href="javascript:void(0)">My Campaigns</a>
+        <a href="javascript:void(0)"><?=MSG_MY_CAPMAIGNS?></a>
         <ul>
-            <li><a href="/np/npregister.php">New Campaign</a></li>
-            <li><a href="/campaigns,page,drafts,section,members_area#8ec3489f027e">Drafts Campaigns</a></li>
-            <li><a href="/campaigns,page,live,section,members_area#8ec3489f027e">Live Campaigns</a></li>
-            <li><a href="/campaigns,page,closed,section,members_area#8ec3489f027e">Closed Campaigns</a></li>
+            <li><a href="/np/npregister.php"><?=MSG_NEW_CAPMAIGN?></a></li>
+            <li><a href="/campaigns,page,drafts,section,members_area#8ec3489f027e"><?=MSG_DRAFTS_CAPMAIGNS?></a></li>
+            <li><a href="/campaigns,page,live,section,members_area#8ec3489f027e"><?=MSG_LIVE_CAPMAIGNS?></a></li>
+            <li><a href="/campaigns,page,closed,section,members_area#8ec3489f027e"><?=MSG_CLOSED_CAPMAIGNS?></a></li>
         </ul>
     </li>
     <li>
-        <a href="javascript:void(0)">My Contributions</a>
+        <a href="javascript:void(0)"><?=MSG_MY_CONTRIBUTIONS?></a>
     </li>
 
 
-    <li><a href="">Buying and Selling</a>
+    <li><a href=""><?=MSG_BUYING_AND_SELLING?></a>
        <ul>
            <li><a href="javascript:void(0)"><?=MSG_MM_SELLING;?></a>
                <ul class="selling">

@@ -416,7 +416,7 @@ define ('MSG_ANSWER_POSTED_SUCCESSFULLY', 'The answer has been saved successfull
 define ('MSG_LOGIN_TO_ASK_QUESTIONS', 'Please login in order to ask the seller a question.');
 define ('MSG_CANT_POST_QUESTION_OWNER', 'You cannot post a question on this item because you are it\'s owner.');
 define ('MSG_MM_RECEIVED_MESSAGES', 'Received Messages');
-define ('MSG_MESSAGES', 'messages');
+define ('MSG_MESSAGES', 'Messages');
 define ('MSG_UNREAD', 'unread');
 define ('MSG_MESSAGE_DATE', 'Message Date');
 define ('MSG_SENDER_USERNAME', 'Sender Username');
@@ -1425,6 +1425,13 @@ define ('MSG_BROWSE', 'Browse');
 define ('MSG_LEARN', 'Learn');
 define ('MSG_START', 'Start');
 define ('MSG_MY_DEALS', 'My Deals');
+define ('MSG_MY_CAPMAIGNS', 'My Campaigns');
+define ('MSG_NEW_CAPMAIGN', 'New Campaign');
+define ('MSG_DRAFTS_CAPMAIGNS', 'Drafts Campaigns');
+define ('MSG_LIVE_CAPMAIGNS', 'Live Campaigns');
+define ('MSG_CLOSED_CAPMAIGNS', 'Closed Campaigns');
+define ('MSG_MY_CONTRIBUTIONS', 'My Contributions');
+define ('MSG_BUYING_AND_SELLING', 'Buying and Selling');
 
 
 
