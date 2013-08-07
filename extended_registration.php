@@ -95,6 +95,8 @@ include_once ('includes/functions_login.php');
 
                 $user_id = $user->extended_update($session->value('user_id'), $_POST, $page_handle);
 
+                var_dump($_SESSION);
+
                 $template->set('register_success_header', header5("Update User Account"));## PHP Pro Bid v6.00 add signup fee procedure here.
 		
                 $session->set('extended_registration', TRUE);
