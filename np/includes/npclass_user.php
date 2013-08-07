@@ -1,8 +1,5 @@
 <?
 
-var_dump('user');
-die;
-
 include_once("npfunctions_login.php");
 include_once("npclass_custom_field.php");
 

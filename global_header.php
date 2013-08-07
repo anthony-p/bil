@@ -349,6 +349,7 @@ if (is_dir('install'))
 {
 	$template_output .= '<p align="center" class="errormessage">' . GMSG_INSTALL_DELETE_MESSAGE . '</p>';
 }
-
+var_dump('asdsad');
+die;
 $template->change_path('templates/');
 ?>
