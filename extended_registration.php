@@ -149,7 +149,8 @@ include_once ('includes/functions_login.php');
 
 				$template->set('check_voucher_message', $voucher_details['display']);
 			}
-			$template->set('display_direct_payment_methods', $user->direct_payment_methods_edit($_POST));
+			$template->set('display_direct_payment_methods', $user->direct_payment_data($user_data));
+//			$template->set('display_direct_payment_methods', $user->direct_payment_methods_edit($_POST));
 
 			$template->set('signup_voucher_box', voucher_form('signup', $_POST['voucher_value']));
 
