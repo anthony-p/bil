@@ -482,6 +482,7 @@ class user extends custom_field
 			tax_account_type='" . $user_details['tax_account_type'] . "',
 			tax_company_name='" . $user_details['tax_company_name'] . "',
 			tax_reg_number='" . $user_details['tax_reg_number'] . "',
+			extended_registration='" . $user_details['extended_registration'] . "',
 			pg_paypal_first_name='" . $user_details['pg_paypal_first_name'] . "',
 			pg_paypal_last_name='" . $user_details['pg_paypal_last_name'] . "',
 			pg_paypal_email = '" . $user_details['pg_paypal_email']."'";

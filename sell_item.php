@@ -45,7 +45,8 @@ else if (!$session->value('is_seller'))
 	header_redirect('members_area.php?page=selling');
 }
 
-else if(!$session->value('extended_registration'))
+else if(!$session->value('extended_registration') &&
+    (isset($user_details) && $user_details["extended_registration"]))
 {
     header_redirect('extended_registration.php?redirect=sell_item');
 }
