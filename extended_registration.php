@@ -124,9 +124,9 @@ include_once ('includes/functions_login.php');
                 $user_data["dob_year"] = (is_array($birth_date) && isset($birth_date[0])) ?
                     $birth_date[0] : '';
                 $user_data["dob_month"] = (is_array($birth_date) && isset($birth_date[1])) ?
-                    $birth_date[0] : '';
+                    $birth_date[1] : '';
                 $user_data["dob_day"] = (is_array($birth_date) && isset($birth_date[2])) ?
-                    $birth_date[0] : '';
+                    $birth_date[2] : '';
             } else {
                 $user_data = $_POST;
             }
