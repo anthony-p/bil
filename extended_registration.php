@@ -130,14 +130,15 @@ include_once ('includes/functions_login.php');
             } else {
                 $user_data = $_POST;
             }
-            echo '<pre>';
-            var_dump($user_data);
-            echo '</pre>';
+//            echo '<pre>';
+//            var_dump($user_data);
+//            echo '</pre>';
 
 
             $template->set('user_details', $user_data);
 
-            $template->set('birthdate_box', $user->birthdate_box($_POST));
+            $template->set('birthdate_box', $user->birthdate_box($user_data));
+//            $template->set('birthdate_box', $user->birthdate_box($_POST));
 
             $custom_sections_table = $user->display_sections($_POST, $page_handle);
 
