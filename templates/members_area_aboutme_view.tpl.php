@@ -30,6 +30,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             </p>
         </div>
         <div>
+            <p>
             <span><?=MSG_ALSO_FIND_ME?></span>
             <?php if (!empty($user_details['facebook_link'])) :?>
                 <label class="facebook">
@@ -46,6 +47,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                     <a href="<?=$user_details['google_link']?>" target="_blank"></a>
                 </label>
             <?php endif;?>
+            </p>
         </div>
         <div class="content_about">
             <?php if (!empty($user_details['about_me'])) :?>
