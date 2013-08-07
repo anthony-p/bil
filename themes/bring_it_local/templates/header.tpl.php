@@ -206,7 +206,7 @@ global $coupon_url;
         <div class="topNav">
             <!-- <a onclick="alert('Drag me to the bookmarks bar'); return false;" href="http://www.bringitlocal.com?npuser=1" > BringitLocal Bookmarklet</a>-->
             <?php //<a onclick="alert('Drag me to the bookmarks bar'); return false;" href="javascript:q=(document.location.href);void(open('http://www.bringitlocal.com?npuser=1','_self','resizable,location,menubar,toolbar,scrollbars,status'));" > BringitLocal Bookmarklet</a> ?>
-            <?php var_dump($session); exit;?>
+
             <?php global $session; if($session->value('user_id')) echo "<span class='user-log'>".MSG_WELCOME." ".$session->value('username')."</span>"."<div class='clear'></div>";?>
 
             <div class="links-nav">
