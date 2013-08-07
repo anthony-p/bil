@@ -29,6 +29,8 @@ mysql_select_db($db_name, $link);
 $npname = $db->get_sql_field("SELECT npname  FROM probid_users WHERE username ='" . $member_username . "'", npname);
 $npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE tax_company_name ='" . $npname . "'", username);
 
+
+
 #this code below almost works to make it so the user will see the right column of te landingpage when they browse from here. It sets a cookie. But
 #the landingpage gets confused by the fact that the user already has a cookie so the link to the landing page starts to give a 404 not found
 $np_userid = $db->get_sql_field("SELECT user_id  FROM np_users WHERE username ='" . $npusername . "'", user_id);
@@ -50,13 +52,13 @@ $salesno = sales;
 #SetCookie("sales", $salesno, 0, '/', 'bringitlocal.com'); 
 
 $inThreeMonths = 60 * 60 * 24 * 90 + time(); 
-SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com'); 
-
+SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
+$first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email ='" . $member_username . "'", first_name);
 
 ?>
 
 <div class="top">
-    <h4><?=MSG_WELCOME_BACK;?> <?=$member_username; ?></h4>
+    <h4><?=MSG_WELCOME_BACK;?> <?=$first_name; ?></h4>
 <!--   <div class="buttons">-->
 <!--       <a href="/--><?//=$npusername?><!--"><span>Go to your community page</span></a>-->
 <!--       <a href = "/reports/member/summary.php?sv1_username=--><?//=$member_username?><!--&sv_invoice_date=%23%23all%23%23" target="_blank"><span>Fund Raising Report</span></a>-->
