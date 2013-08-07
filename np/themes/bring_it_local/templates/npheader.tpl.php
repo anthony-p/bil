@@ -145,7 +145,13 @@ global $coupon_url;
                     </ul>
                 </nav>
                 <div class="topNav">
-                    <span class="user-log">Welcome <?php global $session; if($session->value('user_id')) echo $session->value('username');?></span>
+                    <span class="user-log"><?php
+                        global $session; if($session->value('user_id')) {
+                            $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email ='" . $session->value('username') . "'", first_name);
+                            echo MSG_WELCOME .' '. $first_name;
+                        }
+                        ?>
+                    </span>
                     <div class="clear"></div>
                     <div class="links-nav">
 <!--                        --><?//=$login_btn_msg;?>
