@@ -214,9 +214,9 @@ global $coupon_url;
 
                 <?php
 
-                if($session->value('user_id')):?>
-                    <a href="<?php global $coupon_url; echo $coupon_url."/customer/account/";?>"><?=MSG_MY_DEALS?></a>
-                <?php endif;?>
+//                if($session->value('user_id')):?>
+<!--                    <a href="--><?php //global $coupon_url; echo $coupon_url."/customer/account/";?><!--">--><?//=MSG_MY_DEALS?><!--</a>-->
+<!--                --><?php //endif;?>
                 <!--                    <a href="--><?//=process_link('content_pages', array('page' => 'contact_us'));?><!--">--><?//=MSG_BTN_CONTACT_US;?><!--</a>-->
                 <!--
 		<? if ($setts['enable_stores']) { ?>
