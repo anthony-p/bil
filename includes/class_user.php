@@ -453,21 +453,26 @@ class user extends custom_field
         try{
             var_dump($user_details); exit;
 
-            $prefix = "bl2";
+            $prefix = "bl2_";
 
             $user_details = $this->rem_special_chars_array($user_details);
             $phone = '(' . $user_details['phone_a'] . ') ' . $user_details['phone_b'];
 
-            if ($this->setts['birthdate_type'] == 1)
-            {
-                $birthdate = $user_details['birthdate_year'] . '-01-01'; // defaulted to jan 1st of the birthdate year.
-                $birthdate_year = $user_details['birthdate_year'];
-            }
-            else
-            {
-                $birthdate = $user_details['dob_year'] . '-' . $user_details['dob_month'] . '-' . $user_details['dob_day'];
-                $birthdate_year = $user_details['dob_year'];
-            }
+//            if ($this->setts['birthdate_type'] == 1)
+//            {
+//                $birthdate = $user_details['birthdate_year'] . '-01-01'; // defaulted to jan 1st of the birthdate year.
+//                $birthdate_year = $user_details['birthdate_year'];
+//            }
+//            else
+//            {
+//                $birthdate = $user_details['dob_year'] . '-' . $user_details['dob_month'] . '-' . $user_details['dob_day'];
+//                $birthdate_year = $user_details['dob_year'];
+//            }
+
+            $birthdate = $user_details["dob_year"] . "-" .
+                $user_details["dob_month"] . "-" .
+                $user_details["dob_day"];
+            $birthdate_year = $user_details["dob_year"];
 
             $tax_apply_exempt = (!empty($user_details['tax_reg_number'])) ? 1 : 0;
             $sql_update_query = "UPDATE " . $prefix . "users SET
@@ -530,6 +535,27 @@ class user extends custom_field
 //            }
             //echo $sql_update_query; die;
             $this->update_page_data($user_id, $page_handle, $user_details);
+        } catch (Exception $e) {
+            file_put_contents('user.log', $e->getMessage());
+        }
+    }
+
+    /**
+     * @param $user_id
+     * @param $user_details
+     * @param $page_handle
+     *
+     * @TODO check if this function is needed because it is a duplication of
+     * extended_update function with the only difference that data are saved in
+     * bl2_users table but not in probid_users
+     */
+    function get_user_data($user_id)
+    {
+        try{
+            $prefix = "bl2_";
+            $user_info = $this->get_sql_row("SELECT username FROM
+            			" . $prefix . "users WHERE user_id=" . $user_id);
+            return $user_info ? $user_info : null;
         } catch (Exception $e) {
             file_put_contents('user.log', $e->getMessage());
         }
