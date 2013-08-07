@@ -268,12 +268,12 @@ global $coupon_url;
                     </div>
                 <? } ?>
                 <?php if($session->value('user_id')):?>
-                    <div id="menuBox" class="leftBlock">
-                        <?=$menu_box_header;?>
+                <!--    <div id="menuBox" class="leftBlock">
+                        <?/*=$menu_box_header;*/?>
                         <div id="exp1102170142">
-                            <?=$menu_box_content;?>
+                            <?/*=$menu_box_content;*/?>
                         </div>
-                    </div>
+                    </div>-->
                 <?php endif;?>
                 <noscript>
                     <?=MSG_JS_NOT_SUPPORTED;?>
