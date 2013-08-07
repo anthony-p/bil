@@ -207,7 +207,14 @@ global $coupon_url;
             <!-- <a onclick="alert('Drag me to the bookmarks bar'); return false;" href="http://www.bringitlocal.com?npuser=1" > BringitLocal Bookmarklet</a>-->
             <?php //<a onclick="alert('Drag me to the bookmarks bar'); return false;" href="javascript:q=(document.location.href);void(open('http://www.bringitlocal.com?npuser=1','_self','resizable,location,menubar,toolbar,scrollbars,status'));" > BringitLocal Bookmarklet</a> ?>
 
-            <?php global $session; if($session->value('user_id')) echo "<span class='user-log'>".MSG_WELCOME." ".$session->value('username')."</span>"."<div class='clear'></div>";?>
+            <?php global $session;
+
+                if($session->value('user_id')) {
+                    $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email ='" . $session->value('username') . "'", first_name);
+                    echo "<span class='user-log'>".MSG_WELCOME." ".$first_name."</span>"."<div class='clear'></div>";
+                }
+
+            ?>
 
             <div class="links-nav">
                 <a href="<?=$login_link;?>"><?=$login_btn_msg;?></a>
