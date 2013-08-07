@@ -451,7 +451,7 @@ class user extends custom_field
     function extended_update_bl2_users($user_id, $user_details, $page_handle)
     {
         try{
-            var_dump($user_details); exit;
+//            var_dump($user_details); exit;
 
             $prefix = "bl2_";
 
