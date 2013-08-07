@@ -1,8 +1,11 @@
 <?
+var_dump('asdsadlogin');
 
 include_once("npfunctions_login.php");
+var_dump('asdsadlogin2132');
 include_once("npclass_custom_field.php");
-
+var_dump('asdsadloginfiled');
+die;
 class npuser extends npcustom_field
 {
 	var $item;

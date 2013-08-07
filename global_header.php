@@ -351,6 +351,5 @@ if (is_dir('install'))
 }
 
 $template->change_path('templates/');
-var_dump('asdsad1123');
-die;
+
 ?>
