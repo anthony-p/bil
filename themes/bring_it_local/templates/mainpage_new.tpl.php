@@ -132,7 +132,9 @@ global $coupon_url;
 <!--        <div class="wsl">-->
 <!--       <p> Destiny Arts is looking for a new home <span>$2,031 raised</span>-->
 <!--       <br/>-->
-<!--           <a href="">view campaign</a>-->
+<!--           <a href="">-->
+                <?/*=MSG_VIEW_CAMPAIGN*/?>
+        <!--            </a>-->
 <!--       </p>-->
 <!--       </div>-->
 
