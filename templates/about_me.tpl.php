@@ -10,7 +10,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 <link href="/css/tinyeditor.css" rel="stylesheet">
 <br>
-<div>
+<div>lkljjlj
     <div id="avatar_about_me">
         <?php if(!empty($user_details['avatar'])) :?>
             <div class="upload_logo"><img src="<?=$user_details['avatar']?>"/></div>
