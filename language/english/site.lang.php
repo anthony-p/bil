@@ -1433,7 +1433,7 @@ define ('MSG_CLOSED_CAPMAIGNS', 'Closed Campaigns');
 define ('MSG_MY_CONTRIBUTIONS', 'My Contributions');
 define ('MSG_BUYING_AND_SELLING', 'Buying and Selling');
 define ('MSG_SORT_BY', 'Sort by');
-define ('MSG_DATE_ASC', 'Date asc');
+define ('MSG_DATE_ASC', 'Date ascTS');
 define ('MSG_DATE_DESC', 'Date desc');
 define ('MSG_CAMPAIGN_NAME', 'Campaign Name');
 define ('MSG_CREATE_AT', 'Create at');
