@@ -13,15 +13,16 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <div class="about-me_block">
     <div id="avatar_about_me">
         <?php if(!empty($user_details['avatar'])) :?>
-            <div class="upload_logo"><img src="<?=$user_details['avatar']?>"/></div>
+            <div class="upload_logo_about"><img src="<?=$user_details['avatar']?>"/></div>
         <?php endif;?>
     </div>
-    <div>
-        <p>
-            <span><?php echo isset ($user_details["first_name"]) ? $user_details["first_name"] : '' ?></span> <?php echo isset ($user_details["last_name"]) ? $user_details["last_name"] : '' ?>
-        </p>
-    </div>
     <div id="about_me_content">
+        <div>
+            <p>
+                <span><?php echo isset ($user_details["first_name"]) ? $user_details["first_name"] : '' ?>  <?php echo isset ($user_details["last_name"]) ? $user_details["last_name"] : '' ?></span>
+            </p>
+        </div>
+
         <div>
             <p>
                 <span>Location:</span>
@@ -31,19 +32,18 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <div>
             <span><?=MSG_ALSO_FIND_ME?></span>
             <?php if (!empty($user_details['facebook_link'])) :?>
-            <?php if (!empty($user_details['facebook_link'])) :?>
                 <label class="facebook">
-                    <a href="<?=$user_details['facebook_link']?>" target="_blank">Facebook</a>
+                    <a href="<?=$user_details['facebook_link']?>" target="_blank"></a>
                 </label>
             <?php endif;?>
             <?php if (!empty($user_details['twitter_link'])) :?>
                 <label class="twitter">
-                    <a href="<?=$user_details['twitter_link']?>" target="_blank">Twitter</a>
+                    <a href="<?=$user_details['twitter_link']?>" target="_blank"></a>
                 </label>
             <?php endif;?>
             <?php if (!empty($user_details['google_link'])) :?>
                 <label class="google">
-                    <a href="<?=$user_details['google_link']?>" target="_blank">Google+</a>
+                    <a href="<?=$user_details['google_link']?>" target="_blank"></a>
                 </label>
             <?php endif;?>
         </div>
