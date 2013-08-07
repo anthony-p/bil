@@ -376,8 +376,6 @@ class user extends custom_field
             }
 
             $tax_apply_exempt = (!empty($user_details['tax_reg_number'])) ? 1 : 0;
-            var_dump(DB_PREFIX);
-            echo '<br /><br />';
             $sql_update_query = "UPDATE " . DB_PREFIX . "users SET
 			phone='" . $phone . "',
 			birthdate='" . $birthdate . "',
@@ -386,16 +384,107 @@ class user extends custom_field
 			tax_company_name='" . $user_details['tax_company_name'] . "',
 			tax_reg_number='" . $user_details['tax_reg_number'] . "',
 			pg_paypal_email = '" . $user_details['pg_paypal_email']."'";
-            var_dump($sql_update_query);
-            echo '<br /><br />';
-            var_dump($user_id);
-            echo '<br /><br />';
-//            exit;
+
+            //update magento phone
+            $user_info = $this->get_sql_row("SELECT username FROM
+            			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
+
+            global $coupon_http_username;
+            global $coupon_http_password;
+            global $coupon_url;
+            global $coupon_soap_username;
+            global $coupon_soap_password;
+            $woptions['soap_version'] = SOAP_1_2;
+            $woptions['login'] = $coupon_http_username;
+            $woptions['password'] = $coupon_http_password;
+
+            $proxy = new SoapClient($coupon_url."/index.php/api/soap/?wsdl",$woptions);
+            $sessionId = $proxy->login($coupon_soap_username, $coupon_soap_password);
+
+            $list = $proxy->call($sessionId, 'customer.list', array(array('username' => $user_info['username'])));
+            if(count($list))
+            {
+                $magento_customer_id = $list[0]['customer_id'];
+                $addresses = $proxy->call($sessionId, 'customer_address.list',$magento_customer_id);
+
+                $updateCustomerAddress = array(
+                    'telephone'  => $phone
+                );
+
+                $proxy->call($sessionId, 'customer_address.update', array($addresses[0]['customer_address_id'], $updateCustomerAddress));
+            }
+
+
+            $user_old = $this->get_sql_row("SELECT balance, payment_mode, tax_apply_exempt FROM
+			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
+
+            if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']))
+            {
+                $sql_update_query .= ", tax_apply_exempt=1";
+            }
+
+            $sql_update_query .= " WHERE user_id=" . $user_id;
+
+            $sql_update_user = $this->query($sql_update_query);
+
+            if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']) && IN_ADMIN != 1)
+            {
+                $mail_input_id = $user_id;
+                include('language/' . $this->setts['site_lang'] . '/mails/tax_apply_exempt_notification.php');
+            }
+            //echo $sql_update_query; die;
+            $this->update_page_data($user_id, $page_handle, $user_details);
+        } catch (Exception $e) {
+            file_put_contents('user.log', $e->getMessage());
+        }
+    }
+
+    /**
+     * @param $user_id
+     * @param $user_details
+     * @param $page_handle
+     *
+     * @TODO check if this function is needed because it is a duplication of
+     * extended_update function with the only difference that data are saved in
+     * bl2_users table but not in probid_users
+     */
+    function extended_update_bl2_users($user_id, $user_details, $page_handle)
+    {
+        try{
+            var_dump($user_details); exit;
+
+            $prefix = "bl2";
+
+            $user_details = $this->rem_special_chars_array($user_details);
+            $phone = '(' . $user_details['phone_a'] . ') ' . $user_details['phone_b'];
+
+            if ($this->setts['birthdate_type'] == 1)
+            {
+                $birthdate = $user_details['birthdate_year'] . '-01-01'; // defaulted to jan 1st of the birthdate year.
+                $birthdate_year = $user_details['birthdate_year'];
+            }
+            else
+            {
+                $birthdate = $user_details['dob_year'] . '-' . $user_details['dob_month'] . '-' . $user_details['dob_day'];
+                $birthdate_year = $user_details['dob_year'];
+            }
+
+            $tax_apply_exempt = (!empty($user_details['tax_reg_number'])) ? 1 : 0;
+            $sql_update_query = "UPDATE " . $prefix . "users SET
+			phone='" . $phone . "',
+			birthdate='" . $birthdate . "',
+			birthdate_year='" . $birthdate_year . "',
+			tax_account_type='" . $user_details['tax_account_type'] . "',
+			tax_company_name='" . $user_details['tax_company_name'] . "',
+			tax_reg_number='" . $user_details['tax_reg_number'] . "',
+			pg_paypal_first_name='" . $user_details['pg_paypal_first_name'] . "',
+			pg_paypal_last_name='" . $user_details['pg_paypal_last_name'] . "',
+			pg_paypal_email = '" . $user_details['pg_paypal_email']."'";
 
             //update magento phone
 //            $user_info = $this->get_sql_row("SELECT username FROM
-//            			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
-//
+//            			" . $prefix . "users WHERE user_id=" . $user_id);
+
 //            global $coupon_http_username;
 //            global $coupon_http_password;
 //            global $coupon_url;
@@ -423,7 +512,7 @@ class user extends custom_field
 //
 //
 //            $user_old = $this->get_sql_row("SELECT balance, payment_mode, tax_apply_exempt FROM
-//			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
+//			" . $prefix . "users WHERE user_id=" . $user_id);
 //
 //            if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']))
 //            {
@@ -432,17 +521,13 @@ class user extends custom_field
 
             $sql_update_query .= " WHERE user_id=" . $user_id;
 
-            var_dump($sql_update_query);
-            echo '<br /><br />';
-            exit;
-
             $sql_update_user = $this->query($sql_update_query);
 
-            if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']) && IN_ADMIN != 1)
-            {
-                $mail_input_id = $user_id;
-                include('language/' . $this->setts['site_lang'] . '/mails/tax_apply_exempt_notification.php');
-            }
+//            if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']) && IN_ADMIN != 1)
+//            {
+//                $mail_input_id = $user_id;
+//                include('language/' . $this->setts['site_lang'] . '/mails/tax_apply_exempt_notification.php');
+//            }
             //echo $sql_update_query; die;
             $this->update_page_data($user_id, $page_handle, $user_details);
         } catch (Exception $e) {
