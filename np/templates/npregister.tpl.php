@@ -352,7 +352,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     <!--                <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
     <div class="account-row">
         <label><?=MSG_REGISTER_AS;?></label>
-        <select name="orgtype" id="orgtype" size="1" value = "<? echo ($user_details['orgtype']);?>" ?>
+        <select name="orgtype" id="orgtype" size="1">
         <option selected="selected"><? echo ($user_details['orgtype']);?></option>
         <option value="Charitable organization: homeless shelter">Charitable organization: homeless shelter</option>
         <option value="Charitable organization: disability organization">Charitable organization: disability organization </option>
