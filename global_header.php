@@ -6,8 +6,6 @@
 ##-------------------------------------------------------------##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 #################################################################
-var_dump('test header');
-die;
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 define('NPDB_PREFIX', 'np_');
