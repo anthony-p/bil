@@ -79,9 +79,9 @@ function submit_form(form_name) {
                 <dt><?=MSG_CAMPAIGN_NAME?>:</dt>
                 <dd><?php echo $row['name'];?></dd>
                 <dt><?=MSG_CREATE_AT?>:</dt>
-                <dd><?php echo date("d.m.y",$row['end_date']);?></dd>
+                <dd><?php echo date("m/d/y",$row['end_date']);?></dd>
                 <dt><?=MSG_CLOSED_ON?>:</dt>
-                <dd><?php echo date("d.m.y",$row['reg_date']);?></dd>
+                <dd><?php echo date("m/d/y",$row['reg_date']);?></dd>
                 <dt><?=MSG_COLLECTED_MONEY?></dt>
                 <dd><?php echo $row['price'];?>$</dd>
             </dl>
