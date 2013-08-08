@@ -12,11 +12,11 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 #$npname = $db->get_sql_field("SELECT npname  FROM probid_users WHERE username ='" . $member_username . "'", npname);
 if(!empty($_COOKIE['np_userid'])) {
     $np_userid = $_COOKIE['np_userid'];
-    $npname = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $np_userid . "'", tax_company_name);
+    $npname = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $np_userid . "'", 'tax_company_name');
 
 }
 else
-    $npname = $db->get_sql_field("SELECT npname  FROM probid_users WHERE username ='" . $member_username . "'", npname);
+    $npname = $db->get_sql_field("SELECT npname  FROM probid_users WHERE username ='" . $member_username . "'", 'npname');
 
 $layout['hpfeat_nb'] = 2;
 global $coupon_url;
