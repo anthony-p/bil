@@ -132,6 +132,10 @@ include_once ('includes/functions_login.php');
                     $birth_date[2] : '';
             } else {
                 $user_data = $_POST;
+            }
+//            echo '<pre>';
+//            var_dump($user_data);
+//            echo '</pre>';
 
 
             $template->set('user_details', $user_data);
