@@ -1443,6 +1443,7 @@ define ('MSG_VIEW_CAMPAIGN', 'View Campaign');
 define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account information');
 define ('MSG_ALSO_FIND_ME', ' Also Find Me on');
 define ('MSG_POSTED_A_COMMENT', 'posted a comment');
+define ('MSG_POSTALE_CODE', 'Postale Code');
 
 
 
