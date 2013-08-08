@@ -5,7 +5,6 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
-die;
 $time_end = getmicrotime();
 //$memory_end = memory_get_usage();
 
