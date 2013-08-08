@@ -314,12 +314,14 @@ if ($globalads=="1")## featured ads
                 <span class="uper">Auctions</span>
                 <span>Check out auctions supporting this campaign</span>
             </a>
-            <?php/*
+            <?php
+            /*
             <a href="http://coupons.bringitlocal.com/" class="merchants">
                 <span class="uper">Local merchants</span>
                 <span>Check out coupons from merchants supporting this campaign</span>
             </a>
-            */?>
+            */
+            ?>
 
             <a href="/about_community_fund.php" class="funds">
                 <span class="uper">Community Fund</span>
