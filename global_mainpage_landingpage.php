@@ -1,1 +1,1 @@
-<?php//error_reporting(E_ALL);die;//$adult_categories = array();//var_dump("OK!!!!!!!!");?>
+<?php//error_reporting(E_ALL);var_dump("OK!#@#!@");die;//$adult_categories = array();//var_dump("OK!!!!!!!!");?>
