@@ -7,6 +7,7 @@ switch($_SERVER['SERVER_NAME']) {
          define('DB_PREFIX', 'probid_'); ## Do not edit !
          define('SESSION_PREFIX', 'probid_');
          $db_name = 'bringit_auction';
+         $coupon_url = 'http://devcoupons.bringitlocal.com';
      break;
    case 'localhost':
         $db_host = 'localhost'; 
