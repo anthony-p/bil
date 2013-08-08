@@ -96,8 +96,6 @@ if (eregi('logout', $_GET['option']))
 
 include_once ('global_header.php');
 
-var_dump("HA HA HA !");
-
 if (isset($_GET['change_language']))
 {
 	$all_languages = list_languages('site');
@@ -130,6 +128,8 @@ else if (isset($_GET['change_skin']))
 }
 else
 {
+
+    var_dump("HA HA HA !");
 	include_once ('global_mainpage_landingpage.php');
 }
 
