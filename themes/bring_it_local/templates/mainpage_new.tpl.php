@@ -173,7 +173,7 @@ global $coupon_url;
                            <a href="" class="location"><?php echo $row['city'];?></a>
                         </div>
                         <div class="campaign-details">
-                            <span class="price"><?php echo $row['payment'];?>$</span>
+                            <span class="price">$<?php echo $row['payment'];?></span>
                             <span class="day">
 							<?php $days=round(($row['end_date']-time())/86400); 
 							    if($days>0){echo $days."<span>days left</span>"; }
