@@ -130,7 +130,8 @@ else
 {
 
     var_dump("HA HA HA !");
-    var_dump(__DIR__);
+    $str = __DIR__;
+    var_dump($str);
 	include_once ('global_mainpage_landingpage.php');
     var_dump("HMMMMMMMM!");
 }
