@@ -133,7 +133,7 @@ else
     $str = __DIR__;
     var_dump($str);
     var_dump(getcwd());
-	include_once ('global_mainpage_landingpage.php');
+	include ('global_mainpage_landingpage.php');
     var_dump("HMMMMMMMM!");
 }
 
