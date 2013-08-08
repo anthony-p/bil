@@ -630,7 +630,7 @@ class user extends custom_field
 
 		if (!$user_old['tax_apply_exempt'] && !empty($user_details['tax_reg_number']))
 		{
-			$sql_update_query .= ", tax_apply_exempt=1";
+			//$sql_update_query .= ", tax_apply_exempt=1";
 		}
 
 		if ($admin_edit)
@@ -671,7 +671,7 @@ class user extends custom_field
 		$sql_update_query .= " WHERE id=" . $user_id;
 
 //            var_dump($sql_update_query); exit;
-            var_dump($sql_update_query); die;
+           // var_dump($sql_update_query); die;
 		$sql_update_user = $this->query($sql_update_query);
 
 //        $npusername = $this->get_sql_field("SELECT username  FROM np_users WHERE tax_company_name ='" . $user_details['npname'] . "'", username);
