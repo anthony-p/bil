@@ -96,6 +96,8 @@ if (eregi('logout', $_GET['option']))
 
 include_once ('global_header.php');
 
+var_dump("HA HA HA !");
+
 if (isset($_GET['change_language']))
 {
 	$all_languages = list_languages('site');
