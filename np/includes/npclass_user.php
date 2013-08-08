@@ -53,7 +53,7 @@ class npuser extends npcustom_field
                 $search . "%' OR project_title LIKE '%" .
                 $search . "%' OR campaign_basic LIKE '%" .
                 $search . "%' OR orgtype LIKE '%" .
-                $search . "%' OR tax_company_name LIKE '%" .
+                $search . "%' OR np_users.tax_company_name LIKE '%" .
                 $search . "%' OR pitch_text LIKE '%" .
                 $search . "%') ORDER BY reg_date DESC";
         } elseif (isset($_GET["keyword"]) && $_GET["keyword"]) {
@@ -141,7 +141,7 @@ class npuser extends npcustom_field
                 $search . "%' OR project_title LIKE '%" .
                 $search . "%' OR campaign_basic LIKE '%" .
                 $search . "%' OR orgtype LIKE '%" .
-                $search . "%' OR tax_company_name LIKE '%" .
+                $search . "%' OR np_users.tax_company_name LIKE '%" .
                 $search . "%' OR pitch_text LIKE '%" .
                 $search . "%') " . $ordering;
         } elseif (isset($_GET["keyword"]) && $_GET["keyword"]) {
