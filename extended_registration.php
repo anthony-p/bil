@@ -97,15 +97,17 @@ include_once ('includes/functions_login.php');
                 $user_id = $user->extended_update_bl2_users(
                     $session->value('user_id'), $_POST, $page_handle
                 );
+
+                header('Location: http://dev2.bringitlocal.com/new_item,option,sell_item');
 //                $user_id = $user->extended_update($session->value('user_id'), $_POST, $page_handle);
 
-                $template->set('register_success_header', header5("Update User Account"));## PHP Pro Bid v6.00 add signup fee procedure here.
-		
-                $session->set('extended_registration', TRUE);
-
-                $template->set('register_success_message', $register_success_message);
-
-                $template_output .= $template->process('register_success.tpl.php');
+//                $template->set('register_success_header', header5("Update User Account"));## PHP Pro Bid v6.00 add signup fee procedure here.
+//
+//                $session->set('extended_registration', TRUE);
+//
+//                $template->set('register_success_message', $register_success_message);
+//
+//                $template_output .= $template->process('register_success.tpl.php');
             }
         }
 
