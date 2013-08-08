@@ -263,6 +263,21 @@ function fetchstate($statecode){
         <td class="leftCol"><?=MSG_CITY;?> *</td>
         <td class="contentfont"><input name="city" type="text" id="city" value="<?=$user_details['city'];?>" size="25" /></td>
     </tr>
+
+    <tr>
+        <td class="leftCol"><?=MSG_STATE;?> *</td>
+        <td class="contentfont"><input name="state" type="text" id="state" value="<?=$user_details['state'];?>" size="25" /></td>
+    </tr>
+
+    <tr>
+        <td class="leftCol"><?=MSG_COUNTRY;?> *</td>
+        <td class="contentfont"><input name="country" type="text" id="country" value="<?=$user_details['country'];?>" size="25" /></td>
+    </tr>
+
+    <tr>
+        <td class="leftCol"><?=MSG_POSTALE_CODE;?> *</td>
+        <td class="contentfont"><input name="postal_code" type="text" id="postal_code" value="<?=$user_details['postal_code'];?>" size="25" /></td>
+    </tr>
     <!--tr class="reguser">
 			<td>&nbsp;</td>
 			<td><?=MSG_CITY_EXPL;?></td>

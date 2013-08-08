@@ -581,6 +581,9 @@ class user extends custom_field
             phone =  '{$user_details['phone']}',
             is_subscribe_news='{$user_details['newsletter']}',
             city =  '{$user_details['city']}',
+            state =  '{$user_details['state']}',
+            country =  '{$user_details['country']}',
+            postal_code =  '{$user_details['postal_code']}',
             tax_reg_number='{$user_details['tax_reg_number']}',
             address =  '{$user_details['address']}',
             pg_paypal_first_name =  '{$user_details['pg_paypal_first_name']}',
@@ -619,6 +622,7 @@ class user extends custom_field
 			npname = '" . $user_details['npname'] . "'";
         */
         //return true/false
+
         $magento_updated = $this->update_magento($user_details, $new_password);
 
 		$user_old = $this->get_sql_row("SELECT balance, payment_mode, tax_apply_exempt FROM
@@ -667,7 +671,7 @@ class user extends custom_field
 		$sql_update_query .= " WHERE id=" . $user_id;
 
 //            var_dump($sql_update_query); exit;
-
+            var_dump($sql_update_query); die;
 		$sql_update_user = $this->query($sql_update_query);
 
 //        $npusername = $this->get_sql_field("SELECT username  FROM np_users WHERE tax_company_name ='" . $user_details['npname'] . "'", username);
