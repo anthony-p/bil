@@ -10,9 +10,9 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 
-<?=$header_registration_message;?>
+<?php if (isset($header_registration_message)) echo $header_registration_message;?>
 <br>
-<?=$invalid_login_message;?>
+<?php if (isset($invalid_login_message)) echo $invalid_login_message;?>
 
 
 

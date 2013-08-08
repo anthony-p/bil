@@ -13,7 +13,8 @@ global $coupon_url;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <title><?=$page_title. $page_specific_title ;?></title>
+    <?php if(!isset($page_specific_title)) $page_specific_title =''; ?>
+    <title><?=$page_title. $page_specific_title;?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?=$page_meta_tags;?>
@@ -240,85 +241,6 @@ global $coupon_url;
 
 
         </div>
-        <?
-        #put landing page right column code here
-        if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
-            $mynp_userid=$_COOKIE["np_userid"];
-            $npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", username);
-            $mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", tax_company_name);
-            ?>
-            <?php /*<div class="nonprofit"><a href="/<?=$npusername?>">You support <strong><?=$mynp?></strong></a></div>
-	*/?>
-        <?
-        }else{
-            ?>
-            <!--    <div class="enroll"><a href="searchnp.php">Choose a non-profit</a></div>-->
-        <?
-        }
-        ?>
-        <?php /*<div class="mainMenu">
-
-		<ul>
-			<? if (eregi("index.php",$_SERVER['PHP_SELF'])) { ?>
-			<li class="home"><a href="<?=$index_link;?>"><?=MSG_BTN_HOME;?></a></li>
-			<? } else {?>
-			<li class="home"><a href="<?=$index_link;?>"><?=MSG_BTN_HOME;?></a></li>
-			<? }
-			if (!$setts['enable_private_site'] || $is_seller)  {
-				if (eregi("sell_item.php",$_SERVER['PHP_SELF'])) { ?>
-			<!--li><a href="<?=$place_ad_link;?>"><?=$place_ad_btn_msg;?></a></li-->
-			<? } else { ?>
-			<!--li><a href="<?=$place_ad_link;?>"><?=$place_ad_btn_msg;?></a></li-->
-			<? }
-			}
-			if (eregi("members_area.php",$_SERVER['PHP_SELF'])||eregi("register.php",$_SERVER['PHP_SELF'])) { ?>
-
-			<? } else { ?>
-
-			<? } if (eregi("login.php",$_SERVER['PHP_SELF'])) { ?>
-
-			<? } else { ?>
-
-			<? }
-
-			if ($setts['enable_stores']) {
-				if (eregi("stores.php",$_SERVER['PHP_SELF'])) { ?>
-			<li><a href="<?=process_link('stores');?>"><?=MSG_BTN_STORES;?></a></li>
-			<? } else { ?>
-			<!--
-				<li><a href="<?=process_link('stores');?>"><?=MSG_BTN_STORES;?></a></li>
-			-->
-			<? }
-			} ?>
-            <li class="localAuctions"><a href="<?=process_link('categories')?>"><?=MSG_FEATURED_AUCTIONS;?></a></li>
-            <li class="onlineRetailers"><a href="<?=process_link('global_partners')?>"><?=MSG_BTN_SHOP_PARTNERS;?></a></li>
-            <li class="localDeals"><a href="<?php echo $coupon_url; ?>"><?=MSG_BTN_COUPONS;?></a></li>
-            <?php
-			if ($setts['enable_reverse_auctions']) {
-				if (eregi("reverse_auctions.php",$_SERVER['PHP_SELF'])) { ?>
-			<li><a href="<?=process_link('reverse_auctions');?>"><?=MSG_REVERSE;?></a></li>
-			<? } else { ?>
-			<li><a href="<?=process_link('reverse_auctions');?>"><?=MSG_REVERSE;?></a></li>
-			<? }
-			}
-			if ($setts['enable_wanted_ads']) {
-				if (eregi("wanted_ads.php",$_SERVER['PHP_SELF'])) { ?>
-			<li><a href="<?=process_link('wanted_ads');?>"><?=MSG_BTN_WANTED_ADS;?></a></li>
-			<? } else { ?>
-			<li><a href="<?=process_link('wanted_ads');?>"><?=MSG_BTN_WANTED_ADS;?></a></li>
-			<? }
-			}
-
-			if (eregi("site_fees.php",$_SERVER['PHP_SELF'])) { ?>
-
-			<? } else { ?>
-
-			<? } ?>
-			<? if ($integration['enable_integration'] == 1) { ?>
-			<!--			<li><a href="<?=$integration['ppa_url'];?>"><?=MSG_BTN_CLASSIFIEDS;?></a></li>-->
-			<? } ?>
-		</ul>
-	</div> */?>
 
 
     </div>

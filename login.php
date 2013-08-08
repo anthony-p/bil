@@ -18,9 +18,12 @@ include_once ('includes/global.php');
 include_once ('includes/class_fees.php');
 include_once ('includes/functions_login.php');
 
-$sc_id = intval($_REQUEST['sc_id']);
+$sc_id  = 0;
+if (isset ($_REQUEST['sc_id']))
+    $sc_id = intval($_REQUEST['sc_id']);
 
-if ($session->value('membersarea')=='Active')
+$isLogin = (string)$session->value('membersarea');
+if ($isLogin=='Active')
 {
 	if (!empty($_REQUEST['redirect']))
 	{
@@ -53,7 +56,7 @@ else
 	{
 		$template->set('header_registration_message', header5(MSG_LOGIN_TO_MEMBERS_AREA));
 
-		if ($_REQUEST['operation'] == 'submit')
+		if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit')
 		{
 			$signup_fee = new fees();
 			$signup_fee->setts = &$setts;
@@ -147,7 +150,7 @@ else
             }
 			header_redirect($db->add_special_chars($redirect_url));
 		}
-		if ($_REQUEST['invalid_login'] == 1)
+		if (isset($_REQUEST['invalid_login']) && $_REQUEST['invalid_login'] == 1)
 		{
 			$invalid_login_message = '<table width="400" border="0" cellpadding="4" cellspacing="0" align="center" class="errormessage"> '.
 			'	<tr><td align="center" class="alertfont"><b>' . MSG_INVALID_LOGIN . '</b></td></tr> '.

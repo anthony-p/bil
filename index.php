@@ -9,6 +9,7 @@
 session_start();
 
 define ('IN_SITE', 1);
+define ('IN_ADMIN', 0);
 define ('INDEX_PAGE', 1); ## for integration
 $GLOBALS['body_id'] = "index";
 
@@ -19,9 +20,12 @@ include_once ('includes/global.php');
 include_once ('includes/functions_login.php');
 include_once ('includes/functions_item.php');
 
-if (eregi('logout', $_GET['option']))
+if (isset($_GET['option']))
 {
-	logout();
+    if (eregi('logout', $_GET['option']))
+    {
+    	logout();
+    }
 }
 
 include_once ('global_header.php');

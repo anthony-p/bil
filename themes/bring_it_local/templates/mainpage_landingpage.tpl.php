@@ -315,7 +315,7 @@ if ($globalads=="1")## featured ads
                 <span>Check out auctions supporting this campaign</span>
             </a>
             <?php/*
-            <a href="http://coupons.bringitlocal.com/" class="merchants">
+            <a href="http://coupons.bringitlocal.com/" class="merchants">LÒ
                 <span class="uper">Local merchants</span>
                 <span>Check out coupons from merchants supporting this campaign</span>
             </a>

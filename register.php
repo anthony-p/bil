@@ -60,7 +60,7 @@ else
         $user->save_vars($_POST);
 
         $form_submitted = FALSE;## PHP Pro Bid v6.00 if save button is pressed, proceed
-        if ($_REQUEST['operation'] == 'submit')
+        if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit')
         {
             define ('FRMCHK_USER', 1);
             (bool) $frmchk_user_edit = 0;
@@ -156,11 +156,11 @@ else
             $template->set('proceed_button', GMSG_REGISTER_BTN);
             $template->set('user_details', $_POST);
 
-            $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
+            $post_country = (isset($_POST['country'])) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
 
             $template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
-            $template->set('state_box', $tax->states_box('state', $_POST['state'], $post_country));
+            $template->set('state_box', $tax->states_box('state', (isset($_POST['state'])) ? $_POST['state'] : '', $post_country));
             $template_output .= $template->process('register.tpl.php');
         }
     }
