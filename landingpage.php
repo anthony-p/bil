@@ -128,11 +128,7 @@ else if (isset($_GET['change_skin']))
 }
 else
 {
-
-    var_dump("HAHAHAC!");
-    var_dump(getcwd());
     include_once ('global_mainpage_landingpage.php');
-    var_dump("HMMMMMMMM!");
 }
 
 include_once ('global_footer.php');
