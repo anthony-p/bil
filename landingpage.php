@@ -131,6 +131,7 @@ else
 
     var_dump("HA HA HA !");
 	include_once ('global_mainpage_landingpage.php');
+    var_dump("HMMMMMMMM!");
 }
 
 include_once ('global_footer.php');
