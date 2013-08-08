@@ -129,9 +129,9 @@ else if (isset($_GET['change_skin']))
 else
 {
 
-    var_dump("HA HA HA !");
+    var_dump("HAHAHAC!");
     var_dump(getcwd());
-	include ('global_mainpage_landingpage.php');
+    include_once ('global_mainpage_landingpage.php');
     var_dump("HMMMMMMMM!");
 }
 
