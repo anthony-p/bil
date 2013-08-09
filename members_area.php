@@ -5434,9 +5434,10 @@ else
                     $template->set('pitches', $pitches);
                     $template->set('project_updates', $project_updates);
                     $template->set('project_rewards', $project_rewards);
+                    $template->set('last_selected_tab', $last_selected_tab);
                     $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
                     $template->set('members_area_page_content', $members_area_page_content);
-                    $template->set('last_selected_tab', $last_selected_tab);
+
 
                 }
 
