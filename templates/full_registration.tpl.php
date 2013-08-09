@@ -508,22 +508,7 @@ function fetchstate($statecode){
     <? } ?>
 </table>
     <? } ?>
-<? if ($setts['enable_tax']) { ?>
-<!-- Tax Settings -->
-<table border="0" cellpadding="0" cellspacing="0" class="tbl">
-    <tr>
-        <th colspan="2"><?=MSG_TAX_SETTINGS;?></th>
-    </tr>
-    <tr>
-        <td class="leftCol"><?=MSG_TAX_REG_NUMBER;?></td>
-        <td><input name="tax_reg_number" type="text" class="contentfont" id="tax_reg_number" value="<?=$user_details['tax_reg_number'];?>" size="40" /></td>
-    </tr>
-    <tr class="reguser">
-        <td  class="contentfont">&nbsp;</td>
-        <td><?=MSG_TAX_REG_NUMBER_DESC;?></td>
-    </tr>
-</table>
-    <? } ?>
+
 <? if (!empty($display_direct_payment_methods)) { ?>
 <!-- Direct Payment Settings -->
 <table border="0" cellpadding="0" cellspacing="0" class="tbl" id="directPayment">
