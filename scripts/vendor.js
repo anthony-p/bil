@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     var vendors = ["www.dpbolvw.net", "www.anrdoezrs.net", "www.jdoqocy.com", "doubleclick.net", "amazon.com", "linksynergy.com", "indiebound.org"];
 
-    $.each(vendors, function(index, value){
+/*    $.each(vendors, function(index, value){
         $("a[href*='"+value+"']").live("click", function(event){
         	var _href = $(this).attr('href');
         	if(_href.search("shop_selected.php") == -1) {
@@ -21,5 +21,5 @@ $(document).ready(function() {
         		window.location.href=u;
         	}
            });
-    })
+    })*/
 });
