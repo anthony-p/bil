@@ -5099,6 +5099,8 @@ else
 
                     $template->set('categories', $categories);
 
+                    $template->set('last_selected_tab', $_POST['last_selected_tab']);
+
                     $template->set('countries', $countries);
 
                     $template->set('pitches', $pitches);
@@ -5437,6 +5439,8 @@ else
 
                     $template->set('members_area_page_content', $members_area_page_content);
 
+                    $template->set('last_selected_tab', $_POST['last_selected_tab']);
+
                 }
 
 
@@ -5462,6 +5466,8 @@ else
                 $template->set('project_updates', $project_updates);
 
                 $template->set('project_rewards', $project_rewards);
+
+                $template->set('last_selected_tab', $_POST['last_selected_tab']);
 
                 $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
 
@@ -5490,6 +5496,8 @@ else
                 $template->set('project_updates', $project_updates);
 
                 $template->set('project_rewards', $project_rewards);
+
+                $template->set('last_selected_tab', $_POST['last_selected_tab']);
 
                 $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
 
