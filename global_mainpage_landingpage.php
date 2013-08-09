@@ -587,7 +587,7 @@ while ($query_result =  mysql_fetch_array($project_update_query_result)) {
 
 
 
-$project_reward_query_result = $db->query("SELECT * FROM project_rewards WHERE project_id=" . $compaignId . " ORDER BY id DESC");
+$project_reward_query_result = $db->query("SELECT * FROM project_rewards INNER JOIN bl2_users ON project_rewards.user_id =  bl2_users.id WHERE project_id=" . $compaignId . " ORDER BY id DESC");
 
 $project_rewards = array();
 
