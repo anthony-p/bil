@@ -4950,7 +4950,12 @@ else
                 $campaign_id = mysql_real_escape_string($_GET["campaign_id"]);
             }
 
-            var_dump($_POST['last_selected_tab']); die;
+            if (empty($_POST[''])) {
+                $last_selected_tab = '';
+            } else {
+                $last_selected_tab = empty($_POST['']
+            }
+
 
             $mysql_select_query = "SELECT * FROM np_users WHERE user_id=" . $campaign_id;
             $campaign = $db->get_sql_row($mysql_select_query);
@@ -5101,7 +5106,7 @@ else
 
                     $template->set('categories', $categories);
 
-                    $template->set('last_selected_tab', $_POST['last_selected_tab']);
+                    $template->set('last_selected_tab', $last_selected_tab);
 
                     $template->set('countries', $countries);
 
@@ -5420,32 +5425,20 @@ else
                     $project_rewards = array();
 
                     while ($query_result =  mysql_fetch_array($project_reward_query_result)) {
-
                         $project_rewards[] = $query_result;
-
                     }
 
                     $template->set('campaign', $campaign);
-
                     $template->set('categories', $categories);
-
                     $template->set('countries', $countries);
-
                     $template->set('pitches', $pitches);
-
                     $template->set('project_updates', $project_updates);
-
                     $template->set('project_rewards', $project_rewards);
-
                     $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
-
                     $template->set('members_area_page_content', $members_area_page_content);
-
-                    $template->set('last_selected_tab', $_POST['last_selected_tab']);
+                    $template->set('last_selected_tab', $last_selected_tab);
 
                 }
-
-
 
             } else if ($_REQUEST['get_states'] == 'true') {
 
@@ -5456,23 +5449,14 @@ else
                 $template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
                 $template->set("project_country",getProjectCategoryListToHTML());
                 $template->set('state_box', $tax->states_box('state', $_POST['state'], $post_country));
-
                 $template->set('campaign', $campaign);
-
                 $template->set('categories', $categories);
-
                 $template->set('countries', $countries);
-
                 $template->set('pitches', $pitches);
-
                 $template->set('project_updates', $project_updates);
-
                 $template->set('project_rewards', $project_rewards);
-
-                $template->set('last_selected_tab', $_POST['last_selected_tab']);
-
+                $template->set('last_selected_tab', $last_selected_tab);
                 $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
-
                 $template->set('members_area_page_content', $members_area_page_content);
 
             } else if (!$form_submitted)
@@ -5482,27 +5466,16 @@ else
                 $post_country = ($campaign['country']) ? $campaign['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
                 $template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
-
                 $template->set("project_country",getProjectCategoryListToHTML());
-
                 $template->set('state_box', $tax->states_box('state', $campaign['state'], $post_country));
-
                 $template->set('campaign', $campaign);
-
                 $template->set('categories', $categories);
-
                 $template->set('countries', $countries);
-
                 $template->set('pitches', $pitches);
-
                 $template->set('project_updates', $project_updates);
-
                 $template->set('project_rewards', $project_rewards);
-
-                $template->set('last_selected_tab', $_POST['last_selected_tab']);
-
+                $template->set('last_selected_tab', $last_selected_tab);
                 $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
-
                 $template->set('members_area_page_content', $members_area_page_content);
 
 
