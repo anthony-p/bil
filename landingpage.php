@@ -128,7 +128,7 @@ else if (isset($_GET['change_skin']))
 }
 else
 {
-	include_once ('global_mainpage_landingpage.php');
+    include_once ('global_mainpage_landingpage.php');
 }
 
 include_once ('global_footer.php');
