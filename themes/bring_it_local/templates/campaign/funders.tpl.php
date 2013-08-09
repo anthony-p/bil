@@ -23,7 +23,13 @@
     <?php foreach($funders as $funder): ?>
         <div class="inner">
             <div class="post first">
-                <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
+                <div class="user-photo">
+                    <?php if (!empty($funder['avatar'])) {
+                        echo '<img style="width:45px" src="'.$funder['avatar'].'" />';
+                    } else {
+                        echo '<img src="themes/bring_it_local/img/incognito.png" />';
+                    } ?>
+                </div>
                 <div class="posted-mess">
                     <?php if  ($funder["user_id"] != 0) : ?>
                         <a href="/about_me.php?user_id=<?php echo isset($funder['id']) ? $funder['id'] : ''; ?>" >

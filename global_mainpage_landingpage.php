@@ -535,18 +535,9 @@ if ($layout['r_recent_nb'] && $setts['enable_reverse_auctions'])
 
 
 
-$funders_result = $db->query(
-
-    "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) WHERE funders.campaign_id=" .
-
-        $np_userid
-
-);
-
-
+$funders_result = $db->query( "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) WHERE funders.campaign_id=" . $np_userid);
 
 $funders = array();
-
 
 
 while ($result = $db->fetch_array($funders_result)) {
@@ -575,7 +566,7 @@ $compaignData =  $db->get_sql_row("SELECT * FROM np_users WHERE username = '$npu
 
 $compaignId = $compaignData["user_id"];
 
-$project_update_query_result = $db->query("SELECT * FROM project_updates INNER JOIN bl2_users ON project_updates.user_id =  bl2_users.id WHERE project_id=" . $compaignId . " ORDER BY project_updates.id DESC");
+$project_update_query_result = $db->query("SELECT * FROM project_updates LEFT JOIN bl2_users ON project_updates.user_id =  bl2_users.id WHERE project_id=" . $compaignId . " ORDER BY project_updates.id DESC");
 
 $project_updates = array();
 
@@ -587,7 +578,7 @@ while ($query_result =  mysql_fetch_array($project_update_query_result)) {
 
 
 
-$project_reward_query_result = $db->query("SELECT * FROM project_rewards INNER JOIN bl2_users ON project_rewards.user_id =  bl2_users.id WHERE project_id=" . $compaignId . " ORDER BY project_rewards.id DESC");
+$project_reward_query_result = $db->query("SELECT * FROM project_rewards LEFT JOIN bl2_users ON project_rewards.user_id =  bl2_users.id WHERE project_id=" . $compaignId . " ORDER BY project_rewards.id DESC");
 
 $project_rewards = array();
 
