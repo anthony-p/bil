@@ -4950,10 +4950,10 @@ else
                 $campaign_id = mysql_real_escape_string($_GET["campaign_id"]);
             }
 
-            if (empty($_POST[''])) {
+            if (empty($_POST['last_selected_tab'])) {
                 $last_selected_tab = '';
             } else {
-                $last_selected_tab = empty($_POST['']
+                $last_selected_tab = $_POST['last_selected_tab'];
             }
 
 
