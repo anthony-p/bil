@@ -5200,11 +5200,8 @@ else
 
 
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
-
                         $logo_file_name = '/images/partner_logos/' . md5($_POST["name"] . 'logo');
-
                         $upload_logo = generate_image_thumbnail(
-
                             $_FILES["logo"]["tmp_name"], trim($logo_file_name, '/'), 160, 160
 
                         );
