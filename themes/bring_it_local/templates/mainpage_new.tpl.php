@@ -99,8 +99,8 @@ global $coupon_url;
 
 <div class="content">
        <div class="p-contain">
-           <p>Community crowdfunding<br/>
-            <span>Donations, auctions, click through shopping</span>
+           <p><?=MSG_COMMUNITY_CROWDFUNDING?><br/>
+            <span><?=MSG_DONATIONS_AUCTIONS?></span>
            </p>
        </div>
         <div class="content-buttons">
