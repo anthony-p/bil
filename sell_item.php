@@ -26,6 +26,9 @@ if ($session->value('user_id'))
 	$user_details = $db->get_sql_row("SELECT * FROM
 		" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
 $item_details['npuser_id'] = $user_details['npuser_id'];
+	$bl2_user_details = $db->get_sql_row("SELECT * FROM
+		bl2_users WHERE id=" . $session->value('user_id'));
+$item_details['npuser_id'] = $user_details['npuser_id'];
 
 }
 
@@ -45,7 +48,8 @@ else if (!$session->value('is_seller'))
 	header_redirect('members_area.php?page=selling');
 }
 
-else if(!$session->value('extended_registration'))
+else if(!$session->value('extended_registration') &&
+    !(isset($bl2_user_details) && $bl2_user_details["extended_registration"]))
 {
     header_redirect('extended_registration.php?redirect=sell_item');
 }

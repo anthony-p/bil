@@ -351,4 +351,5 @@ if (is_dir('install'))
 }
 
 $template->change_path('templates/');
+
 ?>

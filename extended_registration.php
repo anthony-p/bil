@@ -93,18 +93,21 @@ include_once ('includes/functions_login.php');
                 $form_submitted = TRUE;## PHP Pro Bid v6.00 atm we wont create any emails either until we decide how many ways of registration we have.
                 (string) $register_success_message = "You have updated your account successfully";
 
+                $_POST["extended_registration"] = true;
                 $user_id = $user->extended_update_bl2_users(
                     $session->value('user_id'), $_POST, $page_handle
                 );
+
+                header('Location: http://dev2.bringitlocal.com/new_item,option,sell_item');
 //                $user_id = $user->extended_update($session->value('user_id'), $_POST, $page_handle);
 
-                $template->set('register_success_header', header5("Update User Account"));## PHP Pro Bid v6.00 add signup fee procedure here.
-		
-                $session->set('extended_registration', TRUE);
-
-                $template->set('register_success_message', $register_success_message);
-
-                $template_output .= $template->process('register_success.tpl.php');
+//                $template->set('register_success_header', header5("Update User Account"));## PHP Pro Bid v6.00 add signup fee procedure here.
+//
+//                $session->set('extended_registration', TRUE);
+//
+//                $template->set('register_success_message', $register_success_message);
+//
+//                $template_output .= $template->process('register_success.tpl.php');
             }
         }
 

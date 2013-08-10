@@ -11,7 +11,6 @@ $fileExtension = (file_exists('includes/global.php')) ? '' : '../';
 
 include_once ($fileExtension.'includes/config.php');
 
-
 define('INCLUDED', 1);
 
 define('DEFAULT_DB_LANGUAGE', 'english');

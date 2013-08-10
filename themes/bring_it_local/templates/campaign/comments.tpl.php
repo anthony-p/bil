@@ -36,12 +36,11 @@
           }else{
               $day =$day.' days ago<br />';
           }
-
           ?>
       <div class="post first">
           <div class="user-photo">
               <?php if (!empty($comment['avatar'])) {
-                  echo '<img src="'.$comment['avatar'].'" />';
+                  echo '<img style="width:45px" src="'.$comment['avatar'].'" />';
               } else {
                   echo '<img src="themes/bring_it_local/img/incognito.png" />';
               }

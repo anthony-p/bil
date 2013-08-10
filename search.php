@@ -12,8 +12,9 @@ define ('IN_SITE', 1);
 
 include_once ('includes/global.php');
 include_once ('includes/class_formchecker.php');
+var_dump('123');
 include_once ('includes/class_custom_field.php');
-
+var_dump('asdasdsa');
 include_once ('global_header.php');
 
 include_once("np/includes/npclass_user.php");

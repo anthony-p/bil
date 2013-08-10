@@ -4950,6 +4950,13 @@ else
                 $campaign_id = mysql_real_escape_string($_GET["campaign_id"]);
             }
 
+            if (empty($_POST['last_selected_tab'])) {
+                $last_selected_tab = '';
+            } else {
+                $last_selected_tab = $_POST['last_selected_tab'];
+            }
+
+
             $mysql_select_query = "SELECT * FROM np_users WHERE user_id=" . $campaign_id;
             $campaign = $db->get_sql_row($mysql_select_query);
 
@@ -5099,6 +5106,8 @@ else
 
                     $template->set('categories', $categories);
 
+                    $template->set('last_selected_tab', $last_selected_tab);
+
                     $template->set('countries', $countries);
 
                     $template->set('pitches', $pitches);
@@ -5134,68 +5143,65 @@ else
 
                     $mysql_update_query = "UPDATE np_users SET username='" . $_POST["username"] . "',
 
-        project_category='" . $_POST["project_category"] . "',
+                    project_category='" . $_POST["project_category"] . "',
 
-        campaign_basic='" . $_POST["campaign_basic"] . "',
+                    campaign_basic='" . $_POST["campaign_basic"] . "',
 
-        project_title='" . $_POST["project_title"] . "',
+                    project_title='" . $_POST["project_title"] . "',
 
-        description='" . $_POST["project_short_description"] . "',
+                    description='" . $_POST["project_short_description"] . "',
 
-        founddrasing_goal='" . $_POST["founddrasing_goal"] . "',
+                    founddrasing_goal='" . $_POST["founddrasing_goal"] . "',
 
-        funding_type='" . $_POST["funding_type"] . "',
+                    funding_type='" . $_POST["funding_type"] . "',
 
-        active='" . $_POST["active"] . "',
+                    active='" . $_POST["active"] . "',
 
-        deadline_type_value='" . $_POST["deadline_type_value"] . "',
+                    deadline_type_value='" . $_POST["deadline_type_value"] . "',
 
-        time_period='" . $_POST["time_period"] . "',
+                    time_period='" . $_POST["time_period"] . "',
 
-        certain_date='" . $_POST["certain_date"] . "',
+                    certain_date='" . $_POST["certain_date"] . "',
 
-        end_date='" . $_POST["end_date"] . "',
+                    end_date='" . $_POST["end_date"] . "',
 
-        url='" . $_POST["url"] . "',
+                    url='" . $_POST["url"] . "',
 
-        facebook_url='" . $_POST["facebook_url"] . "',
+                    facebook_url='" . $_POST["facebook_url"] . "',
 
-        twitter_url='" . $_POST["twitter_url"] . "',
+                    twitter_url='" . $_POST["twitter_url"] . "',
 
-        name='" . $_POST["name"] . "',
+                    name='" . $_POST["name"] . "',
 
-        tax_company_name='" . $_POST["tax_company_name"] . "',
+                    tax_company_name='" . $_POST["tax_company_name"] . "',
 
-        address='" . $_POST["address"] . "',
+                    address='" . $_POST["address"] . "',
 
-        city='" . $_POST["city"] . "',
+                    city='" . $_POST["city"] . "',
 
-        zip_code='" . $_POST["zip_code"] . "',
+                    zip_code='" . $_POST["zip_code"] . "',
 
-        country='" . $_POST["country"] . "',
+                    country='" . $_POST["country"] . "',
 
-        state='" . $_POST["state"] . "',
+                    state='" . $_POST["state"] . "',
 
-        phone='" . $_POST["phone"] . "',
+                    phone='" . $_POST["phone"] . "',
 
-        orgtype='" . $_POST["orgtype"] . "',
+                    orgtype='" . $_POST["orgtype"] . "',
 
-        pg_paypal_email='" . $_POST["pg_paypal_email"] . "',
+                    pg_paypal_email='" . $_POST["pg_paypal_email"] . "',
 
-        pg_paypal_first_name='" . $_POST["pg_paypal_first_name"] . "',
+                    pg_paypal_first_name='" . $_POST["pg_paypal_first_name"] . "',
 
-        pg_paypal_last_name='" . $_POST["pg_paypal_last_name"] . "',
+                    pg_paypal_last_name='" . $_POST["pg_paypal_last_name"] . "',
 
-        pitch_text='" . $_POST["pitch_text"] . "'";
+                    pitch_text='" . $_POST["pitch_text"] . "'";
 
 
 
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
-
                         $logo_file_name = '/images/partner_logos/' . md5($_POST["name"] . 'logo');
-
                         $upload_logo = generate_image_thumbnail(
-
                             $_FILES["logo"]["tmp_name"], trim($logo_file_name, '/'), 160, 160
 
                         );
@@ -5322,15 +5328,15 @@ else
 
                             $pitch_update_query = "UPDATE project_pitch SET
 
-                project_id='" . $pitch_to_update["project_id"] . "',
+                            project_id='" . $pitch_to_update["project_id"] . "',
 
-                amoun='" . $pitch_to_update["amoun"] . "',
+                            amoun='" . $pitch_to_update["amoun"] . "',
 
-                name='" . $pitch_to_update["name"] . "',
+                            name='" . $pitch_to_update["name"] . "',
 
-                description='" . $pitch_to_update["description"] . "'
+                            description='" . $pitch_to_update["description"] . "'
 
-                WHERE id=" . $pitch_to_update["id"];
+                            WHERE id=" . $pitch_to_update["id"];
 
                             $db->query($pitch_update_query);
 
@@ -5416,30 +5422,21 @@ else
                     $project_rewards = array();
 
                     while ($query_result =  mysql_fetch_array($project_reward_query_result)) {
-
                         $project_rewards[] = $query_result;
-
                     }
 
                     $template->set('campaign', $campaign);
-
                     $template->set('categories', $categories);
-
                     $template->set('countries', $countries);
-
                     $template->set('pitches', $pitches);
-
                     $template->set('project_updates', $project_updates);
-
                     $template->set('project_rewards', $project_rewards);
-
+                    $template->set('last_selected_tab', $last_selected_tab);
                     $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
-
                     $template->set('members_area_page_content', $members_area_page_content);
 
+
                 }
-
-
 
             } else if ($_REQUEST['get_states'] == 'true') {
 
@@ -5450,21 +5447,14 @@ else
                 $template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
                 $template->set("project_country",getProjectCategoryListToHTML());
                 $template->set('state_box', $tax->states_box('state', $_POST['state'], $post_country));
-
                 $template->set('campaign', $campaign);
-
                 $template->set('categories', $categories);
-
                 $template->set('countries', $countries);
-
                 $template->set('pitches', $pitches);
-
                 $template->set('project_updates', $project_updates);
-
                 $template->set('project_rewards', $project_rewards);
-
+                $template->set('last_selected_tab', $last_selected_tab);
                 $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
-
                 $template->set('members_area_page_content', $members_area_page_content);
 
             } else if (!$form_submitted)
@@ -5474,25 +5464,16 @@ else
                 $post_country = ($campaign['country']) ? $campaign['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
                 $template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
-
                 $template->set("project_country",getProjectCategoryListToHTML());
-
                 $template->set('state_box', $tax->states_box('state', $campaign['state'], $post_country));
-
                 $template->set('campaign', $campaign);
-
                 $template->set('categories', $categories);
-
                 $template->set('countries', $countries);
-
                 $template->set('pitches', $pitches);
-
                 $template->set('project_updates', $project_updates);
-
                 $template->set('project_rewards', $project_rewards);
-
+                $template->set('last_selected_tab', $last_selected_tab);
                 $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
-
                 $template->set('members_area_page_content', $members_area_page_content);
 
 

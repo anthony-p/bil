@@ -427,7 +427,7 @@ global $coupon_url;
                     else { link.innerHTML = '+'; d.style.display = 'none'; }
                 }
             </script>
-            <? if ($is_announcements && $member_active == 'Active') { ?>
+            <? if (isset($is_announcements) && $member_active == 'Active') { ?>
                 <?=$announcements_box_header;?>
                 <div id="exp1102170555">
                     <?=$announcements_box_content;?>
