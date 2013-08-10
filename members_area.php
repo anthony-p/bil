@@ -127,13 +127,15 @@ else
 	}
 	else
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'a.auction_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'a.auction_id';
 	}
 
 	$order_type = ($_REQUEST['order_type']) ? $_REQUEST['order_type'] : 'DESC';
 
 	$additional_vars = '&page=' . $page . '&section=' . $section;
 	$order_link = '&order_field=' . $order_field . '&order_type=' . $order_type;
+    if (!isset($start))
+        $start = 0;
 	$limit_link = '&start=' . $start . '&limit=' . $limit;
 
 	$template->set('page', $page);
@@ -191,6 +193,8 @@ else
 		
 		$eoa_fee->set_fees($session->value('user_id'));
 
+        $msg_unpaid_endauction_fees = "";
+
 		if (eregi('b', $eoa_fee->fee['endauction_fee_applies']))
 		{
 			$unpaid_fees = $db->count_rows('winners', "WHERE buyer_id='" . $session->value('user_id') . "' AND active!=1 AND payment_status!='confirmed'");
@@ -220,7 +224,8 @@ else
 	/* members tips code snippet */
 	if ($session->value('is_seller'))
 	{
-		$show_tips = $db->count_rows('users', "WHERE user_id='" . $session->value('user_id') . "' AND notif_a=0");
+        $msg_member_tips= '';
+        $show_tips = $db->count_rows('users', "WHERE user_id='" . $session->value('user_id') . "' AND notif_a=0");
 		
 		if ($show_tips)
 		{
@@ -244,22 +249,22 @@ else
 		$section = 'won_items';
 	}
 	
-	if ($_REQUEST['do'] == 'delete_invoice')
+	if ( isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_invoice')
 	{
 		$item->delete_invoice($_REQUEST['invoice_id'], $_REQUEST['option'], $session->value('user_id'));		
 	}
 	
-	if ($_REQUEST['do'] == 'delete_winner')
+	if ( isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_winner')
 	{
 		$item->delete_winner($_REQUEST['winner_id'], $_REQUEST['option'], $session->value('user_id'));
 	}
-	if ($_REQUEST['do'] == 'delete_cart')
+	if ( isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_cart')
 	{
 		$item->delete_cart(intval($_REQUEST['sc_id']), $_REQUEST['option'], $session->value('user_id'));
 	}	
 
 	
-	if ($_REQUEST['do'] == 'request_refund')
+	if ( isset($_REQUEST['do']) && $_REQUEST['do'] == 'request_refund')
 	{
 		$winner_details = $db->get_sql_row("SELECT w.*, i.user_id AS payer_id, i.refund_request FROM " . DB_PREFIX . "winners w 
 			LEFT JOIN " . DB_PREFIX . "invoices i ON i.invoice_id=w.refund_invoice_id
@@ -522,11 +527,17 @@ else
 
             $user_in_database = $row_user;
 
-			$username = $row_user['username']; /* the readonly field will not be altered */
+            if (isset($row_user['username']))
+			    $username = $row_user['username']; /* the readonly field will not be altered */
+            else
+                $username  = '';
 
 #which np is this. get the npuser_id and put it in a variable
-			$mynp_userid = $row_user['npuser_id'];		
-			if ($_POST['edit_refresh'] == 1)
+			if (isset ($row_user['npuser_id']))
+                $mynp_userid = $row_user['npuser_id'];
+            else
+                $mynp_userid = 0;
+			if ( isset($_POST['edit_refresh']) && $_POST['edit_refresh'] == 1)
 			{
 				$row_user = $_POST;
 				$row_user['username'] = $username;
@@ -538,7 +549,7 @@ else
 			$tax = new tax();
 			$tax->setts = &$setts;
 
-			if ($_REQUEST['operation'] == 'submit')
+			if ( isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit')
 			{
 				$user->save_vars($_POST);
 				define ('FRMCHK_USER', 1);
@@ -571,9 +582,9 @@ else
 				}
 			}
 
-			if (!$form_submitted)
+			if (!isset($form_submitted))
 			{
-				if ($_REQUEST['operation'] != 'submit')
+				if ( isset($_REQUEST['operation']) && $_REQUEST['operation'] != 'submit')
 				{
 					$user->save_edit_vars($session->value('user_id'), $page_handle);
 				}
@@ -581,7 +592,11 @@ else
 				$template->set('edit_user', 1);
 				$template->set('edit_disabled', 'disabled'); /* some fields in the registration will be disabled for editing */
 
-				$email_check_value = ($_POST['email_check']) ? $_POST['email_check'] : $row_user['email'];
+                if (isset($row_user['email']))
+                    $rEmail = $row_user['email'];
+                else
+                    $rEmail =  "";
+				$email_check_value = ( isset($_POST['email_check']) &&  $_POST['email_check']) ? $_POST['email_check'] : $rEmail;
 				$template->set('email_check_value', $email_check_value);
 
 				if (isset($_POST['tax_account_type']))
@@ -590,15 +605,23 @@ else
 				}
 
 				$template->set('user_details', $row_user);
-				$template->set('do', $_REQUEST['do']);
+                if (isset($_REQUEST['do']))
+                    $do = $_REQUEST['do'];
+                else
+                    $do = "";
+				$template->set('do', $do);
 
 	      	//$header_registration_message = headercat('<b>' . MSG_MM_MY_ACCOUNT . ' - ' . MSG_MM_PERSONAL_INFO . '</b>');
 				//$template->set('header_registration_message', $header_registration_message);
 
 				$template->set('proceed_button', GMSG_UPDATE_BTN);
 
-				$template->set('country_dropdown', $tax->countries_dropdown('country', $row_user['country'], 'registration_form'));
-				$template->set('state_box', $tax->states_box('state', $row_user['state'], $row_user['country']));
+                if (isset($row_user['country']))
+                    $rCountry = $row_user['country'];
+                else
+                    $rCountry = '';
+				$template->set('country_dropdown', $tax->countries_dropdown('country', $rCountry, 'registration_form'));
+				$template->set('state_box', $tax->states_box('state', $row_user['state'], $rCountry));
 
 				$custom_sections_table = $user->display_sections($row_user, $page_handle);
 				$template->set('custom_sections_table', $custom_sections_table);
