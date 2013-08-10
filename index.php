@@ -5,7 +5,7 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 
 session_start();

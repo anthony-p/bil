@@ -1444,6 +1444,8 @@ define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account information');
 define ('MSG_ALSO_FIND_ME', ' Also Find Me on');
 define ('MSG_POSTED_A_COMMENT', 'posted a comment');
 define ('MSG_POSTALE_CODE', 'Postale Code');
+define ('MSG_COMMUNITY_CROWDFUNDING', 'Community crowdfunding');
+define ('MSG_DONATIONS_AUCTIONS', 'Donations, auctions, click through shopping');
 
 
 

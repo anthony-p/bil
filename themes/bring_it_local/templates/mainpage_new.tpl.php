@@ -99,8 +99,8 @@ global $coupon_url;
 
 <div class="content">
        <div class="p-contain">
-           <p>Community crowdfunding<br/>
-            <span>Donations, auctions, click through shopping</span>
+           <p><?=MSG_COMMUNITY_CROWDFUNDING?><br/>
+            <span><?=MSG_DONATIONS_AUCTIONS?></span>
            </p>
        </div>
         <div class="content-buttons">
@@ -160,7 +160,7 @@ global $coupon_url;
                         <div class="campaigns-info">
                             <p class="name">
                                 <a href="/<?php echo $row['username']; ?>" class="name-camp">
-                                    <?php echo $row['name'];?>
+                                    <?php echo $row['project_title'];?>
                                 </a>
                                 <br/>by 
 								<a href="/about_me.php?user_id=<?php echo isset($row['id']) ? $row['id'] : ''; ?>">

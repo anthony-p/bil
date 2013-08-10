@@ -604,15 +604,15 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <? } ?>
         <div class="clear"></div>
         <? if ($setts['enable_tax']) { ?>
-        <h4><?=MSG_TAX_SETTINGS;?></h4>
+       <!-- <h4><?/*=MSG_TAX_SETTINGS;*/?></h4>-->
             <!--              <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
             <!--              <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
         <div class="account-tab">
-            <div class="account-row">
-                <label><?=MSG_TAX_REG_NUMBER;?></label>
-                <input name="tax_reg_number" type="text" class="contentfont" id="tax_reg_number" value="<?=$user_details['tax_reg_number'];?>" size="40" />
-                <span><?=MSG_TAX_REG_NUMBER_DESC;?></span>
-            </div>
+<!--            <div class="account-row">
+                <label><?/*=MSG_TAX_REG_NUMBER;*/?></label>
+                <input name="tax_reg_number" type="text" class="contentfont" id="tax_reg_number" value="<?/*=$user_details['tax_reg_number'];*/?>" size="40" />
+                <span><?/*=MSG_TAX_REG_NUMBER_DESC;*/?></span>
+            </div>-->
 
                 <div class="next">
                     <div class="right">

@@ -1,36 +1,1 @@
-<?php
-/**
- * Created by Lilian Codreanu.
- * User: Lilian Codreanu
- * Date: 5/25/13
- * Time: 1:29 PM
- */
-?>
-
-<aside class="announcement rewards">
-    <div class="inner">
-        <?php $count = 0; foreach ($projectRewards as $_reward) :?>
-        <?php $count++; ?>
-            <div class="<?php if ($count == 1) { echo 'post first';} else {echo 'post'; }?>">
-                <p>
-                    <?=$_reward['comment']?>
-                </p>
-            </div>
-        <?php endforeach;?>
-       <!-- <div class="post first">
-                <p>This is how perks work. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                  Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
-           </div>
-        <div class="post">
-            <h3>Perk 1</h3>
-            <p>This is how perks work. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
-        </div>
-        <div class="post">
-            <h3>Perk 2</h3>
-            <p>This is how perks work. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
-        </div>
-        <div class="a-view"><a href="" class="viewall"><span>view all</span></a></div>-->
-    </div>
-</aside>
+<?php/** * Created by Lilian Codreanu. * User: Lilian Codreanu * Date: 5/25/13 * Time: 1:29 PM */?><aside class="announcement rewards">    <div class="inner">        <div class="post first">            <?php $count = 0; foreach ($projectRewards as $_reward) :?>                <?php $count++; ?>                <div class="<?php if ($count == 1) { echo'posted-mess first';} else {echo 'post'; }?>">                    <div class="user-photo">                        <?php if (!empty($_reward['avatar'])) {                            echo '<img style="width:45px" src="'.$_reward['avatar'].'" />';                        } else {                            echo '<img src="themes/bring_it_local/img/incognito.png" />';                        }                        ?>                    </div>                    <?php                    $day = time() - $_reward["create_at"];                    $day = floor($day/86400);                    if ($day < 1){                        $day = 'today<br />';                    }elseif ($day == 1){                        $day = 'yesterday<br />';                    }else{                        $day =$day.' days ago<br />';                    }                    /*         $time = time();                             $numDays = round(abs($_update['create_at'] - $time)/60/60/24);*/                    ?>                    <p><a href="href=/about_me.php?user_id=<?php echo isset($_reward['id']) ? $_reward['id'] : ''; ?>""><?=$_reward['first_name'].' '.$_reward['last_name']?></a> posted a announcement <?=$day?><br />                        <?=$_reward['comment']?>                    </p>                </div>            <?php endforeach;?>        </div>    <!--    <?php /*$count = 0; foreach ($projectRewards as $_reward) :*/?>        <?php /*$count++; */?>            <div class="<?php /*if ($count == 1) { echo 'post first';} else {echo 'post'; }*/?>">                <p>                    <?/*=$_reward['comment']*/?>                </p>            </div>        --><!--        --><?php /*endforeach;*/?>       <!-- <div class="post first">                <p>This is how perks work. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.                  Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>           </div>        <div class="post">            <h3>Perk 1</h3>            <p>This is how perks work. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>        </div>        <div class="post">            <h3>Perk 2</h3>            <p>This is how perks work. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>        </div>        <div class="a-view"><a href="" class="viewall"><span>view all</span></a></div>-->    </div></aside>

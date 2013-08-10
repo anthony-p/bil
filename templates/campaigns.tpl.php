@@ -43,7 +43,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 <div class="clear"></div>
                 <div class="campaigns-info">
                     <p class="name">
-                        <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>" class="name-camp"><?php echo $row['name'];?></a>
+                        <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>" class="name-camp"><?php echo $row['project_title'];?></a>
                         <br/>by <a href="#"><?php echo $row['first_name']."  ".$row['last_name'];?></a>
                     </p>
                     <p class="description">
