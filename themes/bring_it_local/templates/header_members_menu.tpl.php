@@ -66,7 +66,6 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
 <!--<!--   </div>-->-->
 <!--</div>-->
 <ul class="member-menu">
-
 <? if ($member_active == 'Active') { ?>
     <li>
         <a href="javascript:void(0)"><?=MSG_MM_PROFILE?></a>
