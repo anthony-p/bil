@@ -57,14 +57,14 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
 
 ?>
 
-<div class="top">
-    <h4><?=MSG_WELCOME_BACK;?> <?=$first_name; ?></h4>
-<!--   <div class="buttons">-->
-<!--       <a href="/--><?//=$npusername?><!--"><span>Go to your community page</span></a>-->
-<!--       <a href = "/reports/member/summary.php?sv1_username=--><?//=$member_username?><!--&sv_invoice_date=%23%23all%23%23" target="_blank"><span>Fund Raising Report</span></a>-->
-<!---->
-<!--   </div>-->
-</div>
+<!--<div class="top">-->
+<!--    <h4>--><?//=MSG_WELCOME_BACK;?><!-- --><?//=$first_name; ?><!--</h4>-->
+<!--<!--   <div class="buttons">-->-->
+<!--<!--       <a href="/-->--><?////=$npusername?><!--<!--"><span>Go to your community page</span></a>-->-->
+<!--<!--       <a href = "/reports/member/summary.php?sv1_username=-->--><?////=$member_username?><!--<!--&sv_invoice_date=%23%23all%23%23" target="_blank"><span>Fund Raising Report</span></a>-->-->
+<!--<!---->-->
+<!--<!--   </div>-->-->
+<!--</div>-->
 <ul class="member-menu">
 
 <? if ($member_active == 'Active') { ?>
