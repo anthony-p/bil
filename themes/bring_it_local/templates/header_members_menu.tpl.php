@@ -9,6 +9,13 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 
+<!--<table border="0" cellpadding="3" cellspacing="3" width="100%" class="c1 border contentfont">-->
+<!--   <tr>-->
+<!--      <td class="c2" height="35" align="center">-->
+<!--      	--><!--</b>-->
+<!--      </td>-->
+<!--</tr><tr>-->
+<!--<td class="c2" height="35" align="center">-->
 
 <?
 #not sure why this is not already included since it has the db connection info and how can everything else be working without it
@@ -50,16 +57,21 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
 
 ?>
 
-<div class="top">
-    <h4><?=MSG_WELCOME_BACK;?> <?=$first_name; ?></h4>
-</div>
+<!--<div class="top">-->
+<!--    <h4>--><?//=MSG_WELCOME_BACK;?><!-- --><?//=$first_name; ?><!--</h4>-->
+<!--<!--   <div class="buttons">-->
+<!--<!--       <a href="/--><?////=$npusername?><!--<!--"><span>Go to your community page</span></a>-->
+<!--<!--       <a href = "/reports/member/summary.php?sv1_username=--><?////=$member_username?><!--<!--&sv_invoice_date=%23%23all%23%23" target="_blank"><span>Fund Raising Report</span></a>-->
+<!--<!---->
+<!--<!--   </div>-->
+<!--</div>-->
 <ul class="member-menu">
-
 <? if ($member_active == 'Active') { ?>
     <li>
         <a href="javascript:void(0)"><?=MSG_MM_PROFILE?></a>
          <ul>
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'editinfo'));?>"><?=MSG_MM_PERSONAL_INFO;?></a></li>
+             <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'management'));?>"><?=MSG_MM_MANAGE_ACCOUNT;?></a></li>
              <li><a href="javascript:void(0)"><?=MSG_MM_ABOUT_ME?></a>
                  <ul>
                     <li><a href="/about_me,page,edit,section,members_area"><?=MSG_MM_EDIT?></a></li>
@@ -74,9 +86,23 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
              </li>
 
 
+
+            <!--            <li>&raquo; <a href="--><?//=process_link('members_area', array('page' => 'account', 'section' => 'invoices'));?><!--">--><?//=MSG_MM_INVOICES;?><!--</a></li>-->
+<!--            <li><a href="--><?//=process_link('members_area', array('page' => 'account', 'section' => 'history'));?><!--">--><?//=MSG_MM_ACCOUNT_HISTORY;?><!--</a></li>-->
+<!--            <li><a href="--><?//=process_link('members_area', array('page' => 'account', 'section' => 'mailprefs'));?><!--">--><?//=MSG_MM_MAIL_PREFS;?><!--</a></li>-->
+<!--            <li><a href="--><?//=process_link('members_area', array('page' => 'account', 'section' => 'abuse_report'));?><!--">--><?//=MSG_MM_ABUSE_REPORT;?><!--</a></li>-->
+<!--            --><?// if ($setts['enable_refunds']) { ?>
+<!--                <li><a href="--><?//=process_link('members_area', array('page' => 'account', 'section' => 'refund_requests'));?><!--">--><?//=MSG_MM_REFUND_REQUESTS;?><!--</a></li>-->
+<!--            --><?// } ?>
+<!--            <li><a href="/reports/npmember/summary.php?sv1_np_name=&amp;sv_invoice_date=%23%23all%23%23" target="_blank"> Your fundraising report</a></li>-->
+            <!--            <li><a href="/np/npmembers_news.php?news=news">Non profit news</a></li>-->
+            <!--            <li><a href="/lilian.codreanu@gmail.com" target="_blank"> Your public landing page </a></li>-->
+            <!--            <li><a href="/np/toolkit.doc" target="_blank"> Toolkit - download as word doc </a></li>-->
+<!--            <li><a href="/widget,page,view,section,members_area#8ec3489f027e" target="_blank"> Widget </a></li>-->
         </ul>
     </li>
 
+<!--<li><a href="--><?//=process_link('members_area', array('page' => 'summary'));?><!--">--><?//=MSG_MM_SUMMARY;?><!--</a></li>-->
     <li>
         <a href="javascript:void(0)"><?=MSG_MY_CAPMAIGNS?></a>
         <ul>
@@ -102,6 +128,17 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
                    <li><a href="<?=process_link('members_area', array('page' => 'selling', 'section' => 'closed'));?>"><?=MSG_MM_CLOSED_AUCTIONS;?></a></li>
                    <li><a href="<?=process_link('members_area', array('page' => 'selling', 'section' => 'drafts'));?>"><?=MSG_MM_DRAFTS;?></a></li>
                    <li> <a href="<?=process_link('members_area', array('page' => 'selling', 'section' => 'sold'));?>"><?=MSG_MM_SOLD_ITEMS;?></a></li>
+<!--                   --><?// if ($setts['enable_stores']) { ?>
+<!--                       <li> <a href="--><?//=process_link('members_area', array('page' => 'selling', 'section' => 'sold_carts'));?><!--">--><?//=MSG_MM_SOLD_CARTS;?><!--</a></li>-->
+<!--                   --><?// } ?>
+<!--                   <li><a href="--><?//=process_link('members_area', array('page' => 'selling', 'section' => 'invoices_sent'));?><!--">--><?//=MSG_MM_INVOICES_SENT;?><!--</a></li>-->
+<!--                   <li><a href="--><?//=process_link('members_area', array('page' => 'selling', 'section' => 'fees_calculator'));?><!--">--><?//=MSG_MM_FEES_CALCULATOR;?><!--</a></li>-->
+<!--                   <li><a href="--><?//=process_link('members_area', array('page' => 'selling', 'section' => 'prefilled_fields'));?><!--">--><?//=MSG_MM_PREFILLED_FIELDS;?><!--</a></li>-->
+<!--                   <li><a href="--><?//=process_link('members_area', array('page' => 'selling', 'section' => 'block_users'));?><!--">--><?//=MSG_MM_BLOCK_USERS;?><!--</a></li>-->
+<!--                   <li><a href="--><?//=process_link('members_area', array('page' => 'selling', 'section' => 'suggest_category'));?><!--">--><?//=MSG_MM_SUGGEST_CATEGORY;?><!--</li>-->
+<!--                   --><?// if ($setts['enable_shipping_costs']) { ?>
+<!--                       <li><a href="--><?//=process_link('members_area', array('page' => 'selling', 'section' => 'postage_setup'));?><!--">--><?//=MSG_MM_POSTAGE_CALC_SETUP;?><!--</a></li>-->
+<!--                   --><?// } ?>
                </ul>
            </li>
            <li>
@@ -112,7 +149,12 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
                    <li>	<? if ($setts['enable_stores']) { ?>
                            <a href="<?=process_link('members_area', array('page' => 'bidding', 'section' => 'purchased_carts'));?>"><?=MSG_MM_PURCHASED_CARTS;?></a><br>
                        <? } ?></li>
+<!--                   <li><a href="--><?//=process_link('members_area', array('page' => 'bidding', 'section' => 'invoices_received'));?><!--">--><?//=MSG_MM_INVOICES_RECEIVED;?><!--</a></li>-->
                    <li><a href="<?=process_link('members_area', array('page' => 'bidding', 'section' => 'item_watch'));?>"><?=MSG_MM_WATCHED_ITEMS;?></a></li>
+<!--                   <li>	--><?// if ($setts['enable_stores']) { ?>
+<!--                           <a href="--><?//=process_link('members_area', array('page' => 'bidding', 'section' => 'favorite_stores'));?><!--">--><?//=MSG_MM_FAVORITE_STORES;?><!--</a><br>-->
+<!--                       --><?// } ?>
+<!--                   </li>-->
                    <li><a href="<?=process_link('members_area', array('page' => 'bidding', 'section' => 'keywords_watch'));?>"><?=MSG_MM_KEYWORDS_WATCH;?></a>
                    </li>
                </ul>
@@ -128,9 +170,84 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
     </ul>
 
     </li>
+<!--    --><?// if ($is_seller) { ?>
+<!-- <li>-->
+<!--     <a href="javascript:void(0)">--><?//=MSG_MM_SELLING;?><!--  </a>-->
+<!---->
+<!-- </li>-->
+<!--    --><?// } ?>
 
+
+<!--    --><?// if ($is_seller && $setts['enable_bulk_lister']) { ?>
+<!--<li>-->
+<!--    <a href="">--><?//=MSG_MM_BULK;?><!--</a>-->
+<!--    <ul>-->
+<!--        <li><a href="--><?//=process_link('members_area', array('page' => 'bulk', 'section' => 'details'));?><!--">--><?//=MSG_MM_DETAILS;?><!--</a></li>-->
+<!--    </ul>-->
+<!--</li>-->
+<!---->
+<!--	--><?// } ?>
+<!--   <li>-->
+<!--       <a href="javascript:void(0)">--><?//=MSG_MM_ABOUT_ME;?><!--</a>-->
+<!--       <ul>-->
+<!--           <li><a href="--><?//=process_link('members_area', array('page' => 'about_me', 'section' => 'view'));?><!--">--><?//=MSG_MM_VIEW;?><!--</a></li>-->
+<!--    --><?// if ($setts['enable_profile_page']) { ?>
+<!--           <li><a href="--><?//=process_link('members_area', array('page' => 'about_me', 'section' => 'profile'));?><!--">--><?//=MSG_PROFILE_PAGE;?><!--</a></li>-->
+<!--    --><?// } ?>
+<!--       </ul>-->
+<!--   </li>-->
+<!--   	--><?// if ($setts['enable_stores'] && $is_seller) { ?>
+<!--   <li>-->
+<!--       <a href="">--><?//=MSG_MM_STORE;?><!--</a>-->
+<!--       <ul>-->
+<!--           <li><a href="--><?//=process_link('members_area', array('page' => 'store', 'section' => 'subscription'));?><!--">--><?//=MSG_MM_SUBSCRIPTION_SETUP;?><!--</a></li>-->
+<!--           <li><a href="--><?//=process_link('members_area', array('page' => 'store', 'section' => 'setup'));?><!--">--><?//=MSG_MM_MAIN_SETTINGS;?><!--</a></li>-->
+<!--           <li><a href="--><?//=process_link('members_area', array('page' => 'store', 'section' => 'postage'));?><!--">--><?//=MSG_MM_SC_SETTS;?><!--</a></li>-->
+<!--           <li><a href="--><?//=process_link('members_area', array('page' => 'store', 'section' => 'store_pages'));?><!--">--><?//=MSG_MM_STORE_PAGES;?><!--</a></li>-->
+<!--           <li><a href="--><?//=process_link('members_area', array('page' => 'store', 'section' => 'categories'));?><!--">--><?//=MSG_MM_CUSTOM_CATS;?><!--</a></li>-->
+<!--       </ul>-->
+<!--   </li>-->
+<!-- 	--><?// } ?>
+<!--	--><?// if ($setts['enable_wanted_ads']) { ?>
+<!--        <li>-->
+<!--            <a href="">--><?//=MSG_MM_WANTED_ADS;?><!--</a>-->
+<!--            <ul>-->
+<!--                <li><a href="--><?//=process_link('members_area', array('page' => 'wanted_ads', 'section' => 'new'));?><!--">--><?//=MSG_MM_ADD_NEW;?><!--</a></li>-->
+<!--                <li><a href="--><?//=process_link('members_area', array('page' => 'wanted_ads', 'section' => 'open'));?><!--">--><?//=MSG_MM_OPEN;?><!--</a></li>-->
+<!--                <li><a href="--><?//=process_link('members_area', array('page' => 'wanted_ads', 'section' => 'closed'));?><!--">--><?//=MSG_MM_CLOSED;?><!--</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!-- 	--><?// } ?>
+<!--	--><?// if ($setts['enable_reverse_auctions']) { ?>
+<!--        <li>-->
+<!--            <a href="">--><?//=MSG_MM_REVERSE_AUCTIONS;?><!--</a>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    <a href="javascript:void(0)">--><?//=MSG_MM_GET_SERVICES;?><!--</a>-->
+<!--                    <ul>-->
+<!--                        <li><a href="--><?//=process_link('members_area', array('page' => 'reverse', 'section' => 'open'));?><!--">--><?//=MSG_MM_OPEN;?><!--</a></li>-->
+<!--                        <li><a href="--><?//=process_link('members_area', array('page' => 'reverse', 'section' => 'closed'));?><!--">--><?//=MSG_MM_CLOSED;?><!--</a></li>-->
+<!--                        <li><a href="--><?//=process_link('members_area', array('page' => 'reverse', 'section' => 'scheduled'));?><!--">--><?//=MSG_MM_SCHEDULED;?><!--</a></li>-->
+<!--                        <li><a href="--><?//=process_link('members_area', array('page' => 'reverse', 'section' => 'awarded'));?><!--">--><?//=MSG_MM_AWARDED;?><!--</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="javascript:void(0)">--><?//=MSG_MM_PROVIDE_SERVICES;?><!--</a>-->
+<!--                    <ul>-->
+<!--                        <li><a href="--><?//=process_link('members_area', array('page' => 'reverse', 'section' => 'my_profile'));?><!--">--><?//=MSG_MM_PROFILE;?><!--</a></li>-->
+<!--                        <li><a href="--><?//=process_link('members_area', array('page' => 'reverse', 'section' => 'my_bids'));?><!--">--><?//=MSG_MM_MY_BIDS;?><!--</a></li>-->
+<!--                        <li><a href="--><?//=process_link('members_area', array('page' => 'reverse', 'section' => 'won'));?><!--">--><?//=MSG_MM_MY_PROJECTS;?><!--</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--	--><?// } ?>
 	<? } ?>
 
 
 
 </ul>
+<!--      </td>-->
+<!--	</tr>-->
+<!--</table>-->
+<!--<br>-->
