@@ -2313,5 +2313,4 @@ define ('MSG_VIDEO_YOUTUBE', 'Video (Youtube or Vimeo)');
 
 // define('')
 
-?>
 
