@@ -4,8 +4,10 @@ switch($_SERVER['SERVER_NAME']) {
          $db_host = '127.0.0.1';
          $db_username = 'root';
          $db_password = 'primus21';
-         define('DB_PREFIX', 'probid_'); ## Do not edit !
-         define('SESSION_PREFIX', 'probid_');
+         if ( !defined('DB_PREFIX') )
+            define('DB_PREFIX', 'probid_'); ## Do not edit !
+         if ( !defined('SESSION_PREFIX') )
+            define('SESSION_PREFIX', 'probid_');
          $db_name = 'bringit_auction';
          $coupon_url = 'http://devcoupons.bringitlocal.com';
      break;

@@ -312,9 +312,9 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
 <?=$header_registration_message;?>
 <br>
-<?=$banned_email_output;?>
-<?=$display_formcheck_errors;?>
-<?=$check_voucher_message;?>
+<?=(isset($banned_email_output))?$banned_email_output:'';?>
+<?=(isset($display_formcheck_errors))?$display_formcheck_errors:'';?>
+<?=(isset($check_voucher_message))?$check_voucher_message:'';?>
 
 <div id="wrapper">
 <div id="navigation" style="display:none;">
@@ -328,9 +328,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <li id="p_projectEdit">
             <a href="#">Enhancements</a>
         </li>
-       <!-- <li id="p_projectPitch">
-            <a href="#">Pitch</a>
-        </li>-->
         <li id="p_confirmation">
             <a href="#">Confirmation</a>
         </li>
@@ -340,20 +337,18 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 <div id="steps">
 <form action="<?=$register_post_url;?>" method="post" name="registration_form" enctype="multipart/form-data" id="formElem" >
 <input type="hidden" name="operation" value="submit">
-<input type="hidden" name="do" value="<?=$do;?>">
-<input type="hidden" name="user_id" value="<?=$user_details['user_id'];?>">
+<input type="hidden" name="do" value="<?=(isset($do))?$do:'';?>">
+<input type="hidden" name="user_id" value="<?=(isset($user_details['user_id']))?$user_details['user_id']:'';?>">
 <input type="hidden" name="edit_refresh" value="0">
-<input type="hidden" name="generated_pin" value="<?=$generated_pin;?>">
+<input type="hidden" name="generated_pin" value="<?=(isset($generated_pin))?$generated_pin:'';?>">
 <fieldset class="step">
     <div class="tabs">
         <h4><?=MSG_MAIN_DETAILS;?></h4>
 <div class="account-tab">
-    <!--                <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
-    <!--                <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
     <div class="account-row">
         <label><?=MSG_REGISTER_AS;?></label>
         <select name="orgtype" id="orgtype" size="1">
-        <option selected="selected"><? echo ($user_details['orgtype']);?></option>
+        <option selected="selected"><? echo (isset($user_details['orgtype']))?($user_details['orgtype']):'';?></option>
         <option value="Charitable organization: homeless shelter">Charitable organization: homeless shelter</option>
         <option value="Charitable organization: disability organization">Charitable organization: disability organization </option>
         <option value="Charitable organization: youth program">Charitable organization: youth program</option>
@@ -388,84 +383,81 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     </div>
     <div class="account-row">
         <label><?=MSG_FULL_NAME;?> *</label>
-        <input name="name" type="text" id="name" value="<?=$user_details['name'];?>" size="40" />
-        <input name="affiliate" type="hidden" id="affiliate" value="<?=$_POST['affiliate'];?>" size="40" />
+        <input name="name" type="text" id="name" value="<?=(isset($user_details['name']))?$user_details['name']:'';?>" size="40" />
+        <input name="affiliate" type="hidden" id="affiliate" value="<?=(isset($_POST['affiliate']))?$_POST['affiliate']:'';?>" size="40" />
         <span><?=MSG_FULL_NAME_EXPL;?> *</span>
     </div>
 
     <? #if ($user_details['tax_account_type']) { ?>
     <div class="account-row">
         <label><?=MSG_COMPANY_NAME;?> *</label>
-        <input name="tax_company_name" type="text" class="contentfont" id="tax_company_name" value="<?=$user_details['tax_company_name'];?>" size="40" />
+        <input name="tax_company_name" type="text" class="contentfont" id="tax_company_name" value="<?=isset($user_details['tax_company_name'])?$user_details['tax_company_name']:'';?>" size="40" />
         <span><?=MSG_COMPANY_NAME_DESC;?></span>
     </div>
     <? #} ?>
     <div class="account-row">
         <label><?=MSG_ADDRESS;?> *</label>
-        <input name="address" type="text" id="address" value="<?=$user_details['address'];?>" size="40" />
+        <input name="address" type="text" id="address" value="<?=isset($user_details['address'])?$user_details['address']:'';?>" size="40" />
         <span><?=MSG_ADDRESS_EXPL;?></span>
     </div>
     <div class="account-row">
         <label><?=MSG_CITY;?> *</label>
-        <input name="city" type="text" id="city" value="<?=$user_details['city'];?>" size="25" />
+        <input name="city" type="text" id="city" value="<?=isset($user_details['city'])?$user_details['city']:'';?>" size="25" />
         <span><?=MSG_CITY_EXPL;?></span>
     </div>
-    <!---->
-    <!--                        <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
-    <!--                        <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
-    <!--                        <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
 
     <div class="account-row">
         <label><?=MSG_ZIP_CODE;?> *</label>
-        <input name="zip_code" type="text" id="zip_code" value="<?=$user_details['zip_code'];?>" size="15" />
+        <input name="zip_code" type="text" id="zip_code" value="<?=(isset($user_details['zip_code']))?$user_details['zip_code']:'';?>" size="15" />
         <div class="clear"></div><br/>
         <label><?=MSG_COUNTRY;?> *</label>
         <?=$country_dropdown;?>
         <div class="clear"></div><br/>
         <label><?=MSG_STATE;?> *</label>
         <?=$state_box;?>
-        <input type ="hidden" name="geoaddress" id="geoaddress" value= "<?=$user_details['address'] .",". $user_details['city'] .",". $user_details['zip_code'];?>"/>
+        <?php
+            $city = (isset($user_details['city']))?$user_details['city']:'';
+            $zip_code = (isset($user_details['zip_code']))?$user_details['zip_code']:'';
+
+        ?>
+        <input type ="hidden" name="geoaddress" id="geoaddress" value= "<?=(isset($user_details['address']))?$user_details['address']:'' .",". $city .",". $zip_code;?>"/>
         <?
         #include 'includes/npgeocode_user.php';
         ?>
 
-        <input type ="hidden" name="lat" id="lat" value= "<?=$user_details['lat'];?>" />
-        <input type ="hidden" name="lng" id="lng" value= "<?=$user_details['lng'];?>" />
+        <input type ="hidden" name="lat" id="lat" value= "<?=(isset($user_details['lat']))?$user_details['lat']:'';?>" />
+        <input type ="hidden" name="lng" id="lng" value= "<?=(isset($user_details['lng']))?$user_details['lng']:'';?>" />
     </div>
-
-
-    <!--                        <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
-    <!--                        <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
 
     <div class="account-row phone">
         <label><?=MSG_PHONE;?> *</label>
 
-        <? if ($edit_user == 1)	{ ?>
-            <input name="phone" type="text" id="phone" value="<?=$user_details['phone'];?>" size="25" />
+        <? if (isset($edit_user) && $edit_user == 1)	{ ?>
+            <input name="phone" type="text" id="phone" value="<?=(isset($user_details['phone']))?$user_details['phone']:'';?>" size="25" />
         <? } else { ?>
-            ( <input name="phone_a" type="text" id="phone_a" value="<?=$user_details['phone_a'];?>" size="5" /> )
-            <input name="phone_b" type="text" id="phone_b" value="<?=$user_details['phone_b'];?>" size="25" />
+            ( <input name="phone_a" type="text" id="phone_a" value="<?=(isset($user_details['phone_a']))?$user_details['phone_a']:'';?>" size="5" /> )
+            <input name="phone_b" type="text" id="phone_b" value="<?=(isset($user_details['phone_b']))?$user_details['phone_b']:'';?>" size="25" />
         <? } ?>
         <span><?=MSG_PHONE_EXPL;?></span>
         <div class="clear"></div>
-        <?=$birthdate_box;?>
+        <?=isset($birthdate_box)?$birthdate_box:'';?>
     </div>
     <div class="account-row">
         <label><?=MSG_PG_PAYPAL_EMAIL_ADDRESS;?></label>
         <input name="pg_paypal_email" type="text" id="pg_paypal_email"
-               value="<?=$user_details['pg_paypal_email'];?>" size="40" />
+               value="<?=(isset($user_details['pg_paypal_email']))?$user_details['pg_paypal_email']:'';?>" size="40" />
         <span><?=MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL;?></span>
     </div>
     <div class="account-row">
         <label><?=MSG_PG_PAYPAL_FIRST_NAME;?></label>
         <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name"
-               value="<?=$user_details['pg_paypal_first_name'];?>" size="40" />
+               value="<?=(isset($user_details['pg_paypal_first_name']))?$user_details['pg_paypal_first_name']:'';?>" size="40" />
         <span><?=MSG_PG_PAYPAL_FIRST_NAME_EXPL;?></span>
     </div>
     <div class="account-row">
         <label><?=MSG_PG_PAYPAL_LAST_NAME;?></label>
         <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name"
-               value="<?=$user_details['pg_paypal_last_name'];?>" size="40" />
+               value="<?=(isset($user_details['pg_paypal_last_name']))?$user_details['pg_paypal_last_name']:'';?>" size="40" />
         <span><?=MSG_PG_PAYPAL_LAST_NAME_EXPL;?></span>
     </div>
     <div class="next">
@@ -481,8 +473,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 <fieldset class="step">
     <div class="tabs">
         <h4><?=MSG_PROJECT_ACCOUNT_DETAILS; ?></h4>
-        <!--                <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1">-->
-        <!--                <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1">-->
         <div class="account-tab">
             <div class="account-row">
             <label> <?=MSG_CREATE_PROJECT_URL;?> *</label>
@@ -527,16 +517,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                    value="<?php echo isset($user_details['founddrasing_goal']) ? $user_details['founddrasing_goal'] : '500' ?>"
                    id="founddrasing_goal" >(USD)
         </div>
-     <!--   <div class="account-row">
-            <label><?/*=MSG_FUNDING_TYPE;*/?> *</label>-->
-<!--            <input type="text" name="founddrasing_goal" value="500" id="founddrasing_goal" >-->
-<!--            <div class="clear"></div>-->
-           <!-- <div class="radio">
-                <input type="radio" name="funding_type" value="flexible" <?php /*if (isset($user_details["funding_type"]) && $user_details["funding_type"] == "flexible") echo 'checked="checked"' */?>>
-                <label><?/*=MSG_FUNDING_TYPE_FLEXIBLE*/?></label>
-            </div>
-            <div class="radio"><input type="radio" name="funding_type" value="fixed" <?php /*if (!isset($user_details["funding_type"]) || $user_details["funding_type"] != "flexible") echo 'checked="checked"' */?> ><label><?/*=MSG_FUNDING_TYPE_FIXED*/?></label></div>
-        </div>-->
         <div class="account-row deadline">
             <label><?="Deadline";?> </label>
 
@@ -566,8 +546,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                          </span>
         </div>
         </div>
-<!--        <h4>--><?//=$custom_sections_table;?><!--</h4>-->
-        <? if (IN_ADMIN == 1) { ?>
+        <? if ( defined('IN_ADMIN') && IN_ADMIN == 1) { ?>
             <div class="account-row taxt-settings">
                 <h6><?=AMSG_PAYMENT_SETTINGS;?></h6>
                 <!--                   <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1">-->
@@ -604,16 +583,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <? } ?>
         <div class="clear"></div>
         <? if ($setts['enable_tax']) { ?>
-       <!-- <h4><?/*=MSG_TAX_SETTINGS;*/?></h4>-->
-            <!--              <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
-            <!--              <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
         <div class="account-tab">
-<!--            <div class="account-row">
-                <label><?/*=MSG_TAX_REG_NUMBER;*/?></label>
-                <input name="tax_reg_number" type="text" class="contentfont" id="tax_reg_number" value="<?/*=$user_details['tax_reg_number'];*/?>" size="40" />
-                <span><?/*=MSG_TAX_REG_NUMBER_DESC;*/?></span>
-            </div>-->
-
                 <div class="next">
                     <div class="right">
                         <input type="button" onclick="prevStepShow('p_projectDetail')"  value="<?=MSG_PREV?>" class="next_btn" />
@@ -635,18 +605,18 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <div class="account-tab">
         <div class="account-row">
             <label><?=MSG_WEBSITE_ADDRESS_INSTRUCTIONS;?></label>
-            <input name="url" type="text" class="contentfont" id="url" value="<?=$user_details['url'];?>" size="40" />
+            <input name="url" type="text" class="contentfont" id="url" value="<?=(isset($user_details['url']))?$user_details['url']:'';?>" size="40" />
             <span><?=MSG_WEBSITE_ADDRESS_INSTRUCTIONS2;?></span>
         </div>
 
         <div class="account-row">
             <label><?=MSG_FACEBOOK_PAGE_INSTRUCTIONS;?></label>
-            <input name="facebook_url" type="text" class="contentfont" id="url" value="<?=$user_details['facebook_url'];?>" size="40" />
+            <input name="facebook_url" type="text" class="contentfont" id="url" value="<?=(isset($user_details['facebook_url']))?$user_details['facebook_url']:'';?>" size="40" />
         </div>
 
         <div class="account-row">
             <label><?=MSG_TWITTER_PAGE_INSTRUCTIONS;?></label>
-            <input name="twitter_url" type="text" class="contentfont" id="url" value="<?=$user_details['twitter_url'];?>" size="40" />
+            <input name="twitter_url" type="text" class="contentfont" id="url" value="<?=(isset($user_details['twitter_url']))?$user_details['twitter_url']:'';?>" size="40" />
         </div>
 
         <h5><?=MSG_LOGO_DESC;?></h5>
@@ -692,79 +662,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 <div id="prev_banner"></div>
             </div>
         </div>
-        <?php /*
-               <style>
-                   .image-checkbox-container input[type="checkbox"]{
-                       display: none;
-                   }
-                   .image-checkbox-container img{
-                       border: 3px solid #C3C3C3;
-                       margin: 1px;
-                       width: 100px;
-                   }
-               </style>
-               */ ?>
-
-        <?php /*
-                   $default_banners_dir = ($_SERVER['DOCUMENT_ROOT'] ."/np/banners/default/");
-
-                   $banners = array();
-                   if ($handle = opendir($default_banners_dir)) {
-                       while (false !== ($banner = readdir($handle))) {
-                           if ($banner != '.' && $banner != '..') {
-                           ?>
-                               <span class="image-checkbox-container">
-                                   <input type="checkbox" name="banner" class="banner" value="<?php echo $banner?>" />
-                                   <img src="banners/default/<?php echo $banner?>">
-                               </span>
-                           <?php
-                           }
-                       }
-                       closedir($handle);
-                   }
-                    <span class="image-checkbox-container" id="uploaded_banner">
-                        <?php if(!empty($user_details['banner']) AND (strpos($user_details['banner'],'default') !== false)){?>
-                            <script type="text/javascript">
-                                jQuery('input[value="<?php echo $user_details['banner']?>"]').attr('checked','checked');
-                                jQuery('input[value="<?php echo $user_details['banner']?>"]').closest('.image-checkbox-container').find("img").css("border", '3px solid #4475C6');
-                            </script>
-                        <?php }elseif(!empty($user_details['banner'])){?>
-                            <input type="checkbox" name="banner" class="banner" value="<?php echo $user_details['banner']?>" checked="checked" />
-                            <img src="banners/<?php echo $user_details['banner']?>" style="border: 3px solid #4475C6;">
-                            <script type="text/javascript">
-                                jQuery('.image-checkbox-container img').css("border", "3px solid #C3C3C3");
-                                jQuery('.banner').each(function(i,element){
-                                    jQuery(element).removeAttr('checked');
-                                });
-                                jQuery('#uploaded_banner img').css("border", '3px solid #4475C6');
-                                jQuery('#uploaded_banner').find(".banner").attr('checked','checked');
-                            </script>
-                        <?php }else{?>
-                            <script type="text/javascript">
-                                jQuery('.image-checkbox-container img:first').css("border", '3px solid #4475C6');
-                                jQuery('.image-checkbox-container:first').find(".banner").attr('checked','checked');
-                            </script>
-                        <?php }?>
-                        <script type="text/javascript">
-                            jQuery('.image-checkbox-container img').live('click', function(){
-                                jQuery('.image-checkbox-container img').css("border", "3px solid #C3C3C3");
-                                jQuery('.banner').each(function(i,element){
-                                    jQuery(element).removeAttr('checked');
-                                });
-                                jQuery(this).closest('.image-checkbox-container').find(".banner").attr('checked','checked');
-                                jQuery(this).css("border", '3px solid #4475C6');
-                            });
-                        </script>
-                    </span>
-                    */?>
-
-
-
-     <!--   <div class="account-row">
-            <h5> Pitch text </h5>
-            <div class="pitch"><textarea rows="5" cols="30" name="pitch_text" id="pitch_text"><?php /*echo isset($user_details['pitch_text']) ? $user_details['pitch_text'] : '' */?></textarea> </div>
-            <span>*user has to be able to edit this until they have received donations.</span>
-        </div>-->
 
             <div class="next">
                 <div class="right">
@@ -778,55 +675,10 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     </div>
 </fieldset>
 
-<!--<fieldset class="step">
-    <div class="tabs pitch-tab">
-      <div class="pitch-add">
-          <input type="hidden" name="pitches_number" id="pitches_number"
-                 value="<?php /*echo (isset($user_details["pitches_number"]) ? $user_details["pitches_number"] : '0') */?>">
-          <div class="add-button"> <input type="button" value="Add" onclick="addPitch()" /> </div>
-          <br/>
-          <div style="display: none" id="pitch_template">
-              <div class="account-row"><label>Amount *</label> <input id="amoun" type="text" placeholder="Amoun" /> </div>
-              <div class="account-row"><label>Name *</label> <input id="name" type="text" placeholder="Name" /> </div>
-              <div class="account-row"><label>Description *</label> <textarea id="description" rows="5" cols="3"></textarea> </div>
-              <br/>
-              <input type="button" value="Delete" class="removePitchButton"/>
-          </div>
-          <div id="pitch_box">
-              <?php /*if (isset($user_details["pitch_amoun"])): */?>
-                  <?php /*foreach ($user_details["pitch_amoun"] as $key => $pitch_amoun): */?>
-                      <div class="pitch-content">
-                          <div class="account-row">
-                              <label>Amount *</label>
-                              <input id="pitch[<?php /*echo $key; */?>][0]" type="text" placeholder="Amoun" name="pitch_amoun[<?php /*echo $key; */?>]"
-                                     value="<?php /*echo isset($pitch_amoun) ? $pitch_amoun : ''; */?>">
-                          </div>
-                          <div class="account-row">
-                              <label>Name *</label>
-                              <input id="pitch[<?php /*echo $key; */?>][1]" type="text" placeholder="Name" name="pitch_name[<?php /*echo $key; */?>]"
-                                     value="<?php /*echo isset($user_details['pitch_name'][$key]) ? $user_details['pitch_name'][$key] : ''; */?>">
-                          </div>
-                          <div class="account-row">
-                              <label>Description *</label>
-                              <textarea id="pitch[<?php /*echo $key; */?>][2]" rows="5" cols="3" name="pitch_description[<?php /*echo $key; */?>]"><?php /*echo isset($user_details['pitch_description'][$key]) ? $user_details['pitch_description'][$key] : ''; */?></textarea>
-                          </div>
-                          <br>
-                          <input type="button" value="Delete" class="removePitchButton" onclick="deletePitch(this)">
-                      </div>
-                  <?php /*endforeach; */?>
-              <?php /*endif; */?>
-          </div>
-
-          <div class="next">
-              <input type="button" onclick="nextStepShow('p_projectPitch')" value="Next" />
-          </div>
-      </div>
-    </div>
-</fieldset>
---><fieldset class="step">
+<fieldset class="step">
     <div class="tabs">
         <div class="account-tab">
-        <? if (IN_ADMIN != 1 && !$edit_user) { ?>
+        <? if ((!defined('IN_ADMIN') || IN_ADMIN != 1) && (!isset($edit_user) || !$edit_user ) ) { ?>
             <!--                           <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
             <!--                           <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
             <div class="account-row enter-pin">
@@ -846,10 +698,10 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     <?=$display_direct_payment_methods;?>
 
     <? } ?>
-        <?=$signup_voucher_box;?>
+        <?=(isset($signup_voucher_box))?$signup_voucher_box:'';?>
             <br />
-        <?=$registration_terms_box;?>
-        <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=$proceed_button;?>"/>
+        <?=(isset($registration_terms_box))?$registration_terms_box:'';?>
+        <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=(isset($proceed_button))?$proceed_button:'';?>"/>
     </div>
     </div>
 </fieldset>

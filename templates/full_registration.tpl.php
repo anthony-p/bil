@@ -183,18 +183,18 @@ function fetchstate($statecode){
 
 
 
-<?=$header_registration_message;?>
+<?php if (isset($members_area_page_content)) echo $header_registration_message;?>
 <br>
-<?=$banned_email_output;?>
-<?=$display_formcheck_errors;?>
-<?=$check_voucher_message;?>
+<?php if (isset($banned_email_output)) echo $banned_email_output;?>
+<?php if (isset($display_formcheck_errors)) echo $display_formcheck_errors;?>
+<?php if(isset($check_voucher_message)) echo $check_voucher_message;?>
 
-<form action="<?=$register_post_url;?>" method="post" name="registration_form" class="registrationForm">
+<form action="<?php if(isset($register_post_url)) echo $register_post_url;?>" method="post" name="registration_form" class="registrationForm">
 <input type="hidden" name="operation" value="submit">
 <input type="hidden" name="do" value="<?=$do;?>">
 <input type="hidden" name="user_id" value="<?=$user_details['id'];?>">
 <input type="hidden" name="edit_refresh" value="0">
-<input type="hidden" name="generated_pin" value="<?=$generated_pin;?>">
+<input type="hidden" name="generated_pin" value="<? if(isset($generated_pin)) echo $generated_pin;?>">
 <!-- main details -->
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
     <tr>
@@ -225,7 +225,7 @@ function fetchstate($statecode){
 
             <br>
 
-            <input name="affiliate" type="hidden" id="affiliate" value="<?=$_POST['affiliate'];?>" size="40" />
+            <input name="affiliate" type="hidden" id="affiliate" value="<?=(isset($_POST['affiliate']))?$_POST['affiliate']:'';?>" size="40" />
 
         </td>
     </tr>
@@ -241,7 +241,7 @@ function fetchstate($statecode){
 			<td>&nbsp;</td>
 			<td><?=MSG_LAST_NAME_EXPL;?></td>
 		</tr-->
-    <? if ($user_details['tax_account_type']) { ?>
+    <? if (isset($user_details['tax_account_type']) && $user_details['tax_account_type']) { ?>
     <tr>
         <td  class="contentfont"><?=MSG_COMPANY_NAME;?> *</td>
         <td class="contentfont"><input name="tax_company_name" type="text" class="contentfont" id="tax_company_name" value="<?=$user_details['tax_company_name'];?>" size="40" /></td>
@@ -266,17 +266,17 @@ function fetchstate($statecode){
 
     <tr>
         <td class="leftCol"><?=MSG_STATE;?> *</td>
-        <td class="contentfont"><input name="state" type="text" id="state" value="<?=$user_details['state'];?>" size="25" /></td>
+        <td class="contentfont"><input name="state" type="text" id="state" value="<?=(isset($user_details['state']))?$user_details['state']:'';?>" size="25" /></td>
     </tr>
 
     <tr>
         <td class="leftCol"><?=MSG_COUNTRY;?> *</td>
-        <td class="contentfont"><input name="country" type="text" id="country" value="<?=$user_details['country'];?>" size="25" /></td>
+        <td class="contentfont"><input name="country" type="text" id="country" value="<?=(isset($user_details['country']))?$user_details['country']:'';?>" size="25" /></td>
     </tr>
 
     <tr>
         <td class="leftCol"><?=MSG_POSTALE_CODE;?> *</td>
-        <td class="contentfont"><input name="postal_code" type="text" id="postal_code" value="<?=$user_details['postal_code'];?>" size="25" /></td>
+        <td class="contentfont"><input name="postal_code" type="text" id="postal_code" value="<?=(isset($user_details['postal_code']))?$user_details['postal_code']:'';?>" size="25" /></td>
     </tr>
     <!--tr class="reguser">
 			<td>&nbsp;</td>
@@ -380,10 +380,10 @@ function fetchstate($statecode){
         <td class="leftCol"><?=MSG_PHONE;?> *</td>
         <td class="contentfont">
             <? if ($edit_user == 1)	{ ?>
-            <input name="phone" type="text" id="phone" value="<?=$user_details['phone'];?>" size="25" />
+            <input name="phone" type="text" id="phone" value="<?=(isset($user_details['phone']))?$user_details['phone']:'';?>" size="25" />
             <? } else { ?>
-            ( <input name="phone_a" type="text" id="phone_a" value="<?=$user_details['phone_a'];?>" size="5" /> )
-            <input name="phone_b" type="text" id="phone_b" value="<?=$user_details['phone_b'];?>" size="25" />
+            ( <input name="phone_a" type="text" id="phone_a" value="<?=(isset($user_details['phone_a']))?$user_details['phone_a']:'';?>" size="5" /> )
+            <input name="phone_b" type="text" id="phone_b" value="<?=(isset($user_details['phone_b']))?$user_details['phone_b']:'';?>" size="25" />
             <? } ?></td>
     </tr>
     <!--tr class="reguser">
@@ -391,7 +391,7 @@ function fetchstate($statecode){
 			<td><?=MSG_PHONE_EXPL;?></td>
 		</tr-->
     <tr class="birthday">
-        <td colspan="2"><?=$birthdate_box;?></td>
+        <td colspan="2"><?=(isset($birthdate_box))?$birthdate_box:'';?></td>
     </tr>
 </table>
 
@@ -403,7 +403,7 @@ function fetchstate($statecode){
     <tr>
         <td class="leftCol"><?=MSG_EMAIL_ADDRESS;?> *
         </td>
-        <td class="contentfont"><input name="email" type="text" class="contentfont" id="email" value="<?=$user_details['email'];?>" size="40" maxlength="120" <? echo (IN_ADMIN == 1) ? 'onchange="copy_email_value();"' : ''; ?> /></td>
+        <td class="contentfont"><input name="email" type="text" class="contentfont" id="email" value="<?=(isset($user_details['email']))?$user_details['email']:'';?>" size="40" maxlength="120" <? echo (defined('IN_ADMIN') && IN_ADMIN == 1) ? 'onchange="copy_email_value();"' : ''; ?> /></td>
     </tr>
     <?php if(!isset($user_details['id']) || !$user_details['id']): ?>
         <tr class="reguser">
@@ -414,7 +414,7 @@ function fetchstate($statecode){
     <tr>
         <td class="contentfont"><?=MSG_RETYPE_EMAIL;?> *</td>
         <td class="contentfont"><input name="email_check" type="text" class="contentfont" id="email_check" value="<?=$email_check_value;?>" size="40" maxlength="120" onkeyup="checkEmail();">
-            <img src="<?=$path_relative;?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="email_img" align="absmiddle" style="display:none;" /></td>
+            <img src="<?=(isset($path_relative))?$path_relative:'';?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="email_img" align="absmiddle" style="display:none;" /></td>
     </tr>
     <tr>
         <td class="leftCol">Please send me the newsletter
@@ -454,7 +454,7 @@ function fetchstate($statecode){
     <tr>
         <td  class="contentfont"><?=MSG_CREATE_PASS;?> *
         </td>
-        <td class="contentfont"><input name="password" type="password" class="contentfont" id="password" size="40" maxlength="20" <? echo (IN_ADMIN == 1) ? 'onchange="copy_password_value();"' : ''; ?> /></td>
+        <td class="contentfont"><input name="password" type="password" class="contentfont" id="password" size="40" maxlength="20" <? echo ((defined('IN_ADMIN')) && IN_ADMIN == 1) ? 'onchange="copy_password_value();"' : ''; ?> /></td>
     </tr>
     <!--tr class="reguser">
 			<td>&nbsp;</td>
@@ -463,11 +463,11 @@ function fetchstate($statecode){
     <tr>
         <td  class="contentfont"><?=MSG_VERIFY_PASS;?> *</td>
         <td class="contentfont"><input name="password2" type="password"  id="password2" size="40" maxlength="20" onkeyup="checkPass();" />
-            <img src="<?=$path_relative;?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="pass_img" align="absmiddle" style="display:none;" /></td>
+            <img src="<?=(isset($path_relative))?$path_relative:'';?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="pass_img" align="absmiddle" style="display:none;" /></td>
     </tr>
 </table>
 <?=$custom_sections_table;?>
-<? if (IN_ADMIN == 1) { ?>
+<? if (defined('IN_ADMIN') && IN_ADMIN == 1) { ?>
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
     <tr>
         <td colspan="2"><?=AMSG_PAYMENT_SETTINGS;?></td>
@@ -519,10 +519,10 @@ function fetchstate($statecode){
 </table>
     <? } ?>
 
-<?=$signup_voucher_box;?>
+<?=(isset($signup_voucher_box))?$signup_voucher_box:'';?>
 <!-- terms and conditions -->
-<div id="terms"><?=$registration_terms_box;?></div>
-<? if (IN_ADMIN != 1 && !$edit_user) { ?>
+<div id="terms"><?=(isset($registration_terms_box))?$registration_terms_box:'';?></div>
+<? if ((!defined('IN_ADMIN') || IN_ADMIN != 1 )&& !$edit_user) { ?>
 <!-- PIN -->
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
     <tr>

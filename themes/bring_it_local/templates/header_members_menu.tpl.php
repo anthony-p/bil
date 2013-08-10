@@ -19,14 +19,14 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 $link = mysql_connect($db_host, $db_username, $db_password);
 mysql_select_db($db_name, $link);
 
-$npname = $db->get_sql_field("SELECT npname  FROM probid_users WHERE username ='" . $member_username . "'", npname);
-$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE tax_company_name ='" . $npname . "'", username);
+$npname = $db->get_sql_field("SELECT npname  FROM probid_users WHERE username ='" . $member_username . "'", 'npname');
+$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE tax_company_name ='" . $npname . "'", 'username');
 
 
 
 #this code below almost works to make it so the user will see the right column of te landingpage when they browse from here. It sets a cookie. But
 #the landingpage gets confused by the fact that the user already has a cookie so the link to the landing page starts to give a 404 not found
-$np_userid = $db->get_sql_field("SELECT user_id  FROM np_users WHERE username ='" . $npusername . "'", user_id);
+$np_userid = $db->get_sql_field("SELECT user_id  FROM np_users WHERE username ='" . $npusername . "'", 'user_id');
 #set cookie so we know if this np has already sales or not. 1 means they do aleady have sales
 
 #SetCookie("np_userid", $np_userid,0, '/', 'bringitlocal.com');
@@ -46,7 +46,7 @@ $salesno = sales;
 
 $inThreeMonths = 60 * 60 * 24 * 90 + time(); 
 SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
-$first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email ='" . $member_username . "'", first_name);
+$first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email ='" . $member_username . "'", 'first_name');
 
 ?>
 

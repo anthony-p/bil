@@ -82,48 +82,48 @@ else
 
 	if ($page == 'messaging' || $page == 'summary')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'm.reg_date';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'm.reg_date';
 	}
 	else if ($page == 'reputation')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'r.reg_date';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'r.reg_date';
 	}
 	else if ($section == 'current_bids')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'b.auction_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'b.auction_id';
 	}
 	else if ($section == 'item_watch')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'aw.id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'aw.id';
 	}
 	else if ($section == 'favorite_stores')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 's.id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 's.id';
 	}
 	else if ($section == 'keywords_watch')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'keyword_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'keyword_id';
 	}
 	else if ($section == 'block_users')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'b.reg_date';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'b.reg_date';
 	}
 	else if ($page == 'wanted_ads')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'w.wanted_ad_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'w.wanted_ad_id';
 	}
 	else if ($section == 'won_items' || $section == 'sold')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'w.auction_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'w.auction_id';
 	}
 	else if ($section == 'sold_carts' || $section == 'purchased_carts')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'sc.sc_date';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'sc.sc_date';
 	}
 
 	else if ($page == 'reverse')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'r.reverse_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'r.reverse_id';
 	}
 	else
 	{
@@ -179,7 +179,8 @@ else
 				' [ <a href="' . $page_link . '">' . MSG_HERE . '</a> ] ' . MSG_PENDING_GC_PAYMENTS_B . '.</p>';	
 		}
 		$template->set('msg_pending_gc_transactions', $msg_pending_gc_transactions);
-	}
+	} else
+        $template->set('msg_pending_gc_transactions', '');
 	
 	/**
 	 * unpaid end of auction fees message - applies if the account is in live payment mode
@@ -286,12 +287,12 @@ else
 		$src_box_type = ($page == 'selling' && $section == 'open') ? 1 : 0;
 		$template->set('src_box_type', $src_box_type);
 		
-		$src_auction_id = intval($_REQUEST['src_auction_id']);
-		$template->set('src_auction_id', $_REQUEST['src_auction_id']);
+		$src_auction_id = intval((isset($_REQUEST['src_auction_id']))?$_REQUEST['src_auction_id']:0);
+		$template->set('src_auction_id', $src_auction_id);
 
 		if ($src_box_type == 1)
 		{
-			$keywords_search = $db->rem_special_chars($_REQUEST['src_item_title']);
+			$keywords_search = $db->rem_special_chars((isset($_REQUEST['src_item_title']))?$_REQUEST['src_item_title']:"");
 			$keywords_search = optimize_search_string($keywords_search);
 		}
 		else 
@@ -312,7 +313,7 @@ else
 			$template->set('end_date_box', $end_date_box);
 		}
 		
-		$show = $_REQUEST['show'];
+		$show = (isset($_REQUEST['show']))?$_REQUEST['show']:'';
 		$template->set('show', $show);
 		
 		$search_transactions_box = $template->process('search_transactions_box.tpl.php');
@@ -350,13 +351,21 @@ else
 				$src_transactions_query .= " AND w.purchase_date<='" . $src_end_time . "'";
 			}
 		}
-		$additional_vars .= '&src_auction_id=' . $_REQUEST['src_auction_id'] . '&src_username=' . $src_username . 
-			'&src_start_time=' . $src_start_time . '&src_end_time=' . $src_end_time . '&src_item_title=' . $_REQUEST['src_item_title'];
+        $src_auction_id = isset($_REQUEST['src_auction_id'])?$_REQUEST['src_auction_id']:0;
+        $src_item_title = isset($_REQUEST['src_item_title'])?$_REQUEST['src_item_title']:'';
+        if (!isset($src_username))
+            $src_username = '';
+        if (!isset($src_start_time))
+            $src_start_time= 0;
+        if (!isset($src_end_time))
+            $src_end_time = 0;
+		$additional_vars .= '&src_auction_id=' . $src_auction_id . '&src_username=' . $src_username .
+			'&src_start_time=' . $src_start_time . '&src_end_time=' . $src_end_time . '&src_item_title=' . $src_item_title;
 	}
 	
 	if ($page == 'bidding' || $page == 'selling') /* allow bidders to create product invoices as well */
 	{
-		if (isset($_REQUEST['form_send_invoice']) || $_REQUEST['send_invoice'] == 1)
+		if (isset($_REQUEST['form_send_invoice']) || (isset($_REQUEST['send_invoice']) && $_REQUEST['send_invoice'] == 1 ) )
 		{
 			$item->send_invoice($_POST, intval($_REQUEST['seller_id']), doubleval($_REQUEST['total_postage']), $session->value('user_id'));
 
@@ -621,7 +630,11 @@ else
                 else
                     $rCountry = '';
 				$template->set('country_dropdown', $tax->countries_dropdown('country', $rCountry, 'registration_form'));
-				$template->set('state_box', $tax->states_box('state', $row_user['state'], $rCountry));
+                if (isset($row_user['state']))
+                    $rState = $row_user['state'];
+                else
+                    $rState = '';
+				$template->set('state_box', $tax->states_box('state', $rState, $rCountry));
 
 				$custom_sections_table = $user->display_sections($row_user, $page_handle);
 				$template->set('custom_sections_table', $custom_sections_table);
@@ -957,7 +970,7 @@ else
 		$msg = new messaging();
 		$msg->setts = &$setts;
 
-		if ($_REQUEST['do'] == 'delete_message')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_message')
 		{
 			$is_messages = count($_REQUEST['delete']);
 			
@@ -1892,12 +1905,12 @@ else
 			$template->set('seller_verified_status_box', $seller_verified_status_box);
 		}
 		
-		if ($_REQUEST['do'] == 'delete_auction')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_auction')
 		{
 			$item->delete($_REQUEST['auction_id'], $session->value('user_id'));
 		}
 
-		if ($_REQUEST['do'] == 'close_auction')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'close_auction')
 		{
 			$auction_id = intval($_REQUEST['auction_id']);
 			$close_item_details = $db->get_sql_row("SELECT * FROM " . DB_PREFIX . "auctions WHERE auction_id='" . $auction_id . "'");
@@ -1914,7 +1927,7 @@ else
 			}
 		}				
 		
-		if ($_REQUEST['do'] == 'closed_proceed')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'closed_proceed')
 		{
 			$nb_relists = $item->count_contents($_REQUEST['relist']);
 			$nb_deletions = $item->count_contents($_REQUEST['delete']);
@@ -1937,7 +1950,7 @@ else
 			}
 		}
 
-		if ($_REQUEST['do'] == 'delete_offer')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_offer')
 		{
 			$msg_changes_saved = '<p align="center">' . MSG_OFFER_DELETED_SUCCESS . '</p>';
 			$template->set('msg_changes_saved', $msg_changes_saved);
@@ -1948,7 +1961,7 @@ else
 			}
 		}
 
-		if ($_REQUEST['do'] == 'accept_offer')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'accept_offer')
 		{
 			$msg_changes_saved = '<p align="center">' . MSG_OFFER_ACCEPTED_SUCCESS . '</p>';
 			$template->set('msg_changes_saved', $msg_changes_saved);
@@ -1959,7 +1972,7 @@ else
 			}
 		}
 		
-		if ($_REQUEST['do'] == 'resend_invoice')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'resend_invoice')
 		{
 			$invoice_id = intval($_REQUEST['invoice_id']);
 			
@@ -1973,13 +1986,13 @@ else
 			}
 		}
 
-		if ($_REQUEST['do'] == 'dd_active')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'dd_active')
 		{
 			activate_dd($_REQUEST['winner_id'], $session->value('user_id'), $_REQUEST['value']);			
 			
 			$template->set('msg_changes_saved', '<p align="center">' . MSG_CHANGES_SAVED . '</p>');
 		}
-		if ($_REQUEST['do'] == 'resend_cart_invoice')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'resend_cart_invoice')
 		{
 			$is_invoice = $db->count_rows('shopping_carts', "WHERE sc_id='" . $invoice_id . "' AND 
 				seller_id='" . $session->value('user_id') . "' AND sc_purchased=1 AND shipping_calc_auto=1");
@@ -1994,7 +2007,7 @@ else
 		}
 		
 		
-		if ($_REQUEST['do'] == 'add_suggested_category')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'add_suggested_category')
 		{
 			$category_desc = $db->rem_special_chars($_REQUEST['category_desc']);
 
@@ -2209,6 +2222,8 @@ else
 		}
 
 
+        if (!isset($nb_sold_carts))
+            $nb_sold_carts='';
 		$template->set('nb_open_items', $nb_open_items);
 		$template->set('nb_items_bids', $nb_items_bids);
 		$template->set('nb_scheduled_items', $nb_scheduled_items);
@@ -4939,6 +4954,8 @@ else
         include('templates/member_area_campaigns.php');
 
 
+        if (!isset($rows))
+            $rows = array();
         $template->set('campaigns_list', $rows);
         $template->set('section', $section);
 
@@ -4967,7 +4984,7 @@ else
 
             $tax = new tax();
 
-            if ($_REQUEST['operation'] == 'submit') {
+            if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') {
                 $campaign_id = mysql_real_escape_string($_POST["user_id"]);
             } else {
                 $campaign_id = mysql_real_escape_string($_GET["campaign_id"]);
@@ -5025,7 +5042,7 @@ else
 
             $form_submitted = FALSE;
 
-            if ($_REQUEST['operation'] == 'submit') {
+            if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') {
 
                 $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
@@ -5039,19 +5056,12 @@ else
                 $fv = new formchecker;
 
                 $allowed_image_mime_types = array(
-
                     'image/gif',
-
                     'image/jpeg',
-
                     'image/pjpeg',
-
                     'image/png',
-
                     'image/tiff',
-
                     'image/svg+xml'
-
                 );
 
                 define ('FRMCHK_USER', 1);
@@ -5087,25 +5097,15 @@ else
                 }
 
                 if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
-
                     $frmchk_details["banner"]  =array();
-
                     $frmchk_details["banner"]["type"] = $_FILES["banner"]["type"];
-
                     if (in_array($_FILES["logo"]["type"], $allowed_image_mime_types)) {
-
                         $logo_image_size = getimagesize($_FILES["banner"]["tmp_name"]);
-
                         $frmchk_details["banner"]["dimensions"] = array(
-
                             "width" => $logo_image_size[0],
-
                             "max_width" => 600,
-
                             "height" => $logo_image_size[1],
-
                             "max_height" => 400,
-
                             "error_message" => "The dimension of the banner must be 600x400px"
                         );
                     }
@@ -5113,159 +5113,96 @@ else
 
 
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
-
-                $banned_output = check_banned($_POST['email'], 2);
-
+                $pEmail = isset($_POST['email'])?$_POST['email']:'';
+                $banned_output = check_banned($pEmail, 2);
                 if ($banned_output['result'])
                 {
                     $template->set('banned_email_output', $banned_output['display']);
                 }
                 else if ($fv->is_error())
                 {
-
                     $template->set('display_formcheck_errors', $fv->display_errors());
-
                     $template->set('campaign', $campaign);
-
                     $template->set('categories', $categories);
-
                     $template->set('last_selected_tab', $last_selected_tab);
-
                     $template->set('countries', $countries);
-
                     $template->set('pitches', $pitches);
-
                     $template->set('project_updates', $project_updates);
-
                     $template->set('project_rewards', $project_rewards);
-
                     $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
-
                     $template->set('members_area_page_content', $members_area_page_content);
                 }
                 else
                 {
-
                     $form_submitted = TRUE;## PHP Pro Bid v6.00 atm we wont create any emails either until we decide how many ways of registration we have.
-
                     (string) $register_success_message = null;
-
                     $_POST["end_date"] = 0;
-
                     if (isset($_POST["deadline_type_value"]) && $_POST["deadline_type_value"]) {
-
                         if ($_POST["deadline_type_value"] == "time_period")
-
                             $_POST["end_date"] = time() + ($_POST["time_period"] * 86400);
-
                         elseif ($_POST["deadline_type_value"] == "certain_date")
-
                             $_POST["end_date"] = strtotime($_POST["certain_date"]);
                     }
 
+                    $funding_type = (isset($_POST["funding_type"]))?$_POST["funding_type"]:'';
+                    $certain_date = (isset($_POST["certain_date"]))?$_POST["certain_date"]:'';
+                    $pitch_text = (isset($_POST["pitch_text"]))?$_POST["pitch_text"]:'';
 
                     $mysql_update_query = "UPDATE np_users SET username='" . $_POST["username"] . "',
-
                     project_category='" . $_POST["project_category"] . "',
-
                     campaign_basic='" . $_POST["campaign_basic"] . "',
-
                     project_title='" . $_POST["project_title"] . "',
-
                     description='" . $_POST["project_short_description"] . "',
-
                     founddrasing_goal='" . $_POST["founddrasing_goal"] . "',
-
-                    funding_type='" . $_POST["funding_type"] . "',
-
+                    funding_type='" . $funding_type . "',
                     active='" . $_POST["active"] . "',
-
                     deadline_type_value='" . $_POST["deadline_type_value"] . "',
-
                     time_period='" . $_POST["time_period"] . "',
-
-                    certain_date='" . $_POST["certain_date"] . "',
-
+                    certain_date='" . $certain_date . "',
                     end_date='" . $_POST["end_date"] . "',
-
                     url='" . $_POST["url"] . "',
-
                     facebook_url='" . $_POST["facebook_url"] . "',
-
                     twitter_url='" . $_POST["twitter_url"] . "',
-
                     name='" . $_POST["name"] . "',
-
                     tax_company_name='" . $_POST["tax_company_name"] . "',
-
                     address='" . $_POST["address"] . "',
-
                     city='" . $_POST["city"] . "',
-
                     zip_code='" . $_POST["zip_code"] . "',
-
                     country='" . $_POST["country"] . "',
-
                     state='" . $_POST["state"] . "',
-
                     phone='" . $_POST["phone"] . "',
-
                     orgtype='" . $_POST["orgtype"] . "',
-
                     pg_paypal_email='" . $_POST["pg_paypal_email"] . "',
-
                     pg_paypal_first_name='" . $_POST["pg_paypal_first_name"] . "',
-
                     pg_paypal_last_name='" . $_POST["pg_paypal_last_name"] . "',
-
-                    pitch_text='" . $_POST["pitch_text"] . "'";
-
+                    pitch_text='" . $pitch_text . "'";
 
 
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
                         $logo_file_name = '/images/partner_logos/' . md5($_POST["name"] . 'logo');
                         $upload_logo = generate_image_thumbnail(
                             $_FILES["logo"]["tmp_name"], trim($logo_file_name, '/'), 160, 160
-
                         );
-
                         $mysql_update_query .= ", logo='" . $logo_file_name . "'";
-
                     }
 
-
-
                     if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
-
                         $banner_file_name = '/images/partner_logos/' . md5($_POST["name"] . 'banner');
-
                         $upload_logo = generate_image_thumbnail(
-
                             $_FILES["banner"]["tmp_name"], trim($banner_file_name, '/'), 600, 400
-
                         );
                         $mysql_update_query .= ", banner='" . $banner_file_name . "'";
 
                     } elseif (isset ($_POST["video_url"]) && !empty($_POST["video_url"])) {
-
                         $mysql_update_query .= ", banner='" . $_POST["video_url"] . "'";
-
                     }
 
-
-
                     $_POST["probid_user_id"] =
-
                         (isset($_SESSION["probid_user_id"]) && !empty($_SESSION["probid_user_id"])) ?
-
                             $_SESSION["probid_user_id"] : 0;
 
-
-
                     $mysql_update_query .= " WHERE user_id='" . $_POST["user_id"] . "'";
-
                     $result = $db->query($mysql_update_query);
-
                     if (isset($_POST["pitch_amoun"])) {
 
                         $pitch_data = array();
@@ -5461,9 +5398,9 @@ else
 
                 }
 
-            } else if ($_REQUEST['get_states'] == 'true') {
+            } else if (isset($_REQUEST['get_states']) && $_REQUEST['get_states'] == 'true') {
 
-                $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
+                $post_country = (isset($_POST['country'])) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
 

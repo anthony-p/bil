@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 ##-------------------------------------------------------------##
-## Copyright ©2008 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2008 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -117,7 +117,17 @@ if (!$setts['enable_private_site'] || $session->value('is_seller'))
 $site_banner = new npbanner();
 $site_banner->setts = &$setts;
 
-$template->set('banner_header_content', $site_banner->select_banner($_SERVER['PHP_SELF'], intval($_REQUEST['parent_id']), intval($_REQUEST['auction_id'])));
+if (isset($_REQUEST['parent_id']))
+    $parentId = $_REQUEST['parent_id'];
+else
+    $parentId = 0;
+
+if (isset($_REQUEST['auction_id']))
+    $actionId = $_REQUEST['auction_id'];
+else
+    $actionId = 0;
+
+$template->set('banner_header_content', $site_banner->select_banner($_SERVER['PHP_SELF'], intval($parentId), intval($actionId)));
 
 if ($setts['enable_stores'])
 {
@@ -134,7 +144,7 @@ if ($setts['enable_wanted_ads'])
 	$nb_header_buttons++;
 }
 
-if ($integration['enable_integration'] == 1)
+if (isset($integration['enable_integration']) && $integration['enable_integration'] == 1)
 {
 	$nb_header_buttons++;
 }

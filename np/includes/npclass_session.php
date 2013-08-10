@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -55,7 +55,7 @@ class session
 	
 	function cookie_value($variable)
 	{
-		return $_COOKIE[SESSION_PREFIX.$variable];
+		return (isset($_COOKIE[SESSION_PREFIX.$variable]))?$_COOKIE[SESSION_PREFIX.$variable]:'';
 	}
 }
 ?>

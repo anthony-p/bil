@@ -85,6 +85,6 @@ if (np_userid_update!=null && np_userid_update!="" && np_username_update!=null &
 <?=$msg_member_tips;?>
 <?=$msg_pending_gc_transactions;?>
 <?=$msg_unpaid_endauction_fees;?>
-<?=$msg_changes_saved;?>
-<?=$msg_seller_error;?>
-<?=$members_area_page_content;?>
+<?php if (isset ($msg_changes_saved)) echo $msg_changes_saved;?>
+<?php if (isset($msg_seller_error)) echo $msg_seller_error;?>
+<?php if (isset($members_area_page_content)) echo $members_area_page_content;?>

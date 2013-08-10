@@ -1,12 +1,14 @@
 <?
 
-session_start();
+if(session_id() == '')
+    session_start();
 
 include_once ('global.php');
 include_once('generate_image_thumbnail.php');
 global $db;
 
-define ('PATHINFO_EXTENSION', 4);
+if (!defined('PATHINFO_EXTENSION'))
+    define ('PATHINFO_EXTENSION', 4);
 define ('AVATAR_HEIGHT', 200);
 define ('AVATAR_WIDTH', 240);
 

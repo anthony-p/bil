@@ -84,7 +84,7 @@ global $coupon_url;
 </div></div><!-- end main -->
 <!-- 
 <div align="center">
-   <?=$banner_header_content;?>
+   <?=(isset($banner_header_content))?$banner_header_content:'';?>
 </div>
  -->
 <footer>

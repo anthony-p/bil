@@ -61,7 +61,7 @@ $db->select_db($db_name);
 
 
 if(isset($_GET['npuser'])){
-    $npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $_COOKIE['np_userid'] . "'", username);
+    $npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $_COOKIE['np_userid'] . "'", 'username');
     header('Location: /'.$npusername);
     die;
 }

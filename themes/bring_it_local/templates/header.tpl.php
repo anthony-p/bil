@@ -139,12 +139,12 @@ global $coupon_url;
                 global $nonloggedin_check;
                 echo $nonloggedin_check;
 
-                if ($_COOKIE['glob_alert']=="0")
+                if (!isset($_COOKIE['glob_alert']) || $_COOKIE['glob_alert']=="0")
                 {
                     echo "return;";
                 }
 
-                if(empty($_COOKIE['np_userid'])) {
+                if(!isset($_COOKIE['np_userid']) || empty($_COOKIE['np_userid'])) {
                     echo "return;";
                 }
                 else

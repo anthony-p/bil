@@ -33,7 +33,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
       <? if ($src_box_type) { ?>
       <tr class="c1">
          <td nowrap="nowrap"><?=MSG_ITEM_TITLE;?></td>
-         <td><input type="text" name="src_item_title" value="<?=$src_item_title;?>" size="40"></td>
+         <td><input type="text" name="src_item_title" value="<?=(isset($src_item_title))?$src_item_title:'';?>" size="40"></td>
       </tr>
       <? } else { ?>
       <tr class="c1">
