@@ -112,7 +112,7 @@ $featured_columns = 14;
             */
             ?>
 
-            <a href="/about_community_fund.php" class="funds">
+            <a href="/bringitlocal" class="funds">
                 <span class="uper">Community Fund</span>
                 <span>Dedicate a portion of your donations to the Community Fund</span>
             </a>
