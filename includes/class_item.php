@@ -1527,7 +1527,7 @@ class item extends custom_field
 		
 		$nb_images = count($variables_array['ad_image']);
 		
-		if ($nb_images > 0)
+		if ($nb_images > 0 && is_array($variables_array['ad_image']))
 		{
 			foreach ($variables_array['ad_image'] as $value)
 			{

@@ -31,8 +31,11 @@ var hexHighlightOff = "#ffffff";
 //arrayLevel 0 for top level, 1 for next level down etc...
 function populate(arrayLevel)
 {
+
 	//get the value of the selected index (click)
 	strOptionValue = (docSelectorArray[arrayLevel].options[docSelectorArray[arrayLevel].selectedIndex].value);
+
+    console.log(docSelectorArray);
 
 	if (strOptionValue == 0) //if value is 0 then is a spacer option - move their choice to the bottom option
 	{
@@ -195,6 +198,7 @@ function prePopulate(mCat)
 					//if we are 1 level from the end then check and select the next option if appropriate
 					if (intArrayLevel == 2)
 					{
+                        console.log("OK!!!");
 						intMcat = parseInt(mCatArray[intArrayLevel+1],10); //get last mCat
 
 						//loop through the last category and find the appropriate category
@@ -334,6 +338,7 @@ function prePopulate(mCat)
          </table></td>
    </tr>
 </table>
+
 <SCRIPT language=javascript>
 <!--
 	//IE but not a Mac
@@ -387,9 +392,10 @@ function prePopulate(mCat)
 	//build small arrays that we can index by id later
 	for (i = 0; i < document.ad_create_form.elements.length; i++)
 	{
+        console.log(document.ad_create_form.elements[i].name);
 		if (document.ad_create_form.elements[i].name.indexOf("selector_") != -1) //cat selectors
 		{
-			docSelectorArray[selectorLoop] = document.ad_create_form.elements[i];
+            docSelectorArray[selectorLoop] = document.ad_create_form.elements[i];
 			selectorLoop++;
 		}
 		else if (document.ad_create_form.elements[i].name.indexOf("category") != -1) //categoryID

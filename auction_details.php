@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -46,7 +46,7 @@ $item_details = $db->get_sql_row("SELECT * FROM " . DB_PREFIX . "auctions WHERE
 $main_category_id = $db->main_category($item_details['category_id']);
 $category_details = $db->get_sql_row("SELECT minimum_age FROM " . DB_PREFIX . "categories WHERE category_id='" . $main_category_id . "'");
 
-if ($_REQUEST['option'] == 'agree_adult')
+if (isset($_REQUEST['option']) && $_REQUEST['option'] == 'agree_adult')
 {
 	$session->set('adult_category', 1);	
 }
@@ -98,7 +98,7 @@ if ($can_view)
 
 	$blocked_user = blocked_user($session->value('user_id'), $item_details['owner_id'], 'message');
 		
-	if (in_array($_REQUEST['option'], array('post_question', 'post_answer')) || in_array($_REQUEST['operation'], array('post_question', 'post_answer')))
+	if ((isset($_REQUEST['option']) && in_array($_REQUEST['option'], array('post_question', 'post_answer'))) || (isset($_REQUEST['operation']) && in_array($_REQUEST['operation'], array('post_question', 'post_answer'))))
 	{
 		if ($blocked_user)
 		{
@@ -131,7 +131,7 @@ if ($can_view)
 	}
 	
 	## PHP Pro Bid v6.00 item watch procedure
-	if ($_REQUEST['option'] == 'item_watch')
+	if (isset($_REQUEST['option']) && $_REQUEST['option'] == 'item_watch')
 	{
 		if ($session->value('user_id'))
 		{
@@ -145,7 +145,7 @@ if ($can_view)
 	}
 	
 	## PHP Pro Bid v6.00 send auction to a friend procedure
-	if ($_REQUEST['option'] == 'auction_friend')
+	if (isset($_REQUEST['option']) && $_REQUEST['option'] == 'auction_friend')
 	{
 		$form_submitted = 0;
 		
@@ -193,11 +193,12 @@ if ($can_view)
 		}
 	}
 
-	if ($_REQUEST['do'] == 'delete_topic' && $session->value('adminarea') == 'Active') /* delete public question - admin area feature only */
+	if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_topic' && $session->value('adminarea') == 'Active') /* delete public question - admin area feature only */
 	{
 		$db->query("DELETE FROM " . DB_PREFIX . "messaging WHERE topic_id='" . intval($_REQUEST['topic_id']) . "'");
 		$msg_changes_saved = '<p align="center">' . MSG_TOPIC_DELETED . '</p>';
-	}
+	} else
+        $msg_changes_saved = '';
 
 	$template->set('msg_changes_saved', $msg_changes_saved);
 
@@ -205,10 +206,10 @@ if ($can_view)
 
 	$custom_fld->save_edit_vars($item_details['owner_id'], $page_handle);
 
-	$media_details = $item->get_media_values(intval($_REQUEST['auction_id']));
-	$item_details['ad_image'] = $media_details['ad_image'];
-	$item_details['ad_video'] = $media_details['ad_video'];
-	$item_details['ad_dd'] = $media_details['ad_dd'];
+	$media_details = isset($_REQUEST['auction_id'])?$item->get_media_values(intval($_REQUEST['auction_id'])):'';
+	$item_details['ad_image'] = isset($media_details['ad_image'])?$media_details['ad_image']:'';
+	$item_details['ad_video'] = isset($media_details['ad_video'])?$media_details['ad_video']:'';
+	$item_details['ad_dd'] = isset($media_details['ad_dd'])?$media_details['ad_dd']:'';
 
 	$template->set('item_details', $item_details);
 
@@ -275,8 +276,9 @@ if ($can_view)
 
 	$ad_dd_thumbnails = $item->item_media_thumbnails($item_details, 3);
 	$template->set('ad_dd_thumbnails', $ad_dd_thumbnails);
-	
-	$video_play_file = (!empty($_REQUEST['video_name'])) ? $_REQUEST['video_name'] : $item_details['ad_video'][0];
+
+    $vpAdVideo = isset($item_details['ad_video'][0])?$item_details['ad_video'][0]:'';
+	$video_play_file = (!empty($_REQUEST['video_name'])) ? $_REQUEST['video_name'] : $vpAdVideo;
 	$ad_video_main_box = $item->video_box($video_play_file);
 	$template->set('ad_video_main_box', $ad_video_main_box);## PHP Pro Bid v6.00 auction questions
 	if ($setts['enable_asq'])
@@ -353,14 +355,14 @@ if ($can_view)
 	/* BEGIN -> shipping calculator box code snippet */
 	$sc_disabled = 'disabled';	
 
-	$sc_quantity = intval($_REQUEST['sc_quantity']);	
+	$sc_quantity = isset($_REQUEST['sc_quantity'])?intval($_REQUEST['sc_quantity']):0;
 	$sc_quantity = ($sc_quantity > $item_details['quantity']) ? $item_details['quantity'] : (($sc_quantity < 1) ? 1 : $sc_quantity);
 	$template->set('sc_quantity', $sc_quantity);
 	
 	$tax->selected_cid = shipping_locations($item_details['owner_id']);
 	
-	$sc_country = intval($_REQUEST['sc_country']);	
-	$sc_state = intval($_REQUEST['sc_state']);	
+	$sc_country = isset($_REQUEST['sc_country'])?intval($_REQUEST['sc_country']):'';
+	$sc_state = isset($_REQUEST['sc_state'])?intval($_REQUEST['sc_state']):'';
 	$template->set('country_dropdown', $tax->countries_dropdown('sc_country', $sc_country, 'shipping_calculator_form', 'shipping_calculator', true, MSG_SELECT_COUNTRY));
 	
 	if ($tax->is_states($sc_country))
@@ -406,7 +408,7 @@ if ($can_view)
 
 	## add the search details back link if the auction was accessed through the search page.
 	(string) $search_url = null;
-	if ($_REQUEST['auction_search'] == 1)
+	if (isset($_REQUEST['auction_search']) && $_REQUEST['auction_search'] == 1)
 	{
 		$additional_vars = '&option=' . $_REQUEST['option'] . '&src_auction_id=' . $_REQUEST['src_auction_id'] . '&keywords_search=' . $_REQUEST['keywords_search'] .
 			'&buyout_price=' . $_REQUEST['buyout_price'] . '&reserve_price=' . $_REQUEST['reserve_price'] . 

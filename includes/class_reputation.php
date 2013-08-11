@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -56,7 +56,7 @@ class reputation extends item
 		$rep_negative = $this->count_rows('reputation', "WHERE user_id='" . $user_id . "' AND submitted=1 AND
 			reputation_rate<3 " . $addl_query);
 
-		$output['amount'] = $rep_positive - $reg_negative;
+        $output['amount'] = $rep_positive - $rep_negative;
 
 		$rep_total_tmp = $rep_positive + $rep_negative;
 		$rep_total_tmp = ($rep_total_tmp) ? $rep_total_tmp : 1;
