@@ -374,10 +374,10 @@ function fetchstate($statecode){
 <!-- personal info -->
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
     <tr>
-        <th colspan="2">Personal Information</th>
+        <th colspan="2">Personal Informationgfgfg</th>
     </tr>
     <tr>
-        <td class="leftCol"><?=MSG_PHONE;?> *hsrgfthfghgh</td>
+        <td class="leftCol"><?=MSG_PHONE;?> *</td>
         <td class="contentfont">
             <? if ($edit_user == 1)	{ ?>
             <input name="phone" type="text" id="phone" value="<?=$user_details['phone'];?>" size="25" />
