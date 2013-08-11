@@ -207,7 +207,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
       </tr>
 
       <tr class="c1">
-         <td width="150" align="right" class="contentfont"><?=MSG_PHONE;?>hftrhftdhfgthgh</td>
+         <td width="150" align="right" class="contentfont"><?=MSG_PHONE;?></td>
          <td class="contentfont">
          	<? if ($edit_user == 1)	{ ?>
          	<input name="phone" type="text" id="phone" value="<?=$user_details['phone'];?>" size="25" />

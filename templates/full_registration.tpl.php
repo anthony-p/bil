@@ -374,7 +374,7 @@ function fetchstate($statecode){
 <!-- personal info -->
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
     <tr>
-        <th colspan="2">Personal Informationgfgfg</th>
+        <th colspan="2">Personal Information</th>
     </tr>
     <tr>
         <td class="leftCol"><?=MSG_PHONE;?> *</td>
