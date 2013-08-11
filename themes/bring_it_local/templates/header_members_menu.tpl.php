@@ -38,9 +38,11 @@ define('np_userid', $np_userid);
 //do they have sales. if not we dont want to show the chart
 $result_sales = mysql_query("SELECT * FROM giveback_invoices WHERE np_userid = '$np_userid'", $link);
 $is_sales = mysql_num_rows($result_sales);
-if ($is_sales <> '0' )
-define('sales', 1);
-$salesno = sales;
+if ($is_sales <> '0' ) {
+    define('sales', 1);
+    $salesno = sales;
+} else
+    $salesno = 0;
 #set a cookie and define a variable so we know the np when the rest of the homepage loads
 #SetCookie("sales", $salesno, 0, '/', 'bringitlocal.com'); 
 

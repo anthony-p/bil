@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.05															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -15,7 +15,7 @@ function x(intParent, intListPos, strCategory, strCategoryID)
 {
 	c[intParent][intListPos] = new Option(strCategory,strCategoryID);
 }
-<?=$categories_initialize_msg;?>
+<?=isset($categories_initialize_msg)?$categories_initialize_msg:'';?>
 // -->
 </SCRIPT>
 <SCRIPT language=javascript>
@@ -324,7 +324,7 @@ function prePopulate(mCat)
             </tr>
          </table></td>
    </tr>
-   <?=$previously_selected_cats_list; ?>
+   <?=isset($previously_selected_cats_list)?$previously_selected_cats_list:''; ?>
    <tr class="contentfont">
       <input id="<?=$category_id_type;?>" type="hidden" name="<?=$category_id_type;?>">
 		<td class="c1" align="right"><table id="table_submit" cellspacing="2" border="0">

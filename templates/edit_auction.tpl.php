@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -36,8 +36,8 @@ function openPopup(url) {
 </SCRIPT>
 <?=$sell_item_header;?>
 <br>
-<?=$check_voucher_message;?>
-<?=$display_formcheck_errors;?>
+<?=isset($check_voucher_message)?$check_voucher_message:'';?>
+<?=isset($display_formcheck_errors)?$display_formcheck_errors:'';?>
 
 <form action="<?=$post_url;?>" method="post" enctype="multipart/form-data" name="ad_create_form">
    <input type="hidden" name="do" value="<?=$do;?>" >
@@ -60,7 +60,7 @@ function openPopup(url) {
 	<input type="hidden" name="payment_methods" value="<?=$item_details['payment_methods'];?>">
 	-->
 	<?=$media_upload_fields;?>
-   <? if (IN_ADMIN == 1) { ?>
+   <? if (defined('IN_ADMIN') && IN_ADMIN == 1) { ?>
    <input type="hidden" name="status" value="<?=$form_details['status'];?>">
    <input type="hidden" name="start" value="<?=$form_details['start'];?>">
 	<input type="hidden" name="order_field" value="<?=$form_details['order_field'];?>">

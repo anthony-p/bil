@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.07 														##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 ## (Mods-Store) -> Shopping Cart											##
 #################################################################
@@ -74,20 +74,21 @@ class item extends custom_field
 	{
 		$item_details['auction_type'] = (in_array($item_details['auction_type'], array('standard', 'dutch', 'first_bidder'))) ? $item_details['auction_type'] : 'standard';
 		$item_details['quantity'] = ($item_details['auction_type'] == 'standard' || $item_details['quantity'] < 1) ? 1 : $item_details['quantity'];
-		$item_details['reserve_price'] = ($item_details['auction_type'] != 'dutch') ? (($item_details['is_reserve'] == 1) ? $item_details['reserve_price'] : 0) : 0;
-		$item_details['buyout_price'] = (($item_details['is_buy_out'] == 1 || $item_details['listing_type'] == 'buy_out') && $this->setts['buyout_process'] == 1 && $this->layout['enable_buyout'] == 1) ? $item_details['buyout_price'] : 0;
+		$item_details['reserve_price'] = ($item_details['auction_type'] != 'dutch') ? ((isset($item_details['is_reserve']) && $item_details['is_reserve'] == 1) ? $item_details['reserve_price'] : 0) : 0;
+		$item_details['buyout_price'] = (((isset($item_details['is_buy_out']) && $item_details['is_buy_out'] == 1) || $item_details['listing_type'] == 'buy_out') && $this->setts['buyout_process'] == 1 && $this->layout['enable_buyout'] == 1) ? $item_details['buyout_price'] : 0;
 		$item_details['bid_increment_amount'] = ($item_details['is_bid_increment'] == 1) ? $item_details['bid_increment_amount'] : 0;
 		$item_details['duration'] = ($item_details['end_time_type'] == 'duration') ? $item_details['duration'] : (($item_details['end_time'] - $item_details['start_time']) / 86400);
-		$item_details['closed'] = ($item_details['start_time_type'] == 'now' || $item_details['start_time']<CURRENT_TIME) ? 0 : 1;
+		$item_details['closed'] = ((isset($item_details['start_time_type']) && $item_details['start_time_type'] == 'now') || (isset($item_details['start_time']) && $item_details['start_time']<CURRENT_TIME)) ? 0 : 1;
 		
 		/* addition for store only mode -> list_in = 'both' if enabled */
+        $item_details['list_in'] = isset($item_details['list_in'])?$item_details['list_in']:array();
 		$item_details['list_in'] = ($this->setts['enable_store_only_mode']) ? 'both' : $item_details['list_in'];
 		$item_details['list_in'] = (in_array($item_details['list_in'], array('auction', 'store', 'both'))) ? $item_details['list_in'] : 'auction';
 		
 		/* addition for store only mode -> start_price = buyout_price if enabled */
 		$item_details['start_price'] = ($this->setts['enable_store_only_mode'] || $item_details['listing_type'] == 'buy_out') ? $item_details['buyout_price'] : $item_details['start_price'];
 		
-		$item_details['auto_relist_nb'] = ($item_details['is_auto_relist']) ? $item_details['auto_relist_nb'] : 0;
+		$item_details['auto_relist_nb'] = isset($item_details['is_auto_relist']) ? $item_details['auto_relist_nb'] : 0;
 		$item_details['creation_in_progress'] = 0;
 
 		return $item_details;
@@ -184,9 +185,49 @@ class item extends custom_field
 		$word_filter = $this->word_filter($word_filter);
 
 		$is_draft = ($draft) ? 1 : 0;
-		
-		// important: the active, approved & payment_status fields cannot be modified through here!
+
+        //CE HUINEA FACUT AICAE!!!!
+        $shipping_int = isset($item_details['shipping_int'])?$item_details['shipping_int']:0;
+        $hpfeat = isset($item_details['hpfeat'])?$item_details['hpfeat']:'';
+        $item_details['catfeat'] = isset($item_details['catfeat'])?$item_details['catfeat']:'';
+        $item_details['bold'] = isset($item_details['bold'])?$item_details['bold']:'';
+        $item_details['hl'] = isset($item_details['hl'])?$item_details['hl']:'';
+
+        $item_details['hidden_bidding'] = isset($item_details['hidden_bidding'])?$item_details['hidden_bidding']:'';
+        $item_details['currency'] = isset($item_details['currency'])?$item_details['currency']:'';
+        $item_details['postage_amount'] = isset($item_details['postage_amount'])?$item_details['postage_amount']:0;
+        $item_details['insurance_amount'] = isset($item_details['insurance_amount'])?$item_details['insurance_amount']:0;
+        $item_details['type_service'] = isset($item_details['type_service'])?$item_details['type_service']:'';
+        $item_details['enable_swap'] = isset($item_details['enable_swap'])?$item_details['enable_swap']:'';
+        $item_details['addl_category_id'] = isset($item_details['addl_category_id'])?$item_details['addl_category_id']:'';
+        $word_filter['shipping_details'] = isset($word_filter['shipping_details'])?$word_filter['shipping_details']:'';
+        $item_details['list_in'] = isset($item_details['list_in'])?$item_details['list_in']:array();
+        $item_details['direct_payment'] = isset($item_details['direct_payment'])?$item_details['direct_payment']:'';
+        $item_details['apply_tax'] = isset($item_details['apply_tax'])?$item_details['apply_tax']:'';
+        $item_details['auto_relist_bids'] = isset($item_details['auto_relist_bids'])?$item_details['auto_relist_bids']:'';
+        $item_details['end_time_type'] = isset($item_details['end_time_type'])?$item_details['end_time_type']:'';
+        $item_details['listing_type'] = isset($item_details['listing_type'])?$item_details['listing_type']:'';
+        $item_details['is_offer'] = isset($item_details['is_offer'])?$item_details['is_offer']:'';
+        $item_details['offer_min'] = isset($item_details['offer_min'])?$item_details['offer_min']:0;
+        $item_details['offer_max'] = isset($item_details['offer_max'])?$item_details['offer_max']:0;
+        $item_details['auto_relist_nb'] = isset($item_details['auto_relist_nb'])?$item_details['auto_relist_nb']:'';
+        $item_details['end_time'] = isset($item_details['end_time'])?$item_details['end_time']:0;
+        $start_time_query = isset($start_time_query)?$start_time_query:'';
+        $item_details['creation_in_progress'] = isset($item_details['creation_in_progress'])?$item_details['creation_in_progress']:'';
+        $item_details['state'] = isset($item_details['state'])?$item_details['state']:'';
+        $is_draft = isset($is_draft)?$is_draft:'';
+        $item_details['item_weight'] = isset($item_details['item_weight'])?$item_details['item_weight']:0;
+        $item_details['fb_decrement_amount'] = isset($item_details['fb_decrement_amount'])?$item_details['fb_decrement_amount']:0;
+        $item_details['fb_decrement_interval'] = isset($item_details['fb_decrement_interval'])?$item_details['fb_decrement_interval']:0;
+        $item_details['fb_next_decrement'] = isset($item_details['fb_next_decrement'])?$item_details['fb_next_decrement']:0;
+        $item_details['fb_current_bid'] = isset($item_details['fb_current_bid'])?$item_details['fb_current_bid']:0;
+        $item_details['npuser_id'] = isset($item_details['npuser_id'])?$item_details['npuser_id']:0;
+        $item_details['auction_id'] = isset($item_details['auction_id'])?$item_details['auction_id']:0;
+        $owner_id  = isset($owner_id)?$owner_id:0;
+
+        // important: the active, approved & payment_status fields cannot be modified through here!
 		## no auction counter is applied on this query - if needed we will add one (for list_in eventually)
+
 		$sql_insert_item = $this->query("UPDATE " . DB_PREFIX . "auctions SET
 			name='" . $word_filter['name'] . "', description='" . $word_filter['description'] . "',
 			quantity='" . $item_details['quantity'] . "', auction_type='" . $item_details['auction_type'] . "',
@@ -194,9 +235,9 @@ class item extends custom_field
 			buyout_price='" . $item_details['buyout_price'] . "',	bid_increment_amount='" . $item_details['bid_increment_amount'] . "',
 			duration='" . $item_details['duration'] . "', country='" . $item_details['country'] . "',
 			zip_code='" . $item_details['zip_code'] . "', shipping_method='" . $item_details['shipping_method'] . "',
-			shipping_int='" . $item_details['shipping_int'] . "', payment_methods='" . $item_details['payment_methods'] . "',
+			shipping_int='" . $shipping_int . "', payment_methods='" . $item_details['payment_methods'] . "',
 			category_id='" . $item_details['category_id'] . "', closed='" . $item_details['closed'] . "',
-			owner_id='" . $owner_id . "', hpfeat='" . $item_details['hpfeat'] . "',
+			owner_id='" . $owner_id . "', hpfeat='" . $hpfeat . "',
 			catfeat='" . $item_details['catfeat'] . "', bold='" . $item_details['bold'] . "', hl='" . $item_details['hl'] . "',
 			hidden_bidding='" . $item_details['hidden_bidding'] . "', currency='" . $item_details['currency'] . "',
 			postage_amount='" . $item_details['postage_amount'] . "', insurance_amount='" . $item_details['insurance_amount'] . "',
@@ -657,7 +698,7 @@ class item extends custom_field
 	{
 		(int)	$result = 0;
 
-		if (count($variables_array) > 0)
+		if (is_array($variables_array) && count($variables_array) > 0)
 		{
 			foreach ($variables_array as $value)
 			{
@@ -682,21 +723,29 @@ class item extends custom_field
 
 		if (!$manager_display)
 		{
-			for ($i=0; $i<$this->setts['max_images']; $i++)
-			{
-				$display_output .= '<input type="hidden" name="ad_image[]" value="' . $variables_array['ad_image'][$i] . '"> ';
-			}
+			if (isset($variables_array['ad_image']))
+                for ($i=0; $i<$this->setts['max_images']; $i++)
+                {
+                    if (!isset($variables_array['ad_image'][$i]))
+                        continue;
+                    $display_output .= '<input type="hidden" name="ad_image[]" value="' . $variables_array['ad_image'][$i] . '"> ';
+                }
 
-			for ($i=0; $i<$this->setts['max_media']; $i++)
-			{
-				$display_output .= '<input type="hidden" name="ad_video[]" value="' . $variables_array['ad_video'][$i] . '"> ';
-			}
+            if (isset($variables_array['ad_video']))
+                for ($i=0; $i<$this->setts['max_media']; $i++)
+                {
+                    if (!isset($variables_array['ad_video'][$i]))
+                        continue;
+                    $display_output .= '<input type="hidden" name="ad_video[]" value="' . $variables_array['ad_video'][$i] . '"> ';
+                }
 			
-			if ($this->setts['dd_enabled'])
+			if ($this->setts['dd_enabled'] && isset($variables_array['ad_dd']))
 			{
 				for ($i=0; $i<$this->setts['max_dd']; $i++)
 				{
-					$variables_array['ad_dd'][$i] = str_replace($this->setts['dd_folder'], '', $variables_array['ad_dd'][$i]);
+					if (!isset($variables_array['ad_dd'][$i]))
+                        continue;
+                    $variables_array['ad_dd'][$i] = str_replace($this->setts['dd_folder'], '', $variables_array['ad_dd'][$i]);
 					$display_output .= '<input type="hidden" name="ad_dd[]" value="' . $variables_array['ad_dd'][$i] . '"> ';				
 				}
 			}
@@ -768,6 +817,8 @@ class item extends custom_field
 
 			if ($box_title)
 			{
+                if (!isset($anchor_name))
+                    $anchor_name = '';
 				$display_output .= '<tr class="c4"> '.
 	      		'	<td colspan="3"><a href="' . $anchor_name . '"></a>' . $msg_upload_box_title . '</td> '.
 	   			'</tr> '.
@@ -804,7 +855,9 @@ class item extends custom_field
 	   			'</tr>';   
 	   						
    		}
-   		
+
+            if (!isset($fee_message))
+                $fee_message = '';
    		$display_output .= '<tr class="reguser"> '.
       		'	<td class="contentfont" align="right">' . $display_fee . '</td> '.
       		'	<td colspan="2">' . MSG_YOU_CAN_UPL_UP_TO . ' ' . $max_media . ' ' . $msg_media . '. ' . $fee_message . '</td> '.
@@ -1213,6 +1266,8 @@ class item extends custom_field
 			$additional_query = ' AND pg_id IN (' . $selected_values . ')';
 		}
 
+        if (!isset($additional_query))
+            $additional_query = '';
 		$sql_select_gateways = $this->query("SELECT pg_id, name, logo_url FROM
 			" . DB_PREFIX . "payment_gateways WHERE dp_enabled=1" . $additional_query);
 
@@ -1316,6 +1371,8 @@ class item extends custom_field
 			$additional_query = ' WHERE id IN (' . $selected_values . ')';
 		}
 
+        if (!isset($additional_query))
+            $additional_query = '';
 		$sql_select_options = $this->query_silent("SELECT id, name, logo_url FROM " . DB_PREFIX . "payment_options " . $additional_query);
 
 		$selected_value = explode(',', $selected_values);
@@ -2524,7 +2581,7 @@ class item extends custom_field
 		$relist_option = 1; ## relist as a new auction, mark as deleted the old auction
 		##$relist_option = 2; ## relist the same auction
 
-		$file_path = (IN_ADMIN) ? '../' : '';
+		$file_path = defined('IN_ADMIN') ? '../' : '';
 
 		$item_details = $this->get_sql_row("SELECT a.*, u.shop_account_id, u.shop_active, u.seller_verified, 
 			u.user_id, f.store_nb_items FROM " . DB_PREFIX . "auctions a
@@ -4156,13 +4213,13 @@ class item extends custom_field
 				$output = $item_details['fb_hours'] * 60 * 60 + $item_details['fb_minutes'] * 60 + $item_details['fb_seconds'];
 				break;
 			case 'NTS':				
-				$output['fb_hours'] = intval($item_details['fb_decrement_interval'] / 3600);
+				$output['fb_hours'] = (isset($item_details['fb_decrement_interval']))?intval($item_details['fb_decrement_interval'] / 3600):0;
 				if ($output['fb_hours'] > 0)
 				{
 					$array[] = $output['fb_hours'] . ' ' . GMSG_HOURS;
 				}
 
-				$remainder = $item_details['fb_decrement_interval'] % 3600;
+				$remainder = (isset($item_details['fb_decrement_interval']))?$item_details['fb_decrement_interval'] % 3600:0;
 				$output['fb_minutes'] = intval($remainder / 60);
 				if ($output['fb_minutes'] > 0)
 				{

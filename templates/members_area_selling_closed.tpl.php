@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.00															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -57,7 +57,7 @@ function checkAll(field, array_len, check) {
    <?=$closed_auctions_content;?>
    <? if ($nb_items>0) { ?>
    <tr class="membmenu">
-      <td colspan="8" align="center" class="contentfont"><input type="submit" name="form_closed_proceed" value="<?=GMSG_PROCEED;?>" <?=$disabled_button;?> /></td>
+      <td colspan="8" align="center" class="contentfont"><input type="submit" name="form_closed_proceed" value="<?=GMSG_PROCEED;?>" <?=isset($disabled_button)?$disabled_button:'';?> /></td>
    </tr>
 
    <tr>

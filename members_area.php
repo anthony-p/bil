@@ -297,13 +297,15 @@ else
 		}
 		else 
 		{			
-			$src_username = $db->rem_special_chars($_REQUEST['src_username']);
+			$src_username = (isset($_REQUEST['src_username']))?$db->rem_special_chars($_REQUEST['src_username']):'';
 			$template->set('src_username', $src_username);
 			
-			$src_start_time = (isset($_REQUEST['form_search_transactions'])) ? get_box_timestamp($_REQUEST, 1) : intval($_REQUEST['src_start_time']);
+            $src_start_time = isset($_REQUEST['src_start_time'])?$_REQUEST['src_start_time']:0;
+            $src_start_time = (isset($_REQUEST['form_search_transactions'])) ? get_box_timestamp($_REQUEST, 1) : intval($src_start_time);
 			$src_start_time = ($src_start_time > 0) ? $src_start_time : 0;
 		
-			$src_end_time = (isset($_REQUEST['form_search_transactions'])) ? get_box_timestamp($_REQUEST, 2) : intval($_REQUEST['src_end_time']);
+            $src_end_time = isset($_REQUEST['src_end_time'])?$_REQUEST['src_end_time']:0;
+            $src_end_time = (isset($_REQUEST['form_search_transactions'])) ? get_box_timestamp($_REQUEST, 2) : intval($src_end_time);
 			$src_end_time = ($src_end_time > 0 && $src_end_time <= CURRENT_TIME) ? $src_end_time + (24 * 60 * 60 - 1) : CURRENT_TIME;
 			
 			$start_date_box = date_form_field($src_start_time, 1, 'search_transactions_form', false);
@@ -430,7 +432,8 @@ else
 			$disabled_button = 'disabled';
 
 			$can_edit = ($seller_id == $session->value('user_id') || $edit_invoice) ? true : false;
-				
+
+            $counter= 0 ;
 			while ($item_details = $db->fetch_array($sql_select_products))
 			{
 				if (!$single_settings)
@@ -817,6 +820,7 @@ else
 				$sql_select_invoices = $db->query($invoices_query . " ORDER BY invoice_id DESC LIMIT " . $start . ", " . $limit);
 
 				(string) $history_table_content = null;
+                $counter= 0 ;
 
 				while ($invoice_details = $db->fetch_array($sql_select_invoices))
 				{
@@ -941,6 +945,7 @@ else
 			$sql_select_invoices = $db->query($invoices_query . " ORDER BY refund_request_date DESC LIMIT " . $start . ", " . $limit);
 
 			(string) $history_table_content = null;
+            $counter= 0 ;
 
 			while ($invoice_details = $db->fetch_array($sql_select_invoices))
 			{
@@ -1012,6 +1017,7 @@ else
 					" . (($page == 'summary') ? " AND m.is_read=0" : '') . "
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($msg_details = $db->fetch_array($sql_select_messages))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1073,6 +1079,7 @@ else
 					WHERE m.sender_id='" . $session->value('user_id') . "' AND m.sender_deleted=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($msg_details = $db->fetch_array($sql_select_messages))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1105,7 +1112,7 @@ else
 	
 	if ($page == 'bidding' || $page == 'summary') /* BEGIN -> BIDDING PAGES */
 	{
-		if ($_REQUEST['do'] == 'retract_bid')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'retract_bid')
 		{
 
 			$item_details_tmp = $db->get_sql_row("SELECT * FROM " . DB_PREFIX . "auctions WHERE auction_id='" . $_REQUEST['auction_id'] . "'");
@@ -1117,7 +1124,7 @@ else
 			}
 		}
 
-		if ($_REQUEST['do'] == 'hide_bid')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'hide_bid')
 		{
 			$hide_output = $item->hide_bid($_REQUEST['bid_id'], $session->value('user_id'));
 			$template->set('msg_changes_saved', '<p align="center">' . $hide_output . '</p>');
@@ -1133,12 +1140,13 @@ else
 		
 		if (isset($_POST['form_watched_proceed']))
 		{
-			$nb_deletions = $item->count_contents($_REQUEST['delete']);
+			$nb_deletions = isset($_REQUEST['delete'])?$item->count_contents($_REQUEST['delete']):0;
 
 			if ($nb_deletions > 0)
 			{
 				$delete_output = $item->item_watch_delete($db->implode_array($_REQUEST['delete']), $session->value('user_id'));
-			}
+			} else
+                $delete_output = '';
 			$template->set('msg_changes_saved', '<p align="center">' . $delete_output . '</p>');
 		}		
 
@@ -1166,7 +1174,7 @@ else
 			}
 		}				
 		
-		if ($_REQUEST['do'] == 'delete_fav_store')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_fav_store')
 		{
 			$db->query("DELETE FROM " . DB_PREFIX . "favourite_stores WHERE id='" . intval($_REQUEST['id']) . "' AND 
 				user_id='" . $session->value('user_id') . "'");
@@ -1196,7 +1204,7 @@ else
 		$template->set('nb_current_bids', $nb_current_bids);
 		$template->set('nb_winning', $nb_winning);
 		$template->set('nb_won_items', $nb_won_items);
-		$template->set('nb_purchased_carts', $nb_purchased_carts);
+		$template->set('nb_purchased_carts', isset($nb_purchased_carts)?$nb_purchased_carts:'');
 
 		$members_area_stats = $template->process('members_area_stats_bidding.tpl.php');
 		
@@ -1244,6 +1252,7 @@ else
 					a.closed=0 AND a.deleted=0 AND b.deleted=0 AND b.bid_invalid=0 
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($bid_details = $db->fetch_array($sql_select_bids))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1308,28 +1317,30 @@ else
 
 		if ($section == 'won_items')
 		{
-			$show_link = '&show=' . $_REQUEST['show'];
+			$show_link = (isset($_REQUEST['show']))?'&show=' . $_REQUEST['show']:'';
 			
 			(string) $search_filter = null;
 		
-			if ($_REQUEST['show'] == 'dd')
-			{
-				$search_filter .= " AND w.is_dd=1";
-				$nb_won_items = $db->count_rows('winners w', "WHERE w.buyer_id='" . $session->value('user_id') . "' AND
-					w.b_deleted=0" . $search_filter . $src_transactions_query);
-			}
-			else if ($_REQUEST['show'] == 'no_dd')
-			{
-				$search_filter .= " AND w.is_dd=0";
-				$nb_won_items = $db->count_rows('winners w', "WHERE w.buyer_id='" . $session->value('user_id') . "' AND
-					w.b_deleted=0" . $search_filter . $src_transactions_query);
-			}
+			if (isset($_REQUEST['show'])) {
+                if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'dd')
+                {
+                    $search_filter .= " AND w.is_dd=1";
+                    $nb_won_items = $db->count_rows('winners w', "WHERE w.buyer_id='" . $session->value('user_id') . "' AND
+                        w.b_deleted=0" . $search_filter . $src_transactions_query);
+                }
+                else if ($_REQUEST['show'] == 'no_dd')
+                {
+                    $search_filter .= " AND w.is_dd=0";
+                    $nb_won_items = $db->count_rows('winners w', "WHERE w.buyer_id='" . $session->value('user_id') . "' AND
+                        w.b_deleted=0" . $search_filter . $src_transactions_query);
+                }
+            }
 			
 			(string) $filter_items_content = null;
 
-			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items', GMSG_ALL, ((!$_REQUEST['show']) ? false : true)) . ' | ';
-			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items&show=dd', MSG_DIGITAL_MEDIA_ATTACHED, (($_REQUEST['show'] == 'dd') ? false : true)) . ' | ';
-			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items&show=no_dd', MSG_NO_DIGITAL_MEDIA, (($_REQUEST['show'] == 'no_dd') ? false : true));
+			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items', GMSG_ALL, ((!isset($_REQUEST['show'])) ? false : true)) . ' | ';
+			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items&show=dd', MSG_DIGITAL_MEDIA_ATTACHED, ((isset($_REQUEST['show']) && $_REQUEST['show'] == 'dd') ? false : true)) . ' | ';
+			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items&show=no_dd', MSG_NO_DIGITAL_MEDIA, ((isset($_REQUEST['show']) && $_REQUEST['show'] == 'no_dd') ? false : true));
 
 			$template->set('filter_items_content', $filter_items_content);
 			
@@ -1361,7 +1372,8 @@ else
 				
 				$sale_fee = new fees();
 				$sale_fee->setts = &$setts;
-					
+
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_won))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1552,7 +1564,8 @@ else
 					   LEFT JOIN " . DB_PREFIX . "messaging m ON m.sc_id=sc.sc_id AND m.is_read=0 AND m.sender_id!=sc.buyer_id 					
 					   WHERE sc.buyer_id='" . $session->value('user_id') . "' AND sc.sc_purchased=1 AND sc.b_deleted=0  
 					   ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
-   
+
+                   $counter= 0 ;
 				   while ($sc_details = $db->fetch_array($sql_select_purchased_carts))
 				   {
 					   $background = ($counter++%2) ? 'c1' : 'c2';
@@ -1773,6 +1786,7 @@ else
 					WHERE aw.user_id='" . $session->value('user_id') . "'
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1780,6 +1794,8 @@ else
 					//$content_options = '<a href="members_area.php?do=delete_item_watch&auction_id=' . $item_details['auction_id'] . $additional_vars . $limit_link . $order_link . '" onclick="return confirm(\'' . MSG_DELETE_CONFIRM . '\');">' . MSG_DELETE . '</a>';
 					$content_options = '<input name="delete[]" type="checkbox" id="delete[]" value="' . $item_details['auction_id'] . '" class="checkdelete">';
 
+                    if (!isset($watched_items_content))
+                        $watched_items_content='';
 					$watched_items_content .= '<tr class="' . $background . '"> '.
 						'	<td class="contentfont"><a href="' . process_link('auction_details', array('auction_id' => $item_details['auction_id'])) . '"># ' . $item_details['auction_id'] . '</a></td> '.
 						'	<td class="contentfont"><a href="' . process_link('auction_details', array('auction_id' => $item_details['auction_id'])) . '">' . $item_details['name'] . '</a></td>'.
@@ -1817,6 +1833,7 @@ else
 					WHERE s.user_id='" . $session->value('user_id') . "'
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1853,7 +1870,8 @@ else
 			$nb_items = $db->count_rows('keywords_watch', "WHERE user_id='" . $session->value('user_id') . "'");
 
 			$template->set('nb_items', $nb_items);
-			$template->set('option', $_REQUEST['option']);
+            $rOption = isset($_REQUEST['option'])?$_REQUEST['option']:'';
+			$template->set('option', $rOption);
 
 			$template->set('page_order_keyword', page_order('members_area.php', 'keyword', $start, $limit, $additional_vars, MSG_KEYWORD));
 
@@ -1863,6 +1881,7 @@ else
 					WHERE user_id='" . $session->value('user_id') . "'
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1929,8 +1948,8 @@ else
 		
 		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'closed_proceed')
 		{
-			$nb_relists = $item->count_contents($_REQUEST['relist']);
-			$nb_deletions = $item->count_contents($_REQUEST['delete']);
+			$nb_relists = isset($_REQUEST['relist'])?$item->count_contents($_REQUEST['relist']):0;
+			$nb_deletions = isset($_REQUEST['delete'])?$item->count_contents($_REQUEST['delete']):0;
 
 			if ($nb_relists > 0)
 			{
@@ -2069,7 +2088,8 @@ else
 						LEFT JOIN " . DB_PREFIX . "auctions a ON a.auction_id=w.auction_id
 						WHERE w.auction_id='" . $item_details['auction_id'] . "' AND w.seller_id='" . $session->value('user_id') . "' 
 						ORDER BY w.winner_id DESC");
-	
+
+                    $counter = 0;
 					while ($winning_bid_details = $db->fetch_array($sql_select_winning_bids))
 					{
 						$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2091,6 +2111,7 @@ else
 						" . DB_PREFIX . "users u WHERE ao.auction_id='" . $item_details['auction_id'] . "' AND
 						ao.seller_id='" . $session->value('user_id') . "' AND ao.buyer_id=u.user_id");
 
+                    $counter = 0;
 					while ($offer_details = $db->fetch_array($sql_select_make_offer))
 					{
 						$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2136,6 +2157,7 @@ else
 
 					while ($offer_details = $db->fetch_array($sql_select_bids))
 					{
+                        $counter = 0;
 						$background = ($counter++%2) ? 'c1' : 'c2';
 
 						$reserve_offer_content .= '<tr class="' . $background . '"> '.
@@ -2156,7 +2178,8 @@ else
 						$sql_select_bids = $db->query("SELECT b.*, u.username FROM " . DB_PREFIX . "bids b,
 							" . DB_PREFIX . "users u WHERE b.auction_id='" . $item_details['auction_id'] . "' AND 
 							b.bidder_id=u.user_id AND b.bid_invalid=0 AND b.bidder_id!='" . $item_details['buyer_id'] . "' ORDER BY b.bid_out ASC, b.bid_id DESC");
-	
+
+                        $counter = 0;
 						while ($bid_details = $db->fetch_array($sql_select_bids))
 						{
 							$select_winner_link = '[ <a href="members_area.php?page=selling&section=view_offers&do=accept_offer&offer_id=' . $bid_details['bid_id'] . 
@@ -2289,6 +2312,7 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$media_url = $db->get_sql_field("SELECT media_url FROM " . DB_PREFIX . "auction_media WHERE auction_id=" . $item_details['auction_id'] . " AND 
@@ -2401,6 +2425,7 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$media_url = $db->get_sql_field("SELECT media_url FROM " . DB_PREFIX . "auction_media WHERE auction_id=" . $item_details['auction_id'] . " AND 
@@ -2494,6 +2519,7 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit); 
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2581,10 +2607,13 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
 
+                    if (!isset($closed_auctions_content))
+                        $closed_auctions_content = '';
 					$closed_auctions_content .= '<tr class="' . $background . '"> '.
 						'	<td class="contentfont"><a href="' . process_link('auction_details', array('auction_id' => $item_details['auction_id'])) . '"># ' . $item_details['auction_id'] . '</a></td> '.
 						'	<td class="contentfont"><a href="' . process_link('auction_details', array('auction_id' => $item_details['auction_id'])) . '">' . $item_details['name'] . '</a> ' . 
@@ -2639,6 +2668,7 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);## PHP Pro Bid v6.00 uses temporary/filesort
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2671,28 +2701,30 @@ else
 
 		if ($section == 'sold')
 		{
-			$show_link = '&show=' . $_REQUEST['show'];
+			$show_link = (isset($_REQUEST['show']))? '&show=' . $_REQUEST['show']:'&show=';
 			
 			(string) $search_filter = null;
 		
-			if ($_REQUEST['show'] == 'dd')
-			{
-				$search_filter .= " AND w.is_dd=1";
-				$nb_sold_items = $db->count_rows('winners w', "WHERE w.seller_id='" . $session->value('user_id') . "' AND
-					w.s_deleted=0" . $search_filter . $src_transactions_query);
-			}
-			else if ($_REQUEST['show'] == 'no_dd')
-			{
-				$search_filter .= " AND w.is_dd=0";
-				$nb_sold_items = $db->count_rows('winners w', "WHERE w.seller_id='" . $session->value('user_id') . "' AND
-					w.s_deleted=0" . $search_filter . $src_transactions_query);
-			}
+			if (isset($_REQUEST['show'])) {
+                if ($_REQUEST['show'] == 'dd')
+                {
+                    $search_filter .= " AND w.is_dd=1";
+                    $nb_sold_items = $db->count_rows('winners w', "WHERE w.seller_id='" . $session->value('user_id') . "' AND
+                        w.s_deleted=0" . $search_filter . $src_transactions_query);
+                }
+                else if ($_REQUEST['show'] == 'no_dd')
+                {
+                    $search_filter .= " AND w.is_dd=0";
+                    $nb_sold_items = $db->count_rows('winners w', "WHERE w.seller_id='" . $session->value('user_id') . "' AND
+                        w.s_deleted=0" . $search_filter . $src_transactions_query);
+                }
+            }
 			
 			(string) $filter_items_content = null;
 
-			$filter_items_content .= display_link('members_area.php?page=selling&section=sold', GMSG_ALL, ((!$_REQUEST['show']) ? false : true)) . ' | ';
-			$filter_items_content .= display_link('members_area.php?page=selling&section=sold&show=dd', MSG_DIGITAL_MEDIA_ATTACHED, (($_REQUEST['show'] == 'dd') ? false : true)) . ' | ';
-			$filter_items_content .= display_link('members_area.php?page=selling&section=sold&show=no_dd', MSG_NO_DIGITAL_MEDIA, (($_REQUEST['show'] == 'no_dd') ? false : true));
+			$filter_items_content .= display_link('members_area.php?page=selling&section=sold', GMSG_ALL, ((!isset($_REQUEST['show'])) ? false : true)) . ' | ';
+			$filter_items_content .= display_link('members_area.php?page=selling&section=sold&show=dd', MSG_DIGITAL_MEDIA_ATTACHED, ((isset($_REQUEST['show']) && $_REQUEST['show'] == 'dd') ? false : true)) . ' | ';
+			$filter_items_content .= display_link('members_area.php?page=selling&section=sold&show=no_dd', MSG_NO_DIGITAL_MEDIA, ((isset($_REQUEST['show']) && $_REQUEST['show'] == 'no_dd') ? false : true));
 
 			$template->set('filter_items_content', $filter_items_content);
 			
@@ -2741,6 +2773,7 @@ else
 				$sale_fee = new fees();
 				$sale_fee->setts = &$setts;
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_sold))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2951,6 +2984,7 @@ else
 					WHERE sc.seller_id='" . $session->value('user_id') . "' AND sc.sc_purchased=1 AND sc.s_deleted=0   
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($sc_details = $db->fetch_array($sql_select_sold_carts))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3351,6 +3385,7 @@ else
 					WHERE b.owner_id='" . $session->value('user_id') . "'
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($block_details = $db->fetch_array($sql_select_blocked))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3430,7 +3465,8 @@ else
 			{
 				$sql_select_tiers = $db->query("SELECT * FROM " . DB_PREFIX . "postage_calc_tiers WHERE 
 					user_id='" . $session->value('user_id') . "' AND tier_type='" . $postage_details['pc_postage_type'] . "' ORDER BY tier_from ASC");
-			
+
+                $counter= 0 ;
 				while ($tier_details = $db->fetch_array($sql_select_tiers))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3462,7 +3498,8 @@ else
 			{
 				$sql_select_tiers = $db->query("SELECT * FROM " . DB_PREFIX . "postage_calc_tiers WHERE 
 					user_id='0' AND tier_type='" . $postage_details['pc_postage_type'] . "' ORDER BY tier_from ASC");
-			
+
+                $counter= 0 ;
 				while ($tier_details = $db->fetch_array($sql_select_tiers))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3611,6 +3648,7 @@ else
 					WHERE r.user_id='" . $session->value('user_id') . "' AND r.submitted=1
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($reputation_details = $db->fetch_array($sql_select_reputation))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3659,6 +3697,7 @@ else
 					WHERE r.from_id='" . $session->value('user_id') . "' AND r.submitted=0 AND (a.auction_id!=0 OR rp.reverse_id!=0)
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($reputation_details = $db->fetch_array($sql_select_reputation))
 				{
 					if ($reputation_details['auction_id'])
@@ -4092,7 +4131,8 @@ else
 		
 			$sql_select_categories = $db->query("SELECT category_id, name, parent_id, order_id, hidden, custom_fees, user_id, is_subcat FROM
 				" . DB_PREFIX . "categories WHERE parent_id=" . $parent_id . " AND user_id=" . $session->value('user_id') . " ORDER BY order_id ASC, name ASC");
-		
+
+            $counter= 0 ;
 			while ($category_details = $db->fetch_array($sql_select_categories))
 			{
 				$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4231,6 +4271,7 @@ else
 					WHERE w.owner_id='" . $session->value('user_id') . "' AND w.closed=0 AND w.deleted=0 AND w.creation_in_progress=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4290,6 +4331,7 @@ else
 					AND w.end_time<='" . CURRENT_TIME . "'AND w.creation_in_progress=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4374,6 +4416,7 @@ else
 					WHERE r.owner_id='" . $session->value('user_id') . "' AND r.closed=0 AND r.deleted=0 AND r.creation_in_progress=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4434,6 +4477,7 @@ else
 					AND r.end_time<='" . CURRENT_TIME . "'AND r.creation_in_progress=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4488,6 +4532,7 @@ else
 					GROUP BY r.reverse_id 
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit); 
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4556,7 +4601,8 @@ else
 				
 				$reverse_fee = new fees(true);
 				$reverse_fee->setts = &$setts;
-					
+
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_awarded))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4667,6 +4713,7 @@ else
 					r.closed=0 AND r.deleted=0  
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($bid_details = $db->fetch_array($sql_select_bids))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4835,6 +4882,7 @@ else
 				$reverse_fee = new fees(true);
 				$reverse_fee->setts = &$setts;
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_won))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';

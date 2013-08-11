@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -21,7 +21,8 @@ $item_description_editor = "<script> \n" .
 
 $template->set('item_description_editor', $item_description_editor);
 
-$template->set('setup_voucher_box', voucher_form('setup', $item_details['voucher_value'], false));
+$voucher_value = isset($item_details['voucher_value'])?$item_details['voucher_value']:'';
+$template->set('setup_voucher_box', voucher_form('setup', $voucher_value, false));
 
 $template->set('main_category_display', category_navigator($item_details['category_id'], false));
 $template->set('addl_category_display', category_navigator($item_details['addl_category_id'], false, true, null, null, GMSG_NONE_CAT));
@@ -31,7 +32,8 @@ if (!empty($item_details['voucher_value']))
 	$voucher_details = $item->check_voucher($item_details['voucher_value'], 'setup');
 
 	$template->set('check_voucher_message', $voucher_details['display']);
-}
+} else
+    $voucher_details = array();
 
 $edit_auction_content .= $template->process('sell_item_details.tpl.php');
 
@@ -46,7 +48,7 @@ $template->set('can_add_tax', $can_add_tax['can_add_tax']);
 
 $template->set('duration_drop_down', $item->durations_drop_down('duration', $item_details['duration']));
 
-if (IN_ADMIN != 1)
+if (!defined('IN_ADMIN') || IN_ADMIN != 1)
 {
 	$buyout_fee = $setup_fee->display_fee('buyout_fee', $user_details, $item_details['category_id'], $item_details['list_in'], $voucher_details);
 
@@ -159,6 +161,8 @@ $item->show_free_images = true;
 $image_upload_manager = $item->upload_manager($item_details, 1, 'ad_create_form', true, false, true, $picture_fee_expl_message);
 $template->set('image_upload_manager', $image_upload_manager);
 
+if (!isset($video_fee_expl_message))
+    $video_fee_expl_message = '';
 $video_upload_manager = $item->upload_manager($item_details, 2, 'ad_create_form', true, false, true, $video_fee_expl_message);
 $template->set('video_upload_manager', $video_upload_manager);
 
