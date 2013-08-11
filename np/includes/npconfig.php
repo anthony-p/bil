@@ -8,6 +8,14 @@ switch($_SERVER['SERVER_NAME']) {
         define('SESSION_PREFIX', 'probid_'); 
         $db_name = 'devbrin';
     break;
+     case 'local.bringitlocal.com':
+    $db_host = 'localhost'; 
+          $db_username = 'root'; 
+        $db_password = 'johilo9-4'; 
+        define('DB_PREFIX', 'probid_'); ## Do not edit ! 
+        define('SESSION_PREFIX', 'probid_'); 
+        $db_name = 'devbrin';
+    break;
     case 'dev.bringitlocal.com':
          $db_host = 'localhost'; 
         $db_username = 'devbr0_userbid'; 
