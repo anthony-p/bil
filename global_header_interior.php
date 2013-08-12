@@ -189,11 +189,13 @@ else if ($session->value('user_id'))
     if (in_array($page, array('account', 'about_me', 'messaging')) &&
         in_array($section, array('editinfo', 'management', 'edit', 'view', 'received', 'received'))) {
         $selected_section = 'my_profile';
-    } elseif (in_array($page, array()) && in_array($section, array())) {
+    } elseif (in_array($page, array('campaigns')) &&
+        in_array($section, array('drafts', 'live', 'closed'))) {
         $selected_section = 'my_campaigns';
     } elseif (in_array($page, array()) && in_array($section, array())) {
         $selected_section = 'my_contributions';
-    } elseif (in_array($page, array()) && in_array($section, array())) {
+    } elseif (in_array($page, array('selling')) &&
+        in_array($section, array('open', 'bids_offers', 'scheduled', 'closed', 'drafts'))) {
         $selected_section = 'buying_and_selling';
     }
 	$template->set('selected_section', $selected_section);
