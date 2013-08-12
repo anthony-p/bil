@@ -55,7 +55,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </tr>
     <tr><td></td></tr>
     <tr>
-        <td class="leftCol"><?=MSG_PHONE;?> *1</td>
+        <td class="leftCol"><?=MSG_PHONE;?> *</td>
         <td class="contentfont">
             <? if ($edit_user == 1)	{ ?>
             <input name="phone" type="text" id="phone" value="<?=$user_details['phone'];?>" size="25" />
