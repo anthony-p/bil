@@ -560,6 +560,7 @@ else
 				}
 				else
 				{
+                    $_POST['phone'] = "(" . $_POST['phone_a'] . ")" . $_POST['phone_b'];
 					$form_submitted = true;
 
 					$template->set('msg_changes_saved', $msg_changes_saved);
