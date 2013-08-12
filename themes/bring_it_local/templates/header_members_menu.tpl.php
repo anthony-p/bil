@@ -103,7 +103,7 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
     </li>
 
 <!--<li><a href="--><?//=process_link('members_area', array('page' => 'summary'));?><!--">--><?//=MSG_MM_SUMMARY;?><!--</a></li>-->
-    <li>
+    <li class="active">
         <a href="javascript:void(0)"><?=MSG_MY_CAPMAIGNS?></a>
         <ul>
             <li><a href="/np/npregister.php"><?=MSG_NEW_CAPMAIGN?></a></li>
