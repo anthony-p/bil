@@ -5051,51 +5051,30 @@ else
                 $frmchk_details = $_POST;
 
                 if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
-
                     $frmchk_details["logo"]  =array();
-
                     $frmchk_details["logo"]["type"] = $_FILES["logo"]["type"];
-
                     if (in_array($_FILES["logo"]["type"], $allowed_image_mime_types)) {
-
                         $logo_image_size = getimagesize($_FILES["logo"]["tmp_name"]);
-
                         $frmchk_details["logo"]["dimensions"] = array(
-
                             "width" => $logo_image_size[0],
-
                             "max_width" => 160,
-
                             "height" => $logo_image_size[1],
-
                             "max_height" => 160,
-
                             "error_message" => "The dimension of the logo must be 160x160px"
-
                         );
                     }
                 }
 
                 if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
-
                     $frmchk_details["banner"]  =array();
-
                     $frmchk_details["banner"]["type"] = $_FILES["banner"]["type"];
-
                     if (in_array($_FILES["logo"]["type"], $allowed_image_mime_types)) {
-
                         $logo_image_size = getimagesize($_FILES["banner"]["tmp_name"]);
-
                         $frmchk_details["banner"]["dimensions"] = array(
-
                             "width" => $logo_image_size[0],
-
                             "max_width" => 600,
-
                             "height" => $logo_image_size[1],
-
                             "max_height" => 400,
-
                             "error_message" => "The dimension of the banner must be 600x400px"
                         );
                     }
@@ -5103,34 +5082,22 @@ else
 
 
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
-
                 $banned_output = check_banned($_POST['email'], 2);
-
-                if ($banned_output['result'])
-                {
+                if ($banned_output['result']) {
                     $template->set('banned_email_output', $banned_output['display']);
                 }
                 else if ($fv->is_error())
                 {
-
                     $template->set('display_formcheck_errors', $fv->display_errors());
-
                     $template->set('campaign', $campaign);
-
                     $template->set('categories', $categories);
-
                     $template->set('last_selected_tab', $last_selected_tab);
-
                     $template->set('countries', $countries);
-
+                    $template->set('video_url', $_POST["video_url"]);
                     $template->set('pitches', $pitches);
-
                     $template->set('project_updates', $project_updates);
-
                     $template->set('project_rewards', $project_rewards);
-
                     $members_area_page_content = $template->process('members_area_campaigns_edit.tpl.php');
-
                     $template->set('members_area_page_content', $members_area_page_content);
                 }
                 else
@@ -5237,12 +5204,9 @@ else
                         $mysql_update_query .= ", banner='" . $banner_file_name . "'";
 
                     } elseif (isset ($_POST["video_url"]) && !empty($_POST["video_url"])) {
-
+                        $video_url = $_POST["video_url"];
                         $mysql_update_query .= ", banner='" . $_POST["video_url"] . "'";
-
                     }
-
-
 
                     $_POST["probid_user_id"] =
 
@@ -5442,6 +5406,7 @@ else
                     $template->set('categories', $categories);
                     $template->set('countries', $countries);
                     $template->set('pitches', $pitches);
+                    $template->set('video_url', $video_url);
                     $template->set('project_updates', $project_updates);
                     $template->set('project_rewards', $project_rewards);
                     $template->set('last_selected_tab', $last_selected_tab);
