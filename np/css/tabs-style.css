@@ -72,6 +72,8 @@ body{
     color:#fff;
 
 }
+#navigation ul li.selected a span{font: 15px/31px "OpenSans-Bold";
+    padding-right: 5px;}
 span.checked{
     background:transparent url(../images/checked.png) no-repeat top left;
     position:absolute;
