@@ -269,6 +269,18 @@ function ImageExistFromUrl(url)
     }
 }
 
+function clearLogoContent()
+{
+    var control = $("#logo");
+    control.replaceWith( control = control.clone( true ) );
+}
+
+function clearBannerContent()
+{
+    var control = $("#banner");
+    control.replaceWith( control = control.clone( true ) );
+}
+
 /**
  * Switch Next Form Panel
  * @param id
@@ -672,6 +684,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <?php endif; ?>
             <div id="MultiPowUpload_holder">
                 <input class="file" name="logo" id="logo" type='file' multiple title="logo file"/>
+                <span style="cursor: pointer;" onclick="clearLogoContent()">Clear</span>
             </div>
 
             <div id="serverresponse">
@@ -696,6 +709,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 <img src="<?php echo $banner_image; ?>" />
             <?php endif; ?>
             <input class="file" name="banner" id="banner" type='file' multiple title="banner file"/>
+            <span style="cursor: pointer" onclick="clearBannerContent()">Clear</span>
             <div id="vide_select_block" style="display: none">
                 <input type="text" name="video_url" id="video_url" value="">
                 <input type="button" id="loadVideo" value="Get">
