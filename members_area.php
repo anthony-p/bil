@@ -43,8 +43,6 @@ else
 
 	$page = (!empty($_REQUEST['page'])) ? $_REQUEST['page'] : $default_landing_page;
 	$section = (!empty($_REQUEST['section'])) ? $_REQUEST['section'] : $default_landing_section;
-    var_dump($section);
-    var_dump('<br />');
 	$order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'DESC';
 	$name_keyword = (!empty($_REQUEST['keyword'])) ? $_REQUEST['keyword'] : '';
 
