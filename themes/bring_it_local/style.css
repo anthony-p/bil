@@ -2886,6 +2886,7 @@ aside.suport .merchants li .info span {display: block; font:16px "OpenSans-Bold"
 .member-menu{margin:20px 0 0 0;background: #efefef;  background: #e6e6e6;   border: 1px solid #d9d9d9;  border-radius: 4px; width: 100%;
 position: relative; display: inline-table; }
 .member-menu li{display: table-cell; cursor: pointer;position: relative;border-right: 1px solid #fff; vertical-align: middle;}
+.member-menu li.active{color:#333; background: #7eb041;}
 .member-menu li.last{border: 0;}
 .member-menu li:hover{background:rgb(77, 71, 71);}
 .member-menu li:hover a{color: #fff;}
