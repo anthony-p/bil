@@ -64,6 +64,14 @@ body{
     color: #1f1f1f;
     font: 14px/29px "OpenSans-SemiBold";
     text-transform: uppercase;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 50px 0 50px 86.6px;
+    border-color: transparent transparent transparent #007bff;
+    line-height: 0px;
+    _border-color: #000000 #000000 #000000 #007bff;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
 
 }
 #navigation ul li a:hover,
