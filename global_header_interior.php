@@ -183,16 +183,17 @@ else if (!$session->value('user_id') && $layout['d_login_box'] && $setts['is_ssl
 else if ($session->value('user_id'))
 {
     var_dump($section);
-    var_dump("\n");
+    echo "<br />";
     var_dump($page);
     $selected_section = 'my_profile';
-    if (in_array($section, array('editinfo', 'management', 'edit', 'view', 'received', 'received'))) {
+    if (in_array($page, array('account', 'about_me', 'messaging')) &&
+        in_array($section, array('editinfo', 'management', 'edit', 'view', 'received', 'received'))) {
         $selected_section = 'my_profile';
-    } elseif (in_array($section, array())) {
+    } elseif (in_array($page, array()) && in_array($section, array())) {
         $selected_section = 'my_campaigns';
-    } elseif (in_array($section, array())) {
+    } elseif (in_array($page, array()) && in_array($section, array())) {
         $selected_section = 'my_contributions';
-    } elseif (in_array($section, array())) {
+    } elseif (in_array($page, array()) && in_array($section, array())) {
         $selected_section = 'buying_and_selling';
     }
 	$template->set('selected_section', $selected_section);
