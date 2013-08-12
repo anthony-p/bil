@@ -183,8 +183,10 @@ else if (!$session->value('user_id') && $layout['d_login_box'] && $setts['is_ssl
 else if ($session->value('user_id'))
 {
     var_dump($section);
+    var_dump("\n");
+    var_dump($page);
     $selected_section = 'my_profile';
-    if (in_array($section, array('editinfo'))) {
+    if (in_array($section, array('editinfo', 'management', 'edit', 'view', 'received', 'received'))) {
         $selected_section = 'my_profile';
     } elseif (in_array($section, array())) {
         $selected_section = 'my_campaigns';
