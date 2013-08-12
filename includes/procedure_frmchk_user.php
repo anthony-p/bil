@@ -23,6 +23,9 @@ $fv->check_box($frmchk_details['country'], MSG_COUNTRY, array('field_empty'));
 $fv->check_box($frmchk_details['state'], MSG_STATE, array('field_empty', 'field_html'));
 $fv->check_box($frmchk_details['postal_code'], MSG_ZIP_CODE, array('field_empty', 'field_html'));
 
+$fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html', 'is_phone'));
+$fv->check_box($frmchk_details['phone_b'], MSG_PHONE_B, array('field_empty', 'field_html', 'is_phone'));
+
 //@TODO Apply this at Step II
 //$fv->check_box($frmchk_details['city'], MSG_CITY, array('field_empty', 'field_html'));
 //$fv->check_box($frmchk_details['country'], MSG_COUNTRY, array('field_empty'));
