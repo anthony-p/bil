@@ -182,6 +182,7 @@ else if (!$session->value('user_id') && $layout['d_login_box'] && $setts['is_ssl
 }
 else if ($session->value('user_id'))
 {
+    var_dump($section);
 	$template->set('member_active', $session->value('membersarea'));
 	$template->set('member_username', $session->value('username'));
 
