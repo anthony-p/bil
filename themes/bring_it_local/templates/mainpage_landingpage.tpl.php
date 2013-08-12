@@ -50,7 +50,7 @@ $featured_columns = 14;
             <span class="price">$<? echo $compaigns['payment'];?><span>usd</span></span>
             <span class="day">
                 <?php $days=round(($compaigns['end_date']-time())/86400);
-                if($days>0){echo $days."<span>days left</span>"; }
+                if($days>0){echo $days."<span> days left</span>"; }
                 elseif($compaigns['payment'] == 0)
                     echo "<span>closed</span>";
                 else {
@@ -77,7 +77,7 @@ $featured_columns = 14;
                     echo "<div class='project-unsuccessful'>Closed</div>";
             }
             ?>
-            <p>Raised of $<?php echo isset($compaigns['founddrasing_goal']) ? $compaigns['founddrasing_goal'] : '0'; ?>USD goal</p>
+            <p>Raised toward the goal of $<?php echo isset($compaigns['founddrasing_goal']) ? $compaigns['founddrasing_goal'] : '0'; ?> </p>
         </div>
         <div class="navigation-btn">
             <h3>There are many ways to give</h3>

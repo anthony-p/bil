@@ -53,7 +53,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 </div>
                 <div class="campaign-details">
                     <span class="price">$<?php echo $row['payment'];?></span>
-                    <span class="day"><?php $unu=round(($row['end_date']-time())/86400); echo $unu; ?><span>days left</span></span>
+                    <span class="day"><?php $unu=round(($row['end_date']-time())/86400); echo $unu; ?><span> days left</span></span>
                     <div class="clear"></div>
                     <?php
                     $end_time=$row['end_date'];
