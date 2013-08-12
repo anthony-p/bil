@@ -243,6 +243,8 @@ function processURL(url){
                 setPrevImage(data[0].thumbnail_large);
             }
         });
+    } else if (ImageExistFromUrl(url)) {
+        return url;
     } else {
         throw new Error('Unrecognised URL');
     }
@@ -253,6 +255,17 @@ function processURL(url){
         }
 
         return "http://img.youtube.com/vi/"+id+"/0.jpg";
+    }
+}
+
+function ImageExistFromUrl(url)
+{
+    var img = new Image();
+    img.src = url;
+    if (img.height != 0) {
+        return true
+    } else {
+        return false;
     }
 }
 
