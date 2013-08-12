@@ -320,19 +320,19 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 <div id="navigation" style="display:none;">
     <ul>
         <li id="p_account" class="selected">
-            <a href="#">Account</a>
+            <a href="#"><span>1</span>Account</a>
         </li>
         <li id="p_projectDetail">
-            <a href="#">Details</a>
+            <a href="#"><span>2</span>Details</a>
         </li>
         <li id="p_projectEdit">
-            <a href="#">Enhancements</a>
+            <a href="#"><span>3</span>Enhancements</a>
         </li>
        <!-- <li id="p_projectPitch">
             <a href="#">Pitch</a>
         </li>-->
         <li id="p_confirmation">
-            <a href="#">Confirmation</a>
+            <a href="#"><span>4</span>Confirmation</a>
         </li>
 
     </ul>

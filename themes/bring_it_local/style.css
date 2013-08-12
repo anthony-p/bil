@@ -2640,8 +2640,8 @@ header .level2 .level2-inner .nav-buttons .nav-links span a.what{color: #999999;
 ul.list{width: 100%; display: inline-block;margin-top: 30px; }
 ul.list li{float:left; width:220px; margin-right: 20px; box-shadow: 0 0 6px rgba(92, 88, 88,0.4);}
 ul.list li.last{margin-right: 0;}
-ul.list li .img{float:left; width: 100%;height:165px;background: #fff; text-align: center; }
-ul.list li .img img{width:99%; height: 100%;}
+ul.list li .img{float:left; width: 100%;height:165px;background: #fff; text-align: center; overflow:hidden;}
+/*ul.list li .img img{width:99%; height: 100%;}*/
 ul.list li .campaigns-info{float:left; width: 93%; padding:16px 0 14px 16px;background: #fff;}
 ul.list li .campaigns-info .name{width:195px; font:14px/17px "OpenSans-SemiBold"; color: #222; display:inline-block; white-space: nowrap; overflow: hidden;}
 ul.list li .campaigns-info .name a{font:13px/17px OpenSans; color:#7eb041;}
@@ -2883,7 +2883,7 @@ aside.suport .merchants li .info span {display: block; font:16px "OpenSans-Bold"
 #members_area #middleColumn{float:left; clear:both; width:100%;background: #fff; padding-bottom: 30px;  box-shadow: 0 0 6px rgba(5, 5, 5, 0.5); border-radius: 8px; margin: 20px 0 40px; }
 #members_area #leftColumn{width:100%; float:left; display: inline-block;}
 
-.member-menu{background: #efefef;  background: #e6e6e6;   border: 1px solid #d9d9d9;  border-radius: 4px; width: 100%;
+.member-menu{margin:20px 0 0 0;background: #efefef;  background: #e6e6e6;   border: 1px solid #d9d9d9;  border-radius: 4px; width: 100%;
 position: relative; display: inline-table; }
 .member-menu li{display: table-cell; cursor: pointer;position: relative;border-right: 1px solid #fff; vertical-align: middle;}
 .member-menu li.last{border: 0;}

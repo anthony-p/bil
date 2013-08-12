@@ -1,4 +1,5 @@
 <?
+
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
@@ -559,6 +560,7 @@ else
 				}
 				else
 				{
+                    $_POST['phone'] = "(" . $_POST['phone_a'] . ")" . $_POST['phone_b'];
 					$form_submitted = true;
 
 					$template->set('msg_changes_saved', $msg_changes_saved);
@@ -578,7 +580,7 @@ else
 					$user->save_edit_vars($session->value('user_id'), $page_handle);
 				}
 
-				$template->set('edit_user', 1);
+//				$template->set('edit_user', 1);
 				$template->set('edit_disabled', 'disabled'); /* some fields in the registration will be disabled for editing */
 
 				$email_check_value = ($_POST['email_check']) ? $_POST['email_check'] : $row_user['email'];
@@ -588,6 +590,17 @@ else
 				{
 					$row_user['tax_account_type'] = $_POST['tax_account_type'];
 				}
+
+                $phone_a = $phone_b = '';
+                if (isset($row_user["phone"])) {
+                    $phone_array = explode(")", $row_user["phone"]);
+                    $phone_a = trim(str_replace("(", "", $phone_array[0]));
+                    if (isset($phone_array[1])) {
+                        $phone_b = trim($phone_array[1]);
+                    }
+                }
+                $row_user["phone_a"] = $phone_a;
+                $row_user["phone_b"] = $phone_b;
 
 				$template->set('user_details', $row_user);
 				$template->set('do', $_REQUEST['do']);
