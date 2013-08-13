@@ -6,11 +6,14 @@
 ##-------------------------------------------------------------##
 #################################################################
 
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 
-define ('IN_SITE', 1);
+if (!defined("IN_SITE"))
+    define ('IN_SITE', 1);
 
-if (!$manual_cron || IN_ADMIN == 1)
+if (!$manual_cron || (defined("IN_ADMIN") && IN_ADMIN == 1))
 {
 	include_once ('../includes/global.php');
 	$parent_dir = '../';

@@ -13,7 +13,7 @@ global $coupon_url;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <title><?=$page_title. $page_specific_title ;?></title>
+    <title><?php echo $page_title; echo (isset($page_specific_title))?$page_specific_title:'' ;?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <?=$page_meta_tags;?>
@@ -79,7 +79,7 @@ global $coupon_url;
                 global $nonloggedin_check;
                 echo $nonloggedin_check;
 
-                if ($_COOKIE['glob_alert']=="0")
+                if (isset($_COOKIE['glob_alert']) && $_COOKIE['glob_alert']=="0")
                 {
                     echo "return;";
                 }
@@ -130,7 +130,7 @@ global $coupon_url;
     -->
     <link rel="stylesheet" type="text/css" href="webfonts/MyFontsWebfontsKit.css">
 </head>
-<body id="<?=$GLOBALS['body_id']?>">
+<body id="<?=isset($GLOBALS['body_id'])?$GLOBALS['body_id']:0?>">
 <div id="outerContainer">
     <header>
         <div class="innerContainer">
@@ -147,7 +147,7 @@ global $coupon_url;
                 <div class="topNav">
                     <span class="user-log"><?php
                         global $session; if($session->value('user_id')) {
-                            $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email ='" . $session->value('username') . "'", first_name);
+                            $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email ='" . $session->value('username') . "'", 'first_name');
                             echo MSG_WELCOME .' '. $first_name;
                         }
                         ?>
@@ -182,10 +182,10 @@ global $coupon_url;
                 </div>
                 <?
                 #put landing page right column code here
-                if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
+                if (  (isset($landingpage) && $landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
                     $mynp_userid=$_COOKIE["np_userid"];
-                    $npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", username);
-                    $mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", tax_company_name);
+                    $npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", 'username');
+                    $mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", 'tax_company_name');
                     ?>
                 <?
                 }else{
@@ -267,7 +267,7 @@ global $coupon_url;
                         else { link.innerHTML = '+'; d.style.display = 'none'; }
                     }
                 </script>
-                <? if ($is_announcements && $member_active == 'Active') { ?>
+                <? if (isset($is_announcements) && $is_announcements && $member_active == 'Active') { ?>
                     <?=$announcements_box_header;?>
                     <div id="exp1102170555">
                         <?=$announcements_box_content;?>

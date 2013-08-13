@@ -197,7 +197,8 @@ define ('GMSG_BALANCE_PAYMENT', 'Balance Payment');
 define ('GMSG_SUBSCRIPTION_PAYMENT', 'Subscription Payment');
 define ('GMSG_PIXELS', 'pixels');
 define ('GMSG_YEARS', 'years');
-define ('GMSG_MINUTES', 'minutes');
+if (defined('GMSG_MINUTES'))
+    define ('GMSG_MINUTES', 'minutes');
 define ('GMSG_RESPR_FEE', 'Reserve Price Fee');
 define ('GMSG_BUYOUT_FEE', 'Buy Out Fee');
 define ('GMSG_EXPIRES_ON', 'Expires on');
@@ -388,7 +389,6 @@ define ('GMSG_S', 's');
 define ('GMSG_EVERY', 'every');
 define ('GMSG_HOURS', 'hours');
 define ('GMSG_MINUTES', 'minutes');
-define ('GMSG_SECONDS', 'seconds');
 define ('GMSG_SELECTED_COUNTRIES', 'Selected Countries');
 define ('GMSG_REVERSE_ID', 'Reverse Auction ID');
 define ('GMSG_REVERSE_BID_FEE', 'Reverse Auction Bid Fee');

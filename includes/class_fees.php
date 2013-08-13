@@ -1482,7 +1482,7 @@ $sql_insert_invoice = $this->query("INSERT INTO giveback_invoices
 				$fee_display[] = $this->setts['pref_sellers_reduction'] . '% ' . GMSG_PREF_SELLERS_REDUCTION;
 			}
 
-			if ($voucher_details['reduction'] > 0)
+			if (isset($voucher_details['reduction']) && $voucher_details['reduction'] > 0)
 			{
 				$assigned_fees = explode(',', $voucher_details['assigned_fees']);
 				if (in_array('all', $assigned_fees) || in_array($fee_name, $assigned_fees) || $voucher_details['voucher_type'] == 'signup')
@@ -1679,23 +1679,23 @@ $sql_insert_invoice = $this->query("INSERT INTO giveback_invoices
    			}
    		}
 
-   		$new_images_counter = item::count_contents($item_details['ad_image']);
-   		$new_videos_counter = item::count_contents($item_details['ad_video']);
-   		$new_dd_counter = item::count_contents($item_details['ad_dd']);
+   		$new_images_counter = isset($item_details['ad_image'])?item::count_contents($item_details['ad_image']):0;
+   		$new_videos_counter = isset($item_details['ad_video'])?item::count_contents($item_details['ad_video']):0;
+   		$new_dd_counter = isset($item_details['ad_dd'])?item::count_contents($item_details['ad_dd']):0;
    		
    		$reverse_setup_fee = ($new_category) ? 1 : 0;
    		$picture_fee = (($this->min_charged_image < $new_images_counter && $new_images_counter > $nb_images && $nb_images <= $this->min_charged_image) || ($new_images_counter > $this->min_charged_image && $new_category)) ? item::count_contents($item_details['ad_image']) : 0;   		   		
    		$dd_fee = (($this->min_charged_dd < $new_dd_counter && $new_dd_counter > $nb_dd && $nb_dd <= $this->min_charged_dd) || ($new_dd_counter > $this->min_charged_dd && $new_category)) ? item::count_contents($item_details['ad_dd']) : 0;   		
-   		$hlitem_fee = ((!$old_item['hl'] || $new_category) && $item_details['hl']) ? 1 : 0;
-   		$bolditem_fee = ((!$old_item['bold'] || $new_category) && $item_details['bold']) ? 1 : 0;
-   		$hpfeat_fee = ((!$old_item['hpfeat'] || $new_category) && $item_details['hpfeat']) ? 1 : 0;
-   		$catfeat_fee = ((!$old_item['catfeat'] || $new_category) && $item_details['catfeat']) ? 1 : 0;
+   		$hlitem_fee = ((!isset($old_item['hl']) || $new_category) && $item_details['hl']) ? 1 : 0;
+   		$bolditem_fee = ((!isset($old_item['bold']) || $new_category) && $item_details['bold']) ? 1 : 0;
+   		$hpfeat_fee = ((!isset($old_item['hpfeat']) || $new_category) && $item_details['hpfeat']) ? 1 : 0;
+   		$catfeat_fee = ((!isset($old_item['catfeat']) || $new_category) && $item_details['catfeat']) ? 1 : 0;
    		$rp_fee = (($old_item['reserve_price'] == 0 || $new_category) && $item_details['reserve_price'] > 0) ? 1 : 0;
    		$second_cat_fee = ((!$old_item['addl_category_id'] || $new_category) && $item_details['addl_category_id']) ? 1 : 0;
    		$buyout_fee = (($old_item['buyout_price'] == 0 || $new_category) && $item_details['buyout_price'] > 0) ? 1 : 0;
-	   	$custom_start_fee = ($item_details['start_time_type'] == 'custom' && $new_category) ? 1 : 0; ## this is always 0 since if u can choose a custom start time on edit then it means it was already paid for
+	   	$custom_start_fee = (isset($item_details['start_time_type']) && $item_details['start_time_type'] == 'custom' && $new_category) ? 1 : 0; ## this is always 0 since if u can choose a custom start time on edit then it means it was already paid for
 			$video_fee = (($this->min_charged_video < $new_videos_counter && $new_videos_counter > $nb_videos && $nb_videos <= $this->min_charged_video)  || ($new_videos_counter > $this->min_charged_video && $new_category)) ? item::count_contents($item_details['ad_video']) : 0;
-			$makeoffer_fee = ((!$old_item['is_offer'] || $new_category) && $item_details['is_offer']) ? 1 : 0;
+			$makeoffer_fee = ((!isset($old_item['is_offer']) || $new_category) && $item_details['is_offer']) ? 1 : 0;
    	}
    	else
    	{
@@ -1775,7 +1775,7 @@ $sql_insert_invoice = $this->query("INSERT INTO giveback_invoices
    		$second_cat_fee = ((!$old_item['addl_category_id'] || $new_category) && $item_details['addl_category_id']) ? 1 : 0;
    		$buyout_fee = (($old_item['buyout_price'] == 0 || $new_category) && $item_details['buyout_price'] > 0) ? 1 : 0;
 	   	$custom_start_fee = ($item_details['start_time_type'] == 'custom' && $new_category) ? 1 : 0; ## this is always 0 since if u can choose a custom start time on edit then it means it was already paid for
-			$makeoffer_fee = ((!$old_item['is_offer'] || $new_category) && $item_details['is_offer']) ? 1 : 0;
+	    $makeoffer_fee = ((!isset($old_item['is_offer']) || $new_category) && isset($item_details['is_offer'])) ? 1 : 0;
    	}
    	$output = array(
    		'picture_fee' 			=> array(GMSG_IMG_UPL_FEE, $picture_fee),
@@ -1822,7 +1822,8 @@ $sql_insert_invoice = $this->query("INSERT INTO giveback_invoices
    	
    	if (!$this->reverse_auction)
    	{
-   		$setup_fee = $this->display_fee_tiers('setup', $user_details, $item_details['category_id'], $item_details['list_in'], $item_details['start_price'], $voucher_details, $apply_tax, $item_details['currency']);
+   		$list_in = isset($item_details['list_in'])?$item_details['list_in']:array();
+        $setup_fee = $this->display_fee_tiers('setup', $user_details, $item_details['category_id'], $list_in, $item_details['start_price'], $voucher_details, $apply_tax, $item_details['currency']);
    	}
    	else if ($fees_no_tier['reverse_setup'][1])
    	{

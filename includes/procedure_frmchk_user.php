@@ -64,7 +64,10 @@ if (!$frmchk_user_edit && IN_ADMIN != 1)
 */
 ## check for blocked domains
 $email_split = explode('@', $frmchk_details['email']);
-$email_domain = $email_split[1];
+if (isset($email_split[1]))
+    $email_domain = $email_split[1];
+else
+    $email_domain = '';
 $is_blocked_domain = $db->count_rows('blocked_domains', "WHERE domain='" . $email_domain . "'");
 
 if ($is_blocked_domain)
@@ -97,15 +100,15 @@ if (!$frmchk_user_edit || !empty($frmchk_details['password']))
     $fv->check_box($frmchk_details['password'], MSG_CREATE_PASS, array('within_length', 'pass_confirm'), $_POST['password2'], MSG_VERIFY_PASS);
 }
 
-if ($frmchk_details['pg_paypal_email']) {
+if (isset($frmchk_details['pg_paypal_email'])) {
     $fv->check_box($frmchk_details['pg_paypal_first_name'], MSG_PAYPAL_EMAIL_FIRST_NAME, array('field_empty'));
 }
 
-if ($frmchk_details['pg_paypal_email']) {
+if (isset($frmchk_details['pg_paypal_email'])) {
     $fv->check_box($frmchk_details['pg_paypal_last_name'], MSG_PAYPAL_EMAIL_LAST_NAME, array('field_empty'));
 }
 
-if ($frmchk_details['pg_paypal_email']) {
+if (isset($frmchk_details['pg_paypal_email'])) {
     $fv->check_box($frmchk_details['pg_paypal_email'], MSG_PAYPAL_EMAIL_ADDRESS, array('is_paypal_email_address'));
 }
 

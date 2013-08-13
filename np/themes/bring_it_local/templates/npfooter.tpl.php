@@ -13,9 +13,9 @@ global $coupon_url;
 	<div id="rightColumn">
 		<!-- landing page -->
 		<?
-		if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
+		if (  (isset($landingpage) && $landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
 		$mynp_userid=$_COOKIE["np_userid"];
-		$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", username);
+		$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", 'username');
 		?>
 		<?
 //		include ('../themes/'.$setts['default_theme'].'/templates/landingpage.tpl.php');
@@ -23,16 +23,16 @@ global $coupon_url;
 		?>
 		<!-- how it works image -->
 		<?
-		if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
+		if (  (isset($landingpage) && $landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
 		$mynp_userid=$_COOKIE["np_userid"];
-		$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", username);
-		$mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", tax_company_name);
+		$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", 'username');
+		$mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", 'tax_company_name');
 		?>
 		<?
 		}else{
 		?>
 
-		<? if ($member_active != 'Active') { ?>
+		<? if (isset($member_active) && $member_active != 'Active') { ?>
 			<div id="newUserBanner"><a href="<?=process_link('register');?>"><img src="themes/<?=$setts['default_theme'];?>/img/newuser.gif" width="204" height="150" border="0"></a></div>
 		<? } ?>
 		<?
@@ -104,7 +104,7 @@ global $coupon_url;
 		</div>
 		<div class="column col3">
 			<h5 class="header">Participate</h5>
-            	<?=$custom_pages_links;?>
+            	<?php //echo $custom_pages_links;?>
 			<a href="/loyalty-program">Loyalty Program</a>
 			<a href="/mobileapps.php">Mobile Apps</a>
 			<a href="/np/npregister_supporter.php">Suggest a Non-Profit</a>
@@ -113,7 +113,7 @@ global $coupon_url;
 		</div>
             <div class="column col5">
                 <h5 class="header">Participate</h5>
-                <?=$custom_pages_links;?>
+                <?php //echo $custom_pages_links;?>
                 <a href="/loyalty-program">Loyalty Program</a>
                 <a href="/mobileapps.php">Mobile Apps</a>
                 <a href="/np/npregister_supporter.php">Suggest a Non-Profit</a>
@@ -135,10 +135,10 @@ global $coupon_url;
             </div>
                 </div>
 			<?
-			if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
+			if (  (isset($landingpage) && $landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
 			$mynp_userid=$_COOKIE["np_userid"];
-			$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", username);
-			$mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", tax_company_name);
+			$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", 'username');
+			$mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", 'tax_company_name');
 			?>
 			<?
 			}else{

@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -50,6 +50,7 @@ if (!$setts['user_lang'])
 	$session->set('site_lang', $setts['site_lang']);	
 }
 ## load site and admin language files
+$path = $fileExtension . 'language/' . $session->value('site_lang');
 include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/global.lang.php');
 include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/category.lang.php');
 @include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/reverse_category.lang.php');
@@ -59,7 +60,7 @@ if (IN_SITE == 1)
 	include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/site.lang.php');
 }
 
-if (IN_ADMIN == 1)
+if ( defined("IN_ADMIN") &&  IN_ADMIN == 1)
 {
 	include_once ($fileExtension . 'language/' . $setts['admin_lang'] . '/admin.lang.php');
 }
@@ -84,7 +85,9 @@ define ('TIME_OFFSET', $setts['time_offset']);
 ## process link procedure
 if ($setts['is_mod_rewrite'])
 {
-	$valsArray = explode(',', $_REQUEST['rewrite_params']);
+    $valsArray = array();
+    if (isset($_REQUEST['rewrite_params']))
+        $valsArray = explode(',', $_REQUEST['rewrite_params']);
 	$valsCnt = 0;
 	$count_valsArray = count($valsArray);
 	while ($valsCnt < $count_valsArray)
@@ -147,7 +150,8 @@ if (!eregi('swap_offer.php', $_SERVER['PHP_SELF']))
 }
 
 ## add any functions that we dont want the user to see the contents of
-$start = abs(intval($_GET['start'])); ## start wont be initialized on each page that needs it anymore, but only here
+if (isset($_GET['start']))
+    $start = abs(intval($_GET['start'])); ## start wont be initialized on each page that needs it anymore, but only here
 
 
 ?>

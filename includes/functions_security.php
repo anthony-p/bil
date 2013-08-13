@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.00															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -34,7 +34,9 @@ function cleanData()
 			$count_post = count($_POST[$k]);
 			for ($i=0; $i<$count_post; $i++)
 			{
-				if (!get_magic_quotes_gpc()) $_POST[$k][$i] = addslashes(htmlspecialchars($_POST[$k][$i], ENT_QUOTES));
+				if (!isset($_POST[$k][$i]))
+                    continue;
+                if (!get_magic_quotes_gpc()) $_POST[$k][$i] = addslashes(htmlspecialchars($_POST[$k][$i], ENT_QUOTES));
 				else $_POST[$k][$i] = htmlspecialchars($_POST[$k][$i], ENT_QUOTES);
 			}
 		}
@@ -51,6 +53,8 @@ function cleanData()
 			$count_request = count($_REQUEST[$k]);
 			for ($i=0; $i<$count_request; $i++)
 			{
+                if (!isset($_REQUEST[$k][$i]))
+                    continue;
 				if (!get_magic_quotes_gpc()) $_REQUEST[$k][$i] = addslashes(htmlspecialchars($_REQUEST[$k][$i], ENT_QUOTES));
 				else $_REQUEST[$k][$i] = htmlspecialchars($_REQUEST[$k][$i], ENT_QUOTES);
 			}

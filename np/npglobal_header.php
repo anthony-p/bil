@@ -14,6 +14,8 @@ $currentTime = time();
 
 global $db;
 
+if (!isset($integration))
+    $integration = array();
 $template->set('integration', $integration);
 
 include ('themes/'.$setts['default_theme'].'/nptitle.php');
@@ -22,7 +24,17 @@ include ('themes/'.$setts['default_theme'].'/nptitle.php');
 $banner_position = array();
 foreach ($setts['banner_positions'] as $key => $value)
 {
-	$banner_position[$key] = $site_banner->select_banner($_SERVER['PHP_SELF'], intval($_REQUEST['parent_id']), intval($_REQUEST['auction_id']), $key);
+    if (isset($_REQUEST['parent_id']))
+        $parentID = $_REQUEST['parent_id'];
+    else
+        $parentID = 0;
+
+    if (isset($_REQUEST['auction_id']))
+        $auctionId = $_REQUEST['auction_id'];
+    else
+        $auctionId = 0;
+
+	$banner_position[$key] = $site_banner->select_banner($_SERVER['PHP_SELF'], intval($parentID), intval($auctionId), $key);
 	
 	if (!empty($banner_position[$key]))
 	{
@@ -33,7 +45,24 @@ $banner_position[$key] = '';
 $template->set('banner_position', $banner_position);
 
 $template->change_path('themes/' . $setts['default_theme'] . '/templates/');## PHP Pro Bid v6.00 first generate the page title and meta tags.
-$meta_tags_details = meta_tags($_SERVER['PHP_SELF'], intval($_REQUEST['parent_id']), intval($_REQUEST['auction_id']), intval($_REQUEST['wanted_ad_id']), intval($_REQUEST['user_id']));
+$parentID = 0;
+$auctionId = 0;
+$wantedAdId = 0;
+$userId = 0;
+
+if (isset($_REQUEST['parent_id']))
+    $parentID = $_REQUEST['parent_id'];
+
+if (isset($_REQUEST['auction_id']))
+    $auctionId = $_REQUEST['auction_id'];
+
+if (isset($_REQUEST['wanted_ad_id']))
+    $wantedAdId = $_REQUEST['wanted_ad_id'];
+
+if (isset($_REQUEST['user_id']))
+    $userId = $_REQUEST['user_id'];
+
+$meta_tags_details = meta_tags($_SERVER['PHP_SELF'], intval($parentID), intval($auctionId), intval($wantedAdId), intval($userId));
 $template->set('page_title', $meta_tags_details['title']);
 
 ## we will add lightbox to the variable below to be applied automatically to all skins

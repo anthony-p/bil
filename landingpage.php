@@ -2,7 +2,7 @@
 # ob_start(); // Initiate the output buffer
 function curPageURL() {
  $pageURL = 'http';
- if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+ if ( isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
  $pageURL .= "://";
  if ($_SERVER["SERVER_PORT"] != "80") {
   $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
@@ -23,7 +23,8 @@ $arr = parse_url($current_url,PHP_URL_PATH);
 /*
 put the path in a variable and take out the forward slash
 */
-
+if (!isset($xyz))
+    $xyz = '';
 $xyz.=basename($arr);
 #echo "<br>the username is: $xyz";
 
@@ -58,7 +59,7 @@ if ($is_user == '1')
 //start with username in the url which is unique and use that to get the organization name which might not be unique
 #$np_name = $db->get_sql_field("SELECT user_id  FROM np_users WHERE username ='" . $xyz . "'", tax_company_name);
 //we need the np id also which is unique so we can look up in the giveback invoices to see if there are any sales yet
-$np_userid = $db->get_sql_field("SELECT user_id  FROM np_users WHERE username ='" . $xyz . "'", user_id);
+$np_userid = $db->get_sql_field("SELECT user_id  FROM np_users WHERE username ='" . $xyz . "'", 'user_id');
 
 #set cookie so we know if this np has already sales or not. 1 means they do aleady have sales
 #SetCookieLive("np_userid", $np_userid,0, '/', 'bringitlocal.com');   
@@ -73,9 +74,11 @@ $result_sales = mysql_query("SELECT * FROM giveback_invoices WHERE np_userid = '
 $is_sales = mysql_num_rows($result_sales);
 
 
-if ($is_sales <> '0' )
-define('sales', 1);
-$salesno = sales;
+if ($is_sales <> '0' ){
+    define('sales', 1);
+    $salesno = sales;
+} else
+    $salesno = 0;
 
 #set a cookie and define a variable so we know the np when the rest of the homepage loads
 #SetCookieLive("sales", $salesno, 0, '/', 'bringitlocal.com'); 
@@ -88,11 +91,11 @@ define ('INDEX_PAGE', 1); ## for integration
 if (!file_exists('includes/config.php')) echo "<script>document.location.href='install/install.php'</script>";
 
 
-
-if (eregi('logout', $_GET['option']))
-{
-	logout();
-}
+if (isset($_GET['option']))
+    if (eregi('logout', $_GET['option']))
+    {
+        logout();
+    }
 
 include_once ('global_header.php');
 

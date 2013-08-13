@@ -16,16 +16,16 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     }
 </script>
 
-<?=$header_registration_message;?>
+<?=(isset($header_registration_message))?$header_registration_message:'';?>
 <br>
-<?=$banned_email_output;?>
-<?=$display_formcheck_errors;?>
-<?=$check_voucher_message;?>
+<?=(isset($banned_email_output))?$banned_email_output:'';?>
+<?=(isset($display_formcheck_errors))?$display_formcheck_errors:'';?>
+<?=(isset($check_voucher_message))?$check_voucher_message:'';?>
 
 <form action="<?=$register_post_url;?>" method="post" name="extended_registration_form" class="registrationForm">
 <input type="hidden" name="operation" value="submit">
-<input type="hidden" name="do" value="<?=$do;?>">
-<input type="hidden" name="user_id" value="<?=$user_details['user_id'];?>">
+<input type="hidden" name="do" value="<?=(isset($do))?$do:'';?>">
+<input type="hidden" name="user_id" value="<?=(isset($user_details['user_id']))?$user_details['user_id']:'';?>">
 <input type="hidden" name="edit_refresh" value="0">
 <!-- main details -->
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
@@ -38,10 +38,10 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <td class="contentfont">
             <input name="tax_account_type" type="radio" value="0" onclick="form_submit();" checked />
             <?=GMSG_INDIVIDUAL;?>
-            <input name="tax_account_type" type="radio" value="1" onclick="form_submit();" <? echo ($user_details['tax_account_type']) ? 'checked' : ''; ?> />
+            <input name="tax_account_type" type="radio" value="1" onclick="form_submit();" <? echo isset($user_details['tax_account_type']) ? 'checked' : ''; ?> />
             <?=GMSG_BUSINESS;?></td>
     </tr>
-    <? if ($user_details['tax_account_type']) { ?>
+    <? if (isset($user_details['tax_account_type'])) { ?>
     <tr>
         <td class="contentfont"><?=MSG_COMPANY_NAME;?> *</td>
         <td class="contentfont"><input name="tax_company_name" type="text" class="contentfont" id="tax_company_name" value="<?=$user_details['tax_company_name'];?>" size="40" /></td>
@@ -57,7 +57,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     <tr>
         <td class="leftCol"><?=MSG_PHONE;?> *</td>
         <td class="contentfont">
-            <? if ($edit_user == 1)	{ ?>
+            <? if (isset($edit_user) && $edit_user == 1)	{ ?>
             <input name="phone" type="text" id="phone" value="<?=$user_details['phone'];?>" size="25" />
             <? } else { ?>
             ( <input name="phone_a" type="text" id="phone_a" value="<?=$user_details['phone_a'];?>" size="5" /> )
@@ -69,7 +69,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </tr>
 </table>
 
-<? if (IN_ADMIN == 1) { ?>
+<? if (defined('IN_ADMIN') && IN_ADMIN == 1) { ?>
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
     <tr>
         <td colspan="2"><?=AMSG_PAYMENT_SETTINGS;?></td>

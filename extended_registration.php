@@ -36,7 +36,7 @@ include_once ('includes/functions_login.php');
         $user->save_vars($_POST);
 
         $form_submitted = FALSE;## PHP Pro Bid v6.00 if save button is pressed, proceed
-        if ($_REQUEST['operation'] == 'submit')
+        if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit')
         {
             define ('FRMCHK_USER', 1);
             (bool) $frmchk_user_edit = 0;
@@ -57,7 +57,7 @@ include_once ('includes/functions_login.php');
             {
                 $fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html', 'is_phone'));
             }
-            if (!$frmchk_user_edit && IN_ADMIN != 1)
+            if (!$frmchk_user_edit && (!defined('IN_ADMIN') || IN_ADMIN != 1))
             {
                 $frmchk_birthdate = ($setts['birthdate_type'] == 1) ? mktime(0, 0, 0, 1, 1, intval($frmchk_details['birthdate_year'])) : mktime(0, 0, 0, intval($frmchk_details['dob_month']), intval($frmchk_details['dob_day']), intval($frmchk_details['dob_year']));
                 $frmchk_birthdate = time_difference(CURRENT_TIME, $frmchk_birthdate) / 31536000; // date in years
@@ -75,7 +75,7 @@ include_once ('includes/functions_login.php');
                 }
                 $fv->field_greater($frmchk_birthdate, $setts['min_reg_age'], GMSG_MIN_REG_AGE_A . $setts['min_reg_age'] . GMSG_MIN_REG_AGE_B);
             }
-            if (!$frmchk_user_edit && IN_ADMIN != 1)
+            if (!$frmchk_user_edit && (!defined('IN_ADMIN') ||IN_ADMIN != 1))
             {
                 if ($layout['enable_reg_terms'])
                 {
@@ -111,7 +111,7 @@ include_once ('includes/functions_login.php');
             }
         }
 
-        if (!$form_submitted)
+        if (!(isset($form_submitted)) || !$form_submitted)
         {
             $template->set('register_post_url', 'extended_registration.php');
             $template->set('proceed_button', GMSG_REGISTER_BTN);
@@ -123,7 +123,8 @@ include_once ('includes/functions_login.php');
                 $user_data["phone_b"] = (is_array($phone) && isset($phone[1])) ? $phone[1] : '';
                 $user_data["phone_a"] = (is_array($phone) && isset($phone[0])) ?
                     str_replace('(', '', $phone[0]) : '';
-                $birth_date = explode('-', $user_data["birthdate"]);
+
+                $birth_date = isset($user_data["birthdate"])?explode('-', $user_data["birthdate"]):'';
                 $user_data["dob_year"] = (is_array($birth_date) && isset($birth_date[0])) ?
                     $birth_date[0] : '';
                 $user_data["dob_month"] = (is_array($birth_date) && isset($birth_date[1])) ?
@@ -156,9 +157,11 @@ include_once ('includes/functions_login.php');
 			$template->set('display_direct_payment_methods', $user->direct_payment_data($user_data));
 //			$template->set('display_direct_payment_methods', $user->direct_payment_methods_edit($_POST));
 
-			$template->set('signup_voucher_box', voucher_form('signup', $_POST['voucher_value']));
+			$voucher_value = isset($_POST['voucher_value'])?$_POST['voucher_value']:'';
+            $template->set('signup_voucher_box', voucher_form('signup', $voucher_value));
 
-			$template->set('registration_terms_box', terms_box('registration', $_POST['agree_terms']));
+            $agree_terms = isset($_POST['agree_terms'])?$_POST['agree_terms']:'';
+			$template->set('registration_terms_box', terms_box('registration', $agree_terms));
 
 
             $template_output .= $template->process('extended_register.tpl.php');

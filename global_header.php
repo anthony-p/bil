@@ -8,7 +8,8 @@
 #################################################################
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
-define('NPDB_PREFIX', 'np_');
+//@NOTE Commented because caused Warning Notification
+//define('NPDB_PREFIX', 'np_');
 
 $time_start = getmicrotime();
 $currentTime = time();
@@ -21,7 +22,8 @@ include ('themes/'.$setts['default_theme'].'/title.php');
 $banner_position = array();
 foreach ($setts['banner_positions'] as $key => $value)
 {
-	$banner_position[$key] = $site_banner->select_banner($_SERVER['PHP_SELF'], intval($_REQUEST['parent_id']), intval($_REQUEST['auction_id']), $key);
+    if (isset($_REQUEST['parent_id']) && isset($_REQUEST['auction_id']))
+        $banner_position[$key] = $site_banner->select_banner($_SERVER['PHP_SELF'], intval($_REQUEST['parent_id']), intval($_REQUEST['auction_id']), $key);
 	
 	if (!empty($banner_position[$key]))
 	{
@@ -31,12 +33,32 @@ foreach ($setts['banner_positions'] as $key => $value)
 $template->set('banner_position', $banner_position);
 
 $template->change_path('themes/' . $setts['default_theme'] . '/templates/');## PHP Pro Bid v6.00 first generate the page title and meta tags.
-$meta_tags_details = meta_tags($_SERVER['PHP_SELF'], intval($_REQUEST['parent_id']), intval($_REQUEST['auction_id']), intval($_REQUEST['wanted_ad_id']), intval($_REQUEST['user_id']));
+// ---
+$parentId = 0;
+$auctionId = 0;
+$wantedAdId = 0;
+$userId = 0;
+if (isset($_REQUEST['parent_id']))
+    $parentId = $_REQUEST['parent_id'];
+
+if (isset($_REQUEST['auction_id']) )
+    $auctionId = $_REQUEST['auction_id'];
+
+if (isset($_REQUEST['wanted_ad_id']) )
+    $wantedAdId = $_REQUEST['wanted_ad_id'];
+
+if (isset($_REQUEST['user_id']) )
+    $userId = $_REQUEST['user_id'];
+// ---
+$meta_tags_details = meta_tags($_SERVER['PHP_SELF'], intval($parentId), intval($auctionId), intval($wantedAdId), intval($userId));
 
 
 
 
 $page_specific_title='Bring It Local | Fund raising for community based non-profits';
+if (!isset($_GET['page']))
+    $_GET['page'] = '';
+
 if ($_GET['page'] == 'about_us'){
 $page_specific_title='About Us | Bring It Local';
 }
@@ -106,7 +128,9 @@ $page_specific_title='Community Loyalty Program | Bring It Local';
 $template->set('page_title', $page_specific_title);
 
 ## we will add lightbox to the variable below to be applied automatically to all skins
+//if (isset($meta_tags_details) && isset($meta_tags_details['meta_tags']))
 $page_meta_tags = $meta_tags_details['meta_tags'];
+
 
 if (
 		eregi('auction_details.php', $_SERVER['PHP_SELF']) || 
@@ -165,9 +189,14 @@ $template->set('category_lang', $category_lang);
 
 while ($cats_header_details = $db->fetch_array($sql_select_cats_header))
 {
+    if (!isset($category_lang[$cats_header_details['category_id']]))
+        continue;
 	$category_link = process_link('categories', array('category' => $category_lang[$cats_header_details['category_id']], 'parent_id' => $cats_header_details['category_id']));
 
-	$categories_browse_box .= '<option value="' . $cats_header_details['category_id'] . '" ' . (($cats_header_details['category_id'] == $_REQUEST['parent_id']) ? 'selected' : '') . '>'.
+	$parentId = 0;
+    if (isset($_REQUEST['parent_id']))
+        $parentId = $_REQUEST['parent_id'];
+    $categories_browse_box .= '<option value="' . $cats_header_details['category_id'] . '" ' . (($cats_header_details['category_id'] == $parentId) ? 'selected' : '') . '>'.
 		$category_lang[$cats_header_details['category_id']] . '</option> ';
 
 }
@@ -303,8 +332,13 @@ if ($layout['d_news_box'])
 
 if (isset($_COOKIE["np_userid"]))
 	$new_userid=$_COOKIE["np_userid"];
-else
-	$new_userid = $np_userid;
+else{
+    //
+    if (isset ($np_userid) )
+        $new_userid = $np_userid;
+    else
+        $new_userid = '';
+}
 
 if (is_numeric($new_userid))
 {

@@ -63,7 +63,7 @@ function unlink_pin()
 {
 	global $session;
 
-	$path = (IN_ADMIN == 1) ? '../' : '';
+	$path = (defined("IN_ADMIN") && IN_ADMIN == 1) ? '../' : '';
 
 	if ($session->is_set('pin_value'))
 	{
@@ -290,7 +290,7 @@ function page_order($file_path, $order_field, $start, $limit, $other_params, $fi
 {
 	(string) $display_output = null;
 
-	$file_extension = (IN_ADMIN == 1) ? '../' : '';
+	$file_extension = (defined('IN_ADMIN') && IN_ADMIN == 1) ? '../' : '';
 
 	$display_output = '<a href="' . $file_path . '?start=' . $start . '&limit=' . $limit . $other_params . '
 		&order_field=' . $order_field . '&order_type=ASC">'.

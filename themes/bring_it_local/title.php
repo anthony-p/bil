@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 ##-------------------------------------------------------------##
-## Copyright ©2008 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2008 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -130,7 +130,9 @@ if (!$setts['enable_private_site'] || $session->value('is_seller'))
 $site_banner = new banner();
 $site_banner->setts = &$setts;
 
-$template->set('banner_header_content', $site_banner->select_banner($_SERVER['PHP_SELF'], intval($_REQUEST['parent_id']), intval($_REQUEST['auction_id'])));
+$parentID = 0;
+if (isset($_REQUEST['parent_id']) && isset($_REQUEST['auction_id']))
+    $template->set('banner_header_content', $site_banner->select_banner($_SERVER['PHP_SELF'], intval($parentID), intval($_REQUEST['auction_id'])));
 
 if ($setts['enable_stores'])
 {

@@ -58,7 +58,7 @@ function unlink_pin()
 {
 	global $session;
 
-	$path = (IN_ADMIN == 1) ? '../' : '';
+	$path = (defined('IN_ADMIN') && IN_ADMIN == 1) ? '../' : '';
 
 	if ($session->is_set('pin_value'))
 	{

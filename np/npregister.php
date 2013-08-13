@@ -63,7 +63,7 @@ else
 
 
 		$form_submitted = FALSE;## PHP Pro Bid v6.00 if save button is pressed, proceed
-		if ($_REQUEST['operation'] == 'submit')
+		if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit')
 		{
             $allowed_image_mime_types = array(
                 'image/gif',
@@ -323,14 +323,18 @@ else
 			$template->set('proceed_button', GMSG_REGISTER_BTN);
 			$template->set('user_details', $_POST);
 
-			$post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
+			$post_country = (isset($_POST['country']) && $_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
 				
 			$template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
 
             $template->set("project_category",getProjectCategoryList());
 
-			$template->set('state_box', $tax->states_box('state', $_POST['state'], $post_country));
+            if (isset($_POST['state']))
+                $pState = $_POST['state'];
+            else
+                $pState = '';
+			$template->set('state_box', $tax->states_box('state', $pState, $post_country));
 
 #			$template->set('birthdate_box', $user->birthdate_box($_POST));		
 
@@ -352,7 +356,7 @@ else
 #			
 #			$template->set('signup_voucher_box', voucher_form('signup', $_POST['voucher_value']));
 #			
-			$template->set('registration_terms_box', terms_box('registration', $_POST['agree_terms']));
+			$template->set('registration_terms_box', terms_box('registration', (isset($_POST['agree_terms']))?$_POST['agree_terms']:''));
 
 			$template_output .= $template->process('npregister.tpl.php');
 		}

@@ -2,12 +2,15 @@
 #################################################################
 ## PHP Pro Bid v6.00															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 ## (Mods-Store) -> Shopping Cart											##
 #################################################################
 
-$sc_id = intval($_REQUEST['sc_id']);
+$sc_id = 0;
+
+if (isset($_REQUEST['sc_id']))
+    $sc_id = intval($_REQUEST['sc_id']);
 
 if (!eregi('shopping_cart.php', $_SERVER['PHP_SELF']))
 {

@@ -8,7 +8,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-<?=$auction_print_header;?>
+<?=isset($auction_print_header)?$auction_print_header:'';?>
 <SCRIPT LANGUAGE="JavaScript"><!--
 myPopup = '';
 
@@ -33,7 +33,7 @@ function openPopup(url) {
 </form>
 <? } ?>
 
-<? if ($print_button == 'show') { ?>
+<? if (isset($print_button) && $print_button == 'show') { ?>
 <table align="center" border="0" cellpadding="0" cellspacing="0" class="errormessage">
 	<tr>
 		<td class="contentfont"><a href="#" onclick="javascript:window.print(this);"><?=GMSG_PRINT_THIS_PAGE;?></a></td>
@@ -131,9 +131,9 @@ function openPopup(url) {
 	<? } ?>
 </table>
 <? } ?>
-<?=$auction_friend_form;?>
-<?=$msg_changes_saved;?>
-<?=$block_reason_msg;?>
+<?=isset($auction_friend_form)?$auction_friend_form:'';?>
+<?=isset($msg_changes_saved)?$msg_changes_saved:'';?>
+<?=isset($block_reason_msg)?$block_reason_msg:'';?>
 <table border="0" cellpadding="0" cellspacing="0" class="mainAuctionInfo">
 	<tr valign="top">
 		<td width="20%" align="center" class="col1">
@@ -755,4 +755,4 @@ function openPopup(url) {
 </table>
 <? } ?>
 <? } ?>
-<?=$auction_print_footer;?>
+<?=isset($auction_print_footer)?$auction_print_footer:'';?>

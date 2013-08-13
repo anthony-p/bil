@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -18,9 +18,12 @@ $db_username = 'devbring_userbid';
 $db_password = '^Xqh#^sqT%xC'; 
  
 /* Database and Session prefixes */ 
-define('DB_PREFIX', 'probid_'); ## Do not edit ! 
-define('NPDB_PREFIX', 'np_');
-define('SESSION_PREFIX', 'np_'); 
+if (!defined('DB_PREFIX'))
+    define('DB_PREFIX', 'probid_'); ## Do not edit !
+if (!defined('NPDB_PREFIX'))
+    define('NPDB_PREFIX', 'np_');
+if (defined('SESSION_PREFIX'))
+    define('SESSION_PREFIX', 'np_');
  
 /* Database Name */ 
 $db_name = 'devbring_auction'; 

@@ -1,5 +1,4 @@
 <?
-
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
@@ -83,58 +82,60 @@ else
 
 	if ($page == 'messaging' || $page == 'summary')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'm.reg_date';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'm.reg_date';
 	}
 	else if ($page == 'reputation')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'r.reg_date';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'r.reg_date';
 	}
 	else if ($section == 'current_bids')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'b.auction_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'b.auction_id';
 	}
 	else if ($section == 'item_watch')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'aw.id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'aw.id';
 	}
 	else if ($section == 'favorite_stores')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 's.id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 's.id';
 	}
 	else if ($section == 'keywords_watch')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'keyword_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'keyword_id';
 	}
 	else if ($section == 'block_users')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'b.reg_date';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'b.reg_date';
 	}
 	else if ($page == 'wanted_ads')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'w.wanted_ad_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'w.wanted_ad_id';
 	}
 	else if ($section == 'won_items' || $section == 'sold')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'w.auction_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'w.auction_id';
 	}
 	else if ($section == 'sold_carts' || $section == 'purchased_carts')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'sc.sc_date';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'sc.sc_date';
 	}
 
 	else if ($page == 'reverse')
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'r.reverse_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'r.reverse_id';
 	}
 	else
 	{
-		$order_field = ($_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'a.auction_id';
+		$order_field = (isset($_REQUEST['order_field']) && $_REQUEST['order_field']) ? $_REQUEST['order_field'] : 'a.auction_id';
 	}
 
 	$order_type = ($_REQUEST['order_type']) ? $_REQUEST['order_type'] : 'DESC';
 
 	$additional_vars = '&page=' . $page . '&section=' . $section;
 	$order_link = '&order_field=' . $order_field . '&order_type=' . $order_type;
+    if (!isset($start))
+        $start = 0;
 	$limit_link = '&start=' . $start . '&limit=' . $limit;
 
 	$template->set('page', $page);
@@ -178,7 +179,8 @@ else
 				' [ <a href="' . $page_link . '">' . MSG_HERE . '</a> ] ' . MSG_PENDING_GC_PAYMENTS_B . '.</p>';	
 		}
 		$template->set('msg_pending_gc_transactions', $msg_pending_gc_transactions);
-	}
+	} else
+        $template->set('msg_pending_gc_transactions', '');
 	
 	/**
 	 * unpaid end of auction fees message - applies if the account is in live payment mode
@@ -191,6 +193,8 @@ else
 		$eoa_fee->setts = &$setts;
 		
 		$eoa_fee->set_fees($session->value('user_id'));
+
+        $msg_unpaid_endauction_fees = "";
 
 		if (eregi('b', $eoa_fee->fee['endauction_fee_applies']))
 		{
@@ -221,7 +225,8 @@ else
 	/* members tips code snippet */
 	if ($session->value('is_seller'))
 	{
-		$show_tips = $db->count_rows('users', "WHERE user_id='" . $session->value('user_id') . "' AND notif_a=0");
+        $msg_member_tips= '';
+        $show_tips = $db->count_rows('users', "WHERE user_id='" . $session->value('user_id') . "' AND notif_a=0");
 		
 		if ($show_tips)
 		{
@@ -245,22 +250,22 @@ else
 		$section = 'won_items';
 	}
 	
-	if ($_REQUEST['do'] == 'delete_invoice')
+	if ( isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_invoice')
 	{
 		$item->delete_invoice($_REQUEST['invoice_id'], $_REQUEST['option'], $session->value('user_id'));		
 	}
 	
-	if ($_REQUEST['do'] == 'delete_winner')
+	if ( isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_winner')
 	{
 		$item->delete_winner($_REQUEST['winner_id'], $_REQUEST['option'], $session->value('user_id'));
 	}
-	if ($_REQUEST['do'] == 'delete_cart')
+	if ( isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_cart')
 	{
 		$item->delete_cart(intval($_REQUEST['sc_id']), $_REQUEST['option'], $session->value('user_id'));
 	}	
 
 	
-	if ($_REQUEST['do'] == 'request_refund')
+	if ( isset($_REQUEST['do']) && $_REQUEST['do'] == 'request_refund')
 	{
 		$winner_details = $db->get_sql_row("SELECT w.*, i.user_id AS payer_id, i.refund_request FROM " . DB_PREFIX . "winners w 
 			LEFT JOIN " . DB_PREFIX . "invoices i ON i.invoice_id=w.refund_invoice_id
@@ -282,23 +287,25 @@ else
 		$src_box_type = ($page == 'selling' && $section == 'open') ? 1 : 0;
 		$template->set('src_box_type', $src_box_type);
 		
-		$src_auction_id = intval($_REQUEST['src_auction_id']);
-		$template->set('src_auction_id', $_REQUEST['src_auction_id']);
+		$src_auction_id = intval((isset($_REQUEST['src_auction_id']))?$_REQUEST['src_auction_id']:0);
+		$template->set('src_auction_id', $src_auction_id);
 
 		if ($src_box_type == 1)
 		{
-			$keywords_search = $db->rem_special_chars($_REQUEST['src_item_title']);
+			$keywords_search = $db->rem_special_chars((isset($_REQUEST['src_item_title']))?$_REQUEST['src_item_title']:"");
 			$keywords_search = optimize_search_string($keywords_search);
 		}
 		else 
 		{			
-			$src_username = $db->rem_special_chars($_REQUEST['src_username']);
+			$src_username = (isset($_REQUEST['src_username']))?$db->rem_special_chars($_REQUEST['src_username']):'';
 			$template->set('src_username', $src_username);
 			
-			$src_start_time = (isset($_REQUEST['form_search_transactions'])) ? get_box_timestamp($_REQUEST, 1) : intval($_REQUEST['src_start_time']);
+            $src_start_time = isset($_REQUEST['src_start_time'])?$_REQUEST['src_start_time']:0;
+            $src_start_time = (isset($_REQUEST['form_search_transactions'])) ? get_box_timestamp($_REQUEST, 1) : intval($src_start_time);
 			$src_start_time = ($src_start_time > 0) ? $src_start_time : 0;
 		
-			$src_end_time = (isset($_REQUEST['form_search_transactions'])) ? get_box_timestamp($_REQUEST, 2) : intval($_REQUEST['src_end_time']);
+            $src_end_time = isset($_REQUEST['src_end_time'])?$_REQUEST['src_end_time']:0;
+            $src_end_time = (isset($_REQUEST['form_search_transactions'])) ? get_box_timestamp($_REQUEST, 2) : intval($src_end_time);
 			$src_end_time = ($src_end_time > 0 && $src_end_time <= CURRENT_TIME) ? $src_end_time + (24 * 60 * 60 - 1) : CURRENT_TIME;
 			
 			$start_date_box = date_form_field($src_start_time, 1, 'search_transactions_form', false);
@@ -308,7 +315,7 @@ else
 			$template->set('end_date_box', $end_date_box);
 		}
 		
-		$show = $_REQUEST['show'];
+		$show = (isset($_REQUEST['show']))?$_REQUEST['show']:'';
 		$template->set('show', $show);
 		
 		$search_transactions_box = $template->process('search_transactions_box.tpl.php');
@@ -346,13 +353,21 @@ else
 				$src_transactions_query .= " AND w.purchase_date<='" . $src_end_time . "'";
 			}
 		}
-		$additional_vars .= '&src_auction_id=' . $_REQUEST['src_auction_id'] . '&src_username=' . $src_username . 
-			'&src_start_time=' . $src_start_time . '&src_end_time=' . $src_end_time . '&src_item_title=' . $_REQUEST['src_item_title'];
+        $src_auction_id = isset($_REQUEST['src_auction_id'])?$_REQUEST['src_auction_id']:0;
+        $src_item_title = isset($_REQUEST['src_item_title'])?$_REQUEST['src_item_title']:'';
+        if (!isset($src_username))
+            $src_username = '';
+        if (!isset($src_start_time))
+            $src_start_time= 0;
+        if (!isset($src_end_time))
+            $src_end_time = 0;
+		$additional_vars .= '&src_auction_id=' . $src_auction_id . '&src_username=' . $src_username .
+			'&src_start_time=' . $src_start_time . '&src_end_time=' . $src_end_time . '&src_item_title=' . $src_item_title;
 	}
 	
 	if ($page == 'bidding' || $page == 'selling') /* allow bidders to create product invoices as well */
 	{
-		if (isset($_REQUEST['form_send_invoice']) || $_REQUEST['send_invoice'] == 1)
+		if (isset($_REQUEST['form_send_invoice']) || (isset($_REQUEST['send_invoice']) && $_REQUEST['send_invoice'] == 1 ) )
 		{
 			$item->send_invoice($_POST, intval($_REQUEST['seller_id']), doubleval($_REQUEST['total_postage']), $session->value('user_id'));
 
@@ -417,7 +432,8 @@ else
 			$disabled_button = 'disabled';
 
 			$can_edit = ($seller_id == $session->value('user_id') || $edit_invoice) ? true : false;
-				
+
+            $counter= 0 ;
 			while ($item_details = $db->fetch_array($sql_select_products))
 			{
 				if (!$single_settings)
@@ -523,11 +539,17 @@ else
 
             $user_in_database = $row_user;
 
-			$username = $row_user['username']; /* the readonly field will not be altered */
+            if (isset($row_user['username']))
+			    $username = $row_user['username']; /* the readonly field will not be altered */
+            else
+                $username  = '';
 
 #which np is this. get the npuser_id and put it in a variable
-			$mynp_userid = $row_user['npuser_id'];		
-			if ($_POST['edit_refresh'] == 1)
+			if (isset ($row_user['npuser_id']))
+                $mynp_userid = $row_user['npuser_id'];
+            else
+                $mynp_userid = 0;
+			if ( isset($_POST['edit_refresh']) && $_POST['edit_refresh'] == 1)
 			{
 				$row_user = $_POST;
 				$row_user['username'] = $username;
@@ -539,7 +561,7 @@ else
 			$tax = new tax();
 			$tax->setts = &$setts;
 
-			if ($_REQUEST['operation'] == 'submit')
+			if ( isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit')
 			{
 				$user->save_vars($_POST);
 				define ('FRMCHK_USER', 1);
@@ -573,9 +595,9 @@ else
 				}
 			}
 
-			if (!$form_submitted)
+			if (!isset($form_submitted))
 			{
-				if ($_REQUEST['operation'] != 'submit')
+				if ( isset($_REQUEST['operation']) && $_REQUEST['operation'] != 'submit')
 				{
 					$user->save_edit_vars($session->value('user_id'), $page_handle);
 				}
@@ -583,7 +605,11 @@ else
 //				$template->set('edit_user', 1);
 				$template->set('edit_disabled', 'disabled'); /* some fields in the registration will be disabled for editing */
 
-				$email_check_value = ($_POST['email_check']) ? $_POST['email_check'] : $row_user['email'];
+                if (isset($row_user['email']))
+                    $rEmail = $row_user['email'];
+                else
+                    $rEmail =  "";
+				$email_check_value = ( isset($_POST['email_check']) &&  $_POST['email_check']) ? $_POST['email_check'] : $rEmail;
 				$template->set('email_check_value', $email_check_value);
 
 				if (isset($_POST['tax_account_type']))
@@ -603,15 +629,27 @@ else
                 $row_user["phone_b"] = $phone_b;
 
 				$template->set('user_details', $row_user);
-				$template->set('do', $_REQUEST['do']);
+                if (isset($_REQUEST['do']))
+                    $do = $_REQUEST['do'];
+                else
+                    $do = "";
+				$template->set('do', $do);
 
 	      	//$header_registration_message = headercat('<b>' . MSG_MM_MY_ACCOUNT . ' - ' . MSG_MM_PERSONAL_INFO . '</b>');
 				//$template->set('header_registration_message', $header_registration_message);
 
 				$template->set('proceed_button', GMSG_UPDATE_BTN);
 
-				$template->set('country_dropdown', $tax->countries_dropdown('country', $row_user['country'], 'registration_form'));
-				$template->set('state_box', $tax->states_box('state', $row_user['state'], $row_user['country']));
+                if (isset($row_user['country']))
+                    $rCountry = $row_user['country'];
+                else
+                    $rCountry = '';
+				$template->set('country_dropdown', $tax->countries_dropdown('country', $rCountry, 'registration_form'));
+                if (isset($row_user['state']))
+                    $rState = $row_user['state'];
+                else
+                    $rState = '';
+				$template->set('state_box', $tax->states_box('state', $rState, $rCountry));
 
 				$custom_sections_table = $user->display_sections($row_user, $page_handle);
 				$template->set('custom_sections_table', $custom_sections_table);
@@ -794,6 +832,7 @@ else
 				$sql_select_invoices = $db->query($invoices_query . " ORDER BY invoice_id DESC LIMIT " . $start . ", " . $limit);
 
 				(string) $history_table_content = null;
+                $counter= 0 ;
 
 				while ($invoice_details = $db->fetch_array($sql_select_invoices))
 				{
@@ -918,6 +957,7 @@ else
 			$sql_select_invoices = $db->query($invoices_query . " ORDER BY refund_request_date DESC LIMIT " . $start . ", " . $limit);
 
 			(string) $history_table_content = null;
+            $counter= 0 ;
 
 			while ($invoice_details = $db->fetch_array($sql_select_invoices))
 			{
@@ -947,7 +987,7 @@ else
 		$msg = new messaging();
 		$msg->setts = &$setts;
 
-		if ($_REQUEST['do'] == 'delete_message')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_message')
 		{
 			$is_messages = count($_REQUEST['delete']);
 			
@@ -989,6 +1029,7 @@ else
 					" . (($page == 'summary') ? " AND m.is_read=0" : '') . "
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($msg_details = $db->fetch_array($sql_select_messages))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1050,6 +1091,7 @@ else
 					WHERE m.sender_id='" . $session->value('user_id') . "' AND m.sender_deleted=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($msg_details = $db->fetch_array($sql_select_messages))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1082,7 +1124,7 @@ else
 	
 	if ($page == 'bidding' || $page == 'summary') /* BEGIN -> BIDDING PAGES */
 	{
-		if ($_REQUEST['do'] == 'retract_bid')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'retract_bid')
 		{
 
 			$item_details_tmp = $db->get_sql_row("SELECT * FROM " . DB_PREFIX . "auctions WHERE auction_id='" . $_REQUEST['auction_id'] . "'");
@@ -1094,7 +1136,7 @@ else
 			}
 		}
 
-		if ($_REQUEST['do'] == 'hide_bid')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'hide_bid')
 		{
 			$hide_output = $item->hide_bid($_REQUEST['bid_id'], $session->value('user_id'));
 			$template->set('msg_changes_saved', '<p align="center">' . $hide_output . '</p>');
@@ -1110,12 +1152,13 @@ else
 		
 		if (isset($_POST['form_watched_proceed']))
 		{
-			$nb_deletions = $item->count_contents($_REQUEST['delete']);
+			$nb_deletions = isset($_REQUEST['delete'])?$item->count_contents($_REQUEST['delete']):0;
 
 			if ($nb_deletions > 0)
 			{
 				$delete_output = $item->item_watch_delete($db->implode_array($_REQUEST['delete']), $session->value('user_id'));
-			}
+			} else
+                $delete_output = '';
 			$template->set('msg_changes_saved', '<p align="center">' . $delete_output . '</p>');
 		}		
 
@@ -1143,7 +1186,7 @@ else
 			}
 		}				
 		
-		if ($_REQUEST['do'] == 'delete_fav_store')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_fav_store')
 		{
 			$db->query("DELETE FROM " . DB_PREFIX . "favourite_stores WHERE id='" . intval($_REQUEST['id']) . "' AND 
 				user_id='" . $session->value('user_id') . "'");
@@ -1173,7 +1216,7 @@ else
 		$template->set('nb_current_bids', $nb_current_bids);
 		$template->set('nb_winning', $nb_winning);
 		$template->set('nb_won_items', $nb_won_items);
-		$template->set('nb_purchased_carts', $nb_purchased_carts);
+		$template->set('nb_purchased_carts', isset($nb_purchased_carts)?$nb_purchased_carts:'');
 
 		$members_area_stats = $template->process('members_area_stats_bidding.tpl.php');
 		
@@ -1221,6 +1264,7 @@ else
 					a.closed=0 AND a.deleted=0 AND b.deleted=0 AND b.bid_invalid=0 
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($bid_details = $db->fetch_array($sql_select_bids))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1285,28 +1329,30 @@ else
 
 		if ($section == 'won_items')
 		{
-			$show_link = '&show=' . $_REQUEST['show'];
+			$show_link = (isset($_REQUEST['show']))?'&show=' . $_REQUEST['show']:'';
 			
 			(string) $search_filter = null;
 		
-			if ($_REQUEST['show'] == 'dd')
-			{
-				$search_filter .= " AND w.is_dd=1";
-				$nb_won_items = $db->count_rows('winners w', "WHERE w.buyer_id='" . $session->value('user_id') . "' AND
-					w.b_deleted=0" . $search_filter . $src_transactions_query);
-			}
-			else if ($_REQUEST['show'] == 'no_dd')
-			{
-				$search_filter .= " AND w.is_dd=0";
-				$nb_won_items = $db->count_rows('winners w', "WHERE w.buyer_id='" . $session->value('user_id') . "' AND
-					w.b_deleted=0" . $search_filter . $src_transactions_query);
-			}
+			if (isset($_REQUEST['show'])) {
+                if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'dd')
+                {
+                    $search_filter .= " AND w.is_dd=1";
+                    $nb_won_items = $db->count_rows('winners w', "WHERE w.buyer_id='" . $session->value('user_id') . "' AND
+                        w.b_deleted=0" . $search_filter . $src_transactions_query);
+                }
+                else if ($_REQUEST['show'] == 'no_dd')
+                {
+                    $search_filter .= " AND w.is_dd=0";
+                    $nb_won_items = $db->count_rows('winners w', "WHERE w.buyer_id='" . $session->value('user_id') . "' AND
+                        w.b_deleted=0" . $search_filter . $src_transactions_query);
+                }
+            }
 			
 			(string) $filter_items_content = null;
 
-			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items', GMSG_ALL, ((!$_REQUEST['show']) ? false : true)) . ' | ';
-			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items&show=dd', MSG_DIGITAL_MEDIA_ATTACHED, (($_REQUEST['show'] == 'dd') ? false : true)) . ' | ';
-			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items&show=no_dd', MSG_NO_DIGITAL_MEDIA, (($_REQUEST['show'] == 'no_dd') ? false : true));
+			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items', GMSG_ALL, ((!isset($_REQUEST['show'])) ? false : true)) . ' | ';
+			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items&show=dd', MSG_DIGITAL_MEDIA_ATTACHED, ((isset($_REQUEST['show']) && $_REQUEST['show'] == 'dd') ? false : true)) . ' | ';
+			$filter_items_content .= display_link('members_area.php?page=bidding&section=won_items&show=no_dd', MSG_NO_DIGITAL_MEDIA, ((isset($_REQUEST['show']) && $_REQUEST['show'] == 'no_dd') ? false : true));
 
 			$template->set('filter_items_content', $filter_items_content);
 			
@@ -1338,7 +1384,8 @@ else
 				
 				$sale_fee = new fees();
 				$sale_fee->setts = &$setts;
-					
+
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_won))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1529,7 +1576,8 @@ else
 					   LEFT JOIN " . DB_PREFIX . "messaging m ON m.sc_id=sc.sc_id AND m.is_read=0 AND m.sender_id!=sc.buyer_id 					
 					   WHERE sc.buyer_id='" . $session->value('user_id') . "' AND sc.sc_purchased=1 AND sc.b_deleted=0  
 					   ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
-   
+
+                   $counter= 0 ;
 				   while ($sc_details = $db->fetch_array($sql_select_purchased_carts))
 				   {
 					   $background = ($counter++%2) ? 'c1' : 'c2';
@@ -1750,6 +1798,7 @@ else
 					WHERE aw.user_id='" . $session->value('user_id') . "'
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1757,6 +1806,8 @@ else
 					//$content_options = '<a href="members_area.php?do=delete_item_watch&auction_id=' . $item_details['auction_id'] . $additional_vars . $limit_link . $order_link . '" onclick="return confirm(\'' . MSG_DELETE_CONFIRM . '\');">' . MSG_DELETE . '</a>';
 					$content_options = '<input name="delete[]" type="checkbox" id="delete[]" value="' . $item_details['auction_id'] . '" class="checkdelete">';
 
+                    if (!isset($watched_items_content))
+                        $watched_items_content='';
 					$watched_items_content .= '<tr class="' . $background . '"> '.
 						'	<td class="contentfont"><a href="' . process_link('auction_details', array('auction_id' => $item_details['auction_id'])) . '"># ' . $item_details['auction_id'] . '</a></td> '.
 						'	<td class="contentfont"><a href="' . process_link('auction_details', array('auction_id' => $item_details['auction_id'])) . '">' . $item_details['name'] . '</a></td>'.
@@ -1794,6 +1845,7 @@ else
 					WHERE s.user_id='" . $session->value('user_id') . "'
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1830,7 +1882,8 @@ else
 			$nb_items = $db->count_rows('keywords_watch', "WHERE user_id='" . $session->value('user_id') . "'");
 
 			$template->set('nb_items', $nb_items);
-			$template->set('option', $_REQUEST['option']);
+            $rOption = isset($_REQUEST['option'])?$_REQUEST['option']:'';
+			$template->set('option', $rOption);
 
 			$template->set('page_order_keyword', page_order('members_area.php', 'keyword', $start, $limit, $additional_vars, MSG_KEYWORD));
 
@@ -1840,6 +1893,7 @@ else
 					WHERE user_id='" . $session->value('user_id') . "'
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -1882,12 +1936,12 @@ else
 			$template->set('seller_verified_status_box', $seller_verified_status_box);
 		}
 		
-		if ($_REQUEST['do'] == 'delete_auction')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_auction')
 		{
 			$item->delete($_REQUEST['auction_id'], $session->value('user_id'));
 		}
 
-		if ($_REQUEST['do'] == 'close_auction')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'close_auction')
 		{
 			$auction_id = intval($_REQUEST['auction_id']);
 			$close_item_details = $db->get_sql_row("SELECT * FROM " . DB_PREFIX . "auctions WHERE auction_id='" . $auction_id . "'");
@@ -1904,10 +1958,10 @@ else
 			}
 		}				
 		
-		if ($_REQUEST['do'] == 'closed_proceed')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'closed_proceed')
 		{
-			$nb_relists = $item->count_contents($_REQUEST['relist']);
-			$nb_deletions = $item->count_contents($_REQUEST['delete']);
+			$nb_relists = isset($_REQUEST['relist'])?$item->count_contents($_REQUEST['relist']):0;
+			$nb_deletions = isset($_REQUEST['delete'])?$item->count_contents($_REQUEST['delete']):0;
 
 			if ($nb_relists > 0)
 			{
@@ -1927,7 +1981,7 @@ else
 			}
 		}
 
-		if ($_REQUEST['do'] == 'delete_offer')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_offer')
 		{
 			$msg_changes_saved = '<p align="center">' . MSG_OFFER_DELETED_SUCCESS . '</p>';
 			$template->set('msg_changes_saved', $msg_changes_saved);
@@ -1938,7 +1992,7 @@ else
 			}
 		}
 
-		if ($_REQUEST['do'] == 'accept_offer')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'accept_offer')
 		{
 			$msg_changes_saved = '<p align="center">' . MSG_OFFER_ACCEPTED_SUCCESS . '</p>';
 			$template->set('msg_changes_saved', $msg_changes_saved);
@@ -1949,7 +2003,7 @@ else
 			}
 		}
 		
-		if ($_REQUEST['do'] == 'resend_invoice')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'resend_invoice')
 		{
 			$invoice_id = intval($_REQUEST['invoice_id']);
 			
@@ -1963,13 +2017,13 @@ else
 			}
 		}
 
-		if ($_REQUEST['do'] == 'dd_active')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'dd_active')
 		{
 			activate_dd($_REQUEST['winner_id'], $session->value('user_id'), $_REQUEST['value']);			
 			
 			$template->set('msg_changes_saved', '<p align="center">' . MSG_CHANGES_SAVED . '</p>');
 		}
-		if ($_REQUEST['do'] == 'resend_cart_invoice')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'resend_cart_invoice')
 		{
 			$is_invoice = $db->count_rows('shopping_carts', "WHERE sc_id='" . $invoice_id . "' AND 
 				seller_id='" . $session->value('user_id') . "' AND sc_purchased=1 AND shipping_calc_auto=1");
@@ -1984,7 +2038,7 @@ else
 		}
 		
 		
-		if ($_REQUEST['do'] == 'add_suggested_category')
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'add_suggested_category')
 		{
 			$category_desc = $db->rem_special_chars($_REQUEST['category_desc']);
 
@@ -2046,7 +2100,8 @@ else
 						LEFT JOIN " . DB_PREFIX . "auctions a ON a.auction_id=w.auction_id
 						WHERE w.auction_id='" . $item_details['auction_id'] . "' AND w.seller_id='" . $session->value('user_id') . "' 
 						ORDER BY w.winner_id DESC");
-	
+
+                    $counter = 0;
 					while ($winning_bid_details = $db->fetch_array($sql_select_winning_bids))
 					{
 						$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2068,6 +2123,7 @@ else
 						" . DB_PREFIX . "users u WHERE ao.auction_id='" . $item_details['auction_id'] . "' AND
 						ao.seller_id='" . $session->value('user_id') . "' AND ao.buyer_id=u.user_id");
 
+                    $counter = 0;
 					while ($offer_details = $db->fetch_array($sql_select_make_offer))
 					{
 						$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2113,6 +2169,7 @@ else
 
 					while ($offer_details = $db->fetch_array($sql_select_bids))
 					{
+                        $counter = 0;
 						$background = ($counter++%2) ? 'c1' : 'c2';
 
 						$reserve_offer_content .= '<tr class="' . $background . '"> '.
@@ -2133,7 +2190,8 @@ else
 						$sql_select_bids = $db->query("SELECT b.*, u.username FROM " . DB_PREFIX . "bids b,
 							" . DB_PREFIX . "users u WHERE b.auction_id='" . $item_details['auction_id'] . "' AND 
 							b.bidder_id=u.user_id AND b.bid_invalid=0 AND b.bidder_id!='" . $item_details['buyer_id'] . "' ORDER BY b.bid_out ASC, b.bid_id DESC");
-	
+
+                        $counter = 0;
 						while ($bid_details = $db->fetch_array($sql_select_bids))
 						{
 							$select_winner_link = '[ <a href="members_area.php?page=selling&section=view_offers&do=accept_offer&offer_id=' . $bid_details['bid_id'] . 
@@ -2199,6 +2257,8 @@ else
 		}
 
 
+        if (!isset($nb_sold_carts))
+            $nb_sold_carts='';
 		$template->set('nb_open_items', $nb_open_items);
 		$template->set('nb_items_bids', $nb_items_bids);
 		$template->set('nb_scheduled_items', $nb_scheduled_items);
@@ -2264,6 +2324,7 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$media_url = $db->get_sql_field("SELECT media_url FROM " . DB_PREFIX . "auction_media WHERE auction_id=" . $item_details['auction_id'] . " AND 
@@ -2376,6 +2437,7 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$media_url = $db->get_sql_field("SELECT media_url FROM " . DB_PREFIX . "auction_media WHERE auction_id=" . $item_details['auction_id'] . " AND 
@@ -2469,6 +2531,7 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit); 
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2556,10 +2619,13 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
 
+                    if (!isset($closed_auctions_content))
+                        $closed_auctions_content = '';
 					$closed_auctions_content .= '<tr class="' . $background . '"> '.
 						'	<td class="contentfont"><a href="' . process_link('auction_details', array('auction_id' => $item_details['auction_id'])) . '"># ' . $item_details['auction_id'] . '</a></td> '.
 						'	<td class="contentfont"><a href="' . process_link('auction_details', array('auction_id' => $item_details['auction_id'])) . '">' . $item_details['name'] . '</a> ' . 
@@ -2614,6 +2680,7 @@ else
 					GROUP BY a.auction_id
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);## PHP Pro Bid v6.00 uses temporary/filesort
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2646,28 +2713,30 @@ else
 
 		if ($section == 'sold')
 		{
-			$show_link = '&show=' . $_REQUEST['show'];
+			$show_link = (isset($_REQUEST['show']))? '&show=' . $_REQUEST['show']:'&show=';
 			
 			(string) $search_filter = null;
 		
-			if ($_REQUEST['show'] == 'dd')
-			{
-				$search_filter .= " AND w.is_dd=1";
-				$nb_sold_items = $db->count_rows('winners w', "WHERE w.seller_id='" . $session->value('user_id') . "' AND
-					w.s_deleted=0" . $search_filter . $src_transactions_query);
-			}
-			else if ($_REQUEST['show'] == 'no_dd')
-			{
-				$search_filter .= " AND w.is_dd=0";
-				$nb_sold_items = $db->count_rows('winners w', "WHERE w.seller_id='" . $session->value('user_id') . "' AND
-					w.s_deleted=0" . $search_filter . $src_transactions_query);
-			}
+			if (isset($_REQUEST['show'])) {
+                if ($_REQUEST['show'] == 'dd')
+                {
+                    $search_filter .= " AND w.is_dd=1";
+                    $nb_sold_items = $db->count_rows('winners w', "WHERE w.seller_id='" . $session->value('user_id') . "' AND
+                        w.s_deleted=0" . $search_filter . $src_transactions_query);
+                }
+                else if ($_REQUEST['show'] == 'no_dd')
+                {
+                    $search_filter .= " AND w.is_dd=0";
+                    $nb_sold_items = $db->count_rows('winners w', "WHERE w.seller_id='" . $session->value('user_id') . "' AND
+                        w.s_deleted=0" . $search_filter . $src_transactions_query);
+                }
+            }
 			
 			(string) $filter_items_content = null;
 
-			$filter_items_content .= display_link('members_area.php?page=selling&section=sold', GMSG_ALL, ((!$_REQUEST['show']) ? false : true)) . ' | ';
-			$filter_items_content .= display_link('members_area.php?page=selling&section=sold&show=dd', MSG_DIGITAL_MEDIA_ATTACHED, (($_REQUEST['show'] == 'dd') ? false : true)) . ' | ';
-			$filter_items_content .= display_link('members_area.php?page=selling&section=sold&show=no_dd', MSG_NO_DIGITAL_MEDIA, (($_REQUEST['show'] == 'no_dd') ? false : true));
+			$filter_items_content .= display_link('members_area.php?page=selling&section=sold', GMSG_ALL, ((!isset($_REQUEST['show'])) ? false : true)) . ' | ';
+			$filter_items_content .= display_link('members_area.php?page=selling&section=sold&show=dd', MSG_DIGITAL_MEDIA_ATTACHED, ((isset($_REQUEST['show']) && $_REQUEST['show'] == 'dd') ? false : true)) . ' | ';
+			$filter_items_content .= display_link('members_area.php?page=selling&section=sold&show=no_dd', MSG_NO_DIGITAL_MEDIA, ((isset($_REQUEST['show']) && $_REQUEST['show'] == 'no_dd') ? false : true));
 
 			$template->set('filter_items_content', $filter_items_content);
 			
@@ -2716,6 +2785,7 @@ else
 				$sale_fee = new fees();
 				$sale_fee->setts = &$setts;
 
+                $counter = 0;
 				while ($item_details = $db->fetch_array($sql_select_sold))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -2926,6 +2996,7 @@ else
 					WHERE sc.seller_id='" . $session->value('user_id') . "' AND sc.sc_purchased=1 AND sc.s_deleted=0   
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($sc_details = $db->fetch_array($sql_select_sold_carts))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3326,6 +3397,7 @@ else
 					WHERE b.owner_id='" . $session->value('user_id') . "'
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($block_details = $db->fetch_array($sql_select_blocked))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3405,7 +3477,8 @@ else
 			{
 				$sql_select_tiers = $db->query("SELECT * FROM " . DB_PREFIX . "postage_calc_tiers WHERE 
 					user_id='" . $session->value('user_id') . "' AND tier_type='" . $postage_details['pc_postage_type'] . "' ORDER BY tier_from ASC");
-			
+
+                $counter= 0 ;
 				while ($tier_details = $db->fetch_array($sql_select_tiers))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3437,7 +3510,8 @@ else
 			{
 				$sql_select_tiers = $db->query("SELECT * FROM " . DB_PREFIX . "postage_calc_tiers WHERE 
 					user_id='0' AND tier_type='" . $postage_details['pc_postage_type'] . "' ORDER BY tier_from ASC");
-			
+
+                $counter= 0 ;
 				while ($tier_details = $db->fetch_array($sql_select_tiers))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3586,6 +3660,7 @@ else
 					WHERE r.user_id='" . $session->value('user_id') . "' AND r.submitted=1
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($reputation_details = $db->fetch_array($sql_select_reputation))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -3634,6 +3709,7 @@ else
 					WHERE r.from_id='" . $session->value('user_id') . "' AND r.submitted=0 AND (a.auction_id!=0 OR rp.reverse_id!=0)
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($reputation_details = $db->fetch_array($sql_select_reputation))
 				{
 					if ($reputation_details['auction_id'])
@@ -4067,7 +4143,8 @@ else
 		
 			$sql_select_categories = $db->query("SELECT category_id, name, parent_id, order_id, hidden, custom_fees, user_id, is_subcat FROM
 				" . DB_PREFIX . "categories WHERE parent_id=" . $parent_id . " AND user_id=" . $session->value('user_id') . " ORDER BY order_id ASC, name ASC");
-		
+
+            $counter= 0 ;
 			while ($category_details = $db->fetch_array($sql_select_categories))
 			{
 				$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4206,6 +4283,7 @@ else
 					WHERE w.owner_id='" . $session->value('user_id') . "' AND w.closed=0 AND w.deleted=0 AND w.creation_in_progress=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4265,6 +4343,7 @@ else
 					AND w.end_time<='" . CURRENT_TIME . "'AND w.creation_in_progress=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4349,6 +4428,7 @@ else
 					WHERE r.owner_id='" . $session->value('user_id') . "' AND r.closed=0 AND r.deleted=0 AND r.creation_in_progress=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4409,6 +4489,7 @@ else
 					AND r.end_time<='" . CURRENT_TIME . "'AND r.creation_in_progress=0
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4463,6 +4544,7 @@ else
 					GROUP BY r.reverse_id 
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit); 
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_items))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4531,7 +4613,8 @@ else
 				
 				$reverse_fee = new fees(true);
 				$reverse_fee->setts = &$setts;
-					
+
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_awarded))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4642,6 +4725,7 @@ else
 					r.closed=0 AND r.deleted=0  
 					ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit);
 
+                $counter= 0 ;
 				while ($bid_details = $db->fetch_array($sql_select_bids))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4810,6 +4894,7 @@ else
 				$reverse_fee = new fees(true);
 				$reverse_fee->setts = &$setts;
 
+                $counter= 0 ;
 				while ($item_details = $db->fetch_array($sql_select_won))
 				{
 					$background = ($counter++%2) ? 'c1' : 'c2';
@@ -4929,6 +5014,8 @@ else
         include('templates/member_area_campaigns.php');
 
 
+        if (!isset($rows))
+            $rows = array();
         $template->set('campaigns_list', $rows);
         $template->set('section', $section);
 
@@ -4957,7 +5044,7 @@ else
 
             $tax = new tax();
 
-            if ($_REQUEST['operation'] == 'submit') {
+            if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') {
                 $campaign_id = mysql_real_escape_string($_POST["user_id"]);
             } else {
                 $campaign_id = mysql_real_escape_string($_GET["campaign_id"]);
@@ -5015,7 +5102,7 @@ else
 
             $form_submitted = FALSE;
 
-            if ($_REQUEST['operation'] == 'submit') {
+            if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') {
 
                 $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
@@ -5029,19 +5116,12 @@ else
                 $fv = new formchecker;
 
                 $allowed_image_mime_types = array(
-
                     'image/gif',
-
                     'image/jpeg',
-
                     'image/pjpeg',
-
                     'image/png',
-
                     'image/tiff',
-
                     'image/svg+xml'
-
                 );
 
                 define ('FRMCHK_USER', 1);
@@ -5082,8 +5162,10 @@ else
 
 
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
-                $banned_output = check_banned($_POST['email'], 2);
-                if ($banned_output['result']) {
+                $pEmail = isset($_POST['email'])?$_POST['email']:'';
+                $banned_output = check_banned($pEmail, 2);
+                if ($banned_output['result'])
+                {
                     $template->set('banned_email_output', $banned_output['display']);
                 }
                 else if ($fv->is_error())
@@ -5093,7 +5175,6 @@ else
                     $template->set('categories', $categories);
                     $template->set('last_selected_tab', $last_selected_tab);
                     $template->set('countries', $countries);
-                    $template->set('video_url', $_POST["video_url"]);
                     $template->set('pitches', $pitches);
                     $template->set('project_updates', $project_updates);
                     $template->set('project_rewards', $project_rewards);
@@ -5102,124 +5183,75 @@ else
                 }
                 else
                 {
-
                     $form_submitted = TRUE;## PHP Pro Bid v6.00 atm we wont create any emails either until we decide how many ways of registration we have.
-
                     (string) $register_success_message = null;
-
                     $_POST["end_date"] = 0;
-
                     if (isset($_POST["deadline_type_value"]) && $_POST["deadline_type_value"]) {
-
                         if ($_POST["deadline_type_value"] == "time_period")
-
                             $_POST["end_date"] = time() + ($_POST["time_period"] * 86400);
-
                         elseif ($_POST["deadline_type_value"] == "certain_date")
-
                             $_POST["end_date"] = strtotime($_POST["certain_date"]);
                     }
 
+                    $funding_type = (isset($_POST["funding_type"]))?$_POST["funding_type"]:'';
+                    $certain_date = (isset($_POST["certain_date"]))?$_POST["certain_date"]:'';
+                    $pitch_text = (isset($_POST["pitch_text"]))?$_POST["pitch_text"]:'';
 
                     $mysql_update_query = "UPDATE np_users SET username='" . $_POST["username"] . "',
-
                     project_category='" . $_POST["project_category"] . "',
-
                     campaign_basic='" . $_POST["campaign_basic"] . "',
-
                     project_title='" . $_POST["project_title"] . "',
-
                     description='" . $_POST["project_short_description"] . "',
-
                     founddrasing_goal='" . $_POST["founddrasing_goal"] . "',
-
-                    funding_type='" . $_POST["funding_type"] . "',
-
+                    funding_type='" . $funding_type . "',
                     active='" . $_POST["active"] . "',
-
                     deadline_type_value='" . $_POST["deadline_type_value"] . "',
-
                     time_period='" . $_POST["time_period"] . "',
-
-                    certain_date='" . $_POST["certain_date"] . "',
-
+                    certain_date='" . $certain_date . "',
                     end_date='" . $_POST["end_date"] . "',
-
                     url='" . $_POST["url"] . "',
-
                     facebook_url='" . $_POST["facebook_url"] . "',
-
                     twitter_url='" . $_POST["twitter_url"] . "',
-
                     name='" . $_POST["name"] . "',
-
                     tax_company_name='" . $_POST["tax_company_name"] . "',
-
                     address='" . $_POST["address"] . "',
-
                     city='" . $_POST["city"] . "',
-
                     zip_code='" . $_POST["zip_code"] . "',
-
                     country='" . $_POST["country"] . "',
-
                     state='" . $_POST["state"] . "',
-
                     phone='" . $_POST["phone"] . "',
-
                     orgtype='" . $_POST["orgtype"] . "',
-
                     pg_paypal_email='" . $_POST["pg_paypal_email"] . "',
-
                     pg_paypal_first_name='" . $_POST["pg_paypal_first_name"] . "',
-
                     pg_paypal_last_name='" . $_POST["pg_paypal_last_name"] . "',
-
-                    pitch_text='" . $_POST["pitch_text"] . "'";
-
+                    pitch_text='" . $pitch_text . "'";
 
 
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
                         $logo_file_name = '/images/partner_logos/' . md5($_POST["name"] . 'logo');
                         $upload_logo = generate_image_thumbnail(
                             $_FILES["logo"]["tmp_name"], trim($logo_file_name, '/'), 160, 160
-
                         );
-
                         $mysql_update_query .= ", logo='" . $logo_file_name . "'";
-
                     }
 
-
-
                     if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
-
                         $banner_file_name = '/images/partner_logos/' . md5($_POST["name"] . 'banner');
-
                         $upload_logo = generate_image_thumbnail(
-
                             $_FILES["banner"]["tmp_name"], trim($banner_file_name, '/'), 600, 400
-
                         );
                         $mysql_update_query .= ", banner='" . $banner_file_name . "'";
 
                     } elseif (isset ($_POST["video_url"]) && !empty($_POST["video_url"])) {
-                        $video_url = $_POST["video_url"];
                         $mysql_update_query .= ", banner='" . $_POST["video_url"] . "'";
                     }
 
                     $_POST["probid_user_id"] =
-
                         (isset($_SESSION["probid_user_id"]) && !empty($_SESSION["probid_user_id"])) ?
-
                             $_SESSION["probid_user_id"] : 0;
 
-
-
                     $mysql_update_query .= " WHERE user_id='" . $_POST["user_id"] . "'";
-
                     $result = $db->query($mysql_update_query);
-
                     if (isset($_POST["pitch_amoun"])) {
 
                         $pitch_data = array();
@@ -5416,9 +5448,9 @@ else
 
                 }
 
-            } else if ($_REQUEST['get_states'] == 'true') {
+            } else if (isset($_REQUEST['get_states']) && $_REQUEST['get_states'] == 'true') {
 
-                $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
+                $post_country = (isset($_POST['country'])) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
 

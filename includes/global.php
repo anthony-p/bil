@@ -61,7 +61,7 @@ $db->select_db($db_name);
 
 
 if(isset($_GET['npuser'])){
-    $npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $_COOKIE['np_userid'] . "'", username);
+    $npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $_COOKIE['np_userid'] . "'", 'username');
     header('Location: /'.$npusername);
     die;
 }
@@ -90,7 +90,10 @@ cleanData();
  * sanitize order_type and order_field variables
  */
 
-$_REQUEST['order_type'] = (in_array($_REQUEST['order_type'], array('ASC', 'DESC'))) ? $_REQUEST['order_type'] : '';
+if (isset($_REQUEST['order_type']))
+    $_REQUEST['order_type'] = (in_array($_REQUEST['order_type'], array('ASC', 'DESC'))) ? $_REQUEST['order_type'] : '';
+else
+    $_REQUEST['order_type'] = '';
 
 
 if (!empty($_REQUEST['order_field']))
@@ -236,7 +239,7 @@ $custom_pages = array('about_us', 'contact_us', 'terms', 'privacy');
 $linkable_tables = array('countries');
 
 ## load the cron if it is run from the site.
-if ($setts['cron_job_type'] == 2 && IN_ADMIN != 1)
+if ($setts['cron_job_type'] == 2 && (!defined("IN_ADMIN") || IN_ADMIN != 1))
 {
 	$manual_cron = true;
 	include_once ($fileExtension . 'cron_jobs/main_cron.php');

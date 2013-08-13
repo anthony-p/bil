@@ -26,7 +26,7 @@ function checkAll(field, array_len, check) {
 	<input type="hidden" name="do" value="delete_message">
 	<input type="hidden" name="type" value="receiver_deleted">
    <tr>
-      <td colspan="8" class="c7"><b><? echo ($page == 'summary') ? MSG_UNREAD_MESSAGES : MSG_MM_RECEIVED_MESSAGES;?></b> (<?=$nb_messages;?> <?=MSG_MESSAGES;?><? echo ($nb_unread_messages && $page != 'summary') ? ' - ' . $nb_unread_messages . ' ' . MSG_UNREAD : '';?>)
+      <td colspan="8" class="c7"><b><? echo ($page == 'summary') ? MSG_UNREAD_MESSAGES : MSG_MM_RECEIVED_MESSAGES;?></b> (<?=$nb_messages;?> <?=MSG_MESSAGES;?><? echo (isset($nb_unread_messages) && $page != 'summary') ? ' - ' . $nb_unread_messages . ' ' . MSG_UNREAD : '';?>)
       </td>
    </tr>
         <tr></tr>

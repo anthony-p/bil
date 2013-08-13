@@ -7,9 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 
-define ('IN_SITE', 1);
+if (! defined('IN_SITE'))
+    define ('IN_SITE', 1);
 $GLOBALS['body_id'] = "members_area";
 
 include_once ('includes/global.php');
