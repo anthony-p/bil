@@ -9,7 +9,7 @@
               <textarea name="comment_text"></textarea>
               <div class="check">
                   <input name="keep_private" type="checkbox">
-                  <label>keep private</label>
+                  <label>keep private - don't display my user name</label>
               </div>
               <input type="submit" value="send"/>
           </form>
