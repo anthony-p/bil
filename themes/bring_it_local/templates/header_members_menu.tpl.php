@@ -67,7 +67,7 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
 <!--</div>-->
 <ul class="member-menu">
 <? if ($member_active == 'Active') { ?>
-    <li>
+    <li <?php if ($selected_section == 'my_profile'): ?> class="active" <?php endif; ?>>
         <a href="javascript:void(0)"><?=MSG_MM_PROFILE?></a>
          <ul>
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'editinfo'));?>"><?=MSG_MM_PERSONAL_INFO;?></a></li>
@@ -103,7 +103,7 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
     </li>
 
 <!--<li><a href="--><?//=process_link('members_area', array('page' => 'summary'));?><!--">--><?//=MSG_MM_SUMMARY;?><!--</a></li>-->
-    <li class="active">
+    <li <?php if ($selected_section == 'my_campaigns'): ?> class="active" <?php endif; ?>>
         <a href="javascript:void(0)"><?=MSG_MY_CAPMAIGNS?></a>
         <ul>
             <li><a href="/np/npregister.php"><?=MSG_NEW_CAPMAIGN?></a></li>
@@ -112,12 +112,13 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
             <li><a href="/campaigns,page,closed,section,members_area#8ec3489f027e"><?=MSG_CLOSED_CAPMAIGNS?></a></li>
         </ul>
     </li>
-    <li>
+    <li <?php if ($selected_section == 'my_contributions'): ?> class="active" <?php endif; ?>>
         <a href="javascript:void(0)"><?=MSG_MY_CONTRIBUTIONS?></a>
     </li>
 
 
-    <li><a href=""><?=MSG_BUYING_AND_SELLING?></a>
+    <li <?php if ($selected_section == 'buying_and_selling'): ?> class="active" <?php endif; ?>>
+        <a href=""><?=MSG_BUYING_AND_SELLING?></a>
        <ul>
            <li><a href="javascript:void(0)"><?=MSG_MM_SELLING;?></a>
                <ul class="selling">

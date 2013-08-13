@@ -175,8 +175,16 @@ else
                     $upload_logo = generate_image_thumbnail(
                         $_FILES["logo"]["tmp_name"], '..' . $logo_file_name, 160, 160
                     );
-                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
-                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
+                    array_map(
+                        'unlink',
+                        glob(
+                            'rm ../images/partner_logos/temp/' .
+                                md5($_SESSION["probid_user_id"] . 'logo') .
+                                '.*'
+                        )
+                    );
+//                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
+//                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
 //                    move_uploaded_file($_FILES["logo"]["tmp_name"], '..' . $logo_file_name);
                     $_POST["logo"] = $logo_file_name;
                 } elseif (isset($_POST["valid_logo_image"]) && $_POST["valid_logo_image"]) {
