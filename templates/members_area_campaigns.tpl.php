@@ -8,8 +8,8 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-<?=$header_selling_page;?>
-<?=$display_formcheck_errors;?>
+<?=(isset($header_selling_page))?$header_selling_page:'';?>
+<?=(isset($display_formcheck_errors))?$display_formcheck_errors:'';?>
 <SCRIPT LANGUAGE="JavaScript">
 function submit_form(form_name) {
 	form_name.submit();

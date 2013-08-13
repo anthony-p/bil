@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -57,7 +57,7 @@ else
 	$item->edit_auction = true;
 
 	$sell_item_header = '<table width="100%" border="0" cellpadding="3" cellspacing="2" class="border"> ' .
-		'<tr><td class="c3"><b>' . (($_REQUEST['draft']) ? MSG_EDIT_DRAFT : MSG_EDIT_AUCTION) . '</b></td></tr></table>';
+		'<tr><td class="c3"><b>' . (isset($_REQUEST['draft']) ? MSG_EDIT_DRAFT : MSG_EDIT_AUCTION) . '</b></td></tr></table>';
 
 	/**
 	 * We create a temporary row in the items table for every ad that is made. If the ad is placed, this temporary row
@@ -88,7 +88,7 @@ else
 	$start_time = $item_details['start_time'];## PHP Pro Bid v6.00 set here the checkboxes
 	$item_details = $item->edit_set_checkboxes($item_details);
 
-	if ($_REQUEST['edit_option'] == 'new')
+	if (isset($_REQUEST['edit_option']) && $_REQUEST['edit_option'] == 'new')
 	{
 		## first we remove the auction media for any upload_in_progress = 1.
 		$sql_select_media = $db->query("SELECT am.* FROM " . DB_PREFIX . "auction_media am, " . DB_PREFIX . "auctions a WHERE
@@ -117,16 +117,18 @@ else
 		
 	}
 
-	$item_details['draft'] = intval($_REQUEST['draft']);
+	$item_details['draft'] = isset($_REQUEST['draft'])?intval($_REQUEST['draft']):'';
 	
-	if ($_REQUEST['box_submit'] == 1 || isset($_REQUEST['form_edit_proceed']))
+	if ((isset($_REQUEST['box_submit']) && $_REQUEST['box_submit'] == 1) || isset($_REQUEST['form_edit_proceed']))
 	{
 		$item_details = $_POST;
 		$item_details['description'] = $db->rem_special_chars((($_POST['description_main']) ? $_POST['description_main'] : $item_details['description']));
-		$item_details['start_time'] = ($item_details['start_time_type'] == 'now' || ($start_time < CURRENT_TIME)) ? $start_time : get_box_timestamp($item_details, $start_time_id);
-		$item_details['end_time'] = ($item_details['end_time_type'] == 'duration') ? ($item_details['start_time'] + $item_details['duration'] * 86400) : get_box_timestamp($item_details, $end_time_id);
-		$item_details['direct_payment'] = (count($_POST['payment_gateway'])) ? $db->implode_array($_POST['payment_gateway']) : $item_details['direct_payment'];
-		$item_details['payment_methods'] = (count($_POST['payment_option'])) ? $db->implode_array($_POST['payment_option']) : $item_details['payment_methods'];
+		$item_details['start_time'] = ((isset($item_details['start_time_type']) && $item_details['start_time_type'] == 'now') || ($start_time < CURRENT_TIME)) ? $start_time : get_box_timestamp($item_details, $start_time_id);
+		$item_details['end_time'] = (isset($item_details['end_time_type']) && $item_details['end_time_type'] == 'duration') ? ($item_details['start_time'] + $item_details['duration'] * 86400) : get_box_timestamp($item_details, $end_time_id);
+        $direct_payment = isset($item_details['direct_payment'])?$item_details['direct_payment']:'';
+		$item_details['direct_payment'] = (isset($_POST['payment_gateway']) && count($_POST['payment_gateway'])) ? $db->implode_array($_POST['payment_gateway']) : $direct_payment;
+        $payment_methods = isset($item_details['payment_methods'])?$item_details['payment_methods']:'';
+		$item_details['payment_methods'] = (isset($_POST['payment_option']) && count($_POST['payment_option'])) ? $db->implode_array($_POST['payment_option']) : $item_details['payment_methods'];
 		$custom_fld->save_vars($_POST);
 		
 		$voucher_details = $item->check_voucher($item_details['voucher_value'], 'setup');
@@ -148,12 +150,12 @@ else
 	{
 		$custom_fld->save_edit_vars($_REQUEST['auction_id'], 'auction');## PHP Pro Bid v6.00 upload initial images
 		$media_details = $item->get_media_values($_REQUEST['auction_id']);
-		$item_details['ad_image'] = $media_details['ad_image'];
-		$item_details['ad_video'] = $media_details['ad_video'];
-		$item_details['ad_dd'] = $media_details['ad_dd'];
+		$item_details['ad_image'] = isset($media_details['ad_image'])?$media_details['ad_image']:'';
+		$item_details['ad_video'] = isset($media_details['ad_video'])?$media_details['ad_video']:'';
+		$item_details['ad_dd'] = isset($media_details['ad_dd'])?$media_details['ad_dd']:'';
 
-		$old_category_id = $item_details['category_id'];
-		$old_addl_category_id = $item_details['addl_category_id'];
+		$old_category_id = isset($item_details['category_id'])?$item_details['category_id']:'';
+		$old_addl_category_id = isset($item_details['addl_category_id'])?$item_details['addl_category_id']:'';
 
 		$fb_interval = $item->convert_fb_decrement($item_details, 'NTS');
 		$item_details['fb_hours'] = $fb_interval['fb_hours'];
@@ -254,7 +256,7 @@ else
 		}
 	}
 
-	if (!$form_submitted)
+	if (!ISSET($form_submitted) || !$form_submitted)
 	{
 		## <<BEGIN>> media upload sequence
 		if (empty($_POST['file_upload_type']))
@@ -286,7 +288,7 @@ else
 		## <<END>> media upload sequence
 
 		$template->set('auction_edit', 1);
-		$template->set('do', $_REQUEST['do']);
+		$template->set('do', isset($_REQUEST['do'])?$_REQUEST['do']:'');
 		$template->set('item_details', $item_details);
 		$template->set('user_details', $user_details);
 

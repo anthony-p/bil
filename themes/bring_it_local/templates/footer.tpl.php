@@ -24,7 +24,8 @@ global $coupon_url;
 		?>
 		<!-- how it works image -->
 		<?
-		if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
+//		if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
+		if (  false == true ){
 		$mynp_userid=$_COOKIE["np_userid"];
 		$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", username);
 		$mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", tax_company_name);
@@ -83,7 +84,7 @@ global $coupon_url;
 </div></div><!-- end main -->
 <!-- 
 <div align="center">
-   <?=$banner_header_content;?>
+   <?=(isset($banner_header_content))?$banner_header_content:'';?>
 </div>
  -->
 <footer>
@@ -121,7 +122,7 @@ global $coupon_url;
 		</div>
 		<div class="column col3">
 			<h5 class="header">Participate</h5>
-            	<?=$custom_pages_links;?>
+            	<?php //echo $custom_pages_links;?>
 			<a href="/loyalty-program">Loyalty Program</a>
 			<a href="/mobileapps.php">Mobile Apps</a>
 			<a href="/np/npregister_supporter.php">Suggest a Non-Profit</a>
@@ -130,7 +131,7 @@ global $coupon_url;
 		</div>
             <div class="column col5">
                 <h5 class="header">Participate</h5>
-                <?=$custom_pages_links;?>
+                <?php //echo $custom_pages_links;?>
                 <a href="/loyalty-program">Loyalty Program</a>
                 <a href="/mobileapps.php">Mobile Apps</a>
                 <a href="/np/npregister_supporter.php">Suggest a Non-Profit</a>
@@ -151,49 +152,7 @@ global $coupon_url;
                     </form>
             </div>
                 </div>
-			<?
-			if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
-			$mynp_userid=$_COOKIE["np_userid"];
-			$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", username);
-			$mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", tax_company_name);
-			?>
-		    <?php /*     <div class="nonProfits logged">
-					<div class="image">
-					<?
-						if (isset($np_logo))
-					{
-						echo "<img src=\"/np/uplimg/logos/";
-						echo $np_logo;
-						echo "\">"; 
-									}
-					?>
-					</div>
 
-					<div class="title"><a href="/<?=$npusername?>">You support <strong><?=$mynp?></strong></a></div>
-				</div> */?>
-			<?
-			}else{
-			?>
-
-			<? if ($member_active != 'Active') { ?>
-                    <!--<div class="nonProfits notlogged">
-                        <div class="title">Choose from lots of non-profits</div>
-                        <a href="/searchnp.php" class="link">view list</a>
-                        <div class="avatars clearfix">
-                            <a href="#" class="avatar"><img src="/np/uplimg/logos/a73478811d232c2a6e6e08f586f3dff8-4e1cd0b653dda.gif"></a>
-                            <a href="#" class="avatar"><img src="/np/uplimg/logos/970f70d8b82eb10cde26588cdb3a5a8c-4dee5e006c4dd.gif"></a>
-                            <a href="#" class="avatar"><img src="/np/uplimg/logos/8d8fd5482d85d75350cc1e56dd769e52-4e4ac17305cd8.jpg"></a>
-                            <a href="#" class="avatar"><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/370030_685634406_1043706957_q.jpg"></a>
-                            <a href="#" class="avatar"><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/370030_685634406_1043706957_q.jpg"></a>
-                            <a href="#" class="avatar"><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/370030_685634406_1043706957_q.jpg"></a>
-                            <a href="#" class="avatar"><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/370030_685634406_1043706957_q.jpg"></a>
-                            <a href="#" class="avatar"><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/370030_685634406_1043706957_q.jpg"></a>
-                        </div>
-                    </div>-->
-			<? } ?>
-			<?
-			}
-			?>
 			<div class="follow clearfix">
 				<span class="none">Follow</span>
 				<a href="http://www.facebook.com/bringitlocal" target="_blank" class="facebook">Facebook</a>

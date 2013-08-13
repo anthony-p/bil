@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.05															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -15,7 +15,7 @@ function x(intParent, intListPos, strCategory, strCategoryID)
 {
 	c[intParent][intListPos] = new Option(strCategory,strCategoryID);
 }
-<?=$categories_initialize_msg;?>
+<?=isset($categories_initialize_msg)?$categories_initialize_msg:'';?>
 // -->
 </SCRIPT>
 <SCRIPT language=javascript>
@@ -31,8 +31,11 @@ var hexHighlightOff = "#ffffff";
 //arrayLevel 0 for top level, 1 for next level down etc...
 function populate(arrayLevel)
 {
+
 	//get the value of the selected index (click)
 	strOptionValue = (docSelectorArray[arrayLevel].options[docSelectorArray[arrayLevel].selectedIndex].value);
+
+    console.log(docSelectorArray);
 
 	if (strOptionValue == 0) //if value is 0 then is a spacer option - move their choice to the bottom option
 	{
@@ -195,6 +198,7 @@ function prePopulate(mCat)
 					//if we are 1 level from the end then check and select the next option if appropriate
 					if (intArrayLevel == 2)
 					{
+                        console.log("OK!!!");
 						intMcat = parseInt(mCatArray[intArrayLevel+1],10); //get last mCat
 
 						//loop through the last category and find the appropriate category
@@ -324,7 +328,7 @@ function prePopulate(mCat)
             </tr>
          </table></td>
    </tr>
-   <?=$previously_selected_cats_list; ?>
+   <?=isset($previously_selected_cats_list)?$previously_selected_cats_list:''; ?>
    <tr class="contentfont">
       <input id="<?=$category_id_type;?>" type="hidden" name="<?=$category_id_type;?>">
 		<td class="c1" align="right"><table id="table_submit" cellspacing="2" border="0">
@@ -334,6 +338,7 @@ function prePopulate(mCat)
          </table></td>
    </tr>
 </table>
+
 <SCRIPT language=javascript>
 <!--
 	//IE but not a Mac
@@ -387,9 +392,10 @@ function prePopulate(mCat)
 	//build small arrays that we can index by id later
 	for (i = 0; i < document.ad_create_form.elements.length; i++)
 	{
+        console.log(document.ad_create_form.elements[i].name);
 		if (document.ad_create_form.elements[i].name.indexOf("selector_") != -1) //cat selectors
 		{
-			docSelectorArray[selectorLoop] = document.ad_create_form.elements[i];
+            docSelectorArray[selectorLoop] = document.ad_create_form.elements[i];
 			selectorLoop++;
 		}
 		else if (document.ad_create_form.elements[i].name.indexOf("category") != -1) //categoryID

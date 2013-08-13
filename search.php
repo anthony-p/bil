@@ -23,7 +23,9 @@ $np_user = new npuser();
 
 $campaigns = $np_user->selectAllLive();
 
-$option = $db->rem_special_chars($_REQUEST['option']);
+$option = $db->rem_special_chars(
+    isset($_REQUEST['option']) ? $_REQUEST['option'] : ''
+);
 $option = (empty($option)) ? 'auction_search' : $option;
 $template->set('option', $option);
 
@@ -33,7 +35,7 @@ $template->set('item_details', $item_details);
 $header_search_page = header5(GMSG_ADVANCED_SEARCH);
 $template->set('header_search_page', $header_search_page);
 
-if ($_REQUEST['search_empty'] == 1)
+if (isset($_REQUEST['search_empty']) && $_REQUEST['search_empty'] == 1)
 {
 	$template->set('no_results_message', '<p align="center" class="errormessage">' . MSG_NO_RESULTS_QUERY . '</p>');
 }

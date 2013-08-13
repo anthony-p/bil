@@ -1,6 +1,8 @@
 <?php if (isset($compaignData["banner"]) && $compaignData["banner"]): ?>
-    <div class="video" style="height: auto;">
-        <?
+
+<?
+    $isVideo = 0;
+    $htmlOut = '';
         if (file_exists(getcwd()."/".$compaignData["banner"])) {
             echo "<img src ='".$compaignData["banner"]."'/>";
         } else {
@@ -10,19 +12,26 @@
                 $idYoutubeVideo = substr($res[1], 0, 11); // standart lenght youtube Id;
                 $embedUrl = "http://www.youtube.com/embed/" . $idYoutubeVideo;
                 //$baner = str_replace("watch?v=","embed/",$baner);
-                echo '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen></iframe>';
+                $htmlOut = '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen width="560" height="315" ></iframe>';
+                $isVideo = 1;
             } else if (strpos($baner,"youtu.be")) {
                 $res = explode("/", $baner);
-                var_dump($res);
-                $idYoutubeVideo = $res[1]; // standart lenght youtube Id;
+                $idYoutubeVideo = $res[3]; // standart lenght youtube Id;
                 $embedUrl = "http://www.youtube.com/embed/" . $idYoutubeVideo;
-                echo '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen></iframe>';
+                $htmlOut = '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen width="560" height="315"></iframe>';
+                $isVideo = 1;
             } else if (strpos($baner,"vimeo")) {
-                echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
+                $htmlOut = '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen width="560" height="315"></iframe>';
+                $isVideo = 1;
             } else {
-                echo "<img src ='".$baner."'/>";
+                $htmlOut = "<img src ='".$baner."'/>";
             }
         }
+        ?>
+
+    <div class="video" style="<?php if ($isVideo == 0) echo 'height: auto;' ?>">
+        <?
+               echo $htmlOut;
         ?>
     </div>
 <?php endif; ?>

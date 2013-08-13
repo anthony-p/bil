@@ -6,9 +6,33 @@
 ##-------------------------------------------------------------##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 #################################################################
-define ('MSG_BTN_HOME', 'HOME');
-define ('MSG_BTN_REGISTER', 'ENROLL');
-define ('MSG_USERNAME', 'Username');
+if (!defined('MSG_BTN_HOME'))
+    define ('MSG_BTN_HOME', 'HOME');
+if (!defined('MSG_BTN_REGISTER'))
+    define ('MSG_BTN_REGISTER', 'ENROLL');
+if (!defined('MSG_USERNAME'))
+    define ('MSG_USERNAME', 'Username');
+if (!defined('MSG_DEADLINE_TIME_PERIOD'))
+    define ('MSG_DEADLINE_TIME_PERIOD', 'Deadline number of days');
+
+if (!defined('MSG_USERNAME_AVAILABLE'))
+    define ('MSG_USERNAME_AVAILABLE', '<span class="greenfont"><b>Available</b></span>');
+if (!defined('MSG_USERNAME_UNAVAILABLE'))
+    define ('MSG_USERNAME_UNAVAILABLE', '<span class="redfont"><b>Not Available</b></span>');
+if (!defined('MSG_ENTER_USERNAME'))
+    define ('MSG_ENTER_USERNAME', 'Enter your Username');
+if (!defined('MSG_ENTER_PROJECTURL'))
+    define ('MSG_ENTER_PROJECTURL', 'Enter your Project URL');
+
+if (defined('MSG_DEADLINE'))
+    define ('MSG_DEADLINE', 'Deadline');
+if (defined('MSG_DEADLINE_CERTAIN_DATE'))
+    define ('MSG_DEADLINE_CERTAIN_DATE', 'Date have to be in format mm/dd/yyyy');
+if (defined('MSG_STATE'))
+    define ('MSG_STATE', 'State/Province');
+if (defined('MSG_ZIP_CODE'))
+    define ('MSG_ZIP_CODE', 'Zip/Post Code');
+
 define ('MSG_PASSWORD', 'Password');
 define ('MSG_RETYPE_PASSWORD', 'Retype Password');
 define ('MSG_WELCOME', 'Welcome');
@@ -52,8 +76,6 @@ define ('MSG_WEBSITE_ADDRESS_INSTRUCTIONS2_SUPPORTER', 'Enter the organization\'
 define ('MSG_USERNAME_EXPLANATION', 'Example: <strong>CentralHighSchool</strong> (Don\'t use your email address) <br /><strong>NOTE: </strong>Your Username will form the url (web address) to your community page. Make sure it is simple and easy to remember. <strong>IMPORTANT: </strong>Make sure it is one word with no spaces or special characters');
 define ('MSG_PROJECTURL_EXPLANATION', 'Example: <strong>CentralHighSchool</strong> (Don\'t use your email address) <br /><strong>NOTE: </strong>Your Project URL will form the url (web address) to your campaign page. Make sure it is simple and easy to remember. <br /><strong>IMPORTANT: </strong>Make sure it is one word with no spaces or special characters');
 define ('MSG_SUPPORTER_USERNAME_EXPLANATION', 'Create a community page address - for example: <strong>CentralHighSchool</strong> (Don\'t use your email address) <br><strong>NOTE: </strong>This will form the recommended url (web address) to your non-profits community page. Make sure it is simple and easy to remember.<br><strong>IMPORTANT: </strong>Make sure it is one word with no spaces or special characters<br>Please note: This is a recommendation and may be subject to change');
-define ('MSG_PASSWORD_EXPLANATION', '6 characters minimum <br />Enter a password that\'s easy for you to remember, but hard for others to guess.');
-define ('MSG_EMAIL_EXPLANATION', 'To complete registration, enter a valid email address that   you can check immediately.');
 define ('MSG_PASSWORD_EXPLANATION', '6 characters minimum <br />Enter a password that\'s easy for you to remember, but hard for others to guess.');
 define ('MSG_EMAIL_EXPLANATION', 'To complete registration, enter a valid email address that   you can check immediately.');
 define ('MSG_EMAIL_USER_SUBMITTED_EXPLANATION', 'Enter a valid email so we may contact you to help us confirm your submissions non profit status.<br><strong> We do not sell your email address or make it available to any third party.</strong>');
@@ -219,7 +241,6 @@ define ('MSG_CITY', 'City');
 define ('MSG_CITY_EXPL', 'Enter the city your organization is in.');
 define ('MSG_COUNTRY', 'Country');
 define ('MSG_DEADLINE', 'Deadline');
-define ('MSG_DEADLINE_TIME_PERIOD', 'Deadline number of days');
 define ('MSG_DEADLINE_CERTAIN_DATE', 'Date have to be in format mm/dd/yyyy');
 define ('MSG_STATE', 'State/Province');
 define ('MSG_ZIP_CODE', 'Zip/Post Code');
@@ -227,7 +248,6 @@ define ('MSG_BANNER', 'Banner');
 define ('MSG_PITCH_AMOUNT', 'Pitch amount');
 define ('MSG_PITCH_NAME', 'Pitch name');
 define ('MSG_PITCH_DESCRIPTION', 'Pitch description');
-define ('MSG_SELECT_STATE', '- select -');
 define ('MSG_PHONE_EXPL', 'Enter your phone number.');
 define ('MSG_PHONE_USER_SUBMITTED_EXPL', 'If available - enter a phone number for this organization.');
 define ('MSG_DATE_OF_BIRTH', 'Date of Birth');
@@ -938,9 +958,7 @@ define ('MSG_BIDDING', 'Bidding');
 define ('MSG_TIMES_IN', 'times in');
 define ('MSG_AUCTIONS', 'auctions');
 define ('MSG_ACTIVITY_INFO', 'Activity Information');
-define ('MSG_CONTACT_INFO', 'Contact Information');
 define ('MSG_SELLING', 'Selling');
-define ('MSG_LIVE_AUCTIONS', 'live auctions');
 define ('MSG_ITEMS_SOLD', 'items sold');
 define ('MSG_FIND_ALL_AUCTIONS_FROM', 'Find all auctions from');
 define ('MSG_WEBSITE_URL', 'www');
@@ -1115,11 +1133,6 @@ define ('MSG_FILTER_ITEMS', 'Filter Items');
 define ('MSG_CLICK_HERE', 'Click here');
 define ('MSG_IF_CANNOT_PLAY_FILE', 'if you cannot play this file');
 
-define ('MSG_USERNAME_AVAILABLE', '<span class="greenfont"><b>Available</b></span>');
-define ('MSG_USERNAME_UNAVAILABLE', '<span class="redfont"><b>Not Available</b></span>');
-define ('MSG_ENTER_USERNAME', 'Enter your Username');
-define ('MSG_ENTER_PROJECTURL', 'Enter your Project URL');
-
 define ('MSG_REMEMBER_ME', 'Remember Me');
 define ('MSG_ENTER_EMBEDDED_CODE', 'or Add Embedded Code');
 define ('MSG_YOU_HAVE_UNREAD_MESSAGES', 'There are unread message(s) in your received messages section.');
@@ -1220,7 +1233,6 @@ define ('MSG_POSTAGE_FLAT_FIRST_ITEM', 'Postage Rate for the First Item');
 define ('MSG_POSTAGE_FLAT_ADDL_ITEMS', 'Postage Rate for Additional Items');
 define ('MSG_ITEM_CURRENCY', 'Auction Currency');
 define ('MSG_SEARCH_TRANSACTIONS', 'Search Transactions');
-define ('MSG_SELECT_PERIOD', 'Select Period');
 define ('MSG_EXACT_MATCHES_ONLY', 'exact matches only');
 define ('MSG_STORE_NB_FEAT_ITEMS_ROW', 'Number of Featured Items per Row');
 define ('MSG_REVERSE_AUCTION_LISTED_SUCCESS', 'The reverse auction has been relisted successfully.');
@@ -1318,7 +1330,6 @@ define ('MSG_ENDING_SOON_AUCTIONS_B', 'Ending Soon Auctions');
 define ('MSG_AUCTIONS_TITLE_PPS', 'Auctions');
 define ('MSG_CLASSIFIEDS_TITLE_PPS', 'Classifieds');
 define ('MSG_FINALIZE_REGISTRATION', 'Finalize Registration');
-define ('MSG_BTN_CLASSIFIEDS', 'CLASSIFIEDS');
 define ('MSG_VIEWS', 'Views');
 // logo stuff
 define ('MSG_LOGO', 'Upload your logo');

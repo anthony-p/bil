@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 ## (Mods-Store) -> Shopping Cart											##
 #################################################################
@@ -259,26 +259,26 @@ function delete_media(form_name, file_type, file_id) {
       <td width="150" align="right"><?=MSG_AD_FEATURING;?></td>
       <td nowrap><input type="checkbox" name="hpfeat" value="1" <? echo ($item_details['hpfeat']==1) ? 'checked' : ''; ?> />
          <?=MSG_HP_FEATURED;?></td>
-      <td width="100%"><?=$hpfeat_fee_expl_message;?></td>
+      <td width="100%"><?=isset($hpfeat_fee_expl_message)?$hpfeat_fee_expl_message:'';?></td>
    </tr>
    <tr>
       <td>&nbsp;</td>
       <td class="c2" nowrap><input type="checkbox" name="catfeat" value="1" <? echo ($item_details['catfeat']==1) ? 'checked' : ''; ?> />
          <?=MSG_CAT_FEATURED;?></td>
-      <td class="c2"><?=$catfeat_fee_expl_message;?></td>
+      <td class="c2"><?=isset($catfeat_fee_expl_message)?$catfeat_fee_expl_message:'';?></td>
    </tr>
    <? } ?>
    <tr>
       <td>&nbsp;</td>
       <td class="c1" nowrap><input type="checkbox" name="hl" value="1" <? echo ($item_details['hl']==1) ? 'checked' : ''; ?> />
          <?=MSG_HL_AD;?></td>
-      <td class="c1"><?=$hl_fee_expl_message;?></td>
+      <td class="c1"><?=isset($hl_fee_expl_message)?$hl_fee_expl_message:'';?></td>
    </tr>
    <tr>
       <td>&nbsp;</td>
       <td class="c2" nowrap><input type="checkbox" name="bold" value="1" <? echo ($item_details['bold']==1) ? 'checked' : ''; ?> />
          <?=MSG_BOLD_AD;?></td>
-      <td class="c2"><?=$bold_fee_expl_message;?></td>
+      <td class="c2"><?=isset($bold_fee_expl_message)?$bold_fee_expl_message:'';?></td>
    </tr>
    <tr class="reguser">
       <td>&nbsp;</td>

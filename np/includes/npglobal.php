@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -13,12 +13,13 @@ include_once ('../includes/config.php');
 
 
  
-/* Database and Session prefixes */ 
-define('DB_PREFIX', 'probid_'); ## Do not edit ! 
-define('NPDB_PREFIX', 'np_');
-define('SESSION_PREFIX', 'np_'); 
- 
-
+/* Database and Session prefixes */
+if (!defined('DB_PREFIX'))
+    define('DB_PREFIX', 'probid_'); ## Do not edit !
+if (!defined('NPDB_PREFIX'))
+    define('NPDB_PREFIX', 'np_');
+if (!defined('SESSION_PREFIX'))
+    define('SESSION_PREFIX', 'np_');
 
 
 
@@ -87,7 +88,7 @@ cleanData();
  * sanitize order_type and order_field variables
  */
 
-$_REQUEST['order_type'] = (in_array($_REQUEST['order_type'], array('ASC', 'DESC'))) ? $_REQUEST['order_type'] : '';
+$_REQUEST['order_type'] = (isset($_REQUEST['order_type']) && in_array($_REQUEST['order_type'], array('ASC', 'DESC'))) ? $_REQUEST['order_type'] : '';
 
 
 if (!empty($_REQUEST['order_field']))
@@ -232,7 +233,7 @@ $custom_pages = array('about_us', 'contact_us', 'terms', 'privacy');
 $linkable_tables = array('countries');
 
 ## load the cron if it is run from the site.
-if ($setts['cron_job_type'] == 2 && IN_ADMIN != 1)
+if ($setts['cron_job_type'] == 2 && (!defined('IN_ADMIN') || IN_ADMIN != 1))
 {
 	$manual_cron = true;
 	

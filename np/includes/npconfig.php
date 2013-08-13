@@ -11,18 +11,33 @@ switch($_SERVER['SERVER_NAME']) {
         $db_name = 'devbr0_auction';
         $coupon_url = 'http://devcoupons.bringitlocal.com';
         break;
-   case 'dev2.bringitlocal.localhost':
-        $db_host = '127.0.0.1';
+    case 'dev2.bringitlocal.localhost':
+         $db_host = '127.0.0.1';
+         $db_username = 'root';
+         $db_password = 'primus21';
+         if ( !defined('DB_PREFIX') )
+            define('DB_PREFIX', 'probid_'); ## Do not edit !
+         if ( !defined('SESSION_PREFIX') )
+            define('SESSION_PREFIX', 'probid_');
+         $db_name = 'bringit_auction';
+         $coupon_url = 'http://devcoupons.bringitlocal.com';
+    break;
+    case 'bringit.local':
+        $db_host = 'localhost';
         $db_username = 'root';
-        $db_password = 'primus21';
+        $db_password = 'root';
         if ( !defined('DB_PREFIX') )
-           define('DB_PREFIX', 'probid_'); ## Do not edit !
+            define('DB_PREFIX', 'probid_'); ## Do not edit !
         if ( !defined('SESSION_PREFIX') )
-           define('SESSION_PREFIX', 'probid_');
-        $db_name = 'bringit_auction';
-        $coupon_url = 'http://devcoupons.bringitlocal.com';
-   break;
-   case 'localhost':
+            define('SESSION_PREFIX', 'probid_');
+        $db_name = 'devbr0_auction';
+        $coupon_url = 'http://coupons.bringitlocal.com';
+        $coupon_http_username = 'main';
+        $coupon_http_password = 'starburst';
+        $coupon_soap_username = 'glpc';
+        $coupon_soap_password = 'glpc2012';
+        break;
+    case 'localhost':
         $db_host = 'localhost'; 
         $db_username = 'root'; 
         $db_password = 'johilo9-4'; 
@@ -30,6 +45,13 @@ switch($_SERVER['SERVER_NAME']) {
         define('SESSION_PREFIX', 'probid_'); 
         $db_name = 'devbrin';
     break;
+     case 'local.bringitlocal.com':
+    $db_host = 'localhost'; 
+          $db_username = 'root'; 
+        $db_password = 'johilo9-4'; 
+        define('DB_PREFIX', 'probid_'); ## Do not edit ! 
+        define('SESSION_PREFIX', 'probid_'); 
+        $db_name = 'devbrin';
     break;
     case 'dev.bringitlocal.com':
          $db_host = 'localhost'; 
@@ -44,26 +66,13 @@ switch($_SERVER['SERVER_NAME']) {
         $coupon_soap_username = 'glpc';
         $coupon_soap_password = 'glpc2012';
         break;
-	case 'dev2.bringitlocal.com':
+	 case 'dev2.bringitlocal.com':
         $db_host = 'localhost'; 
         $db_username = 'dev2brin_user'; 
         $db_password = '^Xqh#^sqT%xC'; 
         define('DB_PREFIX', 'probid_'); ## Do not edit ! 
         define('SESSION_PREFIX', 'probid_'); 
         $db_name = 'dev2brin_bil';
-        $coupon_url = 'http://devcoupons.bringitlocal.com';
-        $coupon_http_username = 'main2';
-        $coupon_http_password = 'starburst~!@';
-        $coupon_soap_username = 'glpc';
-        $coupon_soap_password = 'glpc2012';
-        break;
-    case 'local.bringitlocal.com':
-         $db_host = 'localhost'; 
-        $db_username = 'devbr0_auction';
-        $db_password = '^Xqh#^sqT%xC'; 
-        define('DB_PREFIX', 'probid_'); ## Do not edit ! 
-        define('SESSION_PREFIX', 'probid_'); 
-        $db_name = 'devbr0_auction';
         $coupon_url = 'http://devcoupons.bringitlocal.com';
         $coupon_http_username = 'main2';
         $coupon_http_password = 'starburst~!@';
@@ -96,21 +105,19 @@ switch($_SERVER['SERVER_NAME']) {
         $coupon_soap_username = 'glpc';
         $coupon_soap_password = 'glpc2012';
         break;
-    case 'bringit.local':
-        $db_host = 'localhost';
-        $db_username = 'root';
-        $db_password = 'root';
-        if ( !defined('DB_PREFIX') )
-            define('DB_PREFIX', 'probid_'); ## Do not edit !
-        if ( !defined('SESSION_PREFIX') )
-            define('SESSION_PREFIX', 'probid_');
+    case 'local.bringitlocal.com':
+         $db_host = 'localhost'; 
+        $db_username = 'devbring_userbid';
+        $db_password = '^Xqh#^sqT%xC'; 
+        define('DB_PREFIX', 'probid_'); ## Do not edit ! 
+        define('SESSION_PREFIX', 'probid_'); 
         $db_name = 'devbr0_auction';
-        $coupon_url = 'http://coupons.bringitlocal.com';
-        $coupon_http_username = 'main';
-        $coupon_http_password = 'starburst';
+        $coupon_url = 'http://devcoupons.bringitlocal.com';
+        $coupon_http_username = 'main2';
+        $coupon_http_password = 'starburst~!@';
         $coupon_soap_username = 'glpc';
         $coupon_soap_password = 'glpc2012';
-        break;
+        break;        
 	case 'wwwlive.bringitlocal.com':
     default:
         $db_host = 'localhost'; 
@@ -124,7 +131,7 @@ switch($_SERVER['SERVER_NAME']) {
         $coupon_http_password = 'starburst~!@';
         $coupon_soap_username = 'glpc';
         $coupon_soap_password = 'glpc2012';
-    break;
+        break;
 }
 
 ?>

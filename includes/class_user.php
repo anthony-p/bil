@@ -10,6 +10,21 @@ class user extends custom_field
 {
 	var $item;
 
+    /**
+     * @var
+     */
+    private $db_name;
+
+    /**
+     * @param $db_name
+     * @return $this
+     */
+    public function setDbName($db_name)
+    {
+        $this->db_name = $db_name;
+        return $this;
+    }
+
     /* Change Method by Lilian Codreanu*/
 	function create_salt($length = 10)
 	{
@@ -124,13 +139,12 @@ class user extends custom_field
      */
     function register ($user_details)
     {
-
         $user_details = $this->sqlEscapeString($user_details);
         $salt = $this->create_salt();
         $password_hashed = password_hash($user_details['password'], $salt);
       
                         			
-                   $this->query("INSERT INTO " . $db_name . "bl2_users
+                   $this->query("INSERT INTO " . $this->db_name . ".bl2_users
         (`id`, `first_name`, `last_name`, `email`, `password`, `salt`, `active`, `create_date`, `last_login`, `is_subscribe_news`)
          VALUES (NULL, '{$user_details['fname']}', '{$user_details['lname']}', '{$user_details['email']}', '$password_hashed', '$salt', '0', '".time()."', '".time()."', '{$user_details['newsletter']}');");
 
@@ -475,13 +489,16 @@ class user extends custom_field
             $birthdate_year = $user_details["dob_year"];
 
             $tax_apply_exempt = (!empty($user_details['tax_reg_number'])) ? 1 : 0;
+            $tax_account_type = (isset($user_details['tax_account_type']))?$user_details['tax_account_type']:'';
+            $tax_company_name = (isset($user_details['tax_company_name']))?$user_details['tax_company_name']:'';
+            $tax_reg_number = (isset($user_details['tax_reg_number']))?$user_details['tax_reg_number']:'';
             $sql_update_query = "UPDATE " . $prefix . "users SET
 			phone='" . $phone . "',
 			birthdate='" . $birthdate . "',
 			birthdate_year='" . $birthdate_year . "',
-			tax_account_type='" . $user_details['tax_account_type'] . "',
-			tax_company_name='" . $user_details['tax_company_name'] . "',
-			tax_reg_number='" . $user_details['tax_reg_number'] . "',
+			tax_account_type='" . $tax_account_type . "',
+			tax_company_name='" . $tax_company_name . "',
+			tax_reg_number='" . $tax_reg_number . "',
 			extended_registration='" . $user_details['extended_registration'] . "',
 			pg_paypal_first_name='" . $user_details['pg_paypal_first_name'] . "',
 			pg_paypal_last_name='" . $user_details['pg_paypal_last_name'] . "',
@@ -1002,7 +1019,7 @@ class user extends custom_field
 			$dob_text = MSG_DATE_OF_BIRTH;
 			$dob_expl = MSG_DATE_OF_BIRTH_EXPL;
 
-			$birthdate_box .= '<select name="dob_month" id="dob_month" class="contentfont"> '.
+			$birthdate_box = '<select name="dob_month" id="dob_month" class="contentfont"> '.
 				'<option> </option> ';
 			foreach ($months_array as $key => $value)
 			{

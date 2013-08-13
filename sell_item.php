@@ -63,7 +63,7 @@ else
 {
 	require ('global_header_interior.php');
 
-	(string) $sale_step = $_POST['current_step'];
+	(string) $sale_step = (isset($_POST['current_step']))?$_POST['current_step']:'';
 
 	$start_time_id = 1;
 	$end_time_id = 2;
@@ -84,7 +84,7 @@ else
 	}
 
 	$item_id = null;
-	if (!$_POST['item_id'] && !$session->is_set('refresh_id'))
+	if ((!isset($_POST['item_id']) || !$_POST['item_id']) && !$session->is_set('refresh_id'))
 	{
 		//$session->set('auction_id', $item->create_temporary_item($session->value('user_id')));		
 		$item_id = $item->create_temporary_item($session->value('user_id'));		
@@ -105,7 +105,7 @@ else
 	 * form_next_step/form_previous_step and the current_step
 	 * values, and depending on the ad type and other settings as well
 	 */
-	$current_step_post = $_REQUEST['current_step'];
+	$current_step_post = (isset($_REQUEST['current_step']))?$_REQUEST['current_step']:'';
 	if ($setts['enable_seller_verification'] && $setts['seller_verification_mandatory'] && !$user_details['seller_verified'])
 	{
 		$current_step_post = null;
@@ -318,11 +318,12 @@ else
 
 	if (!$item_details['currency'])
 	{
-		$item_details['currency'] = ($_POST['currency']) ? $_POST['currency'] : $setts['currency'];
+		$item_details['currency'] = isset($_POST['currency']) ? $_POST['currency'] : $setts['currency'];
 	}
 
-	$item_details['addl_category_id'] = ($_POST['form_next_step'] == MSG_SKIP_THIS_STEP) ? 0 : $item_details['addl_category_id'];
-	$item_details['quantity'] = $item->set_quantity($item_details['quantity']);
+//	$item_details['addl_category_id'] = ((isset($_POST['form_next_step'])) && $_POST['form_next_step'] == MSG_SKIP_THIS_STEP) ? 0 : $item_details['addl_category_id'];
+	$item_details['addl_category_id'] = ((isset($_POST['form_next_step'])) && $_POST['form_next_step'] == MSG_SKIP_THIS_STEP) ? 0 : '';
+	$item_details['quantity'] = (isset($item_details['quantity']))?$item->set_quantity($item_details['quantity']):'';
 
 	$item_details['auto_relist_nb'] = ($item_details['auto_relist_nb']>1) ? $item_details['auto_relist_nb'] : 1;
 	$item_details['country'] = (!empty($item_details['country'])) ? $item_details['country'] : $user_details['country'];
@@ -333,7 +334,7 @@ $item_details['npuser_id'] = (!empty($item_details['npuser_id'])) ? $item_detail
 
 	$page_handle = 'auction';
 
-	if ($_POST['current_step'] == 'settings')
+	if (isset($_POST['current_step']) && $_POST['current_step'] == 'settings')
 	{
 		$item_details['start_time'] = ($item_details['start_time_type'] == 'now') ? CURRENT_TIME : get_box_timestamp($item_details, $start_time_id);
 		$item_details['end_time'] = ($item_details['end_time_type'] == 'duration') ? ($item_details['start_time'] + $item_details['duration'] * 86400) : get_box_timestamp($item_details, $end_time_id);
@@ -360,15 +361,15 @@ $item_details['npuser_id'] = (!empty($item_details['npuser_id'])) ? $item_detail
 
 	$item_details['name'] = $db->rem_special_chars($item_details['name']);
 
-	$item_details['description'] = $db->rem_special_chars((($_POST['description_main']) ? $_POST['description_main'] : $item_details['description']));
+	$item_details['description'] = $db->rem_special_chars((isset($_POST['description_main']) ? $_POST['description_main'] : $item_details['description']));
 
 	$item_details['state'] = $db->rem_special_chars($item_details['state']);
 	$item_details['zip_code'] = $db->rem_special_chars($item_details['zip_code']);
 	
 	$item_details['shipping_details'] = $db->rem_special_chars($item_details['shipping_details']);
 	
-	$item_details['direct_payment'] = (count($_POST['payment_gateway'])) ? $db->implode_array($_POST['payment_gateway']) : $item_details['direct_payment'];
-	$item_details['payment_methods'] = (count($_POST['payment_option'])) ? $db->implode_array($_POST['payment_option']) : $item_details['payment_methods'];
+	$item_details['direct_payment'] = (isset($_POST['payment_gateway']) && count($_POST['payment_gateway'])) ? $db->implode_array($_POST['payment_gateway']) : $item_details['direct_payment'];
+	$item_details['payment_methods'] = (isset($_POST['payment_option']) && count($_POST['payment_option'])) ? $db->implode_array($_POST['payment_option']) : $item_details['payment_methods'];
 
 	$hidden_custom_fields = $custom_fld->output_hidden_form_fields();
 	$template->set('hidden_custom_fields', $hidden_custom_fields);
@@ -474,9 +475,13 @@ $item_details['npuser_id'] = (!empty($item_details['npuser_id'])) ? $item_detail
 
 		while ($subcat_details = $db->fetch_array($sql_select_subcategories))
 		{
-			$parent[$counter_a] = $subcat_details['parent_id'];
 
-			if ($parent[$counter_a]!=$parent[$counter_a - 1])
+            if (!isset($category_lang[$subcat_details['category_id']]))
+                continue;
+            $parent[$counter_a] = $subcat_details['parent_id'];
+
+            $k = (is_array($parent[$counter_a]))?1:0;
+			if ($parent[$counter_a]!=$parent[$counter_a - $k])
 			{
 				$counter_b = 0;
 			}
@@ -505,7 +510,7 @@ $item_details['npuser_id'] = (!empty($item_details['npuser_id'])) ? $item_detail
 			$categories_subquery = " AND category_id IN (" . $shop_categories . ") ";
 		}
 
-		if ($_REQUEST['list_in'] == 'store')
+		if (isset($_REQUEST['list_in']) && $_REQUEST['list_in'] == 'store')
 		{
 			$categories_subquery .= " AND (user_id=0 OR user_id=" . intval($session->value('user_id')) . ") ";
 		}
@@ -522,6 +527,8 @@ $item_details['npuser_id'] = (!empty($item_details['npuser_id'])) ? $item_detail
 
 		while ($cat_details = $db->fetch_array($sql_select_main_categories))
 		{
+            if (!isset($category_lang[$cat_details['category_id']]))
+                continue;
 			$main_categories_select .= '<option value="' . $cat_details['category_id'] . '">' . $category_lang[$cat_details['category_id']]. ' ' . $cat_details['is_subcat'] . '</option>';
 		}
 
