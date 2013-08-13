@@ -14,7 +14,7 @@
             } else if (strpos($baner,"youtu.be")) {
                 $res = explode("/", $baner);
                 var_dump($res);
-                $idYoutubeVideo = $res[1]; // standart lenght youtube Id;
+                $idYoutubeVideo = $res[3]; // standart lenght youtube Id;
                 $embedUrl = "http://www.youtube.com/embed/" . $idYoutubeVideo;
                 echo '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen></iframe>';
             } else if (strpos($baner,"vimeo")) {
