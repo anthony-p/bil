@@ -194,8 +194,10 @@ class npuser extends npcustom_field
             } else {
                 $result["days_left"] = 0;
             }
-            $end_time = $result['end_date'] ? $result['end_date'] : 0;
-            $create_time = $result['reg_date'] ? $result['reg_date'] : 1;
+            $end_time = (isset($result['end_date']) && $result['end_date']) ?
+                $result['end_date'] : 0;
+            $create_time = (isset($result['reg_date']) && $result['reg_date']) ?
+                $result['reg_date'] : 1;
             $current_time = time();
             $completed = round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
             $percent=$completed*100/194;
