@@ -12,4 +12,4 @@ online_users.txt
 includes/config.php
 /includes/config.php
 np/uplimg/
-*config.php
+config.php

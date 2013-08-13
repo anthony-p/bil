@@ -1,0 +1,15 @@
+<?php 
+
+//'www.bringitlocal.com':
+    $db_host = 'localhost'; 
+    $db_username = 'bringit_userbids'; 
+    $db_password = '^Xqh#^sqT%xC'; 
+    define('DB_PREFIX', 'probid_'); ## Do not edit ! 
+    define('SESSION_PREFIX', 'probid_'); 
+    $db_name = 'bringit_auction';
+	$coupon_url = 'http://coupons.bringitlocal.com';
+    $coupon_http_username = 'main2';
+    $coupon_http_password = 'starburst~!@';
+    $coupon_soap_username = 'glpc';
+    $coupon_soap_password = 'glpc2012';
+

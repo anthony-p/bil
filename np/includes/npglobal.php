@@ -7,7 +7,7 @@
 #################################################################
 
 $fileExtension = (file_exists('includes/npglobal.php')) ? '' : '../';
-include_once ('includes/npconfig.php');
+include_once ('../includes/config.php');
 
 
 
