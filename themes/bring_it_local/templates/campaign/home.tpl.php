@@ -7,7 +7,7 @@
         } else {
             $baner = $compaignData["banner"];
             if (strpos($baner,"youtube"))
-                $baner = str_replace("http:","",$baner);
+                $baner = str_replace("watch?v=","embed/",$baner);
             echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
         }
         ?>
