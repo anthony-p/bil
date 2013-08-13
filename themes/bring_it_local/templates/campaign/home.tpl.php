@@ -1,14 +1,18 @@
 <?php if (isset($compaignData["banner"]) && $compaignData["banner"]): ?>
     <div class="video" style="height: auto;">
         <?
-        //var_dump($compaignData);
         if (file_exists(getcwd()."/".$compaignData["banner"])) {
             echo "<img src ='".$compaignData["banner"]."'/>";
         } else {
             $baner = $compaignData["banner"];
-            if (strpos($baner,"youtube"))
+            if (strpos($baner,"youtube")) {
                 $baner = str_replace("watch?v=","embed/",$baner);
-            echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
+                echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
+            } else if (strpos($baner,"vimeo")) {
+                echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
+            } else {
+                echo "<img src ='".$baner."'/>";
+            }
         }
         ?>
     </div>
