@@ -6,7 +6,9 @@
         } else {
             $baner = $compaignData["banner"];
             if (strpos($baner,"youtube")) {
+                var_dump($baner);
                 $res = explode("?v=", $baner);
+                var_dump($res);
                 $idYoutubeVideo = substr($res[1], 0, 11); // standart lenght youtube Id;
                 $embedUrl = "http://www.youtube.com/embed/" + $idYoutubeVideo;
                 var_dump($embedUrl);
