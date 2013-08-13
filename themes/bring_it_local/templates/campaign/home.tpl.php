@@ -29,7 +29,7 @@
         }
         ?>
 
-    <div class="video" style="<?php if ($isVideo == 1) echo 'height: auto;' ?>">
+    <div class="video" style="<?php if ($isVideo == 0) echo 'height: auto;' ?>">
         <?
                echo $htmlOut;
         ?>
