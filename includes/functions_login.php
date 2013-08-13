@@ -213,6 +213,7 @@ function logout ($logout_admin = false, $redirect = true, $logout_pps = true)
 
 		$session->unset_cookie('username_cookie');
 
+/* commenting out magneto code. eb aug 13 2013
         try{
             global $coupon_http_username;
             global $coupon_http_password;
@@ -231,7 +232,8 @@ function logout ($logout_admin = false, $redirect = true, $logout_pps = true)
          }catch(Exception $e){
             file_put_contents('/tmp/magento.log', $e->getMessage());
         }
-
+*/
+        
 		if ($logout_pps)
 		{
 			/* PPS Integration -> now logout from PPA as well */

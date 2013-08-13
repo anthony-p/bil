@@ -46,7 +46,7 @@ if (count($adult_categories) > 0)
 }
 
 #Coupons (magento) recent deals
-
+/*
     $coupons_recent_deals_header = header1('Recent Deals' . ' <span class="viewAll"><a href="'.$coupon_url.'/index.php/recent-deals.html">' . MSG_VIEW_ALL . '</a></span>');
 
     $template->set('coupons_recent_deals_header', $coupons_recent_deals_header);
@@ -82,7 +82,7 @@ if (count($adult_categories) > 0)
 
     $template->set('magento_items', $magento_items);
 #Coupons (magento) recent deals end.
-
+*/
 
 if ($layout['hpfeat_nb'])## PHP Pro Bid v6.00 home page featured auctions
 {

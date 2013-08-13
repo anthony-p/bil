@@ -399,6 +399,7 @@ class user extends custom_field
 			tax_reg_number='" . $user_details['tax_reg_number'] . "',
 			pg_paypal_email = '" . $user_details['pg_paypal_email']."'";
 
+ /* commenting out magneto code
             //update magento phone
             $user_info = $this->get_sql_row("SELECT username FROM
             			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
@@ -427,7 +428,7 @@ class user extends custom_field
 
                 $proxy->call($sessionId, 'customer_address.update', array($addresses[0]['customer_address_id'], $updateCustomerAddress));
             }
-
+*/
 
             $user_old = $this->get_sql_row("SELECT balance, payment_mode, tax_apply_exempt FROM
 			" . DB_PREFIX . "users WHERE user_id=" . $user_id);
