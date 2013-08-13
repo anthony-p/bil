@@ -144,7 +144,7 @@ global $coupon_url;
 
 
             <div class="viewall">
-              <span>Featured</span>
+              <span><?=MSG_FEATURED?></span>
               <div class="border"></div>
               <a href="/campaigns.php"><?=MSG_SEE_ALL_CAMPAIGNS?></a>
           </div>
