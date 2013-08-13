@@ -144,6 +144,8 @@ if ($nb_cron_auctions)
 		## there was no sale for the item that was just closed
 		if (!$winner_output['result'])
 		{
+            if (!isset($cron_auction[$i]))
+                continue;
 			$seller_counter[$cron_auction[$i]['owner_id']] ++; 
 			$auction_counter[$cron_auction[$i]['owner_id']] = $cron_auction[$i]['auction_id']; 
 		}
