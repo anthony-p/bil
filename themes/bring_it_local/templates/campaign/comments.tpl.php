@@ -11,7 +11,7 @@
                   <input name="keep_private" type="checkbox">
                   <label>keep private - don't display my user name</label>
               </div>
-              <input type="submit" value="send"/>
+              <input type="submit" value="Post"/>
           </form>
       </div>
       <?php foreach($comments as $comment): ?>
