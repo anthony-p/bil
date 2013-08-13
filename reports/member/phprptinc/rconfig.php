@@ -15,8 +15,10 @@ switch($_SERVER['SERVER_NAME']) {
         $db_host = 'localhost';
         $db_username = 'root';
         $db_password = 'root';
-        define('DB_PREFIX', 'probid_'); ## Do not edit !
-        define('SESSION_PREFIX', 'probid_');
+        if ( !defined('DB_PREFIX') )
+            define('DB_PREFIX', 'probid_'); ## Do not edit !
+        if ( !defined('SESSION_PREFIX') )
+            define('SESSION_PREFIX', 'probid_');
         $db_name = 'devbr0_auction';
         $coupon_url = 'http://coupons.bringitlocal.com';
         $coupon_http_username = 'main';
