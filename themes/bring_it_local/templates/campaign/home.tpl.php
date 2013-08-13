@@ -10,14 +10,14 @@
                 $idYoutubeVideo = substr($res[1], 0, 11); // standart lenght youtube Id;
                 $embedUrl = "http://www.youtube.com/embed/" . $idYoutubeVideo;
                 //$baner = str_replace("watch?v=","embed/",$baner);
-                echo '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen></iframe>';
+                echo '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen width="560" height="315" ></iframe>';
             } else if (strpos($baner,"youtu.be")) {
                 $res = explode("/", $baner);
                 $idYoutubeVideo = $res[3]; // standart lenght youtube Id;
                 $embedUrl = "http://www.youtube.com/embed/" . $idYoutubeVideo;
-                echo '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen></iframe>';
+                echo '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen width="560" height="315"></iframe>';
             } else if (strpos($baner,"vimeo")) {
-                echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
+                echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen width="560" height="315"></iframe>';
             } else {
                 echo "<img src ='".$baner."'/>";
             }
