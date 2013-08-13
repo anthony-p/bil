@@ -1,5 +1,27 @@
 <?php 
 switch($_SERVER['SERVER_NAME']) {
+    case 'bringitlocal.localhost':
+        $db_host = '127.0.0.1';
+        $db_username = 'test';
+        $db_password = 'test';
+        if ( !defined('DB_PREFIX') )
+            define('DB_PREFIX', 'probid_'); ## Do not edit !
+        if ( !defined('SESSION_PREFIX') )
+            define('SESSION_PREFIX', 'probid_');
+        $db_name = 'devbr0_auction';
+        $coupon_url = 'http://devcoupons.bringitlocal.com';
+        break;
+   case 'dev2.bringitlocal.localhost':
+        $db_host = '127.0.0.1';
+        $db_username = 'root';
+        $db_password = 'primus21';
+        if ( !defined('DB_PREFIX') )
+           define('DB_PREFIX', 'probid_'); ## Do not edit !
+        if ( !defined('SESSION_PREFIX') )
+           define('SESSION_PREFIX', 'probid_');
+        $db_name = 'bringit_auction';
+        $coupon_url = 'http://devcoupons.bringitlocal.com';
+   break;
    case 'localhost':
         $db_host = 'localhost'; 
         $db_username = 'root'; 
