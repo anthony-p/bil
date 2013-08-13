@@ -528,7 +528,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <input type="text" name="project_title"
                    value="<?php echo isset($user_details['project_title']) ? $user_details['project_title'] : '' ?>"
                    id="project_title" maxlength="80" size="40" >
-            <span><?=MSG_CREATE_PROJECT_CAMPAIGN_BASIC_EXPLANATION;?></span>
+         <!--   <span><?/*=MSG_CREATE_PROJECT_CAMPAIGN_BASIC_EXPLANATION;*/?></span>-->
         </div>
         <div class="account-row">
             <label><?=MSG_CREATE_PROJECT_SHORT_DESCRIPTION;?> *</label>
