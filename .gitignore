@@ -10,4 +10,4 @@ online_users.txt
 .idea/
 .htaccess
 np/uplimg/
-/includes/config.php
+includes/config.php
