@@ -9,7 +9,5 @@ online_users.txt
 .ide/
 .idea/
 .htaccess
-includes/config.php
-/includes/config.php
 np/uplimg/
-*config.php
+
