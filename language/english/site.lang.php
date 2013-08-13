@@ -930,7 +930,7 @@ define ('MSG_AIM', 'AOL Instant Messenger ID');
 define ('MSG_YIM', 'Yahoo Messenger ID');
 define ('MSG_BIDDING', 'Bidding');
 define ('MSG_TIMES_IN', 'times in');
-define ('MSG_AUCTIONS', 'auctions');
+define ('MSG_AUCTIONS', 'Auctions');
 define ('MSG_ACTIVITY_INFO', 'Activity Information');
 define ('MSG_SELLING', 'Selling');
 define ('MSG_LIVE_AUCTIONS', 'live auctions');
@@ -1448,6 +1448,18 @@ define ('MSG_COMMUNITY_CROWDFUNDING', 'Community crowdfunding');
 define ('MSG_DONATIONS_AUCTIONS', 'Donations, auctions, click through shopping');
 define ('MSG_ALL_CAMPAIGNS', 'All Campaigns');
 define ('MSG_SEE_ALL_CAMPAIGNS', 'see all campaigns');
+define ('MSG_RAISED_TOWARD_THE_GOAL', 'Raised toward the goal of');
+define ('MSG_MANY_WAYS_TO_GIVE', 'There are many ways to give');
+define ('MSG_DONATE_NOW', 'Donate Now');
+define ('MSG_MAKE_DONATION', 'make a donation');
+define ('MSG_SHOP_ONLINE', 'Shop Online');
+define ('MSG_SHOP_ONLINE_INFORMATION_ABOUT_ONLINE_RETAILERS', 'Click through to online retailers: a % of your purchase will go to this campaign');
+define ('MSG_CHECK_OUT_AUCTIONS_SUPPORTING', 'Check out auctions supporting this campaign');
+define ('MSG_COMMUNITY_FOUND', 'Community Fund');
+define ('MSG_CAMPAIGN_HOME', 'Campaign home');
+define ('MSG_FUNDERS', 'FUNDERS');
+define ('MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS', 'Dedicate a portion of your donations to the Community Fund');
+define ('MSG_WAYS_TO_SUPPORT', 'WAYS TO support');
 
 
 

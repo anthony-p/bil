@@ -77,13 +77,13 @@ $featured_columns = 14;
                     echo "<div class='project-unsuccessful'>Closed</div>";
             }
             ?>
-            <p>Raised toward the goal of $<?php echo isset($compaigns['founddrasing_goal']) ? $compaigns['founddrasing_goal'] : '0'; ?> </p>
+            <p><?=MSG_RAISED_TOWARD_THE_GOAL?> $<?php echo isset($compaigns['founddrasing_goal']) ? $compaigns['founddrasing_goal'] : '0'; ?> </p>
         </div>
         <div class="navigation-btn">
-            <h3>There are many ways to give</h3>
+            <h3><?=MSG_MANY_WAYS_TO_GIVE?></h3>
             <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>" class="donation">
-                <span class="uper">Donate Now</span>
-                <span>make a donation</span>
+                <span class="uper"><?=MSG_DONATE_NOW?></span>
+                <span><?=MSG_MAKE_DONATION?></span>
             </a>
             <a href="/global_partners.php<?php /*
             if (isset($compaigns['url']) && $compaigns['url']) {
@@ -96,12 +96,12 @@ $featured_columns = 14;
                 echo '#';
             } */
             ?>" class="shop">
-                <span class="uper">Shop Online</span>
-                <span>Click through to online retailers: a % of your purchase will go to this campaign</span>
+                <span class="uper"><?=MSG_SHOP_ONLINE?></span>
+                <span><?=MSG_SHOP_ONLINE_INFORMATION_ABOUT_ONLINE_RETAILERS?></span>
             </a>
             <a href="/categories.php" class="auctions">
-                <span class="uper">Auctions</span>
-                <span>Check out auctions supporting this campaign</span>
+                <span class="uper"><?=MSG_AUCTIONS?></span>
+                <span><?=MSG_CHECK_OUT_AUCTIONS_SUPPORTING?></span>
             </a>
             <?php
             /*
@@ -113,20 +113,20 @@ $featured_columns = 14;
             ?>
 
             <a href="/bringitlocal" class="funds">
-                <span class="uper">Community Fund</span>
-                <span>Dedicate a portion of your donations to the Community Fund</span>
+                <span class="uper"><?=MSG_COMMUNITY_FOUND?></span>
+                <span><?=MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS?></span>
             </a>
         </div>
     </div>
     <div class="tabulation">
         <div id="Tab">
             <ul class="resp-tabs-list">
-                <li>Campaign home</li>
-                <li>UPDATES</li>
-                <li>Comments</li>
-                <li>FUNDERS</li>
-                <li>REWARDS</li>
-                <li class="last">WAYS TO support</li>
+                <li><?=MSG_CAMPAIGN_HOME?></li>
+                <li><?=MSG_UPDATES?></li>
+                <li><?=MSG_COMMENTS?></li>
+                <li><?=MSG_FUNDERS?></li>
+                <li><?=MSG_REWARDS?></li>
+                <li class="last"><?=MSG_WAYS_TO_SUPPORT?></li>
             </ul>
             <div class="resp-tabs-container">
                 <div class="tab-step">
