@@ -1446,6 +1446,8 @@ define ('MSG_POSTED_A_COMMENT', 'posted a comment');
 define ('MSG_POSTALE_CODE', 'Postale Code');
 define ('MSG_COMMUNITY_CROWDFUNDING', 'Community crowdfunding');
 define ('MSG_DONATIONS_AUCTIONS', 'Donations, auctions, click through shopping');
+define ('MSG_ALL_CAMPAIGNS', 'All Campaigns');
+define ('MSG_SEE_ALL_CAMPAIGNS', 'see all campaigns');
 
 
 

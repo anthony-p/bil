@@ -12,7 +12,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 
 <div class="searchBox">
-<h2> All Campaigns </h2>
+<h2> <?=MSG_ALL_CAMPAIGNS?></h2>
 <form id="search_by_name" accept="#">
     <!--    <div class="select">-->
     <select id="order_result" name="names" class="changeMe">
