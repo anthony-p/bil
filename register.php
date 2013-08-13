@@ -85,6 +85,7 @@ else
                 (string) $register_success_message = null;
 
 //                $user_id = $user->insert($_POST);
+                $user->setDbName($db_name);
                 $user_id = $user->register($_POST);
 
                 /* For PPA & PPB Integration */

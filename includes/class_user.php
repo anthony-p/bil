@@ -10,6 +10,21 @@ class user extends custom_field
 {
 	var $item;
 
+    /**
+     * @var
+     */
+    private $db_name;
+
+    /**
+     * @param $db_name
+     * @return $this
+     */
+    public function setDbName($db_name)
+    {
+        $this->db_name = $db_name;
+        return $this;
+    }
+
     /* Change Method by Lilian Codreanu*/
 	function create_salt($length = 10)
 	{
@@ -124,13 +139,12 @@ class user extends custom_field
      */
     function register ($user_details)
     {
-
         $user_details = $this->sqlEscapeString($user_details);
         $salt = $this->create_salt();
         $password_hashed = password_hash($user_details['password'], $salt);
       
                         			
-                   $this->query("INSERT INTO " . $db_name . "bl2_users
+                   $this->query("INSERT INTO " . $this->db_name . ".bl2_users
         (`id`, `first_name`, `last_name`, `email`, `password`, `salt`, `active`, `create_date`, `last_login`, `is_subscribe_news`)
          VALUES (NULL, '{$user_details['fname']}', '{$user_details['lname']}', '{$user_details['email']}', '$password_hashed', '$salt', '0', '".time()."', '".time()."', '{$user_details['newsletter']}');");
 
