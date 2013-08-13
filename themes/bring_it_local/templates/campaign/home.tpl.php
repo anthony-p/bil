@@ -6,8 +6,11 @@
         } else {
             $baner = $compaignData["banner"];
             if (strpos($baner,"youtube")) {
-                $baner = str_replace("watch?v=","embed/",$baner);
-                echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
+                $res = explode("?v=", $baner);
+                $idYoutubeVideo = substr($res[1], 0, 11); // standart lenght youtube Id;
+                $embedUrl = "http://www.youtube.com/embed/" + $idYoutubeVideo;
+                //$baner = str_replace("watch?v=","embed/",$baner);
+                echo '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen></iframe>';
             } else if (strpos($baner,"vimeo")) {
                 echo '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen></iframe>';
             } else {
