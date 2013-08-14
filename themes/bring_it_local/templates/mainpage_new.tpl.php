@@ -1,3 +1,4 @@
+<?php include_once (__DIR__ . "/../../../includes/generate_image_thumbnail.php"); ?>
 <?
 #################################################################
 ## PHP Pro Bid v6.06															##
@@ -154,7 +155,7 @@ global $coupon_url;
                     <?php foreach( $campaigns_list as $row):?>
                     <li>
 					<a href="/<?php echo $row['username']; ?>" target="_blank">
-                        <div class="img"><img src="<?php echo $row['banner'];?>"/></div>
+                        <div class="img"><img src="<?php echo isset($row['banner']) ? get_thumbnail_image("200x165_image_" . $row["banner"]) : '';?>"/></div>
                         <div class="clear"></div>
 					</a>
                         <div class="campaigns-info">
