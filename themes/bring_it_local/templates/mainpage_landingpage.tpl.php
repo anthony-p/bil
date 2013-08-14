@@ -99,12 +99,12 @@ $featured_columns = 14;
                 <span class="uper"><?=MSG_SHOP_ONLINE?></span>
                 <span><?=MSG_SHOP_ONLINE_INFORMATION_ABOUT_ONLINE_RETAILERS?></span>
             </a>
+            <?php
+            /*
             <a href="/categories.php" class="auctions">
                 <span class="uper"><?=MSG_AUCTIONS?></span>
                 <span><?=MSG_CHECK_OUT_AUCTIONS_SUPPORTING?></span>
             </a>
-            <?php
-            /*
             <a href="http://coupons.bringitlocal.com/" class="merchants">
                 <span class="uper">Local merchants</span>
                 <span>Check out coupons from merchants supporting this campaign</span>
