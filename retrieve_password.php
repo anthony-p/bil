@@ -49,7 +49,7 @@ else
 			$db->query("UPDATE " . DB_PREFIX . "users SET password='" . $password_hashed . "', salt='" . $salt . "' WHERE
 				username='" . $post_details['username'] . "'");
 
-
+/* commenting out magneto code
             global $coupon_http_username;
             global $coupon_http_password;
             global $coupon_url;
@@ -72,6 +72,7 @@ else
                 );
                 $resut = $proxy->call($sessionId, 'customer.update', array($magento_customer_id, $updateCustomer));
             }
+*/            
             $template->set('submitted', 1);
 			$template->set('retrieve_password_msg', '<div align="center" class="errormessage">' . MSG_NEW_PASSWORD_EMAILED . '</div>');
 			

@@ -1417,7 +1417,7 @@ define ('MSG_POST_AN_UPDATE_TO_CAMPAIGN', 'Post an update to your campaign');
 define ('MSG_REWARDS', 'REWARDS');
 define ('MSG_REWARDS_HERE', 'rewards will go here');
 define ('MSG_YOUT_COMMENT', 'Your comments');
-define ('MSG_SEND', 'Send');
+define ('MSG_SEND', 'Post');
 define ('MSG_BANNER_IMAGE', 'Banner Image');
 define ('MSG_VIDEO_YOUTUBE', 'Video (Youtube or Vimeo)');
 
@@ -1448,7 +1448,7 @@ define ('MSG_COMMUNITY_CROWDFUNDING', 'Community crowdfunding');
 define ('MSG_DONATIONS_AUCTIONS', 'Donations, auctions, click through shopping');
 define ('MSG_ALL_CAMPAIGNS', 'All Campaigns');
 define ('MSG_SEE_ALL_CAMPAIGNS', 'see all campaigns');
-define ('MSG_RAISED_TOWARD_THE_GOAL', 'Raised toward the goal of');
+define ('MSG_RAISED_TOWARD_THE_GOAL', 'raised toward our goal of');
 define ('MSG_MANY_WAYS_TO_GIVE', 'There are many ways to give');
 define ('MSG_DONATE_NOW', 'Donate Now');
 define ('MSG_MAKE_DONATION', 'make a donation');

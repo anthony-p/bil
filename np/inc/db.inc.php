@@ -1,5 +1,5 @@
 <?php
-include_once ('dbconfig.php');
+include_once ('../../includes/config.php');
 
 $username =  $db_username;
 $password =  $db_password;
