@@ -94,15 +94,16 @@ function get_thumbnail_image($image)
 
     $thumbnail_image = $root_image_path . "/" . $image_data[0] . "_" . $image_name;
 
-    if (!file_exists($root_image_path . "/" . $image_name) ||
-        strpos($image_name,'youtube') !== false ||
+    if (strpos($image_name,'youtube') !== false ||
+        strpos($image_name,'http') !== false ||
+        strpos($image_name,'https') !== false ||
         strpos($image_name,'vimeo') !== false) {
         return $root_image_path . "/" . $image_name;
     }
 
     if (!file_exists($thumbnail_image)) {
         generate_image_thumbnail(
-            "." . $image_data[1], "." . $thumbnail_image, $dimensions[0], $dimensions[1], true
+            ".." . $image_data[1], ".." . $thumbnail_image, $dimensions[0], $dimensions[1], true
         );
     }
 
