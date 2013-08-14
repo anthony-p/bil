@@ -9,6 +9,9 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 
+<script language="javascript" src="/scripts/jquery/tiny.editor.js" type="text/javascript"></script>
+<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">
+
 <SCRIPT LANGUAGE="JavaScript"><!--
 myPopup = '';
 
