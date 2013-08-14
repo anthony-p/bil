@@ -5019,6 +5019,11 @@ else
         $template->set('campaigns_list', $rows);
         $template->set('section', $section);
 
+        if ($section == 'main') {
+                $members_area_page_content = $template->process('members_area_campaigns_main.tpl.php');
+//                $template->set('members_area_page_content', $members_area_page_content);
+        }
+
         if ($section == 'live') {
             $members_area_page_content = $template->process('members_area_campaigns.tpl.php');
             $template->set('members_area_page_content', $members_area_page_content);
