@@ -379,7 +379,7 @@ function fetchstate($statecode){
     <tr>
         <td class="leftCol"><?=MSG_PHONE;?> *</td>
         <td class="contentfont">
-            <? if ($edit_user == 1)	{ ?>
+            <? if (isset($edit_user) && $edit_user == 1)	{ ?>
             <input name="phone" type="text" id="phone" value="<?=(isset($user_details['phone']))?$user_details['phone']:'';?>" size="25" />
             <? } else { ?>
             ( <input name="phone_a" type="text" id="phone_a" value="<?=(isset($user_details['phone_a']))?$user_details['phone_a']:'';?>" size="5" /> )
@@ -522,7 +522,7 @@ function fetchstate($statecode){
 <?=(isset($signup_voucher_box))?$signup_voucher_box:'';?>
 <!-- terms and conditions -->
 <div id="terms"><?=(isset($registration_terms_box))?$registration_terms_box:'';?></div>
-<? if ((!defined('IN_ADMIN') || IN_ADMIN != 1 )&& !$edit_user) { ?>
+<? if ((!defined('IN_ADMIN') || IN_ADMIN != 1 )&& !isset($edit_user) ) { ?>
 <!-- PIN -->
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
     <tr>
@@ -530,7 +530,7 @@ function fetchstate($statecode){
     </tr>
     <tr>
         <td class="leftCol"><?=MSG_REG_PIN;?></td>
-        <td><?=$pin_image_output;?></td>
+        <td><?=(isset($pin_image_output))?$pin_image_output:'';?></td>
     </tr>
     <tr class="reguser">
         <td  class="contentfont">&nbsp;</td>
