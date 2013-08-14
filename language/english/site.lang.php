@@ -1448,7 +1448,7 @@ define ('MSG_COMMUNITY_CROWDFUNDING', 'Community crowdfunding');
 define ('MSG_DONATIONS_AUCTIONS', 'Donations, auctions, click through shopping');
 define ('MSG_ALL_CAMPAIGNS', 'All Campaigns');
 define ('MSG_SEE_ALL_CAMPAIGNS', 'see all campaigns');
-define ('MSG_RAISED_TOWARD_THE_GOAL', 'Raised toward the goal of');
+define ('MSG_RAISED_TOWARD_THE_GOAL', 'raised toward our goal of');
 define ('MSG_MANY_WAYS_TO_GIVE', 'There are many ways to give');
 define ('MSG_DONATE_NOW', 'Donate Now');
 define ('MSG_MAKE_DONATION', 'make a donation');

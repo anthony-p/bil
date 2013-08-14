@@ -47,7 +47,7 @@ $featured_columns = 14;
 <div class="campaign-content">
     <div class="nav-right">
         <div class="campaign-details">
-            <span class="price">$<? echo $compaigns['payment'];?><span>usd</span></span>
+            <span class="price">$<? echo $compaigns['payment'];?><span> usd</span></span>
             <span class="day">
                 <?php $days=round(($compaigns['end_date']-time())/86400);
                 if($days>0){echo $days."<span> days left</span>"; }
