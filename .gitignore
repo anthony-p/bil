@@ -5,6 +5,7 @@ error_log
 admin/np_reports/*
 admin/report/*
 cache/
+cache/*
 online_users.txt
 .ide/
 .idea/
