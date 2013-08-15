@@ -1,4 +1,3 @@
-<?php //include_once (__DIR__ . "/../includes/generate_image_thumbnail.php"); ?>
 <?
 #################################################################
 ## PHP Pro Bid v6.07															##
@@ -55,7 +54,8 @@
         <li  class="<?php  if(($counter % 4)==0){ echo "fourth";}?>">
             <div class="img">
                 <a href="<?php echo isset ($campaign["username"]) ? '/' . $campaign["username"] : '' ?>">
-                    <img src="<?php echo isset ($campaign["banner"]) ? $campaign["banner"] : '' ?>">
+                    <img src="<?php echo isset ($campaign["banner"]) ?
+                        "/get_image_thumbnail.php?image=200x165_image_" . $campaign["banner"] : '' ?>">
                 </a>
             </div>
             <div class="clear"></div>
@@ -78,8 +78,8 @@
                 <span class="day"><?php echo isset ($campaign["days_left"]) ? $campaign["days_left"] : '0' ?><span>days left</span></span>
                 <div class="clear"></div>
                 <?php
-                $end_time=$campaign['end_date'];
-                $create_time=$campaign['reg_date'];
+                $end_time=isset($campaign['end_date']) ? $campaign['end_date'] : 0;
+                $create_time= isset($campaign['reg_date']) ? $campaign['reg_date'] : 0;
                 $current_time=time();
                 $total_time = $end_time- $create_time;
                 if ($total_time)

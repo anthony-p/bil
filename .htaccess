@@ -24,7 +24,7 @@ RewriteRule ^(.*)$ index.php [F,L]
  ErrorDocument 404 /landingpage.php 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.*)$ $1.php 
+RewriteRule ^(.*)$ $1.php
  <Files .htaccess>
 order allow,deny
 deny from all
