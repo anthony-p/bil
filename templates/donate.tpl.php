@@ -63,6 +63,7 @@
             </div>
             <div id="contribution_qty">
                 <input type="text" name="amount" id="amount" /><b>(USD)</b>
+                <input type="hidden" name="np_user_id" id="np_user_id" value="<?php echo isset($np_user_id) ? $np_user_id : ''; ?>" />
             </div>
             <input id="submit" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
         </div>

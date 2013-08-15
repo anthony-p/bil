@@ -39,10 +39,11 @@ if (!$user_id)
 }
 
 $campaign = $db->get_sql_row(
-    "SELECT logo, banner, description, name  FROM np_users WHERE np_users.user_id=" . $user_id
+    "SELECT logo, banner, description, pg_paypal_email, name  FROM np_users WHERE np_users.user_id=" . $user_id
 );
 
 $template->set('campaign', $campaign);
+$template->set('np_user_id', $user_id);
 $template->change_path('templates/');
 $template_output .= $template->process('donate.tpl.php');
 
