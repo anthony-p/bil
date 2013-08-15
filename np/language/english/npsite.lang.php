@@ -79,12 +79,12 @@ define ('MSG_SUPPORTER_USERNAME_EXPLANATION', 'Create a community page address -
 define ('MSG_PASSWORD_EXPLANATION', '6 characters minimum <br />Enter a password that\'s easy for you to remember, but hard for others to guess.');
 define ('MSG_EMAIL_EXPLANATION', 'To complete registration, enter a valid email address that   you can check immediately.');
 define ('MSG_EMAIL_USER_SUBMITTED_EXPLANATION', 'Enter a valid email so we may contact you to help us confirm your submissions non profit status.<br><strong> We do not sell your email address or make it available to any third party.</strong>');
-define ('MSG_REGISTRATION_CONFIRMATION', 'Registration Confirmation');
+define ('MSG_REGISTRATION_CONFIRMATION', 'Your draft campaign is ready');
 define ('MSG_SUBMISSION_CONFIRMATION', 'Non Profit Submission Confirmation');
 define ('MSG_REGISTER_SUCCESS_TYPE0', 'You\'ve successfully enrolled.<br>You can now login with the username and password you have created.');
 define ('MSG_REGISTER_SUCCESS_TYPE1', 'You\'ve successfully enrolled.<br>An email has been sent to the address you have submitted with details on how to activate your account.');
 define ('MSG_REGISTER_SUCCESS_TYPE2', 'You\'ve successfully enrolled.<br>The administrator will review your account and approve it manually.<br>You will be notified by email when your account will be activated.<br>An email has been sent to the address you have submitted with details on how to verify your email address.');
-define ('MSG_REGISTER_SUCCESS_TYPE3', 'You\'ve successfully submitted your chosen organization.<br>You can immediately earn give back points for that organization while we verify their non profit status.');
+define ('MSG_REGISTER_SUCCESS_TYPE3', 'You\'ve successfully set up your new draft campaign.<br>You can manage your campaign inside your members area under the My Campaigns tab.');
 define ('MSG_LOGIN_TO_MEMBERS_AREA', 'Login to Local Non Profit Members Area');
 define ('MSG_INVALID_LOGIN', 'The login details you have submitted are invalid<br>Please try again');
 define ('MSG_BTN_LOGIN', 'NON PROFIT LOGIN');
