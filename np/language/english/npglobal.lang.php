@@ -138,7 +138,7 @@ define ('GMSG_UPDAID_SUBSCRIPTION', 'Subscription Unpaid');
 define ('GMSG_INDIVIDUAL', 'School');
 define ('GMSG_BUSINESS', 'Other Non Profit');
 define ('GMSG_ALL', 'All');
-define ('GMSG_REGISTER_BTN', 'Submit your enrollment &gt;');
+define ('GMSG_REGISTER_BTN', 'Save your draft campaign &gt;');
 define ('GMSG_UPDATE_BTN', 'Update &gt;');
 define ('GMSG_ENABLE', 'Enable');
 define ('GMSG_DISABLE', 'Disable');

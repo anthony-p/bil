@@ -36,7 +36,7 @@ define ('GMSG_FRMCHK_FIELD_JS', 'field cannot contain javascript');
 define ('GMSG_FRMCHK_FIELD_IFRAMES', 'field cannot contain iframe tags');
 define ('GMSG_FRMCHK_MIN_LENGTH_6_MAX_18', 'field must be have between 6 and 18 characters');
 define ('GMSG_FRMCHK_VALID_EMAIL', 'field must contain a valid email address');
-define ('GMSG_FRMCHK_VALID_PAYPAL_EMAIL', 'field must be a valid paypal email address and have to match paypal account firt name and last ame');
+define ('GMSG_FRMCHK_VALID_PAYPAL_EMAIL', 'You need to enter valid paypal account information: email address with the matching first and last names');
 define ('GMSG_FRMCHK_FIELD_HTML', 'field cannot contain html');
 define ('GMSG_POSITIVE_VALUE', 'must contain a positive value');
 
