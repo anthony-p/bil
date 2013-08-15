@@ -1,4 +1,3 @@
-<?php //include_once (__DIR__ . "/../includes/generate_image_thumbnail.php"); ?>
 <?
 #################################################################
 ## PHP Pro Bid v6.07															##
@@ -56,8 +55,7 @@
             <div class="img">
                 <a href="<?php echo isset ($campaign["username"]) ? '/' . $campaign["username"] : '' ?>">
                     <img src="<?php echo isset ($campaign["banner"]) ?
-                        $campaign["banner"] : '' ?>">
-<!--                        get_thumbnail_image("200x165_image_" . $campaign["banner"]) : '' ?>">-->
+                        "/get_image_thumbnail.php?image=200x165_image_" . $campaign["banner"] : '' ?>">
                 </a>
             </div>
             <div class="clear"></div>

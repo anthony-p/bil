@@ -54,7 +54,8 @@ function generate_image_thumbnail(
             $thumbnail_image_max_height
         );
 
-        $background_color = imagecolorallocate($thumbnail_gd_image, 242, 242, 242);
+        $background_color = imagecolorallocate($thumbnail_gd_image, 255, 255, 255);
+//        $background_color = imagecolorallocate($thumbnail_gd_image, 242, 242, 242);
         imagefill($thumbnail_gd_image, 0, 0, $background_color);
 
         $dest_x = ($thumbnail_image_max_width - $thumbnail_image_width) / 2;
