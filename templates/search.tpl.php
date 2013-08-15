@@ -1,4 +1,4 @@
-kjhyuhkhjhj<?php //include_once (__DIR__ . "/../includes/generate_image_thumbnail.php"); ?>
+<?php //include_once (__DIR__ . "/../includes/generate_image_thumbnail.php"); ?>
 <?
 #################################################################
 ## PHP Pro Bid v6.07															##
