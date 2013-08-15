@@ -13,7 +13,8 @@ function generate_image_thumbnail(
     $source_image_path,
     $thumbnail_image_path,
     $thumbnail_image_max_width = 600,
-    $thumbnail_image_max_height = 400
+    $thumbnail_image_max_height = 400,
+    $fixed_dimensions = false
 )
 {
 //    var_dump(file_exists($thumbnail_image_path));
@@ -47,7 +48,7 @@ function generate_image_thumbnail(
     }
 
     if (($source_image_width / $source_image_height) <
-        ($thumbnail_image_max_width / $thumbnail_image_max_height)) {
+        ($thumbnail_image_max_width / $thumbnail_image_max_height) || $fixed_dimensions) {
         $thumbnail_gd_image = imagecreatetruecolor(
             $thumbnail_image_max_width,
             $thumbnail_image_max_height
@@ -75,5 +76,38 @@ function generate_image_thumbnail(
     imagedestroy($source_gd_image);
     imagedestroy($thumbnail_gd_image);
     return true;
+}
+
+/**
+ * @param $image
+ */
+function get_thumbnail_image($image)
+{
+    $image_data = explode("_image_", $image);
+    $dimensions = explode("x", $image_data[0]);
+    $image_path_details = explode("/", $image_data[1]);
+
+    $image_name = $image_path_details[count($image_path_details) - 1];
+
+    unset($image_path_details[count($image_path_details) - 1]);
+
+    $root_image_path = implode("/", $image_path_details);
+
+    $thumbnail_image = $root_image_path . "/" . $image_data[0] . "_" . $image_name;
+
+    if (strpos($image_name,'youtube') !== false ||
+        strpos($image_name,'http') !== false ||
+        strpos($image_name,'https') !== false ||
+        strpos($image_name,'vimeo') !== false) {
+        return $root_image_path . "/" . $image_name;
+    }
+
+    if (!file_exists($thumbnail_image)) {
+        generate_image_thumbnail(
+            ".." . $image_data[1], ".." . $thumbnail_image, $dimensions[0], $dimensions[1], true
+        );
+    }
+
+    return $thumbnail_image;
 }
 ?>
