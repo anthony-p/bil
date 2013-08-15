@@ -41,7 +41,7 @@ $_SESSION["np_userid"] = $user_id;
 
 
 
-if (!$user_id && isset($_POST["np_user_id"]) && !empty($_POST["np_user_id"])) {
+if (isset($_POST["np_user_id"]) && !empty($_POST["np_user_id"])) {
     $user_id = $_POST["np_user_id"];
 }
 
