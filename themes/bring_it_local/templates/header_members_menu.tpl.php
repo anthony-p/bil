@@ -106,7 +106,7 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
 
 <!--<li><a href="--><?//=process_link('members_area', array('page' => 'summary'));?><!--">--><?//=MSG_MM_SUMMARY;?><!--</a></li>-->
     <li <?php if ($selected_section == 'my_campaigns'): ?> class="active" <?php endif; ?>>
-        <a href="javascript:void(0)"><?=MSG_MY_CAPMAIGNS?></a>
+        <a href="/campaigns,page,main,section,members_area#8ec3489f027e"><?=MSG_MY_CAPMAIGNS?></a>
         <ul>
             <li><a href="/np/npregister.php"><?=MSG_NEW_CAPMAIGN?></a></li>
             <li><a href="/campaigns,page,drafts,section,members_area#8ec3489f027e"><?=MSG_DRAFTS_CAPMAIGNS?></a></li>
