@@ -3429,9 +3429,9 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 /*main_campaigns_page*/
 .main_campaigns_page h2{font: 14px/29px "OpenSans-SemiBold"; text-transform: uppercase; color: #7eb041;border-bottom: 1.5px solid #dedede; padding: 5px 0;text-align: left;}
 .main_campaigns_page ul{display: block; margin-left: 40px;}
-.main_campaigns_page ul li{float:left; clear:both; margin: 5px 0;list-style: square;}
-.main_campaigns_page ul li span{float:left; font: 12px "OpenSans"; color: #999999; text-align: center; text-transform: uppercase;}
-.main_campaigns_page ul li a{float:left; margin-left: 30px; color:#fff; font:15px/23px "OpenSans-Light"; text-transform: capitalize; width: 150px; text-align: center;border-radius:10px; }
+.main_campaigns_page ul li{float:left; clear:both; margin: 5px 0;width:450px;}
+.main_campaigns_page ul li span{float:left; font: 12px/33px "OpenSans"; color: #999999; text-align: center; text-transform: uppercase;}
+.main_campaigns_page ul li a{float:right; margin-left: 30px; color:#fff; font:15px/33px "OpenSans-Light"; text-transform: capitalize; width: 150px; text-align: center;border-radius:10px; }
 .main_campaigns_page ul li a.create{background: #f21b43; text-shadow: 0px 0px 1px #f98da1;}
 .main_campaigns_page ul li a.edit{background: #0077c0; text-shadow: 0px 0px 1px #60aad8;}
 .main_campaigns_page ul li a.view{background: #ffa800; text-shadow: 0px 0px 1px #ffdfc9;}
