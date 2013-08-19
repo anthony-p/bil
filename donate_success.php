@@ -17,12 +17,12 @@ include_once ('includes/class_reputation.php');
 
 require ('global_header_interior.php');
 
-$np_user_id = $_COOKIE["np_userid"];
+$np_user_id = isset($_COOKIE["np_userid"]) ? $_COOKIE["np_userid"] : "";
 if (!$np_user_id) {
     $np_user_id = $_SESSION["np_userid"];
 }
 
-$user_id = $_COOKIE["user_id"] ? $_COOKIE["user_id"] : 0;
+$user_id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : 0;
  if (!$user_id) {
      $user_id = $_SESSION["probid_user_id"] ? $_SESSION["probid_user_id"] : 0;
  }
