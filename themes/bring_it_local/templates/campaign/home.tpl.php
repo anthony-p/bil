@@ -104,13 +104,16 @@
 <aside class="info">
     <p><?=html_entity_decode($compaignData["campaign_basic"])?></p>
 </aside>
+
 <aside class="donation">
   <div class="inner">
       <p>Help make it happen! Support <span><?php echo $compaignData['name']; ?></p></span>
-      <a href="donate.php?np_userid=<?php echo $compaignData['user_id']; ?>" class="donation">
-          <span class="uper">Donate Now</span>
-          <span>make a donation</span>
-      </a>
+      <?php if ($compaignData['active'] != 2): ?>
+          <a href="donate.php?np_userid=<?php echo $compaignData['user_id']; ?>" class="donation">
+              <span class="uper">Donate Now</span>
+              <span><?=MSG_MAKE_DONATION?></span>
+          </a>
+      <?php endif; ?>
   </div>
 </aside>
 <aside class="social">

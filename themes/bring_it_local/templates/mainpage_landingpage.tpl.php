@@ -81,10 +81,12 @@ $featured_columns = 14;
         </div>
         <div class="navigation-btn">
             <h3><?=MSG_MANY_WAYS_TO_GIVE?></h3>
-            <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>" class="donation">
-                <span class="uper"><?=MSG_DONATE_NOW?></span>
-                <span><?=MSG_MAKE_DONATION?></span>
-            </a>
+            <?php if ($compaigns['active'] != 2): ?>
+                <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>" class="donation">
+                    <span class="uper"><?=MSG_DONATE_NOW?></span>
+                    <span><?=MSG_MAKE_DONATION?></span>
+                </a>
+            <?php endif; ?>
             <a href="/global_partners.php<?php /*
             if (isset($compaigns['url']) && $compaigns['url']) {
                 if (strpos($compaigns['url'], 'http') === 0) {
