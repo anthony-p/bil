@@ -80,12 +80,12 @@ function validateAvatar()
 
     if (in_array($_FILES["avatar"]["type"], $allowed_image_mime_types)) {
         $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-        $logo_file_name = 'images/partner_logos/' . md5($_POST["first_name"] . 'logo') . '.' . $ext;
+        $logo_file_name = 'uplimg/partner_logos/' . md5($_POST["first_name"] . 'logo') . '.' . $ext;
         $upload_logo = generate_image_thumbnail(
             $_FILES["avatar"]["tmp_name"], $logo_file_name, AVATAR_WIDTH, AVATAR_HEIGHT
         );
-        exec('chmod 0777 images/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
-        exec('rm images/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
+        exec('chmod 0777 uplimg/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
+        exec('rm uplimg/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
         return $logo_file_name;
     } else {
         return null;

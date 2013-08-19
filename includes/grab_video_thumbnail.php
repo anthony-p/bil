@@ -20,7 +20,7 @@ class GrabVideoThumbnail {
     /**
      * @var string
      */
-    private $cacheDir = 'images/partner_logos';
+    private $cacheDir = 'uplimg/partner_logos';
 
     /**
      * @var string
