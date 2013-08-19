@@ -56,7 +56,7 @@ if (!$email) {
         $user_id . " AND np_users.probid_user_id=bl2_users.id", "pg_paypal_email");
 }
 
-$beneficiar_account = $email ? $email : 'rlpc.test2@gmail.com';
+$beneficiar_account = $email ? $email : 'markmainsail@bringitlocal.com';
 
 if ($beneficiar_amount >= $bring_it_local_amount) {
     $beneficiar_primary = true;
