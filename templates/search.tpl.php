@@ -90,14 +90,15 @@ include_once('includes/grab_video_thumbnail.php');
                 <span class="day"><?php echo isset ($campaign["days_left"]) ? $campaign["days_left"] : '0' ?><span>days left</span></span>
                 <div class="clear"></div>
                 <?php
-                $end_time=isset($campaign['end_date']) ? $campaign['end_date'] : 0;
-                $create_time= isset($campaign['reg_date']) ? $campaign['reg_date'] : 0;
+//                $end_time=isset($campaign['end_date']) ? $campaign['end_date'] : 0;
+//                $create_time= isset($campaign['reg_date']) ? $campaign['reg_date'] : 0;
                 $current_time=time();
-                $total_time = $end_time- $create_time;
-                if ($total_time)
-                    $completed =round((($current_time - $create_time) / ($total_time)) * 100);
-                else
-                    $completed = 100;
+//                $total_time = $end_time- $create_time;
+//                if ($total_time)
+//                    $completed =round((($current_time - $create_time) / ($total_time)) * 100);
+//                else
+//                    $completed = 100;
+                $completed = $campaign["founddrasing_goal"] ? round(($campaign["payment"] / $campaign["founddrasing_goal"]) * 100) : 100;
                 ?>
                 <?php if ($campaign['end_date'] > $current_time): ?>
                     <div class="progress">
