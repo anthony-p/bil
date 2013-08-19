@@ -36,8 +36,8 @@ else
 	
 //	$default_landing_page = 'summary';
 //	$default_landing_section = 'summary_main';
-	$default_landing_page = 'account';
-	$default_landing_section = 'editinfo';
+	$default_landing_page = 'campaigns';
+	$default_landing_section = 'main';
 
 
 	$page = (!empty($_REQUEST['page'])) ? $_REQUEST['page'] : $default_landing_page;
