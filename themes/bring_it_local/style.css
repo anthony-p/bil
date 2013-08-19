@@ -7,9 +7,7 @@ a:hover {text-decoration:none;}
 
 ul,ol{list-style:none;}
 h1, h2, h3, h4, h5, p, form {
-    font-size: 100%;
     margin: 0px;
-    font-weight: normal;
 }
 /*header img{ width:100%;}*/
 input{outline: none;}
@@ -2886,7 +2884,7 @@ aside.suport .merchants li .info span {display: block; font:16px "OpenSans-Bold"
 .member-menu{margin:0px 0 0 0;background: #efefef;  background: #e6e6e6;   border: 1px solid #d9d9d9;  border-radius: 4px; width: 100%;
 position: relative; display: inline-table; }
 .member-menu li{display: table-cell; cursor: pointer;position: relative;border-right: 1px solid #fff; vertical-align: middle;}
-.member-menu li.active{color:#333; background: #7eb041;}
+.member-menu li.active{background:rgb(77, 71, 71);}
 .member-menu li.active a{color:#fff;}
 .member-menu li.last{border: 0;}
 .member-menu li:hover{background:rgb(77, 71, 71);}
@@ -3427,7 +3425,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 
 /*main_campaigns_page*/
-.main_campaigns_page h2{padding:0 20px;font: 14px/29px "OpenSans-SemiBold"; text-transform: uppercase; color: #7eb041;border-bottom: 1.5px solid #dedede; padding: 5px 0;text-align: left;}
+.main_campaigns_page h2{padding:0 20px;font: 14px/29px "OpenSans-SemiBold"; text-transform: uppercase; color: #7eb041;border-bottom: 1.5px solid #dedede;text-align: left;}
 .main_campaigns_page ul{display: block; margin: 40px  0 0 40px;}
 .main_campaigns_page ul li{float:left; clear:both; margin: 5px 0;width:450px;}
 .main_campaigns_page ul li span{float:left; font: 12px/27px "OpenSans"; color: #999999; text-align: center; text-transform: uppercase;}
