@@ -113,6 +113,11 @@
 <!--            </li>-->
 <!--        </ul>-->
 <!--    </div>-->
+
+    <?php
+        //Temporary disable this section
+    /*
+    ?>
     <div class="row ">
            <div class="viewall">
             <div class="text">
@@ -166,5 +171,7 @@
             </li>
         </ul>
     </div>
+
+    <?php */ ?>
 
 </aside>
