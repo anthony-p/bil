@@ -102,7 +102,7 @@
 // var_dump($compaignData);
 ?>
 <aside class="info">
-    <p><?=$compaignData["campaign_basic"]?></p>
+    <p><?=html_entity_decode($compaignData["campaign_basic"])?></p>
 </aside>
 <aside class="donation">
   <div class="inner">
