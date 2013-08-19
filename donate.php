@@ -42,7 +42,7 @@ $campaign = $db->get_sql_row(
     "SELECT end_date, active, logo, banner, description, pg_paypal_email, name  FROM np_users WHERE np_users.user_id=" . $user_id
 );
 
-if (!$campaign || $campaign['active'] == 2 || ($compaigns['end_date']-time()) <= 0 )
+if (!$campaign || $campaign['active'] == 2 || ($campaign['end_date']-time()) <= 0 )
     header("Location: /",TRUE,301);
 
 $template->set('campaign', $campaign);
