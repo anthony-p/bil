@@ -196,10 +196,11 @@ include_once('includes/grab_video_thumbnail.php');
                             <div class="clear"></div>
 							<?php 
 								if(($row['end_date']-time())>0){
-                                    $end_time=$row['end_date'];
-                                    $create_time=$row['reg_date'];
-                                    $current_time=time();
-                                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+//                                    $end_time=$row['end_date'];
+//                                    $create_time=$row['reg_date'];
+//                                    $current_time=time();
+//                                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+                                    $completed =$row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
 	                            	echo "<div class='progress'><div style='width:". $completed."%' class='bar'></div></div>";
 	                            }
                                 else{

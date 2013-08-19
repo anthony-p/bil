@@ -69,10 +69,11 @@ include_once('includes/grab_video_thumbnail.php');
                     <span class="day"><?php $unu=round(($row['end_date']-time())/86400); echo $unu; ?><span> days left</span></span>
                     <div class="clear"></div>
                     <?php
-                    $end_time=$row['end_date'];
-                    $create_time=$row['reg_date'];
-                    $current_time=time();
-                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+//                    $end_time=$row['end_date'];
+//                    $create_time=$row['reg_date'];
+//                    $current_time=time();
+//                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+                    $completed =$row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
                     echo  $completed."%";
                     ?>
                     <?php if ($current_time > $end_time): ?>
