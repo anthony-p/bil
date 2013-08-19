@@ -9,6 +9,7 @@
 //if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 //var_dump($campaigns); exit;
+include_once('includes/grab_video_thumbnail.php');
 ?>
 <!--<script src="../scripts/jquery/jquery-1.6.3.min"></script>-->
 <!--<script>-->
@@ -52,10 +53,21 @@
     <ul class="list" id="pagination">
     <?php $counter=0; foreach ($campaigns as $campaign):  $counter++; ?>
         <li  class="<?php  if(($counter % 4)==0){ echo "fourth";}?>">
+            <?php
+                if (isset($campaign['banner'])) {
+                  $imageBanner =   $campaign['banner'];
+                  if (strpos($imageBanner,'youtube.') !== false || strpos($imageBanner,'vimeo.com') !== false)
+                  {
+                      $gvt = new GrabVideoThumbnail($imageBanner,md5($imageBanner));
+                      if ($gvt->getThumbnail());
+                        $imageBanner = '/'.$gvt->getImage();
+                  }
+                }
+            ?>
             <div class="img">
                 <a href="<?php echo isset ($campaign["username"]) ? '/' . $campaign["username"] : '' ?>">
-                    <img src="<?php echo isset ($campaign["banner"]) ?
-                        "/get_image_thumbnail.php?image=200x165_image_" . $campaign["banner"] : '' ?>">
+                    <img src="<?php echo isset ($imageBanner) ?
+                        "/get_image_thumbnail.php?image=200x165_image_" . $imageBanner : '' ?>">
                 </a>
             </div>
             <div class="clear"></div>

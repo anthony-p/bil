@@ -8,6 +8,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 global $coupon_url;
+include_once('includes/grab_video_thumbnail.php');
 ?>
 <head>
     <?php echo $header_content; ?>
@@ -155,7 +156,18 @@ global $coupon_url;
                     <li>
 					<a href="/<?php echo $row['username']; ?>" target="_blank">
 <!--                        <div class="img"><img src="--><?php //echo isset($row['banner']) ? $row["banner"] : '';?><!--"/></div>-->
-                        <div class="img"><img src="<?php echo isset($row['banner']) ? "/get_image_thumbnail.php?image=200x165_image_" . $row["banner"] : '';?>"/></div>
+                        <?php
+                            if (isset($row['banner'])) {
+                              $imageBanner =   $row['banner'];
+                              if (strpos($imageBanner,'youtube.') !== false || strpos($imageBanner,'vimeo.com') !== false)
+                              {
+                                  $gvt = new GrabVideoThumbnail($imageBanner,md5($imageBanner));
+                                  if ($gvt->getThumbnail());
+                                    $imageBanner = '/'.$gvt->getImage();
+                              }
+                            }
+                        ?>
+                        <div class="img"><img src="<?php echo isset($imageBanner) ? "/get_image_thumbnail.php?image=200x165_image_" . $imageBanner : '';?>"/></div>
                         <div class="clear"></div>
 					</a>
                         <div class="campaigns-info">
