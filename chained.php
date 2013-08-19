@@ -37,13 +37,12 @@ $_SESSION["transferred_amount"] = $beneficiar_amount;;
 $bring_it_local_account = $result["payment_account"];
 
 $user_id = $_COOKIE["np_userid"];
-$_SESSION["np_userid"] = $user_id;
-
-
 
 if (isset($_POST["np_user_id"]) && !empty($_POST["np_user_id"])) {
     $user_id = $_POST["np_user_id"];
 }
+
+$_SESSION["np_userid"] = $user_id;
 
 
 $email = '';
