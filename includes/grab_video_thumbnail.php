@@ -77,7 +77,7 @@ class GrabVideoThumbnail {
             $this->image = $this->cacheDir.'/'.$this->filename.'.jpg';
             return true;
         }
-        if (strpos($this->url,'youtube.') !== false)
+        if (strpos($this->url,'youtube.com') !== false || strpos($this->url,'youtu.be') !== false)
             return $this->getYoutubeImage();
         else
             $this->getVimeImage();
@@ -88,9 +88,17 @@ class GrabVideoThumbnail {
      * @return bool
      */
     private function getYoutubeImage() {
+//        http://youtu.be/iXOUIsu-E0Q
         $url = $this->url;
-        $queryString = parse_url($url, PHP_URL_QUERY);
-        parse_str($queryString, $params);
+        if (strpos($url,'youtu.be') !== false) {
+            $queryString = str_replace("http://",'',$url);
+            $params = explode('/',$queryString);
+            $params['v'] = $params[1];
+        }else
+        {
+            $queryString = parse_url($url, PHP_URL_QUERY);
+            parse_str($queryString, $params);
+        }
         if (isset($params['v'])) {
             $vidID = $params['v'];
             $thumb = file_get_contents("http://img.youtube.com/vi/$vidID/0.jpg");

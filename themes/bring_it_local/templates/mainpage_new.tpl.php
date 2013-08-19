@@ -159,7 +159,7 @@ include_once('includes/grab_video_thumbnail.php');
                         <?php
                             if (isset($row['banner'])) {
                               $imageBanner =   $row['banner'];
-                              if (strpos($imageBanner,'youtube.') !== false || strpos($imageBanner,'vimeo.com') !== false)
+                              if (strpos($imageBanner,'youtube.com') !== false || strpos($imageBanner,'youtu.be') !== false || strpos($imageBanner,'vimeo.com') !== false)
                               {
                                   $gvt = new GrabVideoThumbnail($imageBanner,md5($imageBanner));
                                   if ($gvt->getThumbnail());
