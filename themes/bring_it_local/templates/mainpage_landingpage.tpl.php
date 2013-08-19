@@ -62,10 +62,11 @@ $featured_columns = 14;
             <div class='clear'></div>
             <?php
             if(($compaigns['end_date']-time())>0){
-                $end_time=$compaigns['end_date'];
-                $create_time=$compaigns['reg_date'];
-                $current_time=time();
-                $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+//                $end_time=$compaigns['end_date'];
+//                $create_time=$compaigns['reg_date'];
+//                $current_time=time();
+//                $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+                $completed =round(($compaigns["payment"] / $compaigns["founddrasing_goal"]) * 100);
                 echo "<div class='progress'><div style='width:". $completed."%' class='bar'></div></div>";
             }
             elseif($compaigns['payment'] == 0){
