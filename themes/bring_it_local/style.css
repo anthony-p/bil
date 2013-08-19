@@ -2719,7 +2719,8 @@ h2.resp-accordion:first-child { border-top: 1px solid #c1c1c1 !important;}
 .resp-tab-content aside.social ul li{display: inline-block; float:left; margin-left: 25px;height:20px;}
 .resp-tab-content aside.social ul li.buttons a{display: block;}
 .resp-tab-content aside.social ul li.buttons a span{ border: 1px solid #cfcfcf; display:block;border-radius:4px;background: url("img/asside_btn.png") 0 0; font:12px/18px "OpenSans-SemiBold"; padding: 0 25px; text-transform: uppercase; color:rgb(173, 173, 173); text-shadow: 0 0 1px rgba(116, 114, 114,0.5);}
-.resp-tab-content aside.info p{width:565px;font: 16px/20px "OpenSans"; color:#000; margin:26px 0  28px 30px ;}
+.resp-tab-content aside.info{padding:26px 0  28px 30px ; width: 92%; }
+.resp-tab-content aside.info p{width:565px;font: 16px/20px "OpenSans"; color:#000;}
 .resp-tab-content aside.donation div{padding:0;float:none;}
 .resp-tab-content aside.donation p{float:left; width:310px; font:14px/20px "OpenSans-SemiBold"; color:#000;margin:20px 0 0 35px;}
 .resp-tab-content aside.donation p span{text-shadow:0 0 1px rgb(190, 190, 190);}
