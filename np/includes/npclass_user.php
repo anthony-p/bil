@@ -115,7 +115,7 @@ class npuser extends npcustom_field
             $create_time = $result['reg_date'] ? $result['reg_date'] : 1;
             $current_time = time();
             $completed = round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
-            $percent=$completed*100;
+            $percent=$completed*100/194;
 
             $result["percent"] = $percent;
 
@@ -215,7 +215,7 @@ class npuser extends npcustom_field
                 $result['reg_date'] : 1;
             $current_time = time();
             $completed = round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
-            $percent=$completed*100;
+            $percent=$completed*100/194;
 
             $result["percent"] = $percent;
 
