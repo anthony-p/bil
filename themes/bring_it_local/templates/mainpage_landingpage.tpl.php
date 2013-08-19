@@ -62,10 +62,11 @@ $featured_columns = 14;
             <div class='clear'></div>
             <?php
             if(($compaigns['end_date']-time())>0){
-                $end_time=$compaigns['end_date'];
-                $create_time=$compaigns['reg_date'];
-                $current_time=time();
-                $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+//                $end_time=$compaigns['end_date'];
+//                $create_time=$compaigns['reg_date'];
+//                $current_time=time();
+//                $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+                $completed = $compaigns["founddrasing_goal"] ? round(($compaigns["payment"] / $compaigns["founddrasing_goal"]) * 100) : "0";
                 echo "<div class='progress'><div style='width:". $completed."%' class='bar'></div></div>";
             }
             elseif($compaigns['payment'] == 0){
@@ -81,10 +82,12 @@ $featured_columns = 14;
         </div>
         <div class="navigation-btn">
             <h3><?=MSG_MANY_WAYS_TO_GIVE?></h3>
-            <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>" class="donation">
-                <span class="uper"><?=MSG_DONATE_NOW?></span>
-                <span><?=MSG_MAKE_DONATION?></span>
-            </a>
+            <?php if ($compaigns['active'] != 2 && ($compaigns['end_date']-time())>0 ): ?>
+                <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>" class="donation">
+                    <span class="uper"><?=MSG_DONATE_NOW?></span>
+                    <span><?=MSG_MAKE_DONATION?></span>
+                </a>
+            <?php endif; ?>
             <a href="/global_partners.php<?php /*
             if (isset($compaigns['url']) && $compaigns['url']) {
                 if (strpos($compaigns['url'], 'http') === 0) {

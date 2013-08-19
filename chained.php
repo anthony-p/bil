@@ -37,13 +37,12 @@ $_SESSION["transferred_amount"] = $beneficiar_amount;;
 $bring_it_local_account = $result["payment_account"];
 
 $user_id = $_COOKIE["np_userid"];
-$_SESSION["np_userid"] = $user_id;
-
-
 
 if (isset($_POST["np_user_id"]) && !empty($_POST["np_user_id"])) {
     $user_id = $_POST["np_user_id"];
 }
+
+$_SESSION["np_userid"] = $user_id;
 
 
 $email = '';
@@ -74,10 +73,10 @@ if ($beneficiar_amount >= $bring_it_local_amount) {
 
 // Request specific required fields
 $actionType			= "PAY";
-$cancelUrl			= "http://dev2.bringitlocal.com/donate_cancel.php";	// TODO - If you are not executing the Pay call for a preapproval,
+$cancelUrl			= "http://" . $_SERVER['SERVER_NAME'] . "/donate_cancel.php";	// TODO - If you are not executing the Pay call for a preapproval,
 //        then you must set a valid cancelUrl for the web approval flow
 //        that immediately follows this Pay call
-$returnUrl			= "http://dev2.bringitlocal.com/donate_success.php";	// TODO - If you are not executing the Pay call for a preapproval,
+$returnUrl			= "http://" . $_SERVER['SERVER_NAME'] . "/donate_success.php";	// TODO - If you are not executing the Pay call for a preapproval,
 //        then you must set a valid returnUrl for the web approval flow
 //        that immediately follows this Pay call
 $currencyCode		= "USD";

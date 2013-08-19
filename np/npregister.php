@@ -129,7 +129,7 @@ else
                 if (isset($_SESSION["banner"]) && $_SESSION["banner"] == 'valid') {
                     if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
                         $ext = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
-                        $banner_file_name = '/images/partner_logos/temp/' .
+                        $banner_file_name = '/uplimg/partner_logos/temp/' .
                             md5($_SESSION["probid_user_id"] . 'banner') . '.' . $ext;
                         $upload_banner = generate_image_thumbnail(
                             $_FILES["banner"]["tmp_name"], '..' . $banner_file_name, 600, 400
@@ -145,7 +145,7 @@ else
                 if (isset($_SESSION["logo"]) && $_SESSION["logo"] == 'valid') {
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
                         $ext = pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION);
-                        $logo_file_name = '/images/partner_logos/temp/' .
+                        $logo_file_name = '/uplimg/partner_logos/temp/' .
                             md5($_SESSION["probid_user_id"] . 'logo') . '.' . $ext;
                         $upload_logo = generate_image_thumbnail(
                             $_FILES["logo"]["tmp_name"], '..' . $logo_file_name, 160, 160
@@ -171,52 +171,52 @@ else
 
                 if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
                     $ext = pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION);
-                    $logo_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'logo') . '.' . $ext;
+                    $logo_file_name = '/uplimg/partner_logos/' . md5($_POST["username"] . 'logo') . '.' . $ext;
                     $upload_logo = generate_image_thumbnail(
                         $_FILES["logo"]["tmp_name"], '..' . $logo_file_name, 160, 160
                     );
                     array_map(
                         'unlink',
                         glob(
-                            'rm ../images/partner_logos/temp/' .
+                            'rm ../uplimg/partner_logos/temp/' .
                                 md5($_SESSION["probid_user_id"] . 'logo') .
                                 '.*'
                         )
                     );
-//                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
-//                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
+//                    exec('chmod 0777 ../uplimg/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
+//                    exec('rm ../uplimg/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
 //                    move_uploaded_file($_FILES["logo"]["tmp_name"], '..' . $logo_file_name);
                     $_POST["logo"] = $logo_file_name;
                 } elseif (isset($_POST["valid_logo_image"]) && $_POST["valid_logo_image"]) {
                     $ext = pathinfo('..' . $_POST["valid_logo_image"], PATHINFO_EXTENSION);
-                    $logo_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'logo') . '.' . $ext;
+                    $logo_file_name = '/uplimg/partner_logos/' . md5($_POST["username"] . 'logo') . '.' . $ext;
                     $upload_logo = generate_image_thumbnail(
                         '..' . $_POST["valid_logo_image"], '..' . $logo_file_name, 160, 160
                     );
                     $_POST["logo"] = $logo_file_name;
-                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
-                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
+                    exec('chmod 0777 ../uplimg/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
+                    exec('rm ../uplimg/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'logo') . '.*');
                 }
 
                 if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
                     $ext = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
-                    $banner_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'banner') . '.' . $ext;
+                    $banner_file_name = '/uplimg/partner_logos/' . md5($_POST["username"] . 'banner') . '.' . $ext;
                     $upload_banner = generate_image_thumbnail(
                         $_FILES["banner"]["tmp_name"], '..' . $banner_file_name, 600, 400
                     );
-                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
-                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
+                    exec('chmod 0777 ../uplimg/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
+                    exec('rm ../uplimg/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
 //                    move_uploaded_file($_FILES["banner"]["tmp_name"], '..' . $banner_file_name);
                     $_POST["banner"] = $banner_file_name;
                 } elseif (isset($_POST["valid_banner_image"]) && $_POST["valid_banner_image"]) {
                     $ext = pathinfo('..' . $_POST["valid_banner_image"], PATHINFO_EXTENSION);
-                    $banner_file_name = '/images/partner_logos/' . md5($_POST["username"] . 'banner') . '.' . $ext;
+                    $banner_file_name = '/uplimg/partner_logos/' . md5($_POST["username"] . 'banner') . '.' . $ext;
                     $upload_banner = generate_image_thumbnail(
                         '..' . $_POST["valid_banner_image"], '..' . $banner_file_name, 600, 400
                     );
                     $_POST["banner"] = $banner_file_name;
-                    exec('chmod 0777 ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
-                    exec('rm ../images/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
+                    exec('chmod 0777 ../uplimg/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
+                    exec('rm ../uplimg/partner_logos/temp/' . md5($_SESSION["probid_user_id"] . 'banner') . '.*');
                 } elseif (isset ($_POST["video_url"]) && !empty($_POST["video_url"])) {
                     $_POST["banner"] = str_replace("watch?v=","embed/",$_POST["video_url"]);
                 }

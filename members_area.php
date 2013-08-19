@@ -36,8 +36,8 @@ else
 	
 //	$default_landing_page = 'summary';
 //	$default_landing_section = 'summary_main';
-	$default_landing_page = 'account';
-	$default_landing_section = 'editinfo';
+	$default_landing_page = 'campaigns';
+	$default_landing_section = 'main';
 
 
 	$page = (!empty($_REQUEST['page'])) ? $_REQUEST['page'] : $default_landing_page;
@@ -5233,7 +5233,7 @@ else
 
 
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
-                        $logo_file_name = '/images/partner_logos/' . md5($_POST["name"] . 'logo');
+                        $logo_file_name = '/uplimg/partner_logos/' . md5($_POST["name"] . 'logo');
                         $upload_logo = generate_image_thumbnail(
                             $_FILES["logo"]["tmp_name"], trim($logo_file_name, '/'), 160, 160
                         );
@@ -5241,7 +5241,7 @@ else
                     }
 
                     if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
-                        $banner_file_name = '/images/partner_logos/' . md5($_POST["name"] . 'banner');
+                        $banner_file_name = '/uplimg/partner_logos/' . md5($_POST["name"] . 'banner');
                         $upload_logo = generate_image_thumbnail(
                             $_FILES["banner"]["tmp_name"], trim($banner_file_name, '/'), 600, 400
                         );

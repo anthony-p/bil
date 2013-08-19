@@ -119,6 +119,10 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
     </li>
 
 
+    <?php
+        //Temporary disable this section
+    /*
+    ?>
     <li <?php if ($selected_section == 'buying_and_selling'): ?> class="active" <?php endif; ?>>
         <a href=""><?=MSG_BUYING_AND_SELLING?></a>
        <ul>
@@ -173,6 +177,7 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
     </ul>
 
     </li>
+    <?php */ ?>
 <!--    --><?// if ($is_seller) { ?>
 <!-- <li>-->
 <!--     <a href="javascript:void(0)">--><?//=MSG_MM_SELLING;?><!--  </a>-->
