@@ -12,13 +12,14 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <script language="javascript" src="/scripts/jquery/tiny.editor.js" type="text/javascript"></script>
 <link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">
 
-<SCRIPT LANGUAGE="JavaScript"><!--
-myPopup = '';
-
-function openPopup(url) {
-	myPopup = window.open(url,'popupWindow','width=350,height=250,status=yes');
-   if (!myPopup.opener) myPopup.opener = self;
-}
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+//myPopup = '';
+//
+//function openPopup(url) {
+//	myPopup = window.open(url,'popupWindow','width=350,height=250,status=yes');
+//   if (!myPopup.opener) myPopup.opener = self;
+//}
 //-->
 (function($) {
     $.cookie = function(key, value, options) {

@@ -70,7 +70,7 @@ global $coupon_url;
 
             $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
                 effect: 'fade',
-                testMode: true
+//                testMode: true
             });
 
             $(".myCampaigs .list li:odd").addClass("odd");
