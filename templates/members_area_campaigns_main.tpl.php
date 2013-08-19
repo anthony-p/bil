@@ -4,17 +4,17 @@
     <div>
         <ul>
            <li><span>Click here to create a new campaign</span>
-                <a href="/np/npregister.php" class="create">new campaign</a>
+                <a href="/np/npregister.php" class="create">New campaign</a>
             </li>
         
            <li><span>Click here to edit your draft campaigns</span>
-                <a href="/campaigns,page,drafts,section,members_area" class="edit">edit campaign</a>
+                <a href="/campaigns,page,drafts,section,members_area" class="edit">Drafts</a>
             </li>
           
                     
             
           <li><span>Click here to edit your closed campaigns</span>
-                <a href="/campaigns,page,closed,section,members_area" class="edit">edit campaign</a>
+                <a href="/campaigns,page,closed,section,members_area" class="edit">Closed</a>
             </li>
             
                        
