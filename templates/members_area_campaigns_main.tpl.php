@@ -14,7 +14,7 @@
                     
             
           <li><span>Click here to edit your closed campaigns</span>
-                <a href="/campaigns,page,closed,section,members_area" class="edit">Closed</a>
+                <a href="/campaigns,page,closed,section,members_area" class="closed">Closed</a>
             </li>
             
                        
