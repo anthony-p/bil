@@ -110,16 +110,13 @@ TINY.editor = function() {
 			try{this.e.execCommand("styleWithCSS", 0, 0)}
 			catch(e) {try{this.e.execCommand("useCSS", 0, 1)}catch(e) {}}
 		}
-        console.log('edit');
 	};
 	edit.prototype.print = function() {
 		this.i.contentWindow.print();
-        console.log('print');
 	};
 	edit.prototype.hover = function(div, pos, dir) {
 		this.getSelection();
 		div.style.backgroundPosition = (dir ? '34px ' : '0px ') + (pos) + 'px';
-        console.log('hover');
 	};
 	edit.prototype.getSelection = function() {
 		if(this.ie && this.e.getSelection) {
@@ -139,12 +136,10 @@ TINY.editor = function() {
 		}
 	};
 	edit.prototype.ddaction = function(dd, a) {
-        console.log('ddaction');
 		var i = dd.selectedIndex, v = dd.options[i].value;
 		this.action(a, v);
 	};
 	edit.prototype.action = function(cmd, val, ie) {
-        console.log('action');
         if(ie && !this.ie) {
 			alert('Your browser does not support this function.')
 		} else{
@@ -153,7 +148,6 @@ TINY.editor = function() {
 		}
 	};
 	edit.prototype.insert = function(pro, msg, cmd) {
-        console.log('insert');
 		var val = prompt(pro, msg);
 		if(val != null && val != '') {this.e.execCommand(cmd, 0, val)}
 	};
@@ -173,13 +167,11 @@ TINY.editor = function() {
 		}
 	};
 	edit.prototype.move = function(e) {
-        console.log('move');
 		var pos = TINY.cursor.top(e);
 		this.i.height = parseInt(this.i.height) + pos-this.i.bcs;
 		this.i.bcs = pos;
 	};
 	edit.prototype.freeze = function() {
-        console.log('freeze');
 		if(this.ie) {
 			document.detachEvent('onmousemove', this.mv); document.detachEvent('onmouseup', this.sr);
 		} else{
@@ -187,7 +179,6 @@ TINY.editor = function() {
 		}
 	};
 	edit.prototype.toggle = function(post, div) {
-        console.log('toggle');
 		if(!this.d) {
 			var v = this.t.value;
 			if(div) {div.innerHTML = this.obj.toggletext || 'source'}
@@ -226,15 +217,10 @@ TINY.editor = function() {
 		}
 	};
 	edit.prototype.post = function() {
-        console.log('post');
 		if(this.d) {
 			this.toggle(1);
 		}
 	};
-
-    edit.getContent = function (){
-        return "OK!!!";
-    };
 
 	return { edit : edit }
 }();
