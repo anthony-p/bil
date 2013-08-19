@@ -7,6 +7,8 @@
 #################################################################
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
+
+include_once('includes/grab_video_thumbnail.php');
 ?>
 <? echo (!empty($no_results_message)) ? $no_results_message : '<br>';?>
 
