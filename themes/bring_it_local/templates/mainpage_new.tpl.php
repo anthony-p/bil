@@ -154,7 +154,7 @@ include_once('includes/grab_video_thumbnail.php');
                 <ul class="list">
                     <?php foreach( $campaigns_list as $row):?>
                     <li>
-					<a href="/<?php echo $row['username']; ?>" target="_blank">
+					<a href="/<?php echo $row['username']; ?>">
 <!--                        <div class="img"><img src="--><?php //echo isset($row['banner']) ? $row["banner"] : '';?><!--"/></div>-->
                         <?php
                             if (isset($row['banner'])) {
