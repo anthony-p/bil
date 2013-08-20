@@ -77,7 +77,7 @@ function submit_form(form_name) {
         <li id="li_<?php echo $row["user_id"]?>">
             <dl>
                 <dt><?=MSG_CAMPAIGN_NAME?>:</dt>
-                <dd><?php echo $row['name'];?></dd>
+                <dd><?php echo $row['project_title'];?></dd>
                 <dt><?=MSG_CREATE_AT?>:</dt>
                 <dd><?php echo date("m/d/y",$row['end_date']);?></dd>
                 <dt><?=MSG_CLOSED_ON?>:</dt>
@@ -89,7 +89,7 @@ function submit_form(form_name) {
             <fieldset>
                 <div class="campaignsButtons">
                     <a href="/<?php echo $row['username']; ?>" target="_blank"class="view">view</a>
-                    <a href="/campaigns,page,edit,section,<?php echo $row["user_id"]?>,campaign_id,members_area?keyword=#<?php echo $row['user_id'];?>;?>" class="edit"><?=MSG_MM_EDIT?></a>
+                    <a href="/campaigns,page,edit,section,<?php echo $row["user_id"]?>,campaign_id,members_area" class="edit"><?=MSG_MM_EDIT?></a>
                     <a href="/np/npdelete.php?np_userid=<?php echo $row["user_id"]?>" id="<?php echo $row["user_id"]?>" class="delete"><?=MSG_DELETE?></a>
                 </div>
             </fieldset>
