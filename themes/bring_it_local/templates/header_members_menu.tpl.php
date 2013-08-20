@@ -73,7 +73,7 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
         <a href="javascript:void(0)"><?=MSG_MM_PROFILE?></a>
          <ul>
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'editinfo'));?>"><?=MSG_MM_PERSONAL_INFO;?></a></li>
-             <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'management'));?>"><?=MSG_MM_MANAGE_ACCOUNT;?></a></li>
+<!--             <li><a href="--><?//=process_link('members_area', array('page' => 'account', 'section' => 'management'));?><!--">--><?//=MSG_MM_MANAGE_ACCOUNT;?><!--</a></li>-->
              <li><a href="javascript:void(0)"><?=MSG_MM_ABOUT_ME?></a>
                  <ul>
                     <li><a href="/about_me,page,edit,section,members_area"><?=MSG_MM_EDIT?></a></li>
