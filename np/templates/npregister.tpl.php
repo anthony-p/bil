@@ -222,6 +222,7 @@ function processURL(url){
         id = ( results === null ) ? url : results[1];
         return processYouTube(id);
     } else if (url.indexOf('youtu.be') > -1) {
+        url = url.replace("http://","");
         id = url.split('/')[1];
         return processYouTube(id);
     } else if (url.indexOf('vimeo.com') > -1) {
