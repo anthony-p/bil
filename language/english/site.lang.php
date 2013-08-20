@@ -1459,7 +1459,7 @@ define ('MSG_COMMUNITY_FOUND', 'Community Fund');
 define ('MSG_CAMPAIGN_HOME', 'Campaign home');
 define ('MSG_FUNDERS', 'FUNDERS');
 define ('MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS', 'Dedicate a portion of your donations to the Community Fund');
-define ('MSG_WAYS_TO_SUPPORT', 'WAYS TO support');
+define ('MSG_WAYS_TO_SUPPORT', 'Shop Online');
 
 
 
