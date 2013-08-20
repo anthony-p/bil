@@ -205,7 +205,7 @@ else if ($session->value('user_id'))
         in_array($section, array('editinfo', 'management', 'edit', 'view', 'received', 'received'))) {
         $selected_section = 'my_profile';
     } elseif (in_array($page, array('campaigns')) &&
-        in_array($section, array('drafts', 'live', 'closed'))) {
+        in_array($section, array('drafts', 'live', 'closed','main'))) {
         $selected_section = 'my_campaigns';
     } elseif (in_array($page, array()) && in_array($section, array())) {
         $selected_section = 'my_contributions';
