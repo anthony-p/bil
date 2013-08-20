@@ -11,12 +11,14 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <link href="/css/cupertino/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 
 <link href="css/tabs-style.css" rel="stylesheet">
-<link href="/css/tinyeditor.css" rel="stylesheet">
+<!--<link href="/css/tinyeditor.css" rel="stylesheet">-->
 <script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>
 <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
 <script language=JavaScript src='/scripts/jquery/jquery-ui-custom.js'></script>
 <script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>
-<script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>
+<!--<script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>-->
+<script language="JavaScript" src="/scripts/jquery/tiny.editor.js" type="text/javascript"></script>
+<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">
 <style>
     /*.prev_container{*/
         /*overflow: auto;*/
@@ -35,29 +37,6 @@ $(document).ready(function()
 {
     $('.file').preimage();
 
-    /* == == == == == == == == == == == == == == == == == == == == == == ==*/
-//    var editor = new TINY.editor.edit('editor', {
-//        id: 'pitch_text',
-//        width: 584,
-//        height: 175,
-//        cssclass: 'tinyeditor',
-//        controlclass: 'tinyeditor-control',
-//        rowclass: 'tinyeditor-header',
-//        dividerclass: 'tinyeditor-divider',
-//        controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
-//            'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
-//            'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
-//            'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'print'],
-//        footer: true,
-//        fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
-//        xhtml: true,
-//        cssfile: 'custom.css',
-//        bodyid: 'editor',
-//        footerclass: 'tinyeditor-footer',
-//        toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},
-//        resize: {cssclass: 'resize'}
-//    });
-    /* == == == == == == == == == == == == == == == == == == == == == == ==*/
 });
 
 function checkEmail() {
@@ -222,6 +201,7 @@ function processURL(url){
         id = ( results === null ) ? url : results[1];
         return processYouTube(id);
     } else if (url.indexOf('youtu.be') > -1) {
+        url = url.replace("http://","");
         id = url.split('/')[1];
         return processYouTube(id);
     } else if (url.indexOf('vimeo.com') > -1) {
@@ -345,16 +325,16 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 <div id="navigation" style="display:none;">
     <ul>
         <li id="p_account" class="selected">
-            <a href="#"><span>1</span>Account</a>
+            <a href="#"><span>1</span><?=REG_CMN_ACCOUNT?></a>
         </li>
         <li id="p_projectDetail">
-            <a href="#"><span>2</span>Add Details</a>
+            <a href="#"><span>2</span><?=REG_CMN_ADD_DETAILS?></a>
         </li>
         <li id="p_projectEdit">
-            <a href="#"><span>3</span>Enhance It</a>
+            <a href="#"><span>3</span><?=REG_CMN_ENHANCE_IT?></a>
         </li>
         <li id="p_confirmation">
-            <a href="#"><span>4</span>Save It</a>
+            <a href="#"><span>4</span><?=REG_CMN_SAVE_IT?></a>
         </li>
 
     </ul>
@@ -735,4 +715,39 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 </form>
 </div>
 
+<script type="text/javascript">
+    $( document ).ready( function (){
+        /* == == == == == == == == == == == == == == == == == == == == == == ==*/
+
+        var editor = new TINY.editor.edit('editor', {
+            id: 'campaign_basic',
+            width: 584,
+            height: 175,
+            cssclass: 'tinyeditor',
+            controlclass: 'tinyeditor-control',
+            rowclass: 'tinyeditor-header',
+            dividerclass: 'tinyeditor-divider',
+            controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
+                'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
+                'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
+                'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'print'],
+            footer: true,
+            fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
+            xhtml: true,
+            cssfile: '/scripts/style/tinyeditor.css',
+            bodyid: 'editor_campaign_basic',
+            footerclass: 'tinyeditor-footer',
+            toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},
+            resize: {cssclass: 'resize'}
+        });
+        /* == == == == == == == == == == == == == == == == == == == == == == ==*/
+
+        $("#formElem").submit(function(){
+            var docBody = $(editor.e.documentElement).find('body');
+
+            $("#campaign_basic").val(docBody.html());
+            return true;
+        });
+    });
+</script>
 

@@ -33,12 +33,6 @@ if (defined('MSG_STATE'))
 if (defined('MSG_ZIP_CODE'))
     define ('MSG_ZIP_CODE', 'Zip/Post Code');
 
-
-define('REG_CMN_ACCOUNT','Account');
-define('REG_CMN_ADD_DETAILS','Add Details');
-define('REG_CMN_ENHANCE_IT','Enhance It');
-define('REG_CMN_SAVE_IT','Save It');
-
 define ('MSG_PASSWORD', 'Password');
 define ('MSG_RETYPE_PASSWORD', 'Retype Password');
 define ('MSG_WELCOME', 'Welcome');
