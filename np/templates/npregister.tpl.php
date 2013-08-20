@@ -17,8 +17,10 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <script language=JavaScript src='/scripts/jquery/jquery-ui-custom.js'></script>
 <script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>
 <!--<script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>-->
-<script language="JavaScript" src="/scripts/jquery/tiny.editor.js" type="text/javascript"></script>
-<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">
+<!--<script language="JavaScript" src="/scripts/jquery/tiny.editor.js" js="text/javascript"></script>-->
+<script language="JavaScript" src="/scripts/jquery/tiny_mce/tiny_mce_src.js" js="text/javascript"></script>
+<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>
+<!--<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">-->
 <style>
     /*.prev_container{*/
         /*overflow: auto;*/
@@ -500,7 +502,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         </div>
         <div class="account-row">
             <label><?=MSG_CREATE_PROJECT_CAMPAIGN_BASIC;?> *</label>
-            <textarea rows="5" cols="60" name="campaign_basic" id="campaign_basic"><?php echo isset($user_details['campaign_basic']) ? $user_details['campaign_basic'] : '' ?></textarea>
+            <textarea rows="5" cols="60" class="campaign_basic" name="campaign_basic" id="campaign_basic"><?php echo isset($user_details['campaign_basic']) ? $user_details['campaign_basic'] : '' ?></textarea>
             <span><?=MSG_CREATE_PROJECT_CAMPAIGN_BASIC_EXPLANATION;?></span>
         </div>
         <div class="account-row">
@@ -719,35 +721,27 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     $( document ).ready( function (){
         /* == == == == == == == == == == == == == == == == == == == == == == ==*/
 
-        var editor = new TINY.editor.edit('editor', {
-            id: 'campaign_basic',
-            width: 584,
-            height: 175,
-            cssclass: 'tinyeditor',
-            controlclass: 'tinyeditor-control',
-            rowclass: 'tinyeditor-header',
-            dividerclass: 'tinyeditor-divider',
-            controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
-                'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
-                'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
-                'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'print'],
-            footer: true,
-            fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
-            xhtml: true,
-            cssfile: '/scripts/style/tinyeditor.css',
-            bodyid: 'editor_campaign_basic',
-            footerclass: 'tinyeditor-footer',
-            toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},
-            resize: {cssclass: 'resize'}
+        tinyMCE.init({
+                // General options
+                width: 584,
+                height: 250,
+                editor_selector : "campaign_basic",
+                mode : "textareas",
+                theme : "advanced",
+                plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+                // Theme options
+                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+                theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,image,cleanup,code,|,forecolor,backcolor",
+                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+//                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
+                theme_advanced_toolbar_location : "top",
+                theme_advanced_toolbar_align : "left",
+                theme_advanced_statusbar_location : "bottom",
+                theme_advanced_resizing : true
         });
+
         /* == == == == == == == == == == == == == == == == == == == == == == ==*/
-
-        $("#formElem").submit(function(){
-            var docBody = $(editor.e.documentElement).find('body');
-
-            $("#campaign_basic").val(docBody.html());
-            return true;
-        });
     });
 </script>
 

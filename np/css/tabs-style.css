@@ -192,8 +192,10 @@ span.error{
 #steps form fieldset h4{font: 15px "OpenSans-SemiBold"; color: #7eb041; text-transform: uppercase; padding:20px 0; border-bottom:3px solid #dedede; float:left; width:100%;}
 .account-tab{width: 600px; margin: 0 auto;}
 .account-row{width: 100%; float: left; clear: both; margin-top:10px; }
+#.account-row{width: 100%; float: left; clear: both; margin-top:0px; }
 .account-row label{float:left; font: 14px/25px "OpenSans"; color: #222;}
-.account-row span{float: left;  clear: both;  font: 9px "OpenSans";  margin-top: 10px;}
+.account-row span{float: left;  clear: both;  font: 9px "OpenSans";  margin-top: 0px;}
+#.account-row span{float: left;  clear: both;  font: 9px "OpenSans";  margin-top: 10px;}
 #steps form input[type=text]{float: right;  height: 25px; width: 250px; border: 1px solid #ddd; border-radius: 3px; outline: none;  padding: 5px; padding: 0 10px;}
 #steps form select, #steps form textarea {float: right; width: 250px; }
 #steps form .phone input{margin-left:10px;}
