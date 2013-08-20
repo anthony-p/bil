@@ -7,6 +7,14 @@
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 #################################################################
 
+// Campaign Tab Message
+define ('MSG_CMN_ACCOUNT', 'Account');
+define ('MSG_CMN_DETAILS', 'Details');
+define ('MSG_CMN_ENHANCEMENTS', 'Enhancements');
+define ('MSG_CMN_UPDATES', 'Updates');
+define ('MSG_CMN_REWARDS', 'Rewards');
+define ('MSG_CMN_STATUS', 'Status');
+
 define ('MSG_BTN_HOME', 'Home');
 define ('MSG_BTN_REGISTER', 'Register');
 
