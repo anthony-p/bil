@@ -80,12 +80,14 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
                     <li><a href="/about_me,page,view,section,members_area"><?=MSG_MM_VIEW?></a></li>
                  </ul>
              </li>
+<?php /*
              <li><a href="javascript:void(0)"><?=MSG_MESSAGES?></a>
                  <ul>
                      <li><a href="<?=process_link('members_area', array('page' => 'messaging', 'section' => 'received'));?>"><?=MSG_MM_RECEIVED;?></a></li>
                      <li><a href="<?=process_link('members_area', array('page' => 'messaging', 'section' => 'sent'));?>"><?=MSG_MM_SENT;?></a></li>
                  </ul>
              </li>
+*/ ?>
 
 
 
