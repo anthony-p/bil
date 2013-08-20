@@ -18,6 +18,13 @@ define ('MSG_CMN_STATUS', 'Status');
 // Donate Cancel Message
 define ('MSG_DOANTE_CANCEL_PAGE_TEXT', 'Oops...it looks like you\'ve canceled your donation...<br>If this was a mistake, please go back and try again. If we can help you with some problem please <a href="mailto:support@bringitlocal.com">contact us</a> and let us know.');
 
+// Member Area Campaign Main
+define ('MSG_MACM_NEW_CAPMAIGN', 'Click here to create a new campaign');
+define ('MSG_MACM_DRAFTS_CAPMAIGNS', 'Click here to edit your draft campaigns');
+define ('MSG_MACM_CLOSED_CAPMAIGNS', 'Click here to edit your closed campaigns');
+define ('MSG_MACM_LIVE_CAPMAIGNS', 'Click here to view your live campaigns');
+
+
 define ('MSG_BTN_HOME', 'Home');
 define ('MSG_BTN_REGISTER', 'Register');
 
