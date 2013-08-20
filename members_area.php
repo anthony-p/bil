@@ -979,7 +979,11 @@ else
 
 			$members_area_page_content = $template->process('members_area_account_refund_requests.tpl.php');
 			$template->set('members_area_page_content', $members_area_page_content);
-		}
+		} elseif( $section == 'main') {
+
+            $members_area_page_content = $template->process('members_area_account_main.tpl.php');
+            $template->set('members_area_page_content', $members_area_page_content);
+        }
 	} /* END -> MY ACCOUNT SECTION */
 	
 	if ($page == 'messaging' || $page == 'summary') /* BEGIN -> MESSAGING PAGES */
