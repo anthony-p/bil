@@ -278,6 +278,17 @@ function fetchstate($statecode){
         <td class="leftCol"><?=MSG_POSTALE_CODE;?> *</td>
         <td class="contentfont"><input name="postal_code" type="text" id="postal_code" value="<?=(isset($user_details['postal_code']))?$user_details['postal_code']:'';?>" size="25" /></td>
     </tr>
+    <tr>
+        <td class="leftCol"><?=MSG_PHONE;?> *</td>
+        <td class="contentfont">
+            <? if (isset($edit_user) && $edit_user == 1)	{ ?>
+            <input name="phone" type="text" id="phone" value="<?=(isset($user_details['phone']))?$user_details['phone']:'';?>" size="25" />
+            <? } else { ?>
+            ( <input name="phone_a" type="text" id="phone_a" value="<?=(isset($user_details['phone_a']))?$user_details['phone_a']:'';?>" size="5" /> )
+            <input name="phone_b" type="text" id="phone_b" value="<?=(isset($user_details['phone_b']))?$user_details['phone_b']:'';?>" size="25" />
+            <? } ?></td>
+    </tr>
+
     <!--tr class="reguser">
 			<td>&nbsp;</td>
 			<td><?=MSG_CITY_EXPL;?></td>
@@ -372,6 +383,8 @@ function fetchstate($statecode){
 </table>
 */ ?>
 <!-- personal info -->
+
+<?php /*
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
     <tr>
         <th colspan="2">Personal Information</th>
@@ -394,6 +407,9 @@ function fetchstate($statecode){
         <td colspan="2"><?=(isset($birthdate_box))?$birthdate_box:'';?></td>
     </tr>
 </table>
+
+ */
+?>
 
 <!-- User Account Details -->
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
