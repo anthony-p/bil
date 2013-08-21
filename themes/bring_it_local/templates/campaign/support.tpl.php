@@ -37,7 +37,7 @@ $first = 0;
 
             <li <?php if ($count == $column-1) echo 'class="last"' ?> >
                 <div class="img">
-                    <?php echo html_entity_decode($parner['advert_code']); ?>
+                    <?php echo html_entity_decode($parner['big_banner_code']); ?>
                 </div>
                 <div class="info">
                     <h3><?php echo trim($parner['name']) ?></h3>
