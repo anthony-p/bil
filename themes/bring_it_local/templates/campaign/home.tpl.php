@@ -46,7 +46,7 @@
             <ul>
                 <?php if (isset($compaignData['facebook_url']) && $compaignData['facebook_url']): ?>
                     <li class="a_facebook">
-                        <a href="<?php
+                        <a target="_blank" href="<?php
                         if (isset($compaignData['facebook_url']) && $compaignData['facebook_url']) {
                             if (strpos($compaignData['facebook_url'], 'http') === 0) {
                                 echo $compaignData['facebook_url'];
@@ -62,7 +62,7 @@
                 <?php endif; ?>
                 <?php if (isset($compaignData['twitter_url']) && $compaignData['twitter_url']): ?>
                 <li class="a_twitter">
-                    <a href="<?php
+                    <a target="_blank" href="<?php
                     if (isset($compaignData['twitter_url']) && $compaignData['twitter_url']) {
                         if (strpos($compaignData['twitter_url'], 'http') === 0) {
                             echo $compaignData['twitter_url'];
@@ -89,7 +89,7 @@
                     <!--        </li>-->
                     <?php if (isset($compaignData['url']) && $compaignData['url']): ?>
                 <li>
-                    <a href="http://<? echo $compaignData["url"]; ?>" target="_blank">Website</a>
+                    <a target="_blank" href="http://<? echo $compaignData["url"]; ?>" target="_blank">Website</a>
                     <!--            <label></label>-->
                 </li>
             <?php endif; ?>
