@@ -3445,6 +3445,9 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #project_update_textarea_toolbar2,
 #project_update_textarea_tbl,
 #project_update_textarea_toolbar1,
+#project_update_textarea_styleselect,
+#project_update_textarea_formatselect,
+#project_update_textarea_fontselect,
 #project_update_textarea_fontsizeselect,
 #project_update_textarea_toolbar3{width: auto !important; padding: 0!important;}
 #steps form fieldset #campaign_basic_toolbar3 td,
