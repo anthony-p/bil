@@ -125,10 +125,22 @@ else
 			}
 			else if ($fv->is_error())
 			{
+                if (!file_exists('../uplimg/partner_logos/')) {
+                    mkdir('../uplimg/partner_logos/', 0777);
+                }
+
+                if (!file_exists('../uplimg/partner_logos/temp/')) {
+                    mkdir('../uplimg/partner_logos/temp/', 0777);
+                }
+
                 include_once('../includes/generate_image_thumbnail.php');
                 if (isset($_SESSION["banner"]) && $_SESSION["banner"] == 'valid') {
                     if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
                         $ext = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
+                        array_map(
+                            'unlink',
+                            glob('../uplimg/partner_logos/' . md5($_POST["name"] . 'banner') . '*')
+                        );
                         $banner_file_name = '/uplimg/partner_logos/temp/' .
                             md5($_SESSION["probid_user_id"] . 'banner') . '.' . $ext;
                         $upload_banner = generate_image_thumbnail(
@@ -145,6 +157,10 @@ else
                 if (isset($_SESSION["logo"]) && $_SESSION["logo"] == 'valid') {
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
                         $ext = pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION);
+                        array_map(
+                            'unlink',
+                            glob('../uplimg/partner_logos/' . md5($_POST["name"] . 'logo') . '*')
+                        );
                         $logo_file_name = '/uplimg/partner_logos/temp/' .
                             md5($_SESSION["probid_user_id"] . 'logo') . '.' . $ext;
                         $upload_logo = generate_image_thumbnail(
