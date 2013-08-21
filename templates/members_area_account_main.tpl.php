@@ -13,15 +13,17 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     <h2><?=MSG_MY_PROFILE;?></h2>
 
     <div>
-        <ul>
+        <ul class="my_profile_list">
            <li><span><?=MSG_MM_PERSONAL_INFO;?></span>
                 <a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'editinfo'));?>" class="create"><?=MSG_MM_PERSONAL_INFO;?></a>
             </li>
           
           <li><span><?=MSG_MM_ABOUT_ME?></span>
             
-                     <li><a href="/about_me,page,edit,section,members_area" class="closed"><?=MSG_MM_EDIT?></a></li>
-                     <li><a href="/about_me,page,view,section,members_area" class="closed"><?=MSG_MM_VIEW?></a></li>
+                  <div class="right">
+                      <a href="/about_me,page,edit,section,members_area" class="edit"><?=MSG_MM_EDIT?></a>
+                      <a href="/about_me,page,view,section,members_area" class="closed"><?=MSG_MM_VIEW?></a>
+                  </div>
                  
             </li>
            
