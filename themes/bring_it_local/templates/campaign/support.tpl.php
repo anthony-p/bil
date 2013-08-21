@@ -27,7 +27,7 @@ $first = 0;
                             <ul><li class="border"></li></ul>
                         </div>
                     </div>
-                    <a href=""> see all</a>
+                    <a href="/global_partners.php"> see all</a>
                 </div>
             <?php endif; ?>
 
