@@ -3441,6 +3441,12 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #steps form .input_row input[type="text"]{float:left;width:16px;}
 #steps form .input_row input[type="checkbox"]{float:left;margin-top: 8px;}
 .input_row label{float:left; font:12px/27px "OpenSans"; color:#333; margin:0 20px;}
+#campaign_basic_fontsizeselect,
+#campaign_basic_fontselect,
+#campaign_basic_styleselect,
+#campaign_basic_formatselect,
+#campaign_basic_toolbar2,
+#campaign_basic_tbl,
 #campaign_basic_toolbar1,
 #project_update_textarea_toolbar2,
 #project_update_textarea_tbl,
@@ -3450,6 +3456,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #project_update_textarea_fontselect,
 #project_update_textarea_fontsizeselect,
 #project_update_textarea_toolbar3{width: auto !important; padding: 0!important;}
+
+#steps form fieldset #campaign_basic_tbl td,
 #steps form fieldset #campaign_basic_toolbar3 td,
 #steps form fieldset #project_update_textarea_tbl td,
 #steps form fieldset #campaign_basic_toolbar1 td,
