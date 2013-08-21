@@ -5244,16 +5244,10 @@ else
 
                     if (!file_exists(__DIR__ . '/uplimg/partner_logos/')) {
                         mkdir(__DIR__ . '/uplimg/partner_logos/', 0777, true);
-                        var_dump(11111);
-                    } else {
-                        var_dump(22222);
                     }
 
                     if (!file_exists(__DIR__ . '/uplimg/partner_logos/temp/')) {
                         mkdir(__DIR__ . '/uplimg/partner_logos/temp/', 0777, true);
-                        var_dump(33333);
-                    } else {
-                        var_dump(44444);
                     }
 
 
