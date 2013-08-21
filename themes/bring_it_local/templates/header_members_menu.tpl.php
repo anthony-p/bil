@@ -70,7 +70,7 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
 <ul class="member-menu">
 <? if ($member_active == 'Active') { ?>
     <li <?php if ($selected_section == 'my_profile'): ?> class="active" <?php endif; ?>>
-        <a href="javascript:void(0)"><?=MSG_MM_PROFILE?></a>
+        <a href="/account,page,main,section,members_area"><?=MSG_MM_PROFILE?></a>
          <ul>
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'editinfo'));?>"><?=MSG_MM_PERSONAL_INFO;?></a></li>
 <!--             <li><a href="--><?//=process_link('members_area', array('page' => 'account', 'section' => 'management'));?><!--">--><?//=MSG_MM_MANAGE_ACCOUNT;?><!--</a></li>-->
