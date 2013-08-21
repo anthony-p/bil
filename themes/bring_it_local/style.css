@@ -3435,7 +3435,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .main_campaigns_page ul li a.edit{background: #0077c0; text-shadow: 0px 0px 1px #60aad8;}
 .main_campaigns_page ul li a.view{background: #ffa800; text-shadow: 0px 0px 1px #ffdfc9;}
 .main_campaigns_page ul li a.closed{background: #92c150; text-shadow: 0px 0px 1px #ffdfc9;}
-.main_campaigns_page ul.my_profile_list li a{float:left;margin: 0 0 0 15px;}
+.main_campaigns_page ul.my_profile_list li a{float:left; margin: 0 0 0 15px;}
 .main_campaigns_page ul.my_profile_list li a.create{width:170px;float: right;}
 
 
