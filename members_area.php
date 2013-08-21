@@ -5206,7 +5206,7 @@ else
                     $certain_date = (isset($_POST["certain_date"]))?$_POST["certain_date"]:'';
                     $pitch_text = (isset($_POST["pitch_text"]))?$_POST["pitch_text"]:'';
 
-                    $mysql_update_query = "UPDATE np_users SET username='" . $_POST["username"] . "',
+                    $mysql_update_query = "UPDATE np_users SET
                     project_category='" . $_POST["project_category"] . "',
                     campaign_basic='" . $_POST["campaign_basic"] . "',
                     project_title='" . $_POST["project_title"] . "',
@@ -5235,9 +5235,35 @@ else
                     pg_paypal_last_name='" . $_POST["pg_paypal_last_name"] . "',
                     pitch_text='" . $pitch_text . "'";
 
+                    if (isset($_POST["username"]) && $_POST["username"]) {
+                        $mysql_update_query .= ", username='" . $_POST["username"] . "'";
+                    }
+
+
+//                    var_dump(__DIR__); exit;
+
+                    if (!file_exists(__DIR__ . '/uplimg/partner_logos/')) {
+                        mkdir(__DIR__ . '/uplimg/partner_logos/', 0777, true);
+                        var_dump(11111);
+                    } else {
+                        var_dump(22222);
+                    }
+
+                    if (!file_exists(__DIR__ . '/uplimg/partner_logos/temp/')) {
+                        mkdir(__DIR__ . '/uplimg/partner_logos/temp/', 0777, true);
+                        var_dump(33333);
+                    } else {
+                        var_dump(44444);
+                    }
+
 
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
-                        $logo_file_name = '/uplimg/partner_logos/' . md5($_POST["name"] . 'logo');
+                        $ext = pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION);
+                        $logo_file_name = '/uplimg/partner_logos/' . md5($_POST["name"] . 'logo') . '.' . $ext;
+                        array_map(
+                            'unlink',
+                            glob('uplimg/partner_logos/' . md5($_POST["name"] . 'logo') . '*')
+                        );
                         $upload_logo = generate_image_thumbnail(
                             $_FILES["logo"]["tmp_name"], trim($logo_file_name, '/'), 160, 160
                         );
@@ -5245,7 +5271,12 @@ else
                     }
 
                     if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
-                        $banner_file_name = '/uplimg/partner_logos/' . md5($_POST["name"] . 'banner');
+                        $ext = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
+                        $banner_file_name = '/uplimg/partner_logos/' . md5($_POST["name"] . 'banner') . '.' . $ext;
+                        array_map(
+                            'unlink',
+                            glob('uplimg/partner_logos/' . md5($_POST["name"] . 'banner') . '*')
+                        );
                         $upload_logo = generate_image_thumbnail(
                             $_FILES["banner"]["tmp_name"], trim($banner_file_name, '/'), 600, 400
                         );
