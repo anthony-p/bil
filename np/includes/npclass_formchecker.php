@@ -135,6 +135,10 @@ class npformchecker extends npdatabase
                         $msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_TWITTER_URL;
                         $this->field_url($field_value, $msg, 'twitter');
 						break;
+					case 'field_alphanumeric':
+                        $msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_FIELD_ALPHA;
+                        $this->field_alphanumeric($field_value, $msg);
+						break;
 
 				}
 
@@ -539,6 +543,20 @@ class npformchecker extends npdatabase
             return true;
         }
 	}
+
+    function field_alphanumeric($value, $msg)
+    {
+        $pattern = "/^[A-Za-z0-9_-]*$/";
+        if(preg_match($pattern, $value))
+        {
+            return true;
+        }
+        else
+        {
+            $this->error_list[] = array("value" => $value, "msg" => $msg);
+            return false;
+        }
+    }
 
 	function field_url($value, $msg, $keyword = '')
 	{

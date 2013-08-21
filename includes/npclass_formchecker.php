@@ -113,12 +113,30 @@ class npformchecker extends npdatabase
 						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_AND . ' "' . $field_value_display_two . '" ' . GMSG_FIELDS_MUST_MATCH;
 						$this->field_equal($field_value, $field_value_two, $msg);
 						break;
+                    case 'field_alphanumeric':
+                        $msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_FIELD_ALPHA;
+                        $this->field_alphanumeric($field_value, $msg);
+                        break;
 
 				}
 
 			}
 		}
 	}
+
+    function field_alphanumeric($value, $msg)
+    {
+        $pattern = "/^[A-Za-z0-9_-]*$/";
+        if(preg_match($pattern, $value))
+        {
+            return true;
+        }
+        else
+        {
+            $this->error_list[] = array("value" => $value, "msg" => $msg);
+            return false;
+        }
+    }
 
 	function check_custom_fields($value_array)
 	{
