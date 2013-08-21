@@ -31,6 +31,7 @@ id = day.getTime();
 eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,location=0,statusbar=1,menubar=0,resizable=0,width=200,height=150,left = 100,top = 134');");
 }
 // load htmlarea
+/*
 	_editor_url = "";                     // URL to htmlarea files
 	var win_ie_ver = parseFloat(navigator.appVersion.split("MSIE")[1]);
 	if (navigator.userAgent.indexOf('Mac')        >= 0) { win_ie_ver = 0; }
@@ -40,7 +41,7 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,lo
 		 document.write('<scr' + 'ipt src="' +_editor_url+ 'editor.js"');
 		 document.write(' language="Javascript1.2"></scr' + 'ipt>');
 	} else { document.write('<scr'+'ipt>function editor_generate() { return false; }</scr'+'ipt>'); }
-
+*/
 
 browserName = navigator.appName;
 browserVer = parseInt(navigator.appVersion);
