@@ -14,7 +14,8 @@ $column = 4;
 $first = 0;
 ?>
 <aside class="suport">
-    <?php foreach($partners as $parner):?>
+    <?php if(isset($partners) && is_array($partners))
+        foreach($partners as $parner):?>
         <?php if ($count == 0): ?>
             <div class="row shop">
         <?php endif; ?>
