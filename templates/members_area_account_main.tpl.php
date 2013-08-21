@@ -20,7 +20,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
           
           <li><span><?=MSG_MM_ABOUT_ME?></span>
             
-                  <div class="right">
+                  <div style="float:right;">
                       <a href="/about_me,page,edit,section,members_area" class="edit"><?=MSG_MM_EDIT?></a>
                       <a href="/about_me,page,view,section,members_area" class="closed"><?=MSG_MM_VIEW?></a>
                   </div>
