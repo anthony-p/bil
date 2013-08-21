@@ -3441,9 +3441,11 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #steps form .input_row input[type="text"]{float:left;width:16px;}
 #steps form .input_row input[type="checkbox"]{float:left;margin-top: 8px;}
 .input_row label{float:left; font:12px/27px "OpenSans"; color:#333; margin:0 20px;}
+#campaign_basic_toolbar1,
 #project_update_textarea_toolbar2,
 #project_update_textarea_tbl,
 #project_update_textarea_toolbar1,
 #project_update_textarea_toolbar3{width: auto !important; padding: 0!important;}
+#steps form fieldset #campaign_basic_toolbar3 td,
 #steps form fieldset #project_update_textarea_tbl td,
 #steps form fieldset  #campaign_basic_toolbar2 td{width:auto !important; display: table-cell; padding: 0;}
