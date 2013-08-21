@@ -612,18 +612,26 @@ $menuTemplate->set('compaignId',$compaignId);
 
 /* == == == == == == == == == == == == == == == == == == == == == == ==*/
 
-
-
-
-
-
-
-
-
 $template->set("cComments",$menuTemplate->process("comments.tpl.php"));
 
 $template->set("cFunders",$menuTemplate->process("funders.tpl.php"));
 
+ $catfeat_max2 = '4';
+ $catfeat_nb2 = '4';
+ $layout['catfeat_nb'] = 4;
+ $layout['catfeat_max'] = 16;
+ $where_query = '';
+ $addl_where_query = '';
+ {
+    (array) $partnersitem_details = null;
+
+ 	$select_condition = $where_query . " WHERE a.active=1 AND a.approved=1 AND a.deleted=0
+ 			AND a.list_in!='store' AND a.catfeat='1'" . $addl_where_query;
+
+ 		$partnersitem_details = $db->random_rows('partners a', 'a.advert_id, a.name, a.advert_code, a.advert_url, a.advert_pct,a.currency,
+ 		a.end_time', $select_condition, $layout['catfeat_max']);
+ 	}
+$menuTemplate->set("partners",$partnersitem_details);
 $template->set("cRewards",$menuTemplate->process("rewards.tpl.php"));
 
 $template->set("cSupport",$menuTemplate->process("support.tpl.php"));
