@@ -7,6 +7,24 @@
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 #################################################################
 
+// Campaign Tab Message
+define ('MSG_CMN_ACCOUNT', 'Account');
+define ('MSG_CMN_DETAILS', 'Details');
+define ('MSG_CMN_ENHANCEMENTS', 'Enhancements');
+define ('MSG_CMN_UPDATES', 'Updates');
+define ('MSG_CMN_REWARDS', 'Rewards');
+define ('MSG_CMN_STATUS', 'Status');
+
+// Donate Cancel Message
+define ('MSG_DOANTE_CANCEL_PAGE_TEXT', 'Oops...it looks like you\'ve canceled your donation...<br>If this was a mistake, please go back and try again. If we can help you with some problem please <a href="mailto:support@bringitlocal.com">contact us</a> and let us know.');
+
+// Member Area Campaign Main
+define ('MSG_MACM_NEW_CAPMAIGN', 'Click here to create a new campaign');
+define ('MSG_MACM_DRAFTS_CAPMAIGNS', 'Click here to edit your draft campaigns');
+define ('MSG_MACM_CLOSED_CAPMAIGNS', 'Click here to edit your closed campaigns');
+define ('MSG_MACM_LIVE_CAPMAIGNS', 'Click here to view your live campaigns');
+
+
 define ('MSG_BTN_HOME', 'Home');
 define ('MSG_BTN_REGISTER', 'Register');
 
@@ -1459,7 +1477,7 @@ define ('MSG_COMMUNITY_FOUND', 'Community Fund');
 define ('MSG_CAMPAIGN_HOME', 'Campaign home');
 define ('MSG_FUNDERS', 'FUNDERS');
 define ('MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS', 'Dedicate a portion of your donations to the Community Fund');
-define ('MSG_WAYS_TO_SUPPORT', 'Shop');
+define ('MSG_WAYS_TO_SUPPORT', 'Shop Online');
 
 
 
