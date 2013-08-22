@@ -1472,6 +1472,7 @@ define ('MSG_RAISED_TOWARD_THE_GOAL', 'raised toward our goal of');
 define ('MSG_MANY_WAYS_TO_GIVE', 'There are many ways to give');
 define ('MSG_DONATE_NOW', 'Donate Now');
 define ('MSG_MAKE_DONATION', 'make a donation');
+define ('MSG_MAKE_HAPPEN', 'Help make it happen! Support ');
 define ('MSG_SHOP_ONLINE', 'Shop Online');
 define ('MSG_SHOP_ONLINE_INFORMATION_ABOUT_ONLINE_RETAILERS', 'Click through to online retailers: a % of your purchase will go to this campaign');
 define ('MSG_CHECK_OUT_AUCTIONS_SUPPORTING', 'Check out auctions supporting this campaign');
