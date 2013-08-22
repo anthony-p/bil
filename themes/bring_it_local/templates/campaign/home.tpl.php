@@ -105,10 +105,10 @@
 
 <aside class="donation">
   <div class="inner">
-      <p>Help make it happen! Support <span><?php echo $compaignData['name']; ?></p></span>
+      <p><?=MSG_MAKE_HAPPEN?><span><?php echo $compaignData['project_title']; ?></p></span>
       <?php if ($compaignData['active'] != 2 && ($compaignData['end_date']-time())>0 ): ?>
           <a href="donate.php?np_userid=<?php echo $compaignData['user_id']; ?>" class="donation">
-              <span class="uper">Donate Now</span>
+              <span class="uper"><?=MSG_DONATE_NOW?></span>
               <span><?=MSG_MAKE_DONATION?></span>
           </a>
       <?php endif; ?>
