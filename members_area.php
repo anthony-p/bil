@@ -5013,6 +5013,16 @@ else
 		}
 	} /* END -> SUMMARY PAGE */
 
+    if ($page == 'contributions') /* BEGIN -> CONTRIBUTIONS PAGE */
+   	{
+   		if ($section == 'main')
+   		{
+            $members_area_page_content = $template->process('members_area_contributions.tpl.php');
+            $template->set('members_area_page_content', $members_area_page_content);
+
+   		}
+   	} /* END -> CONTRIBUTIONS PAGE */
+
     if ($page == 'campaigns') /* BEGIN -> CAMPAIGNS PAGE */
     {
         include('templates/member_area_campaigns.php');
