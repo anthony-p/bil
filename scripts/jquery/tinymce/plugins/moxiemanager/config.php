@@ -88,7 +88,8 @@ $moxieManagerConfig['thumbnail.jpeg_quality'] = 75;
 $moxieManagerConfig['thumbnail.allow_override'] = '*';
 
 // Authentication
-$moxieManagerConfig['authenticator'] = 'BasicAuthenticator';
+//$moxieManagerConfig['authenticator'] = 'BasicAuthenticator';
+$moxieManagerConfig['authenticator'] = '';
 $moxieManagerConfig['authenticator.login_page'] = '';
 
 // SessionAuthenticator
@@ -135,9 +136,9 @@ $moxieManagerConfig['autorename.spacechar'] = "_";
 $moxieManagerConfig['autorename.lowercase'] = false;
 
 // BasicAuthenticator plugin
-$moxieManagerConfig['basicauthenticator.users'] = array(
-array("username" => "bringitlocal", "password" => "mwhite!@#local", "groups" => array("administrator"))
-);
+//$moxieManagerConfig['basicauthenticator.users'] = array(
+//array("username" => "bringitlocal", "password" => "mwhite!@#local", "groups" => array("administrator"))
+//);
 
 // GoogleDrive
 $moxieManagerConfig['googledrive.client_id'] = '';
