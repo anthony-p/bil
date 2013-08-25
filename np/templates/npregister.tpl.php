@@ -18,8 +18,14 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>
 <!--<script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>-->
 <!--<script language="JavaScript" src="/scripts/jquery/tiny.editor.js" js="text/javascript"></script>-->
-<script language="JavaScript" src="/scripts/jquery/tiny_mce/tiny_mce_src.js" js="text/javascript"></script>
+<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/tiny_mce_src.js" js="text/javascript"></script>-->
+<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
+<script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
+<script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
+
 <script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>
+<script language="JavaScript" src="/scripts/jquery/tiny_mce/plugins/moxiemanager/editor_plugin.js" js="text/javascript"></script>
+
 <!--<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">-->
 <style>
     /*.prev_container{*/
@@ -720,7 +726,19 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 <script type="text/javascript">
     $( document ).ready( function (){
         /* == == == == == == == == == == == == == == == == == == == == == == ==*/
+        tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
 
+        tinymce.init({
+            selector:'.campaign_basic',
+            plugins: ["advlist autolink lists link image charmap print preview anchor",
+            	"searchreplace visualblocks code fullscreen",
+            	"insertdatetime media table contextmenu paste moxiemanager",
+                "moxiemanager link image"
+            ],
+            toolbar: "insertfile link image"
+        });
+
+        /*
         tinyMCE.init({
                 // General options
                 width: 584,
@@ -728,7 +746,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 editor_selector : "campaign_basic",
                 mode : "textareas",
                 theme : "advanced",
-                plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+                plugins : "moxiemanager,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
 
                 // Theme options
                 theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
@@ -738,9 +756,13 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 theme_advanced_toolbar_location : "top",
                 theme_advanced_toolbar_align : "left",
                 theme_advanced_statusbar_location : "bottom",
-                theme_advanced_resizing : true
+                theme_advanced_resizing : true,
+                moxiemanager_insert:true,
+            moxiemanager_insert:true,
+            toolbar: "insertfile link image",
+            menubar: false
         });
-
+*/
         /* == == == == == == == == == == == == == == == == == == == == == == ==*/
     });
 </script>
