@@ -871,6 +871,7 @@ Example of conflicting categories names: <b>"Business"</b> -> <b>"Business Ventu
 define ('MSG_ORDER_ID', 'Order ID');
 define ('MSG_ADD_CATEGORY', 'Add Category');
 define ('MSG_SAVE_CHANGES', 'Save Changes');
+define ('MSG_SAVE_CAMPAIGN', 'Save Campaign');
 define ('MSG_GENERATE_CATEGORIES', 'Generate Categories');
 define ('MSG_STORE_CATS_MODIFIED', 'You have made changes to your category structure,
 please update those changes by clicking [ <a href="update_categories.php">HERE</a> ]

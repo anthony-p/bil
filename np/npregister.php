@@ -114,9 +114,6 @@ else
                 }
 
             }
-//            echo '<pre>';
-//            var_dump($_POST);
-//            echo '</pre>';
 
 			include ('includes/npprocedure_frmchk_user.php'); /* Formchecker for user creation/edit */
 
@@ -252,12 +249,7 @@ else
                         $_POST["end_date"] = strtotime($_POST["certain_date"]);
                 }
 
-				if (isset($_POST["user_id"]) && $_POST["user_id"]) {
-                    $user->update($_POST["user_id"], $_POST);
-                    $user_id = $_POST["user_id"];
-                } else {
-                    $user_id = $user->insert($_POST);
-                }
+				$user_id = $user->insert($_POST);
 
                 if ($user_id) {
                     $register_success_message = '<p align="center" class="contentfont">' . MSG_REGISTER_SUCCESS_TYPE3 . '</p>';
@@ -337,54 +329,7 @@ else
 
 				$template->set('register_success_message', $register_success_message);
 
-				if (isset($_POST['registration_integrity']) &&
-                    $_POST['registration_integrity'] == "partial_registration") {
-//                    $template_output .= $template->process('npregister.tpl.php');
-                    $template->set('register_post_url', 'npregister.php');
-                    $template->set('proceed_button', GMSG_REGISTER_BTN);
-                    $user_details = $_POST;
-                    $user_details["user_id"] = $user_id;
-                    $template->set('user_details', $user_details);
-
-                    $post_country = (isset($_POST['country']) && $_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
-				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
-
-                    $template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
-
-                    $template->set("project_category",getProjectCategoryList());
-
-                    if (isset($_POST['state']))
-                        $pState = $_POST['state'];
-                    else
-                        $pState = '';
-                    $template->set('state_box', $tax->states_box('state', $pState, $post_country));
-
-#			$template->set('birthdate_box', $user->birthdate_box($_POST));
-
-                    $custom_sections_table = $user->display_sections($_POST, $page_handle);
-
-                    $template->set('custom_sections_table', $custom_sections_table);
-
-                    $session->set('pin_value', md5(rand(2,99999999)));
-                    $generated_pin = generate_pin($session->value('pin_value'));
-
-                    $pin_image_output = show_pin_image($session->value('pin_value'), $generated_pin, '../');
-
-                    $template->set('pin_image_output', $pin_image_output);
-                    $template->set('generated_pin', $generated_pin);
-
-                    // voucher settings-deleted mw 2-7-2011
-
-#		$template->set('display_direct_payment_methods', $user->direct_payment_methods_edit($_POST));
-#
-#			$template->set('signup_voucher_box', voucher_form('signup', $_POST['voucher_value']));
-#
-                    $template->set('registration_terms_box', terms_box('registration', (isset($_POST['agree_terms']))?$_POST['agree_terms']:''));
-
-                    $template_output .= $template->process('npregister.tpl.php');
-                } else {
-                    $template_output .= $template->process('npregister_success.tpl.php');
-                }
+				$template_output .= $template->process('npregister_success.tpl.php');
 			}
 		}
 

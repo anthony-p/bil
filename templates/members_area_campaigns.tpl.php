@@ -73,6 +73,7 @@ function submit_form(form_name) {
     </form>
     <div class="clear"></div>
     <ul class="list" id="pagination">
+<!--        --><?php //var_dump($campaigns_list)?>
         <?php foreach( $campaigns_list as $row):?>
         <li id="li_<?php echo $row["user_id"]?>">
             <dl>

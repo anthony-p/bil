@@ -44,6 +44,10 @@ if (isset($order) && $order) {
 
 if ($section == 'drafts'){
    $title="drafts";
+//    var_dump("SELECT * FROM bl2_users Join np_users
+//        on id = probid_user_id
+//        WHERE np_users.active='0'
+//        AND np_users.probid_user_id=" . $session->value('user_id') . $tail_query_part); exit;
    $sql_query = $db->query(
         "SELECT * FROM bl2_users Join np_users
         on id = probid_user_id
@@ -52,7 +56,7 @@ if ($section == 'drafts'){
     );
     $rows = array();
     while ($row = mysql_fetch_array($sql_query)) {
-        if($row["end_date"]>time()) {
+        if($row["end_date"]>time() || $row["end_date"] == $row["reg_date"] || !$row["end_date"]) {
         $rows[] = $row;
         }
     }
@@ -60,8 +64,7 @@ if ($section == 'drafts'){
    $template->set('campaign_title', $title);
 //    $template_output .= $template->process('members_area_campaigns.tpl.php');
 //    echo $template_output;
-}
-if ($section == 'live') {
+} elseif ($section == 'live') {
     $title="live";
     $sql_query = $db->query(
         "SELECT * FROM bl2_users Join np_users
@@ -78,7 +81,7 @@ if ($section == 'live') {
 
 //    $template_output .= $template->process('members_area_campaigns.tpl.php');
 //    echo $template_output;
-}if ($section == 'closed') {
+} elseif ($section == 'closed') {
     $title="closed";
     $sql_query = $db->query(
         "SELECT * FROM bl2_users Join np_users
