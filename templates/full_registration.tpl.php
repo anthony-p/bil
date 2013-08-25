@@ -470,7 +470,7 @@ function fetchstate($statecode){
     <tr>
         <td  class="contentfont"><?=MSG_CREATE_PASS;?> *
         </td>
-        <td class="contentfont"><input name="password" type="password" class="contentfont" id="password" size="40" maxlength="20" <? echo ((defined('IN_ADMIN')) && IN_ADMIN == 1) ? 'onchange="copy_password_value();"' : ''; ?> /></td>
+        <td class="contentfont"><input name="password" type="password" class="contentfont" autocomplete="off" id="password" size="40" maxlength="20" <? echo ((defined('IN_ADMIN')) && IN_ADMIN == 1) ? 'onchange="copy_password_value();"' : ''; ?> /></td>
     </tr>
     <!--tr class="reguser">
 			<td>&nbsp;</td>
@@ -478,7 +478,7 @@ function fetchstate($statecode){
 		</tr-->
     <tr>
         <td  class="contentfont"><?=MSG_VERIFY_PASS;?> *</td>
-        <td class="contentfont"><input name="password2" type="password"  id="password2" size="40" maxlength="20" onkeyup="checkPass();" />
+        <td class="contentfont"><input name="password2" type="password" autocomplete="off" id="password2" size="40" maxlength="20" onkeyup="checkPass();" />
             <img src="<?=(isset($path_relative))?$path_relative:'';?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="pass_img" align="absmiddle" style="display:none;" /></td>
     </tr>
 </table>
