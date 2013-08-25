@@ -427,15 +427,14 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     </div>
 
     <div class="account-row">
-
-		<label><?=MSG_STATE;?> *</label>
-        <?=$state_box;?>
-		<div class="clear"></div><br/>
         <label><?=MSG_ZIP_CODE;?> *</label>
         <input name="zip_code" type="text" id="zip_code" value="<?=(isset($user_details['zip_code']))?$user_details['zip_code']:'';?>" size="15" />
         <div class="clear"></div><br/>
         <label><?=MSG_COUNTRY;?> *</label>
         <?=$country_dropdown;?>
+        <div class="clear"></div><br/>
+        <label><?=MSG_STATE;?> *</label>
+        <?=$state_box;?>
         <?php
             $city = (isset($user_details['city']))?$user_details['city']:'';
             $zip_code = (isset($user_details['zip_code']))?$user_details['zip_code']:'';
