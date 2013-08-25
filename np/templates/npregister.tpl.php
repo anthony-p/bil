@@ -427,14 +427,14 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     </div>
 
     <div class="account-row">
-		<label><?=MSG_STATE;?> *</label>
-        <?=$state_box;?>
-		<div class="clear"></div><br/>
         <label><?=MSG_ZIP_CODE;?> *</label>
         <input name="zip_code" type="text" id="zip_code" value="<?=(isset($user_details['zip_code']))?$user_details['zip_code']:'';?>" size="15" />
         <div class="clear"></div><br/>
         <label><?=MSG_COUNTRY;?> *</label>
         <?=$country_dropdown;?>
+        <div class="clear"></div><br/>
+        <label><?=MSG_STATE;?> *</label>
+        <?=$state_box;?>
         <?php
             $city = (isset($user_details['city']))?$user_details['city']:'';
             $zip_code = (isset($user_details['zip_code']))?$user_details['zip_code']:'';
@@ -482,7 +482,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     </div>
     <div class="next">
         <input name="form_register_proceed" type="submit" id="form_register_proceed_account"
-               value="<?=MSG_SAVE_CHANGES?>" class="save_btn partial_save"/>
+               value="<?=MSG_SAVE_CAMPAIGN?>" class="save_btn partial_save"/>
         <div class="right">
             <input type="button" onclick="nextStepShow('p_account')" value="<?=MSG_NEXT?>" class="next_btn" />    </div>
         </div>
@@ -608,7 +608,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <div class="account-tab">
                 <div class="next">
                     <input name="form_register_proceed" type="submit" id="form_register_proceed_details"
-                           value="<?=MSG_SAVE_CHANGES?>" class="save_btn partial_save"/>
+                           value="<?=MSG_SAVE_CAMPAIGN?>" class="save_btn partial_save"/>
                     <div class="right">
                         <input type="button" onclick="prevStepShow('p_projectDetail')"  value="<?=MSG_PREV?>" class="next_btn" />
                         <input type="button" onclick="nextStepShow('p_projectDetail')" value="<?=MSG_NEXT?>" class="next_btn" />
@@ -697,7 +697,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
             <div class="next">
                 <input name="form_register_proceed" type="submit"
-                       id="form_register_proceed_enhance" value="<?=MSG_SAVE_CHANGES?>" class="save_btn partial_save"/>
+                       id="form_register_proceed_enhance" value="<?=MSG_SAVE_CAMPAIGN?>" class="save_btn partial_save"/>
                 <div class="right">
                     <input type="button" onclick="prevStepShow('p_projectEdit')"  value="<?=MSG_PREV?>" class="next_btn" />
                     <input type="button" onclick="nextStepShow('p_projectEdit')" value="<?=MSG_NEXT?>" class="next_btn" />
@@ -736,7 +736,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <br />
         <?=(isset($registration_terms_box))?$registration_terms_box:'';?>
             <input name="form_register_proceed" type="submit"
-                   id="form_register_proceed_save" value="<?=MSG_SAVE_CHANGES?>" class="save_btn partial_save"/>
+                   id="form_register_proceed_save" value="<?=MSG_SAVE_CAMPAIGN?>" class="save_btn partial_save"/>
         <input name="form_register_proceed" type="submit" id="form_register_proceed"
                value="<?=(isset($proceed_button))?$proceed_button:'';?>"/>
     </div>

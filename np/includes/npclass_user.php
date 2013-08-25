@@ -358,26 +358,16 @@ $contacts = $data->createContact($contact);
 include 'includes/npgeocode_user.php';
 		$user_details = $this->rem_special_chars_array($user_details);
 
-        $sql_insert_user = ", , , , , , , ,
-			, , , , ,
-			, , , , , ";
-
-
-
-
 		$sql_update_query = "UPDATE " . NPDB_PREFIX . "users SET
 			name='" . $user_details['name'] . "', address='" . $user_details['address'] . "',
 			city='" . $user_details['city'] . "', country='" . $user_details['country'] . "',
 			state='" . $user_details['state'] . "', zip_code='" . $user_details['zip_code'] . "',
 			phone='" . $user_details['phone'] . "', email='" . $user_details['email'] . "',
-			username='" . $user_details['username'] . "',
 			tax_account_type='" . $user_details['tax_account_type'] . "',
 			tax_company_name='" . $user_details['tax_company_name'] . "',
 			tax_reg_number='" . $user_details['tax_reg_number'] . "', 
 			newsletter='" . $user_details['newsletter'] . "',
 			pg_paypal_email = '" . $user_details['pg_paypal_email'] . "',
-			pg_paypal_first_name = '" . $user_details['pg_paypal_first_name'] . "',
-			pg_paypal_last_name = '" . $user_details['pg_paypal_last_name'] . "',
 			pg_worldpay_id = '" . $user_details['pg_worldpay_id'] . "',
 			pg_checkout_id = '" . $user_details['pg_checkout_id'] . "',
 			pg_nochex_email = '" . $user_details['pg_nochex_email'] . "',
@@ -397,27 +387,7 @@ include 'includes/npgeocode_user.php';
 			pg_alertpay_securitycode = '". $user_details['pg_alertpay_securitycode'] . "', 
 			orgtype = '". $user_details['orgtype'] . "', 
 			lat = '". $user_details['lat'] . "', lng = '" . $user_details['lng'] . "',
-			logo = '" . $user_details['logo'] . "',
-			banner = '" . $user_details['banner'] . "',
-			user_submitted = '" . $user_details['user_submitted'] . "',
-			npverified = '" . $user_details['npverified'] . "',
-			affiliate = '" . $user_details['affiliate'] . "',
-			pitch_text = '" . $user_details['pitch_text'] . "',
-			url = '" . $user_details['url'] . "',
-			facebook_url = '" . $user_details['facebook_url'] . "',
-			twitter_url = '" . $user_details['twitter_url'] . "',
-			project_category = '" . $user_details['project_category'] . "',
-			project_title = '" . $user_details['project_title'] . "',
-			campaign_basic = '" . $user_details['campaign_basic'] . "',
-			description = '" . $user_details['description'] . "',
-			founddrasing_goal = '" . $user_details['founddrasing_goal'] . "',
-			funding_type = '" . $user_details['funding_type'] . "',
-			deadline_type_value = '" . $user_details['deadline_type_value'] . "',
-			time_period = '" . $user_details['time_period'] . "',
-			certain_date = '" . $user_details['certain_date'] . "',
-			probid_user_id = '" . $user_details['probid_user_id'] . "',
-			end_date = '" . $user_details['end_date'] . "',
-			active = 0";
+			logo = '" . $user_details['logo'] . "', banner = '" . $user_details['banner'] . "'";
 
 
 		$user_old = $this->get_sql_row("SELECT balance, payment_mode, tax_apply_exempt FROM
