@@ -5250,8 +5250,7 @@ else
                     }
 
 
-//                    var_dump(__DIR__); exit;
-
+/*
                     if (!file_exists(__DIR__ . '/uplimg/partner_logos/')) {
                         mkdir(__DIR__ . '/uplimg/partner_logos/', 0777, true);
                     }
@@ -5259,6 +5258,7 @@ else
                     if (!file_exists(__DIR__ . '/uplimg/partner_logos/temp/')) {
                         mkdir(__DIR__ . '/uplimg/partner_logos/temp/', 0777, true);
                     }
+*/
 
 
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
