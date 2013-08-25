@@ -427,6 +427,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     </div>
 
     <div class="account-row">
+
 		<label><?=MSG_STATE;?> *</label>
         <?=$state_box;?>
 		<div class="clear"></div><br/>
