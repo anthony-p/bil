@@ -39,6 +39,13 @@ $(document).ready(function()
 {
     $('.file').preimage();
 
+    $(".partial_save").click(function(){
+//        alert(this.id);
+        $('#formElem').append(
+            '<input type="hidden" name="registration_integrity" value="partial_registration" />'
+        );
+    });
+
 });
 
 function checkEmail() {
@@ -468,6 +475,8 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <span><?=MSG_PG_PAYPAL_LAST_NAME_EXPL;?></span>
     </div>
     <div class="next">
+        <input name="form_register_proceed" type="submit" id="form_register_proceed_account"
+               value="<?=MSG_SAVE_CHANGES?>" class="save_btn partial_save"/>
         <div class="right">
             <input type="button" onclick="nextStepShow('p_account')" value="<?=MSG_NEXT?>" class="next_btn" />    </div>
         </div>
@@ -592,6 +601,8 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <? if ($setts['enable_tax']) { ?>
         <div class="account-tab">
                 <div class="next">
+                    <input name="form_register_proceed" type="submit" id="form_register_proceed_details"
+                           value="<?=MSG_SAVE_CHANGES?>" class="save_btn partial_save"/>
                     <div class="right">
                         <input type="button" onclick="prevStepShow('p_projectDetail')"  value="<?=MSG_PREV?>" class="next_btn" />
                         <input type="button" onclick="nextStepShow('p_projectDetail')" value="<?=MSG_NEXT?>" class="next_btn" />
@@ -633,6 +644,9 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <?php if(isset($logo_image) && $logo_image): ?>
                 <input type="hidden" name="valid_logo_image" id="valid_logo_image" value="<?php echo $logo_image; ?>"/>
                 <img src="<?php echo $logo_image; ?>" />
+            <?php elseif(isset($user_details['logo']) && $user_details['logo']): ?>
+                <input type="hidden" name="valid_logo_image" id="valid_logo_image" value="<?php echo $user_details['logo']; ?>"/>
+                <img src="<?php echo $user_details['logo']; ?>" />
             <?php endif; ?>
             <div id="MultiPowUpload_holder">
                 <input class="file" name="logo" id="logo" type='file' multiple title="logo file"/>
@@ -659,6 +673,9 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <?php if(isset($banner_image) && $banner_image): ?>
                 <input type="hidden" name="valid_banner_image" id="valid_banner_image" value="<?php echo $banner_image; ?>"/>
                 <img src="<?php echo $banner_image; ?>" />
+            <?php elseif(isset($user_details['banner']) && $user_details['banner']): ?>
+                <input type="hidden" name="valid_banner_image" id="valid_banner_image" value="<?php echo $user_details['banner']; ?>"/>
+                <img src="<?php echo $user_details['banner']; ?>" />
             <?php endif; ?>
             <input class="file" name="banner" id="banner" type='file' multiple title="banner file"/>
             <span style="cursor: pointer" onclick="clearBannerContent()">Clear</span>
@@ -673,6 +690,8 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         </div>
 
             <div class="next">
+                <input name="form_register_proceed" type="submit"
+                       id="form_register_proceed_enhance" value="<?=MSG_SAVE_CHANGES?>" class="save_btn partial_save"/>
                 <div class="right">
                     <input type="button" onclick="prevStepShow('p_projectEdit')"  value="<?=MSG_PREV?>" class="next_btn" />
                     <input type="button" onclick="nextStepShow('p_projectEdit')" value="<?=MSG_NEXT?>" class="next_btn" />
@@ -710,7 +729,10 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <?=(isset($signup_voucher_box))?$signup_voucher_box:'';?>
             <br />
         <?=(isset($registration_terms_box))?$registration_terms_box:'';?>
-        <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=(isset($proceed_button))?$proceed_button:'';?>"/>
+            <input name="form_register_proceed" type="submit"
+                   id="form_register_proceed_save" value="<?=MSG_SAVE_CHANGES?>" class="save_btn partial_save"/>
+        <input name="form_register_proceed" type="submit" id="form_register_proceed"
+               value="<?=(isset($proceed_button))?$proceed_button:'';?>"/>
     </div>
     </div>
 </fieldset>
