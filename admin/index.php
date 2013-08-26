@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.00															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -30,7 +30,8 @@ if (isset($_POST['adminloginok']))
 	header_redirect($redirect_url);
 }
 
-if ($session->value('adminarea')!='Active')
+$sessionActive = (string) $session->value('adminarea');
+if ($sessionActive!='Active')
 {
 	header_redirect('login.php');
 }
