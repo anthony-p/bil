@@ -228,6 +228,9 @@ class npuser extends npcustom_field
 	function insert ($user_details, $page_handle = 'register')
 	{
 		$salt = $this->create_salt();
+        if (!isset($user_details['password'])) {
+            $user_details['password'] = "password";
+        }
 		$password_hashed = password_hash($user_details['password'], $salt);
 
 		$payment_mode = ($this->setts['account_mode_personal'] == 1) ? $this->setts['init_acc_type'] : $this->setts['account_mode'];
@@ -240,16 +243,151 @@ class npuser extends npcustom_field
 
 		if ($this->setts['birthdate_type'] == 1)
 		{
+            if (!isset($user_details['birthdate_year'])) {
+                $user_details['birthdate_year'] = "1970";
+            }
 			$birthdate = $user_details['birthdate_year'] . '-01-01'; // defaulted to jan 1st of the birthdate year.
 			$birthdate_year = $user_details['birthdate_year'];
 		}
 		else
 		{
+            if (!isset($user_details['dob_year'])) {
+                $user_details['dob_year'] = "1970";
+            }
+            if (!isset($user_details['dob_month'])) {
+                $user_details['dob_month'] = "01";
+            }
+            if (!isset($user_details['dob_day'])) {
+                $user_details['dob_day'] = "01";
+            }
 			$birthdate = $user_details['dob_year'] . '-' . $user_details['dob_month'] . '-' . $user_details['dob_day'];
 			$birthdate_year = $user_details['dob_year'];
 		}
 		$tax_apply_exempt = (!empty($user_details['tax_reg_number'])) ? 1 : 0;
-        include 'includes/npgeocode_user.php';
+        $row = $user_details;
+        if ($_POST['address'] && $_POST['city'] && $_POST['zip_code']) {
+            include 'includes/npgeocode_user.php';
+        }
+        if (!isset($user_details['email'])) {
+            $user_details['email'] = '';
+        }
+        if (!isset($user_details['tax_reg_number'])) {
+            $user_details['tax_reg_number'] = '';
+        }
+        if (!isset($user_details['newsletter'])) {
+            $user_details['newsletter'] = '';
+        }
+        if (!isset($user_details['pg_worldpay_id'])) {
+            $user_details['pg_worldpay_id'] = '';
+        }
+        if (!isset($user_details['pg_checkout_id'])) {
+            $user_details['pg_checkout_id'] = '';
+        }
+        if (!isset($user_details['pg_nochex_email'])) {
+            $user_details['pg_nochex_email'] = '';
+        }
+        if (!isset($user_details['pg_ikobo_username'])) {
+            $user_details['pg_ikobo_username'] = '';
+        }
+        if (!isset($user_details['pg_ikobo_password'])) {
+            $user_details['pg_ikobo_password'] = '';
+        }
+        if (!isset($user_details['pg_protx_username'])) {
+            $user_details['pg_protx_username'] = '';
+        }
+        if (!isset($user_details['pg_protx_password'])) {
+            $user_details['pg_protx_password'] = '';
+        }
+        if (!isset($user_details['pg_authnet_username'])) {
+            $user_details['pg_authnet_username'] = '';
+        }
+        if (!isset($user_details['pg_authnet_password'])) {
+            $user_details['pg_authnet_password'] = '';
+        }
+        if (!isset($user_details['pg_mb_email'])) {
+            $user_details['pg_mb_email'] = '';
+        }
+        if (!isset($user_details['pg_paymate_merchant_id'])) {
+            $user_details['pg_paymate_merchant_id'] = '';
+        }
+        if (!isset($user_details['pg_gc_merchant_id'])) {
+            $user_details['pg_gc_merchant_id'] = '';
+        }
+        if (!isset($user_details['pg_gc_merchant_key'])) {
+            $user_details['pg_gc_merchant_key'] = '';
+        }
+        if (!isset($user_details['pg_amazon_access_key'])) {
+            $user_details['pg_amazon_access_key'] = '';
+        }
+        if (!isset($user_details['pg_amazon_secret_key'])) {
+            $user_details['pg_amazon_secret_key'] = '';
+        }
+        if (!isset($user_details['pg_alertpay_id'])) {
+            $user_details['pg_alertpay_id'] = '';
+        }
+        if (!isset($user_details['pg_alertpay_securitycode'])) {
+            $user_details['pg_alertpay_securitycode'] = '';
+        }
+        if (!isset($user_details['user_submitted'])) {
+            $user_details['user_submitted'] = '';
+        }
+        if (!isset($user_details['logo'])) {
+            $user_details['logo'] = '';
+        }
+        if (!isset($user_details['banner'])) {
+            $user_details['banner'] = '';
+        }
+        if (!isset($user_details['npverified'])) {
+            $user_details['npverified'] = '';
+        }
+        if (!isset($user_details['affiliate'])) {
+            $user_details['affiliate'] = '';
+        }
+        if (!isset($user_details['pitch_text'])) {
+            $user_details['pitch_text'] = '';
+        }
+        if (!isset($user_details['url'])) {
+            $user_details['url'] = '';
+        }
+        if (!isset($user_details['facebook_url'])) {
+            $user_details['facebook_url'] = '';
+        }
+        if (!isset($user_details['twitter_url'])) {
+            $user_details['twitter_url'] = '';
+        }
+        if (!isset($user_details['project_category'])) {
+            $user_details['project_category'] = '';
+        }
+        if (!isset($user_details['project_title'])) {
+            $user_details['project_title'] = '';
+        }
+        if (!isset($user_details['campaign_basic'])) {
+            $user_details['campaign_basic'] = '';
+        }
+        if (!isset($user_details['project_short_description'])) {
+            $user_details['project_short_description'] = '';
+        }
+        if (!isset($user_details['founddrasing_goal'])) {
+            $user_details['founddrasing_goal'] = '';
+        }
+        if (!isset($user_details['funding_type'])) {
+            $user_details['funding_type'] = '';
+        }
+        if (!isset($user_details['deadline_type_value'])) {
+            $user_details['deadline_type_value'] = '';
+        }
+        if (!isset($user_details['time_period'])) {
+            $user_details['time_period'] = '';
+        }
+        if (!isset($user_details['certain_date'])) {
+            $user_details['certain_date'] = '';
+        }
+//        if (!isset($user_details['probid_user_id'])) {
+//            $user_details['probid_user_id'] = '';
+//        }
+        if (!isset($user_details['end_date'])) {
+            $user_details['end_date'] = '';
+        }
 
 		$sql_insert_user = $this->query("INSERT INTO " . NPDB_PREFIX . "users
 			(username, password, email, reg_date, payment_mode, balance, max_credit,
@@ -270,7 +408,7 @@ class npuser extends npcustom_field
 			'" . $user_details['tax_reg_number'] . "', '" . $tax_apply_exempt . "', '" . $user_details['name'] . "',
 			'" . $user_details['address'] . "', '" . $user_details['city'] . "',
 			'" . $user_details['country'] . "', '" . $user_details['state'] . "', '" . $user_details['zip_code'] . "',
-			'" . $phone . "', '" . $birthdate . "', '" . $birthdate_year . "', '" . $user_details['newsletter'] . "', 
+			'" . $phone . "', '" . $birthdate . "', '" . $birthdate_year . "', '" . $user_details['newsletter'] . "',
 			'" . $user_details['pg_paypal_email'] . "', '" . $user_details['pg_paypal_first_name'] . "', '" . $user_details['pg_paypal_last_name'] . "',
 			'" . $user_details['pg_worldpay_id'] . "', '" . $user_details['pg_checkout_id'] . "',
 			'" . $user_details['pg_nochex_email'] . "', '" . $user_details['pg_ikobo_username'] . "',

@@ -56,6 +56,7 @@ global $coupon_url;
 
     <script type="text/javascript">  document.createElement('header');  document.createElement('hgroup');  document.createElement('nav');  document.createElement('menu');  document.createElement('section');  document.createElement('article');  document.createElement('aside');  document.createElement('footer'); </script>
     <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
+    <script src="/scripts/jquery/jquery.polyglot.language.switcher.js" type="text/javascript"></script>
     <script>
         $(document).ready(function() {
             $('#menu').click(function(){
@@ -68,10 +69,23 @@ global $coupon_url;
                 }
             });
 
-            $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
-                effect: 'fade',
-//                testMode: true
-            });
+            if ($.fn.polyglotLanguageSwitcher){
+                $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
+                    effect: 'fade',
+                    testMode: true
+                });
+            } else {
+                $.getScript("/scripts/jquery/jquery.polyglot.language.switcher.js", function(data, textStatus, jqxhr) {
+                   console.log(data); //data returned
+                   console.log(textStatus); //success
+                   console.log(jqxhr.status); //200
+                   console.log('Load was performed.');
+                    $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
+                        effect: 'fade',
+                        testMode: true
+                    });
+                });
+            }
 
             $(".myCampaigs .list li:odd").addClass("odd");
             $(".list li:last-child").addClass("last");
@@ -128,7 +142,7 @@ global $coupon_url;
             // setInterval("displaytime()", 1000);
         }
     </script>
-    <script src="/scripts/jquery/jquery.polyglot.language.switcher.js" type="text/javascript"></script>
+<!--    <script src="/scripts/jquery/jquery.polyglot.language.switcher.js" type="text/javascript"></script>-->
 
     <script language=JavaScript src='/scripts/vendor.js'></script>
 

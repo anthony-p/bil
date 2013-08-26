@@ -8,7 +8,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-<?=$header_search_page;?>
+<?=(isset($header_search_page))?$header_search_page:'';?>
 <? echo (!empty($no_results_message)) ? $no_results_message : '';?>
 <? if (!empty($search_options_menu)) { ?>
 

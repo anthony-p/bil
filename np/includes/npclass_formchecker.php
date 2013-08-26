@@ -160,9 +160,10 @@ class npformchecker extends npdatabase
 
 			$custom_box_ids = @implode(',', $custom_box_array);
 		}
-		
-		$main_category_id = $this->main_category($value_array['category_id']);
-		$addl_category_id = $this->main_category($value_array['addl_category_id']);
+		$category_id = isset($value_array['category_id']) ? $value_array['category_id'] : 0;
+		$addl_category_id = isset($value_array['category_id']) ? $value_array['category_id'] : 0;
+		$main_category_id = $this->main_category($category_id);
+		$addl_category_id = $this->main_category($addl_category_id);
 
 		if (count($custom_box_ids))
 		{
