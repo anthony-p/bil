@@ -325,6 +325,23 @@ while ($result =  mysql_fetch_array($sql_select_np_org_type)) {
 }
 $template->set('np_org_types', $np_org_types);
 
+
+
+if ($session->value('user_id'))
+{
+    $_user_data = $db->query("SELECT * FROM bl2_users WHERE id=" . $session->value('user_id'));
+    $current_user_data = array();
+    while ($result =  mysql_fetch_array($_user_data)) {
+        $current_user_data[] = $result;
+    }
+    $current_user_identifier = (isset($current_user_data[0]["organization"]) && $current_user_data[0]["organization"]) ?
+        $current_user_data[0]["organization"] : $current_user_data[0]["first_name"];
+    $template->set('current_user_identifier', $current_user_identifier);
+} else {
+    $template->set('current_user_identifier', '');
+}
+
+//var_dump(1); exit;
 $template_output .= $template->process('header.tpl.php');
 
 if (is_dir('install'))

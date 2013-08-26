@@ -157,6 +157,7 @@
             $rows[] = $row;
 
         }
+//        var_dump($rows); exit;
 	 
  
         $template->set('campaigns_list', $rows);

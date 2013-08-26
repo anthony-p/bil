@@ -17,6 +17,9 @@ if ($frmchk_details['tax_account_type'] == 1)
 //$fv->check_box($frmchk_details['name'], MSG_FULL_NAME, array('field_empty', 'field_html'));
 $fv->check_box($frmchk_details['fname'], MSG_FIRST_NAME, array('field_empty', 'field_html'));
 $fv->check_box($frmchk_details['lname'], MSG_LAST_NAME, array('field_empty', 'field_html'));
+if (isset($frmchk_details['organization']) && $frmchk_details['organization']) {
+    $fv->check_box($frmchk_details['organization'], MSG_LAST_NAME, array('field_html'));
+}
 //$fv->check_box($frmchk_details['address'], MSG_ADDRESS, array('field_empty', 'field_html'));
 //$fv->check_box($frmchk_details['city'], MSG_CITY, array('field_empty', 'field_html'));
 //$fv->check_box($frmchk_details['country'], MSG_COUNTRY, array('field_empty'));

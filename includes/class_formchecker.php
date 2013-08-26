@@ -233,7 +233,8 @@ class formchecker extends database
 	function pass_confirm($value1, $value2, $msg) {
 		if(strcmp($value1,$value2)!=0)
 		{
-			$this->error_list[] = array('value' => $pass, 'msg' => $msg);
+//			$this->error_list[] = array('value' => $pass, 'msg' => $msg);
+			$this->error_list[] = array('value' => $value2, 'msg' => $msg);
 			return false;
 		}
 		else
