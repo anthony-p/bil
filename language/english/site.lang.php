@@ -227,6 +227,7 @@ define ('MSG_FULL_NAME_EXPL', 'Enter your full name.');
 define ('MSG_FIRST_NAME', 'First Name');
 define ('MSG_FIRST_NAME_EXPL', 'Enter your first name.');
 define ('MSG_LAST_NAME', 'Last Name');
+define ('MSG_ORGANIZATION', 'Organization');
 define ('MSG_LAST_NAME_EXPL', 'Enter your last name.');
 define ('MSG_ADDRESS_EXPL', 'Enter your address.');
 define ('MSG_CITY', 'City');

@@ -226,7 +226,7 @@ global $coupon_url;
 
                 if($session->value('user_id')) {
                     $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email ='" . $session->value('username') . "'", 'first_name');
-                    echo "<span class='user-log'>".MSG_WELCOME." ".$first_name."</span>"."<div class='clear'></div>";
+                    echo "<span class='user-log'>".MSG_WELCOME." ".$current_user_identifier."</span>"."<div class='clear'></div>";
                 }
 
             ?>

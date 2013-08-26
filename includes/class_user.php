@@ -145,8 +145,11 @@ class user extends custom_field
       
                         			
                    $this->query("INSERT INTO " . $this->db_name . ".bl2_users
-        (`id`, `first_name`, `last_name`, `email`, `password`, `salt`, `active`, `create_date`, `last_login`, `is_subscribe_news`)
-         VALUES (NULL, '{$user_details['fname']}', '{$user_details['lname']}', '{$user_details['email']}', '$password_hashed', '$salt', '0', '".time()."', '".time()."', '{$user_details['newsletter']}');");
+        (`id`, `first_name`, `last_name`, `organization`, `email`, `password`,
+        `salt`, `active`, `create_date`, `last_login`, `is_subscribe_news`)
+         VALUES (NULL, '{$user_details['fname']}', '{$user_details['lname']}',
+         '{$user_details['organization']}', '{$user_details['email']}', '$password_hashed',
+         '$salt', '0', '".time()."', '".time()."', '{$user_details['newsletter']}');");
 
         $user_id = $this->insert_id();
 

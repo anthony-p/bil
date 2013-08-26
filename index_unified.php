@@ -71,6 +71,19 @@ else if (!$session->value('user_id') && $layout['d_login_box'] && $setts['is_ssl
 	$menu_box_content = '<p align="center" class="contentfont">[ <a href="'.process_link('login').'"><strong>'.MSG_LOGIN_SECURELY.'</strong></a> ]</p>';
 	$template->set('menu_box_content', $menu_box_content);
 }
+if ($session->value('user_id'))
+{
+    $_user_data = $db->query("SELECT * FROM bl2_users WHERE id=" . $session->value('user_id'));
+    $current_user_data = array();
+    while ($result =  mysql_fetch_array($_user_data)) {
+        $current_user_data[] = $result;
+    }
+    $current_user_identifier = (isset($current_user_data[0]["organization"]) && $current_user_data[0]["organization"]) ?
+        $current_user_data[0]["organization"] : $current_user_data[0]["first_name"];
+    $template->set('current_user_identifier', $current_user_identifier);
+} else {
+    $template->set('current_user_identifier', '');
+}
 
 $template_output .= $template->process('header.tpl.php');
 
