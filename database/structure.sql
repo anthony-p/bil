@@ -3546,7 +3546,13 @@ CREATE TABLE `project_rewards` (
   `user_id` int(11) NOT NULL DEFAULT '0',
   `project_id` int(11) NOT NULL,
   `parrent_id` int(11) NOT NULL DEFAULT '0',
-  `comment` text NOT NULL,
+  `amount` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `estimated_delivery_date` date DEFAULT NULL,
+  `shipping_address_required` tinyint(1) NOT NULL DEFAULT '0',
+  `available_number` int(11) DEFAULT NULL,
+  `given_number` int(11) DEFAULT NULL,
   `create_at` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
