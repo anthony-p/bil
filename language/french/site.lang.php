@@ -1434,6 +1434,7 @@ define ('MSG_BROWSE', 'Browse');
 define ('MSG_LEARN', 'Learn');
 define ('MSG_START', 'Start');
 define ('MSG_MY_DEALS', 'My Deals');
+define ('MSG_CAMPAIGNS', 'Campaigns');
 define ('MSG_MY_CAPMAIGNS', 'My Campaigns');
 define ('MSG_NEW_CAPMAIGN', 'New Campaign');
 define ('MSG_DRAFTS_CAPMAIGNS', 'Drafts Campaigns');

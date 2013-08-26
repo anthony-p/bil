@@ -1,5 +1,5 @@
 <div class="main_campaigns_page">
-    <h2>My Campaigns</h2>
+    <h2><?=MSG_MY_CAPMAIGNS?></h2>
 
     <div>
         <ul>

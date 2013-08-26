@@ -47,7 +47,7 @@ function submit_form(form_name) {
     });
 </script>
 <div class="myCampaigs">
-    <h2><?php echo $campaign_title;?> Campaigns</h2>
+    <h2><?php echo $campaign_title;?> <?=MSG_CAMPAIGNS?></h2>
 <!--    <form accept="#">-->
 <!--        <input type="text" value="" placeholder="Find by name" name="keyword">-->
 <!--        <button type="submit"></button>-->

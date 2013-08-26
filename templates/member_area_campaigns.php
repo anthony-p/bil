@@ -43,7 +43,7 @@ if (isset($order) && $order) {
 }
 
 if ($section == 'drafts'){
-   $title="drafts";
+   $title="draft";
 //    var_dump("SELECT * FROM bl2_users Join np_users
 //        on id = probid_user_id
 //        WHERE np_users.active='0'
