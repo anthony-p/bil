@@ -16,6 +16,8 @@ include_once ('includes/functions_item.php');
 $template->set('header_browse_auctions', $header_browse_auctions); 
 
 $limit = 10;
+if (!isset($start) || !$start)
+    $start = 1;
 /**
  * Generate Alphabetical navigation bar
  */
@@ -73,7 +75,7 @@ $pagination = paginate($start, $limit, $nb_items, $page_url . '.php', $order_lin
 	(string) $browse_auctions_content = null; //g
 	while ($partnersitem_details = $db->fetch_array($sql_select_auctions))
 	{
-		if (IS_SHOP == 1)
+		if (defined(IS_SHOP) && IS_SHOP == 1)
 		{
 			$background = ($counter++%2) ? 'c2_shop' : 'c3_shop';
 		}

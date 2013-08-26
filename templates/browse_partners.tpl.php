@@ -8,7 +8,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-<? echo (IS_SHOP == 1) ? $shop_header : $header_browse_auctions . ((IS_CATEGORIES != 1) ? '<br>' : '');?>
+<? echo (defined("IS_SHOP") && IS_SHOP == 1) ? $shop_header : $header_browse_auctions . ((IS_CATEGORIES != 1) ? '<br>' : '');?>
 <? echo (IS_CATEGORIES == 1) ? $categories_header : '';?>
 
 <div class="msg">Click through here: purchases from any of these vendors will earn money for your non-profit</div>
@@ -72,6 +72,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 	</form>
 </table>
 
-<? echo (IS_SHOP == 1) ? $shop_footer : '';?>
+<? echo (defined("IS_SHOP") && IS_SHOP == 1) ? $shop_footer : '';?>
 <? echo (IS_CATEGORIES == 1) ? $categories_footer : '';?>
 
