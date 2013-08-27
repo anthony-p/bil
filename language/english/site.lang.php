@@ -1482,8 +1482,14 @@ define ('MSG_CAMPAIGN_HOME', 'Campaign home');
 define ('MSG_FUNDERS', 'FUNDERS');
 define ('MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS', 'Dedicate a portion of your donations to the Community Fund');
 define ('MSG_WAYS_TO_SUPPORT', 'Shop Online');
-
-
+define ('MSG_DEADLINE', 'Deadline');
+define ('MSG_TIMEPERIOD', '# of days');
+define ('MSG_DATE', 'date');
+define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 160 pixels wide.');
+define ('MSG_YOUR_STORY', 'Your story');
+define ('MSG_YOUR_STORY2', 'tell potential supporters about your campaign');
+define ('MSG_CLEAR', 'clear');
+define ('MSG_DAYS', 'days');
 
 //define ('', '');
 ?>
