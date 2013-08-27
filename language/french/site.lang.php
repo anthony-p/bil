@@ -1478,6 +1478,8 @@ define ('MSG_YOUR_STORY2', 'tell potential supporters about your campaignffffff'
 define ('MSG_CLEAR', 'clearffffff');
 define ('MSG_DAYS', 'daysffffff');
 define ('MSG_YOUR_UPDATES', 'Your updatesffffff');
-
+define ('MSG_DAYS_LEFT', ' days leftffffff');
+define ('MSG_CLOSED', ' closedffffff');
+define ('MSG_SUCCESS', 'successfulffffff');
 //define ('', 'ffffff');
 ?>

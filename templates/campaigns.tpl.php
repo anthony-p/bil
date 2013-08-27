@@ -66,7 +66,7 @@ include_once('includes/grab_video_thumbnail.php');
                 </div>
                 <div class="campaign-details">
                     <span class="price">$<?php echo $row['payment'];?></span>
-                    <span class="day"><?php $unu=round(($row['end_date']-time())/86400); echo $unu; ?><span> days left</span></span>
+                    <span class="day"><?php $unu=round(($row['end_date']-time())/86400); echo $unu; ?><span> <?=MSG_DAYS_LEFT?></span></span>
                     <div class="clear"></div>
                     <?php
 //                    $end_time=$row['end_date'];
@@ -77,7 +77,7 @@ include_once('includes/grab_video_thumbnail.php');
                     echo  $completed."%";
                     ?>
                     <?php if ($current_time > $end_time): ?>
-                        <div class="project-unsuccessful">Closed</div>
+                        <div class="project-unsuccessful"><?=MSG_CLOSED?></div>
                     <?php else: ?>
                         <div class="progress">
                             <div style="width: <?php echo  $completed."%"; ?>" class="bar">

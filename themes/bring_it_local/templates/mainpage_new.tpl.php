@@ -193,8 +193,8 @@ include_once('includes/grab_video_thumbnail.php');
                             <span class="price">$<?php echo $row['payment'];?></span>
                             <span class="day">
 							<?php $days=round(($row['end_date']-time())/86400); 
-							    if($days>0){echo $days."<span>days left</span>"; }
-							    else{echo "<span>closed</span>";}
+							    if($days>0){echo $days. MSG_DAYS_LEFT; }
+							    else{echo MSG_CLOSED;}
 							?>	
 				            </span>				
                             <div class="clear"></div>
