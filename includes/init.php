@@ -43,7 +43,6 @@ $allowLanguage = array(
 if (isset($_COOKIE['language']) && isset($allowLanguage[$_COOKIE['language']]))
 {
     $session->set('site_lang', $allowLanguage[$_COOKIE['language']]);
-    var_dump($allowLanguage[$_COOKIE['language']]);
 }else
 if (!$session->is_set('site_lang'))
 {
