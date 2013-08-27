@@ -32,6 +32,11 @@ $db->layout = &$layout;
 
 $currentTime = time();
 
+/*
+ * Allow Language for coockie
+ * */
+$allowLanguage = array("english","french");
+
 if (!$session->is_set('site_lang'))
 {
 	$session->set('site_lang', $setts['site_lang']);

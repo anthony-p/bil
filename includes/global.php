@@ -75,6 +75,7 @@ include_once ($fileExtension.'includes/init.php'); ## global
 define('RSS_FEED', 'http://themoneyconverter.com/' . $setts['currency'] . '/rss.xml');
 
 ## 6.06 mod -> override $setts['site_lang'] with $session->value('site_lang')
+var_dump($session->value('site_lang'));
 if ($session->is_set('site_lang'))
 {
 	$setts['site_lang'] = $session->value('site_lang');
