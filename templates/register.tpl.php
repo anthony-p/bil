@@ -169,6 +169,11 @@ function fetchstate($statecode){
             <label><?=MSG_LAST_NAME;?>*</label>
             <input name="lname" type="text" id="lname"  class="text"  value="<? if (isset($user_details['lname'])) echo $user_details['lname'];?>" size="40"/>
         </div>
+        <div class="form-row">
+            <label><?=MSG_ORGANIZATION;?></label>
+            <input name="organization" type="text" id="organization"  class="text"
+                   value="<? if (isset($user_details['organization'])) echo $user_details['organization'];?>" size="40"/>
+        </div>
 
         <div class="form-row">
             <label><?=MSG_EMAIL_ADDRESS;?>*</label>

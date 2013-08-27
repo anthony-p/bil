@@ -177,7 +177,11 @@ include_once('includes/grab_video_thumbnail.php');
                                 </a>
                                 <br/>by 
 								<a href="/about_me.php?user_id=<?php echo isset($row['id']) ? $row['id'] : ''; ?>">
+                                    <?php if (isset($row['organization']) && $row['organization']): ?>
+                                    <?php echo $row['organization'];?>
+                                    <?php else: ?>
                                     <?php echo $row['first_name']."  ".$row['last_name'];?>
+                                    <?php endif; ?>
                                 </a>,
                             </p>
                             <p class="description">

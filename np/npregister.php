@@ -117,7 +117,8 @@ else
 
 			include ('includes/npprocedure_frmchk_user.php'); /* Formchecker for user creation/edit */
 
-			$banned_output = check_banned($_POST['email'], 2);
+			$banned_output = isset($_POST['email']) ?
+                check_banned($_POST['email'], 2) : array("result" => 0);
 
 			if ($banned_output['result'])
 			{
