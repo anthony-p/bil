@@ -151,7 +151,7 @@ global $coupon_url;
                         <select id="polyglot-language-options">
                             <option id="en" value="en" <?=($selectedLanguage == 'en')? "selected":'' ?> >English</option>
                             <option id="fr" value="fr" <?=($selectedLanguage == 'fr')? "selected":'' ?> >Francais</option>
-<!--                            <option id="de" value="de" <?=($selectedLanguage == 'de')? "selected":'' ?> >Deutsch</option>-->
+                            <option id="de" value="de" <?=($selectedLanguage == 'de')? "selected":'' ?> >Deutsch</option>
 <!--                            <option id="it" value="it" <?=($selectedLanguage == 'it')? "selected":'' ?> >Italiano</option>-->
                         </select>
                     </form>

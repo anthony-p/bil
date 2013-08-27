@@ -33,11 +33,12 @@ $db->layout = &$layout;
 $currentTime = time();
 
 /*
- * Allow Language for coockie
+ * Allow Language for cookie
  * */
 $allowLanguage = array(
     "en" => "english",
-    "fr" => "french"
+    "fr" => "french",
+    "de" => "german"
 );
 
 if (isset($_COOKIE['language']) && isset($allowLanguage[$_COOKIE['language']]))
