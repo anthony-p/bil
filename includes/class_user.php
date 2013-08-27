@@ -285,6 +285,7 @@ class user extends custom_field
 
     function update_magento($user_details, $new_password)
     {
+        $result = '';
         try {
             $user_info = $this->get_sql_row("SELECT username FROM
             			" . DB_PREFIX . "users WHERE user_id=" . $user_details['user_id']);
@@ -323,7 +324,7 @@ class user extends custom_field
                         'npname' => $user_details['npname']
                     );
                 }
-                $resut = $proxy->call($sessionId, 'customer.update', array($magento_customer_id, $updateCustomer));
+                $result = $proxy->call($sessionId, 'customer.update', array($magento_customer_id, $updateCustomer));
 
                 $country_id = '';
                 $region_id = '';
@@ -371,7 +372,7 @@ class user extends custom_field
             file_put_contents('/tmp/magento.log', $e->getMessage());
         }
 
-        return $resut;
+        return $result;
     }
 
     function extended_update($user_id, $user_details, $page_handle)
@@ -585,7 +586,6 @@ class user extends custom_field
 
 	function update ($user_id, $user_details, $new_password = null, $page_handle = 'register', $admin_edit = false)
 	{
-
         try{
 
 		$user_details = $this->rem_special_chars_array($user_details);
@@ -593,9 +593,17 @@ class user extends custom_field
         $clickReport = 0;
         if(isset($user_details['clickreport'])) $clickReport=1;
 
+        if (!isset($user_details["newsletter"])) {
+            $user_details["newsletter"] = '';
+        }
+        if (!isset($user_details["tax_reg_number"])) {
+            $user_details["tax_reg_number"] = '';
+        }
+
         $sql_update_query = "UPDATE bl2_users SET
             first_name =  '{$user_details['fname']}',
             last_name =  '{$user_details['lname']}',
+            organization =  '{$user_details['organization']}',
             email='{$user_details['email']}',
             phone =  '{$user_details['phone']}',
             is_subscribe_news='{$user_details['newsletter']}',
@@ -642,6 +650,7 @@ class user extends custom_field
         */
         //return true/false
 
+            $user_details["user_id"] = $user_id;
         $magento_updated = $this->update_magento($user_details, $new_password);
 
 		$user_old = $this->get_sql_row("SELECT balance, payment_mode, tax_apply_exempt FROM

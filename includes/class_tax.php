@@ -98,6 +98,7 @@ class tax extends fees_main
 	function states_box($box_name, $selected_value, $country_value = null, $form_refresh = null)
 	{
 		(string) $display_output = null;
+        $country_id = null;
 
 		if ($country_value)
 		{
@@ -105,11 +106,13 @@ class tax extends fees_main
 		}
 		else
 		{
-			$country_id = $this->get_sql_field("SELECT id FROM " . DB_PREFIX . "countries WHERE	parent_id=0 
-				ORDER BY country_order ASC, name ASC LIMIT 0,1", 'id');
+            $selected_value = (is_numeric($selected_value)) ? '' : $selected_value;
+            $display_output = '<input name="' . $box_name . '" type="text" id="' . $box_name . '" value="' . $selected_value . '" size="25" />';
+//			$country_id = $this->get_sql_field("SELECT id FROM " . DB_PREFIX . "countries WHERE	parent_id=0
+//				ORDER BY country_order ASC, name ASC LIMIT 0,1", 'id');
 		}
 
-		$is_states = $this->is_states($country_id);
+		$is_states = $country_id ? $this->is_states($country_id) : null;
 
 		if ($is_states)
 		{
