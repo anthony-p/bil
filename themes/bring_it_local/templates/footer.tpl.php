@@ -142,12 +142,17 @@ global $coupon_url;
             <div class="language clearfix">
                 <span class="none">Select your language</span>
                 <div id="polyglotLanguageSwitcher">
+                    <?php
+                        $selectedLanguage = 'en';
+                        if (isset($_COOKIE['language']))
+                            $selectedLanguage = $_COOKIE['language'];
+                    ?>
                     <form action="#">
                         <select id="polyglot-language-options">
-                            <option id="en" value="en" selected>English</option>
-                            <option id="fr" value="fr">Francais</option>
-                            <option id="de" value="de">Deutsch</option>
-                            <option id="it" value="it">Italiano</option>
+                            <option id="en" value="en" <?=($selectedLanguage == 'en')? "selected":'' ?> >English</option>
+                            <option id="fr" value="fr" <?=($selectedLanguage == 'fr')? "selected":'' ?> >Francais</option>
+<!--                            <option id="de" value="de" <?=($selectedLanguage == 'de')? "selected":'' ?> >Deutsch</option>-->
+<!--                            <option id="it" value="it" <?=($selectedLanguage == 'it')? "selected":'' ?> >Italiano</option>-->
                         </select>
                     </form>
             </div>

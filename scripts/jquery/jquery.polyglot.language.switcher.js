@@ -220,6 +220,8 @@
             aElement.attr("id", selectedId);
             aElement.text(selectedText);
             aElement.append(innerSpanElement);
+            var expires = "";
+            document.cookie = name + "language=" + item[0].firstChild.id + expires + "; path=/";
         }
 
         function installListeners() {
@@ -305,13 +307,23 @@
                 var urlPage = 'http://' + document.domain + '/' + settings.pagePrefix + id + '/' + page;
                 liElement = $("<li><a id=\"" + id + "\" href=\"" + urlPage + "\">" + text + "</a></li>");
             } else {
-                var href = document.URL.replace('#', '');
+                var href = document.URL;
+                href = href.substr(0,href.indexOf('#'));
+//                var href = document.URL.replace('#', '');
                 var params = parseQueryString();
                 params[settings.paramName] = value;
                 if (href.indexOf('?') > 0) {
                     href = href.substring(0, href.indexOf('?'));
                 }
+                console.log(href);
                 href += toQueryString(params);
+                href = href.replace('#', '');
+//                if (href.indexOf("?") > 0)
+//                    href+="&language="+id;
+//                else
+//                    href+="?language="+id;
+//                console.log(href);
+//                console.log(id);
                 liElement = $("<li><a id=\"" + id + "\" href=\"" + href + "\">" + text + "</a></li>");
             }
             liElement.bind('click', function () {

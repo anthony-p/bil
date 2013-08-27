@@ -76,10 +76,6 @@ global $coupon_url;
                 });
             } else {
                 $.getScript("/scripts/jquery/jquery.polyglot.language.switcher.js", function(data, textStatus, jqxhr) {
-                   console.log(data); //data returned
-                   console.log(textStatus); //success
-                   console.log(jqxhr.status); //200
-                   console.log('Load was performed.');
                     $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
                         effect: 'fade',
                         testMode: true
