@@ -237,6 +237,13 @@ function fetchstate($statecode){
         <td class="leftCol"><?=MSG_LAST_NAME;?> *</td>
         <td class="contentfont"><input name="lname" type="text" id="lname" value="<?=$user_details['last_name'];?>" size="40" /></td>
     </tr>
+    <tr>
+        <td class="leftCol"><?=MSG_ORGANIZATION;?></td>
+        <td class="contentfont">
+            <input name="organization" type="text" id="organization"
+                   value="<?=$user_details['organization'];?>" size="40" />
+        </td>
+    </tr>
     <!--tr class="reguser">
 			<td>&nbsp;</td>
 			<td><?=MSG_LAST_NAME_EXPL;?></td>
@@ -264,14 +271,30 @@ function fetchstate($statecode){
         <td class="contentfont"><input name="city" type="text" id="city" value="<?=$user_details['city'];?>" size="25" /></td>
     </tr>
 
-    <tr>
-        <td class="leftCol"><?=MSG_STATE;?> *</td>
-        <td class="contentfont"><input name="state" type="text" id="state" value="<?=(isset($user_details['state']))?$user_details['state']:'';?>" size="25" /></td>
-    </tr>
+<!--    <tr>-->
+<!--        <td class="leftCol">--><?//=MSG_COUNTRY;?><!-- *</td>-->
+<!--        <td class="contentfont"><input name="country" type="text" id="country" value="--><?//=(isset($user_details['country']))?$user_details['country']:'';?><!--" size="25" /></td>-->
+<!--    </tr>-->
 
     <tr>
         <td class="leftCol"><?=MSG_COUNTRY;?> *</td>
-        <td class="contentfont"><input name="country" type="text" id="country" value="<?=(isset($user_details['country']))?$user_details['country']:'';?>" size="25" /></td>
+        <td class="contentfont">
+            <?=$country_dropdown;?>
+<!--            <input name="country" type="text" id="country" value="--><?//=(isset($user_details['country']))?$user_details['country']:'';?><!--" size="25" />-->
+        </td>
+    </tr>
+
+<!--    <tr>-->
+<!--        <td class="leftCol">--><?//=MSG_STATE;?><!-- *</td>-->
+<!--        <td class="contentfont"><input name="state" type="text" id="state" value="--><?//=(isset($user_details['state']))?$user_details['state']:'';?><!--" size="25" /></td>-->
+<!--    </tr>-->
+
+    <tr>
+        <td class="leftCol"><?=MSG_STATE;?> *</td>
+        <td class="contentfont">
+            <?=$state_box;?>
+<!--            <input name="state" type="text" id="state" value="--><?//=(isset($user_details['state']))?$user_details['state']:'';?><!--" size="25" />-->
+        </td>
     </tr>
 
     <tr>

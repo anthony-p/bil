@@ -628,6 +628,17 @@ else
                 $row_user["phone_a"] = $phone_a;
                 $row_user["phone_b"] = $phone_b;
 
+                if (!isset($row_user['first_name'])) {
+                    $row_user['first_name'] = isset($_POST['fname']) ? $_POST['fname'] : '';
+                }
+                if (!isset($row_user['last_name'])) {
+                    $row_user['last_name'] = isset($_POST['lname']) ? $_POST['lname'] : '';
+                }
+
+//                echo '<pre>';
+//                var_dump($row_user);
+//                echo '</pre>';
+
 				$template->set('user_details', $row_user);
                 if (isset($_REQUEST['do']))
                     $do = $_REQUEST['do'];
