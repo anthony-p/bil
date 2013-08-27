@@ -52,9 +52,9 @@ $featured_columns = 14;
                 <?php $days=round(($compaigns['end_date']-time())/86400);
                 if($days>0){echo $days."<span> days left</span>"; }
                 elseif($compaigns['payment'] == 0)
-                    echo MSG_CLOSED;
+                    echo "<span>closed</span>";
                 else {
-                    echo MSG_SUCCESS;
+                    echo "<span>successfully</span>";
                 }
                 ?>
             </span>
@@ -70,19 +70,12 @@ $featured_columns = 14;
                 echo "<div class='progress'><div style='width:". $completed."%' class='bar'></div></div>";
             }
             elseif($compaigns['payment'] == 0){
-                echo "<div class='project-unsuccessful'>". MSG_CLOSED;
-                echo "</div>";
-                
+                echo "<div class='project-unsuccessful'>Closed</div>";
             } else {
                 if ($compaigns["payment"])
-                    echo "<div class='project-successful'><?=MSG_SUCCESS?></div>";
-                    
-                    
+                    echo "<div class='project-successful'>Successful</div>";
                 else
-                    echo "<div class='project-unsuccessful'><?=MSG_CLOSED?></div>";
-                    
-                    
-                    
+                    echo "<div class='project-unsuccessful'>Closed</div>";
             }
             ?>
             <p><?=MSG_RAISED_TOWARD_THE_GOAL?> $<?php echo isset($compaigns['founddrasing_goal']) ? $compaigns['founddrasing_goal'] : '0'; ?> </p>
