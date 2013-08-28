@@ -292,6 +292,7 @@ define ('MSG_BTN_CONTACT_US', 'Contact Us');
 define ('MSG_BTN_TERMS', 'TERMS & CONDITIONS');
 define ('MSG_BTN_PRIVACY', 'PRIVACY POLICY');
 define ('MSG_ORGANIZATION', 'Organization');
+define ('MSG_FEATURED', 'Featured');
 // BIl 1.0 stuff - dont translate for now
 
 
