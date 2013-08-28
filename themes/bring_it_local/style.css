@@ -3488,3 +3488,4 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #members_area .contributions_page table .table_header td h4{font: 12px/20px "OpenSans-Bold"; text-transform: uppercase; color: #333; }
 #members_area .contributions_page table p{width:385px; font:12px "OpenSans" ; color:#333;}
 #members_area .contributions_page table p span{ font:12px "OpenSans-Bold"; color:#333; display:block;}
+#members_area .contributions_page table ul li span{ font:10px "OpenSans";}
