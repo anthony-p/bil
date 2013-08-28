@@ -4,8 +4,8 @@ date_default_timezone_set("America/Los_Angeles");
 
 include_once ('../includes/config.php');
 
-$user = "1pro.cli@gmail.com";
-$password = "primus21";
+$user = "thesite@bringitlocal.com";
+$password = "21primus4412";
 $url = "https://affiliate-program.amazon.com";
 $cookieName = "default";
 //$yesterdey = date("Y-m-j", time() - (60 * 60 * 24)*103);
