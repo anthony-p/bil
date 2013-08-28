@@ -3475,3 +3475,4 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #steps form .reward_block  .account-row input[type="text"] {width: 330px;}
 #steps form .reward_block  .account-row textarea {width: 340px;}
 #reward_shipping_address_required {margin: 0 10px 15px 217px;}
+#steps form button.delete-reward, #steps form button.delete-reward:hover {float: right; background: url('img/trash.png'); width: 24px; height: 24px; border-radius: 0; box-shadow: none; padding: 0; margin-right: 7px;}
