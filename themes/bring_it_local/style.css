@@ -3481,10 +3481,10 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 /*contributions page*/
 #members_area .contributions_page {width:900px; margin: 0 auto; padding-top: 30px; position: relative;}
 #members_area .contributions_page h2{display:block; text-transform: uppercase; padding: 0 0 10px 0; margin-bottom:20px; border-bottom: 3px solid #dedede;font: 18px/29px "OpenSans-SemiBold"; color: #7eb041;}
-#members_area .contributions_page table{border:1px solid #000;padding: 0 !important;}
+#members_area .contributions_page table{border-radius: 4px; overflow: hidden;box-shadow: 0 0 4px #757171;padding: 0 !important;}
 #members_area .contributions_page table tr{border:1px solid #000;padding: 0;}
 #members_area .contributions_page table td{padding:10px 15px; font:12px "OpenSans" ; color:#333;}
 #members_area .contributions_page table .table_header{background: #f3f3f3;}
 #members_area .contributions_page table .table_header td h4{font: 12px/20px "OpenSans-Bold"; text-transform: uppercase; color: #333; }
 #members_area .contributions_page table p{width:385px; font:12px "OpenSans" ; color:#333;}
-#members_area .contributions_page table p span{ font:12px "OpenSans-Bold"; color:#333;}
+#members_area .contributions_page table p span{ font:12px "OpenSans-Bold"; color:#333; display:block;}
