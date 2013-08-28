@@ -42,7 +42,7 @@ else
 
 	if ($banned_output['result'])
 	{
-		$template->set('message_header', header5(MSG_REGISTRATION));
+		$template->set('message_header', header5(MSG_CREATE_NEW));
 		$template->set('message_content', $banned_output['display']);
 
 		$template_output .= $template->process('single_message.tpl.php');
@@ -50,7 +50,7 @@ else
 	else
 	{
 		$template->set('imgarrowit', $imgarrowit);
-		$template->set('header_registration_message', header5(MSG_REGISTRATION));
+		$template->set('header_registration_message', header5(MSG_CREATE_NEW));
 
 		/* From here we load the custom registration sections */
 
