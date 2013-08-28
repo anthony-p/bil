@@ -2642,7 +2642,7 @@ ul.list li .img{float:left; width: 100%;height:165px;background: #fff; text-alig
 ul.list li .img img{border: 0;}
 ul.list li .campaigns-info{float:left; width: 93%; padding:16px 0 14px 16px;background: #fff;}
 ul.list li .campaigns-info .name{width:195px; font:14px/17px "OpenSans-SemiBold"; color: #222; display:inline-block; white-space: nowrap; overflow: hidden;}
-ul.list li .campaigns-info .name a{font:13px/17px OpenSans; color:#7eb041;}
+ul.list li .campaigns-info .name a{font:13px/17px OpenSans; color:#7eb041; width: 177px; overflow: hidden; text-overflow: ellipsis;}
 ul.list li .campaigns-info .name a.name-camp{font:14px/17px "OpenSans-SemiBold"; color: #222;}
 ul.list li .campaigns-info .name a:hover{text-decoration: underline;}
 ul.list li .campaigns-info .description{width:170px; font:13px/14px OpenSans; color:#222;margin: 8px 0 12px 0; height:70px; overflow: hidden;}
