@@ -2645,7 +2645,7 @@ ul.list li .campaigns-info .name{width:195px; font:14px/17px "OpenSans-SemiBold"
 ul.list li .campaigns-info .name a{font:13px/17px OpenSans; color:#7eb041; width: 177px; overflow: hidden; text-overflow: ellipsis; display: inline-block;}
 ul.list li .campaigns-info .name a.name-camp{font:14px/17px "OpenSans-SemiBold"; color: #222;}
 ul.list li .campaigns-info .name a:hover{text-decoration: underline;}
-ul.list li .campaigns-info .description{width:170px; font:13px/14px OpenSans; color:#222;margin: 8px 0 12px 0; height:70px; overflow: hidden;}
+ul.list li .campaigns-info .description{width:170px; font:13px/14px OpenSans; color:#222;margin: 8px 0 12px 0; height:72px; overflow: hidden;}
 .location{text-transform:capitalize; padding-left:15px;font:13px/13px OpenSans; color:#7eb041; background: url("img/location.png") 0 0px no-repeat;}
 .location a:hover{text-decoration: underline;}
 ul.list li .campaign-details{float:left; width:88%; background: #f3f3f3; padding: 10px 13px;}
