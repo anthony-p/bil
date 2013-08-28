@@ -2,10 +2,12 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
+if (!class_exists('npdb_main'))
+{
 class npdb_main
 {
 	var $setts = array();
@@ -16,13 +18,13 @@ class npdb_main
 	var $db_prefix = DB_PREFIX; ## for PPB & PPA Integration
 	var $npdb_prefix = NPDB_PREFIX;
 	var $display_errors = true; ## by default the sql errors are not displayed; change to true to be displayed (for debugging purposes only)
-	
+
 	var $categories_table = 'categories';
 
 	function connect($host, $username, $password)
 	{
 		$result = @mysql_connect($host, $username, $password);
-		
+
 		if (!$result)
 		{
 			$error = $this->display_error(MSG_ERROR_MYSQL_CONNECT, $this->sql_error());
@@ -31,22 +33,22 @@ class npdb_main
 			{
 				die ($error);
 			}
-			else 
+			else
 			{
 				return false;
 			}
 		}
-		else 
+		else
 		{
 			return true;
 		}
-		
+
 	}
 
 	function select_db($database)
 	{
 		$result = @mysql_select_db($database);
-			
+
 		if (!$result)
 		{
 			$error = $this->display_error(MSG_ERROR_MYSQL_SELECT_DB, $this->sql_error($result));
@@ -55,12 +57,12 @@ class npdb_main
 			{
 				die ($error);
 			}
-			else 
+			else
 			{
 				return false;
 			}
 		}
-		else 
+		else
 		{
 			return true;
 		}
@@ -79,7 +81,7 @@ class npdb_main
 			((!empty($sql_error) && $this->display_errors) ? '<li style="font-family: arial; font-size: 12px;"><strong>'.MSG_SQL_ERROR.':</strong> '.$sql_error.'</li>' : '').
 			((!empty($sql_query) && $this->display_errors) ? '<li style="font-family: arial; font-size: 12px;"><strong>'.MSG_SQL_QUERY.':</strong> '.$sql_query.'</li>' : '').
 			'</ul></p>';
-		
+
 		return $display_output;
 	}
 
@@ -88,9 +90,9 @@ class npdb_main
 		if ($debug_output)
 		{
 			(string) $explain_output = null;
-			
+
 			$explain_result = @mysql_query("EXPLAIN " . $query);
-			
+
 			$explain_output = '<table width="100%" cellpadding="3" cellspacing="2" class="contentfont border"> '.
 				'	<tr class="c4"> '.
 				'		<td colspan="10">SQL COMMAND</td> '.
@@ -114,7 +116,7 @@ class npdb_main
 				'		<td colspan="10"></td> '.
 				'	</tr> ';
 
-			if ($explain_result)  
+			if ($explain_result)
 			{
 				while ($explain = $this->fetch_array($explain_result))
 				{
@@ -129,18 +131,18 @@ class npdb_main
 						'	<td>' . $explain['ref'] . '</td> '.
 						'	<td>' . $explain['rows'] . '</td> '.
 						'	<td>' . $explain['Extra'] . '</td> '.
-						'</tr>';				
+						'</tr>';
 				}
 			}
 			$explain_output .= '</table>';
-			
-			echo $explain_output;			
+
+			echo $explain_output;
 		}
 
 		//echo $query . '<br>'; ## used if we want to display all queries made on a page
 
 		$result = @mysql_query($query);
-		
+
 		if (!$result)
 		{
 			$mysql_error = $this->display_error(MSG_ERROR_MYSQL_QUERY, $this->sql_error($result), $query);
@@ -148,14 +150,14 @@ class npdb_main
 			{
 				die ($mysql_error);
 			}
-			else 
+			else
 			{
 				$this->query_error = $mysql_error;
-				
+
 				return null;
 			}
 		}
-		else 
+		else
 		{
 			return $result;
 		}
@@ -165,16 +167,16 @@ class npdb_main
 	{
 		$result = @mysql_query($query);
 
-		if (!$result) 
+		if (!$result)
 		{
 			return false;
 		}
-		else 
+		else
 		{
 			return $result;
 		}
 	}
-	
+
 	function insert_id ()
 	{
 		return @mysql_insert_id();
@@ -216,7 +218,9 @@ class npdb_main
 		return $result;
 	}
 }
+}
 
+if (!class_exists('npdatabase')) {
 class npdatabase extends npdb_main
 {
 
@@ -302,7 +306,7 @@ class npdatabase extends npdb_main
 	{
 		(string) $result = $default_result;
 		(array) $formatted_array = null;
-		
+
 		if ($array_check)
 		{
 			if (is_array($values_array))
@@ -310,18 +314,18 @@ class npdatabase extends npdb_main
 				foreach ($values_array as $value)
 				{
 					$formatted_array[] = (empty($value)) ? 0 : $value;
-				}				
-			}			
-		   else 
+				}
+			}
+		   else
 		   {
 		   	$formatted_array[] = $default_result;
 		   }
 		}
-		else 
+		else
 		{
 			$formatted_array = $values_array;
 		}
-			
+
 		$result = @implode($glue, $formatted_array);
 
 		return $result;
@@ -457,5 +461,6 @@ class npdatabase extends npdb_main
 
 		return $result;
 	}
+}
 }
 ?>

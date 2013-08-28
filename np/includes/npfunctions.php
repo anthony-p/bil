@@ -396,6 +396,7 @@ function list_languages($location = 'site', $drop_down = false, $selected_langua
 
 
 	$relative_path = ($location == 'site') ? '' : '../';
+    $relative_path .='../';
 
 	$handle = opendir($relative_path . 'language');
 
