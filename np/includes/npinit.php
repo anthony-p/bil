@@ -33,7 +33,19 @@ $db->setts = &$setts;
 $db->layout = &$layout;
 
 $currentTime = time();
+/*
+ * Allow Language for cookie
+ * */
+$allowLanguage = array(
+    "en" => "english",
+    "fr" => "french",
+    "de" => "german"
+);
 
+if (isset($_COOKIE['language']) && isset($allowLanguage[$_COOKIE['language']]))
+{
+    $session->set('site_lang', $allowLanguage[$_COOKIE['language']]);
+}else
 if (!$session->is_set('site_lang'))
 {
 	$session->set('site_lang', $setts['site_lang']);
@@ -52,22 +64,23 @@ if (!$setts['user_lang'])
 	$session->set('site_lang', $setts['site_lang']);	
 }
 ## load site and admin language files
-include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/npglobal.lang.php');
-include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/category.lang.php');
-@include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/reverse_category.lang.php');
+include_once ($fileExtension . '../language/' . $session->value('site_lang') . '/global.lang.php');
+include_once ($fileExtension . '../language/' . $session->value('site_lang') . '/category.lang.php');
+@include_once ($fileExtension . '../language/' . $session->value('site_lang') . '/reverse_category.lang.php');
 
 if (IN_SITE == 1)
 {
-	include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/npsite.lang.php');
+//	include_once ($fileExtension . '../language/' . $session->value('site_lang') . '/npsite.lang.php');
+	include_once ($fileExtension . '../language/' . $session->value('site_lang') . '/site.lang.php');
 }
 
 if (defined('IN_ADMIN') &&  IN_ADMIN == 1)
 {
-	include_once ($fileExtension . 'language/' . $setts['admin_lang'] . '/admin.lang.php');
+	include_once ($fileExtension . '../language/' . $setts['admin_lang'] . '/admin.lang.php');
 }
 
-include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/categories_array.php');
-@include_once ($fileExtension . 'language/' . $session->value('site_lang') . '/reverse_categories_array.php');
+include_once ($fileExtension . '../language/' . $session->value('site_lang') . '/categories_array.php');
+@include_once ($fileExtension . '../language/' . $session->value('site_lang') . '/reverse_categories_array.php');
 
 
 ## date format will be drawn from a table, it is only temporary atm.

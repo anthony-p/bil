@@ -231,8 +231,7 @@ define ('MSG_ACCOUNT_DETAILS', 'Account Details');
 define ('MSG_ACCOUNT_TYPE', 'Account Type');
 define ('MSG_CLEAR_ACC_BALANCE', 'Clear Account Balance');
 define ('MSG_FEE_PAYMENT', 'Fee Payment');
-define ('MSG_ERROR_FEE_PAYMENT_CLEAR_BALANCE', 'Error: You cannot clear your account balance with the site because either
-your payment mode isn\'t set up as "Account" or you account debit is lower than the minimum invoice value allowed on the site.');
+define ('MSG_ERROR_FEE_PAYMENT_CLEAR_BALANCE', 'Error: You cannot clear your account balance with the site because either your payment mode isn\'t set up as "Account" or you account debit is lower than the minimum invoice value allowed on the site.');
 define ('MSG_CLEAR_ACC_BALANCE_EXPL', 'to clear your account balance with the site');
 define ('MSG_ERROR_SUBSCRIPTION_PAYMENT', 'Error: The account type you are trying to pay for doesn\'t exist or is inactive.');
 define ('MSG_FULL_NAME', 'Administrator Name');
@@ -295,11 +294,9 @@ define ('MSG_MM_WANTED_ADS', 'Wanted Ads');
 define ('MSG_CHOOSE_LISTING_TYPE', 'Choose Listing Type');
 define ('MSG_FULL_LISTING', 'Full Listing');
 define ('MSG_QUICK_LISTING', 'Quick Listing');
-define ('MSG_CHOOSE_LISTING_TYPE_EXPL', 'Full Listing - all listing options are shown<br>
-Quick Listing - only basic listing options are shown.');
+define ('MSG_CHOOSE_LISTING_TYPE_EXPL', 'Full Listing - all listing options are shown<br>Quick Listing - only basic listing options are shown.');
 define ('MSG_AUCTION_TYPE', 'Auction Type');
-define ('MSG_AUCTION_TYPE_EXPL', 'Standard: submit a standard auction, you can only sell one item of this type in this case.<br>
-Dutch: A quantity of more than one is accepted.');
+define ('MSG_AUCTION_TYPE_EXPL', 'Standard: submit a standard auction, you can only sell one item of this type in this case.<br>Dutch: A quantity of more than one is accepted.');
 define ('MSG_AUCTION_STARTS_AT', 'Auction Starts At');
 define ('MSG_AUCTION_STARTS_AT_EXPL', 'Enter the amount that the bidding starts at.');
 define ('MSG_ENABLE_RES_PRICE', 'Enable Reserve');
@@ -309,11 +306,9 @@ define ('MSG_BUYOUT_PRICE', 'Buy Out Price');
 define ('MSG_BID_INCREMENT', 'Bid Increment');
 define ('MSG_STANDARD_BID_INCREMENT', 'Use our built-in proportional increments table');
 define ('MSG_CUSTOM_BID_INCREMENT', 'Enter your custom increment');
-define ('MSG_BID_INCREMENT_EXPL', 'Choose whether you wish to use the proportional bidding increment system implemented on the site or if you wish to use a custom fixed
-bid increment value.');
+define ('MSG_BID_INCREMENT_EXPL', 'Choose whether you wish to use the proportional bidding increment system implemented on the site or if you wish to use a custom fixed bid increment value.');
 define ('MSG_PRIVATE_AUCTION', 'Private Auction');
-define ('MSG_PRIVATE_AUCTION_EXPL', 'By enabling this option, bidders on this auction will be hidden to site users, and only you (the owner
-of the auction) will be able to see the usernames of the bidders. Bid amounts will still be visible.');
+define ('MSG_PRIVATE_AUCTION_EXPL', 'By enabling this option, bidders on this auction will be hidden to site users, and only you (the owner of the auction) will be able to see the usernames of the bidders. Bid amounts will still be visible.');
 define ('MSG_ACCEPT_SWAP', 'Accept Swap Offers');
 define ('MSG_ACCEPT_SWAP_EXPL', 'By enabling this option, swap offers will be accepted for this auction.');
 define ('MSG_FULL_ADDRESS', 'Full Address');
@@ -367,20 +362,16 @@ define ('MSG_SHIP_METHOD', 'Shipping Method');
 define ('MSG_SHIP_METHOD_EXPL', 'Choose a shipping method for this item.');
 define ('MSG_DIRECT_PAYMENT', 'Direct Payment');
 define ('MSG_DIRECT_PAYMENT_METHODS', 'Direct Payment Methods');
-define ('MSG_DIRECT_PAYMENT_METHODS_EXPL', 'Select direct payment methods for this item. You need to set up these payment
-methods from the account management page. By using direct payment, buyers are able to pay for the item directly
-through the site.');
+define ('MSG_DIRECT_PAYMENT_METHODS_EXPL', 'Select direct payment methods for this item. You need to set up these payment methods from the account management page. By using direct payment, buyers are able to pay for the item directly through the site.');
 define ('MSG_OFFLINE_PAYMENT', 'Offline Payment');
 define ('MSG_OFFLINE_PAYMENT_METHODS', 'Select Payment Methods');
-define ('MSG_OFFLINE_PAYMENT_METHODS_EXPL', 'Select any payment methods from the above that the buyer might use to pay for
-the item. The payment through these payment methods will be handled offline.');
+define ('MSG_OFFLINE_PAYMENT_METHODS_EXPL', 'Select any payment methods from the above that the buyer might use to pay for the item. The payment through these payment methods will be handled offline.');
 define ('MSG_GLOBAL_SETTINGS', 'Global Settings');
 define ('MSG_ACCEPT_PUBLIC_Q', 'Accept Public Questions');
 define ('MSG_NEW_BID_EMAIL_NOTIF', 'New Bid Email Notifications');
 define ('MSG_CATEGORY_CHANGE_NOTE', 'Important: If you change the main category, all auction related fees will be charged again.');
 define ('MSG_HAS_BEEN_UPDATED', 'has been updated.<br>Thank you for your business.');
-define ('MSG_LIVE_PM_EDIT_AUCTION_NOTE', '<b>Important</b>: If this payment fails, you will need to pay the full auction setup amount upon clicking
-on the "Pay Auction Setup Fee" link.');
+define ('MSG_LIVE_PM_EDIT_AUCTION_NOTE', '<b>Important</b>: If this payment fails, you will need to pay the full auction setup amount upon clicking on the "Pay Auction Setup Fee" link.');
 define ('MSG_ROLLBACK_TRANSACTION', 'Rollback Transaction');
 define ('MSG_ROLLBACK_SUCCESS', 'Rollback successful.<br>Thank you for your business.');
 define ('MSG_ALL_CATEGORIES', 'All Categories');
@@ -392,8 +383,7 @@ define ('MSG_BTN_FAQ', 'FAQ');
 define ('MSG_BTN_SITE_FEES', 'SITE FEES');
 define ('MSG_BTN_ABOUT_US', 'ABOUT US');
 define ('MSG_BTN_CONTACT_US', 'CONTACT US');
-define ('MSG_CREDIT_LIMIT_WARNING', '<strong>WARNING</strong>: Your account is reaching or has exceeded the maximum credit limit. You can clear your
-account balance from the <b>My Account</b> -> <b>Manage Account</b> page');
+define ('MSG_CREDIT_LIMIT_WARNING', '<strong>WARNING</strong>: Your account is reaching or has exceeded the maximum credit limit. You can clear your account balance from the <b>My Account</b> -> <b>Manage Account</b> page');
 define ('MSG_PREFERRED_SELLER', 'Preferred Seller');
 define ('MSG_REDUCTION_EXPL', 'off for all site fees.');
 define ('MSG_MM_BULK_SHORT', 'Bulk');
@@ -473,23 +463,18 @@ define ('MSG_NO_MORE_BIDDING', '"No more bidding is allowed for this item.');
 define ('MSG_YOUR_BID', 'Your Bid');
 define ('MSG_MINIMUM_BID', 'Minimum Bid');
 define ('MSG_MAXBID_SMALLER_THAN_MINBID', 'Your maximum bid must be higher than the current minimum bid.');
-define ('MSG_HIDDEN_BIDDING_WARNING', '<b>Warning:</b> You are bidding on a private auction, meaning that your username
-will not show on the auction details and bid history pages.');
+define ('MSG_HIDDEN_BIDDING_WARNING', '<b>Warning:</b> You are bidding on a private auction, meaning that your username will not show on the auction details and bid history pages.');
 define ('MSG_CONFIRM_BID_TERMS', 'By clicking on the "Place Bid" button, you agree to buy this item from the seller if you\'re the winning bidder.');
-define ('MSG_CONFIRM_BID_AGREEMENT', 'By bidding you are entering into a contract to pay for the item including the specified shipping costs.  if you have any questions
-please ask the seller before bidding.  Thank you and good luck with your bid!');
+define ('MSG_CONFIRM_BID_AGREEMENT', 'By bidding you are entering into a contract to pay for the item including the specified shipping costs.  if you have any questions please ask the seller before bidding.  Thank you and good luck with your bid!');
 define ('MSG_ERROR', 'Error');
 define ('MSG_CANT_BID_ON_ITEM', 'Error: no item selected or no bidding is allowed on the selected item.');
 define ('MSG_BID_SUCCESS', 'Bidding Successful');
 define ('MSG_PROXY_VALUE_UPDATED', 'Your proxy bid value has been updated.<br>Thank you');
 define ('MSG_BID_SUCCESSFUL', 'CONGRATULATIONS,<br>you are now the highest bidder on this item!');
-define ('MSG_OUTBID_EXPL_NOTE', '<b>Important:</b> If you are outbid at anytime we will notify you via E-Mail, giving you every
-chance to re-bid and secure the item');
+define ('MSG_OUTBID_EXPL_NOTE', '<b>Important:</b> If you are outbid at anytime we will notify you via E-Mail, giving you every chance to re-bid and secure the item');
 define ('MSG_TRACK_BID_EXPL', 'You can track your bid through the <a href="npmembers_area.php?page=bidding&section=current_bids">Members Area</a> and up your bid at any time to ensure you win the auction.');
 define ('MSG_PROXY_TOO_LOW', 'Your new proxy bid must be higher than your current proxy bid');
-define ('MSG_BID_UNDER_RESERVE', 'Your bid has been successfully placed, but it is under the reserve price.<br><br>
-Please place a new and higher bid if you wish to meet the reserve price,<br>
-or click on the link from the top right to return to the auction details page.');
+define ('MSG_BID_UNDER_RESERVE', 'Your bid has been successfully placed, but it is under the reserve price.<br><br>Please place a new and higher bid if you wish to meet the reserve price,<br>or click on the link from the top right to return to the auction details page.');
 define ('MSG_BID_UNDER_PROXY', 'Your bid was not high enough to outbid the current maximum bidder.');
 define ('MSG_BID_ERROR_QUANTITY', 'The quantity you requested is bigger than the quantity offered.');
 define ('MSG_VIEW_BID_HISTORY', 'View Bid History');
@@ -506,8 +491,7 @@ define ('MSG_ERROR_REMOVAL_IMPOSSIBLE', 'Error: Bid retraction impossible.');
 define ('MSG_BIDS', 'bids');
 define ('MSG_PROXY_BID', 'Proxy Bid');
 define ('MSG_RETRACT_CONFIRM', 'Are you sure you want to retract all the bids that you have placed on this auction?');
-define ('MSG_BID_HIDDEN_SUCCESS', 'The bid was successfully hidden from this view.<br>
-It can still be viewed from the bid history page of the auction it was placed on.');
+define ('MSG_BID_HIDDEN_SUCCESS', 'The bid was successfully hidden from this view.<br>It can still be viewed from the bid history page of the auction it was placed on.');
 define ('MSG_BID_HIDDEN_FAILED', 'Error: Could not hide the bid you have selected.');
 define ('MSG_NO_MORE_STORE_ITEMS_LIST', 'Error: You cannot list anymore items in your store.');
 define ('MSG_AUCTION_LISTED_SUCCESS', 'The auction has been relisted successfully.');
@@ -533,8 +517,7 @@ define ('MSG_FLAG_STATUS_A', 'Processing');
 define ('MSG_FLAG_STATUS_B', 'Posted/Sent');
 define ('MSG_FLAG_STATUS_C', 'Delayed');
 define ('MSG_FLAG_STATUS_D', 'Problem');
-define ('MSG_ERROR_CREATING_MSG_BOARD', '<b>Error</b>: No message board could be created with the parameters you have submitted.<br>
-Please try again.');
+define ('MSG_ERROR_CREATING_MSG_BOARD', '<b>Error</b>: No message board could be created with the parameters you have submitted.<br>Please try again.');
 define ('MSG_BUYER_CONTACT_DETAILS', 'Buyer Contact Details');
 define ('MSG_SELLER_CONTACT_DETAILS', 'Seller Contact Details');
 define ('MSG_ADD_MESSAGE', 'Add Message');
@@ -781,11 +764,8 @@ define ('MSG_STORE_NB_ENDING_ITEMS', 'Number of Ending Soon Store Items');
 define ('MSG_STORE_NB_RECENT_ITEMS', 'Number of Recently Listed Store Items');
 define ('MSG_STORE_CATEGORIES', 'Store Categories');
 define ('MSG_SELECTED_CATEGORIES', 'Selected Categories');
-define ('MSG_STORE_CATEGORIES_EXPL', 'To restrict what categories appear in your store, select the ones you want to use.<br><br>
-<b>Note:</b> If you don\'t select any categories for your store, all the site\'s categories will be available by default. Otherwise you will only be able to list items in the categories you have selected for your store.');
-define ('MSG_STORE_DEFAULT_ACC_EXPL', '<b>Important</b>: If you have the <b>Default</b> store account active at the moment, it means the administrator 
-has set it up for you. This account is only available if given by the administrator or if no store subscriptions are set up.<br><br>
-<b>Warning</b>: If you choose a store subscription, you wont be able to select the <b>Default</b> account again, only the administrator can set it up for you!');
+define ('MSG_STORE_CATEGORIES_EXPL', 'To restrict what categories appear in your store, select the ones you want to use.<br><br><b>Note:</b> If you don\'t select any categories for your store, all the site\'s categories will be available by default. Otherwise you will only be able to list items in the categories you have selected for your store.');
+define ('MSG_STORE_DEFAULT_ACC_EXPL', '<b>Important</b>: If you have the <b>Default</b> store account active at the moment, it means the administrator has set it up for you. This account is only available if given by the administrator or if no store subscriptions are set up.<br><br><b>Warning</b>: If you choose a store subscription, you wont be able to select the <b>Default</b> account again, only the administrator can set it up for you!');
 define ('MSG_CHANGE_STORE_SUBSCR_CONFIRM', 'Are you sure you wish to proceed with these changes?');
 define ('MSG_STORE_ACTIVATED', 'Your store has been activated.<br>Thank you for your business.');
 define ('MSG_LOGIN_SECURELY', 'Login Securely');
@@ -846,36 +826,18 @@ define ('MSG_ENTER_YOUR_USERNAME', 'Enter your Username');
 define ('MSG_REMEMBER_PASS_FORGOT_USERNAME', 'Remember your password, but forgot your username? ');
 define ('MSG_RETRIEVE_YOUR_USERNAME', 'Retrieve your Username');
 define ('MSG_RETRIEVE_USER_ERROR', 'Error: There is no user in the database matching the details you have submitted.');
-define ('MSG_NEW_PASSWORD_EMAILED', 'Your new Password has been sent to the E-Mail address on file for your account.<br><br>
-Check your inbox AND your Junk inbox for the notice.<br><br>
-The email has been sent instantly, but you may experience a delay in receiving it as some providers 
-only update their mail records every 15 minutes. If you continue to have problems or you have not received your notice in a 
-reasonable amount of time, do not hesitate to <a href="content_pages.php?page=contact_us">contact us</a> for assistance.');
-define ('MSG_USERNAME_EMAILED', 'Your username has been sent to the E-Mail address on file for your account.<br><br>
-Check your inbox AND your Junk inbox for the notice.<br><br>
-The email has been sent instantly, but you may experience a delay in receiving it as some providers 
-only update their mail records every 15 minutes. If you continue to have problems or you have not received your notice in a 
-reasonable amount of time, do not hesitate to <a href="content_pages.php?page=contact_us">contact us</a> for assistance.');
+define ('MSG_NEW_PASSWORD_EMAILED', 'Your new Password has been sent to the E-Mail address on file for your account.<br><br>Check your inbox AND your Junk inbox for the notice.<br><br>The email has been sent instantly, but you may experience a delay in receiving it as some providers only update their mail records every 15 minutes. If you continue to have problems or you have not received your notice in a reasonable amount of time, do not hesitate to <a href="content_pages.php?page=contact_us">contact us</a> for assistance.');
+define ('MSG_USERNAME_EMAILED', 'Your username has been sent to the E-Mail address on file for your account.<br><br>Check your inbox AND your Junk inbox for the notice.<br><br>The email has been sent instantly, but you may experience a delay in receiving it as some providers only update their mail records every 15 minutes. If you continue to have problems or you have not received your notice in a reasonable amount of time, do not hesitate to <a href="content_pages.php?page=contact_us">contact us</a> for assistance.');
 define ('MSG_USER_ACCOUNT_CONFIRMATION', 'User Account Confirmation');
-define ('MSG_ACC_ACTIVATE_SUCCESS', 'Your account was successfully activated. <br>You can now login using your username and password to change or edit your account details
-<br><br>We will also send you an email with the URL to your organizations landing page. You can use that email to forward to your community 
-so they know how they can help you raise funds through Bring It Local..');
+define ('MSG_ACC_ACTIVATE_SUCCESS', 'Your account was successfully activated. <br>You can now login using your username and password to change or edit your account details<br><br>We will also send you an email with the URL to your organizations landing page. You can use that email to forward to your community so they know how they can help you raise funds through Bring It Local..');
 define ('MSG_ACC_ACTIVATE_FAILURE', 'Error: Account activation is not possible using this feature or the activation details you have submitted are invalid.');
-define ('MSG_STORE_CUSTOM_CATEGORIES_EXPL', 'Create a number of custom categories that will be unique to your store, by using 
-the form below.<br><br>
-<b>Note</b>: Category names which are on the same category tree level and have names that are included in other categories 
-names from the same level will cause small conflicts in the items counters and category listings pages, so it is not 
-recommended to use them. <br>
-Example of conflicting categories names: <b>"Business"</b> -> <b>"Business Ventures"</b><br><br>
-<b>Note</b>: Customised categories can only be used for items listed using the <b>"Store Only"</b> option.');
+define ('MSG_STORE_CUSTOM_CATEGORIES_EXPL', 'Create a number of custom categories that will be unique to your store, by using the form below.<br><br><b>Note</b>: Category names which are on the same category tree level and have names that are included in other categories names from the same level will cause small conflicts in the items counters and category listings pages, so it is not recommended to use them. <br>Example of conflicting categories names: <b>"Business"</b> -> <b>"Business Ventures"</b><br><br><b>Note</b>: Customised categories can only be used for items listed using the <b>"Store Only"</b> option.');
 define ('MSG_ORDER_ID', 'Order ID');
 define ('MSG_ADD_CATEGORY', 'Add Category');
 define ('MSG_SAVE_CHANGES', 'Save Changes');
 define ('MSG_SAVE_CAMPAIGN', 'Save Campaign');
 define ('MSG_GENERATE_CATEGORIES', 'Generate Categories');
-define ('MSG_STORE_CATS_MODIFIED', 'You have made changes to your category structure,
-please update those changes by clicking [ <a href="update_categories.php">HERE</a> ]
-when you have finished.');
+define ('MSG_STORE_CATS_MODIFIED', 'You have made changes to your category structure,please update those changes by clicking [ <a href="update_categories.php">HERE</a> ]when you have finished.');
 define ('MSG_CATEGORIES_GENERATED', 'The categories have been generated successfully.');
 define ('MSG_HAS_BEEN_LISTED', 'has been listed successfully.');
 define ('MSG_YOU_WILL_NEED_TO_PAY', 'You will need to pay the amount of');
@@ -906,8 +868,7 @@ define ('MSG_SEARCH_IN_THIS_CATEGORY', 'Search in this Category');
 define ('MSG_BASIC_SEARCH', 'Basic Search');
 define ('MSG_ADVANCED_SEARCH', 'Advanced Search');
 define ('MSG_CREDIT_ACCOUNT', 'Credit Your Account');
-define ('MSG_DRAFT_SAVED_SUCCESS_DESC', 'The draft has been saved successfully.<br><br>
-You can create an auction from this draft at any time by listing it from the "Drafts" page in the "Selling" section.');
+define ('MSG_DRAFT_SAVED_SUCCESS_DESC', 'The draft has been saved successfully.<br><br>You can create an auction from this draft at any time by listing it from the "Drafts" page in the "Selling" section.');
 define ('MSG_SUBSCRIBE_TO_NEWSLETTER', 'Newsletter Subscription');
 define ('MSG_RESEND_ACT_EMAIL', 'Re-send Activation Email');
 define ('MSG_ACT_EMAIL_RESENT_SUCCESS', 'The activation email has been successfully re-sent.');
@@ -917,8 +878,7 @@ define ('MSG_ALL_STORES', 'All Stores');
 define ('MSG_FEATURED_STORES', 'Featured Stores');
 define ('MSG_SELLER_VERIFIED', 'You have been successfully verified as a seller.<br>Thank you.');
 define ('MSG_TO_VERIFY_YOUR_ACCOUNT', 'to verify your account');
-define ('MSG_SELLER_VERIFIED_RELIST_MSG', 'Your account must be verified in order for you to relist this item.<br>
-Please click [ <a href="fee_payment.php?do=seller_verification">here</a> ] to verify your account.');
+define ('MSG_SELLER_VERIFIED_RELIST_MSG', 'Your account must be verified in order for you to relist this item.<br>Please click [ <a href="fee_payment.php?do=seller_verification">here</a> ] to verify your account.');
 define ('MSG_INVOICE_TYPE', 'Invoice Type');
 define ('MSG_WARNING', 'WARNING');
 define ('MSG_ADULT_CAT_MSG_A', 'The item(s) you are trying to view belong to an adult category.');
@@ -929,9 +889,7 @@ define ('MSG_CANCEL', 'Cancel');
 define ('MSG_FRMCHK_RP_CHK_ERROR', 'The <b>Enable Reserve</b> checkbox must be checked if you submit a Reserve Price ');
 define ('MSG_FRMCHK_BO_CHK_ERROR', 'The <b>Enable Buy Out</b> checkbox must be checked if you submit a Buy Out Price');
 define ('MSG_FRMCHK_OFFER_CHK_ERROR', 'The <b>Offer Range</b> checkbox must be checked if you submit an Offer Range');
-define ('MSG_QUESTIONS_LOGGED_AS_ADMIN', 'You cannot post auction questions because you are logged as a site administrator.<br>
-If you wish to post a question on this auction, please only log in as a site user and make sure no admin session is active 
-(even on another browser tab).');
+define ('MSG_QUESTIONS_LOGGED_AS_ADMIN', 'You cannot post auction questions because you are logged as a site administrator.<br>If you wish to post a question on this auction, please only log in as a site user and make sure no admin session is active (even on another browser tab).');
 define ('MSG_RESEND_PRODUCT_INVOICE', 'Resend Product Invoice');
 define ('MSG_STORES', 'stores');
 define ('MSG_STORE_ID', 'Store ID');
@@ -941,9 +899,7 @@ define ('MSG_VERIFIED', 'Verified');
 define ('MSG_NOT_VERIFIED', 'Not Verified');
 define ('MSG_GET_VERIFIED', 'Get Verified');
 define ('MSG_SEARCH_SWAP_ENABLED', 'Items with the swap option enabled');
-define ('MSG_MSGBOARD_LOGGED_AS_ADMIN', 'You cannot send messages through the message board because you are logged as a site administrator.<br>
-If you wish to use this message board, please only log in as a site user and make sure no admin session is active 
-(even on another browser tab).');
+define ('MSG_MSGBOARD_LOGGED_AS_ADMIN', 'You cannot send messages through the message board because you are logged as a site administrator.<br>If you wish to use this message board, please only log in as a site user and make sure no admin session is active (even on another browser tab).');
 define ('MSG_MM_ITEMS_WITH_BIDS', 'Items with Bids/Offers');
 define ('MSG_VIEW_AUCTION', 'View Auction');
 define ('MSG_EDIT_MORE_AUCTIONS', 'Edit More Auctions');
@@ -954,8 +910,7 @@ define ('MSG_VIEW_PROFILE_FOR', 'View Profile for');
 define ('MSG_INFORMATION', 'Information');
 define ('MSG_REPUTATION', 'Reputation');
 define ('MSG_ENABLE_PROFILE_PAGE', 'Enable Profile Page');
-define ('MSG_PROFILE_PAGE_EXPL', 'If you want to enable your profile page, please click on the checkbox below. <br>
-If you dont want to display a certain IM address, please leave the text field next to it blank.');
+define ('MSG_PROFILE_PAGE_EXPL', 'If you want to enable your profile page, please click on the checkbox below. <br>If you dont want to display a certain IM address, please leave the text field next to it blank.');
 define ('MSG_WEBSITE', 'Website URL');
 define ('MSG_MSN', 'Microsoft Live Messenger ID');
 define ('MSG_ICQ', 'ICQ ID');
@@ -1000,65 +955,40 @@ define ('MSG_PAYPAL_ADDRESS2_EXPL', 'Street (2 of 2 fields) (Alpha numeric chara
 define ('MSG_PAYPAL_CITY', 'City');
 define ('MSG_PAYPAL_CITY_EXPL', 'City (Alpha numeric characters only. Max. length = 100)');
 define ('MSG_PAYPAL_STATE', 'State/County');
-define ('MSG_PAYPAL_STATE_EXPL', 'State (Must be 2 character official abbreviation)<br>
-<b>Important:</b> For U.S. addresses: For the element "Country" use the value "US" in . For "State/County" use a standard USPS� 
-two-letter abbreviation for the name of the state, possession, or territory. USPS keeps a list of official state name 
-abbreviations: <a href="http://www.usps.com/ncsc/lookups/abbreviations.html#states" target="_blank">http://www.usps.com/ncsc/lookups/abbreviations.html#states</a><br><br>
-For Canadian addresses: For the element "Country" use the value "CA". For "State" you should use a standard Canadian two-letter 
-abbreviation for the name of the province or territory. Canada Post� keeps a list of official province and territory name 
-abbreviations: <a href="http://www.canadapost.ca/personal/tools/pg/manual/b03-e.asp#c012" target="_blank">http://www.canadapost.ca/personal/tools/pg/manual/b03-e.asp#c012</a><br><br>
-For other countries: The correct value for "State" with other country codes is less strict. The rule of thumb is to follow local standards.');
+define ('MSG_PAYPAL_STATE_EXPL', 'State (Must be 2 character official abbreviation)<br><b>Important:</b> For U.S. addresses: For the element "Country" use the value "US" in . For "State/County" use a standard USPS� two-letter abbreviation for the name of the state, possession, or territory. USPS keeps a list of official state name abbreviations: <a href="http://www.usps.com/ncsc/lookups/abbreviations.html#states" target="_blank">http://www.usps.com/ncsc/lookups/abbreviations.html#states</a><br><br>For Canadian addresses: For the element "Country" use the value "CA". For "State" you should use a standard Canadian two-letter abbreviation for the name of the province or territory. Canada Post� keeps a list of official province and territory name abbreviations: <a href="http://www.canadapost.ca/personal/tools/pg/manual/b03-e.asp#c012" target="_blank">http://www.canadapost.ca/personal/tools/pg/manual/b03-e.asp#c012</a><br><br>For other countries: The correct value for "State" with other country codes is less strict. The rule of thumb is to follow local standards.');
 define ('MSG_PAYPAL_ZIP', 'Zip/Post Code');
 define ('MSG_PAYPAL_ZIP_EXPL', 'Zip/Post Code (Numeric char. only. Max. length = 32 characters)');
 define ('MSG_PAYPAL_COUNTRY', 'Country');
-define ('MSG_PAYPAL_COUNTRY_EXPL', 'Enter the official 2 letter country abbreviation.<br>
-For a list of official abbreviations, please follow this link: 
-<a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm" target="_blank">ISO 3166 Official Country Codes</a>');
+define ('MSG_PAYPAL_COUNTRY_EXPL', 'Enter the official 2 letter country abbreviation.<br>For a list of official abbreviations, please follow this link: <a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm" target="_blank">ISO 3166 Official Country Codes</a>');
 define ('MSG_PAYPAL_PHONE_A', 'Phone Number #1');
-define ('MSG_PAYPAL_PHONE_A_EXPL', 'The area code for U.S. phone numbers, or the country code for non-U.S. phone numbers. 
-This will prepopulate the buyer\'s home phone number. (Numeric characters only. Max. length = 3)');
+define ('MSG_PAYPAL_PHONE_A_EXPL', 'The area code for U.S. phone numbers, or the country code for non-U.S. phone numbers. This will prepopulate the buyer\'s home phone number. (Numeric characters only. Max. length = 3)');
 define ('MSG_PAYPAL_PHONE_B', 'Phone Number #2');
-define ('MSG_PAYPAL_PHONE_B_EXPL', 'The 3-digit prefix for U.S. phone numbers, or the entire phone number for non-U.S. 
-phone numbers, excluding country code. This will prepopulate the buyer\'s home phone number. (Numeric characters only. 
-Max. length = 16)');
+define ('MSG_PAYPAL_PHONE_B_EXPL', 'The 3-digit prefix for U.S. phone numbers, or the entire phone number for non-U.S. phone numbers, excluding country code. This will prepopulate the buyer\'s home phone number. (Numeric characters only. Max. length = 16)');
 define ('MSG_PAYPAL_PHONE_C', 'Phone Number #3');
-define ('MSG_PAYPAL_PHONE_C_EXPL', 'The 4-digit phone number for U.S. phone numbers. 
-This will prepopulate the buyer\'s home phone number. (Numeric characters only. Max. length = 4)');
+define ('MSG_PAYPAL_PHONE_C_EXPL', 'The 4-digit phone number for U.S. phone numbers. This will prepopulate the buyer\'s home phone number. (Numeric characters only. Max. length = 4)');
 define ('MSG_STORE_ONLY_MODE_WARNING', 'Warning: Store Only Mode Enabled');
 define ('MSG_GET_VERIFIED_EXPL', 'Please get verified.');
 define ('MSG_SKIP_VERIFICATION', 'Skip Verification');
 define ('MSG_STORE_ONLY_MODE_EXPL', 'Store only mode is enabled.<br>You will need to create a store before being able to list items on the site.');
 define ('MSG_CREATE_STORE', 'Create a Store');
-define ('MSG_STORE_ONLY_MODE_RELIST_MSG', 'The site runs in <b>Store Only</b> mode.<br>
-You must create a store in order to relist this item.<br>
-Please click [ <a href="npmembers_area.php?page=store&section=subscription">here</a> ] to access the stores management page.');
+define ('MSG_STORE_ONLY_MODE_RELIST_MSG', 'The site runs in <b>Store Only</b> mode.<br>You must create a store in order to relist this item.<br>Please click [ <a href="npmembers_area.php?page=store&section=subscription">here</a> ] to access the stores management page.');
 define ('MSG_GET_VERIFIED_EXPL_1', 'Please get verified in order to be able to list items.');
 define ('MSG_GET_VERIFIED_EXPL_2', 'Our site offers sellers the option of become verified, this will greatly enhance your chance of a successful sale and is recommend before proceeding with listings.');
-define ('MSG_GET_VERIFIED_EXPL_3', 'Benefits of verification include:
-<ul>
-<li>Potential buyers are made aware that you are a verified seller</li>
-<li>Confirmation of your verified status will appear next to your profile and username in all areas</li>
-</ul>');
+define ('MSG_GET_VERIFIED_EXPL_3', 'Benefits of verification include:<ul><li>Potential buyers are made aware that you are a verified seller</li><li>Confirmation of your verified status will appear next to your profile and username in all areas</li></ul>');
 define ('MSG_FRMCHK_BUYOUT_PRICE', 'The "Buy Out Price" field must be greater than 0');
-define ('MSG_STORE_ONLY_MODE_NO_MORE_ITEMS_EXPL', 'You cannot list anymore items in your store.<br>
-Please upgrade your store subscription in order to be able to list new items.');
+define ('MSG_STORE_ONLY_MODE_NO_MORE_ITEMS_EXPL', 'You cannot list anymore items in your store.<br>Please upgrade your store subscription in order to be able to list new items.');
 define ('MSG_UPGRADE_STORE', 'Upgrade Store Subscription');
-define ('MSG_BID_PLACED_BUT_OUTBID', 'Your bid has been placed successfully, <br>
-however it was not high enough to outbid the previous bidder(s).<br>
-Please repeat the bidding process by placing a new, higher bid, <br>
-if you still wish to participate in this auction.');
+define ('MSG_BID_PLACED_BUT_OUTBID', 'Your bid has been placed successfully, <br>however it was not high enough to outbid the previous bidder(s).<br>Please repeat the bidding process by placing a new, higher bid, <br>if you still wish to participate in this auction.');
 define ('MSG_BANNER_REDIRECT_ERROR', 'Banner Redirect Error');
 define ('MSG_BANNER_REDIRECT_ERROR_EXPL', 'Error: The banner you are trying to access does not exist.');
 
 ## v6.04
 define ('MSG_FRMCHK_AUTORELIST_NB_ERROR', 'The number of auto relists must be smaller or equal to ' . $setts['nb_autorelist_max']);
-define ('MSG_PLEASE_CLICK_HERE_TO_FILL_STORE_FIELDS', 'Please click [ <a href="npmembers_area.php?page=store&section=setup">here</a> ] 
-to fill these fields.');
+define ('MSG_PLEASE_CLICK_HERE_TO_FILL_STORE_FIELDS', 'Please click [ <a href="npmembers_area.php?page=store&section=setup">here</a> ]to fill these fields.');
 define ('MSG_BACK_TO_SEARCH_PAGE', 'Back to the Search Page');
 define ('MSG_BULK_SCHEMA', 'Bulk Schema');
 define ('MSG_CATEGORY_IDS', 'Categories IDs');
-define ('MSG_BULK_NOTE', 'Below are the IDs of the categories, you should use the
-category number listed on the left column.');
+define ('MSG_BULK_NOTE', 'Below are the IDs of the categories, you should use the category number listed on the left column.');
 define ('MSG_CATEGORY_ID', 'Category ID');
 define ('MSG_CATEGORY_NAME', 'Category Name');
 define ('MSG_UNPAID_EOAFEES_A', 'You have unpaid end of auction fees.<br>Please review your');
@@ -1087,9 +1017,7 @@ define ('MSG_KEYWORD_ADD_SUCCESS', 'The keword has been added successfully.');
 define ('MSG_CLOSE_AUCTION_CONFIRM', 'Are you sure you want to end this auction early?');
 define ('MSG_CLOSE_AUCTION', 'End Auction Early');
 define ('MSG_BUY_OUT_ITEM', 'Buy Out Item');
-define ('MSG_CHOOSE_LISTING_TYPE_BUYOUT_EXPL', 'Full Listing - all listing options are shown<br>
-Quick Listing - only basic listing options are shown.<br>
-Buy Out Item - create a buy out only item.');
+define ('MSG_CHOOSE_LISTING_TYPE_BUYOUT_EXPL', 'Full Listing - all listing options are shown<br>Quick Listing - only basic listing options are shown.<br>Buy Out Item - create a buy out only item.');
 define ('MSG_INSTANT_PURCHASE_ONLY_EXPL', 'Enter the buy out price for this item.');
 define ('MSG_MM_SUMMARY', 'Summary');
 define ('MSG_UNREAD_MESSAGES', 'Unread Messages');
@@ -1103,8 +1031,7 @@ define ('MSG_REPORT_AUCTION', 'Report this Auction');
 define ('MSG_LAST_FIVE_BIDS', 'Last 5 Bids Placed');
 define ('MSG_LAST_FIVE_LISTED_ITEMS', 'Last 5 Listed Auctions');
 define ('MSG_PAYMENT_PROCESSING', 'Payment in Process');
-define ('MSG_PAYMENT_PROCESSING_DESC', 'Your payment is in process.<br>The transaction will be marked as completed and your payment status will be 
-updated once the payment has cleared.<br>Thank you for your patience.');
+define ('MSG_PAYMENT_PROCESSING_DESC', 'Your payment is in process.<br>The transaction will be marked as completed and your payment status will be updated once the payment has cleared.<br>Thank you for your patience.');
 define ('MSG_PENDING_GC_PAYMENTS_A', 'You have pending Google Checkout payments.<br>Please click');
 define ('MSG_PENDING_GC_PAYMENTS_B', 'to view the details of these pending transactions');
 
@@ -1119,8 +1046,7 @@ define ('MSG_SEARCH_DESCRIPTION', 'Search item title and description');
 define ('MSG_DIGITAL_MEDIA', 'Digital Media');
 define ('MSG_FILES', 'file(s)<br>Accepted formats: zip, rar.');
 define ('MSG_UPLOADED_FILES', 'Currently Uploaded Files');
-define ('MSG_UPLOADED_FILES_EXPL', 'The files above are will be uploaded. You can remove them by clicking on the checkbox
-that appears under the file you wish to delete.');
+define ('MSG_UPLOADED_FILES_EXPL', 'The files above are will be uploaded. You can remove them by clicking on the checkbox that appears under the file you wish to delete.');
 define ('MSG_DIGITAL_MEDIA_ATTACHED', 'Digital Media Attached');
 define ('MSG_DOWNLOADED', 'Downloaded');
 define ('MSG_TIMES', 'times');
@@ -1129,8 +1055,7 @@ define ('MSG_LINK_EXPIRES', 'Link expires in');
 define ('MSG_DD_DOWNLOAD_LINK_EXPIRED', 'Error: The download link for this item has expired.');
 define ('MSG_DD_DOWNLOAD_LINK_INACTIVE', 'Error: The download link for this item is inactive.');
 define ('MSG_DD_DOWNLOAD_SUCCESS', 'Download Successful.');
-define ('MSG_DD_NO_DD_OR_NO_AUCT_WINNER', 'Error: There is no Digital Media attached to this item or you are not the winner of the 
-auction for which you are trying to access the direct download link.');
+define ('MSG_DD_NO_DD_OR_NO_AUCT_WINNER', 'Error: There is no Digital Media attached to this item or you are not the winner of the auction for which you are trying to access the direct download link.');
 define ('MSG_LINK_ACTIVE', 'Link Active');
 define ('MSG_LINK_INACTIVE', 'Link Inactive');
 define ('MSG_INACTIVATE', 'Inactivate');
@@ -1156,18 +1081,13 @@ define ('MSG_BLOCKED_USER_REPUTATION_MSG', 'This user has blocked you from viewi
 define ('MSG_INVOICE_SENT_ERROR', 'Error: You must add at least one item to the invoice.');
 define ('MSG_MULTIPLE_USERS', 'Multiple Users');
 define ('MSG_MULTIPLE_AUCTIONS', 'Multiple Auctions');
-define ('MSG_FEES_ACCOUNT_SUSPENSION_WARNING', 'The fees due on this listing will take you over your maximum credit limit 
-' . (($setts['suspend_over_bal_users']) ? 'and suspend your account' : '') . '.<br>
-Please deposit  funds into your account or pay off any debit balance [ <a href="fee_payment.php?do=clear_balance" target="_blank">here</a> ] ');
+define ('MSG_FEES_ACCOUNT_SUSPENSION_WARNING', 'The fees due on this listing will take you over your maximum credit limit ' . (($setts['suspend_over_bal_users']) ? 'and suspend your account' : '') . '.<br>Please deposit  funds into your account or pay off any debit balance [ <a href="fee_payment.php?do=clear_balance" target="_blank">here</a> ] ');
 define ('MSG_PRIVATE_REPUTATION', 'Private Reputation Comments');
 define ('MSG_PRIVATE_REPUTATION_EXPL', 'If you check the checkbox above, users viewing your reputation details page wont be able to view the reputation comments other users have left for you.');
 define ('MSG_BUYOUT_FORCE_PAYMENT', 'Buy Out - Force Payment');
-define ('MSG_BUYOUT_FORCE_PAYMENT_EXPL', 'If you check the checkbox above, users will need to pay for the item within ' . $setts['force_payment_time'] . ' minutes in order for the sale to be completed.<br>
-This feature will only apply for auctions which have at least one direct payment method enabled.');
+define ('MSG_BUYOUT_FORCE_PAYMENT_EXPL', 'If you check the checkbox above, users will need to pay for the item within ' . $setts['force_payment_time'] . ' minutes in order for the sale to be completed.<br>This feature will only apply for auctions which have at least one direct payment method enabled.');
 define ('MSG_BUYOUT_FORCE_PAYMENT_ALERT', 'Buy Out - Force Payment feature in effect.');
-define ('MSG_BUYOUT_FORCE_PAYMENT_ALERT_BUYER', '<b>Important</b>: The <b>Buy Out - Force Payment</b> rule is in effect for this auction.<br>
-This means that you have ' . $setts['force_payment_time'] . ' minutes from the time of the purchase to pay for the item using one of the direct payment methods 
-offered by the seller or the sale will be cancelled.');
+define ('MSG_BUYOUT_FORCE_PAYMENT_ALERT_BUYER', '<b>Important</b>: The <b>Buy Out - Force Payment</b> rule is in effect for this auction.<br>This means that you have ' . $setts['force_payment_time'] . ' minutes from the time of the purchase to pay for the item using one of the direct payment methods offered by the seller or the sale will be cancelled.');
 define ('MSG_REQUEST_EOA_REFUND', 'Request End of Auction Fee Refund');
 define ('MSG_REQUEST_REFUND_CONFIRM', 'Are you sure you want to request a refund on this end of auction fee? You can track the status of your refund requests from the &quot;My Account&quot; section, &quot;Refund Requests&quot; page.');
 define ('MSG_MM_REFUND_REQUESTS', 'Refund Requests');
@@ -1175,14 +1095,12 @@ define ('MSG_FAILED_TO_RELIST', 'failed to relist. Please try again.');
 define ('MSG_MM_POSTAGE_CALC_SETUP', 'Postage Calculation Setup');
 define ('MSG_SELLING_FREE_POSTAGE', 'Free Postage');
 define ('MSG_IF_INVOICE_AMOUNT_OVER', 'If invoice amount is over');
-define ('MSG_SELLING_FREE_POSTAGE_EXPL', 'You can offer free postage on your items if the amount of the invoice created is over the selected value.
-If you enable free postage and enter "0" as the amount, it will mean that all invoices will have free postage.');
+define ('MSG_SELLING_FREE_POSTAGE_EXPL', 'You can offer free postage on your items if the amount of the invoice created is over the selected value. If you enable free postage and enter "0" as the amount, it will mean that all invoices will have free postage.');
 define ('MSG_SELLING_POSTAGE_TYPE', 'Postage Calculation Type');
 define ('MSG_POSTAGE_TYPE_NORMAL', 'Item Based');
 define ('MSG_POSTAGE_TYPE_NORMAL_EXPL', 'Select the postage type above if you want the individual postage amount for each item to be applied.');
 define ('MSG_POSTAGE_TYPE_WEIGHT', 'Weight Based');
-define ('MSG_POSTAGE_TYPE_WEIGHT_EXPL', 'Select the postage type above if you want the postage to be calculated from the weight 
-tiers table depending on the weight of the items included in the invoice. In this case, the weight field will have to be completed for every item you will list on the site.');
+define ('MSG_POSTAGE_TYPE_WEIGHT_EXPL', 'Select the postage type above if you want the postage to be calculated from the weight tiers table depending on the weight of the items included in the invoice. In this case, the weight field will have to be completed for every item you will list on the site.');
 define ('MSG_POSTAGE_TYPE_AMOUNT', 'Amount Based');
 define ('MSG_POSTAGE_TYPE_AMOUNT_EXPL', 'Select the postage type above if you want the postage to be calculated based on the total value of the invoice.');
 define ('MSG_CALCULATION_METHOD', 'Calculation Method');
@@ -1198,8 +1116,7 @@ define ('MSG_CREATE_PRODUCT_INVOICE', 'Create Product(s) Invoice');
 define ('MSG_INVOICE_SENT_SUCCESSFULLY_B', 'The product(s) invoice has been created successfully.');
 define ('MSG_CURRENT_PRICE', 'Current Price');
 define ('MSG_AUCTION_TYPE_FB_EXPL', 'First Bidder: The first bidder who will bid will automatically win the auction.');
-define ('MSG_RES_PRICE_FB_EXPL', 'If the auction price will go under the reserve price set, the auction will close.<br>
-The reserve price, for this auction type, needs to be lower than the start price.');
+define ('MSG_RES_PRICE_FB_EXPL', 'If the auction price will go under the reserve price set, the auction will close.<br>The reserve price, for this auction type, needs to be lower than the start price.');
 define ('MSG_FB_DECREMENT', 'Bid Decrement');
 define ('MSG_FB_DECREMENT_EXPL', 'Enter the bid decrement amount in the field above.');
 define ('MSG_FB_DECREMENT_INTERVAL', 'Decrement Interval');
@@ -1230,12 +1147,9 @@ define ('MSG_SHIPPING_CALCULATOR', 'Shipping Calculator');
 define ('MSG_CALCULATE_POSTAGE', 'Calculate Postage');
 define ('MSG_SELECT_COUNTRY', 'Select Country');
 define ('MSG_SELECT_STATE', 'Select State');
-define ('MSG_SHIPPING_LOCATION_UNSUPPORTED_WARNING', '<b>Warning</b>: You are bidding from a country/state not specified by the 
-seller in their shipping rates, the seller will quote for shipping post purchase.<br>
-For further information please contact the seller to ascertain a quote for shipping to your country/state.');
+define ('MSG_SHIPPING_LOCATION_UNSUPPORTED_WARNING', '<b>Warning</b>: You are bidding from a country/state not specified by the seller in their shipping rates, the seller will quote for shipping post purchase.<br>For further information please contact the seller to ascertain a quote for shipping to your country/state.');
 define ('MSG_POSTAGE_TYPE_FLAT', 'Flat Rates');
-define ('MSG_POSTAGE_TYPE_FLAT_EXPL', 'Select the postage type above if you wish to apply a flat rate to all items in your invoice.<br>
-There will be a postage rate for the first item in the invoice and then an additional rate for each additional item in the invoice.');
+define ('MSG_POSTAGE_TYPE_FLAT_EXPL', 'Select the postage type above if you wish to apply a flat rate to all items in your invoice.<br>There will be a postage rate for the first item in the invoice and then an additional rate for each additional item in the invoice.');
 define ('MSG_POSTAGE_FLAT_FIRST_ITEM', 'Postage Rate for the First Item');
 define ('MSG_POSTAGE_FLAT_ADDL_ITEMS', 'Postage Rate for Additional Items');
 define ('MSG_ITEM_CURRENCY', 'Auction Currency');
@@ -1255,8 +1169,7 @@ define ('MSG_ADDITIONAL_FILES', 'Additional Files');
 define ('MSG_REVERSE_DD_FILES', 'file(s)<br>Accepted formats: doc, xls, pdf.');
 define ('MSG_YOUR_REVERSE_AUCTION', 'Your reverse auction');
 define ('MSG_REVERSE_AUCTION_FEES', 'Reverse Auction Fees');
-define ('MSG_PROVIDER_PROFILE_PAGE_EXPL', 'From this page you can set up your provider profile.<br>
-You are only allowed to upload images on your portfolio section.');
+define ('MSG_PROVIDER_PROFILE_PAGE_EXPL', 'From this page you can set up your provider profile.<br>You are only allowed to upload images on your portfolio section.');
 define ('MSG_PORTFOLIO', 'Portfolio');
 define ('MSG_STATUS_BIDDER_SELLER_REVERSE_A', 'Bidder or poster of this project?');
 define ('MSG_PROJECT_POSTER_INFORMATION', 'Project Poster Information');
@@ -1304,8 +1217,7 @@ define ('MSG_POSTER_CONTACT_DETAILS', 'Auction Poster Contact Details');
 define ('MSG_PROVIDER_SELECTED_FOR', 'You have selected a provider for ');
 define ('MSG_BID_DETAILS', 'Bid Details');
 define ('MSG_ADD_TAX_REVERSE_BID_EXPL', 'If you enable this option, your local tax will be applied to your bid.');
-define ('MSG_FRMCHK_UPLOAD_FILES', 'Error:- You attempted to attach images/media to your listing but have not uploaded it, 
-please press [Upload] to complete the process');
+define ('MSG_FRMCHK_UPLOAD_FILES', 'Error:- You attempted to attach images/media to your listing but have not uploaded it,please press [Upload] to complete the process');
 define ('MSG_COMBINE_PURCHASES', 'Combine Purchases');
 define ('MSG_QUANTITY', 'Quantity');
 define ('MSG_REVERSE', 'REVERSE');
@@ -1323,8 +1235,7 @@ define ('MSG_ACC_VERIFY_EMAIL_SUCCESS', 'Your email address has been successfull
 define ('AMSG_VERIFY_EMAIL_ADDRESS', 'Verify Email Address');
 define ('MSG_DEFAULT_BANK_DETAILS', 'Default Bank Details');
 define ('MSG_ENTER_BANK_DETAILS', 'Enter Bank Details');
-define ('MSG_BANK_DETAILS_EXPL', 'If the text box above is filled, the bank details entered will appear by on the bank details popup for each new item you sell.<br>
-You can modify these default details for each individual sold item at any time.');
+define ('MSG_BANK_DETAILS_EXPL', 'If the text box above is filled, the bank details entered will appear by on the bank details popup for each new item you sell.<br>You can modify these default details for each individual sold item at any time.');
 
 define ('MSG_BTN_AUCTIONS', 'AUCTIONS');
 define ('MSG_BTN_CLASSIFIEDS', 'CLASSIFIEDS');
@@ -1343,9 +1254,6 @@ define ('MSG_LOGO', 'Upload your logo');
 define ('MSG_LOGO_UPLOAD_PROGRESS_TITLE', 'Upload progress');
 define ('MSG_LOGO_STOP_UPLOAD', 'Stop upload');
 define ('MSG_LOGO_DESC', 'Upload your logo! (optional) - it will display on your campaign page');
-
-
-
 
 
 define ('AMSG_SITE_SETUP', 'Site Setup');
@@ -1388,9 +1296,7 @@ define ('AMSG_BOX_VALUE', 'Box Value(s)');
 define ('AMSG_BOX_TYPE', 'Box Type');
 define ('AMSG_BOX_ORDER', 'Box Order');
 define ('AMSG_MANDATORY', 'Mandatory');
-define ('AMSG_BOX_VALUES_EXPLANATION', '<strong>Note:</strong> The box values will be the text that will appear in the boxes, or in case of a checkbox
-or a radio button, near the boxes. In the case of a textfield or a textarea, it will be the initially preselected value, which then
-the user will be able to edit. Please leave the field empty in case you dont want the field to be prefilled.');
+define ('AMSG_BOX_VALUES_EXPLANATION', '<strong>Note:</strong> The box values will be the text that will appear in the boxes, or in case of a checkbox or a radio button, near the boxes. In the case of a textfield or a textarea, it will be the initially preselected value, which then the user will be able to edit. Please leave the field empty in case you dont want the field to be prefilled.');
 define ('AMSG_EDIT_BOX', 'Edit Box');
 define ('AMSG_CUSTOM_FIELDS_SETUP', 'Custom Fields Setup');
 define ('AMSG_SETUP_FIELD_TYPES', 'Set Up Box Types');
@@ -1412,9 +1318,7 @@ define ('AMSG_NOTES', 'Notes');
 define ('AMSG_LINK_TO_TABLE', 'Link to Table');
 define ('AMSG_TABLE_FIELDS', 'Linked Table Fields');
 define ('AMSG_BOX_VALUE_CODE', 'Box Value Code');
-define ('AMSG_BOX_VALUE_CODE_EXPLANATION', '<strong>NOTE</strong>: You will have to enter a code that will display the value of each individual box,
-and it will be related with the linked table&#039;s fields.<br>
-For example, a country field will have the following value: {name}.');
+define ('AMSG_BOX_VALUE_CODE_EXPLANATION', '<strong>NOTE</strong>: You will have to enter a code that will display the value of each individual box, and it will be related with the linked table&#039;s fields.<br> For example, a country field will have the following value: {name}.');
 define ('AMSG_EDIT_FIELD_TYPE', 'Edit Field Type');
 define ('AMSG_FORMCHECK_FUNCTIONS', 'Formchecker Functions');
 
@@ -1444,8 +1348,7 @@ define ('AMSG_LIVE_PAYMENT_MODE', 'Live Payment Mode');
 define ('AMSG_ACC_MODE_TYPE', 'User Account Type');
 define ('AMSG_GLOBAL', 'Global');
 define ('AMSG_PERSONAL', 'Personal');
-define ('AMSG_DEFAULT_ACC_MODE', 'Accounts for new users will be defaulted to<br>
-(Personal account type only) ');
+define ('AMSG_DEFAULT_ACC_MODE', 'Accounts for new users will be defaulted to<br>(Personal account type only) ');
 define ('AMSG_ACC_INIT_MAIN_MSG', 'If you choose to run the site in Account Mode, please set up the variables below ');
 define ('AMSG_SIGNUP_CREDIT', 'Signup Credit');
 define ('AMSG_MAXIMUM_DEBIT', 'Maximum Debit');
@@ -1462,19 +1365,13 @@ define ('AMSG_AD_TYPES_MANAGEMENT', 'Ad Types Management');
 define ('AMSG_SETUP_AD_TYPES', 'Set Up Ad Types');
 
 define ('AMSG_ENABLE_PROFILE_ADS', 'Enable Profile Ads');
-define ('AMSG_PROFILE_ADS_DESC', '<strong>Description:</strong> Profile ads are created from the users table. Only one profile
-ad is allowed per registered user. <br />
-<strong>Note:</strong> Profile ads can only be enabled if all other ad types are disabled.
-Enabling any of the other ad types will automatically disable profile ads. ');
+define ('AMSG_PROFILE_ADS_DESC', '<strong>Description:</strong> Profile ads are created from the users table. Only one profile ad is allowed per registered user. <br /><strong>Note:</strong> Profile ads can only be enabled if all other ad types are disabled. Enabling any of the other ad types will automatically disable profile ads. ');
 define ('AMSG_ENABLE_STANDARD_ADS', 'Enable Standard Ads');
-define ('AMSG_STANDARD_ADS_DESC', '<strong>Description:</strong> Standard ads are the standard items that can be placed on the
-site. Price and ad duration are mandatory for this ad type. ');
+define ('AMSG_STANDARD_ADS_DESC', '<strong>Description:</strong> Standard ads are the standard items that can be placed on the site. Price and ad duration are mandatory for this ad type. ');
 define ('AMSG_ENABLE_TRADE_ADS', 'Enable Trade Lead Ads');
 define ('AMSG_TRADE_ADS_DESC', '<strong>Description:</strong> Trade leads are ads with no expiration date and no price.');
 define ('AMSG_ENABLE_WANTED_ADS', 'Enable Wanted Ads');
-define ('AMSG_WANTED_ADS_DESC', '<strong>Description:</strong> Wanted ads are placed by users interested in services/products
-available for offering by other site users. Sellers can respond by offering standard ads or trade leads they have placed on the
-site. Only active items/trade leads can be offered. ');
+define ('AMSG_WANTED_ADS_DESC', '<strong>Description:</strong> Wanted ads are placed by users interested in services/products available for offering by other site users. Sellers can respond by offering standard ads or trade leads they have placed on the site. Only active items/trade leads can be offered. ');
 
 define ('AMSG_DESCRIPTION', 'Description');
 define ('AMSG_EDIT_USER_ACCOUNT', 'Edit User Account Type');
@@ -1529,17 +1426,13 @@ define ('AMSG_USER_SIGNUP_SETTS', 'User Signup Confirmation Settings');
 define ('AMSG_NO_CONF_REQ', 'No Confirmation Required');
 define ('AMSG_NO_CONF_REQ_DESC', 'Check the above box if you wish for the user\'s account to be activated immediately, with no confirmation required.');
 define ('AMSG_EMAIL_ADDR_CONF', 'Email Address Confirmation');
-define ('AMSG_EMAIL_ADDR_CONF_DESC', 'Check the above box if you wish to enable email address confirmation. In this case, users will need to click the link
-from the registration confirmation email they receive when registering in order to activate their account.');
+define ('AMSG_EMAIL_ADDR_CONF_DESC', 'Check the above box if you wish to enable email address confirmation. In this case, users will need to click the link from the registration confirmation email they receive when registering in order to activate their account.');
 define ('AMSG_ADMIN_APPROVAL', 'Admin Approval');
-define ('AMSG_ADMIN_APPROVAL_DESC', 'Check the above box if you wish for the admin to manually activate each user from the users management page.<br>
-Users will also need to confirm their email address like on the "email address confirmation" option.');
+define ('AMSG_ADMIN_APPROVAL_DESC', 'Check the above box if you wish for the admin to manually activate each user from the users management page.<br>Users will also need to confirm their email address like on the "email address confirmation" option.');
 define ('AMSG_SIGNUP_SETTS_NOTE', 'Important: These settings are enabled only if there is no signup fee.');
-define ('AMSG_ENABLE_REGISTRATION_DESC', 'Check the above box if you wish to enable registration. Please note that if you want to enable profile ads, registration
-will be enabled by default. If registration is disabled, profile ads cannot be created.');
+define ('AMSG_ENABLE_REGISTRATION_DESC', 'Check the above box if you wish to enable registration. Please note that if you want to enable profile ads, registration will be enabled by default. If registration is disabled, profile ads cannot be created.');
 define ('AMSG_ONLY_REG_USERS_CAN_POST', 'Only Registered Users can Post Items');
-define ('AMSG_ONLY_REG_USERS_CAN_POST_DESC', 'If the above option is checked, site users will first need to register in order to post items. This setting applies for standard ads,
-trade leads and wanted ads.');
+define ('AMSG_ONLY_REG_USERS_CAN_POST_DESC', 'If the above option is checked, site users will first need to register in order to post items. This setting applies for standard ads, trade leads and wanted ads.');
 define ('AMSG_CURRENCY_SETTINGS', 'Currency Settings');
 define ('AMSG_CURRENCY_SYMBOL', 'Currency Symbol');
 define ('AMSG_CURRENCY_CAPTION', 'Caption');
@@ -1550,13 +1443,11 @@ define ('AMSG_DEFAULT_CURRENCY_DESC', 'Choose the site\'s default currency. All 
 define ('AMSG_EDIT_STATES', 'Edit states for this country');
 define ('ADD_STATE', 'Add State/County');
 define ('AMSG_EDIT_STATES_FOR', 'Edit states/counties for');
-define ('AMSG_STATES_NOTE', 'Note: The states/counties you add for each country are only used in case you have enabled tax throughout the site,
-in case you wish to apply different tax settings by individual state.');
+define ('AMSG_STATES_NOTE', 'Note: The states/counties you add for each country are only used in case you have enabled tax throughout the site, in case you wish to apply different tax settings by individual state.');
 define ('AMSG_TAX_SETTINGS', 'Tax Settings');
 define ('AMSG_ENABLE_TAX', 'Enable Tax');
 define ('AMSG_TAX_CONFIGURATION', 'Tax Configuration');
-define ('AMSG_ENABLE_TAX_DESC', 'Check the option above if you wish to enable tax on your site.<br>
-Tax will apply to site fees and can be applied to auction prices at the seller\'s choice.');
+define ('AMSG_ENABLE_TAX_DESC', 'Check the option above if you wish to enable tax on your site.<br>Tax will apply to site fees and can be applied to auction prices at the seller\'s choice.');
 define ('AMSG_TAX_NAME', 'Tax Name');
 define ('AMSG_TAX_RATE', 'Tax Rate');
 define ('AMSG_APPLIES_TO', 'Applies To Users From');
@@ -1569,8 +1460,7 @@ define ('AMSG_TAX_BUSINESS_WITHOUT_TAX_NB', 'A Business without a Tax registrati
 define ('AMSG_TAX_INDIVIDUAL_WITH_TAX_NB', 'An Individual with a Tax registration number specified');
 define ('AMSG_TAX_INDIVIDUAL_WITHOUT_TAX_NB', 'An Individual without a Tax registration number specified');
 define ('AMSG_EDIT_TAX', 'Edit Tax');
-define ('AMSG_TAX_SETTINGS_NOTE', '<b>Important:</b> Only one tax type can be enabled to work with the site fees. The other tax types you create
-can only be used by site users to apply on their item prices.');
+define ('AMSG_TAX_SETTINGS_NOTE', '<b>Important:</b> Only one tax type can be enabled to work with the site fees. The other tax types you create can only be used by site users to apply on their item prices.');
 define ('AMSG_SITE_TAX', 'Site Tax');
 define ('AMSG_ADMIN_USERS', 'Admin Users');
 define ('AMSG_ADD_ADMIN_USER', 'Add Admin User');
@@ -1580,9 +1470,7 @@ define ('AMSG_CREATED', 'Created');
 define ('AMSG_ADMIN_USER_DELETE_ERROR', 'Error: Cannot delete the last admin user account from the database.');
 define ('AMSG_ENTER_CURRENT_PASSWORD', 'Enter Current Password');
 define ('AMSG_REPEAT_PASSWORD', 'Repeat Password');
-define ('AMSG_ADMIN_LEVEL_EXPLANATION', '<b>Admin Levels:</b><br>
-1. Super Admin -> Full access<br>
-2. Administrator -> Limited access, can only manage users and ads.');
+define ('AMSG_ADMIN_LEVEL_EXPLANATION', '<b>Admin Levels:</b><br> 1. Super Admin -> Full access<br>2. Administrator -> Limited access, can only manage users and ads.');
 define ('AMSG_FRMCHK_CURRENT_PASSWORD_MISMATCH', 'The "Current Password" field must match the password for this user that is currently submitted in the database');
 define ('AMSG_ADD_SITE_USER', 'Add Site User');
 define ('AMSG_USER_DETAILS', 'User Details');
@@ -1616,9 +1504,7 @@ define ('AMSG_TWITTER_URL', 'Twitter page');
 define ('AMSG_EDIT_PAYMENT_OPTION', 'Edit Payment Option');
 define ('AMSG_CURRENT_PAYMENT_OPTIONS', 'Current Payment Options');
 define ('AMSG_PAYMENT_MODE', 'Payment Mode');
-define ('AMSG_MAXIMUM_DEBIT_EXPL', 'If you modify the maximum debit value, it will be only apply to newly registered users. If you wish to reset
-this value for your existing users, you will need to check the "Reset Sitewide" checkbox next to the box above, then save your settings.
-All users will then have their maximum debit amount reset to the value set in the box above.');
+define ('AMSG_MAXIMUM_DEBIT_EXPL', 'If you modify the maximum debit value, it will be only apply to newly registered users. If you wish to reset this value for your existing users, you will need to check the "Reset Sitewide" checkbox next to the box above, then save your settings. All users will then have their maximum debit amount reset to the value set in the box above.');
 define ('AMSG_RESET_SITEWIDE', 'Reset Sitewide');
 
 // index.tpl.php related lang definitions
@@ -1718,12 +1604,10 @@ define ('AMSG_SUPPORT', 'Support');
 define ('AMSG_SUPPORT_DESK', 'Support Desk');
 define ('AMSG_PPB_MANUAL', 'PHP Pro Bid Manual');
 define('AMSG_SITE_NAME_EXPL', 'Enter your site\'s name. This value will also appear in all the emails sent by and through the site.');
-define('AMSG_SITE_URL_EXPL', 'Enter your site\'s URL.<br>
-<b>Important</b>: The URL must have the following format: <b>http://www.yoursite.com/</b>');
+define('AMSG_SITE_URL_EXPL', 'Enter your site\'s URL.<br><b>Important</b>: The URL must have the following format: <b>http://www.yoursite.com/</b>');
 define('AMSG_ADMIN_EMAIL_EXPL', 'Enter your admin email address. This address will be used in the "From" field by all system emails.');
 define('AMSG_CHOOSE_MAILER', 'Choose Mailer');
-define('AMSG_MAILER_EXPL', 'You can choose mails to be sent through the standard PHP <b>mail()</b> function, or through the UNIX <b>Sendmail</b> program.
-If you choose to send mails through Sendmail, you have to enter the Sendmail path in the textfield below.');
+define('AMSG_MAILER_EXPL', 'You can choose mails to be sent through the standard PHP <b>mail()</b> function, or through the UNIX <b>Sendmail</b> program.If you choose to send mails through Sendmail, you have to enter the Sendmail path in the textfield below.');
 define('AMSG_SENDMAIL_PATH', 'Sendmail Path');
 define('AMSG_SENDMAIL_PATH_EXPL', 'Enter the sendmail path in case you choose to use Sendmail as the system emails handler.');
 define('AMSG_CURRENT_SKIN', 'Current skin');
@@ -1732,27 +1616,19 @@ define('AMSG_CHOOSE_SITE_SKIN_EXPL', 'Choose your site\'s skin.');
 define('AMSG_CURRENT_LOGO', 'Current site logo');
 define('AMSG_CHOOSE_SITE_LOGO_EXPL', 'Choose your site\'s logo.');
 define('AMSG_CURRENT_LANG', 'Current language');
-define('AMSG_MAINTENANCE_MODE_EXPL', 'Choose "Yes" if you wish to enable maintenance mode. If maintenance mode is enabled, the
-front end area of the site is disabled, only the admin being accessible.');
+define('AMSG_MAINTENANCE_MODE_EXPL', 'Choose "Yes" if you wish to enable maintenance mode. If maintenance mode is enabled, the front end area of the site is disabled, only the admin being accessible.');
 define('AMSG_CHOOSE_DEFAULT_LANG_EXPL', 'Choose your site\'s default language.');
 define('AMSG_CLOSED_AUCT_DEL_EXPL', 'Enter a duration in days after which closed auctions should be deleted from the database. ');
 define('AMSG_ITEMS_PER_ROW', 'Number of items per row');
-define('AMSG_ITEMS_PER_ROW_EXPL', 'Enter the number of featured items you want to be displayed on one row. <br>
-Enter 0 if you want no featured items to be displayed.');
+define('AMSG_ITEMS_PER_ROW_EXPL', 'Enter the number of featured items you want to be displayed on one row. <br>Enter 0 if you want no featured items to be displayed.');
 define('AMSG_FEAT_BOX_WIDTH', 'Item box width');
-define('AMSG_FEAT_BOX_WIDTH_EXPL', 'Enter the width of the featured item box, leave empty to use a default value. <br>
-Note: this setting might not apply to all skins.');
+define('AMSG_FEAT_BOX_WIDTH_EXPL', 'Enter the width of the featured item box, leave empty to use a default value. <br>Note: this setting might not apply to all skins.');
 define('AMSG_MAX_ITEMS', 'Maximum items displayed');
-define('AMSG_RECENT_AUCTIONS_EXPL', 'Enter the number of recently listed auctions you want to be displayed on the main page.<br>
-Enter 0 if you want to disable this feature.');
-define('AMSG_POPULAR_AUCTIONS_EXPL', 'Enter the number of popular auctions you want to be displayed on the main page.<br>
-Popular auctions are those items with the highest bid amounts placed on them.<br>
-Enter 0 if you want to disable this feature.');
-define('AMSG_ENDING_SOON_AUCTIONS_EXPL', 'Enter the number of ending soon auctions you want to be displayed on the main page.<br>
-Enter 0 if you want to disable this feature.');
+define('AMSG_RECENT_AUCTIONS_EXPL', 'Enter the number of recently listed auctions you want to be displayed on the main page.<br>Enter 0 if you want to disable this feature.');
+define('AMSG_POPULAR_AUCTIONS_EXPL', 'Enter the number of popular auctions you want to be displayed on the main page.<br>Popular auctions are those items with the highest bid amounts placed on them.<br>Enter 0 if you want to disable this feature.');
+define('AMSG_ENDING_SOON_AUCTIONS_EXPL', 'Enter the number of ending soon auctions you want to be displayed on the main page.<br>Enter 0 if you want to disable this feature.');
 define('AMSG_NB_IMAGES', 'Number of images');
-define('AMSG_NB_IMAGES_EXPL', 'Enter the number of images that can be uploaded with an auction. <br>
-By entering 0, no images can be uploaded.');
+define('AMSG_NB_IMAGES_EXPL', 'Enter the number of images that can be uploaded with an auction. <br>By entering 0, no images can be uploaded.');
 define('AMSG_MAX_FILE_SIZE', 'Maximum file size');
 define('AMSG_IMAGE_MAX_SIZE_EXPL', 'Enter the maximum size in KB an uploaded image can have.');
 define('AMSG_SELECT_SITE_CURRENCY', 'Select site currency');
@@ -1767,14 +1643,11 @@ define('AMSG_SYMBOL_BEFORE_AMOUNT', 'Symbol before amount');
 define('AMSG_SYMBOL_AFTER_AMOUNT', 'Symbol after amount');
 define('AMSG_TIME_OFFSET', 'Time Offset');
 define('AMSG_SELECT_TIME_OFFSET', 'Select time offset');
-define('AMSG_SELECT_TIME_OFFSET_EXPL', 'Select the time difference between your local time and the server\'s time. This setting will
-apply to all instances where dates are displayed.');
+define('AMSG_SELECT_TIME_OFFSET_EXPL', 'Select the time difference between your local time and the server\'s time. This setting will apply to all instances where dates are displayed.');
 define('AMSG_FORMAT', 'format');
 define('AMSG_DATE_FORMAT', 'Date Display Format');
 define('AMSG_ACTIVATE_SSL', 'Activate SSL');
-define('AMSG_ACTIVATE_SSL_EXPL', 'Choose if you want to activate SSL on your site. You need an SSL certificate enabled on your
-site in order for this setting to work properly. <br>
-The login and registration processes will be handled through SSL if this feature is enabled.');
+define('AMSG_ACTIVATE_SSL_EXPL', 'Choose if you want to activate SSL on your site. You need an SSL certificate enabled on your site in order for this setting to work properly. <br> The login and registration processes will be handled through SSL if this feature is enabled.');
 define('AMSG_ENTER_SSL_ADDRESS', 'Enter SSL address');
 define('AMSG_ADD_META_TAGS', 'Add meta tags');
 define('AMSG_CRON_JOB_CPANEL', 'Run cron jobs from your server\'s control panel');
@@ -1786,17 +1659,11 @@ define('AMSG_DOB_FULL_FORMAT', 'Full format (day / month / year)');
 define('AMSG_DOB_YEAR_ONLY', 'Short format (year only)');
 define('AMSG_RECENT_WANTED_ADS_EXPL', 'Enter the number of recently listed wanted ads that will be displayed on the home page of your site.');
 define('AMSG_NB_MEDIA', 'Number of media uploads');
-define('AMSG_NB_MEDIA_EXPL', 'Enter the number of media files that can be uploaded with an auction. <br>
-By entering 0 in this field, you will disable media upload throughout the site.');
-define('AMSG_MEDIA_MAX_SIZE_EXPL', 'Enter the maximum size in KB an uploaded file can have.<br><br>
-<strong>IMPORTANT NOTE:</strong> The maximum size for uploading files on your server is
-<b>' . ini_get('upload_max_filesize') . 'Bytes</b>.
-If you want for the users to be able to upload larger files you will need to modify the <strong>upload_max_filesize</strong>
-setting from php.ini.<br><br>Please ask your hosting provider for more details on this.');
+define('AMSG_NB_MEDIA_EXPL', 'Enter the number of media files that can be uploaded with an auction. <br> By entering 0 in this field, you will disable media upload throughout the site.');
+define('AMSG_MEDIA_MAX_SIZE_EXPL', 'Enter the maximum size in KB an uploaded file can have.<br><br><strong>IMPORTANT NOTE:</strong> The maximum size for uploading files on your server is<b>' . ini_get('upload_max_filesize') . 'Bytes</b>.If you want for the users to be able to upload larger files you will need to modify the <strong>upload_max_filesize</strong>setting from php.ini.<br><br>Please ask your hosting provider for more details on this.');
 define('AMSG_BUY_OUT_BUYOUT', 'Use standard <b>Buy Out</b> method');
 define('AMSG_BUY_OUT_MAKEOFFER', 'Use <b>Make Offer</b> method');
-define('AMSG_BUY_OUT_ALTER_WARNING', '<b>Warning:</b> By changing this setting, all live auctions that have Buy Out/Make Offer
-enabled will have the setting changed to disabled. The offers that were placed will however not be deleted. ');
+define('AMSG_BUY_OUT_ALTER_WARNING', '<b>Warning:</b> By changing this setting, all live auctions that have Buy Out/Make Offer enabled will have the setting changed to disabled. The offers that were placed will however not be deleted. ');
 define('AMSG_CHOOSE_METHOD', 'Choose method');
 define('AMSG_CHOOSE_POSITION', 'Choose position');
 define('AMSG_SELLNAV_POS_1', '<b>Previous Step</b> button first, <b>Next Step</b> button after');
@@ -1807,8 +1674,7 @@ define('AMSG_CLICK_TO_ENABLE_FEATURE', 'Check the checkbox above to enable this 
 define('AMSG_NB_NEWS_DISPLAYED', 'Number of news displayed');
 define('AMSG_NB_NEWS_DISPLAYED_EXPL', 'Enter the maximum number of news articles that will be displayed on the home page news box.');
 define('AMSG_ALWAYS_SHOW_BUYOUT', 'Always show Buy Out');
-define('AMSG_ALWAYS_SHOW_BUYOUT_EXPL', 'By enabling this option, Buy Out/Make Offer will be available even if the item has active bids and
-the reserve has been met.');
+define('AMSG_ALWAYS_SHOW_BUYOUT_EXPL', 'By enabling this option, Buy Out/Make Offer will be available even if the item has active bids and the reserve has been met.');
 define('AMSG_REG_TERMS_CONTENT', 'Registration terms content');
 define('AMSG_SELLITEM_TERMS_CONTENT', 'Selling process terms content');
 define('AMSG_SNIPING_DURATION', 'Sniping time');
@@ -1826,8 +1692,7 @@ define('AMSG_VOUCHER_REDUCTION_EXPL', 'Enter a percentage reduction that will ap
 define('AMSG_START_DATE', 'Start Date');
 define('AMSG_VOUCHER_DURATION_EXPL', 'Enter the duration in days until this voucher expires. Leave empty or enter 0 if you wish to apply an unlimited duration.');
 define('AMSG_NB_OF_USES', 'Number of Uses');
-define('AMSG_NB_OF_USES_EXPL', 'Enter the number of times this voucher can be used. Leave empty or enter 0 if you wish for users to be able to use this voucher an
-unlimited number of times.');
+define('AMSG_NB_OF_USES_EXPL', 'Enter the number of times this voucher can be used. Leave empty or enter 0 if you wish for users to be able to use this voucher an unlimited number of times.');
 define('AMSG_ASSIGNED_FEES', 'Assign to Fees');
 define('AMSG_ALL_FEES', 'All Fees');
 define('AMSG_VOUCHER_CODE', 'Voucher Code');
@@ -1838,8 +1703,7 @@ define('AMSG_ADD_TOPIC', 'Add Topic');
 define('AMSG_EDIT_TOPIC', 'Edit Topic');
 define('AMSG_TOPIC_CONTENT', 'Topic Content');
 define('AMSG_DATE_ADDED', 'Date Added');
-define('AMSG_LANGUAGE_FILES_EDIT_NOTE', '<b>Note:</b> For best results, please copy the code from the textarea above in your favorite php/html editor, make the
-changes there, and then paste the code back into the textarea.');
+define('AMSG_LANGUAGE_FILES_EDIT_NOTE', '<b>Note:</b> For best results, please copy the code from the textarea above in your favorite php/html editor, make the changes there, and then paste the code back into the textarea.');
 define('AMSG_SELECTED_FILE', 'Selected File');
 define('AMSG_ENTER_CONTENT', 'Enter Content');
 define('AMSG_ENABLE_PAGE', 'Enable this Page');
@@ -1849,23 +1713,18 @@ define('AMSG_BANNER_PREVIEW', 'Banner Preview');
 define('AMSG_CUSTOM_ADVERT', 'Custom Advert');
 define('AMSG_CODE_ADVERT', 'Code Advert');
 define('AMSG_BANNER_TYPE', 'Banner Type');
-define('AMSG_BANNER_TYPE_EXPL', 'Choose the banner type you want to create.<br>
-<b>Code Advert:</b> banners for which you only need to enter specific code in order for the banner to work.<br>
-<b>Custom Advert:</b> banners created directly by you. You will need to enter at least an image and a redirect url for this banner type.');
+define('AMSG_BANNER_TYPE_EXPL', 'Choose the banner type you want to create.<br><b>Code Advert:</b> banners for which you only need to enter specific code in order for the banner to work.<br><b>Custom Advert:</b> banners created directly by you. You will need to enter at least an image and a redirect url for this banner type.');
 define('AMSG_ADVERT_CODE', 'Banner Code');
 define('AMSG_VIEWS_PURCHASED', 'Views Purchased');
-define('AMSG_VIEWS_PURCHASED_EXPL', 'Optional field. Enter the maximum number of times this banner will be displayed on the site or leave empty if the
-banner will displayed an unlimited number of times.');
+define('AMSG_VIEWS_PURCHASED_EXPL', 'Optional field. Enter the maximum number of times this banner will be displayed on the site or leave empty if the banner will displayed an unlimited number of times.');
 define('AMSG_CLICKS_PURCHASED', 'Clicks Purchased');
-define('AMSG_CLICKS_PURCHASED_EXPL', 'Optional field. Enter the maximum number of click-throughs this banner will accept or leave empty if
-an unlimited number of clicks was purchased.');
+define('AMSG_CLICKS_PURCHASED_EXPL', 'Optional field. Enter the maximum number of click-throughs this banner will accept or leave empty if an unlimited number of clicks was purchased.');
 define('AMSG_BANNER_IMAGE', 'Upload Banner Image');
 define('AMSG_BANNER_URL', 'Banner URL');
 define('AMSG_TEXT_UNDER', 'Text Under');
 define('AMSG_ALT_TEXT', 'Alt Text');
 define('AMSG_DISPLAY_IN_CATEGORIES', 'Display in Categories');
-define('AMSG_DISPLAY_IN_CATEGORIES_EXPL', 'Optional field. Select the categories from the list below for which you want this banner to display or leave
-empty if you want this banner to be displayed sitewide.');
+define('AMSG_DISPLAY_IN_CATEGORIES_EXPL', 'Optional field. Select the categories from the list below for which you want this banner to display or leave empty if you want this banner to be displayed sitewide.');
 define('AMSG_ALL_CATEGORIES', 'All Categories');
 define('AMSG_SELECTED_CATEGORIES', 'Selected Categories');
 define('AMSG_SELECT_BANNER_TYPE', 'Select Banner Type ->');
@@ -1885,9 +1744,7 @@ define('AMSG_WA_SETUP_FEE_DESC', 'Enter a fee for setting up a wanted ad. This i
 define('AMSG_COUNTRY', 'Country');
 define('AMSG_ACCOUNT_STATUS', 'Account Status');
 define('AMSG_ENABLE_AUCT_APPROVAL', 'Enable Auctions Approval');
-define('AMSG_AUCT_APPROVAL_NOTE', 'Note: By checking the checkbox above, all auctions will require admin approval.<br>
-If the global approval is disabled, you will still be able to select particular users and categories to which auction approval
-will apply.');
+define('AMSG_AUCT_APPROVAL_NOTE', 'Note: By checking the checkbox above, all auctions will require admin approval.<br>If the global approval is disabled, you will still be able to select particular users and categories to which auction approval will apply.');
 define('AMSG_USERS', 'Users');
 define('AMSG_VIEW_BIDS', 'View Bids');
 define('AMSG_VIEW_OPEN_AUCTIONS', 'View Open Auctions');
@@ -1895,8 +1752,7 @@ define('AMSG_SELLING_CAPABILITIES', 'Selling Capabilities');
 define('AMSG_PREF_SELLER', 'Preferred Seller');
 define('AMSG_REQUIRE_AUCT_APPROVAL', 'Auction Approval Required');
 define('AMSG_PAYMENT_SETTINGS', 'Payment Settings');
-define('AMSG_PAYMENT_MODE_EXPL', 'Live: all fees are paid when a service is ordered.<br>
-Account: fees are paid periodically');
+define('AMSG_PAYMENT_MODE_EXPL', 'Live: all fees are paid when a service is ordered.<br>Account: fees are paid periodically');
 define('AMSG_ACCOUNT_BALANCE', 'Account Balance');
 define('AMSG_ACCOUNT_BALANCE_EXPL', 'You can modify the user\'s balance using the field above. An invoice will also be generated in order for the user to view why his balance has been modified.');
 define('AMSG_MAX_DEBIT_EXPL', 'You can set up a custom debit limit for this account. This value is defaulted to the global Maximum Debit value set on the Fees -> Main Settings page.');
@@ -1912,8 +1768,7 @@ define('AMSG_ENDAUCTION_FEE_APPLIES', 'Applies To');
 define('AMSG_INVOICES_SETTINGS', 'Site Invoices Settings');
 define('AMSG_INVOICE_HEADER', 'Invoice Header');
 define('AMSG_VAT_NUMBER', 'Tax Registration Number');
-define('AMSG_VAT_NUMBER_DESC', 'Enter your company\'s tax registration number if available. <br>
-If Tax is enabled, the tax registration number will appear at the bottom of each site invoice generated.');
+define('AMSG_VAT_NUMBER_DESC', 'Enter your company\'s tax registration number if available. <br>If Tax is enabled, the tax registration number will appear at the bottom of each site invoice generated.');
 define('AMSG_INVOICE_HEADER_DESC', 'Optional. Submit a custom header for your site\'s invoices.');
 define('AMSG_INVOICE_FOOTER', 'Invoice Footer');
 define('AMSG_INVOICE_FOOTER_DESC', 'Optional. Submit a custom footer for your site\'s invoices.');
@@ -1921,9 +1776,7 @@ define('AMSG_INVOICE_COMMENTS', 'Invoice Comments');
 define('AMSG_INVOICE_COMMENTS_DESC', 'Optional. The invoice comments will appear at the bottom of each site invoice generated.');
 define('AMSG_MCRYPT_SETTINGS', 'Mcrypt Callback Encryption Settings');
 define('AMSG_ENABLE_MCRYPT', 'Enable Mcrypt');
-define('AMSG_ENABLE_MCRYPT_EXPL', 'Click to enable the Mcrypt encryption feature for the callback process, for additional security
-for payment callbacks. This feature will apply to all payment gateways used.<br>
-<b>Important</b>: PHP must be compiled on your server with the "mcrypt" module. The minimum version required is 2.4.x ');
+define('AMSG_ENABLE_MCRYPT_EXPL', 'Click to enable the Mcrypt encryption feature for the callback process, for additional security for payment callbacks. This feature will apply to all payment gateways used.<br><b>Important</b>: PHP must be compiled on your server with the "mcrypt" module. The minimum version required is 2.4.x ');
 define('AMSG_MCRYPT_KEY', 'Mcrypt Key');
 define('AMSG_MCRYPT_KEY_EXPL', 'Enter a unique key that the mcrypt module will use to encrypt the callback data.');
 define('AMSG_AUCTION_FEES', 'Auction Fees');
@@ -1934,17 +1787,13 @@ define('AMSG_MAKEOFFER_FEE_DESC', 'Enter a fee for enabling Make Offer on an auc
 define('AMSG_ITEMS', 'items');
 define('AMSG_DELETE_MARKED_DELETED_ITEMS', 'Remove Marked Deleted Items');
 define('AMSG_MARKED_DELETED_REMOVED', 'All marked deleted auctions have been successfully removed.');
-define('AMSG_INSUFFICIENT_LVL_MSG', 'Sorry, You have not a high enough admin priviledge level
-to access the page you have requested.');
-define('AMSG_CAT_CHANGE_EXPL_MSG', 'You have made changes to your category structure,
-please update those changes by clicking <a href="update_categories.php"><font size="+2" color="yellow">HERE</font></a>
-when you have finished');
+define('AMSG_INSUFFICIENT_LVL_MSG', 'Sorry, You have not a high enough admin priviledge level to access the page you have requested.');
+define('AMSG_CAT_CHANGE_EXPL_MSG', 'You have made changes to your category structure, please update those changes by clicking <a href="update_categories.php"><font size="+2" color="yellow">HERE</font></a>when you have finished');
 define('AMSG_VIEW_BIDS_PLACED_BY', 'View bids placed by');
 define('AMSG_MB_USERNAME_LOGIN', 'Enter the Member Username to Login as');
 define('AMSG_ENTER_ADMIN_USERNAME', 'Enter your Admin Username');
 define('AMSG_ENTER_ADMIN_PASSWORD', 'Enter your Admin Password');
-define('AMSG_INVALID_ADMIN_LOGIN', '<b>Error</b>: The admin login details you have submitted are invalid or<br>
-you don\'t have enough priviledges to login as a site user.');
+define('AMSG_INVALID_ADMIN_LOGIN', '<b>Error</b>: The admin login details you have submitted are invalid or<br>you don\'t have enough priviledges to login as a site user.');
 define('AMSG_INVALID_USERNAME', '<b>Error</b>: The user you are trying to login as doesn\'t exist.');
 define('AMSG_SPOOFER_LOGIN_SUCCESS_A', 'You have now Successfully Logged in as');
 define('AMSG_CLICK_TO_PROCEED', 'Click here to Proceed');
@@ -1990,13 +1839,9 @@ define('AMSG_SUBSCRIPTION_NAME', 'Subscription Name');
 define('AMSG_ITEMS_IN_STORE', 'Items in Store');
 define('AMSG_RECURRING_FEE_DAYS', 'Recurring Fee [days]');
 define('AMSG_ADD_SUBSCRIPTION', 'Add Subscription');
-define('AMSG_STORE_SUBSCR_NOTE_A', 'If you dont set up any store types, a default store will be available for all
-users with the following characteristics: [ <b>Items in Store</b>: Unlimited ] [ <b>Store Fee</b>: Free ] ');
-define('AMSG_STORE_SUBSCR_NOTE_B', '<b>IMPORTANT</b>: Deleting a store type will automatically inactivate all stores that were subscribed to the respective account type. 
-Inactivating all store fees and types will automatically activate all stores.
-If you want to alter subscriptions you should edit them rather than creating new ones.');
-define('AMSG_STORE_SUBSCR_NOTE_C', '<b>NOTE</b>: If you want a fee to be a one time fee, enter 0 in the "Recurring" field.<br>
-The "Items in Store" field represents the maximum number of open auctions that can be listed at one time in the member\'s store.');
+define('AMSG_STORE_SUBSCR_NOTE_A', 'If you dont set up any store types, a default store will be available for all users with the following characteristics: [ <b>Items in Store</b>: Unlimited ] [ <b>Store Fee</b>: Free ] ');
+define('AMSG_STORE_SUBSCR_NOTE_B', '<b>IMPORTANT</b>: Deleting a store type will automatically inactivate all stores that were subscribed to the respective account type. Inactivating all store fees and types will automatically activate all stores. If you want to alter subscriptions you should edit them rather than creating new ones.');
+define('AMSG_STORE_SUBSCR_NOTE_C', '<b>NOTE</b>: If you want a fee to be a one time fee, enter 0 in the "Recurring" field.<br> The "Items in Store" field represents the maximum number of open auctions that can be listed at one time in the member\'s store.');
 define('AMSG_CHOOSE_VIEW', 'Choose View');
 define('AMSG_SELECT_PERIOD', 'Select Period');
 define('AMSG_DAILY', 'Daily');
@@ -2027,10 +1872,8 @@ define('AMSG_META_KEYWORDS', 'Meta Keywords');
 define('AMSG_MIN_AGE_YEARS', 'Min. age<br>(years)');
 define('AMSG_CHG_DURATION_ON_BID_PLACED', 'Change Auction Duration when a Bid is Placed');
 define('AMSG_NEW_DURATION', 'New Duration');
-define('AMSG_NEW_DURATION_DESC', 'If the duration left of the auction is over the value above, then it will be automatically reset 
-to the value above.');
-define('AMSG_ACT_EMAILS_MSG', 'Click on the "Proceed" button below to resend the proper activation emails to all unverified 
-users that are registered to the site.<br>');
+define('AMSG_NEW_DURATION_DESC', 'If the duration left of the auction is over the value above, then it will be automatically reset to the value above.');
+define('AMSG_ACT_EMAILS_MSG', 'Click on the "Proceed" button below to resend the proper activation emails to all unverified users that are registered to the site.<br>');
 define('AMSG_ACT_EMAILS_IMPOSSIBLE_MSG', 'The activation emails cannot be sent because the registration activation is disabled or a signup fee is set.');
 define('AMSG_ACT_EMAILS_SENT_MSG', 'The registration activation emails have been re-sent successfully.');
 define('AMSG_SEND_EMAIL_TO', 'Send Email To');
@@ -2046,34 +1889,25 @@ define('AMSG_EDIT_CAT_LANG_FILES', 'Edit Category Language Files');
 define('AMSG_CHOOSE_LANGUAGE', 'Choose Language');
 define('AMSG_AUCT_MARKED_DELETED', 'Marked Deleted Auction');
 define('AMSG_FEATURED', 'Featured');
-define('AMSG_STORE_SUBSCR_NOTE_D', '<b>NOTE</b>: Users which will create their store from an account with the "Featured" option enabled 
-will have their store featured on the "Stores" page.');
+define('AMSG_STORE_SUBSCR_NOTE_D', '<b>NOTE</b>: Users which will create their store from an account with the "Featured" option enabled will have their store featured on the "Stores" page.');
 define('AMSG_PRINT_VIEW', 'Print View');
 define('AMSG_PRINT_THIS_PAGE', 'Print this Page');
 define('AMSG_CLOSE_WINDOW', 'Close Window');
 define('AMSG_ENABLE_SELLER_VERIFICATION', 'Enable Seller Verification');
 define('AMSG_VERIFICATION_FEE', 'Verification Fee');
-define('AMSG_VERIFICATION_FEE_EXPL', 'You can set up a one time or recurring verification fee. If you wish the verification fee 
-to be a one time fee enter 0 in the recurring field.<br>
-<b>Note</b>: Even if you disable seller verification, you will still be able to set the status of your users to verified sellers 
-from the Users Management page. Users will however not be able to verify their accounts themselves.');
+define('AMSG_VERIFICATION_FEE_EXPL', 'You can set up a one time or recurring verification fee. If you wish the verification fee to be a one time fee enter 0 in the recurring field.<br><b>Note</b>: Even if you disable seller verification, you will still be able to set the status of your users to verified sellers from the Users Management page. Users will however not be able to verify their accounts themselves.');
 define('AMSG_RECURRING_EVERY', 'recurring every');
 define('AMSG_VERIFIED_SELLER', 'Verified Seller');
 define('AMSG_SWAP_FEE_DESC', 'Enter a fee that will be charged when an item is swapped. This is a flat fee.');
 define('AMSG_SHOW_MAKEOFFER_RANGE', 'Show Make Offer Price Ranges');
-define('AMSG_SHOW_MAKEOFFER_RANGE_EXPL', 'If you enable this feature, the minimum and maximum offer range accepted on an auction 
-are shown to the potential buyers. Otherwise these values are hidden.');
+define('AMSG_SHOW_MAKEOFFER_RANGE_EXPL', 'If you enable this feature, the minimum and maximum offer range accepted on an auction are shown to the potential buyers. Otherwise these values are hidden.');
 define('AMSG_SELLER_VERIF_MANDATORY', 'Mandatory Verification');
-define('AMSG_SELLER_VERIF_MANDATORY_EXPL', 'If the mandatory verification is enabled, all sellers will need to get verified in order to be able to sell. <br>
-Otherwise sellers will be able to post items even if they aren\'t verified.');
+define('AMSG_SELLER_VERIF_MANDATORY_EXPL', 'If the mandatory verification is enabled, all sellers will need to get verified in order to be able to sell. <br>Otherwise sellers will be able to post items even if they aren\'t verified.');
 define('AMSG_SOLD_ITEMS', 'Sold Items');
 define('AMSG_WINNING_BID_DETAILS', 'Winning Bid Details');
 define('AMSG_CUSTOM_REP_FIELDS_MANAGEMENT_SALE', 'Custom Reputation Fields Setup (sale)');
 define('AMSG_CUSTOM_REP_FIELDS_MANAGEMENT_PURCHASE', 'Custom Reputation Fields Setup (purchase)');
-define('AMSG_EMAILS_QUEUED_SUCCESS', 'The newsletter has been saved.<br>
-The emails will be sent to the recipients using the <b>cron_jobs/newsletter_cron.php</b> file,<br>
-please make sure you have added the file to your server\'s cron.<br>
-The newsletter will be sent to 50 users at a time to avoid server load.');
+define('AMSG_EMAILS_QUEUED_SUCCESS', 'The newsletter has been saved.<br>The emails will be sent to the recipients using the <b>cron_jobs/newsletter_cron.php</b> file,<br>please make sure you have added the file to your server\'s cron.<br>The newsletter will be sent to 50 users at a time to avoid server load.');
 define('AMSG_SELLER_OTHER_ITEMS_EXPL', '<b>Important</b>: It is recommended to disable this option in case your site has many live items.');
 
 ## v6.01
@@ -2093,15 +1927,9 @@ define ('AMSG_IP_ADDRESS_HISTORY', 'IP Address History');
 define ('AMSG_IP_ADDRESS', 'IP Address');
 define ('AMSG_VIEW_SUGGESTED_CATEGORIES', 'View Suggested Categories');
 define ('AMSG_ENABLE_STORE_ONLY_MODE', 'Enable Store Only Mode');
-define ('AMSG_ENABLE_STORE_ONLY_MODE_EXPL', 'If you choose to enable this option, users will need to open a store in order to 
-be able to list items. Users that will not have a store opened will only able to bid on items.<br>
-<b>Important:</b> The <b>Buy Out</b> feature will be automatically enabled when you enable <b>Store Only</b> mode, and all 
-items will need to have a <b>Buy Out</b> price set.');
+define ('AMSG_ENABLE_STORE_ONLY_MODE_EXPL', 'If you choose to enable this option, users will need to open a store in order to be able to list items. Users that will not have a store opened will only able to bid on items.<br><b>Important:</b> The <b>Buy Out</b> feature will be automatically enabled when you enable <b>Store Only</b> mode, and all items will need to have a <b>Buy Out</b> price set.');
 define ('AMSG_ACTIVATE_EHANCED_SSL', 'Enable Enhanced SSL');
-define ('AMSG_ACTIVATE_EHANCED_SSL_EXPL', 'By enabling enhanced SSL support, your site\'s <b>Members Area</b>, the selling process and 
-several other pages will run through SSL.<br>
-Some servers however might not support the same session variables on both the SSL and normal sites, that is why this feature is 
-optional. If you choose to run the site in SSL but with this option disabled, only the login and register pages will run in SSL.');
+define ('AMSG_ACTIVATE_EHANCED_SSL_EXPL', 'By enabling enhanced SSL support, your site\'s <b>Members Area</b>, the selling process and several other pages will run through SSL.<br>Some servers however might not support the same session variables on both the SSL and normal sites, that is why this feature is optional. If you choose to run the site in SSL but with this option disabled, only the login and register pages will run in SSL.');
 
 define ('AMSG_WATERMARK_TEXT', 'Watermark Text');
 define ('AMSG_WATERMARK_TEXT_EXPL', 'This would be the text you would like to use as a watermark.');
@@ -2111,8 +1939,7 @@ define ('AMSG_DEBIT_BALANCE_LIMIT', 'Debit Balance > 1.00');
 define ('AMSG_PAYMENT_REMINDER_ALL', 'Send a payment reminder to all the users in the list below');
 define ('AMSG_INVOICES_SENT_SUCCESS', 'The payment reminders have been sent to the users successfully.');
 define ('AMSG_OLD_IMAGES_REMOVAL_TOOL', 'Old Images Removal Tool');
-define ('AMSG_IMG_REMOVAL_TOOL_DESC', 'This tool will delete the old images from your <b>uplimg/</b> folder.<br>Only images which dont correspond to any auction 
-(active/closed/suspended or marked deleted) will be removed');
+define ('AMSG_IMG_REMOVAL_TOOL_DESC', 'This tool will delete the old images from your <b>uplimg/</b> folder.<br>Only images which dont correspond to any auction (active/closed/suspended or marked deleted) will be removed');
 define ('AMSG_CLEANUP_SUCCESS', 'Cleanup Successful');
 define ('AMSG_IMGS_HAVE_BEEN_DELETED_TOTALING', ' images have been deleted totalling ');
 define ('AMSG_OPERATION_LASTED', 'Operation lasted');
@@ -2134,8 +1961,7 @@ define ('AMSG_FREE_IMAGES_EXPL', 'Enter in the text field above how many images 
 define ('AMSG_FREE_MEDIA', 'Free Media');
 define ('AMSG_FREE_MEDIA_EXPL', 'Enter in the text field above how many media files the user will be able to upload for free before being filled the Media Upload Fee.');
 define ('AMSG_PREF_SELLER_EXP_DATE', 'Expires in');
-define ('AMSG_PREF_SELLER_EXP_DATE_EXPL', 'Enter the number of days after which time the preferred seller status of a user will expire.<br>If you will set the number of days, all preferred sellers which dont have 
-an expiration date on their status set will be automatically set this expiration date.');
+define ('AMSG_PREF_SELLER_EXP_DATE_EXPL', 'Enter the number of days after which time the preferred seller status of a user will expire.<br>If you will set the number of days, all preferred sellers which dont have an expiration date on their status set will be automatically set this expiration date.');
 define ('AMSG_SEND_MSG_TO', 'Send Message To');
 define ('AMSG_SUBJECT', 'Subject');
 define ('AMSG_BY_EMAIL', 'by email');
@@ -2143,9 +1969,7 @@ define ('AMSG_INTERNAL_MESSAGING', 'using the internal messaging system');
 define('AMSG_MSG_SENT_SUCCESS', 'The message has been sent successfully.');
 define ('AMSG_ENABLE_SECOND_CHANCE', 'Enable Second Chance Purchasing');
 define ('AMSG_SELECT_INTERVAL', 'Select Interval');
-define ('AMSG_SECOND_CHANCE_EXPL', 'With second chance purchasing, sellers will be able to manually select a winner if the automatically appointed winner didn\'t go through with the purchase.<br> 
-You can set a number of days after which the "Second Chance" feature will become available for sold items, or enter 0 if you wish for this feature to be available right away. <br><br>
-<b>Important</b>: This feature will be available for standard auctions not marked as paid only.');
+define ('AMSG_SECOND_CHANCE_EXPL', 'With second chance purchasing, sellers will be able to manually select a winner if the automatically appointed winner didn\'t go through with the purchase.<br>You can set a number of days after which the "Second Chance" feature will become available for sold items, or enter 0 if you wish for this feature to be available right away. <br><br><b>Important</b>: This feature will be available for standard auctions not marked as paid only.');
 define ('AMSG_REPORTED_AUCTION', 'Reported Auction');
 define ('AMSG_DELETE_REPORT', 'Delete Report');
 define ('AMSG_DELETE_AUCTION', 'Delete Auction');
@@ -2156,8 +1980,7 @@ define ('AMSG_APPLIED_BY', 'Applied By Sellers From');
 define ('AMSG_REMOVE_MARKED_DELETED_AUCTIONS', 'Marked Deleted Auctions Removal');
 define ('AMSG_REMOVE_MDA_1', 'There are currently ');
 define ('AMSG_REMOVE_MDA_2', 'marked deleted auctions in the database.');
-define ('AMSG_REMOVE_MARKED_DELETED_AUCTIONS_EXPL', 'By enabling this setting, all marked deleted auctions will be automatically removed 
-through the cron, 50 auctions at a time, to avoid server load.');
+define ('AMSG_REMOVE_MARKED_DELETED_AUCTIONS_EXPL', 'By enabling this setting, all marked deleted auctions will be automatically removed through the cron, 50 auctions at a time, to avoid server load.');
 
 define ('AMSG_TO_DO', 'To Do');
 define ('AMSG_TO_DO_TAX_1', 'You have a total of ');
@@ -2172,11 +1995,7 @@ define ('AMSG_TO_DO_TAX_5', 'to start the conversion process. It might take a fe
 define ('AMSG_DIGITAL_DOWNLOADS', 'Digital Downloads');
 define ('AMSG_ENABLE_DD', 'Enable Digital Downloads');
 define ('AMSG_ENABLE_DD_EXPL', 'Check this checkbox if you want to allow sellers on your site to create auctions with digital downloads.');
-define('AMSG_DD_MAX_SIZE_EXPL', 'Enter the maximum size in KB an downloadable file can have.<br><br>
-<strong>IMPORTANT NOTE:</strong> The maximum size for uploading files on your server is
-<b>' . ini_get('upload_max_filesize') . 'Bytes</b>.
-If you want for the users to be able to upload larger files you will need to modify the <strong>upload_max_filesize</strong>
-setting from php.ini.<br><br>Please ask your hosting provider for more details on this.');
+define('AMSG_DD_MAX_SIZE_EXPL', 'Enter the maximum size in KB an downloadable file can have.<br><br><strong>IMPORTANT NOTE:</strong> The maximum size for uploading files on your server is<b>' . ini_get('upload_max_filesize') . 'Bytes</b>.If you want for the users to be able to upload larger files you will need to modify the <strong>upload_max_filesize</strong>setting from php.ini.<br><br>Please ask your hosting provider for more details on this.');
 define ('AMSG_DD_EXPIRATION', 'Download Link Expiration');
 define ('AMSG_DD_EXPIRATION_EXPL', 'Enter the number of days after a download link will be deactivated automatically, or enter 0 if you want to leave the links active indefinitely.');
 define ('AMSG_DD_DISCLAIMER', 'Download Disclaimer');
@@ -2184,15 +2003,13 @@ define ('AMSG_DD_DISCLAIMER_EXPL', 'Enter a disclaimer paragraph which will be s
 
 define ('AMSG_DD_FEE_DESC', 'Enter a fee for adding a Digital Download to an auction. This is a flat fee.');
 define ('AMSG_DD_FOLDER', 'Direct Downloads Folder');
-define ('AMSG_DD_FOLDER_EXPL', 'Enter a folder where the files uploaded for direct media auctions will be stored. The folder will be 
-automatically created by the software, so please do not try to create it before directly on your ftp because it will result in an error.');
+define ('AMSG_DD_FOLDER_EXPL', 'Enter a folder where the files uploaded for direct media auctions will be stored. The folder will be automatically created by the software, so please do not try to create it before directly on your ftp because it will result in an error.');
 define ('AMSG_FOLDER_CREATE_SUCCESS', 'The new digital media folder has been created successfully.');
 define ('AMSG_FOLDER_CREATE_FAILURE', '<b>Error</b>: Couldn\'t create the new digital media folder.');
 define ('AMSG_ERROR_INVALID_EMAIL_FILE', 'Error: Invalid email file selected.');
 
 define ('AMSG_CATEGORIES_GENERATE_NOTE2', '<b>NOTE:</b> The subcategories will be generated when the "Save Changes" button is clicked.');
-define ('AMSG_PRIVATE_SITE_EXPL', 'Enabling this feature will allow you to run a single/selected seller site.  This feature is used when you do not want to allow all users to list items for sale.<br>
-If opting to enable this feature you can grant selling privileges [ <a href="list_site_users.php">here</a> ]');
+define ('AMSG_PRIVATE_SITE_EXPL', 'Enabling this feature will allow you to run a single/selected seller site.  This feature is used when you do not want to allow all users to list items for sale.<br>If opting to enable this feature you can grant selling privileges [ <a href="list_site_users.php">here</a> ]');
 
 define ('AMSG_ALLOW_EMBEDDED_CODE', 'Allow Embedded Code');
 define ('AMSG_ALLOW_EMBEDDED_CODE_EXPL', 'If you enable this feature, sellers will be able to add embedded code when uploading media (Example: embedded Youtube videos, etc.)');
@@ -2213,12 +2030,9 @@ define ('AMSG_STORE_OWNERS', 'Store Owners');
 define ('AMSG_ENABLE', '');
 define ('AMSG_ENABLE_PRIVATE_REPUTATION_COMMENTS', 'Enable Private Reputation Comments');
 define ('AMSG_RESET_INSTALLATION', 'Reset Installation');
-define('AMSG_INVALID_ADMIN_LOGIN_RI', '<b>Error</b>: The admin login details you have submitted are invalid or<br>
-you don\'t have enough priviledges to reset the installation.');
-define ('AMSG_RESET_INSTALLATION_SUCCESS', 'The installation has been reset successfully.<br><br>
-Please click [ <a href="images_removal_tool.php">here</a> ] to remove all obsolete images created by the software from your server.');
-define ('AMSG_RESET_INSTALLATION_EXPL', 'By resetting this installation, all the users, auctions and related tables will be truncated.<br>
-Please enter your admin username and password and click "Proceed" if you wish to go ahead with this action.');
+define('AMSG_INVALID_ADMIN_LOGIN_RI', '<b>Error</b>: The admin login details you have submitted are invalid or<br>you don\'t have enough priviledges to reset the installation.');
+define ('AMSG_RESET_INSTALLATION_SUCCESS', 'The installation has been reset successfully.<br><br>Please click [ <a href="images_removal_tool.php">here</a> ] to remove all obsolete images created by the software from your server.');
+define ('AMSG_RESET_INSTALLATION_EXPL', 'By resetting this installation, all the users, auctions and related tables will be truncated.<br>Please enter your admin username and password and click "Proceed" if you wish to go ahead with this action.');
 define ('AMSG_RESET_INSTALLATION_CONFIRM', 'Are you sure you want to reset this installation?');
 
 define ('AMSG_BANNER_POSITION', 'Banner Position');
@@ -2231,23 +2045,14 @@ define ('AMSG_SMTP_HOST', 'SMTP Host');
 define ('AMSG_SMTP_PORT', 'SMTP Port');
 define ('AMSG_SMTP_USERNAME', 'SMTP Username');
 define ('AMSG_SMTP_PASSWORD', 'SMTP Password');
-define ('AMSG_SMTP_SETTINGS_EXPL', 'Enter your SMTP login details in case you choose to use SMTP as the system emails handler.<br>
-<b>Important</b>: you only need enter a username and a password if you SMTP server requires authentication.<br>
-If the server doesnt require authentication, please leave these fields empty because otherwise the SMTP server can return an error and no emails will be sent.<br>
-If you are unsure of your SMTP server\'s host name and port, please leave the Host and Port fields empty and the software will try to retrieve them for you.');
+define ('AMSG_SMTP_SETTINGS_EXPL', 'Enter your SMTP login details in case you choose to use SMTP as the system emails handler.<br><b>Important</b>: you only need enter a username and a password if you SMTP server requires authentication.<br>If the server doesnt require authentication, please leave these fields empty because otherwise the SMTP server can return an error and no emails will be sent.<br>If you are unsure of your SMTP server\'s host name and port, please leave the Host and Port fields empty and the software will try to retrieve them for you.');
 
-define ('AMSG_SMTP_SEND_TEST_EMAIL', 'Click [ <a href="smtp_test.php" target="_blank">here</a> ] to send a test SMTP email. Please make sure you have entered the correct settings and saved this form before clicking the link.<br>
-The test page will open in a new window.');
+define ('AMSG_SMTP_SEND_TEST_EMAIL', 'Click [ <a href="smtp_test.php" target="_blank">here</a> ] to send a test SMTP email. Please make sure you have entered the correct settings and saved this form before clicking the link.<br>The test page will open in a new window.');
 define ('AMSG_BUY_OUT_FORCE_PAYMENT', 'Buy Out - Force Payment Option');
 define ('AMSG_ENABLE_FORCE_PAYMENT', 'Enable Force Payment');
-define ('AMSG_ENABLE_FORCE_PAYMENT_EXPL', 'This option can be used if enabled when buy out is used on an auction which has direct payment methods enabled.<br>
-The buyer has a set amount of time to make payment using one of the payment gateways offered by the seller in order for the sale to be completed.<br>
-If the payment isnt made, the sale will be cancelled.<br>
-The sale is also considered as completed if the seller marks it as "paid" from the "Sold Items" page.<br>
-<b>Important</b>: Sellers will need to enable this option from the "Preffiled Fields/Global Settings" page in the "Selling" section.');
+define ('AMSG_ENABLE_FORCE_PAYMENT_EXPL', 'This option can be used if enabled when buy out is used on an auction which has direct payment methods enabled.<br>The buyer has a set amount of time to make payment using one of the payment gateways offered by the seller in order for the sale to be completed.<br>If the payment isnt made, the sale will be cancelled.<br>The sale is also considered as completed if the seller marks it as "paid" from the "Sold Items" page.<br><b>Important</b>: Sellers will need to enable this option from the "Preffiled Fields/Global Settings" page in the "Selling" section.');
 define ('AMSG_FORCE_PAYMENT_TIME', 'Time Limit');
-define ('AMSG_FORCE_PAYMENT_TIME_EXPL', 'Enter the time limit after which, if the item hasnt been paid for, the sale is cancelled.<br>
-<b>Important</b>: If you enter "0" in this field, the force payment option will be disabled!');
+define ('AMSG_FORCE_PAYMENT_TIME_EXPL', 'Enter the time limit after which, if the item hasnt been paid for, the sale is cancelled.<br><b>Important</b>: If you enter "0" in this field, the force payment option will be disabled!');
 define ('AMSG_GA_CODE', 'Google Analytics Code');
 define ('AMSG_ADD_GA_CODE', 'Add Google Analytics Code');
 define ('AMSG_ENABLE_REFUNDS', 'End of Auction Fee Refunds');
@@ -2256,8 +2061,7 @@ define ('AMSG_REFUNDS_IMPORTANT_NOTE', '<b>Important</b>: Users will be able to 
 define ('AMSG_REFUND_REQUESTS', 'Manage Refund Requests');
 define ('AMSG_REFUND_REQUESTS_NOTE', '<b>Important</b>: All refund requests will be removed automatically after 60 days from the last action that was made on them.');
 define ('AMSG_END_AUCT_EARLY', 'Close Auctions Before End Time');
-define ('AMSG_END_AUCT_EARLY_EXPL', 'If this setting is enabled, sellers will be able to close their auctions early even if there is a high bid placed.<br>
-By default, auctions can be closed ahead of the closing date only if there are no bids or if the high bid is lower than the reserve price.');
+define ('AMSG_END_AUCT_EARLY_EXPL', 'If this setting is enabled, sellers will be able to close their auctions early even if there is a high bid placed.<br>By default, auctions can be closed ahead of the closing date only if there are no bids or if the high bid is lower than the reserve price.');
 define ('AMSG_EDIT_POSTAGE_TIERS_WEIGHT', 'Edit Postage Tiers (Total Weight Based)');
 define ('AMSG_EDIT_POSTAGE_TIERS_AMOUNT', 'Edit Postage Tiers (Invoice Amount Based)');
 
@@ -2265,13 +2069,10 @@ define ('AMSG_REVERSE_AUCTIONS_MANAGEMENT', 'Reverse Auctions Management');
 define ('AMSG_ENABLE_REVERSE_AUCTIONS', 'Enable Reverse Auctions');
 define ('AMSG_EDIT_BUDGETS_TABLE', 'Edit Project Budgets Table');
 define ('AMSG_ADD_BUDGET', 'Add New Row');
-define ('AMSG_REVERSE_BUDGETS_TABLE_NOTE', 'If you enter 0 in the "From" field, the budget will be: <b>less than "To"</b>.
-If you enter 0 in the "To" field, the budget will be: <b>more than "From"</b>.');
+define ('AMSG_REVERSE_BUDGETS_TABLE_NOTE', 'If you enter 0 in the "From" field, the budget will be: <b>less than "To"</b>.If you enter 0 in the "To" field, the budget will be: <b>more than "From"</b>.');
 define ('AMSG_CUSTOM_REVERSE_AUCT_FIELDS_MANAGEMENT', 'Custom Reverse Auction Fields Management');
 define ('AMSG_ENABLE_FIRST_BIDDER_AUCTIONS', 'Enable First Bidder Auctions');
-define ('AMSG_FIRST_BIDDER_AUCTIONS_EXPL', 'If this feature is enabled, sellers will be able to list first bidder auctions.<br>
-These auctions will have a start price which will decrease by a certain amount periodically until there is a bidder, or until the reserve price is met.<br>
-The seller will enter the start price, reserve price, bid decrement amount and bid decrement interval.');
+define ('AMSG_FIRST_BIDDER_AUCTIONS_EXPL', 'If this feature is enabled, sellers will be able to list first bidder auctions.<br>These auctions will have a start price which will decrease by a certain amount periodically until there is a bidder, or until the reserve price is met.<br>The seller will enter the start price, reserve price, bid decrement amount and bid decrement interval.');
 define ('AMSG_ENABLE_END_AUCTION_EARLY', 'Enable End Auction Early');
 define ('AMSG_ENABLE_END_AUCTION_EARLY_EXPL', 'If this feature is enabled, sellers will be able to close their auctions early, but only if there are no bids placed which are above the reserve price.');
 define ('AMSG_ENABLE_END_AUCTION_EARLY_BID', 'End Auction Early with High Bid');
@@ -2300,13 +2101,10 @@ define ('AMSG_ONLINE_USERS', 'Online Users');
 define ('AMSG_ENABLE_BUYER_CREATE_INVOICE', 'Allow Buyer to Combine Purchases (Create Invoices)');
 define ('AMSG_FULLTEXT_SEARCH_METHOD', 'Fulltext Search Method');
 define ('AMSG_USE_PLUS_SIGN', 'Use <b>+</b> sign');
-define ('AMSG_USE_PLUS_SIGN_EXPL', 'A leading plus sign will be added to each search word. <br>
-This means that each word must be present in each row that is returned.');
+define ('AMSG_USE_PLUS_SIGN_EXPL', 'A leading plus sign will be added to each search word. <br>This means that each word must be present in each row that is returned.');
 define ('AMSG_USE_PLUS_AND_ASTERISK', 'Use <b>+</b> and <b>*</b> signs');
-define ('AMSG_USE_PLUS_AND_ASTERISK_EXPL', 'A plus sign will be added at the beginning at each search word and the asterisk sign will be appended to each search word.<br>
-This means that each keyword must match the beginning of a word in the searched sentence.');
-define ('AMSG_FULLTEXT_SEARCH_METHOD_EXPL', 'For more information, please visit 
-<a href="http://dev.mysql.com/doc/refman/5.1/en/fulltext-boolean.html" target="_blank">http://dev.mysql.com/doc/refman/5.1/en/fulltext-boolean.html</a>');
+define ('AMSG_USE_PLUS_AND_ASTERISK_EXPL', 'A plus sign will be added at the beginning at each search word and the asterisk sign will be appended to each search word.<br>This means that each keyword must match the beginning of a word in the searched sentence.');
+define ('AMSG_FULLTEXT_SEARCH_METHOD_EXPL', 'For more information, please visit <a href="http://dev.mysql.com/doc/refman/5.1/en/fulltext-boolean.html" target="_blank">http://dev.mysql.com/doc/refman/5.1/en/fulltext-boolean.html</a>');
 define ('AMSG_MAIL_UNVERIFIED', 'Unverified Email Addresses');
 define ('AMSG_ENTER_SUSPENSION_REASON', 'Enter suspension reason (optional)');
 
@@ -2318,8 +2116,7 @@ define ('AMSG_PPA_INTEGRATION_SETTINGS', 'Integration Settings');
 define ('AMSG_ENABLE_INTEGRATION', 'Enable Integration');
 define ('AMSG_ENABLE_INTEGRATION_EXPL', 'Check the checkbox above if you want to enable the integration between PHP Pro Bid and PHP Pro Ads');
 define ('AMSG_UNIFIED_MAIN_PAGE', 'Unified Main Page');
-define ('AMSG_UNIFIED_MAIN_PAGE_EXPL', 'Check the checkbox above if you wish for a unified main page which will display both auctions and classifieds to be displayed when a user accesses the 
-home pages of either of the softwares.');
+define ('AMSG_UNIFIED_MAIN_PAGE_EXPL', 'Check the checkbox above if you wish for a unified main page which will display both auctions and classifieds to be displayed when a user accesses the home pages of either of the softwares.');
 define ('AMSG_PPS_DEFAULT_SKIN', 'Unified Main Page Skin');
 define ('AMSG_PPS_DEFAULT_SKIN_EXPL', 'If unified main page is enabled, choose which skin to be applied to it.');
 

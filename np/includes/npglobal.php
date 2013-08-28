@@ -6,7 +6,7 @@
 ##-------------------------------------------------------------##
 #################################################################
 
-$fileExtension = (file_exists('includes/npglobal.php')) ? '' : '../';
+$fileExtension = (file_exists('includes/global.php')) ? '' : '../';
 include_once ('../includes/config.php');
 
 
@@ -59,7 +59,7 @@ if(!function_exists('memory_get_usage'))
 $time_start = getmicrotime();
 ##$memory_start = memory_get_usage();
 
-include_once ($fileExtension.'language/'.DEFAULT_DB_LANGUAGE.'/db.lang.php');
+include_once ($fileExtension.'../language/'.DEFAULT_DB_LANGUAGE.'/db.lang.php');
 
 include_once ($fileExtension.'includes/npclass_database.php');
 
