@@ -57,7 +57,14 @@ include_once('includes/grab_video_thumbnail.php');
                 <div class="campaigns-info">
                     <p class="name">
                         <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>" class="name-camp"><?php echo $row['project_title'];?></a>
-                        <br/>by <a href="#"><?php echo $row['first_name']."  ".$row['last_name'];?></a>
+                        <br/>by<a href="/about_me.php?user_id=<?php echo isset($row['id']) ? $row['id'] : '';?>">
+
+                            <?php if (isset($row['organization']) && $row['organization']): ?>
+                                <?php echo $row['organization'];?>
+                            <?php else: ?>
+                                <?php echo isset ($row["first_name"]) ? $row["first_name"] : '' ?> <?php echo isset ($row["last_name"]) ? $row["last_name"] : '' ?>
+                            <?php endif; ?>
+                        </a>
                     </p>
                     <p class="description">
                         <?php echo $row['description'];?>
@@ -69,9 +76,9 @@ include_once('includes/grab_video_thumbnail.php');
                     <span class="day"><?php $unu=round(($row['end_date']-time())/86400); echo $unu; ?><span> <?=MSG_DAYS_LEFT?></span></span>
                     <div class="clear"></div>
                     <?php
-//                    $end_time=$row['end_date'];
+                    $end_time=$row['end_date'];
 //                    $create_time=$row['reg_date'];
-//                    $current_time=time();
+                    $current_time=time();
 //                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
                     $completed =$row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
                     echo  $completed."%";

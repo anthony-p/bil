@@ -200,7 +200,7 @@ global $coupon_url;
     -->
     <link rel="stylesheet" type="text/css" href="webfonts/MyFontsWebfontsKit.css">
 </head>
-<body id="<?=$GLOBALS['body_id']?>">
+<body id="<?=(isset($GLOBALS['body_id']))?$GLOBALS['body_id']:''?>">
 <div id="outerContainer">
 <header>
 <div class="innerContainer">
