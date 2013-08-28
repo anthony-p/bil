@@ -12,7 +12,7 @@
         <tr>
             <td>Thu May 18.2013</td>
             <td><span>fundrising_goal</span></td>
-            <td>10$</td>
+            <td align="center">10$</td>
             <td>
                 <p>
                     <span>Dniester River in Ukraine</span>
