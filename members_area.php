@@ -5115,7 +5115,7 @@ else
                 $project_updates[] = $query_result;
             }
 
-            $project_reward_query_result = $db->query("SELECT * FROM project_rewards WHERE project_id=" . $campaign_id . " ORDER BY id DESC");
+            $project_reward_query_result = $db->query("SELECT * FROM project_rewards WHERE project_id=" . $campaign_id . " ORDER BY id");
             $project_rewards = array();
             while ($query_result =  mysql_fetch_array($project_reward_query_result)) {
                 $project_rewards[] = $query_result;
