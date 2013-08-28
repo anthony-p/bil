@@ -69,7 +69,7 @@ include_once('includes/grab_video_thumbnail.php');
                     <p class="description">
                         <?php echo $row['description'];?>
                     </p>
-                    <a href="" class="location"><?php echo $row['city'];?></a>
+                    <a href="/search.php?city=<?=urlencode($row['city'])?>" class="location"><?php echo $row['city'];?></a>
                 </div>
                 <div class="campaign-details">
                     <span class="price">$<?php echo $row['payment'];?></span>
