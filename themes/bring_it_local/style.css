@@ -3230,7 +3230,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #wowslider-container1  .wsl{
     display:none;
 }
-#wowslider-container1 sound,
+#wowslider-container1,
 #wowslider-container1 object{
     position:absolute;
 }#wowslider-container1  .ws_bullets {
@@ -3476,3 +3476,13 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #steps form .reward_block  .account-row textarea {width: 340px;}
 #reward_shipping_address_required {margin: 0 10px 15px 217px;}
 #steps form button.delete-reward, #steps form button.delete-reward:hover {float: right; background: url('img/trash.png'); width: 24px; height: 24px; border-radius: 0; box-shadow: none; padding: 0; margin-right: 7px;}
+
+
+/*contributions page*/
+.contributions_page {width:900px; margin: 0 auto; padding-top: 30px; position: relative;}
+.contributions_page h2{display:block; text-transform: uppercase; padding: 0 0 10px 0; margin-bottom:20px; border-bottom: 3px solid #dedede;font: 18px/29px "OpenSans-SemiBold"; color: #7eb041;}
+.contributions_page table{border:1px solid #000;}
+.contributions_page table{padding:10px 15px; font:14px "OpenSans" ; color:#333;}
+.contributions_page table .table_header{background: #f3f3f3;}
+.contributions_page table .table_header td{font: 12px/15px "OpenSans-Bold"; text-transform: uppercase; color: #333; padding: 20px;}
+.contributions_page table p{width:300px; font:14px "OpenSans" ; color:#333;}
