@@ -311,5 +311,16 @@ define ('MSG_LOGO', 'Upload your logo');
 define ('MSG_LOGO_UPLOAD_PROGRESS_TITLE', 'Upload progress');
 define ('MSG_LOGO_STOP_UPLOAD', 'Stop upload');
 
+
+define ('MSG_REWARDS_NOTE', 'Let folks know what they get in return for supporting you. You can have up to 20 rewards.');
+define ('MSG_ADD_REWARD', '+ ADD A REWARD');
+define ('MSG_REWARD', 'Reward');
+define ('MSG_REWARD_AMOUNT', 'Amount');
+define ('MSG_REWARD_NAME', 'Name');
+define ('MSG_REWARD_DESCRIPTION', 'Description');
+define ('MSG_REWARD_AVAILABLE_NUMBER', 'Number Available');
+define ('MSG_REWARD_ESTIMATED_DELIVERY', 'Estimated Delivery On');
+define ('MSG_REWARD_SHIPPING_ADDRESS_REQUIRED', 'Shipping address required');
+
 //define ('', '');
 ?>
