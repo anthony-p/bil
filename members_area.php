@@ -5227,6 +5227,10 @@ else
                     $certain_date = (isset($_POST["certain_date"]))?$_POST["certain_date"]:'';
                     $pitch_text = (isset($_POST["pitch_text"]))?$_POST["pitch_text"]:'';
 
+                    $keep_alive = (isset($_POST["keep_alive"]) && $_POST["keep_alive"]) ? 1 : 0;
+                    $keep_alive_days = (isset($_POST["keep_alive_days"]) && $_POST["keep_alive_days"]) ?
+                        $_POST["keep_alive_days"] : 0;
+
                     $mysql_update_query = "UPDATE np_users SET
                     project_category='" . $_POST["project_category"] . "',
                     campaign_basic='" . $_POST["campaign_basic"] . "',
@@ -5254,6 +5258,8 @@ else
                     pg_paypal_email='" . $_POST["pg_paypal_email"] . "',
                     pg_paypal_first_name='" . $_POST["pg_paypal_first_name"] . "',
                     pg_paypal_last_name='" . $_POST["pg_paypal_last_name"] . "',
+                    keep_alive='" . $_POST["keep_alive"] . "',
+                    keep_alive_days='" . $_POST["keep_alive_days"] . "',
                     pitch_text='" . $pitch_text . "'";
 
                     if (isset($_POST["username"]) && $_POST["username"]) {
@@ -5493,7 +5499,7 @@ else
                     $template->set('categories', $categories);
                     $template->set('countries', $countries);
                     $template->set('pitches', $pitches);
-                    $template->set('video_url', $video_url);
+                    $template->set('video_url', isset($video_url) ? $video_url : '');
                     $template->set('project_updates', $project_updates);
                     $template->set('project_rewards', $project_rewards);
                     $template->set('last_selected_tab', $last_selected_tab);
