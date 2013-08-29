@@ -16,6 +16,10 @@ define ('CURRENT_TIME', time());
 
 define ('CURRENT_TIME_MYSQL', date("Y-m-d H:i:s", time()));
 
+if (!defined('IN_SITE')) {
+    define ('IN_SITE', false);
+}
+
 ## add the site settings in an array
 $setts = $db->get_sql_row("SELECT * FROM " . DB_PREFIX . "gen_setts LIMIT 1");
 

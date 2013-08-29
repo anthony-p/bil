@@ -1,7 +1,7 @@
 <?
-
 if (isset($_POST['operation']))
-    include_once('np/language/english/npsite.lang.php');
+    include_once(__DIR__ . '/../language/english/site.lang.php');
+//    include_once('np/language/english/npsite.lang.php');
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
@@ -1144,9 +1144,11 @@ function clearBannerContent()
             </div>
             <div class="clear"></div>
             <div class="input_row">
-               <input type="text" value="30"/>
+                <input type="text" name="keep_alive_days" id="keep_alive_days"
+                       value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>" />
                 <label><?=MSG_DAYS?></label>
-                <input type="checkbox" />
+                <input type="checkbox" name="keep_alive" id="keep_alive" value="1"
+                    <?php echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?> />
             </div>
             <div class="next">
                 <input type="button" onclick="prevStepShow('p_projectStatus')" value="<?=MSG_PREV?>" class="next_btn" />
