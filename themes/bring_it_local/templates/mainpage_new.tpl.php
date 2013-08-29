@@ -195,9 +195,12 @@ include_once('includes/grab_video_thumbnail.php');
                                     <?php endif; ?>
                                 </a>,
                             </p>
-                            <p class="description">
-                                <?php echo $row['description'];?>
-                            </p>
+                            <div class="more_description">
+                                <p class="description">
+                                    <?php echo $row['description'];?>
+                                </p>
+                                <a href="">..more</a>
+                            </div>
                            <a href="/search.php?city=<?=urlencode($row['city'])?>" class="location"><?php echo $row['city'];?></a>
                         </div>
                         <div class="campaign-details">
