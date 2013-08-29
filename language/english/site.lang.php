@@ -9,6 +9,8 @@ define ('MSG_FEATURED_LOCALAUCTIONS', 'Buy Local - Featured Auctions by Local Su
 define ('MSG_BAR_FEATURED_AUCTIONS', 'Buy Local - Featured Auctions');
 define ('MSG_COMMENTS', 'Comments');
 define ('MSG_VIEW_ALL', 'View All');
+define ('MSG_POST_A_COMMENT', 'Post a comment');
+define ('MSG_KEEP_PRIVATE', 'keep private - don\'t display my user name');
 // misc campaign tags
 define ('MSG_SAVE_CHANGES', 'Save Changes');
 define ('MSG_DELETE', 'Delete');
