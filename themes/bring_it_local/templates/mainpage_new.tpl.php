@@ -32,7 +32,7 @@ include_once('includes/grab_video_thumbnail.php');
        $(".description").each(function(){
            var minHeight=72;
            var height=$(this).height();
-           if(height >  minHeight)
+           if(height > minHeight)
            {
                $(this).parent(".more_description").addClass("more");
            }
