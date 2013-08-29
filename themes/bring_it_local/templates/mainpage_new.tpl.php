@@ -31,13 +31,11 @@ include_once('includes/grab_video_thumbnail.php');
 </script>
 <script>
     $(document).ready(function(){
-        var desc= $(".description").find();
-        console.log(desc);
-        desc.each(function(){
-            var minHeight=72;
-            var height=$(this).height();
-            console.log(height);
-            if(height > minHeight)
+
+        $(".description").each(function(){
+            var $minHeight=72;
+            var $height=$(this).height();
+            if($height > $minHeight)
             {
 
                 $(this).parent(".more_description").addClass("more");
