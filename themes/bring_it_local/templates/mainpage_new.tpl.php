@@ -28,6 +28,17 @@ include_once('includes/grab_video_thumbnail.php');
         $("#progressbar").progressbar({ value: 50 });
         animateProgressBar();
     });
+    $(document).ready(function(){
+       $(".description").each(function(){
+           var minHeight=72;
+           var height=$(this).height();
+           if(height <  minHeight)
+           {
+               $(this).addClass("red");
+           }
+       });
+
+    });
 </script>
 <?php /*
 <div id="main">
