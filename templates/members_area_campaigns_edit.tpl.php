@@ -300,7 +300,25 @@ function deleteProjectReward (id){
         error:function(){
             alert("Error");
         }
+    });
+}
 
+function saveProjectReward (id){
+    $.ajax({
+        url:"/np_compaign_project",
+        type: "POST",
+        data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).val()},
+        success: function(response){
+			response = jQuery.parseJSON(response).response;
+            if (response) {
+				alert("OK");
+            } else {
+				alert(response);
+			}
+        },
+        error:function(){
+            alert("Error");
+        }
     });
 }
 
@@ -1075,7 +1093,7 @@ function clearBannerContent()
     <div class="tabs">
         <h4><?= MSG_REWARDS ?></h4>
 		<h3><?= MSG_REWARDS_NOTE ?></h3>
-        <div class="account-tab">
+        <div class="account-tab" style="width: 100%;">
 			<?php foreach ($project_rewards as $reward) :?>
 			<?= addRewardForm($reward); ?>
 			<?php endforeach;?>
@@ -1241,36 +1259,39 @@ function addRewardForm($reward){
 	<div class="reward_block" id="reward_block_<?= $reward_id; ?>">
 		 <script>
 			$(function() {
-				$( "#reward_estimated_delivery_<?= $reward_id; ?>" ).datepicker();
+				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker();
 			});
 		</script>
 		<div class="reward_title">
-			<?=MSG_REWARD;?>
-			<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
+			<div class="reward_title_label"><?=MSG_REWARD;?></div>
+			<div class="rewards-actions">
+				<button onclick="saveProjectReward('<?= $reward_id; ?>'); return false;" class="validate-reward"></button>
+				<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
+			</div>
 		</div>
 		<div class="reward_content">
 			<div class="account-row">
 				<label> <?=MSG_REWARD_AMOUNT;?> *</label>
-				<input name="reward_amount" type="text" id="reward_amount_<?= $reward_id; ?>" value="<?= $reward['amount']?>" size="40" />
+				<input type="text" id="reward_amount_<?= $reward_id; ?>" value="<?= $reward['amount']?>" size="40" />
 			</div>
 			<div class="account-row">
 				<label> <?=MSG_REWARD_NAME;?> *</label>
-				<input name="reward_name" type="text" id="reward_name_<?= $reward_id; ?>" value="<?= $reward['name']?>" size="40" />
+				<input type="text" id="reward_name_<?= $reward_id; ?>" value="<?= $reward['name']?>" size="40" />
 			</div>
 			<div class="account-row">
 				<label> <?=MSG_REWARD_DESCRIPTION;?> *</label>
-				<textarea name="reward_description" id="reward_description_<?= $reward_id; ?>"><?= $reward['description']?></textarea>
+				<textarea id="reward_description_<?= $reward_id; ?>"><?= $reward['description']?></textarea>
 			</div>
 			<div class="account-row">
 				<label> <?=MSG_REWARD_AVAILABLE_NUMBER;?></label>
-				<input name="reward_available_number" type="text" value="<?= $reward['available_number']?>" id="reward_available_number_<?= $reward_id; ?>"></input>
+				<input type="text" value="<?= $reward['available_number']?>" id="reward_available_number_<?= $reward_id; ?>"></input>
 			</div>
 			<div class="account-row">
 				<label> <?=MSG_REWARD_ESTIMATED_DELIVERY;?></label>
-				<input name="reward_estimated_delivery" type="text" value="<?= $reward['estimated_delivery_date']?>" id="reward_estimated_delivery_<?= $reward_id; ?>"></input>
+				<input type="text" value="<?= $reward['estimated_delivery_date']?>" id="reward_estimated_delivery_date_<?= $reward_id; ?>"></input>
 			</div>
-			<div class="account-row">
-				<input name="reward_shipping_address_required" type="checkbox" <?php if($reward['shipping_address_required'] == 1){echo 'checked';} ?> id="reward_shipping_address_required_<?= $reward_id; ?>" class="reward_shipping_address_required"></input>
+			<div class="account-row" style="margin-top: 20px;">
+				<input type="checkbox" <?php if($reward['shipping_address_required'] == 1){echo 'checked';} ?> id="reward_shipping_address_required_<?= $reward_id; ?>" class="reward_shipping_address_required"></input>
 				<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
 			</div>
 		</div>
