@@ -34,7 +34,7 @@ include_once('includes/grab_video_thumbnail.php');
            var height=$(this).height();
            if(height <  minHeight)
            {
-               $(this).addClass("red");
+               $(this).parent(".more_description").addClass("more");
            }
        });
 
