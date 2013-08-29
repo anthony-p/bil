@@ -30,14 +30,14 @@ include_once('includes/grab_video_thumbnail.php');
     });
 
     $(document).ready(function(){
-       $(".description").each(function(){
+
            var minHeight=72;
-           var height=$(this).height();
+           var height=$(".description").height();
            if(height > minHeight)
            {
-               $(this).parent(".more_description").addClass("more");
+               $(".description").parent(".more_description").addClass("more");
            }
-       });
+
 
     });
 </script>
