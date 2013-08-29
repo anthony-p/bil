@@ -5,6 +5,8 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 // misc campaign tags
+define ('MSG_COMMENTS', 'Comments');
+define ('MSG_VIEW_ALL', 'View All');
 define ('MSG_SAVE_CHANGES', 'Save Changes');
 define ('MSG_DELETE', 'Delete');
 define ('MSG_CREATE_NEW', 'Get started - create your new campaign!');
