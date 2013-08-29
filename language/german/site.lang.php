@@ -180,6 +180,9 @@ define ('MSG_LOCATION', 'Locationgggggg');
 define ('MSG_LOCATION_DESC', 'Enter the country/state you live in for Tax purposes gggggg');
 define ('MSG_REGISTERED_AS', 'Registered Asgggggg');
 define ('MSG_CATEGORIES', 'Categoriesgggggg');
+define ('MSG_CHOOSE_CATEGORY', 'Choose Categorygggggg');
+define ('MSG_ALL_CATEGORIES', 'All Categoriesgggggg');
+define ('MSG_SITE_NEWS', 'Site Newsgggggg');
 define ('MSG_WELCOME_BACK', 'Welcome backgggggg');
 define ('MSG_MM_PROFILE', 'My Profilegggggg');
 define ('MSG_MM_EDIT', 'Editgggggg');
@@ -290,6 +293,7 @@ define ('MSG_CAMPAIGN_REGISTER_SUCCESS_TYPE3', 'You\'ve successfully set up your
 define ('MSG_REGISTER_FOR_ACCOUNT_CAMPAIGN', 'Start fundraisinggggggg');
 define ('MSG__CAMPAIGN_USER', 'member organizationgggggg');
 define ('MSG_COMPANY_NAME', 'Organization Name gggggg');
+define ('MSG_KEEP_ALIVE_DAYS', 'Keep alive days gggggg');
 
 
 define ('MSG_FULL_NAME_USER_SUBMITTED', 'Contact name (optional)gggggg');
@@ -297,6 +301,7 @@ define ('MSG_FULL_NAME_USER_SUBMITTED_EXPL', 'Enter the name of a person at this
 define ('MSG_ADDRESS_EXPL', 'Enter your organization\'s address.gggggg');
 define ('MSG_CITY_EXPL', 'Enter the city your organization is in.gggggg');
 define ('MSG_DEADLINE_CERTAIN_DATE', 'Date have to be in format mm/dd/yyyygggggg');
+define ('MSG_DEADLINE_TIME_PERIOD', 'Deadline number of days must be integer gggggg');
 define ('MSG_BANNER', 'Bannergggggg');
 define ('MSG_PITCH_AMOUNT', 'Pitch amountgggggg');
 define ('MSG_PITCH_NAME', 'Pitch namegggggg');

@@ -3638,3 +3638,10 @@ CREATE TABLE `vendor_click_reports` (
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+/*task In user 'signup' make last name not required*/
+ALTER TABLE `devbr0_auction`.`bl2_users` ADD COLUMN `organization` VARCHAR(128) NULL DEFAULT NULL  AFTER `google_link` ;
+
+/*task Renew campaigns: add setting in member pages>campaign edit>status0%*/
+ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `keep_alive` INT NULL DEFAULT 0  AFTER `payment` ;
+ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `keep_alive_days` INT NULL DEFAULT 0  AFTER `keep_alive` ;

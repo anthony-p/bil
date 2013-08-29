@@ -77,6 +77,7 @@ define ('MSG_FRMCHK_DUPLICATE_EMAIL', 'The Email Address you have submitted alre
 define ('MSG_TAX_SETTINGS', 'Tax Settings');
 define ('MSG_REGISTER_AS_DESC', 'Please indicate what type of organization you are registering');
 define ('MSG_COMPANY_NAME', 'Organization Name ');
+define ('MSG_KEEP_ALIVE_DAYS', 'Keep alive days ');
 define ('MSG_COMPANY_NAME_DESC', 'Enter your school or organization\'s name ');
 define ('MSG_TAX_REG_NUMBER', 'Tax Registration Number ');
 define ('MSG_TAX_REG_NUMBER_DESC', 'Enter your Tax registration number. Required only if you wish to apply for tax exemption ');
@@ -84,6 +85,9 @@ define ('MSG_LOCATION', 'Location');
 define ('MSG_LOCATION_DESC', 'Enter the country/state you live in for Tax purposes ');
 define ('MSG_REGISTERED_AS', 'Registered As');
 define ('MSG_CATEGORIES', 'Categories');
+define ('MSG_CHOOSE_CATEGORY', 'Choose Category');
+define ('MSG_ALL_CATEGORIES', 'All Categories');
+define ('MSG_SITE_NEWS', 'Site News');
 define ('MSG_WELCOME_BACK', 'Welcome back');
 define ('MSG_MM_MESSAGING', 'Messaging');
 define ('MSG_MM_RECEIVED', 'Received');

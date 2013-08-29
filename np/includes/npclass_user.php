@@ -1,4 +1,4 @@
-<?
+<?php
 
 
 include_once("npfunctions_login.php");
@@ -236,6 +236,55 @@ class npuser extends npcustom_field
         }
 
         return $result_array;
+    }
+
+    /**
+     * @return array
+     */
+    function get_closed_campaigns()
+    {
+        $current_time = time();
+        $closed_campaigns = array();
+        $select_query_result = $this->query(
+            "SELECT user_id, reg_date, deadline_type_value, time_period, certain_date, end_date, keep_alive_days
+            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND keep_alive=1"
+        );
+
+        while ($query_result =  mysql_fetch_array($select_query_result)) {
+            $closed_campaigns[] = $query_result;
+        }
+
+        return $closed_campaigns;
+    }
+
+    /**
+     * @param $campaigns
+     */
+    function renew_campaigns($campaigns)
+    {
+        if (count($campaigns)) {
+            $update = false;
+            $sql_update_query = "UPDATE " . NPDB_PREFIX . "users SET end_date= CASE ";
+
+            foreach ($campaigns as $campaign) {
+                $sql_update_query .= " WHEN user_id=" . $campaign["user_id"] . " THEN " . $campaign["end_date"] . " ";
+                $update = true;
+            }
+
+            $sql_update_query .= " ELSE end_date END ";
+
+
+//        echo '<br>==========================================================================</br>';
+//        echo '<pre>';
+//        var_dump($sql_update_query);
+//        echo '</pre>';
+
+            if ($update) {
+                $this->query($sql_update_query);
+            }
+
+//        $sql_update_query = rtrim($sql_update_query, ",");
+        }
     }
 
 	function insert ($user_details, $page_handle = 'register')
