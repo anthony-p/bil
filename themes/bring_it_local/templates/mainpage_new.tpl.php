@@ -31,18 +31,21 @@ include_once('includes/grab_video_thumbnail.php');
 </script>
 <script>
     $(document).ready(function(){
-//        $(".description").each(function(){
+        var desc= $(".description").find();
+        console.log(desc);
+        desc.each(function(){
             var minHeight=72;
-            var height=$(.description).height();
+            var height=$(this).height();
             console.log(height);
             if(height > minHeight)
             {
 
-                $(".description").parent(".more_description").addClass("more");
+                $(this).parent(".more_description").addClass("more");
             }
         });
 
-//    });
+    });
+
 </script>
 <?php /*
 <div id="main">
