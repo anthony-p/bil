@@ -3645,3 +3645,17 @@ ALTER TABLE `devbr0_auction`.`bl2_users` ADD COLUMN `organization` VARCHAR(128) 
 /*task Renew campaigns: add setting in member pages>campaign edit>status0%*/
 ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `keep_alive` INT NULL DEFAULT 0  AFTER `payment` ;
 ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `keep_alive_days` INT NULL DEFAULT 0  AFTER `keep_alive` ;
+
+--
+-- np_iphistory
+-- 
+
+ALTER TABLE np_iphistory
+ADD id INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL;
+
+--
+-- probid_iphistory
+-- 
+
+ALTER TABLE probid_iphistory
+ADD id INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL;
