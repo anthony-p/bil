@@ -1,5 +1,5 @@
 /**
- * Created with JetBrains PhpStorm.
+ * Created with Lilian Codreanu.
  * User: Lilian Codreanu
  * Date: 11/4/12
  * Time: 3:56 PM
@@ -11,7 +11,8 @@ $(document).ready(function() {
 
     var vendors = ["www.dpbolvw.net", "www.anrdoezrs.net", "www.jdoqocy.com", "doubleclick.net", "amazon.com", "linksynergy.com", "indiebound.org"];
 
-/*    $.each(vendors, function(index, value){
+    console.log("Vendor");
+    $.each(vendors, function(index, value){
         $("a[href*='"+value+"']").live("click", function(event){
         	var _href = $(this).attr('href');
         	if(_href.search("shop_selected.php") == -1) {
@@ -21,5 +22,5 @@ $(document).ready(function() {
         		window.location.href=u;
         	}
            });
-    })*/
+    })
 });
