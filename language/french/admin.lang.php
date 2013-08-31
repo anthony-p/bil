@@ -964,6 +964,7 @@ define ('AMSG_ONLINE_USERS', 'Online Users');
 define ('AMSG_ENABLE_BUYER_CREATE_INVOICE', 'Allow Buyer to Combine Purchases (Create Invoices)');
 define ('AMSG_FULLTEXT_SEARCH_METHOD', 'Fulltext Search Method');
 define ('AMSG_PAYMENT_OPTION_DETAILS', 'Payment Option Details');
+define ('AMSG_DISABLE_CAMPAIGNS', 'Disable Campaigns');
 define ('AMSG_USE_PLUS_SIGN', 'Use <b>+</b> sign');
 define ('AMSG_USE_PLUS_SIGN_EXPL', 'A leading plus sign will be added to each search word. <br>
 This means that each word must be present in each row that is returned.');

@@ -147,7 +147,7 @@
 
         $sql_query = $db->query(
             "SELECT * FROM bl2_users Join np_users
-            WHERE id = probid_user_id AND np_users.active=1 AND np_users.end_date>$time 
+            WHERE id = probid_user_id AND np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>$time
             order by user_id desc Limit 4"
         );
 
@@ -159,7 +159,7 @@
         }
 //        var_dump($rows); exit;
 	 
- 
+
         $template->set('campaigns_list', $rows);
       //  $template->set('add_class', $class);
       //  $template->set('status', $completed);

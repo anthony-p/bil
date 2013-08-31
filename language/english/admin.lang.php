@@ -964,6 +964,8 @@ define ('AMSG_ONLINE_USERS', 'Online Users');
 define ('AMSG_ENABLE_BUYER_CREATE_INVOICE', 'Allow Buyer to Combine Purchases (Create Invoices)');
 define ('AMSG_FULLTEXT_SEARCH_METHOD', 'Fulltext Search Method');
 define ('AMSG_PAYMENT_OPTION_DETAILS', 'Payment Option Details');
+if (!defined('AMSG_DISABLE_CAMPAIGNS'))
+    define ('AMSG_DISABLE_CAMPAIGNS', 'Disable Campaigns');
 define ('AMSG_USE_PLUS_SIGN', 'Use <b>+</b> sign');
 define ('AMSG_USE_PLUS_SIGN_EXPL', 'A leading plus sign will be added to each search word. <br>
 This means that each word must be present in each row that is returned.');
@@ -988,6 +990,6 @@ home pages of either of the softwares.');
 define ('AMSG_PPS_DEFAULT_SKIN', 'Unified Main Page Skin');
 define ('AMSG_PPS_DEFAULT_SKIN_EXPL', 'If unified main page is enabled, choose which skin to be applied to it.');
 define ('AMSG_SELLER_PENDING', 'Seller Verification Pending');
-define ('', '');
-define ('', '');
+if (!defined(''))
+    define ('', '');
 ?>
