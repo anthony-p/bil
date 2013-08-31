@@ -1,7 +1,7 @@
 
 <aside class="announcement user-post">
   <div class="inner">
-      <h3>Post a comment</h3>
+      <h3><?=MSG_POST_A_COMMENT?></h3>
       <div class="write_post">
           <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
           <form name="add_comment" method="post" action="/campaign/comments.php">
@@ -9,9 +9,9 @@
               <textarea name="comment_text"></textarea>
               <div class="check">
                   <input name="keep_private" type="checkbox">
-                  <label>keep private - don't display my user name</label>
+                  <label><?=MSG_KEEP_PRIVATE?></label>
               </div>
-              <input type="submit" value="Post"/>
+              <input type="submit" value="<?=MSG_SEND?>"/>
           </form>
       </div>
       <?php foreach($comments as $comment): ?>

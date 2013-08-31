@@ -278,7 +278,7 @@ if ($session->value('user_id') > 0)
 	
 	if (!$set) 
 	{
-		$db->query("INSERT INTO " . NPDB_PREFIX . "iphistory VALUES 
+		$db->query("INSERT INTO " . NPDB_PREFIX . "iphistory (memberid, time1, time2, ip)  VALUES
 			('" . $session->value('user_id') . "', '" . CURRENT_TIME . "', '0', '" . $_SERVER['REMOTE_ADDR'] . "')");
 	}
 }
