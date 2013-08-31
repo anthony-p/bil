@@ -3494,12 +3494,12 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #members_area .contributions_page table p span{ font:12px "OpenSans-Bold"; color:#333; display:block;}
 #members_area .contributions_page table ul li span{ font:10px "OpenSans";}
 #steps form .mce-btn button
-{border-radius:0;
+/*{border-radius:0;*/
 
-    padding:0px;
-    text-shadow:none;
-    font-weight: normal;
-    font-family: "Century Gothic", Helvetica, sans-serif;
-    font-size: 22px;
-    box-shadow: none;
-    background: none;}
+    /*padding:0px;*/
+    /*text-shadow:none;*/
+    /*font-weight: normal;*/
+    /*font-family: "Century Gothic", Helvetica, sans-serif;*/
+    /*font-size: 22px;*/
+    /*box-shadow: none;*/
+    /*background: none;}*/

@@ -163,32 +163,32 @@ span.error{
     -webkit-box-shadow:none;
     box-shadow:none;
 }
-#steps form button {
-    border:none;
-    outline:none;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    color: #ffffff;
-    display: block;
-    cursor:pointer;
-    margin: 0px auto;
-    clear:both;
-    padding: 7px 25px;
-    text-shadow: 0 1px 1px #777;
-    font-weight:bold;
-    font-family:"Century Gothic", Helvetica, sans-serif;
-    font-size:22px;
-    -moz-box-shadow:0px 0px 3px #aaa;
-    -webkit-box-shadow:0px 0px 3px #aaa;
-    box-shadow:0px 0px 3px #aaa;
-    background:#4797ED;
-}
-#steps form button:hover {
-    background:#d8d8d8;
-    color:#666;
-    text-shadow:1px 1px 1px #fff;
-}
+/*#steps form button {*/
+    /*border:none;*/
+    /*outline:none;*/
+    /*-moz-border-radius: 10px;*/
+    /*-webkit-border-radius: 10px;*/
+    /*border-radius: 10px;*/
+    /*color: #ffffff;*/
+    /*display: block;*/
+    /*cursor:pointer;*/
+    /*margin: 0px auto;*/
+    /*clear:both;*/
+    /*padding: 7px 25px;*/
+    /*text-shadow: 0 1px 1px #777;*/
+    /*font-weight:bold;*/
+    /*font-family:"Century Gothic", Helvetica, sans-serif;*/
+    /*font-size:22px;*/
+    /*-moz-box-shadow:0px 0px 3px #aaa;*/
+    /*-webkit-box-shadow:0px 0px 3px #aaa;*/
+    /*box-shadow:0px 0px 3px #aaa;*/
+    /*background:#4797ED;*/
+/*}*/
+/*#steps form button:hover {*/
+    /*background:#d8d8d8;*/
+    /*color:#666;*/
+    /*text-shadow:1px 1px 1px #fff;*/
+/*}*/
 #steps form fieldset h4{font: 15px "OpenSans-SemiBold"; color: #7eb041; text-transform: uppercase; padding:20px 0; border-bottom:3px solid #dedede; float:left; width:100%;}
 .account-tab{width: 600px; margin: 0 auto;}
 .account-row{width: 100%; float: left; clear: both; margin-top:10px; }
