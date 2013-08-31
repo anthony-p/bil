@@ -47,7 +47,6 @@ $( document ).ready( function (){
 
 });
 
-
 function bannerTypeSelect(flag){
     if (flag == "0") {
         $("#vide_select_block").css("display","none");
@@ -322,18 +321,25 @@ function saveProjectReward (id){
     });
 }
 
+var has_new_reward_form = false;
+
 function addNewRewardToProject() {
-	$.ajax({
-        url:"/np_compaign_project",
-        type: "POST",
-        data: {addNewrewardToProject: true},
-        success: function(response){
-			$("#rewards-section").append(jQuery.parseJSON(response).response);
-        },
-        error:function(){
-            alert("Error");
-        }
-    });
+	if(!has_new_reward_form){
+		$.ajax({
+			url:"/np_compaign_project",
+			type: "POST",
+			data: {addNewrewardToProject: true, has_new_reward_form: false},
+			success: function(response){
+				has_new_reward_form = true;
+				$("#rewards-section").append(jQuery.parseJSON(response).response);
+			},
+			error:function(){
+				alert("Error");
+			}
+		});
+	} else {
+		alert("You need to save the reward you've just added before adding another one!");
+	}
 }
 
 function clearLogoContent()
