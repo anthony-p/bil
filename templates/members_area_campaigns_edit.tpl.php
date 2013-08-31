@@ -302,11 +302,11 @@ function deleteProjectReward (id){
     });
 }
 
-function saveProjectReward (id){
+function updateProjectReward (id){
     $.ajax({
         url:"/np_compaign_project",
         type: "POST",
-        data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).val()},
+        data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
         success: function(response){
 			response = jQuery.parseJSON(response).response;
             if (response) {
@@ -314,6 +314,22 @@ function saveProjectReward (id){
             } else {
 				alert(response);
 			}
+        },
+        error:function(){
+            alert("Error");
+        }
+    });
+}
+
+function saveProjectReward (id){
+    $.ajax({
+        url:"/np_compaign_project",
+        type: "POST",
+        data: {save_project_rewards: true, compaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+        success: function(response){
+			has_new_reward_form = false;
+			$('.reward_block').last().remove();
+			$("#rewards-section").append(jQuery.parseJSON(response).response);
         },
         error:function(){
             alert("Error");
