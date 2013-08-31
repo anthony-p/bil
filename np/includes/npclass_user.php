@@ -144,7 +144,7 @@ class npuser extends npcustom_field
                 " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
                 "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
-                " AND np_users.active=1 AND np_users.end_date>" . $time .
+                " AND np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
                 " AND (name LIKE '%" .
                 $search . "%' OR description LIKE '%" .
                 $search . "%' OR project_title LIKE '%" .
@@ -166,7 +166,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.last_name, bl2_users.organization, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.active=1 AND np_users.end_date>" . $time .
+                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" . $time .
                 "  AND name LIKE '%" .
                 $search . "%' " . $ordering;
         } elseif (isset($_GET["category"]) && $_GET["category"]) {
@@ -178,7 +178,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND " . NPDB_PREFIX .
+                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND " . NPDB_PREFIX .
                 "users.project_category=" . $search . " AND np_users.active=1 AND np_users.end_date>" .
                 $time . $ordering;
         } elseif (isset($_GET["city"]) && $_GET["city"]) {
@@ -190,7 +190,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND " . NPDB_PREFIX .
+                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND " . NPDB_PREFIX .
                 "users.city='" . $search . "' AND (np_users.active=1 OR np_users.end_date>" .
             $time .') '. $ordering;
         }
@@ -206,7 +206,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.first_name, bl2_users.organization, bl2_users.id, bl2_users.last_name, bl2_users.email FROM " .
                 NPDB_PREFIX . "users, bl2_users WHERE " . NPDB_PREFIX .
-                "users.probid_user_id=bl2_users.id AND np_users.active=1 AND np_users.end_date>" .
+                "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" .
                 $time . $ordering;
         }
 

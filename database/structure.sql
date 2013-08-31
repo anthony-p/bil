@@ -3659,3 +3659,7 @@ ADD id INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL;
 
 ALTER TABLE probid_iphistory
 ADD id INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL;
+
+
+/*task create admin script for deleting campaign*/
+ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `disabled` INT NULL DEFAULT 0  AFTER `keep_alive_days` ;

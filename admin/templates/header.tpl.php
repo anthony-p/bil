@@ -15,7 +15,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <?=AMSG_ADMIN_AREA?>
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
-</head>
+<!--</head>-->
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="main.js"></script>
 <script language=JavaScript src='../scripts/innovaeditor.js'></script>
@@ -60,4 +60,4 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
    <td width="220" valign="top"><?=$admin_left_menu;?>
       <div><img src="images/pixel.gif" border="0" width="220" height="1"></div></td>
    <td width="10"><img src="images/pixel.gif" height="1" width="10"></td>
-   <td  valign="top" width="100%"><?=$updated_categories_message;?>
+   <td  valign="top" width="100%"><?=isset($updated_categories_message) ? $updated_categories_message : '';?>

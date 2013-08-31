@@ -12,6 +12,10 @@ $current_version = '6.04';
 
 define ('CURRENT_TIME', time());
 
+if (!defined("IN_SITE")) {
+    define("IN_SITE", false);
+}
+
 define ('CURRENT_TIME_MYSQL', date("Y-m-d H:i:s", time()));
 
 ## add the site settings in an array
