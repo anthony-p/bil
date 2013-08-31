@@ -263,10 +263,10 @@ if ($session->value('user_id') > 0)
 		`ip` VARCHAR(20) NOT NULL
 	)");
 	*/
-	
+
 	$sql_select_iphistory = $db->query("SELECT time1, time2, ip FROM " . DB_PREFIX . "iphistory WHERE 
 		memberid='" . $session->value('user_id') . "' ORDER by time1 DESC LIMIT 1");
-	
+
 	if ($db->num_rows($sql_select_iphistory) > 0) 
 	{
 		if ($ip_details = $db->fetch_array($sql_select_iphistory)) 
@@ -280,10 +280,9 @@ if ($session->value('user_id') > 0)
 			}
 		}
 	}
-	
 	if (!$set) 
 	{
-		$db->query("INSERT INTO " . DB_PREFIX . "iphistory VALUES 
+		$db->query("INSERT INTO " . DB_PREFIX . "iphistory (memberid, time1, time2, ip) VALUES
 			('" . $session->value('user_id') . "', '" . CURRENT_TIME . "', '0', '" . $_SERVER['REMOTE_ADDR'] . "')");
 	}
 }
