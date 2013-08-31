@@ -233,5 +233,5 @@ span.error{
 .next .right input{margin-left: 15px;}
 .next .next_btn{width:60px;  background: #7eb041; }
 .next .next_btn:hover{background: #76a43d;  }
-.next .save_btn{ background: #ffa800; margin-top: 20px;}
+.next .save_btn{ background: #ffa800;}
 .next .save_btn:hover{ background:#f39f00; }
