@@ -2256,4 +2256,65 @@ function getProjectCategoryListToHTML()
     return $result;
 }
 
+
+function generateRandomString($length = 10) {
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$randomString = '';
+	for ($i = 0; $i < $length; $i++) {
+		$randomString .= $characters[rand(0, strlen($characters) - 1)];
+	}
+	return $randomString;
+}
+
+function addRewardForm($reward = array()){
+	$reward_id = isset($reward['id']) ? $reward['id'] : generateRandomString();
+	ob_start();
+?>
+	<div class="reward_block" id="reward_block_<?= $reward_id; ?>">
+		 <script>
+			$(function() {
+				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker();
+			});
+		</script>
+		<div class="reward_title">
+			<div class="reward_title_label"><?=MSG_REWARD;?></div>
+			<div class="rewards-actions">
+				<button onclick="saveProjectReward('<?= $reward_id; ?>'); return false;" class="validate-reward"></button>
+				<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
+			</div>
+		</div>
+		<div class="reward_content">
+			<div class="account-row">
+				<label> <?=MSG_REWARD_AMOUNT;?> *</label>
+				<input type="text" id="reward_amount_<?= $reward_id; ?>" value="<?= @$reward['amount']?>" size="40" />
+			</div>
+			<div class="account-row">
+				<label> <?=MSG_REWARD_NAME;?> *</label>
+				<input type="text" id="reward_name_<?= $reward_id; ?>" value="<?= @$reward['name']?>" size="40" />
+			</div>
+			<div class="account-row">
+				<label> <?=MSG_REWARD_DESCRIPTION;?> *</label>
+				<textarea id="reward_description_<?= $reward_id; ?>"><?= @$reward['description']?></textarea>
+			</div>
+			<div class="account-row">
+				<label> <?=MSG_REWARD_AVAILABLE_NUMBER;?></label>
+				<input type="text" value="<?= @$reward['available_number']?>" id="reward_available_number_<?= $reward_id; ?>"></input>
+			</div>
+			<div class="account-row">
+				<label> <?=MSG_REWARD_ESTIMATED_DELIVERY;?></label>
+				<input type="text" value="<?= @$reward['estimated_delivery_date']?>" id="reward_estimated_delivery_date_<?= $reward_id; ?>"></input>
+			</div>
+			<div class="account-row" style="margin-top: 20px;">
+				<input type="checkbox" <?php if(@$reward['shipping_address_required'] == 1){echo 'checked';} ?> id="reward_shipping_address_required_<?= $reward_id; ?>" class="reward_shipping_address_required"></input>
+				<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
+			</div>
+		</div>
+	</div>
+<?php
+	$form = ob_get_contents();
+	ob_end_clean();
+	
+	return $form;
+}
+
 ?>

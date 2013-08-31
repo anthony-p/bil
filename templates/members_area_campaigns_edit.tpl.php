@@ -322,6 +322,20 @@ function saveProjectReward (id){
     });
 }
 
+function addNewRewardToProject() {
+	$.ajax({
+        url:"/np_compaign_project",
+        type: "POST",
+        data: {addNewrewardToProject: true},
+        success: function(response){
+			$("#rewards-section").append(jQuery.parseJSON(response).response);
+        },
+        error:function(){
+            alert("Error");
+        }
+    });
+}
+
 function clearLogoContent()
 {
 
@@ -1085,65 +1099,24 @@ function clearBannerContent()
 
 </fieldset>
 
-
-
-
-
 <fieldset class="step">
     <div class="tabs">
         <h4><?= MSG_REWARDS ?></h4>
 		<h3><?= MSG_REWARDS_NOTE ?></h3>
-        <div class="account-tab" style="width: 100%;">
+        <div class="account-tab" style="width: 100%;" id="rewards-section">
 			<?php foreach ($project_rewards as $reward) :?>
 			<?= addRewardForm($reward); ?>
 			<?php endforeach;?>
-			<!--
-            <aside>
-
-                <div class="inner">
-
-                    <h3>rewards will go here</h3>
-
-                    <div class="write_post">
-
-                        <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png"></div>
-
-                        <input name="compaign" type="hidden" value="10275">
-
-                        <textarea name="comment_text" id="project_reward_textarea"></textarea>
-
-                        <input type="button" value="<?=MSG_SEND?>" id="button_project_reward_textarea" onclick="projectRewardComment()">
-
-                    </div>
-
-                </div>
-
-            </aside>
-
-            <div class="clear"></div>
-
-            <h3>Your comments</h3>
-            <ul class="posted_comments" id="project_reward_post_comments">
-                <?php foreach ($project_rewards as $_reward) :?>
-                    <li id="<?='project_reward_comment_row'.$_reward['id'];?>">
-                        <p><?=$_reward['comment']?></p>
-                        <div class="delete_btn" onclick="deleteProjectReward(<?=$_reward['id']?>)">
-                               <span>delete</span>
-                        </div>
-                    </li>
-                <?php endforeach;?>
-            </ul>
-			-->
         </div>
-			<button onclick="return false;"><?= MSG_ADD_REWARD; ?></button>
-            <div class="next">
-                <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE_CHANGES?>" class="save_btn"/>
-              <div class="right">
-                  <input type="button" onclick="prevStepShow('p_projectRewards')" value="<?=MSG_PREV?>" class="next_btn" />
-                  <input type="button" onclick="nextStepShow('p_projectRewards')" value="<?=MSG_NEXT?>" class="next_btn" />
-              </div>
+		<button onclick="addNewRewardToProject(); return false;"><?= MSG_ADD_REWARD; ?></button>
+        <div class="next">
+            <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE_CHANGES?>" class="save_btn"/>
+            <div class="right">
+                <input type="button" onclick="prevStepShow('p_projectRewards')" value="<?=MSG_PREV?>" class="next_btn" />
+                <input type="button" onclick="nextStepShow('p_projectRewards')" value="<?=MSG_NEXT?>" class="next_btn" />
             </div>
         </div>
+    </div>
 </fieldset>
 
 <fieldset class="step">
@@ -1252,50 +1225,3 @@ function clearBannerContent()
     });
 
 </script>
-<?php
-function addRewardForm($reward){
-	$reward_id = $reward['id'];
-?>
-	<div class="reward_block" id="reward_block_<?= $reward_id; ?>">
-		 <script>
-			$(function() {
-				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker();
-			});
-		</script>
-		<div class="reward_title">
-			<div class="reward_title_label"><?=MSG_REWARD;?></div>
-			<div class="rewards-actions">
-				<button onclick="saveProjectReward('<?= $reward_id; ?>'); return false;" class="validate-reward"></button>
-				<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
-			</div>
-		</div>
-		<div class="reward_content">
-			<div class="account-row">
-				<label> <?=MSG_REWARD_AMOUNT;?> *</label>
-				<input type="text" id="reward_amount_<?= $reward_id; ?>" value="<?= $reward['amount']?>" size="40" />
-			</div>
-			<div class="account-row">
-				<label> <?=MSG_REWARD_NAME;?> *</label>
-				<input type="text" id="reward_name_<?= $reward_id; ?>" value="<?= $reward['name']?>" size="40" />
-			</div>
-			<div class="account-row">
-				<label> <?=MSG_REWARD_DESCRIPTION;?> *</label>
-				<textarea id="reward_description_<?= $reward_id; ?>"><?= $reward['description']?></textarea>
-			</div>
-			<div class="account-row">
-				<label> <?=MSG_REWARD_AVAILABLE_NUMBER;?></label>
-				<input type="text" value="<?= $reward['available_number']?>" id="reward_available_number_<?= $reward_id; ?>"></input>
-			</div>
-			<div class="account-row">
-				<label> <?=MSG_REWARD_ESTIMATED_DELIVERY;?></label>
-				<input type="text" value="<?= $reward['estimated_delivery_date']?>" id="reward_estimated_delivery_date_<?= $reward_id; ?>"></input>
-			</div>
-			<div class="account-row" style="margin-top: 20px;">
-				<input type="checkbox" <?php if($reward['shipping_address_required'] == 1){echo 'checked';} ?> id="reward_shipping_address_required_<?= $reward_id; ?>" class="reward_shipping_address_required"></input>
-				<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
-			</div>
-		</div>
-	</div>
-<?php
-}
-?>
