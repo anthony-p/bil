@@ -99,13 +99,18 @@ global $coupon_url;
 		</div></div>
 	<div class="bottomLinks"><div class="innerContainer clearfix">
 		<div class="column col1">
-			<h5 class="header">Navigate</h5>	
-			<a href="/searchnp.php">Select a non-profit</a> 	
+			<h5 class="header">Participate</h5>	
+			<!--<a href="/searchnp.php">Select a non-profit</a> 	
 			<? if (!$setts['enable_private_site'] || $is_seller) { ?>
 			<a href="<?=$place_ad_link;?>"><?=MSG_MM_POST_AUCTION;?></a>
-			<? } ?>
+			<? } ?>-->
+			<a href="/bringitlocal"><?=MSG_COMMUNITY_FOUND;?></a> 
 			<a href="<?=$register_link;?>"><?=$register_btn_msg;?></a> 
 			<a href="<?=$login_link;?>"><?=$login_btn_msg;?></a>
+			<? if ($layout['is_contact']) { ?>
+			<a href="<?=process_link('content_pages', array('page' => 'contact_us'));?>"><?=MSG_BTN_CONTACT_US;?></a>
+			
+			<? } ?>
 			
 		</div>
 		<div class="column col2">
@@ -120,23 +125,22 @@ global $coupon_url;
 			
 			<? } ?>
 		</div>
-		<div class="column col3">
-			<h5 class="header">Participate</h5>
+		<div class="column col3">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+			<!--<h5 class="header">Participate</h5>
             	<?php //echo $custom_pages_links;?>
 			<a href="/loyalty-program">Loyalty Program</a>
 			<a href="/mobileapps.php">Mobile Apps</a>
 			<a href="/np/npregister_supporter.php">Suggest a Non-Profit</a>
-			<a href="http://www.facebook.com/bringitlocal">Facebook</a>
+			<a href="http://www.facebook.com/bringitlocal">Facebook</a>-->
 
 		</div>
-            <div class="column col5">
-                <h5 class="header">Participate</h5>
+            <div class="column col5">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+               <!-- <h5 class="header">Participate</h5>
                 <?php //echo $custom_pages_links;?>
                 <a href="/loyalty-program">Loyalty Program</a>
                 <a href="/mobileapps.php">Mobile Apps</a>
                 <a href="/np/npregister_supporter.php">Suggest a Non-Profit</a>
-                <a href="http://www.facebook.com/bringitlocal">Facebook</a>
-
+                <a href="http://www.facebook.com/bringitlocal">Facebook</a>-->
             </div>
 		<div class="column col4">
             <div class="language clearfix">
@@ -161,14 +165,13 @@ global $coupon_url;
 			<div class="follow clearfix">
 				<span class="none">Follow</span>
 				<a href="http://www.facebook.com/bringitlocal" target="_blank" class="facebook">Facebook</a>
-				<a href="#" class="twitter">Twitter</a>
-				<a href="#" class="google">Google+</a>
-				<a href="#" class="rss">Rss</a>
+				<a href="http://www.twitter.com/bringitlocal"  target="_blank" class="twitter">Twitter</a>
+				
 			</div>
 			<div class="share clearfix">
-				<span class="none">Share</span>
-				<span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fbringitlocal&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe></span>
-				<span class="google"><g:plusone size="medium"></g:plusone></span>
+				<!--  <span class="none">Share</span>-->
+				<!--<span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fbringitlocal&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe></span>-->
+				<!--<span class="google"><g:plusone size="medium"></g:plusone></span>-->
 				<script type="text/javascript">
 				  (function() {
 					 var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
