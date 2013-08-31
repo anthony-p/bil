@@ -3493,3 +3493,14 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #members_area .contributions_page table p{width:385px; font:12px "OpenSans" ; color:#333;}
 #members_area .contributions_page table p span{ font:12px "OpenSans-Bold"; color:#333; display:block;}
 #members_area .contributions_page table ul li span{ font:10px "OpenSans";}
+
+
+#mce_25-open{border-radius:0;
+
+    padding:0px;
+    text-shadow:none;
+    font-weight: normal;
+    font-family: "Century Gothic", Helvetica, sans-serif;
+    font-size: 22px;
+    box-shadow: none;
+    background: none;}
