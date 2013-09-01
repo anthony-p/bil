@@ -1,4 +1,5 @@
 <?
+require_once (__DIR__ . '/../includes/class_project_rewards.php');
 if (isset($_POST['operation']))
     include_once(__DIR__ . '/../language/english/site.lang.php');
 //    include_once('np/language/english/npsite.lang.php');
@@ -295,10 +296,11 @@ function deleteProjectReward (id){
 			type: "POST",
 			data: {delete_project_rewards: true, rewards_id: id},
 			success: function(response){
-				if (jQuery.parseJSON(response).response == true) {
+				response = jQuery.parseJSON(response).response;
+				if (response == true) {
 					$("#reward_block_" + id).slideUp(750);
 				} else {
-					alert("Access denied");
+					alert(response);
 				}
 			},
 			error:function(){
@@ -384,7 +386,7 @@ function addNewRewardToProject() {
 		$.ajax({
 			url:"/np_compaign_project",
 			type: "POST",
-			data: {addNewrewardToProject: true, has_new_reward_form: false, campaign_id: <?= $campaign['user_id']; ?>},
+			data: {addNewRewardToProject: true, has_new_reward_form: false, campaign_id: <?= $campaign['user_id']; ?>},
 			success: function(response){
 				response = jQuery.parseJSON(response).response;
 				if(response.substr(0, 4) == '<div'){
@@ -1171,8 +1173,9 @@ function clearBannerContent()
         <h4><?= MSG_REWARDS ?></h4>
 		<h3><?= MSG_REWARDS_NOTE ?></h3>
         <div class="account-tab" style="width: 100%;" id="rewards-section">
+			<?php $projectRewards = new projectRewards(); ?>
 			<?php foreach ($project_rewards as $reward) :?>
-			<?= newRewardForm($reward); ?>
+			<?= $projectRewards->newRewardForm($reward); ?>
 			<?php endforeach;?>
         </div>
 		<button onclick="addNewRewardToProject(); return false;"><?= MSG_ADD_REWARD; ?></button>
