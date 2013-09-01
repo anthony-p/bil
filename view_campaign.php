@@ -594,9 +594,7 @@ if (isset($compaignData["probid_user_id"]) && $compaignData["probid_user_id"] ==
 
     }
 
-
-
-    $project_reward_query_result = $db->query("SELECT * FROM project_rewards LEFT JOIN bl2_users ON project_rewards.user_id =  bl2_users.id WHERE project_id=" . $compaignId . " ORDER BY project_rewards.id DESC");
+    $project_reward_query_result = $db->query("SELECT * FROM project_rewards r LEFT JOIN np_users c ON r.project_id =  c.user_id LEFT JOIN bl2_users u ON c.user_id =  u.id WHERE project_id=" . $compaignId . " ORDER BY r.id DESC");
 
     $project_rewards = array();
 

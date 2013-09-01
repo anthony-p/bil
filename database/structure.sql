@@ -3543,7 +3543,6 @@ CREATE TABLE `project_pitch` (
 
 CREATE TABLE `project_rewards` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL DEFAULT '0',
   `project_id` int(11) NOT NULL,
   `parrent_id` int(11) NOT NULL DEFAULT '0',
   `amount` int(11) NOT NULL,
