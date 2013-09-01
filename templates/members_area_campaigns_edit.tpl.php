@@ -333,10 +333,7 @@ function updateProjectReward (id){
 			type: "POST",
 			data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
 			success: function(response){
-				response = jQuery.parseJSON(response).response;
-				if (response != true) {
-					alert(response);
-				}
+				alert(jQuery.parseJSON(response).response);
 			},
 			error:function(){
 				alert("Error");
@@ -352,9 +349,15 @@ function saveProjectReward (id){
 			type: "POST",
 			data: {save_project_rewards: true, campaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
 			success: function(response){
-				has_new_reward_form = false;
-				$('.reward_block').last().remove();
-				$("#rewards-section").append(jQuery.parseJSON(response).response);
+				response = jQuery.parseJSON(response).response;
+				if(response.substr(0, 4) == '<div'){
+					has_new_reward_form = false;
+					$('.reward_block').last().remove();
+					$("#rewards-section").append(response);
+					alert("<?= MSG_REWARD_SAVED; ?>");
+				} else {
+					alert(response);
+				}
 			},
 			error:function(){
 				alert("Error");
@@ -373,11 +376,11 @@ function addNewRewardToProject() {
 			data: {addNewrewardToProject: true, has_new_reward_form: false, campaign_id: <?= $campaign['user_id']; ?>},
 			success: function(response){
 				response = jQuery.parseJSON(response).response;
-				if(response != false){
+				if(response.substr(0, 4) == '<div'){
 					has_new_reward_form = true;
 					$("#rewards-section").append(response);
 				} else {
-					alert("Error");
+					alert(response);
 				}
 			},
 			error:function(){
@@ -1158,7 +1161,7 @@ function clearBannerContent()
 		<h3><?= MSG_REWARDS_NOTE ?></h3>
         <div class="account-tab" style="width: 100%;" id="rewards-section">
 			<?php foreach ($project_rewards as $reward) :?>
-			<?= addRewardForm($reward); ?>
+			<?= newRewardForm($reward); ?>
 			<?php endforeach;?>
         </div>
 		<button onclick="addNewRewardToProject(); return false;"><?= MSG_ADD_REWARD; ?></button>

@@ -2266,14 +2266,13 @@ function generateRandomString($length = 10) {
 	return $randomString;
 }
 
-function addRewardForm($reward = array()){
+function newRewardForm($reward = array()){
 	$reward_id = isset($reward['id']) ? $reward['id'] : generateRandomString();
 	if($reward['estimated_delivery_date'] && !empty($reward['estimated_delivery_date'])){
 		$reward['estimated_delivery_date'] = date("m/d/Y", strtotime($reward['estimated_delivery_date']));
 	}
 	ob_start();
-?>
-	<div class="reward_block" id="reward_block_<?= $reward_id; ?>">
+	?><div class="reward_block" id="reward_block_<?= $reward_id; ?>">
 		<div class="reward_title">
 			<div class="reward_title_label"><?=MSG_REWARD;?></div>
 			<div class="rewards-actions">
