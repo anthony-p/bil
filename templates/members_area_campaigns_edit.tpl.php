@@ -304,22 +304,22 @@ function deleteProjectReward (id){
 
 function validateProjectReward(id){
 	if($("#reward_amount_"+id).val() == ""){
-		alert("The amount must be specified");
+		alert("<?= MSG_REWARD_AMOUNT_MUST_BE_SPECIFIED ?>");
 		return false;
 	}
 	
 	if(!$.isNumeric($("#reward_amount_"+id).val())){
-		alert("The amount must be a number");
+		alert("<?= MSG_REWARD_AMOUNT_MUST_BE_A_NUMBER ?>");
 		return false;
 	}
 	
 	if($("#reward_name_"+id).val() == ""){
-		alert("The reward name must be specified");
+		alert("<?= MSG_REWARD_NAME_MUST_BE_SPECIFIED ?>");
 		return false;
 	}
 	
 	if($("#reward_description_"+id).val() == ""){
-		alert("The reward description must be specified");
+		alert("<?= MSG_REWARD_DESCRIPTION_MUST_BE_SPECIFIED ?>");
 		return false;
 	}
 	
@@ -334,9 +334,7 @@ function updateProjectReward (id){
 			data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
 			success: function(response){
 				response = jQuery.parseJSON(response).response;
-				if (response) {
-					alert("OK");
-				} else {
+				if (response != true) {
 					alert(response);
 				}
 			},
@@ -387,7 +385,7 @@ function addNewRewardToProject() {
 			}
 		});
 	} else {
-		alert("You need to save the reward you've just added before adding another one!");
+		alert("<?= MSG_REWARD_NEEDS_TO_BE_SAVED ?>");
 	}
 }
 
