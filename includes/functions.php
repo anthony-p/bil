@@ -2268,6 +2268,9 @@ function generateRandomString($length = 10) {
 
 function addRewardForm($reward = array()){
 	$reward_id = isset($reward['id']) ? $reward['id'] : generateRandomString();
+	if($reward['estimated_delivery_date'] && !empty($reward['estimated_delivery_date'])){
+		$reward['estimated_delivery_date'] = date("m/d/Y", strtotime($reward['estimated_delivery_date']));
+	}
 	ob_start();
 ?>
 	<div class="reward_block" id="reward_block_<?= $reward_id; ?>">
@@ -2297,7 +2300,7 @@ function addRewardForm($reward = array()){
 			</div>
 			<div class="account-row">
 				<label> <?=MSG_REWARD_ESTIMATED_DELIVERY;?></label>
-				<input type="text" value="<?= @$reward['estimated_delivery_date']?>" id="reward_estimated_delivery_date_<?= $reward_id; ?>"></input>
+				<input type="text" id="reward_estimated_delivery_date_<?= $reward_id; ?>" value="<?= isset($reward['estimated_delivery_date']) ? $reward['estimated_delivery_date'] : ''?>"></input>
 			</div>
 			<div class="account-row" style="margin-top: 20px; margin-left: 135px;">
 				<input type="checkbox" <?php if(@$reward['shipping_address_required'] == 1){echo 'checked';} ?> id="reward_shipping_address_required_<?= $reward_id; ?>" class="reward_shipping_address_required" value="1"></input>
@@ -2305,7 +2308,13 @@ function addRewardForm($reward = array()){
 			</div>
 		</div>
 		<script>
-			$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker();
+			$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker({ 
+				dateFormat: "mm/dd/yy", 
+				changeMonth: true,
+				changeYear: true, 
+				minDate: new Date(),
+				defaultDate: "<?= isset($reward['estimated_delivery_date']) ? $reward['estimated_delivery_date'] : ''?>"
+			});
 		</script>
 	</div>
 <?php
