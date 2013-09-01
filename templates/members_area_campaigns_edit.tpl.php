@@ -10,6 +10,15 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <?=(isset($display_formcheck_errors))?$display_formcheck_errors:'';?>
 <script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>
 <link type="text/css" rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">
+
+<script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
+<script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
+
+<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
+<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/plugins/moxiemanager/editor_plugin.js" js="text/javascript"></script>-->
+
+
+
 <script type="text/javascript">
 
 $( document ).ready( function (){
@@ -1168,23 +1177,46 @@ function clearBannerContent()
 
 <script>
     $( document ).ready( function (){
-        tinyMCE.init({
-                width: 584,
-                height: 250,
-                editor_selector : "campaign_basic",
-                mode : "textareas",
-                theme : "advanced",
-                plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,image,cleanup,code,|,forecolor,backcolor",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                theme_advanced_resizing : true
+
+        /* == == == == == == == == == == == == == == == == == == == == == == ==*/
+        tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
+
+        tinymce.init({
+            selector:'.campaign_basic',
+            plugins: ["advlist autolink lists link image charmap print preview anchor",
+            	"searchreplace visualblocks code fullscreen",
+            	"insertdatetime media table contextmenu paste moxiemanager",
+                "moxiemanager link image"
+            ],
+            toolbar: "insertfile link image"
+        });
+        tinymce.init({
+            selector:'.project_update_textarea',
+            plugins: ["advlist autolink lists link image charmap print preview anchor",
+            	"searchreplace visualblocks code fullscreen",
+            	"insertdatetime media table contextmenu paste moxiemanager",
+                "moxiemanager link image"
+            ],
+            toolbar: "insertfile link image"
         });
 
-        tinyMCE.init({
+//        tinyMCE.init({
+//                width: 584,
+//                height: 250,
+//                editor_selector : "campaign_basic",
+//                mode : "textareas",
+//                theme : "advanced",
+//                plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+//                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+//                theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,image,cleanup,code,|,forecolor,backcolor",
+//                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+//                theme_advanced_toolbar_location : "top",
+//                theme_advanced_toolbar_align : "left",
+//                theme_advanced_statusbar_location : "bottom",
+//                theme_advanced_resizing : true
+//        });
+
+       /* tinyMCE.init({
                 width: 584,
                 height: 250,
                 editor_selector : "project_update_textarea",
@@ -1198,7 +1230,7 @@ function clearBannerContent()
                 theme_advanced_toolbar_align : "left",
                 theme_advanced_statusbar_location : "bottom",
                 theme_advanced_resizing : true
-        });
+        });*/
 
     });
 
