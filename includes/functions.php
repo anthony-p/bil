@@ -2271,11 +2271,6 @@ function addRewardForm($reward = array()){
 	ob_start();
 ?>
 	<div class="reward_block" id="reward_block_<?= $reward_id; ?>">
-		 <script>
-			$(function() {
-				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker();
-			});
-		</script>
 		<div class="reward_title">
 			<div class="reward_title_label"><?=MSG_REWARD;?></div>
 			<div class="rewards-actions">
@@ -2309,6 +2304,9 @@ function addRewardForm($reward = array()){
 				<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
 			</div>
 		</div>
+		<script>
+			$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker();
+		</script>
 	</div>
 <?php
 	$form = ob_get_contents();
