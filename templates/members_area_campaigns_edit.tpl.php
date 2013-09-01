@@ -325,7 +325,7 @@ function saveProjectReward (id){
     $.ajax({
         url:"/np_compaign_project",
         type: "POST",
-        data: {save_project_rewards: true, compaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+        data: {save_project_rewards: true, campaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
         success: function(response){
 			has_new_reward_form = false;
 			$('.reward_block').last().remove();
@@ -344,10 +344,15 @@ function addNewRewardToProject() {
 		$.ajax({
 			url:"/np_compaign_project",
 			type: "POST",
-			data: {addNewrewardToProject: true, has_new_reward_form: false},
+			data: {addNewrewardToProject: true, has_new_reward_form: false, campaign_id: <?= $campaign['user_id']; ?>},
 			success: function(response){
-				has_new_reward_form = true;
-				$("#rewards-section").append(jQuery.parseJSON(response).response);
+				response = jQuery.parseJSON(response).response;
+				if(response != false){
+					has_new_reward_form = true;
+					$("#rewards-section").append(response);
+				} else {
+					alert("Error");
+				}
 			},
 			error:function(){
 				alert("Error");

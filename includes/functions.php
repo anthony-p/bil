@@ -2304,7 +2304,7 @@ function addRewardForm($reward = array()){
 				<label> <?=MSG_REWARD_ESTIMATED_DELIVERY;?></label>
 				<input type="text" value="<?= @$reward['estimated_delivery_date']?>" id="reward_estimated_delivery_date_<?= $reward_id; ?>"></input>
 			</div>
-			<div class="account-row" style="margin-top: 20px;">
+			<div class="account-row" style="margin-top: 20px; margin-left: 135px;">
 				<input type="checkbox" <?php if(@$reward['shipping_address_required'] == 1){echo 'checked';} ?> id="reward_shipping_address_required_<?= $reward_id; ?>" class="reward_shipping_address_required" value="1"></input>
 				<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
 			</div>
