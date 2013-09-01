@@ -198,7 +198,8 @@ function changeDeadlineType(obj,id)
 var countOfPitch = <?php if (isset($pitches) && is_array($pitches)) echo count($pitches); else { ?>0<?php } ?>;
 
 function projectUpdateComment () {
-    var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + $("#project_update_textarea").val();
+
+    var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + tinymce.get('project_update_textarea').getContent();
     $.ajax({
         url: "/np_compaign_project.php",
         type: "POST",
@@ -239,7 +240,7 @@ function projectRewardComment () {
 
 
 function addProjectUpdateComment( id ){
-    var comment = $("#project_update_textarea").val();
+    var comment = tinymce.get('project_update_textarea').getContent();
     $("#project_update_post_comments").prepend('<li id="project_update_comment_row'+ id +'">' +
         '<p>' + comment + '</p>' +
         '<div class="delete_btn" onclick="projectUpdateDelete(' + id + ')">' +
@@ -1199,38 +1200,6 @@ function clearBannerContent()
             ],
             toolbar: "insertfile link image"
         });
-
-//        tinyMCE.init({
-//                width: 584,
-//                height: 250,
-//                editor_selector : "campaign_basic",
-//                mode : "textareas",
-//                theme : "advanced",
-//                plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-//                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-//                theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,image,cleanup,code,|,forecolor,backcolor",
-//                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-//                theme_advanced_toolbar_location : "top",
-//                theme_advanced_toolbar_align : "left",
-//                theme_advanced_statusbar_location : "bottom",
-//                theme_advanced_resizing : true
-//        });
-
-       /* tinyMCE.init({
-                width: 584,
-                height: 250,
-                editor_selector : "project_update_textarea",
-                mode : "textareas",
-                theme : "advanced",
-                plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,image,cleanup,code,|,forecolor,backcolor",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                theme_advanced_resizing : true
-        });*/
 
     });
 
