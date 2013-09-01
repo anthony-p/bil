@@ -1137,7 +1137,7 @@ function clearBannerContent()
         </div>
 		<button onclick="addNewRewardToProject(); return false;"><?= MSG_ADD_REWARD; ?></button>
         <div class="next">
-            <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE_CHANGES?>" class="save_btn"/>
+            <!--<input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE_CHANGES?>" class="save_btn"/>-->
             <div class="right">
                 <input type="button" onclick="prevStepShow('p_projectRewards')" value="<?=MSG_PREV?>" class="next_btn" />
                 <input type="button" onclick="nextStepShow('p_projectRewards')" value="<?=MSG_NEXT?>" class="next_btn" />
