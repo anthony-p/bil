@@ -471,5 +471,14 @@ class database extends db_main
 
 		return $result;
 	}
+	
+    function getField($sSql)
+    {
+        $sRes = '';
+        $aRow = $this->get_sql_row($sSql, false);
+        if ($aRow)
+            $sRes = $aRow[0];
+        return $sRes;
+    }
 }
 ?>
