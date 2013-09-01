@@ -98,7 +98,7 @@ try{
     }
 
 
-    if($session->value('user_id') AND $_REQUEST['SKIP_NP_SELECTION'] !=TRUE)
+    if($session->value('user_id') AND (!isset($_REQUEST['SKIP_NP_SELECTION']) || $_REQUEST['SKIP_NP_SELECTION'] !=TRUE) )
     {
         email_globalpartner_to_user($session->value('user_id'), $_URL);
     }

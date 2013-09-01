@@ -1,6 +1,7 @@
 <?php
 define ('IN_ADMIN', 1);
-define ('IN_SITE', 1);
+if (!defined('IN_SITE'))
+    define ('IN_SITE', 1);
 
 include_once ('includes/global.php');
 

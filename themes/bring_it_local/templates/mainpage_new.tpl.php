@@ -24,10 +24,10 @@ include_once('includes/grab_video_thumbnail.php');
             .animate({ 'background-position': '+=20' }, 500, 'linear',
             function () { animateProgressBar(); });
     }
-    $(function () {
+    /*$(function () {
         $("#progressbar").progressbar({ value: 50 });
         animateProgressBar();
-    });
+    });*/
 </script>
 <script>
     $(document).ready(function(){
