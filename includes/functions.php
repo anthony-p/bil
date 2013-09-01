@@ -2281,6 +2281,7 @@ function newRewardForm($reward = array()){
 			</div>
 		</div>
 		<div class="reward_content">
+			<input type="hidden" id="is_new_<?= $reward_id; ?>" value="<?= isset($reward['id']) ? '0' : '1'; ?>">
 			<div class="account-row">
 				<label> <?=MSG_REWARD_AMOUNT;?> *</label>
 				<input type="text" id="reward_amount_<?= $reward_id; ?>" value="<?= @$reward['amount']?>" size="40" />

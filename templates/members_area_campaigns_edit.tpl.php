@@ -285,21 +285,27 @@ function projectUpdateDelete( id ){
 
 
 function deleteProjectReward (id){
-    $.ajax({
-        url:"/np_compaign_project",
-        type: "POST",
-        data: {delete_project_rewards: true, rewards_id: id},
-        success: function(response){
-            if (jQuery.parseJSON(response).response == true) {
-				$("#reward_block_" + id).slideUp(750);
-            } else {
-				alert("Access denied");
+	is_new = $("#is_new_" + id).val();
+	if(is_new == '1'){
+		has_new_reward_form = false;
+		$("#reward_block_" + id).slideUp(750);
+	} else {
+		$.ajax({
+			url:"/np_compaign_project",
+			type: "POST",
+			data: {delete_project_rewards: true, rewards_id: id},
+			success: function(response){
+				if (jQuery.parseJSON(response).response == true) {
+					$("#reward_block_" + id).slideUp(750);
+				} else {
+					alert("Access denied");
+				}
+			},
+			error:function(){
+				alert("Error");
 			}
-        },
-        error:function(){
-            alert("Error");
-        }
-    });
+		});
+	} 
 }
 
 function validateProjectReward(id){
