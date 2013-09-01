@@ -302,39 +302,67 @@ function deleteProjectReward (id){
     });
 }
 
+function validateProjectReward(id){
+	if($("#reward_amount_"+id).val() == ""){
+		alert("The amount must be specified");
+		return false;
+	}
+	
+	if(!$.isNumeric($("#reward_amount_"+id).val())){
+		alert("The amount must be a number");
+		return false;
+	}
+	
+	if($("#reward_name_"+id).val() == ""){
+		alert("The reward name must be specified");
+		return false;
+	}
+	
+	if($("#reward_description_"+id).val() == ""){
+		alert("The reward description must be specified");
+		return false;
+	}
+	
+	return true;
+}
+
 function updateProjectReward (id){
-    $.ajax({
-        url:"/np_compaign_project",
-        type: "POST",
-        data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
-        success: function(response){
-			response = jQuery.parseJSON(response).response;
-            if (response) {
-				alert("OK");
-            } else {
-				alert(response);
+	if(validateProjectReward(id)){
+		$.ajax({
+			url:"/np_compaign_project",
+			type: "POST",
+			data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+			success: function(response){
+				response = jQuery.parseJSON(response).response;
+				if (response) {
+					alert("OK");
+				} else {
+					alert(response);
+				}
+			},
+			error:function(){
+				alert("Error");
 			}
-        },
-        error:function(){
-            alert("Error");
-        }
-    });
+		});
+	}
 }
 
 function saveProjectReward (id){
-    $.ajax({
-        url:"/np_compaign_project",
-        type: "POST",
-        data: {save_project_rewards: true, campaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
-        success: function(response){
-			has_new_reward_form = false;
-			$('.reward_block').last().remove();
-			$("#rewards-section").append(jQuery.parseJSON(response).response);
-        },
-        error:function(){
-            alert("Error");
-        }
-    });
+	if(validateProjectReward(id)){
+		$.ajax({
+			url:"/np_compaign_project",
+			type: "POST",
+			data: {save_project_rewards: true, campaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+			success: function(response){
+				has_new_reward_form = false;
+				$('.reward_block').last().remove();
+				$("#rewards-section").append(jQuery.parseJSON(response).response);
+			},
+			error:function(){
+				alert("Error");
+			}
+		});
+	}
 }
 
 var has_new_reward_form = false;
