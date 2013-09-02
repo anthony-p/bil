@@ -181,6 +181,12 @@ global $coupon_url;
 				</script>
 			</div>
 		</div>
+            <div class="subscribe_form">
+                <form>
+                    <input type="text" placeholder="enter your email">
+                    <input type="submit" value="ok">
+                </form>blog</a>
+            </div>
 	</div></div>
 </div>
     <div class="copyright"><div class="innerContainer">
