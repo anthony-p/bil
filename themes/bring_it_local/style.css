@@ -3511,7 +3511,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
     /*font-size: 22px;*/
     /*box-shadow: none;*/
     /*background: none;}*/
-#footer .bottomLinks .column.col3{width:300px !important;}
+#footer .bottomLinks .col3{width:300px !important;}
 .subscribe_form{float:left;}
 .subscribe_form input{float:left; margin-right: 10px;}
 .subscribe_form input[type="submit"]{background: #92c150;  border: 0;  padding: 0 10px; height: 28px;border-radius: 4px;
