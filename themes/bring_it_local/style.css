@@ -3517,4 +3517,9 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
     font: 14px "OpenSans";   color: #fff; text-shadow: 0px 0px 1px #ACB6A5;text-transform: capitalize;}
 .subscribe_form input[type="text"]{width: 180px; height: 26px; border: 1px solid #C4C0C0;font:12px "OpenSans";
     border-radius: 4px;  box-shadow:inset 0 0 6px rgba(134, 130, 130, 0.8); padding: 0 10px;}
-.subscribe_form a{clear: both; background: #f21b43; font: 14px/22px "OpenSans-Light";padding: 0 10px; height: 22px; margin-top: 10px; width: 180px;}
+.subscribe_form a{display: block;
+    letter-spacing: .025em;
+    text-align: center;
+    color: #fff;
+    text-transform: none;
+    text-shadow: 0px 0px 1px #f98da1; background: #f21b43; font: 14px/22px "OpenSans-Light";padding: 0 10px; height: 22px; margin-top: 10px; width: 180px;}
