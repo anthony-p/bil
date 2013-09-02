@@ -13,7 +13,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             var user_id = $("#users").val();
             if (user_id) {
                 $.ajax({
-                    url: "disable_campaigns.php",
+                    url: "campaigns.php",
                     data: {user_id: user_id},
                     dataType: "json",
                     success: function(result){
@@ -37,7 +37,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             var campaign_type = $("#campaign_type").val();
             if (user_id) {
                 $.ajax({
-                    url: "disable_campaigns.php",
+                    url: "campaigns.php",
                     data: {user_id: user_id, campaign_type: campaign_type},
                     dataType: "json",
                     success: function(result){
@@ -63,7 +63,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             var element_id = 'element_' + campaign_id;
             var disabled_value = $("#campaign_" + this.id).val();
             $.ajax({
-                url: "disable_campaigns.php",
+                url: "campaigns.php",
                 data: {
                     user_id: user_id,
                     campaign_id: campaign_id,

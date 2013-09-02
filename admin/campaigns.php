@@ -35,7 +35,7 @@ else
         $template->set('header_section', AMSG_DISABLE_CAMPAIGNS);
         $template->set('subpage_title', 'Campaigns');
 
-        $template_output .= $template->process('disable_campaigns.tpl.php');
+        $template_output .= $template->process('campaigns.tpl.php');
 
         include_once ('footer.php');
 
