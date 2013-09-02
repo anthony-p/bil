@@ -187,7 +187,8 @@ global $coupon_url;
                     <input type="submit" value="ok">
                 </form>blog</a>
             </div>
-	</div></div>
+
+        </div></div>
 </div>
     <div class="copyright"><div class="innerContainer">
             <div class="leftLinks">
