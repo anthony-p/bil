@@ -50,58 +50,31 @@ $probid_user = $db->get_sql_row('SELECT npu.probid_user_id, u.username FROM np_u
 if($probid_user['probid_user_id']){
 
     $probid_user_box = true;
-
     $template->set('probid_user_box', $probid_user_box);
 
 
-
     $displayed_acuctions_user_items = 14;
-
     $template->set('displayed_acuctions_user_items', $displayed_acuctions_user_items);
 
-
-
     $featured_auctions_user_header = header1('<span class="main-title">Featured Auctions from '.$probid_user['username'].'</span> <span class="viewAll"><a href="' .
-
         process_link('auctions_show', array('option' => 'localuser', 'user' => $probid_user['probid_user_id'])) . '">' . MSG_VIEW_ALL . '</a></span>');
-
     $template->set('featured_auctions_user_header', $featured_auctions_user_header);
 
-
-
     $select_auctions_user = "SELECT auction_id, name, start_price, max_bid, currency, end_time FROM " . DB_PREFIX . "auctions WHERE npuser_id  =$np_userid AND
-
             owner_id = " .$probid_user['probid_user_id']. " AND active=1 AND approved=1 AND closed=0 AND creation_in_progress=0 AND deleted=0 AND
-
             list_in!='store'" . $adult_cats_query. " ORDER BY RAND()";
-
     $result = $db->query($select_auctions_user);
-
     while ($item_details = $db->fetch_array($result)){
-
         $items_user_details[] = $item_details;
-
     }
 
-
-
     $template->set('items_user_details', $items_user_details);
-
-
 
 }
 
 
-
-
-
 #Coupons (magento) recent deals
-
-
-
     $coupons_recent_deals_header = header1('Local merchants' . ' <span class="viewAll"><a href="'.$coupon_url.'/index.php/active-deals.html?id='.$np_userid.'">' . MSG_VIEW_ALL . '</a></span>');
-
-
 
     $magento_items_nr = 6;
     $template->set('coupons_recent_deals_header', $coupons_recent_deals_header);
