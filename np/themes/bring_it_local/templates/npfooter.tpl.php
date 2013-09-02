@@ -72,14 +72,18 @@ global $coupon_url;
 <footer>
 <div id="footer">
 
-	<div class="topLinks"><div class="innerContainer">
+	<div class="topLinks">
+        <div class="innerContainer">
 		<a href="/founders-letter.php" class="link"><span class="header">Start Here</span><span class="description">Read our founder's letter to understand what we are we trying to accomplish</span></a>
 		<a href="/searchnp.php" class="link"><span class="header">Support</span><span class="description">Support your local community by choosing a non-profit</span></a>
 		<a href="/mobileapps.php" class="link"><span class="header">Mobile Apps</span><span class="description">Iphone App - use Bring It Local directly from your iphone</span></a>
-<a href="/loyalty-program" class="link"><span class="header">Loyalty Program</span><span class="description">Earn points - get free local coupons and support your community merchants</span></a>
+        <a href="/loyalty-program" class="link"><span class="header">Loyalty Program</span><span class="description">Earn points - get free local coupons and support your community merchants</span></a>
 		<a href="/np/npregister.php" class="link"><span class="header">Non-profits</span><span class="description">Enroll today to harness your community's online spending</span></a>
-		</div></div>
-	<div class="bottomLinks"><div class="innerContainer clearfix">
+		</div>
+
+    </div>
+	<div class="bottomLinks">
+        <div class="innerContainer clearfix">
 		<div class="column col1">
 			<h5 class="header">Navigate</h5>	
 			<a href="/searchnp.php">Select a non-profit</a> 	
@@ -183,7 +187,9 @@ global $coupon_url;
 				</script>
 			</div>
 		</div>
-	</div></div>
+
+	</div>
+    </div>
 </div>
     <div class="copyright"><div class="innerContainer">
             <div class="leftLinks">
