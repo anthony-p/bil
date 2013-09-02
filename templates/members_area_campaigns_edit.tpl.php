@@ -1194,6 +1194,7 @@ function clearBannerContent()
             	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
 
             	menubar: false,
+                image_advtab: true,
             	toolbar_items_size: 'small',
 
             	style_formats: [
