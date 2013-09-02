@@ -5,6 +5,9 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 //additions
+define ('MSG_SUBSCRIBE', 'SUBSCRIBE');
+define ('MSG_BLOG', 'BLOG');
+define ('MSG_EMAIL', 'enter your email');
 define ('MSG_MM_ABOUT_ME', 'About Me');
 define ('MSG_MM_VIEW', 'View');
 define ('MSG_FEATURED_LOCALAUCTIONS', 'Buy Local - Featured Auctions by Local Supporters'); 
