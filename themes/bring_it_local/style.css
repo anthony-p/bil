@@ -3472,14 +3472,20 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #project_update_textarea_toolbargroup{width:670px;}
 
 
+/* Rewards page */
 .reward_block {border: 1px solid #000; float: left; width: 100%; margin: 20px auto;}
-.reward_block .reward_title {border-bottom: 1px solid #000; font-weight: bold; font-size: 15px; padding: 10px; background: #EEE;}
+.reward_block .reward_title {border-bottom: 1px solid #000; font-weight: bold; font-size: 15px; height: 35px; background: #EEE;}
+.reward_block .reward_title .reward_title_label {display: inline-block; margin: 7px;}
 .reward_block .reward_content {padding: 10px; width: 95%; float: left;}
-.reward_block  .account-row label {text-align: right; width: 200px;}
+.reward_block  .account-row label {text-align: right; width: 290px;}
 #steps form .reward_block  .account-row input[type="text"] {width: 330px;}
-#steps form .reward_block  .account-row textarea {width: 340px;}
+#steps form .reward_block  .account-row textarea {max-width: 340px; min-width: 340px;}
 .reward_shipping_address_required {margin: 0 10px 15px 217px;}
-#steps form button.delete-reward, #steps form button.delete-reward:hover {float: right; background: url('img/trash.png'); width: 24px; height: 24px; border-radius: 0; box-shadow: none; padding: 0; margin-right: 7px;}
+.rewards-actions {float: right; margin-top: 4px;}
+#steps form button.delete-reward, #steps form button.delete-reward:hover, #steps form button.validate-reward, #steps form button.validate-reward:hover {width: 24px; height: 24px; border-radius: 0; box-shadow: none; padding: 0; margin-right: 7px; display: inline-block;}
+#steps form button.delete-reward, #steps form button.delete-reward:hover { background: url('img/trash.png');}
+#steps form button.validate-reward, #steps form button.validate-reward:hover { background: url('img/validate.png');}
+.account-row span.reward_currency {float: right; font-size: 18px; clear: none; margin-top: 1px; margin-right: 10px; font-weight: bold;}
 
 
 /*contributions page*/
