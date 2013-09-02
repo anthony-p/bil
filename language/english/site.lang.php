@@ -14,6 +14,10 @@ define ('MSG_VIEW_ALL', 'View All');
 define ('MSG_POST_A_COMMENT', 'Post a comment');
 define ('MSG_KEEP_PRIVATE', 'keep private - don\'t display my user name');
 define ('MSG_RECENTLY_LISTED_LOCALWANTED_ADS', 'Recent Community Want Ads');
+
+define ('MSG_AUCTION_SEARCH', 'Auction Search');
+define ('MSG_SELLER_SEARCH', 'Seller Search');
+define ('MSG_BUYER_SEARCH', 'Buyer Search');
 // misc campaign tags
 define ('MSG_SAVE_CHANGES', 'Save Changes');
 define ('MSG_DELETE', 'Delete');

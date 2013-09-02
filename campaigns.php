@@ -73,7 +73,7 @@ switch ($option)
 		break;
 }
 
-$sql_query = $db->query("SELECT * FROM bl2_users Join np_users WHERE id = probid_user_id");
+$sql_query = $db->query("SELECT * FROM bl2_users Join np_users WHERE id = probid_user_id ORDER BY create_date DESC");
 
 $rows = array();
 
