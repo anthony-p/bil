@@ -97,7 +97,8 @@ global $coupon_url;
 <a href="/loyalty-program" class="link"><span class="header">Loyalty Program</span><span class="description">Earn points - get free local coupons and support your community merchants</span></a>
 		<a href="/np/npregister.php" class="link"><span class="header">Non-profits</span><span class="description">Enroll today to harness your community's online spending</span></a>
 		</div></div>
-	<div class="bottomLinks"><div class="innerContainer clearfix">
+	<div class="bottomLinks">
+        <div class="innerContainer clearfix">
 		<div class="column col1">
 			<h5 class="header">Participate</h5>	
 			<!--<a href="/searchnp.php">Select a non-profit</a> 	
@@ -125,24 +126,18 @@ global $coupon_url;
 			
 			<? } ?>
 		</div>
-            <div class="subscribe_form">
-                <form>
-                    <input type="text" placeholder="enter your email">
-                    <input type="submit" value="ok">
-                </form>
-                <a href="">blog</a>
+
+            <div class="column col3">
+                <div class="subscribe_form">
+                    <form>
+                        <input type="text" placeholder="enter your email">
+                        <input type="submit" value="ok">
+                    </form>
+                    <a href="">blog</a>
+                </div>
+
             </div>
-
-            <div class="column col3">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-			<!--<h5 class="header">Participate</h5>
-            	<?php //echo $custom_pages_links;?>
-			<a href="/loyalty-program">Loyalty Program</a>
-			<a href="/mobileapps.php">Mobile Apps</a>
-			<a href="/np/npregister_supporter.php">Suggest a Non-Profit</a>
-			<a href="http://www.facebook.com/bringitlocal">Facebook</a>-->
-
-		</div>
-            <div class="column col5">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+            <div class="column col5">
                <!-- <h5 class="header">Participate</h5>
                 <?php //echo $custom_pages_links;?>
                 <a href="/loyalty-program">Loyalty Program</a>
@@ -190,7 +185,8 @@ global $coupon_url;
 			</div>
 		</div>
 
-        </div></div>
+        </div>
+    </div>
 </div>
     <div class="copyright"><div class="innerContainer">
             <div class="leftLinks">
