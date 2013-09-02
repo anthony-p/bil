@@ -125,7 +125,15 @@ global $coupon_url;
 			
 			<? } ?>
 		</div>
-		<div class="column col3">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+            <div class="subscribe_form">
+                <form>
+                    <input type="text" placeholder="enter your email">
+                    <input type="submit" value="ok">
+                </form>
+                <a href="">blog</a>
+            </div>
+
+            <div class="column col3">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 			<!--<h5 class="header">Participate</h5>
             	<?php //echo $custom_pages_links;?>
 			<a href="/loyalty-program">Loyalty Program</a>
@@ -181,13 +189,6 @@ global $coupon_url;
 				</script>
 			</div>
 		</div>
-            <div class="subscribe_form">
-                <form>
-                    <input type="text" placeholder="enter your email">
-                    <input type="submit" value="ok">
-                </form>
-                <a href="">blog</a>
-            </div>
 
         </div></div>
 </div>
