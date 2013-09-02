@@ -3662,3 +3662,5 @@ ADD id INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL;
 
 /*task create admin script for deleting campaign*/
 ALTER TABLE `np_users` ADD COLUMN `disabled` INT NULL DEFAULT 0  AFTER `keep_alive_days` ;
+
+ALTER TABLE `project_rewards`  CHANGE `amount` `amount` DECIMAL(11,2) NOT NULL;
