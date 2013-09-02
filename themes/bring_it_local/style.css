@@ -3485,6 +3485,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #steps form button.delete-reward, #steps form button.delete-reward:hover, #steps form button.validate-reward, #steps form button.validate-reward:hover {width: 24px; height: 24px; border-radius: 0; box-shadow: none; padding: 0; margin-right: 7px; display: inline-block;}
 #steps form button.delete-reward, #steps form button.delete-reward:hover { background: url('img/trash.png');}
 #steps form button.validate-reward, #steps form button.validate-reward:hover { background: url('img/validate.png');}
+.account-row span.reward_currency {float: right; font-size: 18px; clear: none; margin-top: 1px; margin-right: 10px; font-weight: bold;}
 
 
 /*contributions page*/
