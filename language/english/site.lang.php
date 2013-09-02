@@ -344,6 +344,8 @@ define ('MSG_REWARD_DESCRIPTION_MUST_BE_SPECIFIED', 'The reward description must
 define ('MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER', 'The available number must be a number');
 define ('MSG_REWARD_NEEDS_TO_BE_SAVED', 'You need to save the reward you have just added before adding another one');
 define ('MSG_REWARD_MAX_NUMBER_REACHED', 'A campaign cannot have more than 20 rewards');
+define ('MSG_REWARD_AMOUNT_EXIST', 'This campaign already has a reward with the same amount');
+define ('MSG_REWARD_NAME_EXIST', 'This campaign already has a reward with the same name.');
 define ('MSG_REWARD_SAVED', 'The reward has been successfully saved');
 define ('MSG_ACCESS_DENIED', 'Access denied');
 
