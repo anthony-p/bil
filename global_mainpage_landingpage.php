@@ -551,7 +551,7 @@ while ($query_result =  mysql_fetch_array($project_update_query_result)) {
 
 
 
-$project_reward_query_result = $db->query("SELECT * FROM project_rewards LEFT JOIN bl2_users ON project_rewards.user_id =  bl2_users.id WHERE project_id=" . $compaignId . " ORDER BY project_rewards.id DESC");
+$project_reward_query_result = $db->query("SELECT * FROM project_rewards r LEFT JOIN np_users np ON r.project_id = np.user_id LEFT JOIN bl2_users u ON np.probid_user_id =  u.id WHERE r.project_id=" . $compaignId . " ORDER BY r.id DESC");
 
 $project_rewards = array();
 
