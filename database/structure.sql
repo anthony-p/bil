@@ -3543,7 +3543,6 @@ CREATE TABLE `project_pitch` (
 
 CREATE TABLE `project_rewards` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL DEFAULT '0',
   `project_id` int(11) NOT NULL,
   `parrent_id` int(11) NOT NULL DEFAULT '0',
   `amount` int(11) NOT NULL,
@@ -3552,7 +3551,7 @@ CREATE TABLE `project_rewards` (
   `estimated_delivery_date` date DEFAULT NULL,
   `shipping_address_required` tinyint(1) NOT NULL DEFAULT '0',
   `available_number` int(11) DEFAULT NULL,
-  `given_number` int(11) DEFAULT NULL,
+  `given_number` int(11) NOT NULL DEFAULT '0',
   `create_at` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
@@ -3568,7 +3567,7 @@ CREATE TABLE `project_updates` (
   `create_at` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`,`project_id`,`parrent_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `shop_tracking_links` */
 
@@ -3640,11 +3639,11 @@ CREATE TABLE `vendor_click_reports` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 /*task In user 'signup' make last name not required*/
-ALTER TABLE `devbr0_auction`.`bl2_users` ADD COLUMN `organization` VARCHAR(128) NULL DEFAULT NULL  AFTER `google_link` ;
+ALTER TABLE `bl2_users` ADD COLUMN `organization` VARCHAR(128) NULL DEFAULT NULL  AFTER `google_link` ;
 
 /*task Renew campaigns: add setting in member pages>campaign edit>status0%*/
-ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `keep_alive` INT NULL DEFAULT 0  AFTER `payment` ;
-ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `keep_alive_days` INT NULL DEFAULT 0  AFTER `keep_alive` ;
+ALTER TABLE `np_users` ADD COLUMN `keep_alive` INT NULL DEFAULT 0  AFTER `payment` ;
+ALTER TABLE `np_users` ADD COLUMN `keep_alive_days` INT NULL DEFAULT 0  AFTER `keep_alive` ;
 
 --
 -- np_iphistory
@@ -3659,3 +3658,9 @@ ADD id INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL;
 
 ALTER TABLE probid_iphistory
 ADD id INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL;
+
+
+/*task create admin script for deleting campaign*/
+ALTER TABLE `np_users` ADD COLUMN `disabled` INT NULL DEFAULT 0  AFTER `keep_alive_days` ;
+
+ALTER TABLE `project_rewards`  CHANGE `amount` `amount` DECIMAL(11,2) NOT NULL;

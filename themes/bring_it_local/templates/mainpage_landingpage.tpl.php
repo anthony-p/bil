@@ -50,11 +50,11 @@ $featured_columns = 14;
             <span class="price">$<? echo $compaigns['payment'];?><span> usd</span></span>
             <span class="day">
                 <?php $days=round(($compaigns['end_date']-time())/86400);
-                if($days>0){echo $days."<span> days left</span>"; }
+                if($days>0){echo $days."<span> ".MSG_DAYS_LEFT."</span>"; }
                 elseif($compaigns['payment'] == 0)
-                    echo "<span>closed</span>";
+                    echo "<span>".MSG_CLOSED."</span>";
                 else {
-                    echo "<span>successfully</span>";
+                    echo "<span>".MSG_SUCCESS."</span>";
                 }
                 ?>
             </span>
@@ -70,12 +70,12 @@ $featured_columns = 14;
                 echo "<div class='progress'><div style='width:". $completed."%' class='bar'></div></div>";
             }
             elseif($compaigns['payment'] == 0){
-                echo "<div class='project-unsuccessful'>Closed</div>";
+                echo "<div class='project-unsuccessful'>".MSG_CLOSED."</div>";
             } else {
                 if ($compaigns["payment"])
-                    echo "<div class='project-successful'>Successful</div>";
+                    echo "<div class='project-successful'>".MSG_SUCCESS."</div>";
                 else
-                    echo "<div class='project-unsuccessful'>Closed</div>";
+                    echo "<div class='project-unsuccessful'>".MSG_CLOSED."</div>";
             }
             ?>
             <p><?=MSG_RAISED_TOWARD_THE_GOAL?> $<?php echo isset($compaigns['founddrasing_goal']) ? $compaigns['founddrasing_goal'] : '0'; ?> </p>

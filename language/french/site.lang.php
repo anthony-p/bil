@@ -4,6 +4,22 @@
 ##-------------------------------------------------------------##
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
+
+//additions
+define ('MSG_MM_ABOUT_ME', 'About Me');
+define ('MSG_MM_VIEW', 'View');
+define ('MSG_FEATURED_LOCALAUCTIONS', 'Buy Local - Featured Auctions by Local Supporters');
+define ('MSG_BAR_FEATURED_AUCTIONS', 'Buy Local - Featured Auctions');
+define ('MSG_COMMENTS', 'Comments');
+define ('MSG_VIEW_ALL', 'View All');
+define ('MSG_POST_A_COMMENT', 'Post a comment');
+define ('MSG_KEEP_PRIVATE', 'keep private - don\'t display my user name');
+define ('MSG_RECENTLY_LISTED_LOCALWANTED_ADS', 'Recent Community Want Ads');
+
+define ('MSG_AUCTION_SEARCH', 'Auction Search');
+define ('MSG_SELLER_SEARCH', 'Seller Search');
+define ('MSG_BUYER_SEARCH', 'Buyer Search');
+
 // misc campaign tags
 define ('MSG_SAVE_CHANGES', 'Save Changesffffff');
 define ('MSG_DELETE', 'Deleteffffff');

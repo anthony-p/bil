@@ -11,8 +11,8 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <!--<script language="javascript" src="/scripts/jquery/tiny.editor.js" type="text/javascript"></script>-->
 <!--<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">-->
-<script language="JavaScript" src="/scripts/jquery/tiny_mce/tiny_mce_src.js" js="text/javascript"></script>
-<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>
+<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/tiny_mce_src.js" js="text/javascript"></script>-->
+<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
 
 
 <SCRIPT LANGUAGE="JavaScript">

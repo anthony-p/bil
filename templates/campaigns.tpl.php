@@ -12,6 +12,21 @@ include_once('includes/grab_video_thumbnail.php');
 ?>
 <? echo (!empty($no_results_message)) ? $no_results_message : '<br>';?>
 
+<script>
+    $(document).ready(function(){
+
+            $(".description").each(function(){
+                var $minHeight=72;
+                var $height=$(this).height();
+                if($height > $minHeight)
+                {
+
+                    $(this).parent(".more_description").addClass("more");
+                }
+            });
+
+        });
+</script>
 
 <div class="searchBox">
 <h2> <?=MSG_ALL_CAMPAIGNS?></h2>
@@ -57,7 +72,7 @@ include_once('includes/grab_video_thumbnail.php');
                 <div class="campaigns-info">
                     <p class="name">
                         <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>" class="name-camp"><?php echo $row['project_title'];?></a>
-                        <br/>by<a href="/about_me.php?user_id=<?php echo isset($row['id']) ? $row['id'] : '';?>">
+                        <br/>by <a href="/about_me.php?user_id=<?php echo isset($row['id']) ? $row['id'] : '';?>">
 
                             <?php if (isset($row['organization']) && $row['organization']): ?>
                                 <?php echo $row['organization'];?>
@@ -66,9 +81,13 @@ include_once('includes/grab_video_thumbnail.php');
                             <?php endif; ?>
                         </a>
                     </p>
-                    <p class="description">
-                        <?php echo $row['description'];?>
-                    </p>
+                    <div class="more_description">
+                        <p class="description">
+                                               <?php echo $row['description'];?>
+                                           </p>
+                        <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>">..more</a>
+                                                </div>
+
                     <a href="/search.php?city=<?=urlencode($row['city'])?>" class="location"><?php echo $row['city'];?></a>
                 </div>
                 <div class="campaign-details">

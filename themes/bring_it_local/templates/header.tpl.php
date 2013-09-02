@@ -90,9 +90,9 @@ global $coupon_url;
             $(".member-menu > li:last-child").addClass("last")
         });
         $(function() {
-            $("div.holder").jPages({
+            /*$("div.holder").jPages({
                 containerID: "pagination"
-            });
+            });*/
         });
         var countOfPitch = 0;
         function addPitch(){

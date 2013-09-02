@@ -10,9 +10,8 @@ $(document).ready(function() {
 
     var vendors = ["www.dpbolvw.net", "www.anrdoezrs.net", "www.jdoqocy.com", "doubleclick.net", "amazon.com", "linksynergy.com", "indiebound.org"];
 
-    console.log("Vendor");
     $.each(vendors, function(index, value){
-        $("a[href*='"+value+"']").live("click", function(event){
+        $("a[href*='"+value+"']").on("click", function(event){
         	var _href = $(this).attr('href');
         	if(_href.search("shop_selected.php") == -1) {
                 popupAlert(_href);

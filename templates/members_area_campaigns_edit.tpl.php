@@ -1,4 +1,5 @@
 <?
+require_once (__DIR__ . '/../includes/class_project_rewards.php');
 if (isset($_POST['operation']))
     include_once(__DIR__ . '/../language/english/site.lang.php');
 //    include_once('np/language/english/npsite.lang.php');
@@ -10,6 +11,15 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <?=(isset($display_formcheck_errors))?$display_formcheck_errors:'';?>
 <script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>
 <link type="text/css" rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">
+
+<script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
+<script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
+
+<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
+<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/plugins/moxiemanager/editor_plugin.js" js="text/javascript"></script>-->
+
+
+
 <script type="text/javascript">
 
 $( document ).ready( function (){
@@ -37,7 +47,6 @@ $( document ).ready( function (){
     <?php endif; ?>
 
 });
-
 
 function bannerTypeSelect(flag){
     if (flag == "0") {
@@ -189,7 +198,8 @@ function changeDeadlineType(obj,id)
 var countOfPitch = <?php if (isset($pitches) && is_array($pitches)) echo count($pitches); else { ?>0<?php } ?>;
 
 function projectUpdateComment () {
-    var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + $("#project_update_textarea").val();
+
+    var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + tinymce.get('project_update_textarea').getContent();
     $.ajax({
         url: "/np_compaign_project.php",
         type: "POST",
@@ -230,7 +240,7 @@ function projectRewardComment () {
 
 
 function addProjectUpdateComment( id ){
-    var comment = $("#project_update_textarea").val();
+    var comment = tinymce.get('project_update_textarea').getContent();
     $("#project_update_post_comments").prepend('<li id="project_update_comment_row'+ id +'">' +
         '<p>' + comment + '</p>' +
         '<div class="delete_btn" onclick="projectUpdateDelete(' + id + ')">' +
@@ -276,22 +286,123 @@ function projectUpdateDelete( id ){
 
 
 function deleteProjectReward (id){
-    $.ajax({
-        url:"/np_compaign_project",
-        type: "POST",
-        data: {delete_project_rewards: true, rewards_id: id},
-        success: function(response){
-            if (jQuery.parseJSON(response).response == true) {
-				$("#reward_block_" + id).slideUp(750);
-            } else {
-				alert("Access denied");
+	is_new = $("#is_new_" + id).val();
+	if(is_new == '1'){
+		has_new_reward_form = false;
+		$("#reward_block_" + id).slideUp(750);
+	} else {
+		$.ajax({
+			url:"/np_compaign_project",
+			type: "POST",
+			data: {delete_project_rewards: true, rewards_id: id},
+			success: function(response){
+				response = jQuery.parseJSON(response).response;
+				if (response == true) {
+					$("#reward_block_" + id).slideUp(750);
+				} else {
+					alert(response);
+				}
+			},
+			error:function(){
+				alert("Error");
 			}
-        },
-        error:function(){
-            alert("Error");
-        }
+		});
+	} 
+}
 
-    });
+function validateProjectReward(id){
+	if($("#reward_amount_"+id).val() == ""){
+		alert("<?= MSG_REWARD_AMOUNT_MUST_BE_SPECIFIED ?>");
+		return false;
+	}
+	
+	if(!$.isNumeric($("#reward_amount_"+id).val())){
+		alert("<?= MSG_REWARD_AMOUNT_MUST_BE_A_NUMBER ?>");
+		return false;
+	}
+	
+	if($("#reward_name_"+id).val() == ""){
+		alert("<?= MSG_REWARD_NAME_MUST_BE_SPECIFIED ?>");
+		return false;
+	}
+	
+	if($("#reward_description_"+id).val() == ""){
+		alert("<?= MSG_REWARD_DESCRIPTION_MUST_BE_SPECIFIED ?>");
+		return false;
+	}
+	
+	if($("#reward_available_number_"+id).val() != '' && !$.isNumeric($("#reward_available_number_"+id).val())){
+		alert("<?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?>");
+		return false;
+	}
+	
+	return true;
+}
+
+function updateProjectReward (id){
+	if(validateProjectReward(id)){
+		$.ajax({
+			url:"/np_compaign_project",
+			type: "POST",
+			data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+			success: function(response){
+				alert(jQuery.parseJSON(response).response);
+			},
+			error:function(){
+				alert("Error");
+			}
+		});
+	}
+}
+
+function saveProjectReward (id){
+	if(validateProjectReward(id)){
+		$.ajax({
+			url:"/np_compaign_project",
+			type: "POST",
+			data: {save_project_rewards: true, campaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+			success: function(response){
+				response = jQuery.parseJSON(response).response;
+				if(response.substr(0, 4) == '<div'){
+					has_new_reward_form = false;
+					$('.reward_block').last().remove();
+					$("#rewards-section").append(response);
+					alert("<?= MSG_REWARD_SAVED; ?>");
+				} else {
+					alert(response);
+				}
+			},
+			error:function(){
+				alert("Error");
+			}
+		});
+	}
+}
+
+var has_new_reward_form = false;
+
+function addNewRewardToProject() {
+	if(!has_new_reward_form){
+		$.ajax({
+			url:"/np_compaign_project",
+			type: "POST",
+			data: {addNewRewardToProject: true, has_new_reward_form: false, campaign_id: <?= $campaign['user_id']; ?>},
+			success: function(response){
+				response = jQuery.parseJSON(response).response;
+				if(response.substr(0, 4) == '<div'){
+					has_new_reward_form = true;
+					$("#rewards-section").append(response);
+				} else {
+					alert(response);
+				}
+			},
+			error:function(){
+				alert("Error");
+			}
+		});
+	} else {
+		alert("<?= MSG_REWARD_NEEDS_TO_BE_SAVED ?>");
+	}
 }
 
 function clearLogoContent()
@@ -1057,65 +1168,25 @@ function clearBannerContent()
 
 </fieldset>
 
-
-
-
-
 <fieldset class="step">
     <div class="tabs">
         <h4><?= MSG_REWARDS ?></h4>
 		<h3><?= MSG_REWARDS_NOTE ?></h3>
-        <div class="account-tab">
+        <div class="account-tab" style="width: 100%;" id="rewards-section">
+			<?php $projectRewards = new projectRewards(); ?>
 			<?php foreach ($project_rewards as $reward) :?>
-			<?= addRewardForm($reward); ?>
+			<?= $projectRewards->newRewardForm($reward); ?>
 			<?php endforeach;?>
-			<!--
-            <aside>
-
-                <div class="inner">
-
-                    <h3>rewards will go here</h3>
-
-                    <div class="write_post">
-
-                        <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png"></div>
-
-                        <input name="compaign" type="hidden" value="10275">
-
-                        <textarea name="comment_text" id="project_reward_textarea"></textarea>
-
-                        <input type="button" value="<?=MSG_SEND?>" id="button_project_reward_textarea" onclick="projectRewardComment()">
-
-                    </div>
-
-                </div>
-
-            </aside>
-
-            <div class="clear"></div>
-
-            <h3>Your comments</h3>
-            <ul class="posted_comments" id="project_reward_post_comments">
-                <?php foreach ($project_rewards as $_reward) :?>
-                    <li id="<?='project_reward_comment_row'.$_reward['id'];?>">
-                        <p><?=$_reward['comment']?></p>
-                        <div class="delete_btn" onclick="deleteProjectReward(<?=$_reward['id']?>)">
-                               <span>delete</span>
-                        </div>
-                    </li>
-                <?php endforeach;?>
-            </ul>
-			-->
         </div>
-			<button onclick="return false;"><?= MSG_ADD_REWARD; ?></button>
-            <div class="next">
-                <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE_CHANGES?>" class="save_btn"/>
-              <div class="right">
-                  <input type="button" onclick="prevStepShow('p_projectRewards')" value="<?=MSG_PREV?>" class="next_btn" />
-                  <input type="button" onclick="nextStepShow('p_projectRewards')" value="<?=MSG_NEXT?>" class="next_btn" />
-              </div>
+		<button onclick="addNewRewardToProject(); return false;"><?= MSG_ADD_REWARD; ?></button>
+        <div class="next">
+            <!--<input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE_CHANGES?>" class="save_btn"/>-->
+            <div class="right">
+                <input type="button" onclick="prevStepShow('p_projectRewards')" value="<?=MSG_PREV?>" class="next_btn" />
+                <input type="button" onclick="nextStepShow('p_projectRewards')" value="<?=MSG_NEXT?>" class="next_btn" />
             </div>
         </div>
+    </div>
 </fieldset>
 
 <fieldset class="step">
@@ -1168,82 +1239,60 @@ function clearBannerContent()
 
 <script>
     $( document ).ready( function (){
-        tinyMCE.init({
-                width: 584,
-                height: 250,
-                editor_selector : "campaign_basic",
-                mode : "textareas",
-                theme : "advanced",
-                plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,image,cleanup,code,|,forecolor,backcolor",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                theme_advanced_resizing : true
-        });
 
-        tinyMCE.init({
-                width: 584,
-                height: 250,
-                editor_selector : "project_update_textarea",
-                mode : "textareas",
-                theme : "advanced",
-                plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,image,cleanup,code,|,forecolor,backcolor",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                theme_advanced_resizing : true
+        /* == == == == == == == == == == == == == == == == == == == == == == ==*/
+        tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
+
+        tinymce.init({
+            selector:'.campaign_basic',
+            plugins: [
+                "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor"
+            ],
+            toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+            	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | forecolor backcolor",
+            	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
+
+            	menubar: false,
+                image_advtab: true,
+            	toolbar_items_size: 'small',
+
+            	style_formats: [
+            		{title: 'Bold text', inline: 'b'},
+            		{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+            		{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+            		{title: 'Example 1', inline: 'span', classes: 'example1'},
+            		{title: 'Example 2', inline: 'span', classes: 'example2'},
+            		{title: 'Table styles'},
+            		{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+            	]
+        });
+        tinymce.init({
+            selector:'.project_update_textarea',
+            plugins: [
+                "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor"
+            ],
+            toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+            	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | forecolor backcolor",
+            	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
+
+            	menubar: false,
+            	toolbar_items_size: 'small',
+
+            	style_formats: [
+            		{title: 'Bold text', inline: 'b'},
+            		{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+            		{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+            		{title: 'Example 1', inline: 'span', classes: 'example1'},
+            		{title: 'Example 2', inline: 'span', classes: 'example2'},
+            		{title: 'Table styles'},
+            		{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+            	]
         });
 
     });
 
 </script>
-<?php
-function addRewardForm($reward){
-	$reward_id = $reward['id'];
-?>
-	<div class="reward_block" id="reward_block_<?= $reward_id; ?>">
-		 <script>
-			$(function() {
-				$( "#reward_estimated_delivery_<?= $reward_id; ?>" ).datepicker();
-			});
-		</script>
-		<div class="reward_title">
-			<?=MSG_REWARD;?>
-			<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
-		</div>
-		<div class="reward_content">
-			<div class="account-row">
-				<label> <?=MSG_REWARD_AMOUNT;?> *</label>
-				<input name="reward_amount" type="text" id="reward_amount_<?= $reward_id; ?>" value="<?= $reward['amount']?>" size="40" />
-			</div>
-			<div class="account-row">
-				<label> <?=MSG_REWARD_NAME;?> *</label>
-				<input name="reward_name" type="text" id="reward_name_<?= $reward_id; ?>" value="<?= $reward['name']?>" size="40" />
-			</div>
-			<div class="account-row">
-				<label> <?=MSG_REWARD_DESCRIPTION;?> *</label>
-				<textarea name="reward_description" id="reward_description_<?= $reward_id; ?>"><?= $reward['description']?></textarea>
-			</div>
-			<div class="account-row">
-				<label> <?=MSG_REWARD_AVAILABLE_NUMBER;?></label>
-				<input name="reward_available_number" type="text" value="<?= $reward['available_number']?>" id="reward_available_number_<?= $reward_id; ?>"></input>
-			</div>
-			<div class="account-row">
-				<label> <?=MSG_REWARD_ESTIMATED_DELIVERY;?></label>
-				<input name="reward_estimated_delivery" type="text" value="<?= $reward['estimated_delivery_date']?>" id="reward_estimated_delivery_<?= $reward_id; ?>"></input>
-			</div>
-			<div class="account-row">
-				<input name="reward_shipping_address_required" type="checkbox" <?php if($reward['shipping_address_required'] == 1){echo 'checked';} ?> id="reward_shipping_address_required_<?= $reward_id; ?>" class="reward_shipping_address_required"></input>
-				<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
-			</div>
-		</div>
-	</div>
-<?php
-}
-?>

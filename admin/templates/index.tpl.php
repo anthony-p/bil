@@ -255,17 +255,19 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
          <table width="100%" border="0" cellpadding="2" cellspacing="2" class="fside">
             <tr>
                <td width="100%" class="menulink">
-               	<img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=open"><?=AMSG_OPEN_AUCTIONS;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=closed"><?=AMSG_CLOSED_AUCTIONS;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=unstarted"><?=AMSG_UNSTARTED_AUCTIONS;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=suspended"><?=AMSG_SUSPENDED_AUCTIONS;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_sold_items.php"><?=AMSG_SOLD_ITEMS;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=approval"><?=AMSG_AUCTIONS_AWAITING_APPROVAL;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="custom_fields.php?page=auction"><?=AMSG_CUSTOM_AUCT_FIELDS_MANAGEMENT;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_wanted_ads.php"><?=AMSG_WANTED_ADS_MANAGEMENT;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="custom_fields.php?page=wanted_ad"><?=AMSG_CUSTOM_WANTED_ADS_MANAGEMENT;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_messaging.php"><?=AMSG_USER_MESSAGES_MANAGEMENT;?></a> <br>
-                  <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="images_removal_tool.php"><?=AMSG_OLD_IMAGES_REMOVAL_TOOL;?></a> </td>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="disable_campaigns.php"><?=AMSG_DISABLE_CAMPAIGNS;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=open"><?=AMSG_OPEN_AUCTIONS;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=closed"><?=AMSG_CLOSED_AUCTIONS;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=unstarted"><?=AMSG_UNSTARTED_AUCTIONS;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=suspended"><?=AMSG_SUSPENDED_AUCTIONS;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_sold_items.php"><?=AMSG_SOLD_ITEMS;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=approval"><?=AMSG_AUCTIONS_AWAITING_APPROVAL;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="custom_fields.php?page=auction"><?=AMSG_CUSTOM_AUCT_FIELDS_MANAGEMENT;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_wanted_ads.php"><?=AMSG_WANTED_ADS_MANAGEMENT;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="custom_fields.php?page=wanted_ad"><?=AMSG_CUSTOM_WANTED_ADS_MANAGEMENT;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_messaging.php"><?=AMSG_USER_MESSAGES_MANAGEMENT;?></a> <br>
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="images_removal_tool.php"><?=AMSG_OLD_IMAGES_REMOVAL_TOOL;?></a>
+               </td>
             </tr>
          </table>
          <table width="100%" border="0" cellpadding="0" cellspacing="0">
