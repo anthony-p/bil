@@ -208,10 +208,7 @@ else if ($session->value('user_id'))
         in_array($section, array('drafts', 'live', 'closed','main', 'edit'))) {
         $selected_section = 'my_campaigns';
     } elseif (in_array($page, array('contributions')) &&
-            in_array($section, array( 'main'))
-    ) {
-        $selected_section = 'my_contributions';
-    } elseif (in_array($page, array()) && in_array($section, array())) {
+        in_array($section, array( 'main'))) {
         $selected_section = 'my_contributions';
     } elseif (in_array($page, array('selling', 'bidding', 'reputation')) &&
         in_array(
