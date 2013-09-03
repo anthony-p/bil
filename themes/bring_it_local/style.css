@@ -3497,7 +3497,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .resp-tab-content aside.rewards_tab .reward_display {border-radius: 5px; background: #e0e0e0; margin: 10px 0; padding: 10px;}
 .resp-tab-content aside.rewards_tab .reward_display .reward_amount {font-size: 24px; font-weight: bold;}
 .resp-tab-content aside.rewards_tab .reward_display .reward_name {font-size: 18px; font-weight: bold; margin-top: 10px;}
-.resp-tab-content aside.rewards_tab .reward_display .reward_description {font-size: 14px; margin-top: 10px; color: #808080;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_description {font-size: 14px; margin-top: 10px; color: #808080; border-top: 1px solid #EFEFEF; padding-top: 5px;}
 .resp-tab-content aside.rewards_tab .reward_display .reward_bottom {margin-top: 20px;}
 .resp-tab-content aside.rewards_tab .reward_display .reward_bottom .reward_claimed_number {display: inline-block; width: 426px; vertical-align: top; padding-top: 20px;}
 .resp-tab-content aside.rewards_tab .reward_display .reward_bottom .donate_now_button {background: #F21B43; text-shadow: 0 0 1px #F98DA1; display: inline-block; width:170px; border-radius: 10px;  box-shadow: inset 0px 0px 5px rgba(199, 199, 199, 0.5);padding: 6px 0 10px 0; cursor: pointer;}
