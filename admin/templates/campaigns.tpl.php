@@ -1,8 +1,11 @@
 <script src="../../scripts/jquery/jquery-1.9.1.js"></script>
+<script src="../../scripts/jquery/jquery-ui.js"></script>
+<link rel="stylesheet" href="../../css/jquery-ui.css" />
 <?
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
+
 <script>
     $(document).ready(function(){
         $('#disable_campaigns').submit(function() {
@@ -92,43 +95,80 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             var user_id = $("#users").val();
             var campaign_id = this.id;
             var campaign_id = campaign_id.replace('del_', '');
-            $.ajax({
-                url: "campaigns.php",
-                data: {
-                    user_id: user_id,
-                    campaign_id: campaign_id,
-                    delete: 1,
-                    action: 'delete'
-                },
-                dataType: "json",
-                success: function(result){
-                    var campaign_type = $("#campaign_type").val();
-                    if (user_id && result.deleted) {
+            $( "#dialog-confirm" ).dialog({
+                resizable: false,
+                position: 'top',
+                height:140,
+                modal: true,
+                buttons: {
+                    "Delete": function() {
+                        $( this ).dialog( "close" );
                         $.ajax({
                             url: "campaigns.php",
-                            data: {user_id: user_id, campaign_type: campaign_type},
+                            data: {
+                                user_id: user_id,
+                                campaign_id: campaign_id,
+                                delete: 1,
+                                action: 'delete'
+                            },
                             dataType: "json",
                             success: function(result){
-                                console.log(result);
-                                $("#npList tbody").html(result.np_users_content);
-                                $("#campaigns_list").css({display: "block"});
-                                initialize_campaigns();
-                                initialize_campaign_types();
+                                var campaign_type = $("#campaign_type").val();
+                                if (user_id && result.deleted) {
+                                    $.ajax({
+                                        url: "campaigns.php",
+                                        data: {user_id: user_id, campaign_type: campaign_type},
+                                        dataType: "json",
+                                        success: function(result){
+                                            console.log(result);
+                                            $("#npList tbody").html(result.np_users_content);
+                                            $("#campaigns_list").css({display: "block"});
+                                            initialize_campaigns();
+                                            initialize_campaign_types();
+                                        },
+                                        error: function(error) {
+                                            console.log(error);
+                                        }
+                                    });
+                                }
                             },
                             error: function(error) {
                                 console.log(error);
                             }
                         });
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
                     }
-                },
-                error: function(error) {
-                    console.log(error);
                 }
             });
         });
     }
 
 </script>
+<!--<script>-->
+<!--    $(function() {-->
+<!--        $( "#dialog-confirm" ).dialog({-->
+<!--            resizable: false,-->
+<!--            height:140,-->
+<!--            modal: true,-->
+<!--            buttons: {-->
+<!--                "Delete all items": function() {-->
+<!--                    $( this ).dialog( "close" );-->
+<!--                },-->
+<!--                Cancel: function() {-->
+<!--                    $( this ).dialog( "close" );-->
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+<div id="dialog-confirm" title="Delete campaign?">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+        These campaign will be permanently deleted and cannot be recovered. Are you sure?
+    </p>
+</div>
 <div class="mainhead"><img src="images/user.gif" align="absmiddle">
    <?=$header_section;?>
 </div>

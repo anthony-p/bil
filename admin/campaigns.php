@@ -150,9 +150,13 @@ else
                     "DELETE FROM np_users WHERE user_id=" . $campaign_id
                 );
 
-                if (file_exists('..' . $np_user_content["logo"]))
+                $db->query(
+                    "DELETE FROM funders WHERE campaign_id=" . $campaign_id
+                );
+
+                if ($np_user_content["logo"] && file_exists('..' . $np_user_content["logo"]))
                     unlink('..' . $np_user_content["logo"]);
-                if (file_exists('..' . $np_user_content["banner"]))
+                if ($np_user_content["banner"] && file_exists('..' . $np_user_content["banner"]))
                     unlink('..' . $np_user_content["banner"]);
 
                 $data = array(
