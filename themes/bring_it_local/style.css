@@ -3493,6 +3493,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 /* Rewards frontend */
 .resp-tab-content aside.rewards_tab {padding: 10px;}
 .resp-tab-content aside.rewards_tab h1{font-size: 28px; display: inline-block;}
+.resp-tab-content aside.rewards_tab h1.empty_rewards_message {margin: 60px 0; display: block; text-align: center;}
 .resp-tab-content aside.rewards_tab h2{font-style: italic; display: inline-block; margin-left: 20px;}
 .resp-tab-content aside.rewards_tab .reward_display {border-radius: 5px; background: #e0e0e0; margin: 10px 0; padding: 10px;}
 .resp-tab-content aside.rewards_tab .reward_display .reward_amount {font-size: 24px; font-weight: bold;}
