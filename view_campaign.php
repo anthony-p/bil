@@ -594,17 +594,9 @@ if (isset($compaignData["probid_user_id"]) && $compaignData["probid_user_id"] ==
 
     }
 
-    $project_reward_query_result = $db->query("SELECT * FROM project_rewards r LEFT JOIN np_users c ON r.project_id =  c.user_id LEFT JOIN bl2_users u ON c.user_id =  u.id WHERE project_id=" . $compaignId . " ORDER BY r.id DESC");
-
-    $project_rewards = array();
-
-    while ($query_result =  mysql_fetch_array($project_reward_query_result)) {
-
-        $project_rewards[] = $query_result;
-
-    }
-
-
+    require_once (__DIR__ . '/../includes/class_project_rewards.php');
+	$projectRewards   = new projectRewards();
+	$project_rewards = $projectRewards->getAllRewards($compaignId, 'amount');
 
     $menuTemplate = new template('themes/' . $setts['default_theme'] . '/templates/campaign/');
 
