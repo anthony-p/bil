@@ -3498,6 +3498,11 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .resp-tab-content aside.rewards_tab .reward_display .reward_amount {font-size: 24px; font-weight: bold;}
 .resp-tab-content aside.rewards_tab .reward_display .reward_name {font-size: 18px; font-weight: bold; margin-top: 10px;}
 .resp-tab-content aside.rewards_tab .reward_display .reward_description {font-size: 14px; margin-top: 10px; color: #808080;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom {margin-top: 20px;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom .reward_claimed_number {display: inline-block; width: 426px; vertical-align: top; padding-top: 20px;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom .donate_now_button {background: #F21B43; text-shadow: 0 0 1px #F98DA1; display: inline-block; width:170px; border-radius: 10px;  box-shadow: inset 0px 0px 5px rgba(199, 199, 199, 0.5);padding: 6px 0 10px 0; cursor: pointer;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom .donate_now_button span{width: 100%; font: 10px "OpenSans-Light"; display: block; letter-spacing: .025em; text-align: center; color: #fff; text-transform: none; padding-left: 0; background: none;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom .donate_now_button span.uper{font:18px "OpenSans-Light";}
 
 /*contributions page*/
 #members_area .contributions_page {width:900px; margin: 0 auto; padding-top: 30px; position: relative;}
