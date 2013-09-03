@@ -364,5 +364,11 @@ define ('MSG_REWARD_NAME_EXIST', 'This campaign already has a reward with the sa
 define ('MSG_REWARD_SAVED', 'The reward has been successfully saved');
 define ('MSG_ACCESS_DENIED', 'Access denied');
 
+// Reward Frontend Section
+define ('MSG_SELECT_A_REWARD', 'Select a reward');
+define ('MSG_FOR_YOUR_CONTRIBUTION', 'for your contribution');
+define ('MSG_NO_REWARDS_AVAILABLE', 'No rewards are available');
+define ('MSG_CLAIMED_NUMBER_LABEL', 'claimed');
+
 //define ('', '');
 ?>
