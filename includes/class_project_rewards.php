@@ -115,7 +115,7 @@ class projectRewards extends custom_field {
 				</div>
 				<div class="account-row">
 					<label> <?=MSG_REWARD_DESCRIPTION;?> *</label>
-					<textarea id="reward_description_<?= $reward_id; ?>"><?= @$reward['description']?></textarea>
+					<textarea class="reward_description" id="reward_description_<?= $reward_id; ?>"><?= @$reward['description']?></textarea>
 				</div>
 				<div class="account-row">
 					<label> <?=MSG_REWARD_AVAILABLE_NUMBER;?></label>
@@ -181,5 +181,18 @@ class projectRewards extends custom_field {
 		return ($count != 0);
 	}
 	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getAllRewards($campaign_id, $order_by='id'){
+		$project_rewards = array();
+		if(!empty($campaign_id)){
+			$sql = "SELECT r.* FROM project_rewards r LEFT JOIN np_users np ON r.project_id = np.user_id LEFT JOIN bl2_users u ON np.probid_user_id =  u.id WHERE r.project_id=" . $campaign_id . " ORDER BY r.".$order_by;
+			$project_reward_query_result = $this->query($sql);
+
+			while ($query_result =  mysql_fetch_array($project_reward_query_result)) {
+				$project_rewards[] = $query_result;
+			}
+		}
+		return $project_rewards;
+	}
 	//--------------------------------------------------------------------------------------------------------------------------
 }

@@ -130,11 +130,11 @@ global $coupon_url;
             <div class="column col3">
                 <div class="subscribe_form">
                     <form>
-                        <input type="text" placeholder="enter your email">
-                        <input type="submit" value="ok">
+                        <input type="text" placeholder="<?=MSG_EMAIL;?>">
+                        <input type="submit" value="<?=MSG_SUBSCRIBE;?>">
                     </form>
                     <div class="clear"></div>
-                    <a href="">blog</a>
+                    <a href=""><?=MSG_BLOG;?></a>
                 </div>
 
             </div>
