@@ -551,7 +551,7 @@ while ($query_result =  mysql_fetch_array($project_update_query_result)) {
 
 require_once (__DIR__ . '/../includes/class_project_rewards.php');
 $projectRewards   = new projectRewards();
-$project_rewards = $projectRewards->getAllRewards($compaignId);
+$project_rewards = $projectRewards->getAllRewards($compaignId, 'amount');
 
 $menuTemplate = new template('themes/' . $setts['default_theme'] . '/templates/campaign/');
 
