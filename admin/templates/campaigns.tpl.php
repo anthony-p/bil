@@ -67,7 +67,8 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 data: {
                     user_id: user_id,
                     campaign_id: campaign_id,
-                    disabled: disabled_value
+                    disabled: disabled_value,
+                    action: 'disable'
                 },
                 dataType: "json",
                 success: function(result){
@@ -80,6 +81,45 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                     $("#" + campaign_id).html(disabled);
                     $("#campaign_" + campaign_id).val(result.np_user_content.disabled);
                     initialize_campaigns();
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+
+        $(".delete_campaign").click(function(){
+            var user_id = $("#users").val();
+            var campaign_id = this.id;
+            var campaign_id = campaign_id.replace('del_', '');
+            $.ajax({
+                url: "campaigns.php",
+                data: {
+                    user_id: user_id,
+                    campaign_id: campaign_id,
+                    delete: 1,
+                    action: 'delete'
+                },
+                dataType: "json",
+                success: function(result){
+                    var campaign_type = $("#campaign_type").val();
+                    if (user_id && result.deleted) {
+                        $.ajax({
+                            url: "campaigns.php",
+                            data: {user_id: user_id, campaign_type: campaign_type},
+                            dataType: "json",
+                            success: function(result){
+                                console.log(result);
+                                $("#npList tbody").html(result.np_users_content);
+                                $("#campaigns_list").css({display: "block"});
+                                initialize_campaigns();
+                                initialize_campaign_types();
+                            },
+                            error: function(error) {
+                                console.log(error);
+                            }
+                        });
+                    }
                 },
                 error: function(error) {
                     console.log(error);

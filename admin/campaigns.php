@@ -106,7 +106,8 @@ else
                     '	<td>' . $status . '</td> '.
                     '	<td><a id="' . $campaigns_query_result['user_id'] .
                     '" class="disable_campaign" href="javascript:void(0)">' .
-                    $disable . '</a></td> '.
+                    $disable . '</a> <a id="del_' . $campaigns_query_result['user_id'] .
+                    '" class="delete_campaign" href="javascript:void(0)">Delete</a></td> '.
                     '	<input type="hidden" id="campaign_' . $campaigns_query_result['user_id'] .
                     '" value="' . $campaigns_query_result['disabled'] . '"/> '.
                     '</tr> ';
@@ -118,7 +119,7 @@ else
         } else {
             $campaign_id = $_GET["campaign_id"];
 
-            if (isset($_GET["disabled"])) {
+            if (isset($_GET["action"]) && $_GET["action"] == "disable" && isset($_GET["disabled"])) {
                 if ($_GET["disabled"]) {
                     $disabled = 0;
                 } else {
@@ -137,6 +138,25 @@ else
 
                 $data = array(
                     "np_user_content" => $np_user_content,
+                );
+                echo json_encode($data);
+            } elseif (isset($_GET["action"]) && $_GET["action"] == "delete" && isset($_GET["delete"])) {
+                $np_user_content = $db->get_sql_row(
+                    "SELECT user_id, username, email, reg_date, project_title, logo, banner, disabled " .
+                        " FROM np_users WHERE user_id=" . $campaign_id
+                );
+
+                $db->query(
+                    "DELETE FROM np_users WHERE user_id=" . $campaign_id
+                );
+
+                if (file_exists('..' . $np_user_content["logo"]))
+                    unlink('..' . $np_user_content["logo"]);
+                if (file_exists('..' . $np_user_content["banner"]))
+                    unlink('..' . $np_user_content["banner"]);
+
+                $data = array(
+                    "deleted" => 1,
                 );
                 echo json_encode($data);
             }

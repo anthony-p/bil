@@ -357,6 +357,7 @@ define ('AMSG_ABUSE_REPORTS', 'View Abuse Reports');
 define ('AMSG_BAN_USERS', 'Ban Users');
 define ('AMSG_BLOCKED_USERS', 'Blocked Users');
 define ('AMSG_AUCTIONS_MANAGEMENT', 'Auctions Management');
+define ('AMSG_CAMPAIGNS_MANAGEMENT', 'Campaigns Management');
 define ('AMSG_OPEN_AUCTIONS', 'Open Auctions');
 define ('AMSG_CLOSED_AUCTIONS', 'Closed Auctions');
 define ('AMSG_UNSTARTED_AUCTIONS', 'Unstarted Auctions');
@@ -966,6 +967,8 @@ define ('AMSG_FULLTEXT_SEARCH_METHOD', 'Fulltext Search Method');
 define ('AMSG_PAYMENT_OPTION_DETAILS', 'Payment Option Details');
 if (!defined('AMSG_DISABLE_CAMPAIGNS'))
     define ('AMSG_DISABLE_CAMPAIGNS', 'Disable Campaigns');
+if (!defined('AMSG_CAMPAIGNS'))
+    define ('AMSG_CAMPAIGNS', 'Campaigns');
 define ('AMSG_USE_PLUS_SIGN', 'Use <b>+</b> sign');
 define ('AMSG_USE_PLUS_SIGN_EXPL', 'A leading plus sign will be added to each search word. <br>
 This means that each word must be present in each row that is returned.');
