@@ -16,7 +16,7 @@ define ('MSG_ENDING_SOON', 'Ending soon');
 define ('MSG_BROWSE_CAMPAIGNS', 'browse campaigns');
 define ('MSG_NEWCAMPAIGNS', 'New campaigns');
 define ('MSG_SUBSCRIBE', 'SUBSCRIBE');
-define ('MSG_BLOG', 'BLOG');
+define ('MSG_BLOG', 'Go to our BLOG');
 define ('MSG_EMAIL', 'enter your email');
 define ('MSG_MM_ABOUT_ME', 'About Me');
 define ('MSG_MM_VIEW', 'View');

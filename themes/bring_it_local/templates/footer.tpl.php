@@ -134,7 +134,7 @@ global $coupon_url;
                         <input type="submit" value="<?=MSG_SUBSCRIBE;?>">
                     </form>
                     <div class="clear"></div>
-                    <a href="">Go to our<?=MSG_BLOG;?></a>
+                    <a href=""><?=MSG_BLOG;?></a>
                 </div>
 
             </div>
