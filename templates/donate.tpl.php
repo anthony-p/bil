@@ -56,7 +56,7 @@
 //        ?>
 <!--    </div>-->
     <div class="right">
-        <h2><? echo $campaign['name'];?></h2>
+        <h2><? echo $campaign['project_title'];?></h2>
         <div class="clear"></div>
         <p><? echo $campaign['description'];?></p>
     </div>
