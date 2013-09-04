@@ -91,6 +91,39 @@ else
                 /* For PPA & PPB Integration */
 //                pps_insert_user($user_id, 'ppb');
 
+
+                // ---- MailChimp Subscription ------------------------------------
+                // check if user subscribed & add to MailChimp list
+                if (isset($_POST['newsletter']) && intval($_POST['newsletter'])) {
+                    $mailChimp = new Mailchimp($mailChimpConfig['apiKey']);
+
+                    try {
+                        $mailChimp->lists->subscribe($mailChimpConfig['listId'],
+                            array(
+                                'email'     => $_POST['email']
+                            ),
+                            array(
+                                'EMAIL'     => $_POST['email'],
+                                'FNAME'     => $_POST['fname'],
+                                'LNAME'     => $_POST['lname']
+                            )
+                        );
+                    } catch (Mailchimp_Error $e){
+
+                        // TODO: MailChimp error processing
+
+                        if ($e->getMessage()) {
+                            echo '<br>' . $e->getMessage() . '<br>';
+                        } else {
+                            // unrecognized error
+                        }
+
+                    }
+
+                }
+                // ---- end MailChimp subscription ---------------------------------
+
+
                 $template->set('register_success_header', header5(MSG_REGISTRATION_CONFIRMATION));## PHP Pro Bid v6.00 add signup fee procedure here.
                 $signup_fee = new fees();
                 $signup_fee->setts = &$setts;
