@@ -68,6 +68,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
+                NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.last_name, bl2_users.organization, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
@@ -79,6 +80,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, bl2_users.first_name, bl2_users.organization, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
+                NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.last_name, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
@@ -93,6 +95,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
+                NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.first_name, bl2_users.last_name, bl2_users.organization, bl2_users.email FROM " .
                 NPDB_PREFIX . "users, bl2_users WHERE " . NPDB_PREFIX .
@@ -141,6 +144,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
                 NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
+                NPDB_PREFIX . "users.project_title, " .
                 " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
                 "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
@@ -163,6 +167,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, bl2_users.id, bl2_users.first_name, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
+                NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.last_name, bl2_users.organization, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
@@ -175,6 +180,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
+                NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
@@ -187,6 +193,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
+                NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
@@ -203,6 +210,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
                 NPDB_PREFIX . "users.end_date, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
+                NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
                 " bl2_users.first_name, bl2_users.organization, bl2_users.id, bl2_users.last_name, bl2_users.email FROM " .
                 NPDB_PREFIX . "users, bl2_users WHERE " . NPDB_PREFIX .
