@@ -102,10 +102,11 @@ if (!$frmchk_user_edit || !empty($frmchk_details['password']))
     $fv->check_box($frmchk_details['password'], MSG_CREATE_PASS, array('within_length', 'pass_confirm'), $_POST['password2'], MSG_VERIFY_PASS);
 }
 
+$confirmed_paypal_email = false;
 if ((isset($frmchk_details['pg_paypal_email']) && $frmchk_details['pg_paypal_email']) ||
     (isset($frmchk_details['pg_paypal_first_name']) && $frmchk_details['pg_paypal_first_name']) ||
     (isset($frmchk_details['pg_paypal_last_name']) && $frmchk_details['pg_paypal_last_name'])) {
-    $fv->check_box($frmchk_details['pg_paypal_email'], MSG_PAYPAL_EMAIL_ADDRESS, array('is_paypal_email_address'));
+    $confirmed_paypal_email = $fv->check_box($frmchk_details['pg_paypal_email'], MSG_PAYPAL_EMAIL_ADDRESS, array('is_paypal_email_address'));
     $fv->check_box($frmchk_details['pg_paypal_first_name'], MSG_PAYPAL_EMAIL_FIRST_NAME, array('field_empty'));
     $fv->check_box($frmchk_details['pg_paypal_last_name'], MSG_PAYPAL_EMAIL_LAST_NAME, array('field_empty'));
 }

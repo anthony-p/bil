@@ -1,4 +1,5 @@
 <?
+//var_dump($user_details);
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
@@ -549,7 +550,8 @@ function fetchstate($statecode){
 
 <? if (!empty($display_direct_payment_methods)) { ?>
 <!-- Direct Payment Settings -->
-<table border="0" cellpadding="0" cellspacing="0" class="tbl" id="directPayment">
+<table border="0" cellpadding="0" cellspacing="0" class="tbl"
+    <?php if (isset($user_details['confirmed_paypal_email']) && $user_details['confirmed_paypal_email']) echo 'id="directPayment"' ?>>
     <tr>
         <th colspan="2"><?=MSG_DIRECT_PAYMENT_SETTINGS;?></th>
     </tr>

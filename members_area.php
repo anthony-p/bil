@@ -573,6 +573,8 @@ else
 
 
 				include ('includes/procedure_frmchk_user.php'); /* Formchecker for user creation/edit */
+//                var_dump($confirmed_paypal_email);exit;
+                $row_user["confirmed_paypal_email"] = $_POST["confirmed_paypal_email"] = $confirmed_paypal_email;
 				if ($fv->is_error())
 				{
                     if (isset($user_in_database) && $user_in_database && is_array($user_in_database)) {
@@ -735,7 +737,7 @@ else
 						$row_user[$key] = $value;
 					}
 				}
-				
+
 				$template->set('user_details', $row_user);
 				$template->set('do', $_REQUEST['do']);
 
@@ -3849,7 +3851,7 @@ else
 			{
 				$user_details = $db->get_sql_row("SELECT * FROM
 					" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
-	
+
 				$template->set('user_details', $user_details);
 	
 				$shop_status = $shop->shop_status($user_details, true);
@@ -3932,7 +3934,7 @@ else
 				
 				$template->set('media_upload_fields', $media_upload_fields);
 			}
-						
+
 			$template->set('user_details', $db->rem_special_chars_array($user_details));
 
 			$image_upload_manager = $item->upload_manager($post_details, 1, 'form_store_setup', true, true, false);
@@ -4022,7 +4024,7 @@ else
 				$user_details = $db->get_sql_row("SELECT * FROM
 					" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
 			}
-			
+
 			$template->set('user_details', $user_details);
 
 			$members_area_page_content = $template->process('members_area_store_pages.tpl.php');
@@ -4237,7 +4239,7 @@ else
 	
 			$template->set('all_categories_table', $all_categories_table);
 			$template->set('selected_categories_table', $selected_categories_table);
-			
+
 			$template->set('user_details', $user_details);
 
 			$members_area_page_content = $template->process('members_area_store_categories.tpl.php');
@@ -4862,7 +4864,7 @@ else
 			
 			$image_upload_manager = $item->upload_manager($user_details, 1, 'form_provider_profile', true, false, false);
 			$template->set('image_upload_manager', $image_upload_manager);
-			
+
 			$template->set('user_details', $user_details);
 
 			$members_area_page_content = $template->process('members_area_reverse_profile.tpl.php');
