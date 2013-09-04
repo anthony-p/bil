@@ -326,7 +326,7 @@ function validateProjectReward(id){
 		return false;
 	}
 	
-	if($("#reward_description_"+id).val() == ""){
+	if(tinymce.get('reward_description_'+id).getContent() == ""){
 		alert("<?= MSG_REWARD_DESCRIPTION_MUST_BE_SPECIFIED ?>");
 		return false;
 	}
@@ -344,7 +344,7 @@ function updateProjectReward (id){
 		$.ajax({
 			url:"/np_compaign_project",
 			type: "POST",
-			data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+			data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: tinymce.get('reward_description_'+id).getContent(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
 			success: function(response){
 				alert(jQuery.parseJSON(response).response);
 			},
@@ -360,7 +360,7 @@ function saveProjectReward (id){
 		$.ajax({
 			url:"/np_compaign_project",
 			type: "POST",
-			data: {save_project_rewards: true, campaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: $("#reward_description_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+			data: {save_project_rewards: true, campaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: tinymce.get('reward_description_'+id).getContent(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
 			success: function(response){
 				response = jQuery.parseJSON(response).response;
 				if(response.substr(0, 4) == '<div'){
@@ -1248,10 +1248,10 @@ function clearBannerContent()
             plugins: [
                 "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
                 		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor"
+                		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
             ],
             toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-            	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | forecolor backcolor",
+            	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
             	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
 
             	menubar: false,
@@ -1273,10 +1273,10 @@ function clearBannerContent()
             plugins: [
                 "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
                 		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor"
+                		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
             ],
             toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-            	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | forecolor backcolor",
+            	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
             	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
 
             	menubar: false,
@@ -1292,6 +1292,7 @@ function clearBannerContent()
             		{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
             	]
         });
+        
 
     });
 

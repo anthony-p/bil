@@ -5,6 +5,19 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 //additions
+define ('MSG_PLEASE_SEND', 'Please send me updates');
+define ('MSG_PAYPAL_SETTINGS', 'Paypal Settings');
+define ('MSG_WHATS_THAT', 'What\'s that?');
+define ('MSG_GOTO_FUND', 'Go to the Community fund');
+define ('MSG_CLICK_SUBSCRIBE', 'Click here to subscribe to updates');
+define ('MSG_VOTE', 'VOTE');
+define ('MSG_PARTICIPATE', 'ways to participate');
+define ('MSG_ENDING_SOON', 'Ending soon');
+define ('MSG_BROWSE_CAMPAIGNS', 'browse campaigns');
+define ('MSG_NEWCAMPAIGNS', 'New campaigns');
+define ('MSG_SUBSCRIBE', 'SUBSCRIBE');
+define ('MSG_BLOG', 'Go to our BLOG');
+define ('MSG_EMAIL', 'enter your email');
 define ('MSG_MM_ABOUT_ME', 'About Me');
 define ('MSG_MM_VIEW', 'View');
 define ('MSG_FEATURED_LOCALAUCTIONS', 'Buy Local - Featured Auctions by Local Supporters'); 
@@ -352,6 +365,12 @@ define ('MSG_REWARD_AMOUNT_EXIST', 'This campaign already has a reward with the 
 define ('MSG_REWARD_NAME_EXIST', 'This campaign already has a reward with the same name.');
 define ('MSG_REWARD_SAVED', 'The reward has been successfully saved');
 define ('MSG_ACCESS_DENIED', 'Access denied');
+
+// Reward Frontend Section
+define ('MSG_SELECT_A_REWARD', 'Select a reward');
+define ('MSG_FOR_YOUR_CONTRIBUTION', 'for your contribution');
+define ('MSG_NO_REWARDS_AVAILABLE', 'No rewards are available');
+define ('MSG_CLAIMED_NUMBER_LABEL', 'claimed');
 
 //define ('', '');
 ?>

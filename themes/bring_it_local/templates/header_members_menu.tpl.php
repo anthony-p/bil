@@ -117,7 +117,7 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
         </ul>
     </li>
     <li <?php if ($selected_section == 'my_contributions'): ?> class="active" <?php endif; ?>>
-        <a href="javascript:void(0)"><?=MSG_MY_CONTRIBUTIONS?></a>
+        <a href="/contributions,page,main,section,members_area#8ec3489f027e"><?=MSG_MY_CONTRIBUTIONS?></a>
     </li>
 
 

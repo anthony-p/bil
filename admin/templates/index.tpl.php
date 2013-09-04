@@ -244,6 +244,29 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             </tr>
          </table>
          <br>
+         <div class="mainhead"><img src="images/auction.gif" align="absmiddle"><?=AMSG_CAMPAIGNS_MANAGEMENT;?></div>
+         <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+               <td width="4"><img src="images/c1.gif" width="4" height="4"></td>
+               <td width="100%" class="ftop"><img src="images/pixel.gif" width="1" height="1"></td>
+               <td width="4"><img src="images/c2.gif" width="4" height="4"></td>
+            </tr>
+         </table>
+         <table width="100%" border="0" cellpadding="2" cellspacing="2" class="fside">
+            <tr>
+               <td width="100%" class="menulink">
+                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="campaigns.php"><?=AMSG_CAMPAIGNS;?></a>
+               </td>
+            </tr>
+         </table>
+         <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+               <td width="4"><img src="images/c3.gif" width="4" height="4"></td>
+               <td width="100%" class="fbottom"><img src="images/pixel.gif" width="1" height="1"></td>
+               <td width="4"><img src="images/c4.gif" width="4" height="4"></td>
+            </tr>
+         </table>
+         <br>
          <div class="mainhead"><img src="images/auction.gif" align="absmiddle"><?=AMSG_AUCTIONS_MANAGEMENT;?></div>
          <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
@@ -255,7 +278,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
          <table width="100%" border="0" cellpadding="2" cellspacing="2" class="fside">
             <tr>
                <td width="100%" class="menulink">
-                    <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="disable_campaigns.php"><?=AMSG_DISABLE_CAMPAIGNS;?></a> <br>
                     <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=open"><?=AMSG_OPEN_AUCTIONS;?></a> <br>
                     <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=closed"><?=AMSG_CLOSED_AUCTIONS;?></a> <br>
                     <img src="images/a.gif" align="absmiddle" vspace="2"> <a href="list_auctions.php?status=unstarted"><?=AMSG_UNSTARTED_AUCTIONS;?></a> <br>

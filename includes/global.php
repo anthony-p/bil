@@ -287,6 +287,12 @@ if ($session->value('user_id') > 0)
 	}
 }
 
+// include MailChimp API classes and initialize it
+include_once($fileExtension . 'mailchimp_api_php/Mailchimp.php');
+
+// --- end MailChimp initialization ------------
+
+
 include_once ($fileExtension.'includes/class_shop.php');
 include_once ($fileExtension.'includes/functions_addons.php');
 

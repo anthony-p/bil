@@ -307,38 +307,38 @@ global $coupon_url;
         <!--                </li>-->
         <li class="nav-buttons">
             <div class="level-buttons">
-                <span>browse campaigns</span>
+                <span><?=MSG_BROWSE_CAMPAIGNS;?></span>
                 <ul>
                     <li>
                         <a href="/search.php?order_by=reg_date&order_type=DESC">
-                            <span>New campaigns</span>
+                            <span><?=MSG_NEWCAMPAIGNS;?></span>
                         </a>
                     </li>
                     <li>
                         <a href="/search.php?order_by=end_date&order_type=ASC">
-                            <span>Ending Soon</span>
+                            <span><?=MSG_ENDING_SOON;?></span>
                         </a>
                     </li>
                 </ul>
             </div>
             <div class="level-buttons last">
-                <span>ways to give</span>
+                <span><?=MSG_PARTICIPATE;?></span>
                 <ul>
                     <li>
-                        <a href="/categories.php">
-                            <span >Auctions</span>
+                        <a href="/bringitlocal">
+                            <span ><?=MSG_COMMUNITY_FOUND;?></span>
                         </a>
                     </li>
                     <li>
-                        <a href="http://coupons.bringitlocal.com/">
-                            <span>Local merchants</span>
+                        <a href="#">
+                            <span><?=MSG_VOTE;?></span>
                         </a>
                     </li>
                 </ul>
             </div>
             <div class="nav-links">
-                <span><a href="">Click here to subscribe to updates</a></span>
-                <span><a href="">Go to the Community fund </a><a href="" class="what">What's that?</a></span>
+                <span><a href=""><?=MSG_CLICK_SUBSCRIBE;?></a></span>
+                <span><a href="/bringitlocal"><?=MSG_GOTO_FUND;?></a><a href="" class="what"><?=MSG_WHATS_THAT;?></a></span>
             </div>
         </li>
     </ul>

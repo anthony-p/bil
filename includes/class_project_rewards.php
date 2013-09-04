@@ -115,7 +115,7 @@ class projectRewards extends custom_field {
 				</div>
 				<div class="account-row">
 					<label> <?=MSG_REWARD_DESCRIPTION;?> *</label>
-					<textarea id="reward_description_<?= $reward_id; ?>"><?= @$reward['description']?></textarea>
+					<textarea class="reward_description" id="reward_description_<?= $reward_id; ?>"><?= @$reward['description']?></textarea>
 				</div>
 				<div class="account-row">
 					<label> <?=MSG_REWARD_AVAILABLE_NUMBER;?></label>
@@ -137,6 +137,30 @@ class projectRewards extends custom_field {
 					changeYear: true, 
 					minDate: new Date(),
 					defaultDate: "<?= isset($reward['estimated_delivery_date']) ? $reward['estimated_delivery_date'] : ''?>"
+				});
+				tinymce.init({
+					selector:'#reward_description_<?= $reward_id; ?>',
+					plugins: [
+						"advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+								"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+								"table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
+					],
+					toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+						toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
+						toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
+
+						menubar: false,
+						toolbar_items_size: 'small',
+
+						style_formats: [
+							{title: 'Bold text', inline: 'b'},
+							{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+							{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+							{title: 'Example 1', inline: 'span', classes: 'example1'},
+							{title: 'Example 2', inline: 'span', classes: 'example2'},
+							{title: 'Table styles'},
+							{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+						]
 				});
 			</script>
 		</div>
@@ -181,5 +205,18 @@ class projectRewards extends custom_field {
 		return ($count != 0);
 	}
 	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getAllRewards($campaign_id, $order_by='id'){
+		$project_rewards = array();
+		if(!empty($campaign_id)){
+			$sql = "SELECT r.* FROM project_rewards r LEFT JOIN np_users np ON r.project_id = np.user_id LEFT JOIN bl2_users u ON np.probid_user_id =  u.id WHERE r.project_id=" . $campaign_id . " ORDER BY r.".$order_by;
+			$project_reward_query_result = $this->query($sql);
+
+			while ($query_result =  mysql_fetch_array($project_reward_query_result)) {
+				$project_rewards[] = $query_result;
+			}
+		}
+		return $project_rewards;
+	}
 	//--------------------------------------------------------------------------------------------------------------------------
 }

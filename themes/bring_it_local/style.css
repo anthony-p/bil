@@ -1503,8 +1503,10 @@ footer{background:#1b1b1b;width:100%; float: left; clear: both;}
 
 #footer .bottomLinks .col4 {
     width: 240px;margin: 0;
+    float: right;
 
 }
+#footer .bottomLinks .col3{width:330px !important;}
 
 /*nonProfits not logged*/
 #footer .bottomLinks .nonProfits {
@@ -3488,6 +3490,20 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #steps form button.validate-reward, #steps form button.validate-reward:hover { background: url('img/validate.png');}
 .account-row span.reward_currency {float: right; font-size: 18px; clear: none; margin-top: 1px; margin-right: 10px; font-weight: bold;}
 
+/* Rewards frontend */
+.resp-tab-content aside.rewards_tab {padding: 10px;}
+.resp-tab-content aside.rewards_tab h1{font-size: 28px; display: inline-block;}
+.resp-tab-content aside.rewards_tab h1.empty_rewards_message {margin: 60px 0; display: block; text-align: center;}
+.resp-tab-content aside.rewards_tab h2{font-style: italic; display: inline-block; margin-left: 20px;}
+.resp-tab-content aside.rewards_tab .reward_display {border-radius: 5px; background: #e0e0e0; margin: 10px 0; padding: 10px;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_amount {font-size: 24px; font-weight: bold;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_name {font-size: 18px; font-weight: bold; margin-top: 10px;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_description {font-size: 14px; margin-top: 10px; color: #808080; border-top: 1px solid #EFEFEF; padding-top: 5px;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom {margin-top: 20px;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom .reward_claimed_number {display: inline-block; width: 426px; vertical-align: top; padding-top: 20px;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom .donate_now_button {background: #F21B43; text-shadow: 0 0 1px #F98DA1; display: inline-block; width:170px; border-radius: 10px;  box-shadow: inset 0px 0px 5px rgba(199, 199, 199, 0.5);padding: 6px 0 10px 0; cursor: pointer;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom .donate_now_button span{width: 100%; font: 10px "OpenSans-Light"; display: block; letter-spacing: .025em; text-align: center; color: #fff; text-transform: none; padding-left: 0; background: none;}
+.resp-tab-content aside.rewards_tab .reward_display .reward_bottom .donate_now_button span.uper{font:18px "OpenSans-Light";}
 
 /*contributions page*/
 #members_area .contributions_page {width:900px; margin: 0 auto; padding-top: 30px; position: relative;}
@@ -3500,13 +3516,12 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #members_area .contributions_page table p{width:385px; font:12px "OpenSans" ; color:#333;}
 #members_area .contributions_page table p span{ font:12px "OpenSans-Bold"; color:#333; display:block;}
 #members_area .contributions_page table ul li span{ font:10px "OpenSans";}
-#steps form .mce-btn button
-/*{border-radius:0;*/
 
-    /*padding:0px;*/
-    /*text-shadow:none;*/
-    /*font-weight: normal;*/
-    /*font-family: "Century Gothic", Helvetica, sans-serif;*/
-    /*font-size: 22px;*/
-    /*box-shadow: none;*/
-    /*background: none;}*/
+.subscribe_form{float:left; margin-top: 16px;}
+.subscribe_form input{float:left; margin-right: 10px;}
+.subscribe_form input[type="submit"]{cursor:pointer;background: #92c150;  border: 0;  padding: 0 10px; height: 28px;border-radius: 4px;
+    font: 11px "OpenSans";   color: #fff; text-shadow:0px 0px 3px #000;}
+.subscribe_form input[type="text"]{text-transform:capitalize;width: 180px; height: 26px; border: 1px solid #C4C0C0;font:12px "OpenSans";
+    border-radius: 4px;  box-shadow:inset 0 0 6px rgba(134, 130, 130, 0.8); padding: 0 10px;}
+.subscribe_form a{display: block;float: left; letter-spacing: .025em; text-align: center;
+    color: #fff !important;  text-transform: uppercase;  text-shadow: 2px 0px 2px rgb(0, 0, 0) !important; background: #F39F04; font: 14px/27px "OpenSans-Bold" !important;padding: 0 10px; height: 27px;border-radius: 4px; margin-top: 10px; width: 180px;}

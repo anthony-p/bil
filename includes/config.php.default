@@ -13,3 +13,9 @@
     $coupon_soap_username = 'glpc';
     $coupon_soap_password = 'glpc2012';
 
+
+    $mailChimpConfig = array(
+        'apiKey'  => 'bb08c57b6dde891cbf75ef658be168a1-us6',
+        'listId'  => '52f06bc490'
+    );
+

@@ -456,8 +456,7 @@ function fetchstate($statecode){
             <img src="<?=(isset($path_relative))?$path_relative:'';?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="email_img" align="absmiddle" style="display:none;" /></td>
     </tr>
     <tr>
-        <td class="leftCol">Please send me the newsletter
-        </td>
+        <td class="leftCol"><?=MSG_PLEASE_SEND;?>....</td>
         <td class="contentfont">
 
             <?
