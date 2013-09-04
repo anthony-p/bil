@@ -147,8 +147,12 @@
 
         $sql_query = $db->query(
             "SELECT * FROM bl2_users Join np_users
-            WHERE id = probid_user_id AND np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>$time
-            order by user_id desc Limit 4"
+            WHERE id = probid_user_id
+            AND np_users.active=1
+            AND np_users.homepage_featured=1
+            AND np_users.disabled=0
+            AND np_users.end_date>$time
+            order by rand() limit 4"
         );
 
         $rows = array();
@@ -157,6 +161,11 @@
             $rows[] = $row;
 
         }
+
+//        foreach ($rows as $_row) {
+//            echo $_row['user_id'] . ' : ' . $_row['project_title'] . '<br />';
+//        }
+//        exit;
 //        var_dump($rows); exit;
 	 
 
