@@ -548,8 +548,7 @@ while ($query_result =  mysql_fetch_array($project_update_query_result)) {
     $project_updates[] = $query_result;
 
 }
-
-require_once (__DIR__ . '/../includes/class_project_rewards.php');
+require_once (dirname(__FILE__) . '/includes/class_project_rewards.php');
 $projectRewards   = new projectRewards();
 $project_rewards = $projectRewards->getAllRewards($compaignId, 'amount');
 
