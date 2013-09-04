@@ -82,7 +82,7 @@ function sanitize_var($value)
 {
 	if (!is_numeric($value))
 	{
-		$value = ereg_replace("[^A-Za-z0-9_ ]", "", $value);
+		$value = preg_replace("[^A-Za-z0-9_ ]", "", $value);
 
 		$value = str_replace('amp','and',$value);
 		$value = str_replace('quot','',$value);

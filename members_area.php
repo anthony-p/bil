@@ -5028,6 +5028,32 @@ else
    	{
    		if ($section == 'main')
    		{
+            $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id");
+            $nrElement = mysql_num_rows($campaigns_result);
+
+            $per_page = 10;
+            $total_pages = ceil(($nrElement-1)/$per_page);
+
+            if (isset($_GET['page_selected'])) {
+                $page_nr = $_GET['page_selected'];
+            } else {
+                $page_nr = 1;
+            }
+            $start = ($page_nr - 1)*$per_page;
+
+            $campaigns_query_result = $db->query("SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at, funders.user_id, np_users.project_title
+                FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id
+                LEFT JOIN bl2_users ON bl2_users.id = funders.user_id
+                WHERE np_users.probid_user_id=" . $session->value('user_id')."
+                ORDER BY 'np_users.project_title' ASC limit $start, $per_page");
+            $userCampaigns = array();
+            while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
+                $userCampaigns[] = $query_result;
+            }
+
+            $template->set("page_selected",$page_selected);
+            $template->set("total_pages",$total_pages);
+            $template->set("info_campaigns",$userCampaigns);
             $members_area_page_content = $template->process('members_area_contributions.tpl.php');
             $template->set('members_area_page_content', $members_area_page_content);
 
