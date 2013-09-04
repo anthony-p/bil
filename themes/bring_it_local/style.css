@@ -3516,6 +3516,9 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #members_area .contributions_page table p{width:385px; font:12px "OpenSans" ; color:#333;}
 #members_area .contributions_page table p span{ font:12px "OpenSans-Bold"; color:#333; display:block;}
 #members_area .contributions_page table ul li span{ font:10px "OpenSans";}
+#members_area .contributions_page div ul{float:right; margin-top: 20px;}
+#members_area .contributions_page div ul li{background:#92c150;float: left; width: 20px; height: 20px;  text-align: center; margin-left: 5px; border-radius: 50%;}
+#members_area .contributions_page div ul li a{font:11px/20px "OpenSans-Bold"; color:#fff;}
 
 .subscribe_form{float:left; margin-top: 16px;}
 .subscribe_form input{float:left; margin-right: 10px;}
@@ -3524,4 +3527,4 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .subscribe_form input[type="text"]{text-transform:capitalize;width: 180px; height: 26px; border: 1px solid #C4C0C0;font:12px "OpenSans";
     border-radius: 4px;  box-shadow:inset 0 0 6px rgba(134, 130, 130, 0.8); padding: 0 10px;}
 .subscribe_form a{display: block;float: left; letter-spacing: .025em; text-align: center;
-    color: #fff !important;  text-transform: uppercase;  text-shadow: 2px 0px 2px rgb(0, 0, 0) !important; background: #F39F04; font: 14px/27px "OpenSans-Bold" !important;padding: 0 10px; height: 27px;border-radius: 4px; margin-top: 10px; width: 180px;}
+    color: #fff !important;  text-transform: uppercase;  text-shadow: 2px 0px 0px rgb(0, 0, 0) !important; background: #F39F04; font: 14px/27px "OpenSans-Bold" !important;padding: 0 10px; height: 27px;border-radius: 4px; margin-top: 10px; width: 180px;}
