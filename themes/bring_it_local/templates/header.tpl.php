@@ -89,11 +89,12 @@ global $coupon_url;
             $(".announcement > .post:first-child").addClass("first");
             $(".member-menu > li:last-child").addClass("last")
         });
-        $(function() {
-            /*$("div.holder").jPages({
+        /*$(function() {
+            if ($("div.holder"))
+            $("div.holder").jPages({
                 containerID: "pagination"
-            });*/
-        });
+            });
+        });*/
         var countOfPitch = 0;
         function addPitch(){
             var pitches = parseInt($("#pitches_number").val());

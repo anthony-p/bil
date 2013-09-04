@@ -25,7 +25,15 @@ include_once('includes/grab_video_thumbnail.php');
                 }
             });
 
+        $(function() {
+                    if ($("div.holder"))
+                    $("div.holder").jPages({
+                        containerID: "pagination"
+                    });
+                });
+
         });
+
 </script>
 
 <div class="searchBox">
