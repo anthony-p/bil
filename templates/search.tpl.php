@@ -84,10 +84,14 @@ include_once('includes/grab_video_thumbnail.php');
                         <?php endif; ?>
                     </a>
                 </p>
-                <p class="description">
-                    <?php echo isset ($campaign["description"]) ? $campaign["description"] : '' ?>
-                </p>
+                <div class="more_description">
+                    <p class="description">
+                        <?php echo isset ($campaign["description"]) ? $campaign["description"] : '' ?>
+                    </p>
+                    <a href="<?php echo isset ($campaign["username"]) ? '/' . $campaign["username"] : '' ?>">..more</a>
+                </div>
                 <a href="" class="location"><?php echo isset ($campaign["city"]) ? $campaign["city"] : '' ?></a>
+
             </div>
             <div class="campaign-details">
                 <span class="price">$<?php echo isset ($campaign["payment"]) ? $campaign["payment"] : '0' ?></span>
