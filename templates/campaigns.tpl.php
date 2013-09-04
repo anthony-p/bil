@@ -99,13 +99,22 @@ include_once('includes/grab_video_thumbnail.php');
                     <a href="/search.php?city=<?=urlencode($row['city'])?>" class="location"><?php echo $row['city'];?></a>
                 </div>
                 <div class="campaign-details">
+                    <?php
+
+                    $end_time=$row['end_date'];
+                    //                    $create_time=$row['reg_date'];
+                    $current_time=time();
+                    ?>
                     <span class="price">$<?php echo $row['payment'];?></span>
-                    <span class="day"><?php $unu=round(($row['end_date']-time())/86400); echo $unu; ?><span> <?=MSG_DAYS_LEFT?></span></span>
+                    <?php if ($current_time > $end_time): ?>
+                        <span class="day">0</span>
+                    <?php else: ?>
+                        <span class="day"><?php $unu=round(($row['end_date']-time())/86400); echo $unu; ?><span> <?=MSG_DAYS_LEFT?></span></span>
+                    <?php endif;?>
+
                     <div class="clear"></div>
                     <?php
-                    $end_time=$row['end_date'];
-//                    $create_time=$row['reg_date'];
-                    $current_time=time();
+
 //                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
                     $completed =$row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
                     echo  $completed."%";
