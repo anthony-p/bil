@@ -9,6 +9,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <?=(isset($header_selling_page))?$header_selling_page:'';?>
 <?=(isset($display_formcheck_errors))?$display_formcheck_errors:'';?>
+<script src="/scripts/jquery/jquery-1.9.1.js"></script>
 <script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>
 <link type="text/css" rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">
 
@@ -23,6 +24,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <script type="text/javascript">
 
 $( document ).ready( function (){
+
+    $("#certain_date").datepicker();
+
     goToSelectedTab();
 
     <?php if (isset($video_url) && $video_url): ?>
@@ -764,10 +768,7 @@ function clearBannerContent()
                       <input type="text" name="certain_date" id="certain_date"
 
                           <?php echo (isset($campaign["certain_date"]) && $campaign["certain_date"]) ? "" : 'disabled="disabled"'; ?>
-
-                             value="<?php echo (isset($campaign["certain_date"]) && $campaign["certain_date"]) ? date('d-m-Y', $campaign["end_date"]) : ''; ?>">
-
-
+                             value="<?php echo (isset($campaign["certain_date"]) && $campaign["certain_date"]) ? date('m/d/Y', $campaign["end_date"]) : ''; ?>">
 
                          </span>
 
