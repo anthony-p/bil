@@ -3518,7 +3518,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #members_area .contributions_page table ul li span{ font:10px "OpenSans";}
 #members_area .contributions_page div ul{float:right; margin-top: 20px;}
 #members_area .contributions_page div ul li{background:#92c150;float: left; width: 20px; height: 20px;  text-align: center; margin-left: 5px; border-radius: 50%;}
-#members_area .contributions_page div ul li a{font:1px/20px "OpenSans-Bold"; color:#fff;}
+#members_area .contributions_page div ul li a{font:11px/20px "OpenSans-Bold"; color:#fff;}
 
 .subscribe_form{float:left; margin-top: 16px;}
 .subscribe_form input{float:left; margin-right: 10px;}
