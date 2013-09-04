@@ -74,7 +74,7 @@ include_once('includes/grab_video_thumbnail.php');
             <div class="campaigns-info">
                 <p class="name">
                     <a href="<?php echo isset ($campaign["username"]) ? '/' . $campaign["username"] : '' ?>" class="name-camp">
-                        <?php echo isset ($campaign["name"]) ? $campaign["name"] : '' ?>
+                        <?php echo isset ($campaign["project_title"]) ? $campaign["project_title"] : '' ?>
                     </a>
                     <br>by <a href="/about_me.php?user_id=<?php echo isset($campaign['id']) ? $campaign['id'] : '';?>">
                         <?php if (isset($campaign['organization']) && $campaign['organization']): ?>
