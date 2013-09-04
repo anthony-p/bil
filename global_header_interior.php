@@ -210,6 +210,9 @@ else if ($session->value('user_id'))
     } elseif (in_array($page, array('contributions')) &&
         in_array($section, array( 'main'))) {
         $selected_section = 'my_contributions';
+    } elseif (in_array($page, array('earnings')) &&
+    in_array($section, array( 'main'))) {
+    $selected_section = 'my_earnings';
     } elseif (in_array($page, array('selling', 'bidding', 'reputation')) &&
         in_array(
             $section,

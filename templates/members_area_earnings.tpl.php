@@ -1,5 +1,5 @@
 <div class="contributions_page">
-    <h2>Contribution</h2>
+    <h2>Earnings</h2>
 
     <table>
         <tr class="table_header">
@@ -8,7 +8,7 @@
             <td><h4>Amount</h4></td>
             <td><h4>Visibility</h4></td>
         </tr>
-        <?php foreach ($info_contribution_campaigns as $_campaign) : ?>
+        <?php foreach ($info_earning_campaigns as $_campaign) : ?>
             <tr>
                 <td>
                     <?=date("d-m-Y H:m" , $_campaign["created_at"])?>
@@ -33,7 +33,7 @@
         <ul>
             <?php for($i = 1; $i <= $total_pages; $i++) : ?>
                 <li <?php if ($i == $page_selected) echo 'pagination_selected_page'?> >
-                    <a href="/contributions,page,main,section,<?=$i?>,page_selected,members_area"><?=$i?></a>
+                    <a href="/earnings,page,main,section,<?=$i?>,page_selected,members_area"><?=$i?></a>
                 </li>
             <?php endfor;?>
         </ul>

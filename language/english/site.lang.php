@@ -87,6 +87,7 @@ define ('MSG_DRAFTS_CAPMAIGNS', 'Drafts');
 define ('MSG_LIVE_CAPMAIGNS', 'Live');
 define ('MSG_CLOSED_CAPMAIGNS', 'Closed');
 define ('MSG_MY_CONTRIBUTIONS', 'My Contributions');
+define ('MSG_MY_EARNINGS', 'My Earnings');
 define ('MSG_BUYING_AND_SELLING', 'Buying and Selling');
 define ('MSG_SORT_BY', 'Sort by');
 define ('MSG_DATE_ASC', 'Date asc');
