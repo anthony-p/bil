@@ -6,7 +6,6 @@
             <td><h4>Date</h4></td>
             <td><h4>Campaign</h4></td>
             <td><h4>Amount</h4></td>
-            <td><h4>Perk</h4></td>
             <td><h4>Visibility</h4></td>
         </tr>
         <?php foreach ($info_campaigns as $_campaign) : ?>
@@ -19,9 +18,6 @@
                 </td>
                 <td>
                     <?=$_campaign['amount']?>
-                </td>
-                <td>
-                    empty
                 </td>
                 <td>
                     <?php if  ($_campaign["user_id"] != 0) : ?>
