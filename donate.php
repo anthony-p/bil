@@ -39,7 +39,7 @@ if (!$user_id)
 }
 
 $campaign = $db->get_sql_row(
-    "SELECT end_date, active, logo, banner, description, pg_paypal_email, name  FROM np_users WHERE np_users.user_id=" . $user_id
+    "SELECT end_date, active, logo, banner, description, pg_paypal_email, name, project_title  FROM np_users WHERE np_users.user_id=" . $user_id
 );
 
 if (!$campaign || $campaign['active'] == 2 || ($campaign['end_date']-time()) <= 0 )
