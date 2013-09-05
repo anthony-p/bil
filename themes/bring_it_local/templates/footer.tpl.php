@@ -214,6 +214,19 @@ global $coupon_url;
  </div>
         </div>
 </footer><!-- end footer -->
+
+<div id="dialogModalSubscribe" title="Subscribe" style="display: none;">
+    <form>
+        <br>
+        <p>Please provide your email address</p>
+        <br>
+        <fieldset>
+            <label for="email">Email</label>
+            <input type="text" name="dialogModalSubscribeEmail" id="dialogModalSubscribeEmail" value="" class="text ui-widget-content ui-corner-all" />
+        </fieldset>
+    </form>
+</div>
+
 <?=$setts['ga_code'];?>
 
 <script type="text/javascript">
