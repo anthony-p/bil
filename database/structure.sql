@@ -3665,6 +3665,6 @@ ALTER TABLE `np_users` ADD COLUMN `disabled` INT NULL DEFAULT 0  AFTER `keep_ali
 
 ALTER TABLE `project_rewards`  CHANGE `amount` `amount` DECIMAL(11,2) NOT NULL;
 
-ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `homepage_featured` INT NULL  AFTER `disabled` ;
+ALTER TABLE `np_users` ADD COLUMN `homepage_featured` INT NULL  AFTER `disabled` ;
 
-ALTER TABLE `devbr0_auction`.`bl2_users` ADD COLUMN `confirmed_paypal_email` INT NULL DEFAULT 0  AFTER `google_link` ;
+ALTER TABLE `bl2_users` ADD COLUMN `confirmed_paypal_email` INT NULL DEFAULT 0  AFTER `google_link` ;
