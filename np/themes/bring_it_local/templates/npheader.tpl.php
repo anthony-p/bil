@@ -251,6 +251,7 @@ global $coupon_url;
                   </div>
               </li>
             </ul>
+
              <div class="text_support">
                  <p>You support San Geronimo Valley Comunity Ceneter</p>
              </div>
