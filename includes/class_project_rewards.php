@@ -252,11 +252,11 @@ class projectRewards extends custom_field {
 					</div>
 					<div class="reward_contribute_summary_value_line">
 						<label><?= MSG_YOUR_CONTRIBUTION; ?></label>
-						<div>$<?= $reward['amount']; ?></div>
+						<div id="contribution_amount_value">$<?= $reward['amount']; ?></div>
 					</div>
 					<div class="reward_contribute_summary_value_line reward_contribute_summary_total">
 						<label><?= MSG_REWARD_TOTAL; ?></label>
-						<div>$<?= $reward['amount']; ?></div>
+						<div id="contribution_total_amount">$<?= $reward['amount']; ?></div>
 					</div>
 				</div>
 			</div>
@@ -313,6 +313,32 @@ class projectRewards extends custom_field {
 				</div>
 			</div>
 		</div>
+		<script>
+			$("#reward_contribution_value").keyup(function(){
+				value = $("#reward_contribution_value").val();
+				if($.isNumeric(value) && value >= 0.01){
+					$("#contribution_amount_value").html("$"+value);
+					$("#contribution_total_amount").html("$"+value);
+				} else {
+					$("#contribution_amount_value").html("$"+<?= $reward['amount']; ?>);
+					$("#contribution_total_amount").html("$"+<?= $reward['amount']; ?>);
+				}
+			});
+			$("#reward_contribution_value").blur(function(){
+				value = $("#reward_contribution_value").val();
+				if(!$.isNumeric(value) || value < 0.01){
+					alert("The contribution amount must be a number greater than 0.01");
+					$("#contribution_amount_value").html("$"+<?= $reward['amount']; ?>);
+					$("#contribution_total_amount").html("$"+<?= $reward['amount']; ?>);
+				} else {
+					if(value < <?= $reward['amount']; ?>){
+						alert("The amount you have chosen is less than what is required for this reward which is $<?= $reward['amount']?>\nYou can still donate this amount but you will not receive the reward.");
+					}
+					$("#contribution_amount_value").html("$"+value);
+					$("#contribution_total_amount").html("$"+value);
+				}
+			});		
+		</script>
 		<?php
 		
 		$content = ob_get_contents();
