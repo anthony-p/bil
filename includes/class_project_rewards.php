@@ -218,5 +218,108 @@ class projectRewards extends custom_field {
 		}
 		return $project_rewards;
 	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getReward($reward_id){
+		if(empty($reward_id)) {
+			return "error";
+		}
+		$sql = "select r.*, p.name as campaign_name from project_rewards r, np_users p where r.project_id = p.user_id and id='".$reward_id."'";
+		$result = $this->get_sql_row($sql);
+		return $result;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getClaimRewardForm($reward_id){
+		$reward = $this->getReward($reward_id);
+		ob_start();
+		?>
+		<div class="reward_contribute_display">
+			<div class="reward_contribute_summary_image">
+				<img src="" alt=""></img>
+			</div>		
+			<div class="reward_contribute_summary_details">
+				<div class="reward_contribute_summary_title">Your contribution summary</div>
+				<div class="reward_contribute_summary_values">
+					<div class="reward_contribute_summary_compaign_title"><?= $reward['campaign_name'];?></div>
+					<div class="reward_contribute_summary_value_line">
+						<label>Contributor Name:</label>
+						<div>Contributor Name</div>
+					</div>
+					<div class="reward_contribute_summary_value_line">
+						<label>Your reward:</label>
+						<div><?= $reward['name']; ?></div>
+					</div>
+					<div class="reward_contribute_summary_value_line">
+						<label>Your contribution:</label>
+						<div>$<?= $reward['amount']; ?></div>
+					</div>
+					<div class="reward_contribute_summary_value_line reward_contribute_summary_total">
+						<label>Total:</label>
+						<div>$<?= $reward['amount']; ?></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="reward_contribute_display">
+			<div class="reward_contribute_title">How much would you like to contribute?</div>
+			<div class="reward_contribute_section">
+				<label>$</label>
+				<input type="text" id="reward_contribution_value" value=""></input>
+			</div>
+			<div class="reward_contribute_title">Your reward</div>
+			<div class="reward_contribute_section">
+				<div class="reward_contribute_amount">$<?= $reward['amount']; ?>+</div>
+				<div class="reward_contribute_details">
+					<div class="reward_contribute_name"><?= $reward['name']; ?></div>
+					<div class="reward_contribute_claimed"><?= $reward['given_number']; ?> <?= MSG_CLAIMED_NUMBER_LABEL; ?></div>
+					<div class="reward_contribute_description"><?= $reward['description']; ?></div>
+				</div>
+			</div>
+		</div>
+		<div class="reward_contribute_display">
+			<div class="reward_contribute_title">Contact Information</div>
+			<div class="reward_contribute_section">
+				<label>Email:</label>
+				<input type="text" id="reward_contribution_email" value=""></input>
+			</div>
+		</div>
+		<div class="reward_contribute_display">
+			<div class="reward_contribute_title">Shipping information</div>
+			<div class="reward_contribute_section">
+				<div>
+					<label>Name:</label>
+					<input type="text" id="reward_contribution_name" value=""></input>
+				</div>
+				<div>
+					<label>Country:</label>
+					<input type="text" id="reward_contribution_country" value=""></input>
+				</div>
+				<div>
+					<label>Address 1:</label>
+					<input type="text" id="reward_contribution_address1" value=""></input>
+				</div>
+				<div>
+					<label>Address 2:</label>
+					<input type="text" id="reward_contribution_address2" value=""></input>
+				</div>
+				<div>
+					<label>City:</label>
+					<input type="text" id="reward_contribution_city" value=""></input>
+				</div>
+				<div>
+					<label>Postal code:</label>
+					<input type="text" id="reward_contribution_postal_code" value=""></input>
+				</div>
+			</div>
+		</div>
+		<?php
+		
+		$content = ob_get_contents();
+		ob_end_clean();
+		
+		return $content;
+	}
+	
 	//--------------------------------------------------------------------------------------------------------------------------
 }
