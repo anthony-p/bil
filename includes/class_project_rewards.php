@@ -239,35 +239,35 @@ class projectRewards extends custom_field {
 				<img src="" alt=""></img>
 			</div>		
 			<div class="reward_contribute_summary_details">
-				<div class="reward_contribute_summary_title">Your contribution summary</div>
+				<div class="reward_contribute_summary_title"><?= MSG_YOUR_CONTRIBUTION_SUMMARY; ?></div>
 				<div class="reward_contribute_summary_values">
 					<div class="reward_contribute_summary_compaign_title"><?= $reward['campaign_name'];?></div>
 					<div class="reward_contribute_summary_value_line">
-						<label>Contributor Name:</label>
+						<label><?= MSG_REWARD_CONTRIBUTOR_NAME; ?></label>
 						<div>Contributor Name</div>
 					</div>
 					<div class="reward_contribute_summary_value_line">
-						<label>Your reward:</label>
+						<label><?= MSG_YOUR_REWARD; ?></label>
 						<div><?= $reward['name']; ?></div>
 					</div>
 					<div class="reward_contribute_summary_value_line">
-						<label>Your contribution:</label>
+						<label><?= MSG_YOUR_CONTRIBUTION; ?></label>
 						<div>$<?= $reward['amount']; ?></div>
 					</div>
 					<div class="reward_contribute_summary_value_line reward_contribute_summary_total">
-						<label>Total:</label>
+						<label><?= MSG_REWARD_TOTAL; ?></label>
 						<div>$<?= $reward['amount']; ?></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="reward_contribute_display">
-			<div class="reward_contribute_title">How much would you like to contribute?</div>
+			<div class="reward_contribute_title"><?= MSG_HOW_MUCH_YOU_WOULD_LIKE_TO_CONTRIBUTE; ?></div>
 			<div class="reward_contribute_section">
 				<label>$</label>
 				<input type="text" id="reward_contribution_value" value=""></input>
 			</div>
-			<div class="reward_contribute_title">Your reward</div>
+			<div class="reward_contribute_title"><?= MSG_YOUR_REWARD; ?></div>
 			<div class="reward_contribute_section">
 				<div class="reward_contribute_amount">$<?= $reward['amount']; ?>+</div>
 				<div class="reward_contribute_details">
@@ -278,37 +278,37 @@ class projectRewards extends custom_field {
 			</div>
 		</div>
 		<div class="reward_contribute_display">
-			<div class="reward_contribute_title">Contact Information</div>
+			<div class="reward_contribute_title"><?= MSG_REWARD_CONTACT_INFORMATION?></div>
 			<div class="reward_contribute_section">
-				<label>Email:</label>
+				<label><?= MSG_REWARD_EMAIL ?></label>
 				<input type="text" id="reward_contribution_email" value=""></input>
 			</div>
 		</div>
 		<div class="reward_contribute_display">
-			<div class="reward_contribute_title">Shipping information</div>
+			<div class="reward_contribute_title"><?= MSG_REWARD_SHIPPING_INFORMATION ?></div>
 			<div class="reward_contribute_section">
 				<div>
-					<label>Name:</label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_NAME ?></label>
 					<input type="text" id="reward_contribution_name" value=""></input>
 				</div>
 				<div>
-					<label>Country:</label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_COUNTRY ?></label>
 					<input type="text" id="reward_contribution_country" value=""></input>
 				</div>
 				<div>
-					<label>Address 1:</label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1 ?></label>
 					<input type="text" id="reward_contribution_address1" value=""></input>
 				</div>
 				<div>
-					<label>Address 2:</label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_2 ?></label>
 					<input type="text" id="reward_contribution_address2" value=""></input>
 				</div>
 				<div>
-					<label>City:</label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_CITY ?></label>
 					<input type="text" id="reward_contribution_city" value=""></input>
 				</div>
 				<div>
-					<label>Postal code:</label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_POSTAL_CODE;?></label>
 					<input type="text" id="reward_contribution_postal_code" value=""></input>
 				</div>
 			</div>

@@ -374,6 +374,21 @@ define ('MSG_SELECT_A_REWARD', 'Select a reward');
 define ('MSG_FOR_YOUR_CONTRIBUTION', 'for your contribution');
 define ('MSG_NO_REWARDS_AVAILABLE', 'No rewards are available');
 define ('MSG_CLAIMED_NUMBER_LABEL', 'claimed');
+define ('MSG_YOUR_CONTRIBUTION_SUMMARY', 'Your contribution summary');
+define ('MSG_REWARD_CONTRIBUTOR_NAME', 'Contributor Name:');
+define ('MSG_YOUR_REWARD', 'Your reward:');
+define ('MSG_YOUR_CONTRIBUTION', 'Your contribution:');
+define ('MSG_REWARD_TOTAL', 'Total:');
+define ('MSG_HOW_MUCH_YOU_WOULD_LIKE_TO_CONTRIBUTE', 'How much would you like to contribute?');
+define ('MSG_REWARD_CONTACT_INFORMATION', 'Contact Information');
+define ('MSG_REWARD_SHIPPING_INFORMATION', 'Shipping information');
+define ('MSG_REWARD_EMAIL', 'Email:');
+define ('MSG_REWARD_SHIPPING_INFORMATION_NAME', 'Name:');
+define ('MSG_REWARD_SHIPPING_INFORMATION_COUNTRY', 'Country:');
+define ('MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1', 'Address 1:');
+define ('MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_2', 'Address 2:');
+define ('MSG_REWARD_SHIPPING_INFORMATION_CITY', 'City:');
+define ('MSG_REWARD_SHIPPING_INFORMATION_POSTAL_CODE', 'Postal code:');
 
 // Vote Us Section
 define ('MSG_VOTE_US', 'Vote Us!');
