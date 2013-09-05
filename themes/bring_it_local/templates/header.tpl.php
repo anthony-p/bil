@@ -26,6 +26,7 @@ global $coupon_url;
 
     <script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
     <script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.js'></script>
+    <script language=JavaScript src='/scripts/jquery/jquery.blockUI.js'></script>
     <link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css">
 
 
@@ -183,8 +184,77 @@ global $coupon_url;
 
     <script type="text/javascript">
 
+        var emailRegexp = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
+
         $.noConflict();
         jQuery(document).ready(function ($) {
+
+
+            $(".onpageSubscribeEmail").submit(function(){
+
+                var email = '';
+
+                $(this).find(":input").each(function(i){
+                    if ($(this).attr('name') == 'email') {
+
+                        if (emailRegexp.test($(this).val())) {
+                            email = $(this).val();
+                        } else {
+                            $(this).addClass("ui-state-error");
+                        }
+                    }
+
+                });
+
+                if ( email !== "" ) {
+                    // email address is correct - proceed
+                    $(this).find(":input").removeClass("ui-state-error");
+
+//                    alert('subscribe: ' + email);
+
+                    $.blockUI({ css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .75,
+                        color: '#fff'
+                    } });
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/ajaxprocessors.php",
+                        dataType: 'json',
+
+                        data: { do: "subscribe", email: email }
+                    }).done(function (msg) {
+                                if (msg.code == 0){
+                                    $.unblockUI();
+                                    $(".onpageSubscribeEmail").find("input[name*='mail']").val('');
+                                } else {
+                                    $.unblockUI();
+                                    $(".onpageSubscribeEmail").find("input[name*='mail']").addClass("ui-state-error");
+                                }
+
+
+                    });
+
+
+
+                } else {
+                    // email is wrong - highlight input
+//                    setTimeout( '$(".onpageSubscribeEmail").find(":input").removeClass("ui-state-error");', 5000);
+
+                }
+
+
+                return false;
+
+            });
+
+
+
             $(".modalSubscribeLink").click(function () {
 
                 $("#menu-cont").slideUp();
@@ -196,11 +266,39 @@ global $coupon_url;
                     buttons: {
                         Submit: function () {
 
-                            var emailRegexp = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
-
                             if ( emailRegexp.test($("#dialogModalSubscribeEmail").val()) ){
-                                $("#dialogModalSubscribeEmail").removeClass("ui-state-error");
+//                                $("#dialogModalSubscribeEmail").removeClass("ui-state-error");
                                 $(this).dialog("close");
+
+                                $.blockUI({ css: {
+                                    border: 'none',
+                                    padding: '15px',
+                                    backgroundColor: '#000',
+                                    '-webkit-border-radius': '10px',
+                                    '-moz-border-radius': '10px',
+                                    opacity: .75,
+                                    color: '#fff'
+                                } });
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/ajaxprocessors.php",
+                                    dataType: 'json',
+
+                                    data: { do: "subscribe", email: $("#dialogModalSubscribeEmail").val() }
+                                }).done(function (msg) {
+                                            if (msg.code == 0) {
+                                                $.unblockUI();
+                                                $("#dialogModalSubscribeEmail").val('');
+                                                $("#dialogModalSubscribeEmail").removeClass("ui-state-error");
+                                            } else {
+                                                $.unblockUI();
+                                                $("#dialogModalSubscribeEmail").addClass("ui-state-error");
+                                            }
+
+                                        });
+
+
                             } else {
                                 $("#dialogModalSubscribeEmail").addClass("ui-state-error");
                             }
@@ -219,6 +317,8 @@ global $coupon_url;
             });
 
         });
+
+
 
 
     </script>

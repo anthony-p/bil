@@ -587,6 +587,36 @@ else
                     $_POST['phone'] = "(" . $_POST['phone_a'] . ")" . $_POST['phone_b'];
 					$form_submitted = true;
 
+                    // ---- MailChimp Subscription ------------------------------------
+                    // check if user subscribed & add to MailChimp list
+                    if (isset($_POST['newsletter']) && intval($_POST['newsletter'])) {
+                        $mailChimp = new Mailchimp($mailChimpConfig['apiKey']);
+
+                        try {
+                            $mailChimp->lists->subscribe($mailChimpConfig['listId'],
+                                array(
+                                    'email' => $_POST['email']
+                                ),
+                                array(
+                                    'EMAIL' => $_POST['email'],
+                                    'FNAME' => $_POST['fname'],
+                                    'LNAME' => $_POST['lname']
+                                )
+                            );
+                        } catch (Mailchimp_Error $e) {
+
+                            // TODO: MailChimp error processing
+
+                            if ($e->getMessage()) {
+//                                echo '<br>' . $e->getMessage() . '<br>';
+                            } else {
+                                // unrecognized error
+                            }
+                        }
+                    }
+                    // ---- end MailChimp subscription ---------------------------------
+
+
 					$template->set('msg_changes_saved', $msg_changes_saved);
 
 					$new_password =

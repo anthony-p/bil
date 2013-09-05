@@ -129,8 +129,8 @@ global $coupon_url;
 
             <div class="column col3">
                 <div class="subscribe_form">
-                    <form>
-                        <input type="text" placeholder="<?=MSG_EMAIL;?>">
+                    <form class="onpageSubscribeEmail">
+                        <input type="text" name="email" placeholder="<?=MSG_EMAIL;?>">
                         <input type="submit" value="<?=MSG_SUBSCRIBE;?>">
                     </form>
                     <div class="clear"></div>
