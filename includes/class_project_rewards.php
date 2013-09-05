@@ -349,7 +349,12 @@ class projectRewards extends custom_field {
 				}
 			});
 			$("#reward_contribution_email").blur(function(){
-				
+				email = $("#reward_contribution_email").val();
+				regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+				if (!regex.test(email)) {
+					alert('Please provide a valid email address');
+				}
 			});
 		</script>
 		<?php
