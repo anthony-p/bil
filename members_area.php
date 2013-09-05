@@ -23,6 +23,7 @@ include_once ('includes/functions_item.php');
 include_once ('includes/functions_login.php');
 include_once ('includes/class_messaging.php');
 include_once ('includes/class_reputation.php');
+
    
 if (!$session->value('user_id'))
 {
@@ -531,6 +532,12 @@ else
 		if ($section == 'editinfo') /* BEGIN -> PERSONAL INFORMATION PAGE */
 		{
 			$page_handle = 'full_register'; /* this page is related to users, so the page handle for custom fields is "register" */
+
+            $session->set('pin_value', md5(rand(2, 99999999)));
+            $generated_pin = generate_pin($session->value('pin_value'));
+            $pin_image_output = show_pin_image($session->value('pin_value'), $generated_pin);
+            $template->set('pin_image_output', $pin_image_output);
+            $template->set('generated_pin', $generated_pin);
 
 //			$row_user = $db->get_sql_row("SELECT * FROM
 //				" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
