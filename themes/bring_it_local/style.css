@@ -2618,6 +2618,8 @@ header .level2 .level2-inner .nav-buttons .nav-links span{float:left; clear: bot
 header .level2 .level2-inner .nav-buttons .nav-links span a{float: left;display: block; font:13px/18px OpenSans; color: #87b848; padding-right: 10px; background: url("img/arrow-nav.png") right 5px no-repeat; background-size: 6px 9px;}
 header .level2 .level2-inner .nav-buttons .nav-links span a.what{color: #999999; text-decoration: underline; background: none;margin-left: 5px;}
 
+header .level2 .text_support{width: 940px; margin: 0 auto;}
+header .level2 .text_support p{float: right; margin-top: 10px; font:19px "OpenSans-Bold"; padding: 5px 15px; background:rgba(0,0,0,0.5); color: #87b848; text-shadow: 0 1px 0 #000;}
 /*content*/
 #main {float:left; clear:both; width:100%; min-height: 800px;}
 .content{width:100%; clear:both; padding:35px 0 55px; margin: 0 auto;}
