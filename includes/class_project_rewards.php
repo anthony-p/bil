@@ -230,8 +230,18 @@ class projectRewards extends custom_field {
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------
-	function getClaimRewardForm($reward_id){
+	function getUser($user_id){
+		$sql = "select * from bl2_users where id='".$user_id."'";
+		$result = $this->get_sql_row($sql);
+		return $result;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getClaimRewardForm($reward_id, $user_id=""){
 		$reward = $this->getReward($reward_id);
+		if(!empty($user_id)){
+			$user = $this->getUser($user_id);
+		}
 		ob_start();
 		?>
 		<div class="reward_contribute_display">
@@ -244,7 +254,7 @@ class projectRewards extends custom_field {
 					<div class="reward_contribute_summary_compaign_title"><?= $reward['campaign_name'];?></div>
 					<div class="reward_contribute_summary_value_line">
 						<label><?= MSG_REWARD_CONTRIBUTOR_NAME; ?></label>
-						<div>Contributor Name</div>
+						<div><?= $user['first_name'].' '.$user['last_name'] ?></div>
 					</div>
 					<div class="reward_contribute_summary_value_line">
 						<label><?= MSG_YOUR_REWARD; ?></label>
@@ -265,7 +275,7 @@ class projectRewards extends custom_field {
 			<div class="reward_contribute_title"><?= MSG_HOW_MUCH_YOU_WOULD_LIKE_TO_CONTRIBUTE; ?></div>
 			<div class="reward_contribute_section">
 				<label>$</label>
-				<input type="text" id="reward_contribution_value" value=""></input>
+				<input type="text" id="reward_contribution_value" value="<?= $reward['amount']; ?>"></input>
 			</div>
 			<div class="reward_contribute_title"><?= MSG_YOUR_REWARD; ?></div>
 			<div class="reward_contribute_section">
@@ -281,7 +291,7 @@ class projectRewards extends custom_field {
 			<div class="reward_contribute_title"><?= MSG_REWARD_CONTACT_INFORMATION?></div>
 			<div class="reward_contribute_section">
 				<label><?= MSG_REWARD_EMAIL ?></label>
-				<input type="text" id="reward_contribution_email" value=""></input>
+				<input type="text" id="reward_contribution_email" value="<?= $user['email']?>"></input>
 			</div>
 		</div>
 		<div class="reward_contribute_display">
@@ -289,15 +299,15 @@ class projectRewards extends custom_field {
 			<div class="reward_contribute_section">
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_NAME ?></label>
-					<input type="text" id="reward_contribution_name" value=""></input>
+					<input type="text" id="reward_contribution_name" value="<?= $user['first_name'].' '.$user['last_name'] ?>"></input>
 				</div>
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_COUNTRY ?></label>
-					<input type="text" id="reward_contribution_country" value=""></input>
+					<input type="text" id="reward_contribution_country" value="<?= $user['country'] ?>"></input>
 				</div>
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1 ?></label>
-					<input type="text" id="reward_contribution_address1" value=""></input>
+					<input type="text" id="reward_contribution_address1" value="<?= $user['address'] ?>"></input>
 				</div>
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_2 ?></label>
@@ -305,11 +315,11 @@ class projectRewards extends custom_field {
 				</div>
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_CITY ?></label>
-					<input type="text" id="reward_contribution_city" value=""></input>
+					<input type="text" id="reward_contribution_city" value="<?= $user['city'] ?>"></input>
 				</div>
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_POSTAL_CODE;?></label>
-					<input type="text" id="reward_contribution_postal_code" value=""></input>
+					<input type="text" id="reward_contribution_postal_code" value="<?= $user['postal_code'] ?>"></input>
 				</div>
 			</div>
 		</div>
@@ -337,7 +347,10 @@ class projectRewards extends custom_field {
 					$("#contribution_amount_value").html("$"+value);
 					$("#contribution_total_amount").html("$"+value);
 				}
-			});		
+			});
+			$("#reward_contribution_email").blur(function(){
+				
+			});
 		</script>
 		<?php
 		
