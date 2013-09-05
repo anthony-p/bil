@@ -3677,3 +3677,5 @@ CREATE TABLE `project_votes` (
   `date` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+alter table `project_rewards` add column `short_description` varchar(255) NOT NULL after `name`;
