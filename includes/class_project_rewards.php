@@ -242,6 +242,7 @@ class projectRewards extends custom_field {
 		if(!empty($user_id)){
 			$user = $this->getUser($user_id);
 		}
+		$required_mark = ($reward['shipping_address_required'] == 1) ? '<div class="mandatory_star">*</div>' : '';
 		ob_start();
 		?>
 		<div class="reward_contribute_display">
@@ -290,7 +291,7 @@ class projectRewards extends custom_field {
 		<div class="reward_contribute_display">
 			<div class="reward_contribute_title"><?= MSG_REWARD_CONTACT_INFORMATION?></div>
 			<div class="reward_contribute_section">
-				<label><?= MSG_REWARD_EMAIL ?></label>
+				<label><?= MSG_REWARD_EMAIL ?> <div class="mandatory_star">*</div></label>
 				<input type="text" id="reward_contribution_email" value="<?= $user['email']?>"></input>
 			</div>
 		</div>
@@ -298,27 +299,27 @@ class projectRewards extends custom_field {
 			<div class="reward_contribute_title"><?= MSG_REWARD_SHIPPING_INFORMATION ?></div>
 			<div class="reward_contribute_section">
 				<div>
-					<label><?= MSG_REWARD_SHIPPING_INFORMATION_NAME ?></label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_NAME ?> <?= $required_mark; ?></label>
 					<input type="text" id="reward_contribution_name" value="<?= $user['first_name'].' '.$user['last_name'] ?>"></input>
 				</div>
 				<div>
-					<label><?= MSG_REWARD_SHIPPING_INFORMATION_COUNTRY ?></label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_COUNTRY ?> <?= $required_mark; ?></label>
 					<input type="text" id="reward_contribution_country" value="<?= $user['country'] ?>"></input>
 				</div>
 				<div>
-					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1 ?></label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1 ?> <?= $required_mark; ?></label>
 					<input type="text" id="reward_contribution_address1" value="<?= $user['address'] ?>"></input>
 				</div>
 				<div>
-					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_2 ?></label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_2 ?> <?= $required_mark; ?></label>
 					<input type="text" id="reward_contribution_address2" value=""></input>
 				</div>
 				<div>
-					<label><?= MSG_REWARD_SHIPPING_INFORMATION_CITY ?></label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_CITY ?> <?= $required_mark; ?></label>
 					<input type="text" id="reward_contribution_city" value="<?= $user['city'] ?>"></input>
 				</div>
 				<div>
-					<label><?= MSG_REWARD_SHIPPING_INFORMATION_POSTAL_CODE;?></label>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_POSTAL_CODE;?> <?= $required_mark; ?></label>
 					<input type="text" id="reward_contribution_postal_code" value="<?= $user['postal_code'] ?>"></input>
 				</div>
 			</div>

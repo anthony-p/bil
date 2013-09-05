@@ -3517,6 +3517,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .resp-tab-content aside.rewards_tab .reward_contribute_summary_values .reward_contribute_summary_value_line label {width: 150px; display: inline-block;}
 .resp-tab-content aside.rewards_tab .reward_contribute_summary_values .reward_contribute_summary_value_line div {width: 300px; text-align: right; display: inline-block;}
 .resp-tab-content aside.rewards_tab .reward_contribute_summary_values .reward_contribute_summary_total {font-weight: bold; font-size: 16px; margin-top: 14px;}
+.resp-tab-content aside.rewards_tab .reward_contribute_section .mandatory_star {color: #CC0000; display: inline;}
+
 .resp-tab-content aside.rewards_tab .reward_contribute_title {font-size: 16px; font-weight: bold;}
 .resp-tab-content aside.rewards_tab .reward_contribute_display {border-radius: 5px; background: #F9F9F9; margin: 10px 0; padding: 10px;}
 .resp-tab-content aside.rewards_tab .reward_contribute_section {border-radius: 5px; background: #E0E0E0; margin: 10px 0; padding: 10px;}
