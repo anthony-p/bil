@@ -1,5 +1,5 @@
 <?php
-require_once (__DIR__ . '/../includes/class_project_rewards.php');
+require_once ( dirname(__FILE__).'/../../../../includes/class_project_rewards.php');
 ?>
 <script>
     $(document).ready(function(){

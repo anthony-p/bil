@@ -23,6 +23,7 @@ include_once ('includes/functions_item.php');
 include_once ('includes/functions_login.php');
 include_once ('includes/class_messaging.php');
 include_once ('includes/class_reputation.php');
+
    
 if (!$session->value('user_id'))
 {
@@ -532,6 +533,12 @@ else
 		{
 			$page_handle = 'full_register'; /* this page is related to users, so the page handle for custom fields is "register" */
 
+            $session->set('pin_value', md5(rand(2, 99999999)));
+            $generated_pin = generate_pin($session->value('pin_value'));
+            $pin_image_output = show_pin_image($session->value('pin_value'), $generated_pin);
+            $template->set('pin_image_output', $pin_image_output);
+            $template->set('generated_pin', $generated_pin);
+
 //			$row_user = $db->get_sql_row("SELECT * FROM
 //				" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
             $row_user = $db->get_sql_row("SELECT *
@@ -573,6 +580,8 @@ else
 
 
 				include ('includes/procedure_frmchk_user.php'); /* Formchecker for user creation/edit */
+//                var_dump($confirmed_paypal_email);exit;
+                $row_user["confirmed_paypal_email"] = $_POST["confirmed_paypal_email"] = $confirmed_paypal_email;
 				if ($fv->is_error())
 				{
                     if (isset($user_in_database) && $user_in_database && is_array($user_in_database)) {
@@ -584,6 +593,36 @@ else
 				{
                     $_POST['phone'] = "(" . $_POST['phone_a'] . ")" . $_POST['phone_b'];
 					$form_submitted = true;
+
+                    // ---- MailChimp Subscription ------------------------------------
+                    // check if user subscribed & add to MailChimp list
+                    if (isset($_POST['newsletter']) && intval($_POST['newsletter'])) {
+                        $mailChimp = new Mailchimp($mailChimpConfig['apiKey']);
+
+                        try {
+                            $mailChimp->lists->subscribe($mailChimpConfig['listId'],
+                                array(
+                                    'email' => $_POST['email']
+                                ),
+                                array(
+                                    'EMAIL' => $_POST['email'],
+                                    'FNAME' => $_POST['fname'],
+                                    'LNAME' => $_POST['lname']
+                                )
+                            );
+                        } catch (Mailchimp_Error $e) {
+
+                            // TODO: MailChimp error processing
+
+                            if ($e->getMessage()) {
+//                                echo '<br>' . $e->getMessage() . '<br>';
+                            } else {
+                                // unrecognized error
+                            }
+                        }
+                    }
+                    // ---- end MailChimp subscription ---------------------------------
+
 
 					$template->set('msg_changes_saved', $msg_changes_saved);
 
@@ -735,7 +774,7 @@ else
 						$row_user[$key] = $value;
 					}
 				}
-				
+
 				$template->set('user_details', $row_user);
 				$template->set('do', $_REQUEST['do']);
 
@@ -3849,7 +3888,7 @@ else
 			{
 				$user_details = $db->get_sql_row("SELECT * FROM
 					" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
-	
+
 				$template->set('user_details', $user_details);
 	
 				$shop_status = $shop->shop_status($user_details, true);
@@ -3932,7 +3971,7 @@ else
 				
 				$template->set('media_upload_fields', $media_upload_fields);
 			}
-						
+
 			$template->set('user_details', $db->rem_special_chars_array($user_details));
 
 			$image_upload_manager = $item->upload_manager($post_details, 1, 'form_store_setup', true, true, false);
@@ -4022,7 +4061,7 @@ else
 				$user_details = $db->get_sql_row("SELECT * FROM
 					" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
 			}
-			
+
 			$template->set('user_details', $user_details);
 
 			$members_area_page_content = $template->process('members_area_store_pages.tpl.php');
@@ -4237,7 +4276,7 @@ else
 	
 			$template->set('all_categories_table', $all_categories_table);
 			$template->set('selected_categories_table', $selected_categories_table);
-			
+
 			$template->set('user_details', $user_details);
 
 			$members_area_page_content = $template->process('members_area_store_categories.tpl.php');
@@ -4862,7 +4901,7 @@ else
 			
 			$image_upload_manager = $item->upload_manager($user_details, 1, 'form_provider_profile', true, false, false);
 			$template->set('image_upload_manager', $image_upload_manager);
-			
+
 			$template->set('user_details', $user_details);
 
 			$members_area_page_content = $template->process('members_area_reverse_profile.tpl.php');
@@ -5028,6 +5067,42 @@ else
    	{
    		if ($section == 'main')
    		{
+            $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users INNER JOIN funders ON funders.user_id = np_users.probid_user_id WHERE np_users.probid_user_id =".$session->value('user_id'));
+            $nrElement = mysql_num_rows($campaigns_result);
+
+            $per_page = 10;
+            $total_pages = ceil(($nrElement-1)/$per_page);
+
+            if (isset($_GET['page_selected'])) {
+                $page_nr = $_GET['page_selected'];
+            } else {
+                $page_nr = 1;
+            }
+            $start = ($page_nr - 1)*$per_page;
+
+            $campaigns_query_result = $db->query("SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at, funders.user_id, np_users.project_title
+                FROM np_users INNER JOIN funders ON funders.user_id = np_users.probid_user_id
+                LEFT JOIN bl2_users ON bl2_users.id = funders.user_id
+                WHERE np_users.probid_user_id=" . $session->value('user_id')."
+                ORDER BY 'np_users.project_title' ASC limit $start, $per_page");
+            $userCampaigns = array();
+            while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
+                $userCampaigns[] = $query_result;
+            }
+
+            $template->set("page_selected",$page_selected);
+            $template->set("total_pages",$total_pages);
+            $template->set("info_contribution_campaigns",$userCampaigns);
+            $members_area_page_content = $template->process('members_area_contributions.tpl.php');
+            $template->set('members_area_page_content', $members_area_page_content);
+
+   		}
+   	} /* END -> CONTRIBUTIONS PAGE */
+
+    if ($page == 'earnings') /* BEGIN -> CONTRIBUTIONS PAGE */
+    {
+        if ($section == 'main')
+        {
             $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id");
             $nrElement = mysql_num_rows($campaigns_result);
 
@@ -5053,12 +5128,13 @@ else
 
             $template->set("page_selected",$page_selected);
             $template->set("total_pages",$total_pages);
-            $template->set("info_campaigns",$userCampaigns);
-            $members_area_page_content = $template->process('members_area_contributions.tpl.php');
+            $template->set("info_earning_campaigns",$userCampaigns);
+            $members_area_page_content = $template->process('members_area_earnings.tpl.php');
             $template->set('members_area_page_content', $members_area_page_content);
 
-   		}
-   	} /* END -> CONTRIBUTIONS PAGE */
+        }
+    }
+    /*end earning page*/
 
     if ($page == 'campaigns') /* BEGIN -> CAMPAIGNS PAGE */
     {

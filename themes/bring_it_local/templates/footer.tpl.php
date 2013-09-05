@@ -129,8 +129,8 @@ global $coupon_url;
 
             <div class="column col3">
                 <div class="subscribe_form">
-                    <form>
-                        <input type="text" placeholder="<?=MSG_EMAIL;?>">
+                    <form class="onpageSubscribeEmail">
+                        <input type="text" name="email" placeholder="<?=MSG_EMAIL;?>">
                         <input type="submit" value="<?=MSG_SUBSCRIBE;?>">
                     </form>
                     <div class="clear"></div>
@@ -214,6 +214,19 @@ global $coupon_url;
  </div>
         </div>
 </footer><!-- end footer -->
+
+<div id="dialogModalSubscribe" title="Subscribe" style="display: none;">
+    <form>
+        <br>
+        <p>Please provide your email address</p>
+        <br>
+        <fieldset>
+            <label for="email">Email</label>
+            <input type="text" name="dialogModalSubscribeEmail" id="dialogModalSubscribeEmail" value="" class="text ui-widget-content ui-corner-all" />
+        </fieldset>
+    </form>
+</div>
+
 <?=$setts['ga_code'];?>
 
 <script type="text/javascript">

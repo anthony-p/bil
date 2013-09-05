@@ -95,7 +95,7 @@ class formchecker extends database
 						break;
 					case 'is_paypal_email_address':
 						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_VALID_PAYPAL_EMAIL;
-						$this->is_email_address($field_value, $msg, true);
+						return $this->is_email_address($field_value, $msg, true);
 						break;
 					case 'is_phone':
 						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_VALID_PHONE;

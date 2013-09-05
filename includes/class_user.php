@@ -599,6 +599,10 @@ class user extends custom_field
         if (!isset($user_details["tax_reg_number"])) {
             $user_details["tax_reg_number"] = '';
         }
+            $confirmed_paypal_email = 0;
+            if (isset($_POST["confirmed_paypal_email"])) {
+                $confirmed_paypal_email = $_POST["confirmed_paypal_email"] ? 1 : 0;
+            }
 
         $sql_update_query = "UPDATE bl2_users SET
             first_name =  '{$user_details['fname']}',
@@ -613,6 +617,7 @@ class user extends custom_field
             postal_code =  '{$user_details['postal_code']}',
             tax_reg_number='{$user_details['tax_reg_number']}',
             address =  '{$user_details['address']}',
+            confirmed_paypal_email =  '{$user_details['confirmed_paypal_email']}',
             pg_paypal_first_name =  '{$user_details['pg_paypal_first_name']}',
             pg_paypal_last_name =  '{$user_details['pg_paypal_last_name']}',
             pg_paypal_email = '{$user_details['pg_paypal_email']}'";

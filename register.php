@@ -113,7 +113,7 @@ else
                         // TODO: MailChimp error processing
 
                         if ($e->getMessage()) {
-                            echo '<br>' . $e->getMessage() . '<br>';
+                            //echo '<br>' . $e->getMessage() . '<br>';
                         } else {
                             // unrecognized error
                         }
