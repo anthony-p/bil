@@ -2126,21 +2126,21 @@ function getProjectCategoryList()
 {
     global $db;
 
-    $countries = array();
-    $sql_select_locations = $db->query("SELECT * FROM  `np_orgtype` ");
-    while($country = $db->fetch_array($sql_select_locations))
+    $categories = array();
+    $sql_select_categories = $db->query("SELECT * FROM  `np_orgtype` ORDER BY name ASC");
+    while($category = $db->fetch_array($sql_select_categories))
     {
-    	$countries[$country['id']] = $country['name'];
+        $categories[] = $category;
     }
 
-    return $countries;
+    return $categories;
 }
 function getProjectCategoryListToHTML()
 {
     global $db;
     $result = "<select name=\"project_category\" id=\"project_category\">";
     $countries = array();
-    $sql_select_locations = $db->query("SELECT * FROM  `np_orgtype` ");
+    $sql_select_locations = $db->query("SELECT * FROM  `np_orgtype` ORDER BY name ASC");
     while($country = $db->fetch_array($sql_select_locations))
     {
     	$countries[$country['id']] = $country['name'];

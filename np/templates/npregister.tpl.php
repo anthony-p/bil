@@ -507,10 +507,10 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <label><?=MSG_CREATE_PROJECT_CHOOSE_CATEGORY;?> *</label>
 <!--            --><?//=$project_country?>
             <select name="project_category" id="project_category">
-                <?php foreach ($project_category as $key => $category): ?>
-                    <option value="<?php echo $key; ?>"
-                        <?php if (isset($user_details['project_category']) && $user_details['project_category'] == $key) echo 'selected' ?>>
-                        <?php echo $category; ?>
+                <?php foreach ($project_category as $category): ?>
+                    <option value="<?php echo $category["id"]; ?>"
+                        <?php if (isset($user_details['project_category']) && $user_details['project_category'] == $category["id"]) echo 'selected' ?>>
+                        <?php echo $category["name"]; ?>
                     </option>
                 <?php endforeach; ?>
             </select>
