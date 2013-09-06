@@ -26,7 +26,7 @@ class projectRewards extends custom_field {
 						return MSG_REWARD_NAME_EXIST;
 					}
 					
-					$this->query("INSERT into project_rewards(project_id, amount, name, description, ".(empty($reward['available_number']) ? "" : "available_number, ").(empty($reward['estimated_delivery_date']) ? "" : "estimated_delivery_date, ")."shipping_address_required) values ('".$reward['project_id']."', '".$reward['amount']."', '".$reward['name']."', '".$reward['description']."', ".(empty($reward['available_number']) ? "" : "'".$reward['available_number']."', ").(empty($reward['estimated_delivery_date']) ? "" : "FROM_UNIXTIME('".strtotime($reward['estimated_delivery_date'])."'), ")."'".$reward['shipping_address_required']."')");
+					$this->query("INSERT into project_rewards(project_id, amount, name, short_description, description, ".(empty($reward['available_number']) ? "" : "available_number, ").(empty($reward['estimated_delivery_date']) ? "" : "estimated_delivery_date, ")."shipping_address_required) values ('".$reward['project_id']."', '".$reward['amount']."', '".$reward['name']."', '".$reward['short_description']."', '".$reward['description']."', ".(empty($reward['available_number']) ? "" : "'".$reward['available_number']."', ").(empty($reward['estimated_delivery_date']) ? "" : "FROM_UNIXTIME('".strtotime($reward['estimated_delivery_date'])."'), ")."'".$reward['shipping_address_required']."')");
 					$reward['id'] = mysql_insert_id();
 					return $this->newRewardForm($reward);
 				} else {
@@ -52,7 +52,7 @@ class projectRewards extends custom_field {
 				if($this->isNameUsed($reward['name'], '', $reward['id'])){
 					return MSG_REWARD_NAME_EXIST;
 				}
-				$this->query("UPDATE project_rewards SET amount='".$reward['amount']."', name='".$reward['name']."', description='".$reward['description']."', available_number=".$reward['available_number'].", estimated_delivery_date=".$reward['estimated_delivery_date'].", shipping_address_required='".$reward['shipping_address_required']."' WHERE id='".$reward['id']."'");
+				$this->query("UPDATE project_rewards SET amount='".$reward['amount']."', name='".$reward['name']."', short_description='".$reward['short_description']."', description='".$reward['description']."', available_number=".$reward['available_number'].", estimated_delivery_date=".$reward['estimated_delivery_date'].", shipping_address_required='".$reward['shipping_address_required']."' WHERE id='".$reward['id']."'");
 				return MSG_REWARD_SAVED;
 			} else {
 				return MSG_ACCESS_DENIED;
