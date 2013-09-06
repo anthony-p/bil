@@ -5207,7 +5207,7 @@ else
             $campaign = $db->get_sql_row($mysql_select_query);
 
 
-            $categories_query_result = $db->query("SELECT * FROM np_orgtype");
+            $categories_query_result = $db->query("SELECT * FROM np_orgtype ORDER BY name ASC");
             $categories = array();
             while ($query_result =  mysql_fetch_array($categories_query_result)) {
                 $categories[] = $query_result;
