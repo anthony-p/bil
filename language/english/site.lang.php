@@ -390,6 +390,7 @@ define ('MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1', 'Address 1');
 define ('MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_2', 'Address 2');
 define ('MSG_REWARD_SHIPPING_INFORMATION_CITY', 'City');
 define ('MSG_REWARD_SHIPPING_INFORMATION_POSTAL_CODE', 'Postal code');
+define ('MSG_REWARD_CLAIMING_BOTTOM_NOTE', 'By clicking \'continue\', you acknowledge that you understand that you are contributing to a work.');
 
 // Vote Us Section
 define ('MSG_VOTE_US', 'Vote Us!');
