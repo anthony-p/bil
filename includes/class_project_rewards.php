@@ -292,7 +292,7 @@ class projectRewards extends custom_field {
 				<div class="reward_contribute_details">
 					<div class="reward_contribute_name"><?= $reward['name']; ?></div>
 					<div class="reward_contribute_claimed"><?= $reward['given_number']; ?> <?= MSG_CLAIMED_NUMBER_LABEL; ?></div>
-					<div class="reward_contribute_description"><?= $reward['description']; ?></div>
+					<div class="reward_contribute_description"><?= $reward['short_description']; ?></div>
 				</div>
 			</div>
 		</div>
