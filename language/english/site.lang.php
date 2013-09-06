@@ -353,6 +353,7 @@ define ('MSG_REWARD', 'Reward');
 define ('MSG_REWARD_AMOUNT', 'Amount');
 define ('MSG_REWARD_NAME', 'Name');
 define ('MSG_REWARD_DESCRIPTION', 'Description');
+define ('MSG_REWARD_SHORT_DESCRIPTION', 'Short Description');
 define ('MSG_REWARD_AVAILABLE_NUMBER', 'Number Available');
 define ('MSG_REWARD_ESTIMATED_DELIVERY', 'Estimated Delivery On');
 define ('MSG_REWARD_SHIPPING_ADDRESS_REQUIRED', 'Shipping address required');
