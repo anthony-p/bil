@@ -133,11 +133,6 @@ if (!$session->value('user_id')) {
             echo json_encode(array("response" => "error"));
 
         }
-	} elseif($_POST['claim_project_reward'] == true){
-		$reward_id = isset($_POST["rewards_id"]) ? $_POST["rewards_id"] : '';
-		$projectRewards   = new projectRewards();
-		$result = $projectRewards->getClaimRewardForm($reward_id, $session->value('user_id'));
-		echo json_encode(array("response" => $result));
 	} elseif($_POST['save_project_rewards'] == true){	
 		$reward['project_id'] = isset($_POST["campaign_id"]) ? $_POST["campaign_id"] : '';
 		$reward['amount'] = isset($_POST["reward_amount"]) ? $_POST["reward_amount"] : '';

@@ -4,7 +4,7 @@ require_once ( dirname(__FILE__).'/../../../../includes/class_project_rewards.ph
 <script>
     function claimProjectReward(id){
 		$.ajax({
-			url:"/np_compaign_project",
+			url:"/np_compaign_reward",
 			type: "POST",
 			data: {claim_project_reward: true, rewards_id: id},
 			success: function(response){
