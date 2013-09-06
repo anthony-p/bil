@@ -21,6 +21,7 @@ session_start();
 define ('IN_SITE', 1);
 $GLOBALS['body_id'] = "shop_selected";
 
+
 try{
     include_once ('includes/global.php');
     include_once ('includes/class_formchecker.php');

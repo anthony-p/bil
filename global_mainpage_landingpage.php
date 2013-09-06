@@ -617,12 +617,9 @@ $template->change_path('themes/' . $setts['default_theme'] . '/templates/');
 $template->set('compaigns', $compaignData );
 
 
-
-if (!isset($_COOKIE['np_userid']))
-
-    setcookie('np_userid', $compaignData['user_id']);
-
-
+if (isset($_COOKIE['np_userid']))
+    setcookie('np_userid', '',0);
+setcookie('np_userid', $compaignData['user_id']);
 
 $template_output .= $template->process('mainpage_landingpage.tpl.php');
 
