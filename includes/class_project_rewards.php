@@ -246,10 +246,12 @@ class projectRewards extends custom_field {
 		ob_start();
 		?>
 		<div class="reward_contribute_display">
+			<?php if(!empty($reward['campaign_logo'])):?>
 			<div class="reward_contribute_summary_image">
 				<img src="<?= $reward['campaign_logo']?>" width="162"></img>
-			</div>		
-			<div class="reward_contribute_summary_details">
+			</div>
+			<?php endif; ?>
+			<div class="reward_contribute_summary_details<?= empty($reward['campaign_logo']) ? ' reward_contribute_summary_details_full_width' : ''?>">
 				<div class="reward_contribute_summary_title"><?= MSG_YOUR_CONTRIBUTION_SUMMARY; ?></div>
 				<div class="reward_contribute_summary_values">
 					<div class="reward_contribute_summary_compaign_title"><?= $reward['campaign_name'];?></div>
@@ -324,6 +326,7 @@ class projectRewards extends custom_field {
 				</div>
 			</div>
 		</div>
+		<button id="reward_claiming_continue_button" onclick="return false">continue</Button>
 		<script>
 			$("#reward_contribution_value").keyup(function(){
 				value = $("#reward_contribution_value").val();
