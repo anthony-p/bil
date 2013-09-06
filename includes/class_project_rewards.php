@@ -257,7 +257,7 @@ class projectRewards extends custom_field {
 					<div class="reward_contribute_summary_compaign_title"><?= $reward['campaign_name'];?></div>
 					<div class="reward_contribute_summary_value_line">
 						<label><?= MSG_REWARD_CONTRIBUTOR_NAME; ?></label>
-						<div><?= $user['first_name'].' '.$user['last_name'] ?></div>
+						<div id="contributor_name_value"><?= empty($user) ? "- - - - - -" : $user['first_name'].' '.$user['last_name'] ?></div>
 					</div>
 					<div class="reward_contribute_summary_value_line">
 						<label><?= MSG_YOUR_REWARD; ?></label>
@@ -341,6 +341,10 @@ class projectRewards extends custom_field {
 					}
 				});
 				<?php endif; ?>
+			});
+			$("#reward_contribution_name").keyup(function(){
+				value = $("#reward_contribution_name").val();
+				$("#contributor_name_value").html($.trim(value) == "" ? "- - - - - -" : value);
 			});
 			$("#reward_contribution_value").keyup(function(){
 				value = $("#reward_contribution_value").val();
