@@ -16,14 +16,14 @@ include_once ('includes/class_reputation.php');
 
 require ('global_header_interior.php');
 
-$np_user_id = isset($_COOKIE["np_userid"]) ? $_COOKIE["np_userid"] : "";
+$np_user_id = isset($_SESSION["np_userid"]) ? $_SESSION["np_userid"] :0;
 if (!$np_user_id) {
-    $np_user_id = isset($_SESSION["np_userid"]) ? $_SESSION["np_userid"] :0;
+    $np_user_id = isset($_COOKIE["np_userid"]) ? $_COOKIE["np_userid"] : 0;
 }
 
-$user_id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : 0;
+$user_id = isset($_SESSION["probid_user_id"]) ? $_SESSION["probid_user_id"] : 0;
  if (!$user_id) {
-     $user_id = isset($_SESSION["probid_user_id"]) ? $_SESSION["probid_user_id"] : 0;
+     $user_id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : 0;
  }
 
 $transferred_amount = $_SESSION["transferred_amount"];
