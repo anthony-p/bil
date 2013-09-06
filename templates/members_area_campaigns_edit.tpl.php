@@ -330,6 +330,11 @@ function validateProjectReward(id){
 		return false;
 	}
 	
+	if($("#reward_short_description_"+id).val() == ""){
+		alert("<?= MSG_REWARD_SHORT_DESCRIPTION_MUST_BE_SPECIFIED ?>");
+		return false;
+	}
+	
 	if(tinymce.get('reward_description_'+id).getContent() == ""){
 		alert("<?= MSG_REWARD_DESCRIPTION_MUST_BE_SPECIFIED ?>");
 		return false;
