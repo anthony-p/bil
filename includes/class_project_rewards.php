@@ -224,7 +224,7 @@ class projectRewards extends custom_field {
 		if(empty($reward_id)) {
 			return "error";
 		}
-		$sql = "select r.*, p.name as campaign_name from project_rewards r, np_users p where r.project_id = p.user_id and id='".$reward_id."'";
+		$sql = "select r.*, p.name as campaign_name, p.logo as campaign_logo from project_rewards r, np_users p where r.project_id = p.user_id and id='".$reward_id."'";
 		$result = $this->get_sql_row($sql);
 		return $result;
 	}
@@ -247,7 +247,7 @@ class projectRewards extends custom_field {
 		?>
 		<div class="reward_contribute_display">
 			<div class="reward_contribute_summary_image">
-				<img src="" alt=""></img>
+				<img src="<?= $reward['campaign_logo']?>" width="162"></img>
 			</div>		
 			<div class="reward_contribute_summary_details">
 				<div class="reward_contribute_summary_title"><?= MSG_YOUR_CONTRIBUTION_SUMMARY; ?></div>
