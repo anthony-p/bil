@@ -299,7 +299,7 @@ class projectRewards extends custom_field {
 		</div>
 		<div class="reward_contribute_display">
 			<div class="reward_contribute_title"><?= MSG_REWARD_SHIPPING_INFORMATION ?></div>
-			<div class="reward_contribute_section">
+			<div class="reward_contribute_section" id="shipping_information_section">
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_NAME ?> <?= $required_mark; ?></label>
 					<input type="text" id="reward_contribution_name" value="<?= $user['first_name'].' '.$user['last_name'] ?>"></input>
@@ -326,8 +326,22 @@ class projectRewards extends custom_field {
 				</div>
 			</div>
 		</div>
-		<button id="reward_claiming_continue_button" onclick="return false">continue</Button>
+		<button id="reward_claiming_continue_button">continue</Button>
 		<script>
+			$("#reward_claiming_continue_button").click(function(){
+				if (!isEmailFieldValid()) {
+					alert('Please provide a valid email address');
+					return false;
+				}
+				<?php if($reward['shipping_address_required'] == 1) : ?>
+				$('#shipping_information_section :text').each(function (){
+					if ($.trim(this.value) == ""){
+						alert("All shipping information fields are required.");
+						return false;
+					}
+				});
+				<?php endif; ?>
+			});
 			$("#reward_contribution_value").keyup(function(){
 				value = $("#reward_contribution_value").val();
 				if($.isNumeric(value) && value >= 0.01){
@@ -353,13 +367,15 @@ class projectRewards extends custom_field {
 				}
 			});
 			$("#reward_contribution_email").blur(function(){
-				email = $("#reward_contribution_email").val();
-				regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-				if (!regex.test(email)) {
+				if (!isEmailFieldValid()) {
 					alert('Please provide a valid email address');
 				}
 			});
+			function isEmailFieldValid(){
+				email = $("#reward_contribution_email").val();
+				regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				return regex.test(email);
+			}
 		</script>
 		<?php
 		
