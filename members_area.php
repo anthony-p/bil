@@ -620,6 +620,20 @@ else
                                 // unrecognized error
                             }
                         }
+                    } else {
+
+                        // unsubscribe member from list
+
+                        try {
+
+                            $MailChimp->lists->unsubscribe($mailChimpConfig['listId'], array('email' => $_POST['email']));
+
+                        } catch (Mailchimp_Error $e) {
+                            // TODO: MailChimp error processing
+
+                        }
+
+
                     }
                     // ---- end MailChimp subscription ---------------------------------
 
