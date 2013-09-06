@@ -118,7 +118,7 @@ class projectRewards extends custom_field {
 					<textarea class="reward_description" id="reward_short_description_<?= $reward_id; ?>"><?= @$reward['short_description']?></textarea>
 				</div>
 				<div class="account-row">
-					<label> <?=MSG_REWARD_DESCRIPTION;?> *</label>
+					<label> <?=MSG_REWARD_DESCRIPTION;?></label>
 				</div>
 				<div class="account-row">
 					<textarea class="reward_description" id="reward_description_<?= $reward_id; ?>"><?= @$reward['description']?></textarea>

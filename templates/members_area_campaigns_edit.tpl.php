@@ -335,11 +335,6 @@ function validateProjectReward(id){
 		return false;
 	}
 	
-	if(tinymce.get('reward_description_'+id).getContent() == ""){
-		alert("<?= MSG_REWARD_DESCRIPTION_MUST_BE_SPECIFIED ?>");
-		return false;
-	}
-	
 	if($("#reward_available_number_"+id).val() != '' && !$.isNumeric($("#reward_available_number_"+id).val())){
 		alert("<?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?>");
 		return false;
