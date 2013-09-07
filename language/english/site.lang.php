@@ -375,5 +375,9 @@ define ('MSG_FOR_YOUR_CONTRIBUTION', 'for your contribution');
 define ('MSG_NO_REWARDS_AVAILABLE', 'No rewards are available');
 define ('MSG_CLAIMED_NUMBER_LABEL', 'claimed');
 
+// Vote Us Section
+define ('MSG_VOTE_US', 'Vote Us!');
+define ('MSG_VOTES_NUMBER', 'Votes');
+
 //define ('', '');
 ?>
