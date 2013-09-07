@@ -271,11 +271,11 @@ define ('MSG_BTN_TERMS', 'Termes & Conditions');
 define ('MSG_BTN_PRIVACY', 'POLITIQUE DE PROTECTION DE LA VIE PRIVÉE');
 define ('MSG_ORGANIZATION', 'Organisme');
 define ('MSG_FEATURED', 'En vedette');
-//tags originally from npsite.lang.php combined here 8-28-2013,,,,,,,
-define('REG_CMN_ACCOUNT,,,Compte');
-define('REG_CMN_ADD_DETAILS,,,Ajouter des détails');
-define('REG_CMN_ENHANCE_IT,,,l\'améliorer');
-define('REG_CMN_SAVE_IT,,,Sauvegarder');
+//tags originally from npsite.lang.php combined here 8-28-2013
+define('REG_CMN_ACCOUNT','Compte');
+define('REG_CMN_ADD_DETAILS','Ajouter des détails');
+define('REG_CMN_ENHANCE_IT','l\'améliorer');
+define('REG_CMN_SAVE_IT','Sauvegarder');
 define ('MSG_MEMBERS_AREA_WIDGET_TITLE', 'OUTILS WIDGET POUR ORGANISMES À BUT NON LUCRATIF ');
 define ('MSG_REGISTRATION_NEW_CAMPAIGN', 'Créer une nouvelle campagne');
 define ('MSG_PITCH_TEXT', 'Texte d\'annonce');
