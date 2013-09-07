@@ -391,7 +391,7 @@ if ($session->value('user_id'))
 
 if (isset($_COOKIE['np_userid'])){
     $campaignId = $_COOKIE['np_userid'];
-    $sql_select = $db->query("SELECT * FROM bringit_auction.np_users WHERE user_id = ".$campaignId);
+    $sql_select = $db->query("SELECT * FROM np_users WHERE user_id = ".$campaignId);
     $result =  mysql_fetch_array($sql_select);
     $campaignName = $result['name'];
     $template->set('campaignName', $campaignName);
