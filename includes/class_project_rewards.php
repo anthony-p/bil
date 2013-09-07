@@ -86,7 +86,7 @@ class projectRewards extends custom_field {
 		}
 		return $randomString;
 	}
-
+	
 	//--------------------------------------------------------------------------------------------------------------------------
 	function newRewardForm($reward = array()){
 		$reward_id = isset($reward['id']) ? $reward['id'] : $this->generateRandomString();
@@ -246,6 +246,18 @@ class projectRewards extends custom_field {
 		$sql = "select * from bl2_users where id='".$user_id."'";
 		$result = $this->get_sql_row($sql);
 		return $result;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function finalizeRewardClaiming($transferred_amount = '') {
+		if(!empty($transferred_amount)){
+			$reward_id = $_SESSION['reward_claiming']['reward_id'];
+			$reward = $this->getReward($reward_id);
+			if($transferred_amount >= $reward['amount']){
+				$this->query("update project_rewards set given_number = given_number + 1 where id='".$reward_id."'");
+			}
+		}
+		unset($_SESSION['reward_claiming']);
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------
