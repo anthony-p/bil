@@ -236,6 +236,12 @@ class projectRewards extends custom_field {
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------
+	function getRewardCampaignId($reward_id){
+		$sql = "select project_id from project_rewards where id='".$reward_id."'";
+		return $this->getField($sql);
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
 	function getUser($user_id){
 		$sql = "select * from bl2_users where id='".$user_id."'";
 		$result = $this->get_sql_row($sql);
@@ -341,13 +347,28 @@ class projectRewards extends custom_field {
 					return false;
 				}
 				<?php if($reward['shipping_address_required'] == 1) : ?>
+				shipping_information_missing = false;
 				$('#shipping_information_section :text').each(function (){
 					if ($.trim(this.value) == ""){
-						alert("All shipping information fields are required.");
-						return false;
+						shipping_information_missing = true;
 					}
 				});
+				if(shipping_information_missing){
+					alert("All shipping information fields are required.");
+					return false;
+				}
 				<?php endif; ?>
+				$.ajax({
+					url:"/np_compaign_reward",
+					type: "POST",
+					data: {make_donation_for_reward: true, reward_id: <?= $reward_id; ?>, contribution: $("#reward_contribution_value").val(), email: $("#reward_contribution_email").val(), name: $("#reward_contribution_name").val(), country: $("#reward_contribution_country").val(), address1: $("#reward_contribution_address1").val(), address2: $("#reward_contribution_address2").val(), city: $("#reward_contribution_city").val(), postal_code: $("#reward_contribution_postal_code").val()},
+					success: function(response){
+						$("#rewards_tab_content").html(jQuery.parseJSON(response).response);
+					},
+					error:function(){
+						alert("Error");
+					}
+				});
 			});
 			$("#reward_contribution_name").keyup(function(){
 				value = $("#reward_contribution_name").val();
