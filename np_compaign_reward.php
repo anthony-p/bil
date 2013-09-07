@@ -29,10 +29,14 @@ if($_POST['claim_project_reward'] == true){
 				'postal_code' => $_POST['postal_code']
 			);
 	$campaign_id = $projectRewards->getRewardCampaignId($reward_id);
-	$result = '<form id="contribution_form" method="post" action="chained.php">';
-	$result .= '<input type="hidden" name="amount" id="amount" value="'.$_POST['contribution'].'" />';
-	$result .= '<input type="hidden" name="np_user_id" id="np_user_id" value="'.$campaign_id.'" />';
-	$result .= '</form>';
-	$result .= '<script>$("#contribution_form").submit();</script>';
+	$result = '	<form id="contribution_form" method="post" action="chained.php">
+					<img src="img/redirecting.gif" alt="redirecting ..." class="redirecting_indicator" />
+					<input type="hidden" name="amount" id="amount" value="'.$_POST['contribution'].'" />
+					<input type="hidden" name="np_user_id" id="np_user_id" value="'.$campaign_id.'" />
+				</form>
+				<script>
+					window.scrollTo(0, 0);
+					$("#contribution_form").submit();
+				</script>';
 	echo json_encode(array("response" => $result));
 }

@@ -3533,7 +3533,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .resp-tab-content aside.rewards_tab .reward_contribute_section input {width: 250px;}
 .resp-tab-content aside.rewards_tab #reward_claiming_continue_button{background: #F21B43; color: #fff; border: none; border-radius: 10px; width: 150px; height: 35px; float: right; font-size: 18px; font-weight: bold;}
 .resp-tab-content aside.rewards_tab #reward_claiming_bottom_note {font-style: italic; font-size: 12px; float: left; margin: 12px 0 0 10px;}
-
+.resp-tab-content aside.rewards_tab .redirecting_indicator {margin: 30px 260px;}
 
 /*contributions page*/
 #members_area .contributions_page {width:900px; margin: 0 auto; padding-top: 30px; position: relative;}
