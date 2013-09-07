@@ -19,16 +19,21 @@ if (!isset($_POST["amount"]))
 require_once ("paypalplatform.php");
 
 $amount = 0;
+$community_amount = 0;
 
 if (isset($_POST["amount"]) && !empty($_POST["amount"])) {
     $amount = $_POST["amount"];
 }
 
+if (isset($_POST["community_amount"]) && !empty($_POST["community_amount"])) {
+    $community_amount = $_POST["community_amount"];
+}
+
 //$rate = (double)5 / 100;
 $rate = (double)$result["rate_of_pay"] / 100;
 
-$bring_it_local_amount = $rate * $amount;
-$beneficiar_amount = $amount;
+$bring_it_local_amount = ($rate * $amount) + $community_amount;
+$beneficiar_amount = $amount + $community_amount;
 //$beneficiar_amount = $amount - $bring_it_local_amount;
 
 $_SESSION["transferred_amount"] = $beneficiar_amount;;

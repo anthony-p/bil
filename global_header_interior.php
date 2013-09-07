@@ -201,6 +201,9 @@ else if ($session->value('user_id'))
 //    echo "<br />";
 //    var_dump($page);
     $selected_section = 'my_profile';
+    if (!isset($page)) {
+        $page = '';
+    }
     if (in_array($page, array('account', 'about_me', 'messaging')) &&
         in_array($section, array('editinfo', 'management', 'edit', 'view', 'received', 'received'))) {
         $selected_section = 'my_profile';
