@@ -19,6 +19,7 @@ define ('MSG_RECENTLY_LISTED_LOCALWANTED_ADS', 'Recent Community Want Ads');
 define ('MSG_AUCTION_SEARCH', 'Auction Search');
 define ('MSG_SELLER_SEARCH', 'Seller Search');
 define ('MSG_BUYER_SEARCH', 'Buyer Search');
+define ('MSG_YOU_SUPPORT', 'You support');
 
 // misc campaign tags
 define ('MSG_SAVE_CHANGES', 'Save Changesgggggg');

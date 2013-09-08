@@ -137,6 +137,7 @@ if (!$session->value('user_id')) {
 		$reward['project_id'] = isset($_POST["campaign_id"]) ? $_POST["campaign_id"] : '';
 		$reward['amount'] = isset($_POST["reward_amount"]) ? $_POST["reward_amount"] : '';
 		$reward['name'] = isset($_POST["reward_name"]) ? $_POST["reward_name"] : '';
+		$reward['short_description'] = isset($_POST["reward_short_description"]) ? $_POST["reward_short_description"] : '';
 		$reward['description'] = isset($_POST["reward_description"]) ? html_entity_decode($_POST["reward_description"]) : '';
 		$reward['available_number'] = isset($_POST["reward_available_number"]) ? $_POST["reward_available_number"] : '';
 		$reward['estimated_delivery_date'] = isset($_POST["reward_estimated_delivery_date"]) ? $_POST["reward_estimated_delivery_date"] : '';
@@ -149,6 +150,7 @@ if (!$session->value('user_id')) {
 		$reward['id'] = isset($_POST["rewards_id"]) ? $_POST["rewards_id"] : '';
 		$reward['amount'] = isset($_POST["reward_amount"]) ? $_POST["reward_amount"] : '';
 		$reward['name'] = isset($_POST["reward_name"]) ? $_POST["reward_name"] : '';
+		$reward['short_description'] = isset($_POST["reward_short_description"]) ? $_POST["reward_short_description"] : '';
 		$reward['description'] = isset($_POST["reward_description"]) ? html_entity_decode($_POST["reward_description"]) : '';
 		$reward['available_number'] = isset($_POST["reward_available_number"]) && !empty($_POST["reward_available_number"]) ? "'".intval($_POST["reward_available_number"])."'" : "NULL";
 		$reward['estimated_delivery_date'] = isset($_POST["reward_estimated_delivery_date"]) && !empty($_POST["reward_estimated_delivery_date"]) ? "FROM_UNIXTIME('".strtotime($_POST["reward_estimated_delivery_date"])."')" : "NULL";

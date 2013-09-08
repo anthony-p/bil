@@ -32,6 +32,14 @@
                 }
             }
         });
+
+        $("#community").click(function(){
+            if($("#community").is(":checked")){
+                $("#community_amount").removeAttr("disabled");
+            } else {
+                $("#community_amount").attr("disabled", "disabled");
+            }
+        });
     });
 </script>
 <div id="container">
@@ -62,7 +70,10 @@
     </div>
             </div>
             <div id="contribution_qty">
-                <input type="text" name="amount" id="amount" /><b>(USD)</b>
+                <input type="text" name="amount" id="amount" /><b>(USD)</b><br />
+                <label>Would you like to add $5 toward the Community Fund? </label><br />
+                <input type="checkbox" name="community" id="community" /><br />
+                <input type="text" name="community_amount" id="community_amount" disabled="disabled" value="5" /><b>(USD)</b>
                 <input type="hidden" name="np_user_id" id="np_user_id" value="<?php echo isset($np_user_id) ? $np_user_id : ''; ?>" />
             </div>
             <input id="submit" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">

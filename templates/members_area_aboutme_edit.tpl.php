@@ -9,7 +9,11 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 <link href="/css/tinyeditor.css" rel="stylesheet">
-<script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>
+<!--<script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>-->
+<script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
+<script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
+
+
 <br>
 <form action="members_area.php?page=about_me&section=edit" method="POST" enctype="multipart/form-data">
  <h6 class="tittle_tp">  <?=MSG_MM_ABOUT_ME_PAGE;?> </h6>
@@ -76,29 +80,35 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <script language="javascript">
     /* == == == == == == == == == == == == == == == == == == == == == == ==*/
- /*   var editor = new TINY.editor.edit('editor', {
-        id: 'aboutme_page_content',
-        width: 584,
-        height: 175,
-        cssclass: 'tinyeditor',
-        controlclass: 'tinyeditor-control',
-        rowclass: 'tinyeditor-header',
-        dividerclass: 'tinyeditor-divider',
-        controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
-            'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
-            'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
-            'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'print'],
-        footer: true,
-        fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
-        xhtml: true,
-        cssfile: 'custom.css',
-        bodyid: 'editor',
-        footerclass: 'tinyeditor-footer',
-        toggle: {text: 'source', activetext: 'wysiwyg', cssclass: 'toggle'},
-        resize: {cssclass: 'resize'}
-    });*/
-    /* == == == == == == == == ==
-    == == == == == == == == == == == == == ==*/
+    tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
+
+    tinymce.init({
+        selector:'#aboutme_page_content',
+        plugins: [
+            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+            		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
+        ],
+        toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+        	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
+        	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
+
+        	menubar: false,
+            image_advtab: true,
+        	toolbar_items_size: 'small',
+
+        	style_formats: [
+        		{title: 'Bold text', inline: 'b'},
+        		{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+        		{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+        		{title: 'Example 1', inline: 'span', classes: 'example1'},
+        		{title: 'Example 2', inline: 'span', classes: 'example2'},
+        		{title: 'Table styles'},
+        		{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+        	]
+    });
+
+    /* == == == == == == == == == == == == == == == == == == == == == == ==*/
 </script>
 
 

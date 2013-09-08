@@ -1,5 +1,6 @@
 # DirectoryIndex /preview/index.html 
 # Redirect 302 /preview/index.html http://landings.bringitlocal.com/preview
+# php_flag display_errors on
 
 AuthName "public_html"
 RewriteEngine on

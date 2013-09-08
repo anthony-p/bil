@@ -12,6 +12,8 @@ include_once('includes/grab_video_thumbnail.php');
 ?>
 <? echo (!empty($no_results_message)) ? $no_results_message : '<br>';?>
 
+<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
+
 <script>
     $(document).ready(function(){
 
@@ -26,10 +28,19 @@ include_once('includes/grab_video_thumbnail.php');
             });
 
         $(function() {
-                    if ($("div.holder"))
-                    $("div.holder").jPages({
-                        containerID: "pagination"
-                    });
+                    if ($("div.holder")){
+                        if ($.fn.jPages){
+                            $("div.holder").jPages({
+                                containerID: "pagination"
+                            });
+                        } else {
+                            $.getScript("/scripts/jquery/pagination.js", function(data, textStatus, jqxhr) {
+                                $("div.holder").jPages({
+                                    containerID: "pagination"
+                                });
+                            });
+                        }
+                    }
                 });
 
         });

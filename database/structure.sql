@@ -3668,3 +3668,16 @@ ALTER TABLE `project_rewards`  CHANGE `amount` `amount` DECIMAL(11,2) NOT NULL;
 ALTER TABLE `np_users` ADD COLUMN `homepage_featured` INT NULL  AFTER `disabled` ;
 
 ALTER TABLE `bl2_users` ADD COLUMN `confirmed_paypal_email` INT NULL DEFAULT 0  AFTER `google_link` ;
+
+
+alter table `project_rewards` add column `short_description` varchar(255) NOT NULL after `name`;
+alter table `project_rewards` change `description` `description` text character set latin1 collate latin1_swedish_ci NULL; 
+
+CREATE TABLE `project_votes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `campaign_id` int(11) NOT NULL,
+  `date` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+

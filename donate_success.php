@@ -13,20 +13,26 @@ include_once ('includes/class_item.php');
 include_once ('includes/functions_item.php');
 include_once ('includes/class_messaging.php');
 include_once ('includes/class_reputation.php');
+require_once ('includes/class_project_rewards.php');
 
 require ('global_header_interior.php');
 
-$np_user_id = isset($_COOKIE["np_userid"]) ? $_COOKIE["np_userid"] : "";
+$np_user_id = isset($_SESSION["np_userid"]) ? $_SESSION["np_userid"] :0;
 if (!$np_user_id) {
-    $np_user_id = isset($_SESSION["np_userid"]) ? $_SESSION["np_userid"] :0;
+    $np_user_id = isset($_COOKIE["np_userid"]) ? $_COOKIE["np_userid"] : 0;
 }
 
-$user_id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : 0;
+$user_id = isset($_SESSION["probid_user_id"]) ? $_SESSION["probid_user_id"] : 0;
  if (!$user_id) {
-     $user_id = isset($_SESSION["probid_user_id"]) ? $_SESSION["probid_user_id"] : 0;
+     $user_id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : 0;
  }
 
 $transferred_amount = $_SESSION["transferred_amount"];
+
+if(isset($_SESSION['reward_claiming'])){
+	$projectRewards = new projectRewards();
+	$projectRewards->finalizeRewardClaiming($transferred_amount);
+}
 
 //$select_query = "SELECT payment FROM np_users WHERE
 //				user_id=" . $np_user_id;

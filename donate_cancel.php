@@ -14,8 +14,14 @@ include_once ('includes/class_item.php');
 include_once ('includes/functions_item.php');
 include_once ('includes/class_messaging.php');
 include_once ('includes/class_reputation.php');
+require_once ('includes/class_project_rewards.php');
 
 require ('global_header_interior.php');
+
+if(isset($_SESSION['reward_claiming'])){
+	$projectRewards = new projectRewards();
+	$projectRewards->finalizeRewardClaiming();
+}
 
 $template->change_path('templates/');
 $template_output .= $template->process('donate_cancel.tpl.php');

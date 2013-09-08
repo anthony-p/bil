@@ -28,6 +28,8 @@ define ('MSG_POST_A_COMMENT', 'Post a comment');
 define ('MSG_KEEP_PRIVATE', 'keep private - don\'t display my user name');
 define ('MSG_RECENTLY_LISTED_LOCALWANTED_ADS', 'Recent Community Want Ads');
 
+define ('MSG_YOU_SUPPORT', 'You support');
+
 define ('MSG_AUCTION_SEARCH', 'Auction Search');
 define ('MSG_SELLER_SEARCH', 'Seller Search');
 define ('MSG_BUYER_SEARCH', 'Buyer Search');
@@ -351,6 +353,7 @@ define ('MSG_REWARD', 'Reward');
 define ('MSG_REWARD_AMOUNT', 'Amount');
 define ('MSG_REWARD_NAME', 'Name');
 define ('MSG_REWARD_DESCRIPTION', 'Description');
+define ('MSG_REWARD_SHORT_DESCRIPTION', 'Short Description');
 define ('MSG_REWARD_AVAILABLE_NUMBER', 'Number Available');
 define ('MSG_REWARD_ESTIMATED_DELIVERY', 'Estimated Delivery On');
 define ('MSG_REWARD_SHIPPING_ADDRESS_REQUIRED', 'Shipping address required');
@@ -358,7 +361,7 @@ define ('MSG_REWARD_SHIPPING_ADDRESS_REQUIRED', 'Shipping address required');
 define ('MSG_REWARD_AMOUNT_MUST_BE_SPECIFIED', 'The amount must be specified');
 define ('MSG_REWARD_AMOUNT_MUST_BE_A_NUMBER', 'The amount must be a number');
 define ('MSG_REWARD_NAME_MUST_BE_SPECIFIED', 'The reward name must be specified');
-define ('MSG_REWARD_DESCRIPTION_MUST_BE_SPECIFIED', 'The reward description must be specified');
+define ('MSG_REWARD_SHORT_DESCRIPTION_MUST_BE_SPECIFIED', 'The reward short description must be specified');
 define ('MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER', 'The available number must be a number');
 define ('MSG_REWARD_NEEDS_TO_BE_SAVED', 'You need to save the reward you have just added before adding another one');
 define ('MSG_REWARD_MAX_NUMBER_REACHED', 'A campaign cannot have more than 20 rewards');
@@ -372,6 +375,26 @@ define ('MSG_SELECT_A_REWARD', 'Select a reward');
 define ('MSG_FOR_YOUR_CONTRIBUTION', 'for your contribution');
 define ('MSG_NO_REWARDS_AVAILABLE', 'No rewards are available');
 define ('MSG_CLAIMED_NUMBER_LABEL', 'claimed');
+define ('MSG_YOUR_CONTRIBUTION_SUMMARY', 'Your contribution summary');
+define ('MSG_REWARD_CONTRIBUTOR_NAME', 'Contributor Name:');
+define ('MSG_YOUR_REWARD', 'Your reward:');
+define ('MSG_YOUR_CONTRIBUTION', 'Your contribution:');
+define ('MSG_REWARD_TOTAL', 'Total:');
+define ('MSG_HOW_MUCH_YOU_WOULD_LIKE_TO_CONTRIBUTE', 'How much would you like to contribute?');
+define ('MSG_REWARD_CONTACT_INFORMATION', 'Contact Information');
+define ('MSG_REWARD_SHIPPING_INFORMATION', 'Shipping Information');
+define ('MSG_REWARD_EMAIL', 'Email');
+define ('MSG_REWARD_SHIPPING_INFORMATION_NAME', 'Name');
+define ('MSG_REWARD_SHIPPING_INFORMATION_COUNTRY', 'Country');
+define ('MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1', 'Address 1');
+define ('MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_2', 'Address 2');
+define ('MSG_REWARD_SHIPPING_INFORMATION_CITY', 'City');
+define ('MSG_REWARD_SHIPPING_INFORMATION_POSTAL_CODE', 'Postal code');
+define ('MSG_REWARD_CLAIMING_BOTTOM_NOTE', 'By clicking \'continue\', you acknowledge that you understand that you are contributing to a work.');
+
+// Vote Us Section
+define ('MSG_VOTE_US', 'Vote Us!');
+define ('MSG_VOTES_NUMBER', 'Votes');
 
 //define ('', '');
 ?>

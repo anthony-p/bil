@@ -35,7 +35,7 @@ global $coupon_url;
     <script language=JavaScript src='/scripts/jquery/pagination.js'></script>
     <script language=JavaScript src='/scripts/jquery/sort.js'></script>
     <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
-    <script language=JavaScript src='/ckeditor/ckeditor.js'></script>
+<!--    <script language=JavaScript src='/ckeditor/ckeditor.js'></script>-->
 
     <style type="text/css">
         <!--
@@ -494,9 +494,12 @@ global $coupon_url;
             </div>
         </li>
     </ul>
-    <div class="text_support">
-        <p>You support San Geronimo Valley Comunity Ceneter</p>
-    </div>
+
+    <?php if (isset($campaignName)): ?>
+        <div class="text_support">
+            <a href="/<?=$campaignPName?>"><p><?=MSG_YOU_SUPPORT?> <?=$campaignName?></p></a>
+        </div>
+    <?php endif; ?>
 </div>
 </header><!-- end header -->
 <!--    <div id="topBanner"><a href="/content_pages.php?page=about_us"><img src="/images/bil_banner3.gif" alt="Shop Main Street not Wall Street" border="0"></a></div>-->

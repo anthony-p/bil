@@ -8,7 +8,7 @@
 
 $(document).ready(function() {
 
-    var vendors = ["www.dpbolvw.net", "www.anrdoezrs.net", "www.jdoqocy.com", "doubleclick.net", "amazon.com", "linksynergy.com", "indiebound.org"];
+    var vendors = ["www.dpbolvw.net", "www.anrdoezrs.net", "www.jdoqocy.com", "amazon.com", "linksynergy.com", "www.pntrac.com","www.tkqlhce.com","www.kqzyfj.com","affiliate.buy.com"];
 
     $.each(vendors, function(index, value){
         $("a[href*='"+value+"']").on("click", function(event){

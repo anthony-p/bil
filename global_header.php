@@ -54,7 +54,6 @@ $meta_tags_details = meta_tags($_SERVER['PHP_SELF'], intval($parentId), intval($
 
 
 
-
 $page_specific_title='Bring It Local | Fund raising for community based non-profits';
 if (!isset($_GET['page']))
     $_GET['page'] = '';
@@ -120,7 +119,6 @@ $page_specific_title='Founder\'s Letter | Bring It Local';
 if ($huh == '/loyalty-program.php'){
 $page_specific_title='Community Loyalty Program | Bring It Local';
 }
-
 
 #echo $_SERVER['SCRIPT_NAME'];
 #$template->set('page_title', $meta_tags_details['title']);
@@ -287,8 +285,8 @@ else if ($session->value('user_id'))
 	{
 		$menu_box_content = '<div align="center" class="errormessage">' . MSG_YOU_HAVE_UNREAD_MESSAGES . '</div>';
 	}
-	
-	$menu_box_content	.= $template->process('header_members_menu.tpl.php');
+//	$menu_box_content	.= $template->process('header_members_menu.tpl.php');
+
 	$template->set('menu_box_content', $menu_box_content);
 }
 
@@ -390,6 +388,21 @@ if ($session->value('user_id'))
 } else {
     $template->set('current_user_identifier', '');
 }
+
+if (isset($_COOKIE['np_userid'])){
+    $campaignId = $_COOKIE['np_userid'];
+    $sql_select = $db->query("SELECT * FROM np_users WHERE user_id = ".$campaignId);
+    $result =  mysql_fetch_array($sql_select);
+    /*foreach ($result as $key => $value){
+        var_dump("[$key] = $value");
+    }*/
+    $campaignName = $result['project_title'];
+    $campaignPName = $result['username'];
+    $template->set('campaignName', $campaignName);
+    $template->set('campaignPName', $campaignPName);
+
+}
+
 $template_output .= $template->process('header.tpl.php');
 
 if (is_dir('install'))

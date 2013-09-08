@@ -252,9 +252,13 @@ global $coupon_url;
               </li>
             </ul>
 
-             <div class="text_support">
-                 <p>You support San Geronimo Valley Comunity Ceneter</p>
-             </div>
+            <?php var_dump("OK".$campaignName) ?>
+            aaaaa
+            <?php if (isset($campaignName)): ?>
+                <div class="text_support">
+                    <a href="/<?=$campaignPName?>"><p><?=MSG_YOU_SUPPORT?> <?=$campaignName?></p></a>
+                </div>
+            <?php endif; ?>
         </div>
     </header><!-- end header -->
     <div id="main"><div class="innerContainer">
