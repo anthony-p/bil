@@ -566,6 +566,7 @@ function clearBannerContent()
                 <div class="clear"></div>
             </div>
           <div class="paypal_block">
+              <span class="checked"></span>
               <div class="account-row">
                   <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS;?> *</label>
                   <input name="pg_paypal_email" type="text" id="pg_paypal_email"

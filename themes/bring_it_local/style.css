@@ -3561,3 +3561,5 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 #directPayment{background: rgba(201, 198, 198,0.2);}
 #members_area #directPayment th{background: url("img/check_mark.png") 0 0 no-repeat;padding-left: 37px;}
+.paypal_block{float:left; width: 100%;background: rgba(201, 198, 198,0.2); position: relative;}
+.paypal_block .checked{background: url("img/check_mark.png") 0 0 no-repeat; position: absolute;display: block; width:32px ; height:32px;top:0; left: -32px; ;}
