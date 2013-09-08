@@ -1186,7 +1186,7 @@ function clearBannerContent()
 			<?= $projectRewards->newRewardForm($reward); ?>
 			<?php endforeach;?>
         </div>
-		<button onclick="addNewRewardToProject(); return false;"><?= MSG_ADD_REWARD; ?></button>
+		<button onclick="addNewRewardToProject(); return false;" id="add_new_reward_button"><?= MSG_ADD_REWARD; ?></button>
         <div class="next">
             <!--<input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE_CHANGES?>" class="save_btn"/>-->
             <div class="right">

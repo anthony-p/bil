@@ -3490,7 +3490,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #steps form .reward_block  .account-row textarea {max-width: 340px; min-width: 340px;}
 .reward_shipping_address_required {margin: 0 10px 15px 217px;}
 .rewards-actions {float: right; margin-top: 4px;}
-#steps form button.delete-reward, #steps form button.delete-reward:hover, #steps form button.validate-reward, #steps form button.validate-reward:hover {width: 24px; height: 24px; border-radius: 0; box-shadow: none; padding: 0; margin-right: 7px; display: inline-block;}
+#steps form button#add_new_reward_button {border:none; outline:none; border-radius: 10px; color: #ffffff; display: block; cursor:pointer; margin: 0px auto; clear:both; padding: 7px 25px; text-shadow: 0 1px 1px #777; font-weight:bold; font-family:"Century Gothic", Helvetica, sans-serif; font-size:22px; box-shadow:0px 0px 3px #aaa; background:#4797ED;}
+#steps form button.delete-reward, #steps form button.delete-reward:hover, #steps form button.validate-reward, #steps form button.validate-reward:hover {border:none; outline:none; width: 24px; height: 24px; border-radius: 0; padding: 0; margin-right: 7px; display: inline-block;}
 #steps form button.delete-reward, #steps form button.delete-reward:hover { background: url('img/trash.png');}
 #steps form button.validate-reward, #steps form button.validate-reward:hover { background: url('img/validate.png');}
 .account-row span.reward_currency {float: right; font-size: 18px; clear: none; margin-top: 1px; margin-right: 10px; font-weight: bold;}
