@@ -382,7 +382,7 @@ define ('MSG_YOUR_CONTRIBUTION', 'Your contribution:');
 define ('MSG_REWARD_TOTAL', 'Total:');
 define ('MSG_HOW_MUCH_YOU_WOULD_LIKE_TO_CONTRIBUTE', 'How much would you like to contribute?');
 define ('MSG_REWARD_CONTACT_INFORMATION', 'Contact Information');
-define ('MSG_REWARD_SHIPPING_INFORMATION', 'Shipping information');
+define ('MSG_REWARD_SHIPPING_INFORMATION', 'Shipping Information');
 define ('MSG_REWARD_EMAIL', 'Email');
 define ('MSG_REWARD_SHIPPING_INFORMATION_NAME', 'Name');
 define ('MSG_REWARD_SHIPPING_INFORMATION_COUNTRY', 'Country');

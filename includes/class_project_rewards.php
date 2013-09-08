@@ -242,6 +242,13 @@ class projectRewards extends custom_field {
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------
+	function getRewardCampaignOwnerDetails($reward_id){
+		$sql = "select u.first_name, u.last_name, u.email from bl2_users u, np_users c, project_rewards r where c.probid_user_id = u.id and r.project_id = c.user_id and r.id='".$reward_id."'";
+		$result = $this->get_sql_row($sql);
+		return $result;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
 	function getUser($user_id){
 		$sql = "select * from bl2_users where id='".$user_id."'";
 		$result = $this->get_sql_row($sql);
@@ -253,6 +260,10 @@ class projectRewards extends custom_field {
 		if(!empty($transferred_amount)){
 			$reward_id = $_SESSION['reward_claiming']['reward_id'];
 			$reward = $this->getReward($reward_id);
+			$contribution_details = $_SESSION['reward_claiming'];
+			$campaign_owner = $this->getRewardCampaignOwnerDetails($reward_id);
+			global $setts;
+			include('language/' . $setts['site_lang'] . '/mails/reward_claimed_notification.php');
 			if($transferred_amount >= $reward['amount']){
 				$this->query("update project_rewards set given_number = given_number + 1 where id='".$reward_id."'");
 			}
