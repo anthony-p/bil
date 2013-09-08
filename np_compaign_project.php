@@ -160,7 +160,15 @@ if (!$session->value('user_id')) {
             echo json_encode(array("response" => "error"));
 
         }
-	} elseif($_POST['save_project_rewards'] == true){	
+	} elseif($_POST['save_project_rewards'] == true){
+		if(isset($_POST["reward_estimated_delivery_date"]) && !empty($_POST["reward_estimated_delivery_date"])){
+			$estimated_delivery_date = strtotime($_POST["reward_estimated_delivery_date"]);
+			if($estimated_delivery_date == 0){
+				echo json_encode(array("response" => MSG_REWARD_ESTIMATED_DELIVERY_DATE_INVALID));
+				exit;
+			}
+		}
+		
 		$reward['project_id'] = isset($_POST["campaign_id"]) ? $_POST["campaign_id"] : '';
 		$reward['amount'] = isset($_POST["reward_amount"]) ? $_POST["reward_amount"] : '';
 		$reward['name'] = isset($_POST["reward_name"]) ? $_POST["reward_name"] : '';
@@ -174,6 +182,13 @@ if (!$session->value('user_id')) {
 		$result = $projectRewards->save($reward, $session->value('user_id'));
 		echo json_encode(array("response" => $result));
 	} elseif ($_POST['update_project_rewards'] == true){
+		if(isset($_POST["reward_estimated_delivery_date"]) && !empty($_POST["reward_estimated_delivery_date"])){
+			$estimated_delivery_date = strtotime($_POST["reward_estimated_delivery_date"]);
+			if($estimated_delivery_date == 0){
+				echo json_encode(array("response" => MSG_REWARD_ESTIMATED_DELIVERY_DATE_INVALID));
+				exit;
+			}
+		}
 		$reward['id'] = isset($_POST["rewards_id"]) ? $_POST["rewards_id"] : '';
 		$reward['amount'] = isset($_POST["reward_amount"]) ? $_POST["reward_amount"] : '';
 		$reward['name'] = isset($_POST["reward_name"]) ? $_POST["reward_name"] : '';
