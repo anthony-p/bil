@@ -8,6 +8,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
+<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
 
 <br>
 <table width="100%" border="0" cellpadding="3" cellspacing="2" align="center" class="border">
