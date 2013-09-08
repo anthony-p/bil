@@ -496,7 +496,7 @@ global $coupon_url;
     </ul>
     <?php if (isset($campaignName)): ?>
         <div class="text_support">
-            <p><?=MSG_YOU_SUPPORT?> <?=$campaignName?></p>
+            <a href="/<?=$campaignPName?>"><p><?=MSG_YOU_SUPPORT?> <?=$campaignName?></p></a>
         </div>
     <?php endif; ?>
 </div>

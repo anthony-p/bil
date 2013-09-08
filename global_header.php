@@ -393,8 +393,13 @@ if (isset($_COOKIE['np_userid'])){
     $campaignId = $_COOKIE['np_userid'];
     $sql_select = $db->query("SELECT * FROM np_users WHERE user_id = ".$campaignId);
     $result =  mysql_fetch_array($sql_select);
-    $campaignName = $result['name'];
+    /*foreach ($result as $key => $value){
+        var_dump("[$key] = $value");
+    }*/
+    $campaignName = $result['project_title'];
+    $campaignPName = $result['username'];
     $template->set('campaignName', $campaignName);
+    $template->set('campaignPName', $campaignPName);
 
 }
 
