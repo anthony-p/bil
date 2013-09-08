@@ -252,6 +252,8 @@ global $coupon_url;
               </li>
             </ul>
 
+            <?php var_dump("OK".$campaignName) ?>
+            aaaaa
             <?php if (isset($campaignName)): ?>
                 <div class="text_support">
                     <a href="/<?=$campaignPName?>"><p><?=MSG_YOU_SUPPORT?> <?=$campaignName?></p></a>

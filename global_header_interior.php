@@ -275,7 +275,7 @@ else if ($session->value('user_id'))
 		$menu_box_content = '<div align="center" class="errormessage">' . MSG_YOU_HAVE_UNREAD_MESSAGES . '</div>';
 	}
 	
-	$menu_box_content	.= $template->process('header_members_menu.tpl.php');
+//	$menu_box_content	.= $template->process('header_members_menu.tpl.php');
 	$template->set('menu_box_content', $menu_box_content);
 }
 
@@ -349,6 +349,19 @@ if ($session->value('user_id'))
 }
 
 //var_dump(1); exit;
+if (isset($_COOKIE['np_userid'])){
+    $campaignId = $_COOKIE['np_userid'];
+    $sql_select = $db->query("SELECT * FROM np_users WHERE user_id = ".$campaignId);
+    $result =  mysql_fetch_array($sql_select);
+    /*foreach ($result as $key => $value){
+        var_dump("[$key] = $value");
+    }*/
+    $campaignName = $result['project_title'];
+    $campaignPName = $result['username'];
+    $template->set('campaignName', $campaignName);
+    $template->set('campaignPName', $campaignPName);
+
+}
 $template_output .= $template->process('header.tpl.php');
 
 if (is_dir('install'))
