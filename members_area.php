@@ -5249,7 +5249,6 @@ else
             $form_submitted = FALSE;
 
             if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') {
-                var_dump(-1); exit;
 
                 $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
@@ -5308,7 +5307,9 @@ else
                 }
 
 
+                var_dump(-2);
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
+                var_dump(-3); exit;
                 $_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;
                 $pEmail = isset($_POST['email'])?$_POST['email']:'';
                 $banned_output = check_banned($pEmail, 2);
