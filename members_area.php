@@ -5307,9 +5307,7 @@ else
                 }
 
 
-                var_dump(-2);
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
-                var_dump(-3); exit;
                 $_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;
                 $pEmail = isset($_POST['email'])?$_POST['email']:'';
                 $banned_output = check_banned($pEmail, 2);
