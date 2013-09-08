@@ -26,52 +26,26 @@ if ($session->value('user_id') && $campaign_id)
         $user_voted_email = $projectVotes->getUserEmail();
         $campaign_owner_email = $projectVotes->getCampaignOwnerEmail();
 
-        //send mail to user
-        $text_message = 'Thank you for voting for ' . $campaign_title . ' campaign!';
-        send_mail($user_voted_email, 'Campaign voting', $text_message,
-            'support@bringitlocal.com', null, null, true);
+        $subject = "Campaign voting";
+        $html_message_user = 'Thank you for voting for ' . $campaign_title . ' campaign!';
+        $html_message_owner = 'Your campaign, ' . $campaign_title . ', received a vote!';
 
-        //send mail to campaign owner
-        $text_message = 'Your campaign, ' . $campaign_title . ', received a vote!';
-        send_mail($campaign_owner_email, 'Campaign voting', $text_message,
-            'support@bringitlocal.com', null, null, true);
+        $headers = 'From: Bring It Local <support@bringitlocal.com>' . PHP_EOL .
+            'X-Mailer: PHP-' . phpversion() . PHP_EOL .
+            'Content-type: text/html; charset=iso-8859-1' . PHP_EOL;
 
-//        $mailChimp = new Mailchimp($mailChimpConfig['apiKey']);
-//        var_dump($user_voted_email);
-//        var_dump($campaign_owner_email);
+        $uid = md5(uniqid(time()));
+        $header = "From: Bring It Local <support@bringitlocal.com> \r\n";
+        $header .= "MIME-Version: 1.0\r\n";
+        $header .= "Content-Type: multipart/mixed; boundary=\"".$uid."\"\r\n\r\n";
+        $header .= "This is a multi-part message in MIME format.\r\n";
+        $header .= "--".$uid."\r\n";
+        $header .= "Content-type:text/plain; charset=iso-8859-1\r\n";
+        $header .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+        $header .= "--".$uid."--";
 
-//        try {
-//            $mailChimp->lists->subscribe($mailChimpConfig['listId'],
-//                array(
-//                    'email'     => $user_voted_email
-//                ),
-//                array(
-//                    'EMAIL'     => $user_voted_email,
-//                    'FNAME'     => '',
-//                    'LNAME'     => ''
-//                )
-//            );
-//            $mailChimp->lists->subscribe($mailChimpConfig['listId'],
-//                array(
-//                    'email'     => $campaign_owner_email
-//                ),
-//                array(
-//                    'EMAIL'     => $campaign_owner_email,
-//                    'FNAME'     => '',
-//                    'LNAME'     => ''
-//                )
-//            );
-//        } catch (Mailchimp_Error $e){
-//
-//            // TODO: MailChimp error processing
-//
-//            if ($e->getMessage()) {
-//                //echo '<br>' . $e->getMessage() . '<br>';
-//            } else {
-//                // unrecognized error
-//            }
-//
-//        }
+        mail($user_voted_email, $subject, $html_message_user, $header) ;
+        mail($campaign_owner_email, $subject, $html_message_owner, $header) ;
     }
 }
 
