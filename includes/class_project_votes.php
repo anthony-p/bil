@@ -6,6 +6,7 @@
  *
  */
 
+require_once("config.php");
 require_once("class_custom_field.php");
 require_once(__DIR__ . '/../language/english/site.lang.php');
 
@@ -83,6 +84,29 @@ class projectVotes extends custom_field
     /**
      * @return string
      */
+    function getUserEmail()
+    {
+        if ($this->user_id) {
+            return $this->getField("SELECT email FROM bl2_users WHERE id=" . $this->user_id);
+        }
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    function getCampaignOwnerEmail()
+    {
+        if ($this->campaign_id) {
+            return $this->getField("SELECT bl2_users.email FROM bl2_users RIGHT JOIN np_users
+            ON (bl2_users.id=np_users.probid_user_id) WHERE np_users.user_id=" . $this->campaign_id);
+        }
+        return '';
+    }
+
+    /**
+     * @return string
+     */
     function getVotesElement()
     {
         if ($this->user_id && $this->campaign_id) {
@@ -104,10 +128,13 @@ class projectVotes extends custom_field
     {
         $success = false;
         if ($this->user_id && $this->campaign_id) {
-            $this->query("INSERT INTO project_votes(user_id, campaign_id, date) VALUES(" .
-                $this->user_id . ", " . $this->campaign_id . ", " . time() . ")");
-            $this->votes_element = '<h5>' . $this->getVotesByCampaign() . ' ' . MSG_VOTES_NUMBER . '</h5>';
-            $success = true;
+            $voted = $this->checkVoted();
+            if (!$voted) {
+                $this->query("INSERT INTO project_votes(user_id, campaign_id, date) VALUES(" .
+                    $this->user_id . ", " . $this->campaign_id . ", " . time() . ")");
+                $this->votes_element = '<h5>' . $this->getVotesByCampaign() . ' ' . MSG_VOTES_NUMBER . '</h5>';
+                $success = true;
+            }
         }
         return array(
             "success" => $success,

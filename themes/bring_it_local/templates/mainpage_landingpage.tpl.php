@@ -29,11 +29,13 @@ $featured_columns = 14;
     $(document).ready(function(){
         $("#vote_us").click(function(){
             var campaign_id = <?php echo (isset($compaigns["user_id"]) && $compaigns["user_id"]) ? $compaigns["user_id"] : '0'; ?>;
+            var campaign_title = ' + <?php echo (isset($compaigns["project_title"]) && $compaigns["project_title"]) ? $compaigns["project_title"] : ''; ?> + ';
             if (campaign_id) {
                 $.ajax({
                     url: "/vote_us.php",
-                    data: {campaign_id: campaign_id},
+                    data: {campaign_id: campaign_id, campaign_title: campaign_title},
                     success: function (result) {
+                        console.log(result);
                         result = jQuery.parseJSON(result);
                         if (result.success) {
                             $("#vote_us_block").html(result.vote_us);
