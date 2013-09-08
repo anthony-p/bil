@@ -5249,6 +5249,7 @@ else
             $form_submitted = FALSE;
 
             if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') {
+                var_dump(-1); exit;
 
                 $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
