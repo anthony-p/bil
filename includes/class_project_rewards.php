@@ -230,7 +230,7 @@ class projectRewards extends custom_field {
 		if(empty($reward_id)) {
 			return "error";
 		}
-		$sql = "select r.*, p.name as campaign_name, p.logo as campaign_logo from project_rewards r, np_users p where r.project_id = p.user_id and id='".$reward_id."'";
+		$sql = "select r.*, p.project_title as campaign_name, p.logo as campaign_logo from project_rewards r, np_users p where r.project_id = p.user_id and id='".$reward_id."'";
 		$result = $this->get_sql_row($sql);
 		return $result;
 	}
