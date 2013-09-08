@@ -548,6 +548,17 @@ while ($query_result =  mysql_fetch_array($project_update_query_result)) {
     $project_updates[] = $query_result;
 
 }
+
+if ($session->value('user_id') && $compaignId)
+{
+    require_once (dirname(__FILE__) . '/includes/class_project_votes.php');
+    $projectVotes = new projectVotes($session->value('user_id'), $compaignId);
+    $vote_us = $projectVotes->getVotesElement();
+    $template->set('vote_us', $vote_us);
+} else {
+    $template->set('vote_us', '');
+}
+
 require_once (dirname(__FILE__) . '/includes/class_project_rewards.php');
 $projectRewards   = new projectRewards();
 $project_rewards = $projectRewards->getAllRewards($compaignId, 'amount');

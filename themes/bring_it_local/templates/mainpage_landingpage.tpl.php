@@ -24,6 +24,28 @@ $featured_columns = 14;
 ?>
 <script src="/scripts/jquery/tabs.min.js"></script>
 <script language=JavaScript src='/scripts/jquery/easyResponsiveTabs.js'></script>
+<script src="../../../scripts/jquery/jquery-1.9.1.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#vote_us").click(function(){
+            var campaign_id = <?php echo (isset($compaigns["user_id"]) && $compaigns["user_id"]) ? $compaigns["user_id"] : '0'; ?>;
+            var campaign_title = ' + <?php echo (isset($compaigns["project_title"]) && $compaigns["project_title"]) ? $compaigns["project_title"] : ''; ?> + ';
+            if (campaign_id) {
+                $.ajax({
+                    url: "/vote_us.php",
+                    data: {campaign_id: campaign_id, campaign_title: campaign_title},
+                    success: function (result) {
+                        console.log(result);
+                        result = jQuery.parseJSON(result);
+                        if (result.success) {
+                            $("#vote_us_block").html(result.vote_us);
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
 
 
 <div class="top-description">
@@ -46,6 +68,11 @@ $featured_columns = 14;
 </div>
 <div class="campaign-content">
     <div class="nav-right">
+        <?php if (isset($vote_us) && $vote_us) : ?>
+            <div class="campaign-details" id="vote_us_block">
+                <?php echo $vote_us; ?>
+            </div>
+        <?php endif; ?>
         <div class="campaign-details">
             <span class="price">$<? echo $compaigns['payment'];?><span> usd</span></span>
             <span class="day">
