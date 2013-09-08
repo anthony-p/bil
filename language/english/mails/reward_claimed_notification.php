@@ -11,7 +11,7 @@ $send = true; // always sent;
 ## text message - editable
 $text_message = 'Dear %1$s,
 
-A new donation has been made for your campaign <b>%2$s</b>. The contributor has claimed this reward in return.
+A new donation has been made for your campaign %2$s. The contributor has claimed this reward in return.
 
 Contribution Summary:
 	- The campaign: %2$s
@@ -20,16 +20,18 @@ Contribution Summary:
 	
 Contact Information:
 	- Email: %5$s
-
-Shipping Information:
-	- Name: %6$s
-	- Country: %7$s
-	- Address 1: %8$s
-	- Address 2: %9$s
-	- City: %10$s
-	- Postal Code: %11$s
-	
-Best Regards,
+';
+if(!empty($contribution_details['name'])){
+	$text_message .= 'Shipping Information:
+		- Name: %6$s
+		- Country: %7$s
+		- Address 1: %8$s
+		- Address 2: %9$s
+		- City: %10$s
+		- Postal Code: %11$s
+	';
+}
+$text_message .= 'Best Regards,
 ';
 
 ## html message - editable
@@ -50,19 +52,20 @@ A new donation has been made for your campaign <b>%2$s</b>. The contributor has 
 <ul>
 	<li>Email: <b>%5$s</b></li>
 </ul>
-<br />
-<u><i>Shipping Information:</i></u>
-<br />
-<ul>
-	<li>Name: <b>%6$s</b></li>
-	<li>Country: <b>%7$s</b></li>
-	<li>Address 1: <b>%8$s</b></li>
-	<li>Address 2: <b>%9$s</b></li>
-	<li>City: <b>%10$s</b></li>
-	<li>Postal Code: <b>%11$s</b></li>
-</ul>
-
-Best Regards,';
+<br />';
+if(!empty($contribution_details['name'])){
+	$html_message .= '<u><i>Shipping Information:</i></u>
+	<br />
+	<ul>
+		<li>Name: <b>%6$s</b></li>
+		<li>Country: <b>%7$s</b></li>
+		<li>Address 1: <b>%8$s</b></li>
+		<li>Address 2: <b>%9$s</b></li>
+		<li>City: <b>%10$s</b></li>
+		<li>Postal Code: <b>%11$s</b></li>
+	</ul>';
+}
+$html_message .= 'Best Regards,';
 
 $campaign_owner_name = $campaign_owner['first_name'].' '.$campaign_owner['last_name'];
 $campaign_owner_email = $campaign_owner['email'];
