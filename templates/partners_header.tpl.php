@@ -8,7 +8,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-
+<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
 
 <?
 global $show_msg;
