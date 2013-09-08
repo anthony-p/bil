@@ -3484,7 +3484,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .reward_block .reward_title {border-bottom: 1px solid #000; font-weight: bold; font-size: 15px; height: 35px; background: #EEE;}
 .reward_block .reward_title .reward_title_label {display: inline-block; margin: 7px;}
 .reward_block .reward_content {padding: 10px; width: 95%; float: left;}
-.reward_block  .account-row label {text-align: right; width: 290px;}
+.reward_block .account-row{width: 100%; padding: 0;}
+.reward_block .account-row label {text-align: right; width: 290px;}
 #steps form .reward_block  .account-row input[type="text"] {width: 330px;}
 #steps form .reward_block  .account-row textarea {max-width: 340px; min-width: 340px;}
 .reward_shipping_address_required {margin: 0 10px 15px 217px;}
