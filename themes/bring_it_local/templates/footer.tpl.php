@@ -34,7 +34,7 @@ global $coupon_url;
 		}else{
 		?>
 
-		<? if ($member_active != 'Active') { ?>
+		<? if (!isset($member_active) || $member_active != 'Active') { ?>
 			<div id="newUserBanner"><a href="<?=process_link('register');?>"><img src="themes/<?=$setts['default_theme'];?>/img/newuser.gif" width="204" height="150" border="0"></a></div>
 		<? } ?>
 		<?

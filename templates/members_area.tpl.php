@@ -15,6 +15,8 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
 
 
+<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
+
 <SCRIPT LANGUAGE="JavaScript">
 <!--
 //myPopup = '';
@@ -63,8 +65,8 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     };
 })(jQuery);
 
-var np_userid_update=$.cookie("np_userid_update");
-var np_username_update=$.cookie("np_username_update");
+var np_userid_update=jQuery.cookie("np_userid_update");
+var np_username_update=jQuery.cookie("np_username_update");
 if (np_userid_update!=null && np_userid_update!="" && np_username_update!=null && np_username_update!="")
 {
     $('.nonprofit').children('a').attr('href','/'+np_username_update);

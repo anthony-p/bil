@@ -35,9 +35,11 @@ include_once('includes/grab_video_thumbnail.php');
 <!--    });-->
 <!--</script>-->
 <? echo (!empty($no_results_message)) ? $no_results_message : '<br>';?>
+<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
 <script>
 
-    $(document).ready(function(){
+
+    jQuery(document).ready(function(){
 
         $(".description").each(function(){
             var $minHeight=72;
