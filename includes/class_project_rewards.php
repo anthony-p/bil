@@ -264,6 +264,7 @@ class projectRewards extends custom_field {
 			$campaign_owner = $this->getRewardCampaignOwnerDetails($reward_id);
 			global $setts;
 			include('language/' . $setts['site_lang'] . '/mails/reward_claimed_notification.php');
+			include('language/' . $setts['site_lang'] . '/mails/reward_claimed_contributor_confirmation.php');
 			if($transferred_amount >= $reward['amount']){
 				$this->query("update project_rewards set given_number = given_number + 1 where id='".$reward_id."'");
 			}
