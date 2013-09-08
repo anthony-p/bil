@@ -35,7 +35,7 @@ $featured_columns = 14;
                     url: "/vote_us.php",
                     data: {campaign_id: campaign_id, campaign_title: campaign_title},
                     success: function (result) {
-                        console.log(result);
+//                        console.log(result);
                         result = jQuery.parseJSON(result);
                         if (result.success) {
                             $("#vote_us_block").html(result.vote_us);
