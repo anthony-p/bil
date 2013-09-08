@@ -284,7 +284,7 @@ class projectRewards extends custom_field {
 		<div class="reward_contribute_display">
 			<?php if(!empty($reward['campaign_logo'])):?>
 			<div class="reward_contribute_summary_image">
-				<img src="<?= $reward['campaign_logo']?>" width="162"></img>
+				<img src="<?= $reward['campaign_logo']?>" width="162" height="162"></img>
 			</div>
 			<?php endif; ?>
 			<div class="reward_contribute_summary_details<?= empty($reward['campaign_logo']) ? ' reward_contribute_summary_details_full_width' : ''?>">
