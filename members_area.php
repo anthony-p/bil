@@ -5308,6 +5308,7 @@ else
 
 
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
+                $_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;
                 $pEmail = isset($_POST['email'])?$_POST['email']:'';
                 $banned_output = check_banned($pEmail, 2);
                 if ($banned_output['result'])
@@ -5374,8 +5375,9 @@ else
                     pg_paypal_email='" . $_POST["pg_paypal_email"] . "',
                     pg_paypal_first_name='" . $_POST["pg_paypal_first_name"] . "',
                     pg_paypal_last_name='" . $_POST["pg_paypal_last_name"] . "',
-                    keep_alive='" . $_POST["keep_alive"] . "',
-                    keep_alive_days='" . $_POST["keep_alive_days"] . "',
+                    confirmed_paypal_email='" . $_POST["confirmed_paypal_email"] . "',
+                    keep_alive='" . $keep_alive . "',
+                    keep_alive_days='" . $keep_alive_days . "',
                     pitch_text='" . $pitch_text . "'";
 
                     if (isset($_POST["username"]) && $_POST["username"]) {

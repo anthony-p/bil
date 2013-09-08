@@ -3681,3 +3681,6 @@ CREATE TABLE `project_votes` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
+
+ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `confirmed_paypal_email` INT NULL DEFAULT 0  AFTER `homepage_featured` ;
+

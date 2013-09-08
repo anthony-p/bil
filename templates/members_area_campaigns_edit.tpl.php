@@ -565,8 +565,12 @@ function clearBannerContent()
                 <span><?=MSG_PHONE_EXPL;?></span>
                 <div class="clear"></div>
             </div>
-          <div class="paypal_block">
-              <span class="checked"></span>
+          <?php if (isset($campaign['confirmed_paypal_email']) && $campaign['confirmed_paypal_email']): ?>
+            <div class="paypal_block">
+                <span class="checked"></span>
+          <?php else: ?>
+                    <div>
+          <?php endif; ?>
               <div class="account-row">
                   <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS;?> *</label>
                   <input name="pg_paypal_email" type="text" id="pg_paypal_email"
