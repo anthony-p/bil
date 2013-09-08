@@ -2,13 +2,22 @@
 require_once ( dirname(__FILE__).'/../../../../includes/class_project_rewards.php');
 ?>
 <script>
-    $(document).ready(function(){
-		$(".donate_now_button").click(function(){
-			alert("This feature has not been implemented yet.");
+    function claimProjectReward(id){
+		$.ajax({
+			url:"/np_compaign_reward",
+			type: "POST",
+			data: {claim_project_reward: true, rewards_id: id},
+			success: function(response){
+				claimProjectRewardContent = jQuery.parseJSON(response).response;
+				$("#rewards_tab_content").html(claimProjectRewardContent);
+			},
+			error:function(){
+				alert("Error");
+			}
 		});
-	});
+	}
 </script>
-<aside class="announcement rewards_tab">
+<aside class="announcement rewards_tab" id="rewards_tab_content">
 	<?php if(count($projectRewards) > 0){ ?>
 		<h1><?= MSG_SELECT_A_REWARD; ?></h1> <h2><?= MSG_FOR_YOUR_CONTRIBUTION; ?></h2>
 		<?php
@@ -22,7 +31,7 @@ require_once ( dirname(__FILE__).'/../../../../includes/class_project_rewards.ph
 				<div class="reward_bottom">
 					<div class="reward_claimed_number"><?= $project_reward['given_number']; ?> <?= MSG_CLAIMED_NUMBER_LABEL; ?></div>
 		<?php if($available) : ?>
-					<div class="donate_now_button">
+					<div class="donate_now_button" onclick="claimProjectReward(<?= $project_reward['id']; ?>)">
 						<span class="uper"><?= MSG_DONATE_NOW; ?></span>
 						<span><?= MSG_MAKE_DONATION; ?></span>
 					</div>

@@ -26,7 +26,7 @@ class projectRewards extends custom_field {
 						return MSG_REWARD_NAME_EXIST;
 					}
 					
-					$this->query("INSERT into project_rewards(project_id, amount, name, description, ".(empty($reward['available_number']) ? "" : "available_number, ").(empty($reward['estimated_delivery_date']) ? "" : "estimated_delivery_date, ")."shipping_address_required) values ('".$reward['project_id']."', '".$reward['amount']."', '".$reward['name']."', '".$reward['description']."', ".(empty($reward['available_number']) ? "" : "'".$reward['available_number']."', ").(empty($reward['estimated_delivery_date']) ? "" : "FROM_UNIXTIME('".strtotime($reward['estimated_delivery_date'])."'), ")."'".$reward['shipping_address_required']."')");
+					$this->query("INSERT into project_rewards(project_id, amount, name, short_description, description, ".(empty($reward['available_number']) ? "" : "available_number, ").(empty($reward['estimated_delivery_date']) ? "" : "estimated_delivery_date, ")."shipping_address_required) values ('".$reward['project_id']."', '".$reward['amount']."', '".$reward['name']."', '".$reward['short_description']."', '".$reward['description']."', ".(empty($reward['available_number']) ? "" : "'".$reward['available_number']."', ").(empty($reward['estimated_delivery_date']) ? "" : "FROM_UNIXTIME('".strtotime($reward['estimated_delivery_date'])."'), ")."'".$reward['shipping_address_required']."')");
 					$reward['id'] = mysql_insert_id();
 					return $this->newRewardForm($reward);
 				} else {
@@ -52,7 +52,7 @@ class projectRewards extends custom_field {
 				if($this->isNameUsed($reward['name'], '', $reward['id'])){
 					return MSG_REWARD_NAME_EXIST;
 				}
-				$this->query("UPDATE project_rewards SET amount='".$reward['amount']."', name='".$reward['name']."', description='".$reward['description']."', available_number=".$reward['available_number'].", estimated_delivery_date=".$reward['estimated_delivery_date'].", shipping_address_required='".$reward['shipping_address_required']."' WHERE id='".$reward['id']."'");
+				$this->query("UPDATE project_rewards SET amount='".$reward['amount']."', name='".$reward['name']."', short_description='".$reward['short_description']."', description='".$reward['description']."', available_number=".$reward['available_number'].", estimated_delivery_date=".$reward['estimated_delivery_date'].", shipping_address_required='".$reward['shipping_address_required']."' WHERE id='".$reward['id']."'");
 				return MSG_REWARD_SAVED;
 			} else {
 				return MSG_ACCESS_DENIED;
@@ -86,7 +86,7 @@ class projectRewards extends custom_field {
 		}
 		return $randomString;
 	}
-
+	
 	//--------------------------------------------------------------------------------------------------------------------------
 	function newRewardForm($reward = array()){
 		$reward_id = isset($reward['id']) ? $reward['id'] : $this->generateRandomString();
@@ -114,7 +114,13 @@ class projectRewards extends custom_field {
 					<input type="text" id="reward_name_<?= $reward_id; ?>" value="<?= @$reward['name']?>" size="40" />
 				</div>
 				<div class="account-row">
-					<label> <?=MSG_REWARD_DESCRIPTION;?> *</label>
+					<label> <?=MSG_REWARD_SHORT_DESCRIPTION;?> *</label>
+					<textarea class="reward_description" id="reward_short_description_<?= $reward_id; ?>"><?= @$reward['short_description']?></textarea>
+				</div>
+				<div class="account-row">
+					<label> <?=MSG_REWARD_DESCRIPTION;?></label>
+				</div>
+				<div class="account-row">
 					<textarea class="reward_description" id="reward_description_<?= $reward_id; ?>"><?= @$reward['description']?></textarea>
 				</div>
 				<div class="account-row">
@@ -218,5 +224,222 @@ class projectRewards extends custom_field {
 		}
 		return $project_rewards;
 	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getReward($reward_id){
+		if(empty($reward_id)) {
+			return "error";
+		}
+		$sql = "select r.*, p.name as campaign_name, p.logo as campaign_logo from project_rewards r, np_users p where r.project_id = p.user_id and id='".$reward_id."'";
+		$result = $this->get_sql_row($sql);
+		return $result;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getRewardCampaignId($reward_id){
+		$sql = "select project_id from project_rewards where id='".$reward_id."'";
+		return $this->getField($sql);
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getRewardCampaignOwnerDetails($reward_id){
+		$sql = "select u.first_name, u.last_name, u.email from bl2_users u, np_users c, project_rewards r where c.probid_user_id = u.id and r.project_id = c.user_id and r.id='".$reward_id."'";
+		$result = $this->get_sql_row($sql);
+		return $result;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getUser($user_id){
+		$sql = "select * from bl2_users where id='".$user_id."'";
+		$result = $this->get_sql_row($sql);
+		return $result;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function finalizeRewardClaiming($transferred_amount = '') {
+		if(!empty($transferred_amount)){
+			$reward_id = $_SESSION['reward_claiming']['reward_id'];
+			$reward = $this->getReward($reward_id);
+			$contribution_details = $_SESSION['reward_claiming'];
+			$campaign_owner = $this->getRewardCampaignOwnerDetails($reward_id);
+			global $setts;
+			include('language/' . $setts['site_lang'] . '/mails/reward_claimed_notification.php');
+			include('language/' . $setts['site_lang'] . '/mails/reward_claimed_contributor_confirmation.php');
+			if($transferred_amount >= $reward['amount']){
+				$this->query("update project_rewards set given_number = given_number + 1 where id='".$reward_id."'");
+			}
+		}
+		unset($_SESSION['reward_claiming']);
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------
+	function getClaimRewardForm($reward_id, $user_id=""){
+		$reward = $this->getReward($reward_id);
+		if(!empty($user_id)){
+			$user = $this->getUser($user_id);
+		}
+		$required_mark = ($reward['shipping_address_required'] == 1) ? '<div class="mandatory_star">*</div>' : '';
+		ob_start();
+		?>
+		<div class="reward_contribute_display">
+			<?php if(!empty($reward['campaign_logo'])):?>
+			<div class="reward_contribute_summary_image">
+				<img src="<?= $reward['campaign_logo']?>" width="162"></img>
+			</div>
+			<?php endif; ?>
+			<div class="reward_contribute_summary_details<?= empty($reward['campaign_logo']) ? ' reward_contribute_summary_details_full_width' : ''?>">
+				<div class="reward_contribute_summary_title"><?= MSG_YOUR_CONTRIBUTION_SUMMARY; ?></div>
+				<div class="reward_contribute_summary_values">
+					<div class="reward_contribute_summary_compaign_title"><?= $reward['campaign_name'];?></div>
+					<div class="reward_contribute_summary_value_line">
+						<label><?= MSG_REWARD_CONTRIBUTOR_NAME; ?></label>
+						<div id="contributor_name_value"><?= empty($user) ? "- - - - - -" : $user['first_name'].' '.$user['last_name'] ?></div>
+					</div>
+					<div class="reward_contribute_summary_value_line">
+						<label><?= MSG_YOUR_REWARD; ?></label>
+						<div><?= $reward['name']; ?></div>
+					</div>
+					<div class="reward_contribute_summary_value_line">
+						<label><?= MSG_YOUR_CONTRIBUTION; ?></label>
+						<div id="contribution_amount_value">$<?= $reward['amount']; ?></div>
+					</div>
+					<div class="reward_contribute_summary_value_line reward_contribute_summary_total">
+						<label><?= MSG_REWARD_TOTAL; ?></label>
+						<div id="contribution_total_amount">$<?= $reward['amount']; ?></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="reward_contribute_display">
+			<div class="reward_contribute_title"><?= MSG_HOW_MUCH_YOU_WOULD_LIKE_TO_CONTRIBUTE; ?></div>
+			<div class="reward_contribute_section">
+				<label>$</label>
+				<input type="text" id="reward_contribution_value" value="<?= $reward['amount']; ?>"></input>
+			</div>
+			<div class="reward_contribute_title"><?= MSG_YOUR_REWARD; ?></div>
+			<div class="reward_contribute_section">
+				<div class="reward_contribute_amount">$<?= $reward['amount']; ?>+</div>
+				<div class="reward_contribute_details">
+					<div class="reward_contribute_name"><?= $reward['name']; ?></div>
+					<div class="reward_contribute_claimed"><?= $reward['given_number']; ?> <?= MSG_CLAIMED_NUMBER_LABEL; ?></div>
+					<div class="reward_contribute_description"><?= $reward['short_description']; ?></div>
+				</div>
+			</div>
+		</div>
+		<div class="reward_contribute_display">
+			<div class="reward_contribute_title"><?= MSG_REWARD_CONTACT_INFORMATION?></div>
+			<div class="reward_contribute_section">
+				<label><?= MSG_REWARD_EMAIL ?> <div class="mandatory_star">*</div></label>
+				<input type="text" id="reward_contribution_email" value="<?= $user['email']?>"></input>
+			</div>
+		</div>
+		<div class="reward_contribute_display">
+			<div class="reward_contribute_title"><?= MSG_REWARD_SHIPPING_INFORMATION ?></div>
+			<div class="reward_contribute_section" id="shipping_information_section">
+				<div>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_NAME ?> <?= $required_mark; ?></label>
+					<input type="text" id="reward_contribution_name" value="<?= $user['first_name'].' '.$user['last_name'] ?>"></input>
+				</div>
+				<div>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_COUNTRY ?> <?= $required_mark; ?></label>
+					<input type="text" id="reward_contribution_country" value="<?= $user['country'] ?>"></input>
+				</div>
+				<div>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1 ?> <?= $required_mark; ?></label>
+					<input type="text" id="reward_contribution_address1" value="<?= $user['address'] ?>"></input>
+				</div>
+				<div>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_2 ?> <?= $required_mark; ?></label>
+					<input type="text" id="reward_contribution_address2" value=""></input>
+				</div>
+				<div>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_CITY ?> <?= $required_mark; ?></label>
+					<input type="text" id="reward_contribution_city" value="<?= $user['city'] ?>"></input>
+				</div>
+				<div>
+					<label><?= MSG_REWARD_SHIPPING_INFORMATION_POSTAL_CODE;?> <?= $required_mark; ?></label>
+					<input type="text" id="reward_contribution_postal_code" value="<?= $user['postal_code'] ?>"></input>
+				</div>
+			</div>
+		</div>
+		<button id="reward_claiming_continue_button">continue</Button>
+		<div id="reward_claiming_bottom_note"><?= MSG_REWARD_CLAIMING_BOTTOM_NOTE; ?></div>
+		<script>
+			$("#reward_claiming_continue_button").click(function(){
+				if (!isEmailFieldValid()) {
+					alert('Please provide a valid email address');
+					return false;
+				}
+				<?php if($reward['shipping_address_required'] == 1) : ?>
+				shipping_information_missing = false;
+				$('#shipping_information_section :text').each(function (){
+					if ($.trim(this.value) == ""){
+						shipping_information_missing = true;
+					}
+				});
+				if(shipping_information_missing){
+					alert("All shipping information fields are required.");
+					return false;
+				}
+				<?php endif; ?>
+				$.ajax({
+					url:"/np_compaign_reward",
+					type: "POST",
+					data: {make_donation_for_reward: true, reward_id: <?= $reward_id; ?>, contribution: $("#reward_contribution_value").val(), email: $("#reward_contribution_email").val(), name: $("#reward_contribution_name").val(), country: $("#reward_contribution_country").val(), address1: $("#reward_contribution_address1").val(), address2: $("#reward_contribution_address2").val(), city: $("#reward_contribution_city").val(), postal_code: $("#reward_contribution_postal_code").val()},
+					success: function(response){
+						$("#rewards_tab_content").html(jQuery.parseJSON(response).response);
+					},
+					error:function(){
+						alert("Error");
+					}
+				});
+			});
+			$("#reward_contribution_name").keyup(function(){
+				value = $("#reward_contribution_name").val();
+				$("#contributor_name_value").html($.trim(value) == "" ? "- - - - - -" : value);
+			});
+			$("#reward_contribution_value").keyup(function(){
+				value = $("#reward_contribution_value").val();
+				if($.isNumeric(value) && value >= 0.01){
+					$("#contribution_amount_value").html("$"+value);
+					$("#contribution_total_amount").html("$"+value);
+				} else {
+					$("#contribution_amount_value").html("$"+<?= $reward['amount']; ?>);
+					$("#contribution_total_amount").html("$"+<?= $reward['amount']; ?>);
+				}
+			});
+			$("#reward_contribution_value").blur(function(){
+				value = $("#reward_contribution_value").val();
+				if(!$.isNumeric(value) || value < 0.01){
+					alert("The contribution amount must be a number greater than 0.01");
+					$("#contribution_amount_value").html("$"+<?= $reward['amount']; ?>);
+					$("#contribution_total_amount").html("$"+<?= $reward['amount']; ?>);
+				} else {
+					if(value < <?= $reward['amount']; ?>){
+						alert("The amount you have chosen is less than what is required for this reward which is $<?= $reward['amount']?>\nYou can still donate this amount but you will not receive the reward.");
+					}
+					$("#contribution_amount_value").html("$"+value);
+					$("#contribution_total_amount").html("$"+value);
+				}
+			});
+			$("#reward_contribution_email").blur(function(){
+				if (!isEmailFieldValid()) {
+					alert('Please provide a valid email address');
+				}
+			});
+			function isEmailFieldValid(){
+				email = $("#reward_contribution_email").val();
+				regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				return regex.test(email);
+			}
+		</script>
+		<?php
+		
+		$content = ob_get_contents();
+		ob_end_clean();
+		
+		return $content;
+	}
+	
 	//--------------------------------------------------------------------------------------------------------------------------
 }

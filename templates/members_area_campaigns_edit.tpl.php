@@ -330,8 +330,8 @@ function validateProjectReward(id){
 		return false;
 	}
 	
-	if(tinymce.get('reward_description_'+id).getContent() == ""){
-		alert("<?= MSG_REWARD_DESCRIPTION_MUST_BE_SPECIFIED ?>");
+	if($("#reward_short_description_"+id).val() == ""){
+		alert("<?= MSG_REWARD_SHORT_DESCRIPTION_MUST_BE_SPECIFIED ?>");
 		return false;
 	}
 	
@@ -348,7 +348,7 @@ function updateProjectReward (id){
 		$.ajax({
 			url:"/np_compaign_project",
 			type: "POST",
-			data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: tinymce.get('reward_description_'+id).getContent(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+			data: {update_project_rewards: true, rewards_id: id, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_short_description: $("#reward_short_description_"+id).val(), reward_description: tinymce.get('reward_description_'+id).getContent(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
 			success: function(response){
 				alert(jQuery.parseJSON(response).response);
 			},
@@ -364,7 +364,7 @@ function saveProjectReward (id){
 		$.ajax({
 			url:"/np_compaign_project",
 			type: "POST",
-			data: {save_project_rewards: true, campaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_description: tinymce.get('reward_description_'+id).getContent(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
+			data: {save_project_rewards: true, campaign_id: <?= $campaign['user_id']; ?>, reward_amount: $("#reward_amount_"+id).val(), reward_name: $("#reward_name_"+id).val(), reward_short_description: $("#reward_short_description_"+id).val(), reward_description: tinymce.get('reward_description_'+id).getContent(), reward_available_number: $("#reward_available_number_"+id).val(), reward_estimated_delivery_date: $("#reward_estimated_delivery_date_"+id).val(), reward_available_number: $("#reward_available_number_"+id).val(), reward_shipping_address_required: $("#reward_shipping_address_required_"+id).is(':checked')},
 			success: function(response){
 				response = jQuery.parseJSON(response).response;
 				if(response.substr(0, 4) == '<div'){
@@ -565,33 +565,35 @@ function clearBannerContent()
                 <span><?=MSG_PHONE_EXPL;?></span>
                 <div class="clear"></div>
             </div>
-            <div class="account-row">
-                <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS;?> *</label>
-                <input name="pg_paypal_email" type="text" id="pg_paypal_email"
-                       value="<?=$campaign['pg_paypal_email'];?>" size="40" />
-                <span><?=MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL;?></span>
-            </div>
-            <div class="account-row">
-                <label><?=MSG_PG_PAYPAL_FIRST_NAME;?> *</label>
-                <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name"
+          <div class="paypal_block">
+              <div class="account-row">
+                  <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS;?> *</label>
+                  <input name="pg_paypal_email" type="text" id="pg_paypal_email"
+                         value="<?=$campaign['pg_paypal_email'];?>" size="40" />
+                  <span><?=MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL;?></span>
+              </div>
+              <div class="account-row">
+                  <label><?=MSG_PG_PAYPAL_FIRST_NAME;?> *</label>
+                  <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name"
 
-                       value="<?=$campaign['pg_paypal_first_name'];?>" size="40" />
+                         value="<?=$campaign['pg_paypal_first_name'];?>" size="40" />
 
-                <span><?=MSG_PG_PAYPAL_FIRST_NAME_EXPL;?></span>
+                  <span><?=MSG_PG_PAYPAL_FIRST_NAME_EXPL;?></span>
 
-            </div>
+              </div>
 
-            <div class="account-row">
+              <div class="account-row">
 
-                <label><?=MSG_PG_PAYPAL_LAST_NAME;?> *</label>
+                  <label><?=MSG_PG_PAYPAL_LAST_NAME;?> *</label>
 
-                <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name"
+                  <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name"
 
-                       value="<?=$campaign['pg_paypal_last_name'];?>" size="40" />
+                         value="<?=$campaign['pg_paypal_last_name'];?>" size="40" />
 
-                <span><?=MSG_PG_PAYPAL_LAST_NAME_EXPL;?></span>
+                  <span><?=MSG_PG_PAYPAL_LAST_NAME_EXPL;?></span>
 
-            </div>
+              </div>
+          </div>
 
 
 
