@@ -71,16 +71,18 @@
             </div>
         <div class="donate_block">
             <div id="contribution_qty">
-                <input type="text" name="amount" id="amount" />  <b>(USD)</b><br />
+                <input type="text" name="amount" id="amount" />  <b>(USD)</b><br /><br/>
+                <div class="clear"></div>
                 <input type="checkbox" name="community" id="community" style="width: auto;float: left;"/>
                 <label style="float: left;width: 240px;margin: 4px 0 0 8px;">Would you like to add $5 toward the Community Fund? </label><br />
-                <br/>
+                <div class="clear"></div>
+                <br/><br/>
                 <input type="text" name="community_amount" id="community_amount" disabled="disabled" value="5" />  <b>(USD)</b>
                 <input type="hidden" name="np_user_id" id="np_user_id" value="<?php echo isset($np_user_id) ? $np_user_id : ''; ?>" />
             </div>
             <div class="clear"></div>
             <br /> <br />
-            <input id="submit" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="float: right">
+            <input id="submit" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 
         </div>
         </div>
