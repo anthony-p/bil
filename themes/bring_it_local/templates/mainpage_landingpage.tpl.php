@@ -187,11 +187,22 @@ $featured_columns = 14;
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#Tab').easyResponsiveTabs({
-            type: 'default', //Types: default, vertical, accordion
-            width: 'auto', //auto or any width like 600px
-            fit: true   // 100% fit in a container
-        });
+
+        if ($.fn.easyResponsiveTabs){
+            $('#Tab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true   // 100% fit in a container
+            });
+        } else {
+            $.getScript("/scripts/jquery/easyResponsiveTabs.js", function(data, textStatus, jqxhr) {
+                $('#Tab').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion
+                    width: 'auto', //auto or any width like 600px
+                    fit: true   // 100% fit in a container
+                });
+            });
+        }
 
     });
 </script>
