@@ -275,7 +275,7 @@ else if ($session->value('user_id'))
 		$menu_box_content = '<div align="center" class="errormessage">' . MSG_YOU_HAVE_UNREAD_MESSAGES . '</div>';
 	}
 	
-//	$menu_box_content	.= $template->process('header_members_menu.tpl.php');
+	$menu_box_content	.= $template->process('header_members_menu.tpl.php');
 	$template->set('menu_box_content', $menu_box_content);
 }
 
