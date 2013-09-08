@@ -260,13 +260,13 @@ class projectRewards extends custom_field {
 		if(!empty($transferred_amount)){
 			$reward_id = $_SESSION['reward_claiming']['reward_id'];
 			$reward = $this->getReward($reward_id);
-			$contribution_details = $_SESSION['reward_claiming'];
-			$campaign_owner = $this->getRewardCampaignOwnerDetails($reward_id);
-			global $setts;
-			include('language/' . $setts['site_lang'] . '/mails/reward_claimed_notification.php');
-			include('language/' . $setts['site_lang'] . '/mails/reward_claimed_contributor_confirmation.php');
 			if($transferred_amount >= $reward['amount']){
 				$this->query("update project_rewards set given_number = given_number + 1 where id='".$reward_id."'");
+				$contribution_details = $_SESSION['reward_claiming'];
+				$campaign_owner = $this->getRewardCampaignOwnerDetails($reward_id);
+				global $setts;
+				include('language/' . $setts['site_lang'] . '/mails/reward_claimed_notification.php');
+				include('language/' . $setts['site_lang'] . '/mails/reward_claimed_contributor_confirmation.php');
 			}
 		}
 		unset($_SESSION['reward_claiming']);
@@ -367,7 +367,7 @@ class projectRewards extends custom_field {
 		<script>
 			$("#reward_claiming_continue_button").click(function(){
 				if (!isEmailFieldValid()) {
-					alert('Please provide a valid email address');
+					alert("<?= MSG_REWARD_CLAIMING_PROVIDE_VALID_EMAIL_ADDRESS; ?>");
 					return false;
 				}
 				<?php if($reward['shipping_address_required'] == 1) : ?>
@@ -378,7 +378,7 @@ class projectRewards extends custom_field {
 					}
 				});
 				if(shipping_information_missing){
-					alert("All shipping information fields are required.");
+					alert("<?= MSG_REWARD_CLAIMING_ALL_SHIPPING_FIELD_ARE_REQUIRED; ?>");
 					return false;
 				}
 				<?php endif; ?>
@@ -411,12 +411,12 @@ class projectRewards extends custom_field {
 			$("#reward_contribution_value").blur(function(){
 				value = $("#reward_contribution_value").val();
 				if(!$.isNumeric(value) || value < 0.01){
-					alert("The contribution amount must be a number greater than 0.01");
+					alert("<?= MSG_REWARD_CLAIMING_CONTRIBUTION_AMOUNT_MUST_VALID; ?>");
 					$("#contribution_amount_value").html("$"+<?= $reward['amount']; ?>);
 					$("#contribution_total_amount").html("$"+<?= $reward['amount']; ?>);
 				} else {
 					if(value < <?= $reward['amount']; ?>){
-						alert("The amount you have chosen is less than what is required for this reward which is $<?= $reward['amount']?>\nYou can still donate this amount but you will not receive the reward.");
+						alert("<?= MSG_REWARD_CLAIMING_CONTRIBUTION_IS_LESS_THAN_WHAT_IS_REQUIRED . '$'.$reward['amount'].'\n'.MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION;?>");
 					}
 					$("#contribution_amount_value").html("$"+value);
 					$("#contribution_total_amount").html("$"+value);
@@ -424,7 +424,7 @@ class projectRewards extends custom_field {
 			});
 			$("#reward_contribution_email").blur(function(){
 				if (!isEmailFieldValid()) {
-					alert('Please provide a valid email address');
+					alert("<?= MSG_REWARD_CLAIMING_PROVIDE_VALID_EMAIL_ADDRESS; ?>");
 				}
 			});
 			function isEmailFieldValid(){
