@@ -42,7 +42,9 @@ if (in_array($_REQUEST['page'], $pages_array_src))
 }
 
 $message_content = '<br>'.
-'<script language="javascript">
+'
+    <script language=JavaScript src="/scripts/jquery/jquery-1.9.1.js"></script>
+<script language="javascript">
 	var ie4 = false;
 	if(document.all) { ie4 = true; }
 
