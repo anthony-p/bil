@@ -3535,7 +3535,6 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .resp-tab-content aside.rewards_tab .reward_contribute_section input {width: 250px;}
 .resp-tab-content aside.rewards_tab #reward_claiming_continue_button{background: #F21B43; color: #fff; border: none; border-radius: 10px; width: 150px; height: 35px; float: right; font-size: 18px; font-weight: bold;}
 .resp-tab-content aside.rewards_tab #reward_claiming_bottom_note {font-style: italic; font-size: 12px; float: left; margin: 12px 0 0 10px;}
-.resp-tab-content aside.rewards_tab .redirecting_indicator {margin: 30px 260px;}
 
 /*contributions page*/
 #members_area .contributions_page {width:900px; margin: 0 auto; padding-top: 30px; position: relative;}
@@ -3559,9 +3558,10 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .subscribe_form input[type="text"]{text-transform:capitalize;width: 180px; height: 26px; border: 1px solid #C4C0C0;font:12px "OpenSans";
     border-radius: 4px;  box-shadow:inset 0 0 6px rgba(134, 130, 130, 0.8); padding: 0 10px;}
 .subscribe_form a{display: block;float: left; letter-spacing: .025em; text-align: center;
-    color: #fff !important;  text-transform: uppercase;  text-shadow: 1px 0px 0px rgba(0, 0, 0,0.5) !important; background: #F39F04; font: 15px/27px "OpenSans-SemiBold" !important;padding: 0 10px; height: 27px;border-radius: 4px; margin-top: 10px; width: 180px;}
+    color: #fff !important;  text-transform: uppercase;  text-shadow: 1px 0px 0px rgba(0, 0, 0,0.5) !important; background: #F39F04; font: 15table_headerpx/27px "OpenSans-SemiBold" !important;padding: 0 10px; height: 27px;border-radius: 4px; margin-top: 10px; width: 180px;}
 
 #directPayment{background: rgba(201, 198, 198,0.2);}
 #members_area #directPayment th{background: url("img/check_mark.png") 0 0 no-repeat;padding-left: 37px;}
 .paypal_block{float:left; width: 100%;background: rgba(201, 198, 198,0.2); position: relative;  padding:10px 0;}
-.paypal_block .checked{background: url("img/check_mark.png") 0 0 no-repeat; position: absolute;display: block; width:32px ; height:32px;top:0; left:2px; ;}
+span.checked{background: url("img/check_mark.png") 0 0 no-repeat; display: block; width:32px ; height:32px;}
+.paypal_block .checked{position: absolute;top:0; left:2px; ;}

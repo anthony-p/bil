@@ -7,6 +7,7 @@
             <td><h4>Campaign</h4></td>
             <td><h4>Amount</h4></td>
             <td><h4>Visibility</h4></td>
+            <td><h4>paypal Status</h4></td>
         </tr>
         <?php foreach ($info_contribution_campaigns as $_campaign) : ?>
             <tr>
@@ -26,6 +27,8 @@
                         <?php  echo "Anonymous"; ?>
                     <?php endif;?>
                 </td>
+
+                <td><span class="checked"></span></td>
             </tr>
         <?php endforeach;?>
     </table>
