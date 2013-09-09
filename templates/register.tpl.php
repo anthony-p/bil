@@ -8,6 +8,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
+<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
 <script language="javascript">
     function checkEmail() {
         if (document.registration_form.email_check.value==document.registration_form.email.value) document.registration_form.email_img.style.display="inline";
