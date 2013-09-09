@@ -28,7 +28,7 @@
                     <?php endif;?>
                 </td>
 
-                <td><span class="checked"></span></td>
+                <td><span class="paypal_checked"></span></td>
             </tr>
         <?php endforeach;?>
     </table>
