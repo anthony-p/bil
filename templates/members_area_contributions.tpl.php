@@ -28,7 +28,12 @@
                     <?php endif;?>
                 </td>
 
-                <td><span class="paypal_checked"></span></td>
+                <td>
+<!--                    --><?php //var_dump($_campaign["confirmed_paypal_email"]); ?>
+                    <?php if (isset($_campaign["confirmed_paypal_email"]) && $_campaign["confirmed_paypal_email"]): ?>
+                        <span class="paypal_checked"></span>
+                    <?php endif; ?>
+                </td>
             </tr>
         <?php endforeach;?>
     </table>
