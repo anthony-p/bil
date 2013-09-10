@@ -7,8 +7,6 @@
  */
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
-var_dump('user');
-
 $subject = "Campaign voting";
 $html_message_user = 'Thank you for voting for ' . $campaign_title . ' campaign!';
 

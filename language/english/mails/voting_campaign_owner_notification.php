@@ -7,8 +7,6 @@
  */
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
-var_dump('campaign owner');
-
 $subject = "Campaign voting";
 $html_message_owner = 'Your campaign, ' . $campaign_title . ', received a vote!';
 
