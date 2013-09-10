@@ -25,28 +25,38 @@ if (isset($_POST["ammount"]) && !empty($_POST["ammount"])) {
 }
 
 if (isset($_GET["np_userid"]) && !empty($_GET["np_userid"])) {
-    $user_id = $_GET["np_userid"];
+    $np_user_id = $_GET["np_userid"];
 }
 
 
-if (!isset($user_id) || !$user_id) {
-    $user_id = $_COOKIE["np_userid"];
+if (!isset($np_user_id) || !$np_user_id) {
+    $np_user_id = $_COOKIE["np_userid"];
 }
 
-if (!$user_id)
+if (!$np_user_id)
 {
     header_redirect('index.php');
 }
 
+$user_id = isset($_SESSION["probid_user_id"]) ? $_SESSION["probid_user_id"] : 0;
+if (!$user_id) {
+    $user_id = isset($_COOKIE["user_id"]) ? $_COOKIE["user_id"] : 0;
+}
+
+$user = $db->get_sql_row(
+    "SELECT id, cfc_donated  FROM bl2_users WHERE bl2_users.id=" . $user_id
+);
+
 $campaign = $db->get_sql_row(
-    "SELECT end_date, active, logo, banner, description, pg_paypal_email, name, project_title  FROM np_users WHERE np_users.user_id=" . $user_id
+    "SELECT end_date, active, logo, banner, description, pg_paypal_email, name, project_title  FROM np_users WHERE np_users.user_id=" . $np_user_id
 );
 
 if (!$campaign || $campaign['active'] == 2 || ($campaign['end_date']-time()) <= 0 )
     header("Location: /",TRUE,301);
 
+$template->set('user', $user);
 $template->set('campaign', $campaign);
-$template->set('np_user_id', $user_id);
+$template->set('np_user_id', $np_user_id);
 $template->change_path('templates/');
 $template_output .= $template->process('donate.tpl.php');
 
