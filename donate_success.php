@@ -34,6 +34,10 @@ if(isset($_SESSION['reward_claiming'])){
 	$projectRewards->finalizeRewardClaiming($transferred_amount);
 }
 
+if(isset($_SESSION['cfc_donated']) && $_SESSION['cfc_donated'] && $user_id){
+    $db->query("UPDATE bl2_users SET cfc_donated=1  WHERE id=" . $user_id);
+}
+
 //$select_query = "SELECT payment FROM np_users WHERE
 //				user_id=" . $np_user_id;
 //$update_query = "UPDATE np_users SET payment=" . $total_amount . "  WHERE

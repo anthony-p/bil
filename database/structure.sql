@@ -3684,3 +3684,6 @@ CREATE TABLE `project_votes` (
 
 ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `confirmed_paypal_email` INT NULL DEFAULT 0  AFTER `homepage_featured` ;
 
+ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `cfc` INT NULL DEFAULT 0  AFTER `confirmed_paypal_email` ;
+
+ALTER TABLE `devbr0_auction`.`bl2_users` ADD COLUMN `cfc_donated` INT NULL DEFAULT 0  AFTER `confirmed_paypal_email` ;

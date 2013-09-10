@@ -43,9 +43,9 @@ class projectVotes extends custom_field
 
     function checkDonated()
     {
-        if ($this->user_id && $this->campaign_id) {
+        if ($this->user_id) {
             $donated = $this->getField("SELECT count(*) FROM funders WHERE user_id=" .
-                $this->user_id . " AND campaign_id=" . $this->campaign_id);
+                $this->user_id);
             if ($donated) {
                 return true;
             }
