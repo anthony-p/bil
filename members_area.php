@@ -596,8 +596,10 @@ else
 
                     // ---- MailChimp Subscription ------------------------------------
                     // check if user subscribed & add to MailChimp list
+                    $mailChimp = new Mailchimp($mailChimpConfig['apiKey']);
+
                     if (isset($_POST['newsletter']) && intval($_POST['newsletter'])) {
-                        $mailChimp = new Mailchimp($mailChimpConfig['apiKey']);
+
 
                         try {
                             $mailChimp->lists->subscribe($mailChimpConfig['listId'],
@@ -620,13 +622,14 @@ else
                                 // unrecognized error
                             }
                         }
+
                     } else {
 
                         // unsubscribe member from list
 
                         try {
 
-                            $MailChimp->lists->unsubscribe($mailChimpConfig['listId'], array('email' => $_POST['email']));
+                            $mailChimp->lists->unsubscribe($mailChimpConfig['listId'], array('email' => $_POST['email']));
 
                         } catch (Mailchimp_Error $e) {
                             // TODO: MailChimp error processing
