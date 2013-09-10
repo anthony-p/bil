@@ -3682,8 +3682,8 @@ CREATE TABLE `project_votes` (
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 
-ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `confirmed_paypal_email` INT NULL DEFAULT 0  AFTER `homepage_featured` ;
+ALTER TABLE `np_users` ADD COLUMN `confirmed_paypal_email` INT NULL DEFAULT 0  AFTER `homepage_featured` ;
 
-ALTER TABLE `devbr0_auction`.`np_users` ADD COLUMN `cfc` INT NULL DEFAULT 0  AFTER `confirmed_paypal_email` ;
+ALTER TABLE `np_users` ADD COLUMN `cfc` INT NULL DEFAULT 0  AFTER `confirmed_paypal_email` ;
 
-ALTER TABLE `devbr0_auction`.`bl2_users` ADD COLUMN `cfc_donated` INT NULL DEFAULT 0  AFTER `confirmed_paypal_email` ;
+ALTER TABLE `bl2_users` ADD COLUMN `cfc_donated` INT NULL DEFAULT 0  AFTER `confirmed_paypal_email` ;
