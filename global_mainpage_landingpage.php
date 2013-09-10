@@ -502,6 +502,7 @@ if ($layout['r_recent_nb'] && $setts['enable_reverse_auctions'])
 
 
 $funders_result = $db->query( "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) WHERE funders.campaign_id=" . $np_userid . " ORDER BY create_date ASC");
+var_dump("SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) WHERE funders.campaign_id=" . $np_userid . " ORDER BY create_date ASC");
 
 $funders = array();
 
