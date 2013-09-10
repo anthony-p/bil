@@ -36,7 +36,8 @@ $bring_it_local_amount = ($rate * $amount) + $community_amount;
 $beneficiar_amount = $amount + $community_amount;
 //$beneficiar_amount = $amount - $bring_it_local_amount;
 
-$_SESSION["transferred_amount"] = $beneficiar_amount;;
+$_SESSION["transferred_amount"] = $beneficiar_amount;
+$_SESSION["cfc_donated"] = true;
 
 //$bring_it_local_account = 'rlpc.test1@gmail.com';
 $bring_it_local_account = $result["payment_account"];

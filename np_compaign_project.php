@@ -61,6 +61,33 @@ if (!$session->value('user_id')) {
             $rowSearched = $row;
         }
 
+
+        // --- Send email for all campaign funders -----------------
+
+        // select all founder's id for this campaign
+        $sql_res = $db->query("SELECT * FROM funders WHERE campaign_id ='".intval($_POST['project_id'])."'; ");
+        while ($mysql_row = mysql_fetch_array($sql_res)) {
+            $funders[] = $mysql_row;
+        }
+        $funders_id = array();
+        foreach($funders as $k=>$v){
+            $funders_id[] = $v['user_id'];
+        }
+
+        $sql_res = $db->query("SELECT * FROM bl2_users WHERE id IN(".implode(',', $funders_id).");");
+        while ($mysql_row = mysql_fetch_array($sql_res)) {
+            $funders_users[] = $mysql_row;
+        }
+        $funders_emails = array();
+        foreach($funders_users as $k=>$v){
+            $funders_emails[] = $v['email'];
+        }
+
+        include('language/' . $setts['site_lang'] . '/mails/campaign_update_user_notification.php');
+
+        // --- END Send email for all campaign funders ----------------
+
+
         if (!empty($recordId)) {
             echo json_encode(array("response" => true, "id" => $rowSearched['id']));
         } else {

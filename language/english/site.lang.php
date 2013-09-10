@@ -401,5 +401,10 @@ define ('MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION', 'You can still do
 define ('MSG_VOTE_US', 'Vote Us!');
 define ('MSG_VOTES_NUMBER', 'Votes');
 
+
+// Mail Section
+define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_SUBJECT', 'you received a comment on your Bring It Local campaign');
+define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_BODY', 'Your campaign received a comment. Go here to see what someone said about your campaign:');
+
 //define ('', '');
 ?>
