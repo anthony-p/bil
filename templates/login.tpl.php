@@ -9,7 +9,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-
+<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
 <?php if (isset($header_registration_message)) echo $header_registration_message;?>
 <br>
 <?php if (isset($invalid_login_message)) echo $invalid_login_message;?>
