@@ -32,6 +32,7 @@ if($_POST['claim_project_reward'] == true){
 	$result = '	<form id="contribution_form" method="post" action="chained.php">
 					<img src="img/redirecting.gif" alt="redirecting ..." class="redirecting_indicator" />
 					<input type="hidden" name="amount" id="amount" value="'.$_POST['contribution'].'" />
+					<input type="hidden" name="community_amount" id="community_amount" value="'.$_POST['contribution_to_community_fund'].'" />
 					<input type="hidden" name="np_user_id" id="np_user_id" value="'.$campaign_id.'" />
 				</form>
 				<script>

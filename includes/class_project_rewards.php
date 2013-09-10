@@ -387,11 +387,21 @@ class projectRewards extends custom_field {
 					alert("<?= MSG_REWARD_CLAIMING_ALL_SHIPPING_FIELD_ARE_REQUIRED; ?>");
 					return false;
 				}
+				
+				if($("#reward_contribution_community_amount_enable").is(":checked")){
+					contribution_to_community_fund = $("#reward_contribution_community_amount").val();
+					if(!$.isNumeric(contribution_to_community_fund) || contribution_to_community_fund < 0.01){
+						contribution_to_community_fund = 5;
+					}
+				} else {
+					contribution_to_community_fund = 0;
+				}
+				
 				<?php endif; ?>
 				$.ajax({
 					url:"/np_compaign_reward",
 					type: "POST",
-					data: {make_donation_for_reward: true, reward_id: <?= $reward_id; ?>, contribution: $("#reward_contribution_value").val(), email: $("#reward_contribution_email").val(), name: $("#reward_contribution_name").val(), country: $("#reward_contribution_country").val(), address1: $("#reward_contribution_address1").val(), address2: $("#reward_contribution_address2").val(), city: $("#reward_contribution_city").val(), postal_code: $("#reward_contribution_postal_code").val()},
+					data: {make_donation_for_reward: true, reward_id: <?= $reward_id; ?>, contribution: $("#reward_contribution_value").val(), contribution_to_community_fund: contribution_to_community_fund, email: $("#reward_contribution_email").val(), name: $("#reward_contribution_name").val(), country: $("#reward_contribution_country").val(), address1: $("#reward_contribution_address1").val(), address2: $("#reward_contribution_address2").val(), city: $("#reward_contribution_city").val(), postal_code: $("#reward_contribution_postal_code").val()},
 					success: function(response){
 						$("#rewards_tab_content").html(jQuery.parseJSON(response).response);
 					},
