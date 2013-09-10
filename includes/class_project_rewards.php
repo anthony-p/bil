@@ -315,6 +315,12 @@ class projectRewards extends custom_field {
 			<div class="reward_contribute_section">
 				<label>$</label>
 				<input type="text" id="reward_contribution_value" value="<?= $reward['amount']; ?>"></input>
+				<div style="margin-top: 15px;">
+				<input type="checkbox" id="reward_contribution_community_amount_enable" style="width: auto;float: left;"/>
+                <label style="width: 361px;margin-left: 8px; float: left;"><?= MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND ?></label><br />
+                </div>
+				<label>$</label>
+                <input type="text" id="reward_contribution_community_amount" disabled="disabled" value="5.00" />
 			</div>
 			<div class="reward_contribute_title"><?= MSG_YOUR_REWARD; ?></div>
 			<div class="reward_contribute_section">
@@ -397,6 +403,13 @@ class projectRewards extends custom_field {
 			$("#reward_contribution_name").keyup(function(){
 				value = $("#reward_contribution_name").val();
 				$("#contributor_name_value").html($.trim(value) == "" ? "- - - - - -" : value);
+			});
+			$("#reward_contribution_community_amount_enable").click(function(){
+				if($("#reward_contribution_community_amount_enable").is(":checked")){
+					$("#reward_contribution_community_amount").removeAttr("disabled");
+				} else {
+					$("#reward_contribution_community_amount").attr("disabled", "disabled");
+				}
 			});
 			$("#reward_contribution_value").keyup(function(){
 				value = $("#reward_contribution_value").val();

@@ -397,6 +397,7 @@ define ('MSG_REWARD_CLAIMING_ALL_SHIPPING_FIELD_ARE_REQUIRED', 'All shipping inf
 define ('MSG_REWARD_CLAIMING_CONTRIBUTION_AMOUNT_MUST_VALID', 'The contribution amount must be a number greater than 0.01');
 define ('MSG_REWARD_CLAIMING_CONTRIBUTION_IS_LESS_THAN_WHAT_IS_REQUIRED', 'The amount you have chosen is less than what is required for this reward which is');
 define ('MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION', 'You can still donate this amount but you will not receive the reward.');
+define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND', 'Would you like to add $5 toward the Community Fund?');
 
 // Vote Us Section
 define ('MSG_VOTE_US', 'Vote Us!');
