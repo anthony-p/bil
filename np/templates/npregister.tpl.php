@@ -396,7 +396,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <option value="Artistic: art gallerie">Artistic: art gallery</option>
         <option value="Artistic: writers' organization">Artistic: writers' organization</option>
         <option value="Artistic: youth music group">Artistic: youth music group </option>
-        <option value="Other">Other </option>
+<!--        <option value="Other">Other </option>-->
         </select>
         <input type="hidden" name="tax_account_type" type="radio" value="1" />
         <span><?=MSG_REGISTER_AS_DESC;?></span>
