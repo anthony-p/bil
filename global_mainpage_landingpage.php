@@ -507,8 +507,7 @@ if ($layout['r_recent_nb'] && $setts['enable_reverse_auctions'])
 //var_dump("SELECT logo, banner  FROM np_users WHERE user_id ='" . $np_userid . "'");die;
 
 
-
-$funders_result = $db->query( "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) WHERE funders.campaign_id=" . $np_userid);
+$funders_result = $db->query( "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) WHERE funders.campaign_id=" . $np_userid . " ORDER BY create_date DESC");
 
 $funders = array();
 

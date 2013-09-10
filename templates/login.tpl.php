@@ -17,7 +17,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 
 <div class="login-cont">
-    
+
    <div class="log-form">
        <div class="left">
            <h2> <?=MSG_NEW_TO;?> <?=$setts['sitename'];?>? <?=MSG_REGISTRATION_MSG;?></h2>

@@ -552,7 +552,7 @@ if ($session->value('user_id') && (isset($_GET["campaign_id"]) && $_GET["campaig
 
 
 
-$funders_result = $db->query( "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) WHERE funders.campaign_id=" . $np_userid);
+$funders_result = $db->query( "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) WHERE funders.campaign_id=" . $np_userid . " ORDER BY create_date DESC");
 
 $funders = array();
 
@@ -619,14 +619,6 @@ if (isset($compaignData["probid_user_id"]) && $compaignData["probid_user_id"] ==
     $menuTemplate->set('compaignId',$compaignId);
 
     /* == == == == == == == == == == == == == == == == == == == == == == ==*/
-
-
-
-
-
-
-
-
 
     $template->set("cComments",$menuTemplate->process("comments.tpl.php"));
 

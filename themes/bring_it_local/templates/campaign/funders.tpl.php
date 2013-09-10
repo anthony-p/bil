@@ -55,7 +55,7 @@
                                 $time .= 'ago';
                             echo $time;
                         } else {
-                            echo date("d-m-Y H:m" , $funder["created_at"]);
+                            echo date("m-d-Y H:m" , $funder["created_at"]);
                         }
                         ?>
                     </span>
