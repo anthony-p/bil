@@ -22,6 +22,31 @@ if (count($_POST) > 0) {
     $sql = "INSERT INTO  `project_comment` (`id`, `user_id`, `project_id`, `parrent_id`, `comment`, `create_at` ) VALUES (NULL, '$user_id', '$compaignID', '', '$comment', '".time()."')";
     $result_user = mysql_query($sql, $link);
 
+
+    // send update to owner
+
+    include_once($fileExtension . 'language/' . DEFAULT_DB_LANGUAGE . '/site.lang.php');
+
+    $sql = "SELECT * FROM np_users  WHERE user_id = '".intval($compaignID)."';";
+    $sql_res = mysql_query($sql, $link);
+    $row = mysql_fetch_array($sql_res);
+
+    $sql = "SELECT * FROM bl2_users WHERE id = '".intval($row['probid_user_id'])."';";
+    $sql_res = mysql_query($sql, $link);
+    $userinfo = mysql_fetch_array($sql_res);
+
+    $camp_url = $_SERVER["HTTP_REFERER"];
+
+    include('../language/' . $setts['site_lang'] . '/mails/campaign_comment_owner_notification.php');
+
+
+//    echo "<br><pre>"; print_r($row); echo "</pre><br>";
+//    echo "<br><pre>";
+//    print_r(MSG_REWARD_EMAIL);
+//    echo "</pre><br>";
+
+
+
     header("Location: ".$_SERVER["HTTP_REFERER"]);
 
 } else
