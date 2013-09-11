@@ -339,19 +339,48 @@ else
 		{
 			$template->set('register_post_url', 'npregister.php');
 			$template->set('proceed_button', GMSG_REGISTER_BTN);
-			$template->set('user_details', $_POST);
+
+            if (isset($_POST) && count($_POST)) {
+                $template->set('user_details', $_POST);
+            } else {
+                $u_details = $db->fetch_array($db->query("SELECT * FROM bl2_users WHERE id='" . intval($session->value('user_id')) . "';"));
+
+                preg_match("/\\(([\\d]+)\\)(.*)/uis", $u_details['phone'], $u_phone);
+                // check if phone number not recognized - pulls empty array.
+                if (!count($u_phone)) $u_phone = array(1=>'', 2=>'');
+
+                $user_details = array(
+                    'name'      => $u_details['first_name'] ." ". $u_details['last_name'],
+                    'address'   => $u_details['address'],
+                    'city'      => $u_details['city'],
+                    'zip_code'  => $u_details['postal_code'],
+                    'phone_a'   => $u_phone[1],
+                    'phone_b'   => $u_phone[2],
+                    'tax_company_name'  => $u_details['organization'],
+                    'pg_paypal_email'   => $u_details['pg_paypal_email'],
+                    'pg_paypal_first_name'  => $u_details['pg_paypal_first_name'],
+                    'pg_paypal_last_name'   => $u_details['pg_paypal_last_name']
+                );
+                $template->set('user_details', $user_details);
+            }
 
 			$post_country = (isset($_POST['country']) && $_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
-				
+
+            if ( !count($_POST) && intval($u_details['country']) ) {
+                $post_country = intval($u_details['country']);
+            }
+
 			$template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
 
             $template->set("project_category",getProjectCategoryList());
 
             if (isset($_POST['state']))
                 $pState = $_POST['state'];
-            else
-                $pState = '';
+            else {
+                $pState = $u_details['state'];
+            }
+
 			$template->set('state_box', $tax->states_box('state', $pState, $post_country));
 
 #			$template->set('birthdate_box', $user->birthdate_box($_POST));		
