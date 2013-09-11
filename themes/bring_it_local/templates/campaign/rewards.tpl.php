@@ -3,16 +3,31 @@ require_once ( dirname(__FILE__).'/../../../../includes/class_project_rewards.ph
 ?>
 <script>
     function claimProjectReward(id){
-		$.ajax({
-			url:"/np_compaign_reward",
-			type: "POST",
-			data: {claim_project_reward: true, rewards_id: id},
-			success: function(response){
-				claimProjectRewardContent = jQuery.parseJSON(response).response;
-				$("#rewards_tab_content").html(claimProjectRewardContent);
-			},
-			error:function(){
-				alert("Error");
+		$( "#dialog-confirm" ).dialog({
+			resizable: true,
+			width: 580,
+			modal: true,
+			open: function() { $(".ui-dialog-titlebar-close").hide(); },
+			buttons: {
+				"<?= MSG_LOGIN_BUTTON ?>": function() {
+					$(this).dialog("close");
+					window.location = "/login.php";
+				},
+				"<?= MSG_CONTINUE_WITHOUT_LOGIN ?>": function() {
+					$(this).dialog("close");
+					$.ajax({
+						url:"/np_compaign_reward",
+						type: "POST",
+						data: {claim_project_reward: true, rewards_id: id},
+						success: function(response){
+							claimProjectRewardContent = jQuery.parseJSON(response).response;
+							$("#rewards_tab_content").html(claimProjectRewardContent);
+						},
+						error:function(){
+							alert("Error");
+						}
+					});
+				}
 			}
 		});
 	}

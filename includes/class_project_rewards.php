@@ -372,7 +372,7 @@ class projectRewards extends custom_field {
 				</div>
 			</div>
 		</div>
-		<button id="reward_claiming_continue_button">continue</Button>
+		<button id="reward_claiming_continue_button"><?= MSG_REWARD_CONTINUE; ?></Button>
 		<div id="reward_claiming_bottom_note"><?= MSG_REWARD_CLAIMING_BOTTOM_NOTE; ?></div>
 		<script>
 			$("#reward_claiming_continue_button").click(function(){

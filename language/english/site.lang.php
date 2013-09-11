@@ -5,6 +5,11 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 //additions
+define ('MSG_LOGIN_BUTTON', 'login');
+define ('MSG_CONTINUE_WITHOUT_LOGIN', 'continue without logging in');
+define ('MSG_DONATION_LOGIN_INVITATION_POPUP_TITLE', 'Would you like to login?');
+define ('MSG_DONATION_LOGIN_INVITATION', 'If you login to the site before making this donation, you\'ll earn a vote in how the Community Fund gets used this month.');
+define ('MSG_REWARD_CONTINUE', 'continue');
 define ('MSG_YOUR_CONTRIBUTION_TO_COMMUNITY_FUND', 'Your contribution to the community fund:');
 define ('MSG_PLEASE_SEND', 'Please send me updates');
 define ('MSG_PAYPAL_SETTINGS', 'Paypal Settings');

@@ -25,6 +25,10 @@ $featured_columns = 14;
 <script src="/scripts/jquery/tabs.min.js"></script>
 <script language=JavaScript src='/scripts/jquery/easyResponsiveTabs.js'></script>
 <script src="../../../scripts/jquery/jquery-1.9.1.js"></script>
+
+<script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>
+<link type="text/css" rel="stylesheet" href="/css/jquery-ui.css">
+
 <script>
     $(document).ready(function(){
         $("#vote_us").click(function(){
@@ -206,3 +210,6 @@ $featured_columns = 14;
 
     });
 </script>
+<div id="dialog-confirm" title="<?= MSG_DONATION_LOGIN_INVITATION_POPUP_TITLE ?>">
+<p style="margin: 20px"><?= MSG_DONATION_LOGIN_INVITATION ?></p>
+</div>
