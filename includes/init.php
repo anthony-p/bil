@@ -42,7 +42,9 @@ $currentTime = time();
 $allowLanguage = array(
     "en" => "english",
     "fr" => "french",
-    "de" => "german"
+    "de" => "german",
+     "it" => "italian",
+      "sp" => "spanish"
 );
 
 if (isset($_COOKIE['language']) && isset($allowLanguage[$_COOKIE['language']]))
