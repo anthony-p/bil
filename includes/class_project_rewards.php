@@ -303,6 +303,10 @@ class projectRewards extends custom_field {
 						<label><?= MSG_YOUR_CONTRIBUTION; ?></label>
 						<div id="contribution_amount_value">$<?= $reward['amount']; ?></div>
 					</div>
+					<div class="reward_contribute_summary_value_line">
+						<label><?= MSG_YOUR_CONTRIBUTION_TO_COMMUNITY_FUND; ?></label>
+						<div id="contribution_to_community_amount_value">$0.00</div>
+					</div>
 					<div class="reward_contribute_summary_value_line reward_contribute_summary_total">
 						<label><?= MSG_REWARD_TOTAL; ?></label>
 						<div id="contribution_total_amount">$<?= $reward['amount']; ?></div>
@@ -414,13 +418,22 @@ class projectRewards extends custom_field {
 				value = $("#reward_contribution_name").val();
 				$("#contributor_name_value").html($.trim(value) == "" ? "- - - - - -" : value);
 			});
-			$("#reward_contribution_community_amount_enable").click(function(){
+			function summaryDetailsRefresh(){
 				if($("#reward_contribution_community_amount_enable").is(":checked")){
 					$("#reward_contribution_community_amount").removeAttr("disabled");
+					value = $("#reward_contribution_community_amount").val();
+					if(!$.isNumeric(value) || value < 0.01){ value = 5.00; }
+					$("#contribution_to_community_amount_value").html("$"+value);
+					value = parseFloat(value) + parseFloat($("#reward_contribution_value").val());
+					$("#contribution_total_amount").html("$"+value.toFixed(2));
 				} else {
 					$("#reward_contribution_community_amount").attr("disabled", "disabled");
+					$("#contribution_to_community_amount_value").html("$0.00");
+					$("#contribution_total_amount").html($("#contribution_amount_value").html());
 				}
-			});
+			}
+			$("#reward_contribution_community_amount_enable").click(summaryDetailsRefresh);
+			$("#reward_contribution_community_amount").keyup(summaryDetailsRefresh);
 			$("#reward_contribution_value").keyup(function(){
 				value = $("#reward_contribution_value").val();
 				if($.isNumeric(value) && value >= 0.01){

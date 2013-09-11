@@ -5,6 +5,7 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 //additions
+define ('MSG_YOUR_CONTRIBUTION_TO_COMMUNITY_FUND', 'Your contribution to the community fund:');
 define ('MSG_PLEASE_SEND', 'Please send me updates');
 define ('MSG_PAYPAL_SETTINGS', 'Paypal Settings');
 define ('MSG_WHATS_THAT', 'What\'s that?');
