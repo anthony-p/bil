@@ -73,7 +73,7 @@
             <div id="contribution_qty">
                 <input type="text" name="amount" id="amount" />  <b>(USD)</b><br />
                 <div class="clear"></div>
-                <?php if (!$user['cfc_donated']): ?>
+                <?php if (!$campaign['cfc']): ?>
                     <input type="checkbox" name="community" id="community" style="width: auto;float: left;"/>
                     <label style="float: left;width: 240px;margin: 4px 0 0 8px;">Would you like to add $5 toward the Community Fund? </label><br />
                     <div class="clear"></div>
