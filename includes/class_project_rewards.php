@@ -391,6 +391,7 @@ class projectRewards extends custom_field {
 					alert("<?= MSG_REWARD_CLAIMING_ALL_SHIPPING_FIELD_ARE_REQUIRED; ?>");
 					return false;
 				}
+				<?php endif; ?>
 				
 				if($("#reward_contribution_community_amount_enable").is(":checked")){
 					contribution_to_community_fund = $("#reward_contribution_community_amount").val();
@@ -401,7 +402,6 @@ class projectRewards extends custom_field {
 					contribution_to_community_fund = 0;
 				}
 				
-				<?php endif; ?>
 				$.ajax({
 					url:"/np_compaign_reward",
 					type: "POST",
