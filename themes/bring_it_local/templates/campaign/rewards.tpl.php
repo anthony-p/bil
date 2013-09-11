@@ -30,7 +30,7 @@ require_once ( dirname(__FILE__).'/../../../../includes/class_project_rewards.ph
 				<div class="reward_description"><?= $project_reward['description']; ?></div>
 				<div class="reward_bottom">
 					<div class="reward_claimed_number"><?= $project_reward['given_number']; ?> <?= MSG_CLAIMED_NUMBER_LABEL; ?></div>
-		<?php if($available) : ?>
+		<?php if($available && $compaignData['active'] != 2 && ($compaignData['end_date']-time())>0) : ?>
 					<div class="donate_now_button" onclick="claimProjectReward(<?= $project_reward['id']; ?>)">
 						<span class="uper"><?= MSG_DONATE_NOW; ?></span>
 						<span><?= MSG_MAKE_DONATION; ?></span>
