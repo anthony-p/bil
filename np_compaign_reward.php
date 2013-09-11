@@ -20,6 +20,7 @@ if($_POST['claim_project_reward'] == true){
 	$_SESSION['reward_claiming'] = array(
 				'reward_id' => $_POST['reward_id'],
 				'contribution' => $_POST['contribution'],
+				'contribution_to_community_fund' => $_POST['contribution_to_community_fund'],
 				'email' => $_POST['email'],
 				'name' => $_POST['name'],
 				'country' => $_POST['country'],
