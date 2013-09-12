@@ -64,6 +64,14 @@ if (!$session->value('user_id')) {
 
         // --- Send email for all campaign funders -----------------
 
+        // get campaign details
+        $sql_res = $db->query("SELECT * FROM np_users WHERE user_id ='". intval($_POST['project_id'])."';");
+        $u_campaign = $db->fetch_array($sql_res);
+
+        // get owners details
+        $sql_res = $db->query("SELECT * FROM bl2_users WHERE id='".intval($u_campaign['probid_user_id'])."';");
+        $u_user = $db->fetch_array($sql_res);
+
         // select all founder's id for this campaign
         $sql_res = $db->query("SELECT * FROM funders WHERE campaign_id ='".intval($_POST['project_id'])."'; ");
         while ($mysql_row = mysql_fetch_array($sql_res)) {
@@ -78,10 +86,7 @@ if (!$session->value('user_id')) {
         while ($mysql_row = mysql_fetch_array($sql_res)) {
             $funders_users[] = $mysql_row;
         }
-        $funders_emails = array();
-        foreach($funders_users as $k=>$v){
-            $funders_emails[] = $v['email'];
-        }
+
 
         include('language/' . $setts['site_lang'] . '/mails/campaign_update_user_notification.php');
 
