@@ -243,7 +243,7 @@ class projectRewards extends custom_field {
 	
 	//--------------------------------------------------------------------------------------------------------------------------
 	function getRewardCampaignOwnerDetails($reward_id){
-		$sql = "select u.first_name, u.last_name, u.email from bl2_users u, np_users c, project_rewards r where c.probid_user_id = u.id and r.project_id = c.user_id and r.id='".$reward_id."'";
+		$sql = "select u.first_name, u.last_name, u.email, c.cfc as is_community_fund from bl2_users u, np_users c, project_rewards r where c.probid_user_id = u.id and r.project_id = c.user_id and r.id='".$reward_id."'";
 		$result = $this->get_sql_row($sql);
 		return $result;
 	}
