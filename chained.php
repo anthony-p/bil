@@ -31,12 +31,12 @@ if (isset($_POST["community_amount"]) && !empty($_POST["community_amount"])) {
 
 //$rate = (double)5 / 100;
 $rate = (double)$result["rate_of_pay"] / 100;
-
-$bring_it_local_amount = ($rate * $amount) + $community_amount;
+$bring_it_local_amount = $rate * $amount;
+$_SESSION["transferred_amount"] = $amount;
 $beneficiar_amount = $amount + $community_amount;
 //$beneficiar_amount = $amount - $bring_it_local_amount;
 
-$_SESSION["transferred_amount"] = $beneficiar_amount;
+$_SESSION["cfc_amount"] = $community_amount;
 $_SESSION["cfc_donated"] = true;
 
 //$bring_it_local_account = 'rlpc.test1@gmail.com';
@@ -56,6 +56,11 @@ $email = '';
 $email = $db->get_sql_field("SELECT np_users.pg_paypal_email FROM np_users, bl2_users WHERE np_users.user_id=" .
     $user_id . " AND np_users.probid_user_id=bl2_users.id", "pg_paypal_email");
 
+$cfc_data = $db->get_sql_row("SELECT user_id, np_users.pg_paypal_email FROM np_users WHERE np_users.cfc=1");
+
+$cfc_account = (isset($cfc_data['pg_paypal_email']) && $cfc_data['pg_paypal_email']) ?
+    $cfc_data['pg_paypal_email'] : 'communityfund@bringitlocal.com';
+$_SESSION['cfc_id'] = (isset($cfc_data['user_id']) && $cfc_data['user_id']) ? $cfc_data['user_id'] : 0;
 
 if (!$email) {
     $email = $db->get_sql_field("SELECT bl2_users.pg_paypal_email FROM np_users, bl2_users WHERE np_users.user_id=" .
@@ -64,12 +69,18 @@ if (!$email) {
 
 $beneficiar_account = $email ? $email : 'markmainsail@bringitlocal.com';
 
-if ($beneficiar_amount >= $bring_it_local_amount) {
+if (($beneficiar_amount >= $bring_it_local_amount) && ($beneficiar_amount >= $community_amount)) {
     $beneficiar_primary = true;
     $bring_it_local_primary = false;
-} else {
+    $cfc_primary = false;
+} elseif (($bring_it_local_amount >= $beneficiar_amount) && ($bring_it_local_amount >= $community_amount)) {
     $beneficiar_primary = false;
     $bring_it_local_primary = true;
+    $cfc_primary = false;
+} else {
+    $beneficiar_primary = false;
+    $bring_it_local_primary = false;
+    $cfc_primary = true;
 }
 
 
@@ -92,14 +103,16 @@ $currencyCode		= "USD";
 //        remove or set to an empty string the array entries for receivers that you do not have
 $receiverEmailArray	= array(
     $bring_it_local_account,
-    $beneficiar_account
+    $beneficiar_account,
+    $cfc_account
 );
 
 // TODO - specify the receiver amounts as the amount of money, for example, '5' or '5.55'
 //        remove or set to an empty string the array entries for receivers that you do not have
 $receiverAmountArray = array(
     $bring_it_local_amount,
-    $beneficiar_amount
+    $beneficiar_amount,
+    $community_amount
 );
 
 // TODO - Set ONLY 1 receiver in the array to 'true' as the primary receiver, and set the
@@ -107,7 +120,8 @@ $receiverAmountArray = array(
 //        make sure that you do NOT specify more values in this array than in the receiverEmailArray
 $receiverPrimaryArray = array(
     $bring_it_local_primary,
-    $beneficiar_primary
+    $beneficiar_primary,
+    $cfc_primary
 );
 
 // TODO - Set invoiceId to uniquely identify the transaction associated with each receiver
