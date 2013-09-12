@@ -5127,7 +5127,7 @@ else
     {
         if ($section == 'main')
         {
-            $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id");
+            $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id ORDER BY funders.created_at DESC");
             $nrElement = mysql_num_rows($campaigns_result);
 
             $per_page = 10;
