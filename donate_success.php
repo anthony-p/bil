@@ -17,6 +17,8 @@ require_once ('includes/class_project_rewards.php');
 
 require ('global_header_interior.php');
 
+$cfc_id = isset($_SESSION["cfc_id"]) ? $_SESSION["cfc_id"] :0;
+$cfc_amount = isset($_SESSION["cfc_amount"]) ? $_SESSION["cfc_amount"] :0;
 $np_user_id = isset($_SESSION["np_userid"]) ? $_SESSION["np_userid"] :0;
 if (!$np_user_id) {
     $np_user_id = isset($_COOKIE["np_userid"]) ? $_COOKIE["np_userid"] : 0;
@@ -53,12 +55,18 @@ $total_amount = $transferred_amount + $user_data['payment'];
 
 $db->query("UPDATE np_users SET payment=" . $total_amount . "  WHERE
 				user_id=" . $np_user_id);
-
 if ($user_id) {
     $db->query(
         "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
             $user_id . ", " . $np_user_id . ", " . $transferred_amount . ", " . time() . ")"
     );
+
+    if ($cfc_id && $cfc_amount) {
+        $db->query(
+            "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
+                $user_id . ", " . $cfc_id . ", " . $cfc_amount . ", " . time() . ")"
+        );
+    }
 }
 
 header("location: /" . $user_data['username']);
