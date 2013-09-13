@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -114,7 +114,7 @@ if (str=="")
   return;
   }
 
-  setCookie('np_userid', str, 0);
+//  setCookie('np_userid', str, 0);
 
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -189,7 +189,7 @@ var http = getXHTTP(); // This executes when the page first loads.
 		function() {
 			$('#tax_company_name').live("change", 
 				function() {
-					setCookie('np_userid',$('#tax_company_name').val(),30);	
+//					setCookie('np_userid',$('#tax_company_name').val(),30);
 
 				}
 			);	
@@ -283,7 +283,7 @@ if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"])) && (empty($user_de
 		$mynpstate = $db->get_sql_field("SELECT state  FROM np_users WHERE user_id ='" . $mynp_userid . "'", state);
 		$mynpzip = $db->get_sql_field("SELECT zip_code  FROM np_users WHERE user_id ='" . $mynp_userid . "'", zip_code);
 #set a new cookie or replace the cookie set by the landing page
-SetCookieLive("np_userid", $mynp_userid,time()+3600*24*90, '/', 'bringitlocal.com');  
+//SetCookieLive("np_userid", $mynp_userid,time()+3600*24*90, '/', 'bringitlocal.com');
 
 
 #set a sales cookie if they have sales so the bar graph shows up in the right column

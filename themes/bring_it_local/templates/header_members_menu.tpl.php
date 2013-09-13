@@ -38,7 +38,7 @@ $np_userid = $db->get_sql_field("SELECT user_id  FROM np_users WHERE username ='
 
 #SetCookie("np_userid", $np_userid,0, '/', 'bringitlocal.com');
 $inThreeMonths = 60 * 60 * 24 * 90 + time();
-SetCookieLive("np_userid", $np_userid,$inThreeMonths, '/', 'bringitlocal.com');
+//SetCookieLive("np_userid", $np_userid,$inThreeMonths, '/', 'bringitlocal.com');
 
 define('np_userid', $np_userid);
 #define('landingpage', 1);
