@@ -38,7 +38,12 @@ else
 	
 	include_once ('npglobal_header.php');
 
-	$banned_output = check_banned($_SERVER['REMOTE_ADDR'], 1);
+    // TinyMCE MoxieManager Override the rootpath for images
+    if (!file_exists(dirname(realpath("../login.php")) . "/uplimg/" . $session->value('user_id'))) mkdir(dirname(realpath("../login.php")) . "/uplimg/" .$session->value('user_id'));
+    $_SESSION['filesystem.rootpath'] = dirname(realpath("../login.php")) . "/uplimg/" . $session->value('user_id');
+
+
+    $banned_output = check_banned($_SERVER['REMOTE_ADDR'], 1);
 
 	if ($banned_output['result'])
 	{

@@ -41,6 +41,11 @@ else
 	$default_landing_section = 'main';
 
 
+    // TinyMCE MoxieManager Override the rootpath for images
+    if ( !file_exists( dirname(__FILE__) . "/uplimg/" . $session->value('user_id') ) ) mkdir(dirname(__FILE__) . "/uplimg/" .$session->value('user_id'));
+    $_SESSION['filesystem.rootpath'] = dirname(__FILE__) . "/uplimg/" . $session->value('user_id');
+
+
 	$page = (!empty($_REQUEST['page'])) ? $_REQUEST['page'] : $default_landing_page;
 	$section = (!empty($_REQUEST['section'])) ? $_REQUEST['section'] : $default_landing_section;
 	$order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'DESC';
