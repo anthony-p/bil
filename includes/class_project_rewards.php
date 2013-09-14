@@ -250,7 +250,7 @@ class projectRewards extends custom_field {
 	
 	//--------------------------------------------------------------------------------------------------------------------------
 	function getUser($user_id){
-		$sql = "select * from bl2_users where id='".$user_id."'";
+		$sql = "select u.*, c.name as country_name from bl2_users u, proads_countries c where u.country= c.id and u.id='".$user_id."'";
 		$result = $this->get_sql_row($sql);
 		return $result;
 	}
@@ -354,7 +354,7 @@ class projectRewards extends custom_field {
 				</div>
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_COUNTRY ?> <?= $required_mark; ?></label>
-					<input type="text" id="reward_contribution_country" value="<?= $user['country'] ?>"></input>
+					<input type="text" id="reward_contribution_country" value="<?= $user['country_name'] ?>"></input>
 				</div>
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1 ?> <?= $required_mark; ?></label>
