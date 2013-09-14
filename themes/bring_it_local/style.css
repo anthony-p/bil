@@ -3566,11 +3566,11 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .paypal_block .checked{background: url("img/check_mark.png") 0 0 no-repeat; position: absolute;display: block; width:32px ; height:32px;top:0; left:2px; ;}
 .paypal_checked{background: url("img/check_mark.png") 0 0 no-repeat;display: block; width:32px ; height:32px; margin: 0 auto;}
 
-.about_me_content{float: left;}
+.about_me_content{float: left;margin-left: 20px; padding: 15px; background: #fff;  border-radius: 13px;box-shadow: 0 0 10px rgba(34, 31, 31,0.2);}
 .about_me_content p,.about_me_content div{font:14px/16px "OpenSans"; color:#333; }
-.about_me_content div a{color: #7eb041; text-decoration: underline;}
-.about_me_content .content h2{margin: 0 20px; padding: 20px 20px 0; font: 16px/29px "OpenSans-SemiBold"; text-transform: uppercase;
+.about_me_content div a{font-family:Opensans-Semibold;  text-decoration: underline;}
+.about_me_content .content h2{margin: 0 0 20px 0 ; padding: 20px 0px 0; font: 16px/29px "OpenSans-SemiBold"; text-transform: uppercase;
     color: #7eb041;  border-bottom: 1.5px solid #dedede;  text-align: left;}
-#about_me_content label {width:192px; text-transform:capitalize; display: block;  float: left;    height: 28px;    background: url("img/website-icon.png") 0 0 no-repeat;    margin-left: 12px;  font: 13px/27px OpenSans;   margin-left: 6px;  color: #aaaab5;  padding-left: 35px;}
+#about_me_content label {width:28px; text-transform:capitalize; display: block;  float: left;    height: 28px;    background: url("img/website-icon.png") 0 0 no-repeat;    margin-left: 12px;  font: 13px/27px OpenSans;   margin-left: 6px;  color: #aaaab5;  padding-left: 35px;}
 #about_me_content label.twitter{background: url("img/twitter-icon.png") 0 0 no-repeat;}
 #about_me_content label.facebook{background: url("img/face-icon.png") 0 0 no-repeat;}
