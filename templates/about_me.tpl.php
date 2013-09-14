@@ -22,6 +22,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 <?php echo isset ($user_details["first_name"]) ? $user_details["first_name"] : '' ?> <?php echo isset ($user_details["last_name"]) ? $user_details["last_name"] : '' ?>
             </p>
         </div>
+        <br />
         <div id="about_me_content">
             <div>
                 <p>
@@ -29,8 +30,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                     <?php echo isset ($user_details["city"]) ? $user_details["city"] : '' ?> <?php echo isset ($user_details["address"]) ? $user_details["address"] : '' ?>
                 </p>
             </div>
+            <br />
             <div>
-                <span style="float:left; line-height: 28"><?=MSG_ALSO_FIND_ME?></span>
+                <span style="float:left; line-height: 28px;"><?=MSG_ALSO_FIND_ME?></span>
                 <?php if (!empty($user_details['facebook_link'])) :?>
                     <label class="facebook">
                         <a href="<?=$user_details['facebook_link']?>" target="_blank" class="facebook"></a>
