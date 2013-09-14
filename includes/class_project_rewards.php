@@ -230,7 +230,7 @@ class projectRewards extends custom_field {
 		if(empty($reward_id)) {
 			return "error";
 		}
-		$sql = "select r.*, p.project_title as campaign_name, p.logo as campaign_logo from project_rewards r, np_users p where r.project_id = p.user_id and id='".$reward_id."'";
+		$sql = "select r.*, p.project_title as campaign_name, p.logo as campaign_logo, p.cfc as is_community_fund from project_rewards r, np_users p where r.project_id = p.user_id and id='".$reward_id."'";
 		$result = $this->get_sql_row($sql);
 		return $result;
 	}
@@ -243,14 +243,14 @@ class projectRewards extends custom_field {
 	
 	//--------------------------------------------------------------------------------------------------------------------------
 	function getRewardCampaignOwnerDetails($reward_id){
-		$sql = "select u.first_name, u.last_name, u.email from bl2_users u, np_users c, project_rewards r where c.probid_user_id = u.id and r.project_id = c.user_id and r.id='".$reward_id."'";
+		$sql = "select u.first_name, u.last_name, u.email, c.cfc as is_community_fund from bl2_users u, np_users c, project_rewards r where c.probid_user_id = u.id and r.project_id = c.user_id and r.id='".$reward_id."'";
 		$result = $this->get_sql_row($sql);
 		return $result;
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------------------
 	function getUser($user_id){
-		$sql = "select * from bl2_users where id='".$user_id."'";
+		$sql = "select u.*, c.name as country_name from bl2_users u, proads_countries c where u.country= c.id and u.id='".$user_id."'";
 		$result = $this->get_sql_row($sql);
 		return $result;
 	}
@@ -303,7 +303,7 @@ class projectRewards extends custom_field {
 						<label><?= MSG_YOUR_CONTRIBUTION; ?></label>
 						<div id="contribution_amount_value">$<?= $reward['amount']; ?></div>
 					</div>
-					<div class="reward_contribute_summary_value_line">
+					<div class="reward_contribute_summary_value_line" <?= $reward['is_community_fund'] == 0 ? '' : 'style="display: none;"' ?>>
 						<label><?= MSG_YOUR_CONTRIBUTION_TO_COMMUNITY_FUND; ?></label>
 						<div id="contribution_to_community_amount_value">$0.00</div>
 					</div>
@@ -319,12 +319,14 @@ class projectRewards extends custom_field {
 			<div class="reward_contribute_section">
 				<label>$</label>
 				<input type="text" id="reward_contribution_value" value="<?= $reward['amount']; ?>"></input>
-				<div style="margin-top: 15px;">
-				<input type="checkbox" id="reward_contribution_community_amount_enable" style="width: auto;float: left;"/>
-                <label style="width: 361px;margin-left: 8px; float: left;"><?= MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND ?></label><br />
-                </div>
-				<label>$</label>
-                <input type="text" id="reward_contribution_community_amount" disabled="disabled" value="5.00" />
+				<?php if($reward['is_community_fund'] == 0):?>
+			<div style="margin-top: 15px;">
+			<input type="checkbox" id="reward_contribution_community_amount_enable" style="width: auto;float: left;"/>
+			<label style="width: 361px;margin-left: 8px; float: left;"><?= MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND ?></label><br />
+			</div>
+			<label>$</label>
+			<input type="text" id="reward_contribution_community_amount" disabled="disabled" value="5.00" />
+				<?php endif; ?>
 			</div>
 			<div class="reward_contribute_title"><?= MSG_YOUR_REWARD; ?></div>
 			<div class="reward_contribute_section">
@@ -352,7 +354,7 @@ class projectRewards extends custom_field {
 				</div>
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_COUNTRY ?> <?= $required_mark; ?></label>
-					<input type="text" id="reward_contribution_country" value="<?= $user['country'] ?>"></input>
+					<input type="text" id="reward_contribution_country" value="<?= $user['country_name'] ?>"></input>
 				</div>
 				<div>
 					<label><?= MSG_REWARD_SHIPPING_INFORMATION_ADDRESS_1 ?> <?= $required_mark; ?></label>

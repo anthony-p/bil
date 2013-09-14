@@ -11,7 +11,12 @@ $moxieManagerConfig['general.temp_dir'] = '';
 $moxieManagerConfig['general.allow_override'] = 'hidden_tools,disabled_tools';
 
 // Filesystem
-$moxieManagerConfig['filesystem.rootpath'] = './data/files';
+session_start();
+if (isset($_SESSION['filesystem.rootpath']) ){
+    $moxieManagerConfig['filesystem.rootpath'] = $_SESSION['filesystem.rootpath'];
+} else {
+    $moxieManagerConfig['filesystem.rootpath'] = './data/files';
+}
 $moxieManagerConfig['filesystem.include_directory_pattern'] = '';
 $moxieManagerConfig['filesystem.exclude_directory_pattern'] = '/^mcith$/i';
 $moxieManagerConfig['filesystem.include_file_pattern'] = '';
@@ -124,7 +129,12 @@ $moxieManagerConfig['log.filter'] = '';
 
 // Storage
 $moxieManagerConfig['storage.engine'] = 'json';
-$moxieManagerConfig['storage.path'] = './data/storage';
+if (isset($_SESSION['filesystem.rootpath'])) {
+    $moxieManagerConfig['storage.path'] = $_SESSION['filesystem.rootpath'];
+} else {
+    $moxieManagerConfig['storage.path'] = './data/storage';
+}
+
 
 // AutoFormat plugin
 $moxieManagerConfig['autoformat.rules'] = '';

@@ -41,6 +41,11 @@ else
 	$default_landing_section = 'main';
 
 
+    // TinyMCE MoxieManager Override the rootpath for images
+    if ( !file_exists( dirname(__FILE__) . "/uplimg/" . $session->value('user_id') ) ) mkdir(dirname(__FILE__) . "/uplimg/" .$session->value('user_id'));
+    $_SESSION['filesystem.rootpath'] = dirname(__FILE__) . "/uplimg/" . $session->value('user_id');
+
+
 	$page = (!empty($_REQUEST['page'])) ? $_REQUEST['page'] : $default_landing_page;
 	$section = (!empty($_REQUEST['section'])) ? $_REQUEST['section'] : $default_landing_section;
 	$order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'DESC';
@@ -5099,12 +5104,14 @@ else
 
             $campaigns_query_result = $db->query(
                 "SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at,
-                    funders.user_id, np_users.project_title, np_users.confirmed_paypal_email
-                FROM np_users INNER JOIN funders ON funders.user_id = np_users.probid_user_id
-                LEFT JOIN bl2_users ON bl2_users.id = funders.user_id
-                WHERE np_users.probid_user_id=" . $session->value('user_id')."
-                ORDER BY 'np_users.project_title' ASC limit $start, $per_page"
+                                    funders.user_id, np_users.project_title, np_users.confirmed_paypal_email
+                                    FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id
+                                    LEFT JOIN bl2_users ON bl2_users.id = funders.user_id
+                                    WHERE funders.user_id=" . $session->value('user_id')."
+                                     ORDER BY funders.created_at DESC limit $start, $per_page"
             );
+
+
             $userCampaigns = array();
             while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
                 $userCampaigns[] = $query_result;
@@ -5144,7 +5151,8 @@ else
                 FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id
                 LEFT JOIN bl2_users ON bl2_users.id = funders.user_id
                 WHERE np_users.probid_user_id=" . $session->value('user_id')."
-                ORDER BY 'np_users.project_title' ASC limit $start, $per_page");
+                ORDER BY funders.created_at DESC limit $start, $per_page");
+
             $userCampaigns = array();
             while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
                 $userCampaigns[] = $query_result;

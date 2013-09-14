@@ -104,7 +104,6 @@ $currencyCode		= "USD";
 $receiverEmailArray	= array(
     $bring_it_local_account,
     $beneficiar_account,
-    $cfc_account
 );
 
 // TODO - specify the receiver amounts as the amount of money, for example, '5' or '5.55'
@@ -112,7 +111,6 @@ $receiverEmailArray	= array(
 $receiverAmountArray = array(
     $bring_it_local_amount,
     $beneficiar_amount,
-    $community_amount
 );
 
 // TODO - Set ONLY 1 receiver in the array to 'true' as the primary receiver, and set the
@@ -121,8 +119,12 @@ $receiverAmountArray = array(
 $receiverPrimaryArray = array(
     $bring_it_local_primary,
     $beneficiar_primary,
-    $cfc_primary
 );
+if ($community_amount) {
+    $receiverEmailArray[] = $cfc_account;
+    $receiverAmountArray[] = $community_amount;
+    $receiverPrimaryArray[] = $cfc_primary;
+}
 
 // TODO - Set invoiceId to uniquely identify the transaction associated with each receiver
 //        set the array entries with value for receivers that you have

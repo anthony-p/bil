@@ -131,7 +131,7 @@ else
 //            $session->set('extended_registration', $extended_registration);
 			
 			//$session->set_cookie("user_id", $login_output['user_id']);
-			setcookie('user_id',$login_output['id'], 0, '/', '.bringitlocal.com', false, true);
+//			setcookie('user_id',$login_output['id'], 0, '/', '.bringitlocal.com', false, true);
 			//print "=====".$login_output['user_id'];
 			//$_COOKIE['usernamevalue'] = $login_output['username'];
 			

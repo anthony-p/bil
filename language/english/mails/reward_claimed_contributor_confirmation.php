@@ -16,8 +16,11 @@ You have just made a donation for the campaign %2$s. You claimed this reward in 
 Contribution Summary:
 	- The campaign: %2$s
 	- Your reward: %3$s
-	- Your contribution: $ %4$s
-	- Your contribution to the community fund:: $ %5$s
+	- Your contribution: $ %4$s';
+if($campaign_owner['is_community_fund'] == 0):
+	$text_message .= '- Your contribution to the community fund:: $ %5$s';
+endif;
+	$text_message .= '
 	- Total: $ %6$s
 	
 Contact Information:
@@ -46,9 +49,11 @@ You have just made a donation for the campaign <b>%2$s</b>. You claimed this rew
 <ul>
 	<li>The campaign: <b>%2$s</b></li>
 	<li>Your reward: <b>%3$s</b></li>
-	<li>Your contribution: $<b>%4$s</b></li>
-	<li>Your contribution to the community fund:: $<b>%5$s</b></li>
-	<li>Total: $<b>%6$s</b></li>
+	<li>Your contribution: $<b>%4$s</b></li>';
+if($campaign_owner['is_community_fund'] == 0):
+	$html_message .= '<li>Your contribution to the community fund:: $<b>%5$s</b></li>';
+endif;
+	$html_message .= '<li>Total: $<b>%6$s</b></li>
 </ul>
 <br />
 <u><i>Contact Information:</i></u>
