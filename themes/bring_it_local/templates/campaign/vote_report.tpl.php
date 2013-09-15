@@ -14,7 +14,7 @@
 			<?php $i = 1; ?>
 			<?php foreach($voteReportData as $campaignVotes):?>
 			<tr <?= $i == 0 ? 'class="secondary-line"' : '';?>>
-				<td><?= $campaignVotes['campaign_title'] ?></td>
+				<td><a href="/<?= $campaignVotes['campaign_url'] ?>"><?= $campaignVotes['campaign_title'] ?></a></td>
 				<td style="text-align: center;"><?= $campaignVotes['campaign_votes_number'] ?></td>
 			</tr>
 			<?php $i = ($i + 1)%2; ?>
