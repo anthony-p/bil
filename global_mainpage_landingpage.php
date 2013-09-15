@@ -569,6 +569,7 @@ if($compaignData['cfc'] == 1){
     $projectVotes = new projectVotes();
 	$currentMonthVoteReport = $projectVotes->getVotesReportData(date('n'), date('Y'));
 	$menuTemplate->set('voteReportMonth', date('F, Y'));
+	$menuTemplate->set('todaysDate', date('M d, Y'));
 	$menuTemplate->set('voteReportData', $currentMonthVoteReport);
 }
 

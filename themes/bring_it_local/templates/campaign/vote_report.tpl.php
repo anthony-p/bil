@@ -1,7 +1,9 @@
 <aside class="announcement vote_report_tab" id="vote_report_tab_content">
 	<h1><?= MSG_COMMUNITY_FUND_VOTE_REPORT_TITLE; ?></h1>
-	<div class="vote_report_month">Month: <div><?= $voteReportMonth; ?></div></div>
-	
+	<div class="vote_report_date">Month: <div><?= $voteReportMonth; ?></div></div>
+	<?php if(isset($todaysDate)): ?>
+		<div class="vote_report_date">Today's date: <div><?= $todaysDate; ?></div></div>
+	<?php endif; ?>
 	<?php if(!empty($voteReportData)): ?>
 		<table class="vote_report_table">
 			<tr>
