@@ -2711,7 +2711,7 @@ h2.resp-accordion:first-child { border-top: 1px solid #c1c1c1 !important;}
 .top-description .right .location{float:left;line-height: 24px;margin-top: 10px;}
 .top-description .right p{font:14px/17px "OpenSans-SemiBold"; color:#222; width:100%; }
 .tabulation{width:750px; float:left; clear: both;}
-.tabulation .resp-tabs-list {float:left; margin-bottom:25px;}
+.tabulation .resp-tabs-list {float:left; margin-bottom:25px; width: 840px;}
 .tabulation .resp-tabs-list li {display: inline-block; padding: 0 13px; cursor: pointer; float: left; margin: 0 10px 0 0; background:#e6e6e6; border:1px solid #d9d9d9;
     border-radius:4px;  border-right-color:#fbfbfb; border-bottom-color:#fbfbfb; color:#1f1f1f; font: 14px/29px "OpenSans-SemiBold"; text-transform: uppercase;}
 .tabulation .resp-tabs-list li.last{margin: 0;}
@@ -3535,6 +3535,14 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .resp-tab-content aside.rewards_tab .reward_contribute_section input {width: 250px;}
 .resp-tab-content aside.rewards_tab #reward_claiming_continue_button{background: #F21B43; color: #fff; border: none; border-radius: 10px; width: 150px; height: 35px; float: right; font-size: 18px; font-weight: bold;}
 .resp-tab-content aside.rewards_tab #reward_claiming_bottom_note {font-style: italic; font-size: 12px; float: left; margin: 12px 0 0 10px;}
+
+/* Vote report tab */
+.resp-tab-content aside.vote_report_tab h1 {font-size: 20px; margin: 0 auto; text-align: center; width: 200px;}
+.resp-tab-content aside.vote_report_tab .vote_report_table {margin: 50px auto; width: 500px;}
+.resp-tab-content aside.vote_report_tab .vote_report_table th {background: #BBB;}
+.resp-tab-content aside.vote_report_tab .vote_report_table td {background: #D8D8D8;}
+.resp-tab-content aside.vote_report_tab .vote_report_table tr.secondary-line td {background: #EEEEEE;}
+.resp-tab-content aside.vote_report_tab .vote_report_table th, .resp-tab-content aside.vote_report_tab .vote_report_table td {border: 1px solid #ccc; padding: 8px;}
 
 /*contributions page*/
 #members_area .contributions_page {width:900px; margin: 0 auto; padding-top: 30px; position: relative;}

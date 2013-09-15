@@ -564,6 +564,13 @@ $menuTemplate->set('projectUpdates',$project_updates);
 
 $menuTemplate->set('projectRewards',$project_rewards);
 
+if($compaignData['cfc'] == 1){
+	require_once (dirname(__FILE__) . '/includes/class_project_votes.php');
+    $projectVotes = new projectVotes();
+	$currentMonthVoteReport = $projectVotes->getVotesReportData(date('n'), date('Y'));
+	$menuTemplate->set('currentMonthVoteReport', $currentMonthVoteReport);
+}
+
 $menuTemplate->set('funders', $funders );
 
 $template->set("cHome",$menuTemplate->process("home.tpl.php"));
@@ -606,7 +613,12 @@ $parnerAmazon = $db->random_rows('partners a', 'a.advert_id, a.name, a.advert_co
 $partnersitem_details[0] = $parnerAmazon[0];
 
 $menuTemplate->set("partners",$partnersitem_details);
+
 $template->set("cRewards",$menuTemplate->process("rewards.tpl.php"));
+
+if($compaignData['cfc'] == 1){
+	$template->set("cVoteReport",$menuTemplate->process("vote_report.tpl.php"));
+}
 
 $template->set("cSupport",$menuTemplate->process("support.tpl.php"));
 

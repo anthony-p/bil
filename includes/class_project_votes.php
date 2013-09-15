@@ -26,7 +26,7 @@ class projectVotes extends custom_field
      * @var string
      */
     private $votes_element = '';
-
+	
     /**
      * @param $user_id
      * @param $campaign_id
@@ -142,6 +142,16 @@ class projectVotes extends custom_field
             "vote_us" => $this->votes_element,
         );
     }
+	
+	function getVotesReportData($month, $year){
+		$sql = "SELECT COUNT(v.id) AS campaign_votes_number, c.project_title AS campaign_title, MONTH(FROM_UNIXTIME(v.date)) AS month, YEAR(FROM_UNIXTIME(v.date)) AS year FROM project_votes v JOIN np_users c ON c.user_id = v.campaign_id GROUP BY v.campaign_id, month, year HAVING month='".$month."' AND year='".$year."' ORDER BY campaign_votes_number DESC";
+		$project_votes_query_result = $this->query($sql);
+
+		while ($query_result =  mysql_fetch_array($project_votes_query_result)) {
+			$project_votes[] = $query_result;
+		}
+		return $project_votes;
+	}
 
     /**
      * @param $reward
@@ -171,12 +181,4 @@ class projectVotes extends custom_field
     }
 	
 	//--------------------------------------------------------------------------------------------------------------------------
-	function generateRandomString($length = 10) {
-		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		$randomString = '';
-		for ($i = 0; $i < $length; $i++) {
-			$randomString .= $characters[rand(0, strlen($characters) - 1)];
-		}
-		return $randomString;
-	}
 }
