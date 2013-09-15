@@ -3542,6 +3542,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .resp-tab-content aside.vote_report_tab div.vote_report_info div{font-weight: bold; display: inline-block;}
 .resp-tab-content aside.vote_report_tab .no_votes_message {font-size: 16px; margin: 50px 0; text-align: center;}
 .resp-tab-content aside.vote_report_tab .vote_report_table {margin: 35px auto; width: 500px;}
+.resp-tab-content aside.vote_report_tab .vote_report_table a {color: #444;}
 .resp-tab-content aside.vote_report_tab .vote_report_table th {background: #BBB;}
 .resp-tab-content aside.vote_report_tab .vote_report_table td {background: #D8D8D8;}
 .resp-tab-content aside.vote_report_tab .vote_report_table tr.secondary-line td {background: #EEEEEE;}
