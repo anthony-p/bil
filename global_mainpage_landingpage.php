@@ -568,7 +568,8 @@ if($compaignData['cfc'] == 1){
 	require_once (dirname(__FILE__) . '/includes/class_project_votes.php');
     $projectVotes = new projectVotes();
 	$currentMonthVoteReport = $projectVotes->getVotesReportData(date('n'), date('Y'));
-	$menuTemplate->set('currentMonthVoteReport', $currentMonthVoteReport);
+	$menuTemplate->set('voteReportMonth', date('F, Y'));
+	$menuTemplate->set('voteReportData', $currentMonthVoteReport);
 }
 
 $menuTemplate->set('funders', $funders );

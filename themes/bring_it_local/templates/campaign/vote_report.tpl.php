@@ -1,13 +1,15 @@
 <aside class="announcement vote_report_tab" id="vote_report_tab_content">
 	<h1><?= MSG_COMMUNITY_FUND_VOTE_REPORT_TITLE; ?></h1>
-	<?php if(!empty($currentMonthVoteReport)): ?>
+	<div class="vote_report_month">Month: <div><?= $voteReportMonth; ?></div></div>
+	
+	<?php if(!empty($voteReportData)): ?>
 		<table class="vote_report_table">
 			<tr>
 				<th><?= MSG_COMMUNITY_FUND_VOTE_REPORT_CAMPAIGN_TITLE ?></th>
 				<th><?= MSG_COMMUNITY_FUND_VOTE_REPORT_VOTES ?></th>
 			</tr>
 			<?php $i = 1; ?>
-			<?php foreach($currentMonthVoteReport as $campaignVotes):?>
+			<?php foreach($voteReportData as $campaignVotes):?>
 			<tr <?= $i == 0 ? 'class="secondary-line"' : '';?>>
 				<td><?= $campaignVotes['campaign_title'] ?></td>
 				<td style="text-align: center;"><?= $campaignVotes['campaign_votes_number'] ?></td>
