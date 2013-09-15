@@ -31,7 +31,7 @@ class projectVotes extends custom_field
      * @param $user_id
      * @param $campaign_id
      */
-    public function __construct($user_id, $campaign_id)
+    public function __construct($user_id=NULL, $campaign_id=NULL)
     {
         if ($user_id) {
             $this->user_id = $user_id;
