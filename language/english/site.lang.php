@@ -9,6 +9,7 @@ define ('MSG_COMMUNITY_FUND_VOTE_REPORT', 'VOTES REPORT');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT_TITLE', 'Community Fund Vote Report');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT_CAMPAIGN_TITLE', 'Campaign');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT_VOTES', 'Votes');
+define ('MSG_COMMUNITY_FUND_NO_VOTES_MADE_IN_CURRENT_MONTH', 'No vote has been made yet in the current month.');
 define ('MSG_LOGIN_BUTTON', 'login');
 define ('MSG_CONTINUE_WITHOUT_LOGIN', 'continue without logging in');
 define ('MSG_DONATION_LOGIN_INVITATION_POPUP_TITLE', 'Would you like to login?');

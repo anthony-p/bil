@@ -15,5 +15,7 @@
 			<?php $i = ($i + 1)%2; ?>
 			<?php endforeach;?>
 		</table>
+	<?php else: ?>
+		<div class="no_votes_message"><?= MSG_COMMUNITY_FUND_NO_VOTES_MADE_IN_CURRENT_MONTH ?></div>
 	<?php endif; ?>
 </aside>
