@@ -570,6 +570,7 @@ if($compaignData['cfc'] == 1){
 	$currentMonthVoteReport = $projectVotes->getVotesReportData(date('n'), date('Y'));
 	$menuTemplate->set('voteReportMonth', date('F, Y'));
 	$menuTemplate->set('todaysDate', date('M d, Y'));
+	$menuTemplate->set('communityTotalFund', $compaignData['payment']);
 	$menuTemplate->set('voteReportData', $currentMonthVoteReport);
 }
 
