@@ -7,7 +7,7 @@
  */
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
-$subject = "Campaign voting";
+$subject = "Thanks for voting";
 $html_message_user = 'Thank you for voting for ' . $campaign_title . ' campaign!';
 
 $headers = 'From: Bring It Local <support@bringitlocal.com>' . PHP_EOL .
