@@ -1221,6 +1221,19 @@ function clearBannerContent()
                     <label><?=MSG_ACTIVITY_STATUS_CLOSED?></label>
                 </div>
             </div>
+            <div class="account-row">
+                <label><?=MSG_CRON_CONFIG?></label>
+                <div class="radio">
+                    <input type="radio" name="cron_company" value="1"
+                        <?php echo (isset($campaign["cron_company"]) && ($campaign["cron_company"] == 1)) ? "checked" : ''; ?>>
+                    <label><?=MSG_CLONE_CAMPAIGN?></label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="cron_company" value="0"
+                        <?php echo (isset($campaign["cron_company"]) && ($campaign["cron_company"] == 0)) ? "checked" : ''; ?>>
+                    <label><?=MSG_EXTENDS_DATE_EXISTING_CAMPAIGN?></label>
+                </div>
+            </div>
             <div class="clear"></div>
             <div class="input_row">
                 <input type="text" name="keep_alive_days" id="keep_alive_days"

@@ -5374,6 +5374,7 @@ else
                     founddrasing_goal='" . $_POST["founddrasing_goal"] . "',
                     funding_type='" . $funding_type . "',
                     active='" . $_POST["active"] . "',
+                    cron_company='" . $_POST["cron_company"] . "',
                     deadline_type_value='" . $_POST["deadline_type_value"] . "',
                     time_period='" . $_POST["time_period"] . "',
                     certain_date='" . $certain_date . "',
