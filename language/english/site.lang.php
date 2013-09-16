@@ -4,6 +4,22 @@
 ##-------------------------------------------------------------##
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
+
+//members area - earnings
+define('MSG_MEMBERS_AREA_EARNINGS_EARNINGS', 'Earnings');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_DATE', 'Date');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_CAMPAIGN', 'Campaign');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_AMOUNT', 'Amount');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_VISIBILITY', 'Visibility');
+
+//members area - contributions
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_CONTRIBUTION', 'Contribution');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_DATE', 'Date');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_CAMPAIGN', 'Campaign');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_AMOUNT', 'Amount');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_VISIBILITY', 'Visibility');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
+
 //additions
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT', 'VOTES REPORT');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT_TITLE', 'Community Fund Vote Report');
