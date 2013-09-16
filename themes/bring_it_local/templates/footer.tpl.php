@@ -208,7 +208,7 @@ global $coupon_url;
                 <? if ($layout['is_pp']) { ?>
                  <a href="<?=process_link('content_pages', array('page' => 'privacy'));?>"><?=MSG_BTN_PRIVACY;?></a><? } ?>
                 <p class="copiright-info">
-                    Copyright ©2013 Bring It Local LLC. All rights reserved
+                    <?= MSG_FOOTER_COPYRIGHT; ?>
                 </p>
                 <a href="<?=process_link('site_fees');?>"><?= MSG_FOOTER_SITE_FEES; ?></a>
                 <a class="last" href="<?=process_link('content_pages', array('page' => 'help'));?>"><?= MSG_FOOTER_HELP; ?></a>

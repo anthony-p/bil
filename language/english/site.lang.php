@@ -13,6 +13,7 @@ define('MSG_FOOTER_SELECT_LANGUAGE', 'Select your language');
 define('MSG_FOOTER_FOLLOW', 'Follow');
 define('MSG_FOOTER_SITE_FEES', 'SITE FEES');
 define('MSG_FOOTER_HELP', 'HELP');
+define('MSG_FOOTER_COPYRIGHT', "Copyright ©2013 Bring It Local LLC. All rights reserved");
 
 // members area - about me edit
 define('MSG_MM_ABOUT_ME_PAGE', 'MSG_MM_ABOUT_ME_PAGE');
