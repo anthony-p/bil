@@ -5,6 +5,10 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// members area - about me edit
+define('MSG_MM_ABOUT_ME_PAGE', 'MSG_MM_ABOUT_ME_PAGE');
+define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
+
 // header translation
 define('MSG_HEADER_SEARCHBOX_SEARCH', 'search');
 
