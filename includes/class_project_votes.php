@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../language/english/site.lang.php');
 
 class projectVotes extends custom_field
 {
-	var $campaignsNumberPerPageInReport = 5;
+	var $campaignsNumberPerPageInReport = 15;
     /**
      * @var int
      */
