@@ -5,6 +5,10 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// members area - campaign
+define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME', 'Find by name');
+define('MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN', 'Edit Campaign');
+
 // global partners
 define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
 define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');

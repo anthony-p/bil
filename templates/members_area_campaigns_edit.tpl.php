@@ -426,7 +426,7 @@ function clearBannerContent()
 </script>
 
 <div class="editCampaigns">
-<h2>Edit Campaign</h2>
+<h2><?= MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN; ?></h2>
 <div id="wrapper">
 <a href="/view_campaign.php?campaign_id=<?=$campaign['user_id']?>" class="view_campaign_btn" target="_blank"><span><?=MSG_VIEW_CAMPAIGN?></span></a>
 <div id="navigation" style="display:none;">
