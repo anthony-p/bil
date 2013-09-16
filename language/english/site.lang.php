@@ -39,6 +39,7 @@ define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
 define('MSG_PARTNER_SUBSCR_INFORMATION', 'Click through here: purchases from any of these vendors will earn money for your non-profit');
 define('MSG_PARTNER_PAGINATION_ALL', 'All');
 define('MSG_PARTNER_PERCENT_GIVEBACK', 'Percent giveback');
+define('MSG_PARTNER_BTN_GO', 'GO');
 
 //members area - earnings
 define('MSG_MEMBERS_AREA_EARNINGS_EARNINGS', 'Earnings');
