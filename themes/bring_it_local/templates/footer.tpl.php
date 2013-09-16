@@ -100,7 +100,7 @@ global $coupon_url;
 	<div class="bottomLinks">
         <div class="innerContainer clearfix">
 		<div class="column col1">
-			<h5 class="header"><?= MSG_FOOTER_PARTICIPATE; ?></h5>
+			<h5 class="header">Participate</h5>	
 			<!--<a href="/searchnp.php">Select a non-profit</a> 	
 			<? if (!$setts['enable_private_site'] || $is_seller) { ?>
 			<a href="<?=$place_ad_link;?>"><?=MSG_MM_POST_AUCTION;?></a>
@@ -115,8 +115,8 @@ global $coupon_url;
 			
 		</div>
 		<div class="column col2">
-			<h5 class="header"><?= MSG_FOOTER_ABOUT; ?></h5>
-			<a href="/founders-letter.php" class="link"><?= MSG_FOOTER_FOUNDERS_LETTER; ?></a>
+			<h5 class="header">About</h5>	
+			<a href="/founders-letter.php" class="link">Founder's Letter</a>
 			<a href="<?=process_link('content_pages', array('page' => 'faq'));?>"><?=MSG_BTN_FAQ;?></a>
 						<? if ($layout['is_about']) { ?>
 			<a href="<?=process_link('content_pages', array('page' => 'about_us'));?>"><?=MSG_BTN_ABOUT_US;?></a>
@@ -148,7 +148,7 @@ global $coupon_url;
             </div>
 		<div class="column col4">
             <div class="language clearfix">
-                <span class="none"><?= MSG_FOOTER_SELECT_LANGUAGE; ?></span>
+                <span class="none">Select your language</span>
                 <div id="polyglotLanguageSwitcher">
                     <?php
                         $selectedLanguage = 'en';
@@ -170,7 +170,7 @@ global $coupon_url;
                 </div>
 
 			<div class="follow clearfix">
-				<span class="none"><?= MSG_FOOTER_FOLLOW; ?></span>
+				<span class="none">Follow</span>
 				<a href="http://www.facebook.com/bringitlocal" target="_blank" class="facebook">Facebook</a>
 				<a href="http://www.twitter.com/bringitlocal"  target="_blank" class="twitter">Twitter</a>
 				
@@ -208,10 +208,10 @@ global $coupon_url;
                 <? if ($layout['is_pp']) { ?>
                  <a href="<?=process_link('content_pages', array('page' => 'privacy'));?>"><?=MSG_BTN_PRIVACY;?></a><? } ?>
                 <p class="copiright-info">
-                    <?= MSG_FOOTER_COPYRIGHT; ?>
+                    Copyright ©2013 Bring It Local LLC. All rights reserved
                 </p>
-                <a href="<?=process_link('site_fees');?>"><?= MSG_FOOTER_SITE_FEES; ?></a>
-                <a class="last" href="<?=process_link('content_pages', array('page' => 'help'));?>"><?= MSG_FOOTER_HELP; ?></a>
+                <a href="<?=process_link('site_fees');?>">SITE FEES</a>
+                <a class="last" href="<?=process_link('content_pages', array('page' => 'help'));?>">HELP</a>
                 <?php /*  Copyright &copy;2013 <a href="<?=process_link('content_pages', array('page' => 'about_us'));?>">Bring It Local, LLC</a>. All Rights Reserved
                 */?>
  </div>

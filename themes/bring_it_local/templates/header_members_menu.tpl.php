@@ -116,14 +116,13 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
             <li><a href="/campaigns,page,closed,section,members_area#8ec3489f027e"><?=MSG_CLOSED_CAPMAIGNS?></a></li>
         </ul>
     </li>
-    <li <?php if ($selected_section == 'my_contributions'): ?> class="active" <?php endif; ?>>
+    <li <?php if ($selected_section == 'my_contributions' || $selected_section == 'my_earnings'): ?> class="active" <?php endif; ?>>
         <a href="/contributions,page,main,section,members_area#8ec3489f027e"><?=MSG_MY_CONTRIBUTIONS?></a>
-
+        <ul>
+            <li><a href="/earnings,page,main,section,members_area#8ec3489f027e"><?=MSG_MY_EARNINGS?></a></li>
+        </ul>
     </li>
-    <li <?php if ($selected_section == 'my_earnings'): ?> class="active" <?php endif; ?>>
-        <a href="/earnings,page,main,section,members_area#8ec3489f027e"><?= MSG_MY_EARNINGS ?></a>
 
-    </li>
 
     <?php
         //Temporary disable this section

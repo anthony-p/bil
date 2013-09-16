@@ -108,7 +108,7 @@ $pagination = paginate($start, $limit, $nb_items, $page_url . '.php', $order_lin
 			//'	<td><a href="' . $auction_link . '">' . $partnersitem_details['name'] . '</a> ' . '</td> '.
 			'	<td class="link"><a href="' . $auction_link . '">' . $partnersitem_details['name'] . '</a> ' . '</td> '.
 			'	<td class="percent">'.($partnersitem_details['advert_pct']/2).'</td> '.
-            '	<td class="center golink"> <a href="'.$auction_link.'">'.MSG_PARTNER_BTN_GO.'</a></td> '.
+            '	<td class="center golink"> <a href="'.$auction_link.'">GO</a></td> '.
 			//	<td>' . display_globalad($partnersitem_details['advert_url']) .  '</td> '.
 	    	//'	<td align="center">' . $fees->display_amount($partnersitem_details['start_price'], $partnersitem_details['currency']) . '</td> '.
 	    	//'	<td align="center">' . $fees->display_amount($partnersitem_details['max_bid'], $partnersitem_details['currency']) . '</td> '.

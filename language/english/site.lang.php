@@ -4,58 +4,6 @@
 ##-------------------------------------------------------------##
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
-
-// footer
-define('MSG_FOOTER_PARTICIPATE', 'Participate');
-define('MSG_FOOTER_ABOUT', 'About');
-define('MSG_FOOTER_FOUNDERS_LETTER', "Founder's Letter");
-define('MSG_FOOTER_SELECT_LANGUAGE', 'Select your language');
-define('MSG_FOOTER_FOLLOW', 'Follow');
-define('MSG_FOOTER_SITE_FEES', 'SITE FEES');
-define('MSG_FOOTER_HELP', 'HELP');
-define('MSG_FOOTER_COPYRIGHT', "Copyright ©2013 Bring It Local LLC. All rights reserved");
-
-// members area - about me edit
-define('MSG_MM_ABOUT_ME_PAGE', 'MSG_MM_ABOUT_ME_PAGE');
-define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
-
-// header translation
-define('MSG_HEADER_SEARCHBOX_SEARCH', 'search');
-
-// main page
-define('MSG_MAINPAGE_BTN_BROWSE', '<span class="uper">Browse </span><span>our campaigns</span>');
-define('MSG_MAINPAGE_BTN_LEARN', '<span class="uper">Learn </span><span>how it works</span>');
-define('MSG_MAINPAGE_BTN_START', '<span class="uper">Start </span><span>giving today</span>');
-
-// members area - campaign
-define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME', 'Find by name');
-define('MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN', 'Edit Campaign');
-
-// global partners
-define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
-define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');
-define('MSG_SEARCH_IN_A_CATEGORY', 'MSG_SEARCH_IN_A_CATEGORY');
-define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
-define('MSG_PARTNER_SUBSCR_INFORMATION', 'Click through here: purchases from any of these vendors will earn money for your non-profit');
-define('MSG_PARTNER_PAGINATION_ALL', 'All');
-define('MSG_PARTNER_PERCENT_GIVEBACK', 'Percent giveback');
-define('MSG_PARTNER_BTN_GO', 'GO');
-
-//members area - earnings
-define('MSG_MEMBERS_AREA_EARNINGS_EARNINGS', 'Earnings');
-define('MSG_MEMBERS_AREA_EARNINGS_TBL_DATE', 'Date');
-define('MSG_MEMBERS_AREA_EARNINGS_TBL_CAMPAIGN', 'Campaign');
-define('MSG_MEMBERS_AREA_EARNINGS_TBL_AMOUNT', 'Amount');
-define('MSG_MEMBERS_AREA_EARNINGS_TBL_VISIBILITY', 'Visibility');
-
-//members area - contributions
-define('MSG_MEMBERS_AREA_CONTRIBUTIONS_CONTRIBUTION', 'Contribution');
-define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_DATE', 'Date');
-define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_CAMPAIGN', 'Campaign');
-define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_AMOUNT', 'Amount');
-define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_VISIBILITY', 'Visibility');
-define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
-
 //additions
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT', 'VOTES REPORT');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT_TITLE', 'Community Fund Vote Report');

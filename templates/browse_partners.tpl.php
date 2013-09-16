@@ -11,10 +11,10 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <? echo (defined("IS_SHOP") && IS_SHOP == 1) ? $shop_header : $header_browse_auctions . ((IS_CATEGORIES != 1) ? '<br>' : '');?>
 <? echo (IS_CATEGORIES == 1) ? $categories_header : '';?>
 
-<div class="msg"><?= MSG_PARTNER_SUBSCR_INFORMATION; ?></div>
+<div class="msg">Click through here: purchases from any of these vendors will earn money for your non-profit</div>
 
 <div class="alphabetically">
-    <a href="/global_partners.php"><?= MSG_PARTNER_PAGINATION_ALL; ?></a>
+    <a href="/global_partners.php">All</a>
     <?php foreach($alphabetically as $key=>$value): ?>
         <?php if($value == ""): ?>
             <?php echo $key; ?>
@@ -37,7 +37,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 	  --> 
 	  </th> 
       <th class="link"><span><?=MSG_PARTNER_NAME;?></span><?=$page_order_itemname;?></th>
-      <th class="percent"><?= MSG_PARTNER_PERCENT_GIVEBACK; ?></th>
+      <th class="percent">Percent giveback</th>
       <th class="go"></th>
       <!--
       <td align="center"><?=MSG_START_BID;?><br><?=$page_order_start_price;?></td>

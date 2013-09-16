@@ -67,7 +67,7 @@ function submit_form(form_name) {
             <option value="DESC" class="order"><?=MSG_DATE_DESC?></option>
         </select>
         <div class="search-input">
-            <input type="text" value="" placeholder="<?= MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME; ?>" name="keyword" id="name">
+            <input type="text" value="" placeholder="Find by name" name="keyword" id="name">
             <button type="submit"></button>
         </div>
     </form>
