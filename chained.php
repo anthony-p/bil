@@ -143,7 +143,7 @@ $receiverInvoiceIdArray = array(
 $senderEmail					= "";		// TODO - If you are executing the Pay call against a preapprovalKey, you should set senderEmail
 //        It is not required if the web approval flow immediately follows this Pay call
 $feesPayer						= "";
-$ipnNotificationUrl				= "";
+$ipnNotificationUrl				= "http://" . $_SERVER['SERVER_NAME'] . "/donate_notify_url.php";
 $memo							= "";		// maxlength is 1000 characters
 $pin							= "";		// TODO - If you are executing the Pay call against an existing preapproval
 //        the requires a pin, then you must set this
@@ -185,6 +185,8 @@ if($ack=="SUCCESS")
 }
 else
 {
+    header('location: /index.php');
+
     //Display a user friendly Error on the page using any of the following error information returned by PayPal
     //TODO - There can be more than 1 error, so check for "error(1).errorId", then "error(2).errorId", and so on until you find no more errors.
     $ErrorCode = urldecode($resArray["error(0).errorId"]);

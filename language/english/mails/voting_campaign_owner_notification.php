@@ -7,7 +7,7 @@
  */
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
-$subject = "Campaign voting";
+$subject = "Your campaign received a vote!";
 $html_message_owner = 'Your campaign, ' . $campaign_title . ', received a vote!';
 
 $headers = 'From: Bring It Local <support@bringitlocal.com>' . PHP_EOL .
