@@ -32,11 +32,20 @@ if (!$user_id) {
             $payer_email = 'rlpc.test@gmail.com';
             $db->query(
                 "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
-                    1 . ", " . 1 . ", " . 1 . ", " . time() . ")"
+                    10 . ", " . 10 . ", " . 10 . ", " . time() . ")"
             );
         }
+        $db->query(
+            "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
+                11 . ", " . 11 . ", " . 11 . ", " . time() . ")"
+        );
         $user_id = $db->get_sql_field("SELECT id FROM bl2_users WHERE
 				pg_paypal_email=" . $payer_email, 'id');
+
+        $db->query(
+            "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
+                12 . ", " . 12 . ", " . 12 . ", " . time() . ")"
+        );
 
         if ($user_id) {
             $_SESSION["probid_user_id"] = $user_data['id'];
@@ -55,6 +64,12 @@ if (!$user_id) {
             $db->query(
                 "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
                     $user_id . ", " . 4 . ", " . 4 . ", " . time() . ")"
+            );
+        } else {
+
+            $db->query(
+                "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
+                    13 . ", " . 13 . ", " . 13 . ", " . time() . ")"
             );
         }
     }
