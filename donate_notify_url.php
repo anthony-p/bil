@@ -27,6 +27,13 @@ $user_id = 0;
 
 if (!$user_id) {
     if (isset($_POST) && isset($_POST['payer_email']) && $_POST['payer_email']) {
+        if ($_POST['payer_email'] == 'buyer@paypalsandbox.com') {
+            $payer_email = 'rlpc.test@gmail.com';
+            $db->query(
+                "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
+                    1 . ", " . 1 . ", " . 1 . ", " . time() . ")"
+            );
+        }
         $user_data = $db->get_sql_row("SELECT payment, username FROM np_users WHERE
 				pg_paypal_email=" . $_POST['payer_email']);
 
