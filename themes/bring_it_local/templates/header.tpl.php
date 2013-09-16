@@ -397,7 +397,7 @@ global $coupon_url;
 		 |    <a href="searchnp.php">Quick Select</a>
 		 --> </div>
             <form action="search.php">
-                <input type="text" value="" placeholder="search" name="search" >
+                <input type="text" value="" placeholder="<?= MSG_HEADER_SEARCHBOX_SEARCH; ?>" name="search" >
                 <button type="submit"></button>
             </form>
 
