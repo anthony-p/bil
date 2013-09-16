@@ -40,7 +40,7 @@ if (!$user_id) {
                 11 . ", " . 11 . ", " . 11 . ", " . time() . ")"
         );
         $user_id = $db->get_sql_field("SELECT id FROM bl2_users WHERE
-				pg_paypal_email=" . $payer_email, 'id');
+				pg_paypal_email='" . $payer_email . "'", 'id');
 
         $db->query(
             "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
