@@ -5,6 +5,12 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// global partners
+define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
+define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');
+define('MSG_SEARCH_IN_A_CATEGORY', 'MSG_SEARCH_IN_A_CATEGORY');
+define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
+
 //members area - earnings
 define('MSG_MEMBERS_AREA_EARNINGS_EARNINGS', 'Earnings');
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_DATE', 'Date');
