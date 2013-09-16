@@ -5,6 +5,15 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// footer
+define('MSG_FOOTER_PARTICIPATE', 'Participate');
+define('MSG_FOOTER_ABOUT', 'About');
+define('MSG_FOOTER_FOUNDERS_LETTER', "Founder's Letter");
+define('MSG_FOOTER_SELECT_LANGUAGE', 'Select your language');
+define('MSG_FOOTER_FOLLOW', 'Follow');
+define('MSG_FOOTER_SITE_FEES', 'SITE FEES');
+define('MSG_FOOTER_HELP', 'HELP');
+
 // members area - about me edit
 define('MSG_MM_ABOUT_ME_PAGE', 'MSG_MM_ABOUT_ME_PAGE');
 define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
