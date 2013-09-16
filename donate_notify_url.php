@@ -35,7 +35,7 @@ if (!$user_id) {
                     1 . ", " . 1 . ", " . 1 . ", " . time() . ")"
             );
         }
-        $user_data = $db->get_sql_row("SELECT payment, username FROM np_users WHERE
+        $user_data = $db->get_sql_row("SELECT id FROM bl2_users WHERE
 				pg_paypal_email=" . $payer_email);
 
         if (is_array($user_data) && isset($user_data['id']) && $user_data['id']) {
