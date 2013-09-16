@@ -12,6 +12,7 @@ require_once(__DIR__ . '/../language/english/site.lang.php');
 
 class projectVotes extends custom_field
 {
+	var $campaignsNumberPerPageInReport = 5;
     /**
      * @var int
      */
@@ -143,14 +144,23 @@ class projectVotes extends custom_field
         );
     }
 	
-	function getVotesReportData($month, $year){
-		$sql = "SELECT COUNT(v.id) AS campaign_votes_number, c.project_title AS campaign_title, c.username AS campaign_url, MONTH(FROM_UNIXTIME(v.date)) AS month, YEAR(FROM_UNIXTIME(v.date)) AS year FROM project_votes v JOIN np_users c ON c.user_id = v.campaign_id GROUP BY v.campaign_id, month, year HAVING month='".$month."' AND year='".$year."' ORDER BY campaign_votes_number DESC";
+	function getVotesReportData($month, $year, $page=0){
+		$start = $page * $this->campaignsNumberPerPageInReport;
+		$end = ($page+1) * $this->campaignsNumberPerPageInReport;
+		
+		$sql = "SELECT COUNT(v.id) AS campaign_votes_number, c.project_title AS campaign_title, c.username AS campaign_url, MONTH(FROM_UNIXTIME(v.date)) AS month, YEAR(FROM_UNIXTIME(v.date)) AS year FROM project_votes v JOIN np_users c ON c.user_id = v.campaign_id GROUP BY v.campaign_id, month, year HAVING month='".$month."' AND year='".$year."' ORDER BY campaign_votes_number DESC LIMIT ".$start.", ".$end;
 		$project_votes_query_result = $this->query($sql);
 
 		while ($query_result =  mysql_fetch_array($project_votes_query_result)) {
 			$project_votes[] = $query_result;
 		}
 		return $project_votes;
+	}
+	
+	function getCampaignsNumberThatHaveVotes($month, $year){
+		$sql = "SELECT COUNT(DISTINCT v.campaign_id), MONTH(FROM_UNIXTIME(v.date)) AS MONTH, YEAR(FROM_UNIXTIME(v.date)) AS YEAR FROM project_votes v GROUP BY MONTH, YEAR HAVING MONTH='".$month."' AND YEAR='".$year."'";
+		
+		return $this->getField($sql);
 	}
 
     /**

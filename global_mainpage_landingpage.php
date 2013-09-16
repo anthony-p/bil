@@ -567,11 +567,20 @@ $menuTemplate->set('projectRewards',$project_rewards);
 if($compaignData['cfc'] == 1){
 	require_once (dirname(__FILE__) . '/includes/class_project_votes.php');
     $projectVotes = new projectVotes();
-	$currentMonthVoteReport = $projectVotes->getVotesReportData(date('n'), date('Y'));
+	
+	$month = date('n');
+	$year = date('Y');
+	
+	$currentMonthVoteReport = $projectVotes->getVotesReportData($month, $year);
+	$campaignsNumberThatHaveVotes = $projectVotes->getCampaignsNumberThatHaveVotes($month, $year);
+	$campaignsPagesNumber = ceil($campaignsNumberThatHaveVotes / $projectVotes->campaignsNumberPerPageInReport);
+	
 	$menuTemplate->set('voteReportMonth', date('F, Y'));
 	$menuTemplate->set('todaysDate', date('M d, Y'));
 	$menuTemplate->set('communityTotalFund', $compaignData['payment']);
+	
 	$menuTemplate->set('voteReportData', $currentMonthVoteReport);
+	$menuTemplate->set('campaignsPagesNumber', $campaignsPagesNumber);
 }
 
 $menuTemplate->set('funders', $funders );
