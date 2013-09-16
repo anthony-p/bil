@@ -5,6 +5,11 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// main page
+define('MSG_MAINPAGE_BTN_BROWSE', '<span class="uper">Browse </span><span>our campaigns</span>');
+define('MSG_MAINPAGE_BTN_LEARN', '<span class="uper">Learn </span><span>how it works</span>');
+define('MSG_MAINPAGE_BTN_START', '<span class="uper">Start </span><span>giving today</span>');
+
 // members area - campaign
 define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME', 'Find by name');
 define('MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN', 'Edit Campaign');
