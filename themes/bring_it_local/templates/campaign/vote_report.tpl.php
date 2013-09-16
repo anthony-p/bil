@@ -39,9 +39,11 @@
 			<?php endforeach;?>
 		</table>
 		<div class="votes_report_pagination">
+		<?php if($campaignsPagesNumber > 1):?>
 		<?php for($k=0; $k<$campaignsPagesNumber; $k++):?>
 			<a <?= $k == 0 ? 'class="current_page_link"' : ''?> onclick="getCampaingsVotes(<?= $k ?>, $(this))"><?= $k + 1 ?></a>
-		<?php endfor;?>
+		<?php endfor; ?>
+		<?php endif; ?>
 		</div>
 	<?php else: ?>
 		<div class="no_votes_message"><?= MSG_COMMUNITY_FUND_NO_VOTES_MADE_IN_CURRENT_MONTH ?></div>

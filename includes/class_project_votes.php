@@ -1,11 +1,4 @@
 <?php
-
-/**
- *
- * @author Zakaria DOUGHI.
- *
- */
-
 require_once("config.php");
 require_once("class_custom_field.php");
 require_once(__DIR__ . '/../language/english/site.lang.php');
