@@ -35,26 +35,26 @@ if (!$user_id) {
                     1 . ", " . 1 . ", " . 1 . ", " . time() . ")"
             );
         }
-        $user_data = $db->get_sql_row("SELECT id FROM bl2_users WHERE
-				pg_paypal_email=" . $payer_email);
+        $user_id = $db->get_sql_field("SELECT id FROM bl2_users WHERE
+				pg_paypal_email=" . $payer_email, 'id');
 
-        if (is_array($user_data) && isset($user_data['id']) && $user_data['id']) {
+        if ($user_id) {
             $_SESSION["probid_user_id"] = $user_data['id'];
             $db->query(
                 "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
-                    $user_data['id'] . ", " . 1 . ", " . 1 . ", " . time() . ")"
+                    $user_id . ", " . 1 . ", " . 1 . ", " . time() . ")"
             );
             $db->query(
                 "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
-                    $user_data['id'] . ", " . 2 . ", " . 2 . ", " . time() . ")"
+                    $user_id . ", " . 2 . ", " . 2 . ", " . time() . ")"
             );
             $db->query(
                 "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
-                    $user_data['id'] . ", " . 3 . ", " . 3 . ", " . time() . ")"
+                    $user_id . ", " . 3 . ", " . 3 . ", " . time() . ")"
             );
             $db->query(
                 "INSERT INTO funders (user_id, campaign_id, amount, created_at) VALUES (" .
-                    $user_data['id'] . ", " . 4 . ", " . 4 . ", " . time() . ")"
+                    $user_id . ", " . 4 . ", " . 4 . ", " . time() . ")"
             );
         }
     }
