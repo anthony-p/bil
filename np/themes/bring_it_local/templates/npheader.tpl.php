@@ -20,7 +20,8 @@ global $coupon_url;
     <link rel="shortcut icon" href="http://www.bringitlocal.com/images/favicon.ico" />
     <link href="/themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
     <link href="/themes/responsive.css" rel="stylesheet" type="text/css">
-    <script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>
+<!--    <script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>-->
+    <script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
     <style type="text/css">
         <!--
         .lb {
@@ -36,8 +37,10 @@ global $coupon_url;
     
     <script>
         $(document).ready(function() {
-             $('#menu').click(function(){
-             $("#menu-cont").slideToggle();
+            $.noConflict();
+            $('#menu').click(function(){
+                $("#menu-cont").slideToggle();
+                return false;
               });
 
             $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
