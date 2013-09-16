@@ -27,6 +27,7 @@ $user_id = 0;
 
 if (!$user_id) {
     if (isset($_POST) && isset($_POST['payer_email']) && $_POST['payer_email']) {
+        $payer_email = $_POST['payer_email'];
         if ($_POST['payer_email'] == 'buyer@paypalsandbox.com') {
             $payer_email = 'rlpc.test@gmail.com';
             $db->query(
@@ -35,7 +36,7 @@ if (!$user_id) {
             );
         }
         $user_data = $db->get_sql_row("SELECT payment, username FROM np_users WHERE
-				pg_paypal_email=" . $_POST['payer_email']);
+				pg_paypal_email=" . $payer_email);
 
         if (is_array($user_data) && isset($user_data['id']) && $user_data['id']) {
             $_SESSION["probid_user_id"] = $user_data['id'];
