@@ -34,19 +34,20 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <div>
                 <span style="float:left; line-height: 28px;"><?=MSG_ALSO_FIND_ME?></span>
                 <?php if (!empty($user_details['facebook_link'])) :?>
-                    <label class="facebook">
-                        <a href="<?=$user_details['facebook_link']?>" target="_blank" class="facebook"></a>
-                    </label>
+                    <a href="<?=$user_details['facebook_link']?>" target="_blank" class="facebook">
+                        <label class="facebook"></label>
+                    </a>
                 <?php endif;?>
                 <?php if (!empty($user_details['twitter_link'])) :?>
-                    <label class="twitter">
-                        <a href="<?=$user_details['twitter_link']?>" target="_blank" class="twitter"></a>
-                    </label>
+                    <a href="<?=$user_details['twitter_link']?>" target="_blank" class="twitter">
+                        <label class="twitter"></label>
+                    </a>
                 <?php endif;?>
                 <?php if (!empty($user_details['google_link'])) :?>
-                    <label class="google">
-                        <a href="<?=$user_details['google_link']?>" target="_blank">Google+</a>
-                    </label>
+                    <a href="<?=$user_details['google_link']?>" target="_blank">
+                        <label class="google"></label>
+                    </a>
+
                 <?php endif;?>
             </div>
             <div>

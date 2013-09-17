@@ -254,7 +254,7 @@ class npuser extends npcustom_field
         $current_time = time();
         $closed_campaigns = array();
         $select_query_result = $this->query(
-            "SELECT user_id, reg_date, deadline_type_value, time_period, certain_date, end_date, keep_alive_days
+            "SELECT user_id, reg_date, cron_company, deadline_type_value, time_period, certain_date, end_date, keep_alive_days
             FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND keep_alive=1"
         );
 
@@ -263,6 +263,18 @@ class npuser extends npcustom_field
         }
 
         return $closed_campaigns;
+    }
+
+    /**
+     * @param $campagns
+     */
+    function clone_campaign($campagns)
+    {
+        if (count($campagns)) {
+            foreach ($campagns as $_campaign_id) {
+
+            }
+        }
     }
 
     /**
