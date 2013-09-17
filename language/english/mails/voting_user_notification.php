@@ -12,5 +12,5 @@ $html_message_user = 'Thank you for voting for ' . $campaign_title . ' campaign!
 
 $header = "From: Bring It Local <support@bringitlocal.com>";
 
-mail($user_voted_email, $subject, $html_message_user) ;
-//mail($user_voted_email, $subject, $html_message_user, $header) ;
+//mail($user_voted_email, $subject, $html_message_user) ;
+mail($user_voted_email, $subject, $html_message_user, $header) ;
