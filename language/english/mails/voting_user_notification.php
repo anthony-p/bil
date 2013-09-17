@@ -10,7 +10,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 $subject = "Thanks for voting";
 $html_message_user = 'Thank you for voting for ' . $campaign_title . ' campaign!';
 
-$header = "From: Bring It Local <support@bringitlocal.com>";
+$headers = 'From: Bring It Local <support@bringitlocal.com>' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 
-mail($user_voted_email, $subject, $html_message_user) ;
-//mail($user_voted_email, $subject, $html_message_user, $header) ;
+mail($user_voted_email, $subject, $html_message_user, $headers) ;
