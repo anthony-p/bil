@@ -49,6 +49,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <?php endif;?>
             </p>
         </div>
+        <div class="clear"></div>
         <div class="content_about">
             <?php if (!empty($user_details['about_me'])) :?>
                 <?=html_entity_decode($user_details['about_me'])?>
