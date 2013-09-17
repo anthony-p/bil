@@ -5,6 +5,7 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 //additions
+define ('MSG_MM_ABOUT_ME_PAGE', 'Personal Profile Page');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT', 'VOTES REPORT');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT_TITLE', 'Community Fund Vote Report');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT_CAMPAIGN_TITLE', 'Campaign');
@@ -32,7 +33,7 @@ define ('MSG_NEWCAMPAIGNS', 'New campaigns');
 define ('MSG_SUBSCRIBE', 'SUBSCRIBE');
 define ('MSG_BLOG', 'Go to our BLOG');
 define ('MSG_EMAIL', 'enter your email');
-define ('MSG_MM_ABOUT_ME', 'About Me');
+define ('MSG_MM_ABOUT_ME', 'Public Profile');
 define ('MSG_MM_VIEW', 'View');
 define ('MSG_FEATURED_LOCALAUCTIONS', 'Buy Local - Featured Auctions by Local Supporters'); 
 define ('MSG_BAR_FEATURED_AUCTIONS', 'Buy Local - Featured Auctions');
@@ -183,12 +184,12 @@ define ('MSG_USERNAME_EXPLANATION', 'Example: rose789 (Don\'t use your email add
 define ('MSG_PASSWORD_EXPLANATION', '6 characters minimum <br />Enter a password that\'s easy for you to remember, but hard for others to guess.');
 define ('MSG_EMAIL_EXPLANATION', 'To complete registration, enter a valid email address that   you can check immediately.');
 define ('MSG_REGISTRATION_CONFIRMATION', 'Registration Confirmation');
-define ('MSG_REGISTER_SUCCESS_TYPE0', 'The registration is complete.<br>You can now login with the username and password you have created.');
-define ('MSG_REGISTER_SUCCESS_TYPE1', 'The registration is complete.<br>An email has been sent to the address you have submitted with details on how to activate your account.');
+define ('MSG_REGISTER_SUCCESS_TYPE0', 'We\'re glad to have your with us! Your account has been successfully created.<br>You can now login with the username and password you have created.');
+define ('MSG_REGISTER_SUCCESS_TYPE1', 'We\'re glad to have your with us! Your account has been successfully created.<br>An email has been sent to the address you have submitted with details on how to activate your account.');
 define ('MSG_REGISTER_SUCCESS_TYPE2', 'The registration is complete.<br>The administrator will review your account and approve it manually.<br>You will be notified by email when your account will be activated.<br>An email has been sent to the address you have submitted with details on how to verify your email address.');
 define ('MSG_LOGIN_TO_MEMBERS_AREA', 'Login to Members Area');
 define ('MSG_INVALID_LOGIN', 'The login details you have submitted are invalid<br>Please try again');
-define ('MSG_BTN_LOGIN', 'Sign in');
+define ('MSG_BTN_LOGIN', 'Login');
 define ('MSG_NEW_TO', 'New to');
 define ('MSG_REGISTRATION_MSG', 'Register Now!');
 define ('MSG_REGISTER_FOR_ACCOUNT', 'Register for Account');
@@ -228,10 +229,10 @@ define ('MSG_CHOOSE_CATEGORY', 'Choose Category');
 define ('MSG_ALL_CATEGORIES', 'All Categories');
 define ('MSG_SITE_NEWS', 'Site News');
 define ('MSG_WELCOME_BACK', 'Welcome back');
-define ('MSG_MM_PROFILE', 'My Profile');
+define ('MSG_MM_PROFILE', 'Settings');
 define ('MSG_MM_EDIT', 'Edit');
 define ('MSG_MM_MY_ACCOUNT', 'My Account');
-define ('MSG_MM_PERSONAL_INFO', 'Personal Information');
+define ('MSG_MM_PERSONAL_INFO', 'Account Details');
 define ('MSG_MM_MANAGE_ACCOUNT', 'Manage Account');
 define ('MSG_MM_INVOICES', 'Invoices');
 define ('MSG_MM_MAIL_PREFS', 'Mail Preferences');
