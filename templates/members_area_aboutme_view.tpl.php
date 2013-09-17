@@ -9,7 +9,7 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 <link href="/css/tinyeditor.css" rel="stylesheet">
-<br>
+<br>ssss
 <div class="about-me_block">
     <div id="avatar_about_me">
         <?php if(!empty($user_details['avatar'])) :?>
