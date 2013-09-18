@@ -66,6 +66,22 @@ class projectVotes extends custom_field
     }
 
     /**
+     * @return bool
+     */
+    function checkCfc()
+    {
+        if ($this->user_id && $this->campaign_id) {
+            $cfc = $this->getField("SELECT cfc FROM np_users WHERE user_id=" .
+                $this->campaign_id);
+            if ($cfc) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * @return int|string
      */
     function getVotesByCampaign()
@@ -105,13 +121,19 @@ class projectVotes extends custom_field
     function getVotesElement()
     {
         if ($this->user_id && $this->campaign_id) {
-            $voted = $this->checkVoted();
-            $donated = $this->checkDonated();
-            if ($donated) {
-                if ($voted) {
-                    $this->votes_element = '<h5>' . $this->getVotesByCampaign() . ' ' . MSG_VOTES_NUMBER . '</h5>';
-                } else {
-                    $this->votes_element = '<button id="vote_us">' . MSG_VOTE_US . '</button>';
+            $cfc = $this->checkCfc();
+            if (!$cfc) {
+                $voted = $this->checkVoted();
+                $donated = $this->checkDonated();
+                if ($donated) {
+                    if ($voted) {
+                        $this->votes_element = '<h5>' .
+                            $this->getVotesByCampaign() . ' ' .
+                            MSG_VOTES_NUMBER . '</h5>';
+                    } else {
+                        $this->votes_element =
+                            '<button id="vote_us">' . MSG_VOTE_US . '</button>';
+                    }
                 }
             }
         }
