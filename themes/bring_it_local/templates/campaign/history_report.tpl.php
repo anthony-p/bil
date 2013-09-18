@@ -15,8 +15,8 @@
 		?>
 		<tr <?= $i == 0 ? 'class="secondary-line"' : '';?>>
 			<td><?= $date ?></td>
-			<td><a href="/<?= $historyData['campaign_url'] ?>"><?= $historyData['campaign_title'] ?></a></td>
-			<td style="text-align: center;"><?= $historyData['max_votes'] ?></td>
+			<td><?= isset($historyData['campaign_title']) ? '<a href="/'.$historyData['campaign_url'].'">'.$historyData['campaign_title'].'</a>' : '- - - - -' ?></td>
+			<td style="text-align: center;"><?= isset($historyData['max_votes']) ? $historyData['max_votes'] : 0 ?></td>
 			<td style="text-align: center;">$<?= $historyData['amount'] ?></td>
 		</tr>
 		<?php $i = ($i + 1)%2; ?>
