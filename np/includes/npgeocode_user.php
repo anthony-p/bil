@@ -23,7 +23,7 @@ $base_url = "http://" . MAPS_HOST . "/maps/geo?output=xml" . "&key=" . KEY;
 
 #  $address = '200 main street, manchester,03102';
 
-error_reporting(E_ERROR);
+/*
 
    $id = $row["user_id"];
     $request_url = $base_url . "&q=" . urlencode($address);
@@ -64,5 +64,10 @@ error_reporting(E_ERROR);
 
 $user_details['lat'] = $lat;
 $user_details['lng'] = $lng;
+*/
+
+$user_details['lat'] = 0;
+$user_details['lng'] = 0;
+
 ?>
 
