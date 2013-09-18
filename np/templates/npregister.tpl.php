@@ -59,7 +59,7 @@ $(document).ready(function()
 
     // form validation
     $("#formElem").submit(function(){
-
+        return true;
 //        checkCampaignUrl($("#username").val());
 
         // check 2nd tab field and if err - focus this tab
@@ -76,7 +76,7 @@ $(document).ready(function()
 
 
         // check 3rd tab
-
+        return true;
     });
 
 
