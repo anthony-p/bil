@@ -49,8 +49,8 @@ foreach ($closed_campaigns as $closed_campaign) {
 //var_dump($renew_campaign_data);
 //echo '</pre>';
 $user->renew_campaigns($renew_campaign_data);
-$a = array(10284);
-$user->clone_campaign($a);
+
+$user->clone_campaign($clone_campaign);
 
 
 
