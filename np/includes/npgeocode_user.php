@@ -23,11 +23,11 @@ $base_url = "http://" . MAPS_HOST . "/maps/geo?output=xml" . "&key=" . KEY;
 
 #  $address = '200 main street, manchester,03102';
 
-
+/*
 
    $id = $row["user_id"];
     $request_url = $base_url . "&q=" . urlencode($address);
-    $xml = simplexml_load_file($request_url) or die("url not loading");
+    $xml = @simplexml_load_file($request_url) or die("url not loading");
 
     $status = $xml->Response->Status->code;
     if (strcmp($status, "200") == 0) {
@@ -64,5 +64,10 @@ $base_url = "http://" . MAPS_HOST . "/maps/geo?output=xml" . "&key=" . KEY;
 
 $user_details['lat'] = $lat;
 $user_details['lng'] = $lng;
+*/
+
+$user_details['lat'] = 0;
+$user_details['lng'] = 0;
+
 ?>
 

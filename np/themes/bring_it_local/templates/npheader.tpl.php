@@ -20,7 +20,23 @@ global $coupon_url;
     <link rel="shortcut icon" href="http://www.bringitlocal.com/images/favicon.ico" />
     <link href="/themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
     <link href="/themes/responsive.css" rel="stylesheet" type="text/css">
-    <script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>
+
+
+    <script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
+    <script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+
+    <script type="text/javascript" src="/scripts/jquery/jquery.polyglot.language.switcher.js" ></script>
+    <script type="text/javascript" src='/scripts/jquery/transit.js'></script>
+    <script type="text/javascript" src="/themes/<?= $setts['default_theme']; ?>/main.js" type="text/javascript"></script>
+    <script type="text/javascript" src='/scripts/innovaeditor.js'></script>
+    <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
+    <script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>
+    <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
+    <script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
+<!--    <script language=JavaScript src='/scripts/jquery/jquery.validate.min.js'></script>-->
+<!--    <script language=JavaScript src='/scripts/jquery/additional-methods.min.js'></script>-->
+
+
     <style type="text/css">
         <!--
         .lb {
@@ -51,10 +67,9 @@ global $coupon_url;
     </script>
 
     <link href="/slider-test/engine1/style.css" rel="stylesheet" type="text/css">
-    <script language=JavaScript src='/scripts/jquery/transit.js'></script>
 
-    <script language="javascript" src="/themes/<?=$setts['default_theme'];?>/main.js" type="text/javascript"></script>
-    <script language=JavaScript src='/scripts/innovaeditor.js'></script>
+
+
     <script type="text/javascript">
         var currenttime = '<?=$current_time_display;?>';
         var serverdate=new Date(currenttime);
@@ -71,7 +86,7 @@ global $coupon_url;
             // setInterval("displaytime()", 1000);
         }
     </script>
-    <script src="/scripts/jquery/jquery.polyglot.language.switcher.js" type="text/javascript"></script>
+
     <script type="text/javascript">
         function popupAlert(shop_url)
         {

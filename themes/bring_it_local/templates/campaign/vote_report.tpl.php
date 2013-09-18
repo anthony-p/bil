@@ -19,9 +19,7 @@
 <aside class="announcement vote_report_tab" id="vote_report_tab_content">
 	<h1><?= MSG_COMMUNITY_FUND_VOTE_REPORT_TITLE; ?></h1>
 	<div class="vote_report_info"><?= MSG_COMMUNITY_FUND_VOTE_REPORT_MONTH ?>: <div><?= $voteReportMonth ?></div></div>
-	<?php if(isset($todaysDate)): ?>
-		<div class="vote_report_info"><?= MSG_COMMUNITY_FUND_VOTE_TODAY_DATE ?>: <div><?= $todaysDate ?></div></div>
-	<?php endif; ?>
+	<div class="vote_report_info"><?= MSG_COMMUNITY_FUND_VOTE_TODAY_DATE ?>: <div><?= $todaysDate ?></div></div>
 	<div class="vote_report_info"><?= MSG_COMMUNITY_FUND_HAS_THIS_MUCH ?>: <div>$<?= $communityTotalFund ?></div></div>
 	<?php if(!empty($voteReportData)): ?>
 		<table id="vote_report_table">

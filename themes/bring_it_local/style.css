@@ -2711,7 +2711,7 @@ h2.resp-accordion:first-child { border-top: 1px solid #c1c1c1 !important;}
 .top-description .right .location{float:left;line-height: 24px;margin-top: 10px;}
 .top-description .right p{font:14px/17px "OpenSans-SemiBold"; color:#222; width:100%; }
 .tabulation{width:750px; float:left; clear: both;}
-.tabulation .resp-tabs-list {float:left; margin-bottom:25px; width: 850px;}
+.tabulation .resp-tabs-list {float:left; margin-bottom:25px; width: 980px;}
 .tabulation .resp-tabs-list li {display: inline-block; padding: 0 13px; cursor: pointer; float: left; margin: 0 10px 0 0; background:#e6e6e6; border:1px solid #d9d9d9;
     border-radius:4px;  border-right-color:#fbfbfb; border-bottom-color:#fbfbfb; color:#1f1f1f; font: 14px/29px "OpenSans-SemiBold"; text-transform: uppercase;}
 .tabulation .resp-tabs-list li.last{margin: 0;}
@@ -3552,6 +3552,10 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .resp-tab-content aside.vote_report_tab .votes_report_pagination a {color: #444; font-size: 10px; text-decoration: underline;}
 .resp-tab-content aside.vote_report_tab .votes_report_pagination a.current_page_link {text-decoration: none;}
 
+/* Votes and Disbursements History */
+.resp-tab-content aside.vote_history_report_tab h1 {width: 300px;}
+.resp-tab-content aside.vote_history_report_tab #vote_report_table {width: 570px;}
+
 /*contributions page*/
 #members_area .contributions_page {width:900px; margin: 0 auto; padding-top: 30px; position: relative;}
 #members_area .contributions_page h2{display:block; text-transform: uppercase; padding: 0 0 10px 0; margin-bottom:20px; border-bottom: 3px solid #dedede;font: 18px/29px "OpenSans-SemiBold"; color: #7eb041;}
@@ -3582,12 +3586,13 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .paypal_block .checked{background: url("img/check_mark.png") 0 0 no-repeat; position: absolute;display: block; width:32px ; height:32px;top:0; left:2px; ;}
 .paypal_checked{background: url("img/check_mark.png") 0 0 no-repeat;display: block; width:32px ; height:32px; margin: 0 auto;}
 
-.about_me_content{float: left;margin-left: 20px; padding: 15px; background: #fff;  border-radius: 13px;box-shadow: 0 0 10px rgba(34, 31, 31,0.2);}
+.about_me_content{float: left;margin:0 0 20px 20px; padding: 15px; background: #fff;  border-radius: 13px;box-shadow: 0 0 10px rgba(34, 31, 31,0.2);}
 .about_me_content #about_me_content{width: 600px;}
 .about_me_content p,.about_me_content div{font:14px/16px "OpenSans"; color:#333; }
 .about_me_content div a{font-family:Opensans-Semibold;  text-decoration: underline; color: #333;}
-.about_me_content .content h2{margin: 0 0 20px 0 ; padding: 20px 0px 0; font: 16px/29px "OpenSans-SemiBold"; text-transform: uppercase;
-    color: #7eb041;  border-bottom: 1.5px solid #dedede;  text-align: left;}
+/*.about_me_content .content h2{margin: 0 0 20px 0 ; padding: 20px 0px 0; font: 16px/29px "OpenSans-SemiBold"; text-transform: uppercase;*/
+    /*color: #7eb041;  border-bottom: 1.5px solid #dedede;  text-align: left;}*/
 #about_me_content label {width:28px; text-transform:capitalize; display: block;  float: left;    height: 28px;    background: url("img/website-icon.png") 0 0 no-repeat;    margin-left: 12px;  font: 13px/27px OpenSans;   margin-left: 6px;  color: #aaaab5;}
 #about_me_content label.twitter{background: url("img/twitter-icon.png") 0 0 no-repeat;}
 #about_me_content label.facebook{background: url("img/face-icon.png") 0 0 no-repeat;}
+#about_me_content h2,#about_me_content h1 {margin: 0 0 20px 0 ; padding: 20px 0px 0; }

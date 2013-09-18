@@ -571,7 +571,7 @@ if($compaignData['cfc'] == 1){
 	$month = date('n');
 	$year = date('Y');
 	
-	$currentMonthVoteReport = $projectVotes->getVotesReportData($month, $year);
+	$voteReportData = $projectVotes->getVotesReportData($month, $year);
 	$campaignsNumberThatHaveVotes = $projectVotes->getCampaignsNumberThatHaveVotes($month, $year);
 	$campaignsPagesNumber = ceil($campaignsNumberThatHaveVotes / $projectVotes->campaignsNumberPerPageInReport);
 	
@@ -579,8 +579,11 @@ if($compaignData['cfc'] == 1){
 	$menuTemplate->set('todaysDate', date('M d, Y'));
 	$menuTemplate->set('communityTotalFund', $compaignData['payment']);
 	
-	$menuTemplate->set('voteReportData', $currentMonthVoteReport);
+	$menuTemplate->set('voteReportData', $voteReportData);
 	$menuTemplate->set('campaignsPagesNumber', $campaignsPagesNumber);
+	
+	$voteAndDisbursementsHistoryData = $projectVotes->getVotesAndDisbursementsHistoryData($compaignData['username']);
+	$menuTemplate->set('voteAndDisbursementsHistoryData', $voteAndDisbursementsHistoryData);
 }
 
 $menuTemplate->set('funders', $funders );
@@ -630,6 +633,7 @@ $template->set("cRewards",$menuTemplate->process("rewards.tpl.php"));
 
 if($compaignData['cfc'] == 1){
 	$template->set("cVoteReport",$menuTemplate->process("vote_report.tpl.php"));
+	$template->set("cHistoryReport",$menuTemplate->process("history_report.tpl.php"));
 }
 
 $template->set("cSupport",$menuTemplate->process("support.tpl.php"));

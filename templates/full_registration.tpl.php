@@ -9,6 +9,10 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
+<!-- TODO: check JS scripts and remove conflicts -->
+<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
+<script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+
 <script language="javascript">
     function checkEmail() {
         if (document.registration_form.email_check.value==document.registration_form.email.value) document.registration_form.email_img.style.display="inline";
@@ -170,6 +174,17 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     var http = getXHTTP(); // This executes when the page first loads.
 
 
+</script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.form_tooltip').tooltip({
+            track: true
+        });
+
+    });
 </script>
 
 <?
@@ -553,7 +568,9 @@ function fetchstate($statecode){
 <table border="0" cellpadding="0" cellspacing="0" class="tbl"
     <?php if (isset($user_details['confirmed_paypal_email']) && $user_details['confirmed_paypal_email']) echo 'id="directPayment"' ?>>
     <tr>
-        <th colspan="2"><?=MSG_DIRECT_PAYMENT_SETTINGS;?></th>
+        <th colspan="2"><?=MSG_DIRECT_PAYMENT_SETTINGS;?>
+            <div style="width:40px; float: right; margin-left: 10px;" class="form_tooltip"><a href="#" title="<?= TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN; ?>"><img src="/images/question_32x37.png" height="24" alt="some test"></a></div>
+        </th>
     </tr>
     <?=$display_direct_payment_methods;?>
 </table>
