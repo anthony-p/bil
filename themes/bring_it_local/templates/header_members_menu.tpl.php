@@ -122,6 +122,9 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
     <li <?php if ($selected_section == 'my_earnings'): ?> class="active" <?php endif; ?>>
         <a href="/earnings,page,main,section,members_area#8ec3489f027e"><?= MSG_MY_EARNINGS ?></a>
     </li>
+    <li <?php if ($selected_section == 'my_clone_campaigns'): ?> class="active" <?php endif; ?>>
+        <a href="/clone_campaigns,page,main,section,members_area#8ec3489f027e"><?=MSG_MY_CLONE_CAMPAIGNS ?></a>
+    </li>
 
 
     <?php

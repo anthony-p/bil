@@ -5175,6 +5175,43 @@ else
     }
     /*end earning page*/
 
+    if ($page == 'clone_campaigns') /* BEGIN -> CONTRIBUTIONS PAGE */
+    {
+        if ($section == 'main')
+        {
+            $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users WHERE np_users.parrent_id<>0 AND np_users.probid_user_id=" . $session->value('user_id')."");
+
+            $nrElement = mysql_num_rows($campaigns_result);
+
+            $per_page = 10;
+            $total_pages = ceil(($nrElement-1)/$per_page);
+
+            if (isset($_GET['page_selected'])) {
+                $page_nr = $_GET['page_selected'];
+            } else {
+                $page_nr = 1;
+            }
+            $start = ($page_nr - 1)*$per_page;
+
+            $campaigns_query_result = $db->query("SELECT bl2_users.first_name, np_users.probid_user_id, bl2_users.last_name, np_users.project_title
+                FROM np_users LEFT JOIN bl2_users ON bl2_users.id = np_users.probid_user_id
+                WHERE np_users.probid_user_id=" . $session->value('user_id')."
+                AND np_users.parrent_id<>0 limit $start, $per_page");
+
+            $userCampaigns = array();
+            while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
+                $userCampaigns[] = $query_result;
+            }
+
+            $template->set("page_selected",$page_selected);
+            $template->set("total_pages",$total_pages);
+            $template->set("info_clone_campaigns",$userCampaigns);
+            $members_area_page_content = $template->process('members_area_clone_campaigns.tpl.php');
+            $template->set('members_area_page_content', $members_area_page_content);
+
+        }
+    }
+
     if ($page == 'campaigns') /* BEGIN -> CAMPAIGNS PAGE */
     {
         include('templates/member_area_campaigns.php');
@@ -5381,7 +5418,7 @@ else
                     founddrasing_goal='" . $_POST["founddrasing_goal"] . "',
                     funding_type='" . $funding_type . "',
                     active='" . $_POST["active"] . "',
-                    cron_company='" . $_POST["cron_company"] . "',
+                    clone_campaign='" . $_POST["clone_campaign"] . "',
                     deadline_type_value='" . $_POST["deadline_type_value"] . "',
                     time_period='" . $_POST["time_period"] . "',
                     certain_date='" . $certain_date . "',
