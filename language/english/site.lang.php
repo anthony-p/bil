@@ -4,6 +4,10 @@
 ##-------------------------------------------------------------##
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
+
+// tooltips
+define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your paypal account.');
+
 //additions
 define ('MSG_MM_ABOUT_ME_PAGE', 'Personal Profile Page');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT', 'VOTES REPORT');
