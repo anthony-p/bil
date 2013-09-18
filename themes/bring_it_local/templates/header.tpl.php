@@ -71,10 +71,10 @@ global $coupon_url;
         $(document).ready(function() {
             $('#menu').click(function(){
                 if ($("#menu-cont").is(":hidden")) {
-                    $("#menu-cont").slideDown();
+                    $("#menu-cont").slideDown("slow");
                     $('#menu').addClass('arrow');
                 } else {
-                    $("#menu-cont").slideUp();
+                    $("#menu-cont").slideUp("slow");
                     $('#menu').removeClass('arrow');
                 }
             });

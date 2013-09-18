@@ -52,9 +52,15 @@ global $coupon_url;
     
     <script>
         $(document).ready(function() {
-             $('#menu').click(function(){
-             $("#menu-cont").slideToggle("slow");
-              });
+            $('#menu').click(function(){
+                if ($("#menu-cont").is(":hidden")) {
+                    $("#menu-cont").slideDown("slow");
+                    $('#menu').addClass('arrow');
+                } else {
+                    $("#menu-cont").slideUp("slow");
+                    $('#menu').removeClass('arrow');
+                }
+            });
 
             $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
                 effect: 'fade',
