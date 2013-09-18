@@ -254,6 +254,11 @@ else
                         $_POST["end_date"] = time() + ($_POST["time_period"] * 86400);
                     elseif ($_POST["deadline_type_value"] == "certain_date")
                         $_POST["end_date"] = strtotime($_POST["certain_date"]);
+                } else {
+                    $_POST["deadline_type_value"] = "time_period";
+                }
+                if (!$_POST["end_date"]) {
+                    $_POST["end_date"] = time() + (30 * 86400);
                 }
 
 				$user_id = $user->insert($_POST);
