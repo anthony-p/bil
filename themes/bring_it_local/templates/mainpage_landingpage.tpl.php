@@ -162,6 +162,7 @@ $featured_columns = 14;
                 <li><?=MSG_REWARDS?></li>
 				<?php if($compaigns['cfc'] == 1): ?>
 				<li><?=MSG_COMMUNITY_FUND_VOTE_REPORT?></li>
+				<li><?=MSG_COMMUNITY_FUND_HISTORY?></li>
 				<?php endif; ?>
                 <li class="last"><?=MSG_WAYS_TO_SUPPORT?></li>
             </ul>
@@ -169,7 +170,6 @@ $featured_columns = 14;
                 <div class="tab-step">
                     <?php echo $cHome; ?>
                 </div>
-
                 <div class="tab-step">
                     <?php echo $cUpdates; ?>
                 </div>
@@ -185,6 +185,9 @@ $featured_columns = 14;
 				<?php if($compaigns['cfc'] == 1): ?>
 				<div class="tab-step">
                     <?php echo $cVoteReport; ?>
+                </div>
+				<div class="tab-step">
+                    <?php echo $cHistoryReport; ?>
                 </div>
 				<?php endif; ?>
                 <div class="tab-step">

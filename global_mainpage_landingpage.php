@@ -630,6 +630,7 @@ $template->set("cRewards",$menuTemplate->process("rewards.tpl.php"));
 
 if($compaignData['cfc'] == 1){
 	$template->set("cVoteReport",$menuTemplate->process("vote_report.tpl.php"));
+	$template->set("cHistoryReport",$menuTemplate->process("history_report.tpl.php"));
 }
 
 $template->set("cSupport",$menuTemplate->process("support.tpl.php"));
