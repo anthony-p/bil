@@ -1,3 +1,40 @@
+<?php global $session; ?>
+<script src="../../../scripts/jquery/jquery-1.9.1.js"></script>
+<script src="../../../scripts/jquery/jquery-ui.js"></script>
+<link rel="stylesheet" href="../../../css/jquery-ui.css" />
+<script>
+    $(document).ready(function(){
+        $('.campaign_donation').click(function(e){
+            e.preventDefault();
+
+            var url = $(this).attr('href');
+            var logged_in = <?php echo $session->value('user_id') ? $session->value('user_id') : '0'; ?>;
+
+            if (logged_in) {
+                window.location = url;
+            } else {
+                $( "#dialog-confirm" ).dialog({
+                    resizable: true,
+                    width: 580,
+                    modal: true,
+                    open: function() { $(".ui-dialog-titlebar-close").hide(); },
+                    buttons: {
+                        "<?= MSG_LOGIN_BUTTON ?>": function() {
+                            $(this).dialog("close");
+                            window.location = "/login.php";
+                        },
+                        "<?= MSG_CONTINUE_WITHOUT_LOGIN ?>": function() {
+                            $(this).dialog("close");
+                            window.location = url;
+                        }
+                    }
+                });
+            }
+
+
+        });
+    });
+</script>
 <?
 #################################################################
 ## PHP Pro Bid v6.06															##
@@ -114,7 +151,8 @@ $featured_columns = 14;
         <div class="navigation-btn">
             <h3><?=MSG_MANY_WAYS_TO_GIVE?></h3>
             <?php if ($compaigns['active'] != 2 && ($compaigns['end_date']-time())>0 ): ?>
-                <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>" class="donation">
+                <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>"
+                   class="donation campaign_donation">
                     <span class="uper"><?=MSG_DONATE_NOW?></span>
                     <span><?=MSG_MAKE_DONATION?></span>
                 </a>
