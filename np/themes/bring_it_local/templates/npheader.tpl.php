@@ -53,7 +53,7 @@ global $coupon_url;
     <script>
         $(document).ready(function() {
              $('#menu').click(function(){
-             $("#menu-cont").slideToggle();
+             $("#menu-cont").slideToggle("slow");
               });
 
             $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
