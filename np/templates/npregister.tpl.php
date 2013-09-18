@@ -12,16 +12,16 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <link href="css/tabs-style.css" rel="stylesheet">
 <!--<link href="/css/tinyeditor.css" rel="stylesheet">-->
-<script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>
-<script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
-<script language=JavaScript src='/scripts/jquery/jquery-ui-custom.js'></script>
-<script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>
+<!--<script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>-->
+<!--<script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>-->
+<!--<script language=JavaScript src='/scripts/jquery/jquery-ui-custom.js'></script>-->
+<!--<script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>-->
 <!--<script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>-->
 <!--<script language="JavaScript" src="/scripts/jquery/tiny.editor.js" js="text/javascript"></script>-->
 <!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/tiny_mce_src.js" js="text/javascript"></script>-->
 <!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
-<script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
-<script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
+<!--<script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>-->
+<!--<script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>-->
 
 <!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
 <!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/plugins/moxiemanager/editor_plugin.js" js="text/javascript"></script>-->
@@ -38,11 +38,49 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         /*margin: 10px;*/
         /*height: 100px;*/
     /*}*/
+
+
+    .error{
+        border: 1px solid #ff0000;
+        color: #ff0000;
+    }
+
 </style>
 
 <script language="javascript">
+
+var regNotEmptyAlphaNumeric = /^([\w\d]+)/i;
+var err_status = false;
+
 $(document).ready(function()
 {
+
+
+
+    // form validation
+    $("#formElem").submit(function(){
+
+//        checkCampaignUrl($("#username").val());
+
+        // check 2nd tab field and if err - focus this tab
+        if ( $("#username").val() == '' || !$("#username").val().match(regNotEmptyAlphaNumeric) )  {
+            $("#username").addClass("error");
+            err_status = true;
+        } else {
+            $("#username").removeClass("error");
+        }
+        if (err_status) {
+            $("#p_projectDetail").children('a').click();
+            return false;
+        }
+
+
+        // check 3rd tab
+
+    });
+
+
+
     $('.file').preimage();
 
     $(".partial_save").click(function(){
@@ -53,6 +91,16 @@ $(document).ready(function()
     });
 
 });
+
+function checkCampaignUrl(uname){
+    $.ajax({
+        url: "npcheck_username.php?username="+uname,
+        async: false,
+        type: "GET"
+    }).done(function (result) {
+                alert(result);
+    });
+}
 
 function checkEmail() {
     if (document.registration_form.email_check.value==document.registration_form.email.value) document.registration_form.email_img.style.display="inline";
