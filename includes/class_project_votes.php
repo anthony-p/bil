@@ -155,33 +155,36 @@ class projectVotes extends custom_field
 		
 		return $this->getField($sql);
 	}
-
-    /**
-     * @param $reward
-     * @param $user_id
-     * @return string
-     */
-    function update($reward, $user_id)
-    {
-        if (!empty($reward['id']) && !empty($user_id)) {
-			$has_rights = $this->getField("Select count(*) FROM project_rewards r left join np_users c on r.project_id = c.user_id WHERE r.id='".$reward['id']."' and c.probid_user_id='".$user_id."'");
-			if($has_rights == 1){
-				if($this->isAmountUsed($reward['amount'], '', $reward['id'])){
-					return MSG_REWARD_AMOUNT_EXIST;
-				}
-				
-				if($this->isNameUsed($reward['name'], '', $reward['id'])){
-					return MSG_REWARD_NAME_EXIST;
-				}
-				$this->query("UPDATE project_rewards SET amount='".$reward['amount']."', name='".$reward['name']."', description='".$reward['description']."', available_number=".$reward['available_number'].", estimated_delivery_date=".$reward['estimated_delivery_date'].", shipping_address_required='".$reward['shipping_address_required']."' WHERE id='".$reward['id']."'");
-				return MSG_REWARD_SAVED;
-			} else {
-				return MSG_ACCESS_DENIED;
-			}
-		} else {
-            return "error";
-        }
-    }
 	
-	//--------------------------------------------------------------------------------------------------------------------------
+	function getVotesAndDisbursementsHistoryData(){
+		$result = array();
+		
+		$sql = "SELECT CONCAT(MONTH(FROM_UNIXTIME(end_date)), '_', YEAR(FROM_UNIXTIME(end_date))) as date, payment FROM np_users p WHERE p.cfc='1' AND FROM_UNIXTIME(end_date) < NOW()";
+		
+		$data_query_result = $this->query($sql);
+
+		while ($query_result =  mysql_fetch_array($data_query_result)) {
+			$result[$query_result['date']] = array('amount' => $query_result['payment']);
+		}
+		
+		$sql = "SELECT CONCAT(MONTH, '_', YEAR) AS date, MAX(count_votes) AS max_votes FROM (SELECT COUNT(v.id) AS count_votes, MONTH(FROM_UNIXTIME(v.date)) AS MONTH, YEAR(FROM_UNIXTIME(v.date)) AS YEAR FROM project_votes v GROUP BY v.campaign_id, MONTH, YEAR) t GROUP BY DATE order by DATE DESC";
+		
+		$data_query_result = $this->query($sql);
+		while ($query_result =  mysql_fetch_array($data_query_result)) {
+			$key = $query_result['date'];
+			if(array_key_exists($key, $result)){
+				$result[$key]['max_votes'] = $query_result['max_votes'];
+			}
+		}
+		
+		foreach($result as $key=>$value){
+			if(isset($value['max_votes'])){
+				$campaign_info = mysql_fetch_array($this->query("SELECT c.project_title as campaign_title, c.username as campaign_url FROM project_votes v join np_users c on v.campaign_id=c.user_id GROUP BY v.campaign_id, MONTH(FROM_UNIXTIME(v.date)), YEAR(FROM_UNIXTIME(v.date)) having COUNT(v.id)='".$value['max_votes']."'"));
+				$result[$key]['campaign_title'] = $campaign_info['campaign_title'];
+				$result[$key]['campaign_url'] = $campaign_info['campaign_url'];
+			}
+		}
+		
+		return $result;
+	}
 }
