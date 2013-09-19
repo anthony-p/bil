@@ -357,15 +357,17 @@ else
 
                 preg_match("/\\(([\\d]+)\\)(.*)/uis", $u_details['phone'], $u_phone);
                 // check if phone number not recognized - pulls empty array.
-                if (!count($u_phone)) $u_phone = array(1=>'', 2=>'');
+//                if (!count($u_phone)) $u_phone = array(1=>'', 2=>'');
 
                 $user_details = array(
                     'name'      => $u_details['first_name'] ." ". $u_details['last_name'],
                     'address'   => $u_details['address'],
                     'city'      => $u_details['city'],
                     'zip_code'  => $u_details['postal_code'],
-                    'phone_a'   => $u_phone[1],
-                    'phone_b'   => $u_phone[2],
+                    'phone'     => $u_details['phone'],
+                    'deadline_type_value' => 'time_period',
+//                    'phone_a'   => $u_phone[1],
+//                    'phone_b'   => $u_phone[2],
                     'tax_company_name'  => $u_details['organization'],
                     'pg_paypal_email'   => $u_details['pg_paypal_email'],
                     'pg_paypal_first_name'  => $u_details['pg_paypal_first_name'],
@@ -381,7 +383,7 @@ else
                 $post_country = intval($u_details['country']);
             }
 
-			$template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
+			$template->set('country_dropdown', $tax->countries_dropdown('country', $post_country));
 
             $template->set("project_category",getProjectCategoryList());
 

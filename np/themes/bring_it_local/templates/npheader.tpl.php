@@ -33,8 +33,7 @@ global $coupon_url;
     <script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>
     <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
     <script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
-<!--    <script language=JavaScript src='/scripts/jquery/jquery.validate.min.js'></script>-->
-<!--    <script language=JavaScript src='/scripts/jquery/additional-methods.min.js'></script>-->
+    <script language=JavaScript src='/scripts/jquery/jquery.maskedinput.min.js'></script>
 
 
     <style type="text/css">
