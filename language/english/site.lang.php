@@ -118,7 +118,7 @@ define ('MSG_MY_DEALS', 'My Deals');
 define ('MSG_MY_PROFILE', 'My Profile');
 define ('MSG_CAMPAIGNS', 'Campaigns');
 define ('MSG_MY_CAPMAIGNS', 'My Campaigns');
-define ('MSG_NEW_CAPMAIGN', 'New');
+define ('MSG_NEW_CAPMAIGN', 'Start a new one');
 define ('MSG_DRAFTS_CAPMAIGNS', 'Drafts');
 define ('MSG_LIVE_CAPMAIGNS', 'Live');
 define ('MSG_CLOSED_CAPMAIGNS', 'Closed');
