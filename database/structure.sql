@@ -3688,7 +3688,7 @@ ALTER TABLE `np_users` ADD COLUMN `cfc` INT NULL DEFAULT 0  AFTER `confirmed_pay
 
 ALTER TABLE `bl2_users` ADD COLUMN `cfc_donated` INT NULL DEFAULT 0  AFTER `confirmed_paypal_email` ;
 
-ALTER TABLE `np_users` ADD COLUMN `pattern_id` INT NOT NULL AFTER `cfc` ;
+ALTER TABLE `np_users` ADD COLUMN `parrent_id` INT NOT NULL AFTER `cfc` ;
 
 ALTER TABLE `np_users` ADD COLUMN `clone_campaign` INT NOT NULL DEFAULT 0  AFTER `active` ;
 

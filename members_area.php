@@ -5179,9 +5179,8 @@ else
     {
         if ($section == 'main')
         {
-            var_dump("SELECT np_users.project_title FROM np_users WHERE np_users.parrent_id<>0 AND np_users.probid_user_id=" . $session->value('user_id')."");
             $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users WHERE np_users.parrent_id<>0 AND np_users.probid_user_id=" . $session->value('user_id')."");
-            var_dump($campaigns_result);
+
             $nrElement = mysql_num_rows($campaigns_result);
 
             $per_page = 10;
