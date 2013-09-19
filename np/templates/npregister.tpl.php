@@ -42,15 +42,22 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
     .error{
         border: 1px solid #ff0000;
-        color: #ff0000;
+        background-color: #ff0000;
     }
 
 </style>
 
 <script language="javascript">
 
+var regNotEmptyAlpha = /^([\w]+)/i;
+var regNotEmptyNumbers = /^([\d]+)$/i;
+var regNotEmptyAlphaWS = /^([\w\s]+)/i;
 var regNotEmptyAlphaNumeric = /^([\w\d]+)/i;
+var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)/i;
+var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
+var regPhone = /\(\d\d\d\) \d\d\d-\d\d\d\d/i;
 var err_status = false;
+
 
 $(document).ready(function()
 {
@@ -59,26 +66,163 @@ $(document).ready(function()
 
     // form validation
     $("#formElem").submit(function(){
-        return true;
-//        checkCampaignUrl($("#username").val());
+
+        err_status = false;
+        $(".error").each(function(){
+            $(this).removeClass("error");
+        });
+
+
+        // check 1st tab field and if err - focus this tab
+        if ($("#name").val() == '' || !$("#name").val().match(regNotEmptyAlphaNumericWS)) {
+            $("#name").addClass("error");
+            err_status = true;
+        } else {
+            $("#name").removeClass("error");
+        }
+        if ($("#address").val() == '') {
+            $("#address").addClass("error");
+            err_status = true;
+        } else {
+            $("#address").removeClass("error");
+        }
+        if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaWS)) {
+            $("#city").addClass("error");
+            err_status = true;
+        } else {
+            $("#city").removeClass("error");
+        }
+        if ($("#zip_code").val() == '' || !$("#zip_code").val().match(regZipCode)) {
+            $("#zip_code").addClass("error");
+            err_status = true;
+        } else {
+            $("#zip_code").removeClass("error");
+        }
+        if ($("#phone").val() == '' || !$("#phone").val().match(regPhone)) {
+            $("#phone").addClass("error");
+            err_status = true;
+        } else {
+            $("#phone").removeClass("error");
+        }
+
+        if (err_status) {
+            $("#p_account").children('a').click();
+            return false;
+        }
+
 
         // check 2nd tab field and if err - focus this tab
-        if ( $("#username").val() == '' || !$("#username").val().match(regNotEmptyAlphaNumeric) )  {
+        if ( $("#username").val() == '' || !$("#username").val().match(regNotEmptyAlphaNumeric) || checkCampaignUrl($("#username").val()) )  {
             $("#username").addClass("error");
             err_status = true;
         } else {
             $("#username").removeClass("error");
         }
+
+        var mce_cont = tinyMCE.activeEditor.getBody();
+
+        if ($(mce_cont).html() == '<p><br data-mce-bogus="1"></p>' && $(mce_cont).text() == '') {
+            $("#campaign_basic").addClass("error");
+            err_status = true;
+        } else {
+            $("#campaign_basic").removeClass("error");
+        }
+        if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaWS)) {
+            $("#project_title").addClass("error");
+            err_status = true;
+        } else {
+            $("#project_title").removeClass("error");
+        }
+        if ($("#project_short_description").val() == '' || !$("#project_short_description").val().match(regNotEmptyAlphaWS)) {
+            $("#project_short_description").addClass("error");
+            err_status = true;
+        } else {
+            $("#project_short_description").removeClass("error");
+        }
+        if ($("#founddrasing_goal").val() == '' || parseInt($("#founddrasing_goal").val()) != parseFloat($("#founddrasing_goal").val()) || !$("#founddrasing_goal").val().match(regNotEmptyNumbers) ) {
+            $("#founddrasing_goal").addClass("error");
+            err_status = true;
+        } else {
+            $("#founddrasing_goal").removeClass("error");
+        }
+
+        if ( $("#deadline_type_value").val() == 'time_period' ){
+            if ($("#time_period").val() == '' || parseInt($("#time_period").val()) != parseFloat($("#time_period").val()) ||
+                    !$("#time_period").val().match(regNotEmptyNumbers)) {
+                $("#time_period").addClass("error");
+                err_status = true;
+            } else {
+                $("#time_period").removeClass("error");
+            }
+        }
+        if ( $("#deadline_type_value").val() == 'certain_date'){
+            if ($("#certain_date").val() == '' ) {
+                $("#certain_date").addClass("error");
+                err_status = true;
+            } else {
+                $("#certain_date").removeClass("error");
+            }
+        }
+
         if (err_status) {
             $("#p_projectDetail").children('a').click();
             return false;
         }
 
 
-        // check 3rd tab
+        // check 2nd tab field and if err - focus this tab
+
+
+
         return true;
     });
 
+    $("#phone").mask("(999) 999-9999");
+
+    // load state list
+    $("#country").change(function(){
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "/ajaxprocessors",
+            dataType: 'json',
+            data: {do:'stateList', country_id: $("#country").val()}
+        })
+        .done(function(result){
+                    $("#states_box").empty();
+                    $("#states_box").append(result.data);
+        });
+
+    });
+
+    /* == == == == == == == == == == == == == == == == == == == == == == ==*/
+    tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
+
+    tinymce.init({
+        selector: '.campaign_basic',
+        plugins: [
+            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
+        ],
+        toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+        toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
+        toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
+
+        menubar: false,
+        image_advtab: true,
+        toolbar_items_size: 'small',
+
+        style_formats: [
+            {title: 'Bold text', inline: 'b'},
+            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+            {title: 'Example 1', inline: 'span', classes: 'example1'},
+            {title: 'Example 2', inline: 'span', classes: 'example2'},
+            {title: 'Table styles'},
+            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+        ]
+    });
 
 
     $('.file').preimage();
@@ -93,13 +237,21 @@ $(document).ready(function()
 });
 
 function checkCampaignUrl(uname){
+    var rstatus = false;
+
     $.ajax({
-        url: "npcheck_username.php?username="+uname,
+        type: "POST",
         async: false,
-        type: "GET"
-    }).done(function (result) {
-                alert(result);
-    });
+        url: "/ajaxprocessors.php",
+        dataType: 'json',
+        data: {do: 'checkCampaignName', name: uname }
+    })
+            .done(function (result) {
+                rstatus =  result.status;
+            });
+
+    return rstatus;
+
 }
 
 function checkEmail() {
@@ -126,61 +278,6 @@ function copy_password_value() {
     document.registration_form.password2.value = document.registration_form.password.value;
 }
 
-function check_username(username)
-{
-    var xmlHttp;
-
-    if (window.XMLHttpRequest)
-    {
-        var xmlHttp = new XMLHttpRequest();
-
-        if (XMLHttpRequest.overrideMimeType)
-        {
-            xmlHttp.overrideMimeType('text/xml');
-        }
-    }
-    else if (window.ActiveXObject)
-    {
-        try
-        {
-            var xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-        }
-        catch(e)
-        {
-            try
-            {
-                var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            catch(e) {}
-        }
-    }
-    else
-    {
-        alert('Your browser does not support XMLHTTP!');
-        return false;
-    }
-
-    var uname    = username.value;
-    var url    = 'npcheck_username.php';
-    var action    = url + '?username=' + encodeURIComponent(uname);
-
-    if (uname != '')
-    {
-        xmlHttp.onreadystatechange = function() { showResult(xmlHttp, uname); };
-        xmlHttp.open("GET", action, true);
-        xmlHttp.send(null);
-    }
-}
-
-function showResult(xmlHttp, id)
-{
-    if (xmlHttp.readyState == 4)
-    {
-        var response = xmlHttp.responseText;
-
-        usernameResult.innerHTML = unescape(response);
-    }
-}
 
 function changeDeadlineType(obj,id)
 {
@@ -482,7 +579,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <?=$country_dropdown;?>
         <div class="clear"></div><br/>
         <label><?=MSG_STATE;?> *</label>
-        <?=$state_box;?>
+        <div id="states_box"><?=$state_box;?></div>
         <?php
             $city = (isset($user_details['city']))?$user_details['city']:'';
             $zip_code = (isset($user_details['zip_code']))?$user_details['zip_code']:'';
@@ -500,12 +597,9 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     <div class="account-row phone">
         <label><?=MSG_PHONE;?> *</label>
 
-        <? if (isset($edit_user) && $edit_user == 1)	{ ?>
+
             <input name="phone" type="text" id="phone" value="<?=(isset($user_details['phone']))?$user_details['phone']:'';?>" size="25" />
-        <? } else { ?>
-            ( <input name="phone_a" type="text" id="phone_a" value="<?=(isset($user_details['phone_a']))?$user_details['phone_a']:'';?>" size="5" /> )
-            <input name="phone_b" type="text" id="phone_b" value="<?=(isset($user_details['phone_b']))?$user_details['phone_b']:'';?>" size="25" />
-        <? } ?>
+
         <span><?=MSG_PHONE_EXPL;?></span>
         <div class="clear"></div>
         <?=isset($birthdate_box)?$birthdate_box:'';?>
@@ -548,7 +642,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <label> <?=MSG_CREATE_PROJECT_URL;?> *</label>
             <input name="username" type="text" id="username"
                    value="<?php echo isset($user_details['username']) ? $user_details['username'] : '' ?>"
-                   size="40" maxlength="30" onchange="check_username(this);" placeholder="<?=MSG_ENTER_PROJECTURL;?>"/>
+                   size="40" maxlength="30"  placeholder="<?=MSG_ENTER_PROJECTURL;?>"/>
             <span><?=MSG_PROJECTURL_EXPLANATION;?></span>
         </div>
         <div class="account-row">
@@ -793,63 +887,4 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 </form>
 </div>
 
-<script type="text/javascript">
-    $( document ).ready( function (){
-        /* == == == == == == == == == == == == == == == == == == == == == == ==*/
-        tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
-
-        tinymce.init({
-            selector:'.campaign_basic',
-            plugins: [
-                "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-                		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
-            ],
-            toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-            	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
-            	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
-
-            	menubar: false,
-                image_advtab: true,
-            	toolbar_items_size: 'small',
-
-            	style_formats: [
-            		{title: 'Bold text', inline: 'b'},
-            		{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-            		{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-            		{title: 'Example 1', inline: 'span', classes: 'example1'},
-            		{title: 'Example 2', inline: 'span', classes: 'example2'},
-            		{title: 'Table styles'},
-            		{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-            	]
-        });
-
-        /*
-        tinyMCE.init({
-                // General options
-                width: 584,
-                height: 250,
-                editor_selector : "campaign_basic",
-                mode : "textareas",
-                theme : "advanced",
-                plugins : "moxiemanager,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-
-                // Theme options
-                theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
-                theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,image,cleanup,code,|,forecolor,backcolor",
-                theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-//                theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
-                theme_advanced_toolbar_location : "top",
-                theme_advanced_toolbar_align : "left",
-                theme_advanced_statusbar_location : "bottom",
-                theme_advanced_resizing : true,
-                moxiemanager_insert:true,
-            moxiemanager_insert:true,
-            toolbar: "insertfile link image",
-            menubar: false
-        });
-*/
-        /* == == == == == == == == == == == == == == == == == == == == == == ==*/
-    });
-</script>
 

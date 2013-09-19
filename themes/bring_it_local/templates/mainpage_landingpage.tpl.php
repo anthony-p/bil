@@ -1,3 +1,40 @@
+<?php global $session; ?>
+<script src="../../../scripts/jquery/jquery-1.9.1.js"></script>
+<script src="../../../scripts/jquery/jquery-ui.js"></script>
+<link rel="stylesheet" href="../../../css/jquery-ui.css" />
+<script>
+    $(document).ready(function(){
+        $('.campaign_donation').click(function(e){
+            e.preventDefault();
+
+            var url = $(this).attr('href');
+            var logged_in = <?php echo $session->value('user_id') ? $session->value('user_id') : '0'; ?>;
+
+            if (logged_in) {
+                window.location = url;
+            } else {
+                $( "#dialog-confirm" ).dialog({
+                    resizable: true,
+                    width: 580,
+                    modal: true,
+                    open: function() { $(".ui-dialog-titlebar-close").hide(); },
+                    buttons: {
+                        "<?= MSG_LOGIN_BUTTON ?>": function() {
+                            $(this).dialog("close");
+                            window.location = "/login.php";
+                        },
+                        "<?= MSG_CONTINUE_WITHOUT_LOGIN ?>": function() {
+                            $(this).dialog("close");
+                            window.location = url;
+                        }
+                    }
+                });
+            }
+
+
+        });
+    });
+</script>
 <?
 #################################################################
 ## PHP Pro Bid v6.06															##
@@ -114,7 +151,8 @@ $featured_columns = 14;
         <div class="navigation-btn">
             <h3><?=MSG_MANY_WAYS_TO_GIVE?></h3>
             <?php if ($compaigns['active'] != 2 && ($compaigns['end_date']-time())>0 ): ?>
-                <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>" class="donation">
+                <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>"
+                   class="donation campaign_donation">
                     <span class="uper"><?=MSG_DONATE_NOW?></span>
                     <span><?=MSG_MAKE_DONATION?></span>
                 </a>
@@ -160,11 +198,11 @@ $featured_columns = 14;
                 <li><?=MSG_COMMENTS?></li>
                 <li><?=MSG_FUNDERS?></li>
                 <li><?=MSG_REWARDS?></li>
+                <li<?= $compaigns['cfc'] == 0 ? ' class="last"': ''?>><?=MSG_WAYS_TO_SUPPORT?></li>
 				<?php if($compaigns['cfc'] == 1): ?>
 				<li><?=MSG_COMMUNITY_FUND_VOTE_REPORT?></li>
-				<li><?=MSG_COMMUNITY_FUND_HISTORY?></li>
+				<li class="last"><?=MSG_COMMUNITY_FUND_HISTORY?></li>
 				<?php endif; ?>
-                <li class="last"><?=MSG_WAYS_TO_SUPPORT?></li>
             </ul>
             <div class="resp-tabs-container">
                 <div class="tab-step">
@@ -182,6 +220,9 @@ $featured_columns = 14;
                 <div class="tab-step">
                     <?php echo $cRewards; ?>
                 </div>
+                <div class="tab-step">
+                    <?php echo $cSupport; ?>
+                </div>
 				<?php if($compaigns['cfc'] == 1): ?>
 				<div class="tab-step">
                     <?php echo $cVoteReport; ?>
@@ -190,9 +231,6 @@ $featured_columns = 14;
                     <?php echo $cHistoryReport; ?>
                 </div>
 				<?php endif; ?>
-                <div class="tab-step">
-                    <?php echo $cSupport; ?>
-                </div>
             </div>
         </div>
     </div>

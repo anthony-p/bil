@@ -33,8 +33,7 @@ global $coupon_url;
     <script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>
     <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
     <script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
-<!--    <script language=JavaScript src='/scripts/jquery/jquery.validate.min.js'></script>-->
-<!--    <script language=JavaScript src='/scripts/jquery/additional-methods.min.js'></script>-->
+    <script language=JavaScript src='/scripts/jquery/jquery.maskedinput.min.js'></script>
 
 
     <style type="text/css">
@@ -52,9 +51,15 @@ global $coupon_url;
     
     <script>
         $(document).ready(function() {
-             $('#menu').click(function(){
-             $("#menu-cont").slideToggle();
-              });
+            $('#menu').click(function(){
+                if ($("#menu-cont").is(":hidden")) {
+                    $("#menu-cont").slideDown("slow");
+                    $('#menu').addClass('arrow');
+                } else {
+                    $("#menu-cont").slideUp("slow");
+                    $('#menu').removeClass('arrow');
+                }
+            });
 
             $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
                 effect: 'fade',
