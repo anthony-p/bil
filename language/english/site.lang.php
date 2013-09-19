@@ -9,7 +9,13 @@
 define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your paypal account.');
 
 //additions
-define ('MSG_MY_EARNINGS_SUMMARY', 'Summary');
+define ('MSG_MY_EARNINGS_SUMMARY', 'Summary Report');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_TITLE', 'My Earnings Summary');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_NO_EARNINGS_MADE_SO_FAR', 'You have not made any earnings so far');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_DATE', 'Date');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_CAMPAIGN_NAME', 'Campaign name');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_TOTAL_EARNED', 'Total earned');
+
 define ('MSG_COMMUNITY_FUND_HISTORY', 'HISTORY');
 define ('MSG_COMMUNITY_FUND_VOTE_AND_DISBURSEMENTS_HISTORY_TITLE', 'Community Fund Votes and Disbursements History');
 define ('MSG_COMMUNITY_FUND_VOTE_AND_DISBURSEMENTS_HISTORY_EMPTY_MESSAGE', 'No history is available yet, please check the votes report tab.');

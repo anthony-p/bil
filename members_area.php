@@ -5171,7 +5171,18 @@ else
             $members_area_page_content = $template->process('members_area_earnings.tpl.php');
             $template->set('members_area_page_content', $members_area_page_content);
 
-        }
+        } else if($section == 'summary'){
+			
+			$campaigns_earnings_query_result = $db->query("SELECT c.project_title, c.username as project_url, c.reg_date, c.end_date, c.payment from np_users c WHERE c.probid_user_id='".$session->value('user_id')."' order by c.end_date DESC");
+			
+			$campaigns_earnings = array();
+            while ($query_result =  mysql_fetch_array($campaigns_earnings_query_result)) {
+                $campaigns_earnings[] = $query_result;
+            }
+			$template->set("campaigns_earnings", $campaigns_earnings);
+			$members_area_page_content = $template->process('members_area_earnings_summary.tpl.php');
+            $template->set('members_area_page_content', $members_area_page_content);
+		}
     }
     /*end earning page*/
 

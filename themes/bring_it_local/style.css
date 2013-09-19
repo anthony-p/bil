@@ -3418,6 +3418,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #contribution_details .top-description .right h2{font-size: 18px;line-height: 20px;}
 #contribution_details .top-description .right p{font:12px/15px "OpenSans";}
 
+.contributions_page .no_earnings_message {font-size: 18px; padding: 50px; text-align: center;}
+
 
 #browsePartners .searchBox .selectME{float:left;}
 #browsePartners  #arrowImg, #categories #arrowImg{margin-top: -14px;}
