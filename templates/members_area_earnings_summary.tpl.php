@@ -11,9 +11,13 @@
 			</tr>
 			<?php foreach($campaigns_earnings as $earning_data):?>
 			<tr>
-				<td style="text-align: center;"><?= date("m/d/Y", $earning_data['reg_date'])?> - <?=date("m/d/Y", $earning_data['end_date'])?></td>
+				<?php
+				$ended = $earning_data['end_date'] < strtotime(date());
+				$end_date = $ended ? date("m/d/Y", $earning_data['end_date']) : " ...";
+				?>
+				<td style="text-align: center;"><?= date("m/d/Y", $earning_data['reg_date'])?> - <?= $end_date ?></td>
 				<td><a href="/<?= $earning_data['project_url'] ?>"><?= $earning_data['project_title'] ?></a></td>
-				<td style="text-align: center;">$<?= $earning_data['payment'] ?></td>
+				<td style="text-align: center;">$<?= $earning_data['payment'] ?> <?= $ended ? '' : MSG_MY_EARNINGS_SUMMARY_SO_FAR ?></td>
 			</tr>
 			<?php endforeach;?>
 		</table>
