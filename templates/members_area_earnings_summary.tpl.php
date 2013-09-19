@@ -12,7 +12,7 @@
 			<?php foreach($campaigns_earnings as $earning_data):?>
 			<tr>
 				<?php
-				$ended = $earning_data['end_date'] < strtotime(date());
+				$ended = $earning_data['end_date'] < time();
 				$end_date = $ended ? date("m/d/Y", $earning_data['end_date']) : " ...";
 				?>
 				<td style="text-align: center;"><?= date("m/d/Y", $earning_data['reg_date'])?> - <?= $end_date ?></td>
