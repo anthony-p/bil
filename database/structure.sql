@@ -3691,3 +3691,5 @@ ALTER TABLE `bl2_users` ADD COLUMN `cfc_donated` INT NULL DEFAULT 0  AFTER `conf
 ALTER TABLE `np_users` ADD COLUMN `pattern_id` INT NOT NULL AFTER `cfc` ;
 
 ALTER TABLE `np_users` ADD COLUMN `clone_campaign` INT NOT NULL DEFAULT 0  AFTER `active` ;
+
+alter table `project_rewards` drop column `create_at`, drop column `parrent_id`;
