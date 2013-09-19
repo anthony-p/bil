@@ -90,7 +90,8 @@ switch ($option)
 if (!empty($keyword)) {
     $sql_query = $db->query("SELECT * FROM bl2_users as u JOIN np_users as c WHERE u.id = c.probid_user_id
         AND ( u.first_name LIKE '%{$keyword}%'
-        OR u.last_name LIKE '%{$keyword}%')  ORDER BY create_date {$order}");
+        OR u.last_name LIKE '%{$keyword}%'
+        OR u.organization LIKE '%{$keyword}%')  ORDER BY create_date {$order}");
 } else {
     $sql_query = $db->query("SELECT * FROM bl2_users Join np_users WHERE id = probid_user_id ORDER BY create_date {$order}");
 }
