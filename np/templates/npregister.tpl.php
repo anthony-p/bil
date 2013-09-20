@@ -49,11 +49,11 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <script language="javascript">
 
-var regNotEmptyAlpha = /^([\w]+)/i;
+var regNotEmptyAlpha = /^([\w]+)$/i;
 var regNotEmptyNumbers = /^([\d]+)$/i;
-var regNotEmptyAlphaWS = /^([\w\s]+)/i;
-var regNotEmptyAlphaNumeric = /^([\w\d]+)/i;
-var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)/i;
+var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
+var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
+var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
 var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
 var regPhone = /^((((\(\d{3}\))|(\d{3}-))\d{3}-\d{4})|(\+?\d{2}((-| )\d{1,8}){1,5}))(( x| ext)\d{1,5}){0,1}$/i;
 var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
