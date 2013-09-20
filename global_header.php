@@ -54,7 +54,7 @@ $meta_tags_details = meta_tags($_SERVER['PHP_SELF'], intval($parentId), intval($
 
 
 
-$page_specific_title='Bring It Local | Fund raising for community based non-profits';
+$page_specific_title='Bring It Local | Community Crowdfunding';
 if (!isset($_GET['page']))
     $_GET['page'] = '';
 
@@ -81,7 +81,7 @@ $page_specific_title='Help | Bring It Local';
 }
 
 if ($_GET['page'] == ''){
-$page_specific_title='Bring It Local | Fund raising for community based non-profits';
+$page_specific_title='Bring It Local | Community Crowdfunding';
 }
 
 $huh = $_SERVER['SCRIPT_NAME'];
