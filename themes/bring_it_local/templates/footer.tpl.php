@@ -105,7 +105,7 @@ global $coupon_url;
 			<? if (!$setts['enable_private_site'] || $is_seller) { ?>
 			<a href="<?=$place_ad_link;?>"><?=MSG_MM_POST_AUCTION;?></a>
 			<? } ?>-->
-			<a href="/bringitlocal"><?=MSG_COMMUNITY_FOUND;?></a> 
+			<a href="<?=$cfc_url;?>"><?=MSG_COMMUNITY_FOUND;?></a> 
 			<a href="<?=$register_link;?>"><?=$register_btn_msg;?></a> 
 			<a href="<?=$login_link;?>"><?=$login_btn_msg;?></a>
 			<? if ($layout['is_contact']) { ?>

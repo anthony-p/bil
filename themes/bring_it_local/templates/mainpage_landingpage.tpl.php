@@ -184,7 +184,7 @@ $featured_columns = 14;
             */
             ?>
 
-            <a href="/bringitlocal" class="funds">
+            <a href="<?=$cfc_url;?>" class="funds">
                 <span class="uper"><?=MSG_COMMUNITY_FOUND?></span>
                 <span><?=MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS?></span>
             </a>
