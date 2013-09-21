@@ -5,6 +5,26 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// global header
+define('MSG_GHEADER_MAINPAGE', 'Bring It Local | Community Crowdfunding');
+define('MSG_GHEADER_ABOUTUS', 'About Us | Bring It Local');
+define('MSG_GHEADER_FAQ', 'Frequently Asked Questions | Bring It Local');
+define('MSG_GHEADER_NEWS', 'Site News | Bring It Local');
+define('MSG_GHEADER_CONTACTUS', 'Contact Us | Bring It Local');
+define('MSG_GHEADER_TERMS', 'Terms of Use | Bring It Local');
+define('MSG_GHEADER_PRIVACY', 'Privacy Policy | Bring It Local');
+define('MSG_GHEADER_HELP', 'Help | Bring It Local');
+define('MSG_GHEADER_SITEFEES', 'Site Fees | Bring It Local');
+define('MSG_GHEADER_LOGIN', 'Login to the site | Bring It Local');
+define('MSG_GHEADER_REGISTER', 'Register for an Account | Bring It Local');
+define('MSG_GHEADER_LANDINGPAGE', 'Local Community Page | Bring It Local');
+define('MSG_GHEADER_SEARCH', 'Quick Select a Non-Profit to Support | Bring It Local');
+define('MSG_GHEADER_MOBILEAPP', 'Mobile Apps | Bring It Local');
+define('MSG_GHEADER_LESLIE', 'Leslie Sheridan | Bring It Local');
+define('MSG_GHEADER_FOUNDERSLETTER', 'Founder\'s Letter | Bring It Local');
+define('MSG_GHEADER_LOALTYPROG', 'Community Loyalty Program | Bring It Local');
+
+
 define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
 
 // footer

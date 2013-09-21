@@ -54,70 +54,67 @@ $meta_tags_details = meta_tags($_SERVER['PHP_SELF'], intval($parentId), intval($
 
 
 
-$page_specific_title='Bring It Local | Community Crowdfunding';
+$page_specific_title= MSG_GHEADER_MAINPAGE;
 if (!isset($_GET['page']))
     $_GET['page'] = '';
 
 if ($_GET['page'] == 'about_us'){
-$page_specific_title='About Us | Bring It Local';
+$page_specific_title= MSG_GHEADER_ABOUTUS;
 }
 if ($_GET['page'] == 'faq'){
-$page_specific_title='Frequently Asked Questions | Bring It Local';
+$page_specific_title= MSG_GHEADER_FAQ;
 }
 if ($_GET['page'] == 'news'){
-$page_specific_title='Site News | Bring It Local';
+$page_specific_title= MSG_GHEADER_NEWS;
 }
 if ($_GET['page'] == 'contact_us'){
-$page_specific_title='Contact Us | Bring It Local';
+$page_specific_title= MSG_GHEADER_CONTACTUS;
 }
 if ($_GET['page'] == 'terms'){
-$page_specific_title='Terms of Use | Bring It Local';
+$page_specific_title= MSG_GHEADER_TERMS;
 }
 if ($_GET['page'] == 'privacy'){
-$page_specific_title='Privacy Policy | Bring It Local';
+$page_specific_title= MSG_GHEADER_PRIVACY;
 }
 if ($_GET['page'] == 'help'){
-$page_specific_title='Help | Bring It Local';
+$page_specific_title= MSG_GHEADER_HELP;
 }
 
-if ($_GET['page'] == ''){
-$page_specific_title='Bring It Local | Community Crowdfunding';
-}
 
 $huh = $_SERVER['SCRIPT_NAME'];
 if ($huh == '/site_fees.php'){
-$page_specific_title='Site Fees | Bring It Local';
+$page_specific_title= MSG_GHEADER_SITEFEES;
 }
 
 #$huh = $_SERVER['SCRIPT_NAME'];
 if ($huh == '/login.php'){
-$page_specific_title='Login to the site | Bring It Local';
+$page_specific_title= MSG_GHEADER_LOGIN;
 }
 if ($huh == '/register.php'){
-$page_specific_title='Register for an Account | Bring It Local';
+$page_specific_title= MSG_GHEADER_REGISTER;
 }
 
 if ($huh == '/landingpage.php'){
-$page_specific_title='Local Community Page | Bring It Local';
+$page_specific_title= MSG_GHEADER_LANDINGPAGE;
 }
 if ($huh == '/searchnp.php'){
-$page_specific_title='Quick Select a Non-Profit to Support | Bring It Local';
+$page_specific_title= MSG_GHEADER_SEARCH;
 }
 
 $huh = $_SERVER['SCRIPT_NAME'];
 if ($huh == '/mobileapps.php'){
-$page_specific_title='Mobile Apps | Bring It Local';
+$page_specific_title= MSG_GHEADER_MOBILEAPP;
 }
 $huh = $_SERVER['SCRIPT_NAME'];
 if ($huh == '/leslie/index.html'){
-$page_specific_title='Leslie Sheridan | Bring It Local';
+$page_specific_title= MSG_GHEADER_LESLIE;
 }
 if ($huh == '/founders-letter.php'){
-$page_specific_title='Founder\'s Letter | Bring It Local';
+$page_specific_title= MSG_GHEADER_FOUNDERSLETTER;
 }
 
 if ($huh == '/loyalty-program.php'){
-$page_specific_title='Community Loyalty Program | Bring It Local';
+$page_specific_title= MSG_GHEADER_LOALTYPROG;
 }
 
 #echo $_SERVER['SCRIPT_NAME'];
