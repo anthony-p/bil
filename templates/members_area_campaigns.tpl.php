@@ -107,13 +107,13 @@ function submit_form(form_name) {
         <li id="li_<?php echo $row["user_id"]?>">
             <dl>
                 <dt><?=MSG_CAMPAIGN_NAME?>:</dt>
-                <dd><?php echo $row['project_title'];?></dd>
+                <dd><?= $row['project_title'];?></dd>
                 <dt><?=MSG_CREATE_AT?>:</dt>
-                <dd><?php echo date("m/d/y",$row['end_date']);?></dd>
+                <dd><?= date("m/d/y",$row['reg_date'])?></dd>
                 <dt><?=MSG_CLOSED_ON?>:</dt>
-                <dd><?php echo date("m/d/y",$row['reg_date']);?></dd>
+                <dd><?=date("m/d/y",$row['end_date'])?></dd>
                 <dt><?=MSG_COLLECTED_MONEY?></dt>
-                <dd>$<?php echo $row['payment'];?></dd>
+                <dd>$<?=$row['payment']?></dd>
             </dl>
             <div class="clear"></div>
             <fieldset>
