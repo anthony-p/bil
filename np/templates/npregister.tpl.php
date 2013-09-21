@@ -132,14 +132,14 @@ $(document).ready(function()
             $("#username").removeClass("error");
         }
 
-        var mce_cont = tinyMCE.activeEditor.getBody();
-
-        if ($(mce_cont).html() == '<p><br data-mce-bogus="1"></p>' && $(mce_cont).text() == '') {
-            $("#campaign_basic").addClass("error");
-            err_status = true;
-        } else {
-            $("#campaign_basic").removeClass("error");
-        }
+//        var mce_cont = tinyMCE.activeEditor.getBody();
+//
+//        if ($(mce_cont).html() == '<p><br data-mce-bogus="1"></p>' && $(mce_cont).text() == '') {
+//            $("#campaign_basic").addClass("error");
+//            err_status = true;
+//        } else {
+//            $("#campaign_basic").removeClass("error");
+//        }
         if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaWS)) {
             $("#project_title").addClass("error");
             err_status = true;
