@@ -122,16 +122,13 @@ include_once('includes/grab_video_thumbnail.php');
        </div>
         <div class="content-buttons">
             <a href="/campaigns.php">
-              <span class="uper">Browse </span>
-              <span>our campaigns</span>
+                <?= MSG_MAINPAGE_BTN_BROWSE; ?>
             </a>
             <a href="/about_us,page,content_pages">
-                <span class="uper">Learn </span>
-                <span>how it works</span>
+                <?= MSG_MAINPAGE_BTN_LEARN; ?>
             </a>
             <a href="/np/npregister.php" class="last">
-                <span class="uper">Start </span>
-                <span>giving today</span>
+                <?= MSG_MAINPAGE_BTN_START; ?>
             </a>
         </div>
         <div class="clear"></div>

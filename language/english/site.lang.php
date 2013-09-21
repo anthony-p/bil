@@ -5,6 +5,45 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
+
+ // header translation
+define('MSG_HEADER_SEARCHBOX_SEARCH', 'search');
+
+ // main page
+define('MSG_MAINPAGE_BTN_BROWSE', '<span class="uper">Browse </span><span>our campaigns</span>');
+define('MSG_MAINPAGE_BTN_LEARN', '<span class="uper">Learn </span><span>how it works</span>');
+define('MSG_MAINPAGE_BTN_START', '<span class="uper">Start </span><span>giving today</span>');
+
+ // members area - campaign
+define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME', 'Find by name');
+define('MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN', 'Edit Campaign');
+
+ // global partners
+define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
+define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');
+define('MSG_SEARCH_IN_A_CATEGORY', 'MSG_SEARCH_IN_A_CATEGORY');
+define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
+define('MSG_PARTNER_SUBSCR_INFORMATION', 'Click through here: purchases from any of these vendors will earn money for your non-profit');
+define('MSG_PARTNER_PAGINATION_ALL', 'All');
+define('MSG_PARTNER_PERCENT_GIVEBACK', 'Percent giveback');
+define('MSG_PARTNER_BTN_GO', 'GO');
+
+ //members area - earnings
+define('MSG_MEMBERS_AREA_EARNINGS_EARNINGS', 'Earnings');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_DATE', 'Date');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_CAMPAIGN', 'Campaign');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_AMOUNT', 'Amount');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_VISIBILITY', 'Visibility');
+
+ //members area - contributions
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_CONTRIBUTION', 'Contribution');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_DATE', 'Date');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_CAMPAIGN', 'Campaign');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_AMOUNT', 'Amount');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_VISIBILITY', 'Visibility');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
+
 // tooltips
 define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your paypal account.');
 

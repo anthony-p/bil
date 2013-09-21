@@ -1,13 +1,13 @@
 <div class="contributions_page">
-    <h2>Contribution</h2>
+    <h2><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_CONTRIBUTION; ?></h2>
 
     <table>
         <tr class="table_header">
-            <td><h4>Date</h4></td>
-            <td><h4>Campaign</h4></td>
-            <td><h4>Amount</h4></td>
-            <td><h4>Visibility</h4></td>
-            <td><h4>paypal Status</h4></td>
+            <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_DATE; ?></h4></td>
+            <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_CAMPAIGN; ?></h4></td>
+            <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_AMOUNT; ?></h4></td>
+            <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_VISIBILITY; ?></h4></td>
+            <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS; ?></h4></td>
         </tr>
         <?php foreach ($info_contribution_campaigns as $_campaign) : ?>
             <tr>
