@@ -81,12 +81,16 @@ $(document).ready(function()
         } else {
             $("#name").removeClass("error");
         }
-        if ($("#tax_company_name").val() == '' || !$("#tax_company_name").val().match(regNotEmptyAlphaNumericWS)) {
-            $("#tax_company_name").addClass("error");
-            err_status = true;
-        } else {
-            $("#tax_company_name").removeClass("error");
+
+        if ($("#tax_company_name").val()!==""){
+            if ( !$("#tax_company_name").val().match(regNotEmptyAlphaNumericWS) ) {
+                $("#tax_company_name").addClass("error");
+                err_status = true;
+            } else {
+                $("#tax_company_name").removeClass("error");
+            }
         }
+
         if ($("#address").val() == '') {
             $("#address").addClass("error");
             err_status = true;
@@ -637,7 +641,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
     <? #if ($user_details['tax_account_type']) { ?>
     <div class="account-row">
-        <label><?=MSG_COMPANY_NAME;?> *</label>
+        <label><?=MSG_COMPANY_NAME;?> </label>
         <input name="tax_company_name" type="text" class="contentfont" id="tax_company_name" value="<?=isset($user_details['tax_company_name'])?$user_details['tax_company_name']:'';?>" size="40" />
         <span><?=MSG_COMPANY_NAME_DESC;?></span>
     </div>
