@@ -27,7 +27,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/plugins/moxiemanager/editor_plugin.js" js="text/javascript"></script>-->
 
 <!--<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">-->
-<script type="text/javascript" src="/scripts/jquery/jquery.maskedinput.min.js"></script>
 <style>
     /*.prev_container{*/
         /*overflow: auto;*/
@@ -264,7 +263,7 @@ $(document).ready(function()
         return true;
     });
 
-    $("#phone").mask("(999) 999-9999");
+    //$("#phone").mask("(999) 999-9999");
 
     // load state list
     $("#country").change(function(){
