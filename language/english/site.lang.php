@@ -7,6 +7,16 @@
 
 define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
 
+// footer
+define('MSG_FOOTER_PARTICIPATE', 'Participate');
+define('MSG_FOOTER_ABOUT', 'About');
+define('MSG_FOOTER_FOUNDERS_LETTER', "Founder's Letter");
+define('MSG_FOOTER_SELECT_LANGUAGE', 'Select your language');
+define('MSG_FOOTER_FOLLOW', 'Follow');
+define('MSG_FOOTER_SITE_FEES', 'SITE FEES');
+define('MSG_FOOTER_HELP', 'HELP');
+define('MSG_FOOTER_COPYRIGHT', "Copyright ©2013 Bring It Local LLC. All rights reserved");
+
  // header translation
 define('MSG_HEADER_SEARCHBOX_SEARCH', 'search');
 
