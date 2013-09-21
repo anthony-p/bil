@@ -65,20 +65,20 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </tr>
     <tr>
         <td>
-            <label class="facebook">facebook</label>
-            <input type="text" name="facebook_link" value="<?=$user_details['facebook_link']?>"/>
+            <label class="facebook" style="width: 80px;">facebook</label>
+            <label class="social-network-url">http://www.facebook.com/</label><input type="text" name="facebook_link" value="<?=str_replace('http://www.facebook.com/', '', $user_details['facebook_link']);?>"/>
         </td>
     </tr>
     <tr>
         <td>
-            <label class="twitter">twitter</label>
-            <input type="text" name="twitter_link" value="<?=$user_details['twitter_link']?>" />
+            <label class="twitter" style="width: 80px;">twitter</label>
+            <label class="social-network-url">http://www.twitter.com/</label><input type="text" name="twitter_link" value="<?=str_replace('http://www.twitter.com/', '', $user_details['twitter_link']);?>" />
         </td>
     </tr>
     <tr>
         <td>
-            <label>google++</label>
-            <input type="text" name="google_link" value="<?=$user_details['google_link']?>" />
+            <label style="width: 80px;">google++</label>
+            <label class="social-network-url">https://plus.google.com/</label><input type="text" name="google_link" value="<?=str_replace('https://plus.google.com/', '', $user_details['google_link']);?>" />
         </td>
     </tr>
     <tr class="info_tittle">

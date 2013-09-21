@@ -3598,3 +3598,5 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #about_me_content label.twitter{background: url("img/twitter-icon.png") 0 0 no-repeat;}
 #about_me_content label.facebook{background: url("img/face-icon.png") 0 0 no-repeat;}
 #about_me_content h2,#about_me_content h1 {margin: 0 0 20px 0 ; padding: 20px 0px 0; }
+
+#members_area .about_me_table label.social-network-url {width: 165px; background: none; text-transform: none; padding-left: 0; color: #5A5A5A;}
