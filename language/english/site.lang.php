@@ -5,6 +5,13 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+
+//member area - message dialog
+define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_TITLE', 'Delete Campaign');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_MSG', 'Are you sure you want to delete your campaign. This is a permanent deletion!');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CONFIRM', 'Yes, continue');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CANCEL', 'Nevermind, cancel');
+
 // global header
 define('MSG_GHEADER_MAINPAGE', 'Bring It Local | Community Crowdfunding');
 define('MSG_GHEADER_ABOUTUS', 'About Us | Bring It Local');
