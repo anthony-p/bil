@@ -95,7 +95,8 @@ $page_specific_title= MSG_GHEADER_REGISTER;
 }
 
 if ($huh == '/landingpage.php'){
-$page_specific_title= MSG_GHEADER_LANDINGPAGE;
+    if (isset($_SESSION['page_specific_title']) && $_SESSION['page_specific_title'] !== "") $page_specific_title = $_SESSION['page_specific_title'];
+        else $page_specific_title= MSG_GHEADER_LANDINGPAGE;
 }
 if ($huh == '/searchnp.php'){
 $page_specific_title= MSG_GHEADER_SEARCH;
