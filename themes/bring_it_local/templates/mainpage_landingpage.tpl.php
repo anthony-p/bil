@@ -150,7 +150,7 @@ $featured_columns = 14;
         </div>
         <div class="navigation-btn">
             <h3><?=MSG_MANY_WAYS_TO_GIVE?></h3>
-            <?php if ($compaigns['active'] != 2 && ($compaigns['end_date']-time())>0 ): ?>
+            <?php if ($compaigns['probid_user_id'] != $session->value('user_id') && $compaigns['active'] != 2 && ($compaigns['end_date']-time())>0): ?>
                 <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>"
                    class="donation campaign_donation">
                     <span class="uper"><?=MSG_DONATE_NOW?></span>
