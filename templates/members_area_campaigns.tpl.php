@@ -113,7 +113,7 @@ function submit_form(form_name) {
                 <dt><?=MSG_CLOSED_ON?>:</dt>
                 <dd><?php echo date("m/d/y",$row['reg_date']);?></dd>
                 <dt><?=MSG_COLLECTED_MONEY?></dt>
-                <dd>$<?php echo $row['price'];?></dd>
+                <dd>$<?php echo $row['payment'];?></dd>
             </dl>
             <div class="clear"></div>
             <fieldset>
