@@ -27,6 +27,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/plugins/moxiemanager/editor_plugin.js" js="text/javascript"></script>-->
 
 <!--<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">-->
+<script type="text/javascript" src="/scripts/jquery/jquery.maskedinput.min.js"></script>
 <style>
     /*.prev_container{*/
         /*overflow: auto;*/
@@ -55,7 +56,7 @@ var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
 var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
 var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
 var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
-var regPhone = /^((((\(\d{3}\))|(\d{3}-))\d{3}-\d{4})|(\+?\d{2}((-| )\d{1,8}){1,5}))(( x| ext)\d{1,5}){0,1}$/i;
+var regPhone = /^((((\(\d{3}\))|(\d{3}-))\s\d{3}-\d{4})|(\+?\d{2}((-| )\d{1,8}){1,5}))(( x| ext)\d{1,5}){0,1}$/i;
 var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
 var err_status = false;
 
@@ -263,7 +264,7 @@ $(document).ready(function()
         return true;
     });
 
-//    $("#phone").mask("(999) 999-9999");
+    $("#phone").mask("(999) 999-9999");
 
     // load state list
     $("#country").change(function(){
@@ -684,7 +685,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <label><?=MSG_PHONE;?> *</label>
 
 
-            <input name="phone" type="text" id="phone" placeholder="(xxx)xxx-xxxx" value="<?=(isset($user_details['phone']))?$user_details['phone']:'';?>" size="25" />
+            <input name="phone" type="text" id="phone" value="<?=(isset($user_details['phone']))?$user_details['phone']:'';?>" size="25" />
 
         <span><?=MSG_PHONE_EXPL;?></span>
         <div class="clear"></div>
