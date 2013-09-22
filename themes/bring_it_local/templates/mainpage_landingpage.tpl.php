@@ -185,11 +185,12 @@ $featured_columns = 14;
             </a>
             */
             ?>
-
-            <a href="<?=$cfc_url;?>" class="funds">
-                <span class="uper"><?=MSG_COMMUNITY_FOUND?></span>
-                <span><?=MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS?></span>
-            </a>
+			<?php if($compaigns['cfc'] == 0): ?>
+				<a href="<?=$cfc_url;?>" class="funds">
+					<span class="uper"><?=MSG_COMMUNITY_FOUND?></span>
+					<span><?=MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS?></span>
+				</a>
+			<?php endif; ?>
         </div>
     </div>
     <div class="tabulation">
