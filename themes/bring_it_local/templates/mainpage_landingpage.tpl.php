@@ -121,7 +121,6 @@ $featured_columns = 14;
 					}
 				}, 1000);
 		</script>
-		<?php $days=round(($compaigns['end_date']-time())/86400); ?>
         <?php if (isset($vote_us) && $vote_us) : ?>
             <div class="campaign-details" id="vote_us_block">
                 <?= $vote_us ?>
@@ -131,6 +130,7 @@ $featured_columns = 14;
             <span class="price">$<? echo $compaigns['payment'];?><span> usd</span></span>
             <span class="day">
                 <?php
+				$days=round(($compaigns['end_date']-time())/86400);
                 if($days>0){
 					echo $days."<span> ".MSG_DAYS_LEFT."</span>";
 				} elseif($compaigns['payment'] == 0){

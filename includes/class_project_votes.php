@@ -71,8 +71,7 @@ class projectVotes extends custom_field
     function checkCfc()
     {
         if ($this->user_id && $this->campaign_id) {
-            $cfc = $this->getField("SELECT cfc FROM np_users WHERE user_id=" .
-                $this->campaign_id);
+            $cfc = $this->getField("SELECT cfc FROM np_users WHERE user_id=".$this->campaign_id);
             if ($cfc) {
                 return true;
             }
@@ -119,26 +118,17 @@ class projectVotes extends custom_field
      * @return string
      */
     function getVotesElement($end_date="", $campaign_owner=""){
-        if ($this->user_id && $this->campaign_id) {
-            $cfc = $this->checkCfc();
-            if (!$cfc) {
-                $voted = $this->checkVoted();
-                $donated = $this->checkDonated();
-                if ($donated) {
-                    if ($voted) {
-                        $this->votes_element = '<h5>' .
-                            $this->getVotesByCampaign() . ' ' .
-                            MSG_VOTES_NUMBER . '</h5>';
-                    } else {
-						$days=round(($end_date-time())/86400);
-                        if($days>0 && $campaign_owner != $this->user_id ){
-							$this->votes_element = '<button id="vote_us">' . MSG_VOTE_US . '</button>';
-						}
-                    }
-                }
-            }
+        if ($this->campaign_id && !$this->checkCfc()) {
+            if ($this->user_id && $this->checkDonated() && !$this->checkVoted()) {
+				$days=round(($end_date-time())/86400);
+				if($days>0 && $campaign_owner != $this->user_id ){
+					$this->votes_element = '<button id="vote_us">' . MSG_VOTE_US . '</button>';
+				}
+			}
+			if(empty($this->votes_element)) {
+				$this->votes_element = '<h5>'.$this->getVotesByCampaign().' '.MSG_VOTES_NUMBER . '</h5>';
+			}
         }
-
         return $this->votes_element;
     }
 
