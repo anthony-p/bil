@@ -109,6 +109,18 @@ $featured_columns = 14;
 </div>
 <div class="campaign-content">
     <div class="nav-right">
+		<script type="text/javascript">
+			var state = 0;
+				window.setInterval(function(){
+					if(state == 0){
+						$("#vote_us").css("border", "none");
+						state = 1;
+					} else {
+						$("#vote_us").css("border", "2px solid #8CACAC");
+						state = 0;
+					}
+				}, 1000);
+		</script>
 		<?php $days=round(($compaigns['end_date']-time())/86400); ?>
         <?php if ($days>0 && $compaigns['probid_user_id'] != $session->value('user_id') && isset($vote_us) && $vote_us) : ?>
             <div class="campaign-details" id="vote_us_block">
