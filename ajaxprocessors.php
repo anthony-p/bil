@@ -75,7 +75,7 @@ if (isset($_POST['do']) && $_POST['do']!==""){
 
         case 'checkCampaignName':
 
-            if (trim($_POST['name']) == '' ){
+            if (trim($_POST['name']) == '' || strpos(trim($_POST['name']), " ") !== FALSE ){
                 $result = array(
                     'msg' => 'Campaign name exist',
                     'data' => '',

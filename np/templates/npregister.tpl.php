@@ -49,13 +49,13 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <script language="javascript">
 
-var regNotEmptyAlpha = /^([\w]+)/i;
+var regNotEmptyAlpha = /^([\w]+)$/i;
 var regNotEmptyNumbers = /^([\d]+)$/i;
-var regNotEmptyAlphaWS = /^([\w\s]+)/i;
-var regNotEmptyAlphaNumeric = /^([\w\d]+)/i;
-var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)/i;
+var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
+var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
+var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
 var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
-var regPhone = /\(\d\d\d\) \d\d\d-\d\d\d\d/i;
+var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
 var err_status = false;
 
 
@@ -80,6 +80,16 @@ $(document).ready(function()
         } else {
             $("#name").removeClass("error");
         }
+
+        if ($("#tax_company_name").val()!==""){
+            if ( !$("#tax_company_name").val().match(regNotEmptyAlphaNumericWS) ) {
+                $("#tax_company_name").addClass("error");
+                err_status = true;
+            } else {
+                $("#tax_company_name").removeClass("error");
+            }
+        }
+
         if ($("#address").val() == '') {
             $("#address").addClass("error");
             err_status = true;
@@ -92,13 +102,15 @@ $(document).ready(function()
         } else {
             $("#city").removeClass("error");
         }
-        if ($("#zip_code").val() == '' || !$("#zip_code").val().match(regZipCode)) {
+        if ($("#zip_code").val() == ''
+//                || !$("#zip_code").val().match(regZipCode)
+                ) {
             $("#zip_code").addClass("error");
             err_status = true;
         } else {
             $("#zip_code").removeClass("error");
         }
-        if ($("#phone").val() == '' || !$("#phone").val().match(regPhone)) {
+        if ($("#phone").val() == '') {
             $("#phone").addClass("error");
             err_status = true;
         } else {
@@ -119,14 +131,14 @@ $(document).ready(function()
             $("#username").removeClass("error");
         }
 
-        var mce_cont = tinyMCE.activeEditor.getBody();
-
-        if ($(mce_cont).html() == '<p><br data-mce-bogus="1"></p>' && $(mce_cont).text() == '') {
-            $("#campaign_basic").addClass("error");
-            err_status = true;
-        } else {
-            $("#campaign_basic").removeClass("error");
-        }
+//        var mce_cont = tinyMCE.activeEditor.getBody();
+//
+//        if ($(mce_cont).html() == '<p><br data-mce-bogus="1"></p>' && $(mce_cont).text() == '') {
+//            $("#campaign_basic").addClass("error");
+//            err_status = true;
+//        } else {
+//            $("#campaign_basic").removeClass("error");
+//        }
         if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaWS)) {
             $("#project_title").addClass("error");
             err_status = true;
@@ -170,14 +182,87 @@ $(document).ready(function()
         }
 
 
-        // check 2nd tab field and if err - focus this tab
 
+
+        // check 3nd tab field and if err - focus this tab
+
+        if ($("#url").val() !== ''){
+            if (!$("#url").val().match(regUrl)) {
+                $("#url").addClass("error");
+                err_status = true;
+            } else {
+                $("#url").removeClass("error");
+            }
+        }
+        if ($("#facebook_url").val() !== '') {
+            alert($("#facebook_url").val().indexOf('facebook.com'));
+            if ($("#facebook_url").val().indexOf('facebook.com') == -1 || !$("#facebook_url").val().match(regUrl)) {
+                $("#facebook_url").addClass("error");
+                err_status = true;
+            } else {
+                $("#facebook_url").removeClass("error");
+            }
+        }
+        if ($("#twitter_url").val() !== '') {
+            if ($("#twitter_url").val().indexOf('twitter.com') == -1 || !$("#twitter_url").val().match(regUrl)) {
+                $("#twitter_url").addClass("error");
+                err_status = true;
+            } else {
+                $("#twitter_url").removeClass("error");
+            }
+        }
+
+        if($('#logo').val() !== ''){
+            var ext = $('#logo').val().split('.').pop().toLowerCase();
+            if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                $("#logo").addClass("error");
+                err_status = true;
+            } else {
+                $("#logo").removeClass("error");
+            }
+        }
+
+        if ($("input:radio[name='banner_type']:checked").val() == 0 && $('#banner').val() !== '') {
+            var ext = $('#banner').val().split('.').pop().toLowerCase();
+            if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                $("#banner").addClass("error");
+                err_status = true;
+            } else {
+                $("#banner").removeClass("error");
+            }
+        }
+
+        if (err_status) {
+            $("#p_projectEdit").children('a').click();
+            return false;
+        }
+
+        // check 4d tab field and if err - focus this tab
+
+        if ($("#pin_value").val() == '' ) {
+            $("#pin_value").addClass("error");
+            err_status = true;
+        } else {
+            $("#pin_value").removeClass("error");
+        }
+
+        if ( !$("[name='agree_terms']").is(':checked') ) {
+            $("[name='agree_terms']").addClass("error");
+            err_status = true;
+        } else {
+            $("[name='agree_terms']").removeClass("error");
+        }
+
+        if (err_status) {
+            $("#p_confirmation").children('a').click();
+            return false;
+        }
 
 
         return true;
     });
 
-    $("#phone").mask("(999) 999-9999");
+    //$("#phone").mask("(999) 999-9999");
 
     // load state list
     $("#country").change(function(){
@@ -555,7 +640,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
     <? #if ($user_details['tax_account_type']) { ?>
     <div class="account-row">
-        <label><?=MSG_COMPANY_NAME;?> *</label>
+        <label><?=MSG_COMPANY_NAME;?> </label>
         <input name="tax_company_name" type="text" class="contentfont" id="tax_company_name" value="<?=isset($user_details['tax_company_name'])?$user_details['tax_company_name']:'';?>" size="40" />
         <span><?=MSG_COMPANY_NAME_DESC;?></span>
     </div>
@@ -777,12 +862,12 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
         <div class="account-row">
             <label><?=MSG_FACEBOOK_PAGE_INSTRUCTIONS;?></label>
-            <input name="facebook_url" type="text" class="contentfont" id="url" value="<?=(isset($user_details['facebook_url']))?$user_details['facebook_url']:'';?>" size="40" />
+            <input name="facebook_url" type="text" class="contentfont" id="facebook_url" value="<?=(isset($user_details['facebook_url']))?$user_details['facebook_url']:'';?>" size="40" />
         </div>
 
         <div class="account-row">
             <label><?=MSG_TWITTER_PAGE_INSTRUCTIONS;?></label>
-            <input name="twitter_url" type="text" class="contentfont" id="url" value="<?=(isset($user_details['twitter_url']))?$user_details['twitter_url']:'';?>" size="40" />
+            <input name="twitter_url" type="text" class="contentfont" id="twitter_url" value="<?=(isset($user_details['twitter_url']))?$user_details['twitter_url']:'';?>" size="40" />
         </div>
 
         <h5><?=MSG_LOGO_DESC;?></h5>
@@ -797,7 +882,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 <img src="<?php echo $user_details['logo']; ?>" />
             <?php endif; ?>
             <div id="MultiPowUpload_holder">
-                <input class="file" name="logo" id="logo" type='file' multiple title="logo file"/>
+                <input class="file" name="logo" id="logo" accept="image/*" type='file' multiple title="logo file"/>
                 <span style="cursor: pointer;" onclick="clearLogoContent()">Clear</span>
             </div>
 

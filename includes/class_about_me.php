@@ -58,9 +58,9 @@ function insertAboutUserDetails($data, $db, $user_id)
     $db->query("UPDATE bl2_users SET
                     avatar='" . $post_about_details['avatar'] . "',
                     about_me='" . $post_about_details['about_me'] . "',
-                    facebook_link='" . $post_about_details['facebook_link'] . "',
-                    twitter_link='" . $post_about_details['twitter_link'] . "',
-                    google_link='" . $post_about_details['google_link'] . "' WHERE
+                    facebook_link='http://www.facebook.com/" . $post_about_details['facebook_link'] . "',
+                    twitter_link='http://www.twitter.com/" . $post_about_details['twitter_link'] . "',
+                    google_link='https://plus.google.com/" . $post_about_details['google_link'] . "' WHERE
                     id='" . $user_id . "'");
 }
 

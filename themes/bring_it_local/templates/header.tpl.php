@@ -398,7 +398,7 @@ global $coupon_url;
 		 |    <a href="searchnp.php">Quick Select</a>
 		 --> </div>
             <form action="search.php">
-                <input type="text" value="" placeholder="search" name="search" >
+                <input type="text" value="" placeholder="<?= MSG_HEADER_SEARCHBOX_SEARCH; ?>" name="search" >
                 <button type="submit"></button>
             </form>
 
@@ -478,7 +478,7 @@ global $coupon_url;
                 <span><?=MSG_PARTICIPATE;?></span>
                 <ul>
                     <li>
-                        <a href="/bringitlocal">
+                        <a href="<?=$cfc_url;?>">
                             <span ><?=MSG_COMMUNITY_FOUND;?></span>
                         </a>
                     </li>
@@ -491,7 +491,7 @@ global $coupon_url;
             </div>
             <div class="nav-links">
                 <span><a href="" class="modalSubscribeLink"><?=MSG_CLICK_SUBSCRIBE;?></a></span>
-                <span><a href="/bringitlocal"><?=MSG_GOTO_FUND;?></a><a href="" class="what"><?=MSG_WHATS_THAT;?></a></span>
+                <span><a href="<?=$cfc_url;?>"><?=MSG_GOTO_FUND;?></a><a href="" class="what"><?=MSG_WHATS_THAT;?></a></span>
             </div>
         </li>
     </ul>

@@ -12,10 +12,39 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <!--<script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>-->
 <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
 <script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
+<style>
+    .error {
+        border: 1px solid #ff0000;
+        background-color: #ff0000;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function(){
 
+        $("#member_area_edit_form").submit(function(){
+
+            var err_status = false;
+
+            if ($('#avatar').val() !== '') {
+                var ext = $('#avatar').val().split('.').pop().toLowerCase();
+                if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                    $("#avatar").addClass("error");
+                    err_status = true;
+                } else {
+                    $("#avatar").removeClass("error");
+                }
+            }
+
+            if (err_status) return false;
+            else return true;
+
+        });
+
+    });
+</script>
 
 <br>
-<form action="members_area.php?page=about_me&section=edit" method="POST" enctype="multipart/form-data">
+<form action="members_area.php?page=about_me&section=edit" id="member_area_edit_form" method="POST" enctype="multipart/form-data">
  <h6 class="tittle_tp">  <?=MSG_MM_ABOUT_ME_PAGE;?> </h6>
 <table width="100%" border="0" cellpadding="3" cellspacing="2" class="border about_me_table" >
 
@@ -25,9 +54,10 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     <tr>
         <td>
             <div class="upload_logo"><img src="<?=$user_details['avatar']?>"/></div>
-            <input type="file" name="avatar" multiple title="avatar file" />
+            <input type="file" name="avatar" id="avatar" accept="image/*" multiple title="avatar file" />
             <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
             <input type="hidden" name="curr_avatar" value="<?=$user_details['avatar']?>" />
+			<input type="submit" name="form_aboutme_save" value="<?=MSG_SAVE_CHANGES;?>" style="float: none; margin: 72px 0 0 25px;" />
         </td>
     </tr>
     <tr class="info_tittle">
@@ -35,20 +65,20 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </tr>
     <tr>
         <td>
-            <label class="facebook">facebook</label>
-            <input type="text" name="facebook_link" value="<?=$user_details['facebook_link']?>"/>
+            <label class="facebook" style="width: 80px;">facebook</label>
+            <label class="social-network-url">http://www.facebook.com/</label><input type="text" name="facebook_link" value="<?=str_replace('http://www.facebook.com/', '', $user_details['facebook_link']);?>"/>
         </td>
     </tr>
     <tr>
         <td>
-            <label class="twitter">twitter</label>
-            <input type="text" name="twitter_link" value="<?=$user_details['twitter_link']?>" />
+            <label class="twitter" style="width: 80px;">twitter</label>
+            <label class="social-network-url">http://www.twitter.com/</label><input type="text" name="twitter_link" value="<?=str_replace('http://www.twitter.com/', '', $user_details['twitter_link']);?>" />
         </td>
     </tr>
     <tr>
         <td>
-            <label>google++</label>
-            <input type="text" name="google_link" value="<?=$user_details['google_link']?>" />
+            <label style="width: 80px;">google++</label>
+            <label class="social-network-url">https://plus.google.com/</label><input type="text" name="google_link" value="<?=str_replace('https://plus.google.com/', '', $user_details['google_link']);?>" />
         </td>
     </tr>
     <tr class="info_tittle">
@@ -73,7 +103,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
          <td width="100%"><img src="themes/<?/*=$setts['default_theme'];*/?>/img/pixel.gif" width="1" height="1"></td>
    </tr>-->
 	<tr>
-      <td colspan="1"><input type="submit" name="form_aboutme_save" value="<?=GMSG_PROCEED;?>" /></td>
+      <td colspan="1"><input type="submit" name="form_aboutme_save" value="<?=MSG_SAVE_CHANGES;?>" /></td>
    </tr>
 </table>
 </form>

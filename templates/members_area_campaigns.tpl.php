@@ -15,20 +15,49 @@ function submit_form(form_name) {
 	form_name.submit();
 }
 </script>
-<script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>
+<script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 <script>
     $(document).ready(function(){
-        $(".delete").click(function(e){
-            e.preventDefault();
-            var id = this.id;
-            $.ajax({
-                type : "GET",
-                url : "/np/npdelete.php?np_userid=" + id,
-                success : function() {
-                    $('#li_' + id).remove();
-//                    location.reload();
+
+
+
+
+        $(".delete").click(function(){
+
+            var del_id = $(this).attr('id');
+
+
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: 200,
+                width: 400,
+                modal: true,
+                buttons: {
+                    "<?= MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CONFIRM; ?>": function () {
+
+                        var id = this.id;
+                        $.ajax({
+                            type: "GET",
+                            async: false,
+                            url: "/np/npdelete.php?np_userid=" + del_id,
+                            success: function (result) {
+
+//                                alert(result);
+                                $('#li_' + del_id).remove();
+
+                            }
+                        });
+
+                        $(this).dialog("close");
+                    },
+                    "<?= MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CANCEL; ?>": function () {
+                        $(this).dialog("close");
+                        return false;
+                    }
                 }
             });
+            return false;
+
         });
         $(".myCampaigs .list li:odd").addClass("odd");
 
@@ -67,7 +96,7 @@ function submit_form(form_name) {
             <option value="DESC" class="order"><?=MSG_DATE_DESC?></option>
         </select>
         <div class="search-input">
-            <input type="text" value="" placeholder="Find by name" name="keyword" id="name">
+            <input type="text" value="" placeholder="<?= MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME; ?>" name="keyword" id="name">
             <button type="submit"></button>
         </div>
     </form>
@@ -78,13 +107,13 @@ function submit_form(form_name) {
         <li id="li_<?php echo $row["user_id"]?>">
             <dl>
                 <dt><?=MSG_CAMPAIGN_NAME?>:</dt>
-                <dd><?php echo $row['project_title'];?></dd>
+                <dd><?= $row['project_title'];?></dd>
                 <dt><?=MSG_CREATE_AT?>:</dt>
-                <dd><?php echo date("m/d/y",$row['end_date']);?></dd>
+                <dd><?= date("m/d/y",$row['reg_date'])?></dd>
                 <dt><?=MSG_CLOSED_ON?>:</dt>
-                <dd><?php echo date("m/d/y",$row['reg_date']);?></dd>
+                <dd><?=date("m/d/y",$row['end_date'])?></dd>
                 <dt><?=MSG_COLLECTED_MONEY?></dt>
-                <dd>$<?php echo $row['price'];?></dd>
+                <dd>$<?=$row['payment']?></dd>
             </dl>
             <div class="clear"></div>
             <fieldset>
@@ -99,4 +128,9 @@ function submit_form(form_name) {
 
     </ul>
     <fieldset>  <div class="holder"></div></fieldset>
+</div>
+
+<div id="dialog-confirm" title="<?= MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_TITLE; ?>" style="display: none;">
+    <br>
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><?= MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_MSG; ?></p>
 </div>

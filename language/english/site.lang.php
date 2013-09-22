@@ -5,10 +5,100 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+//save new campaign
+define('MSG_REGISTER_SUCCESS_TYPE3', '<br>Your new campaign has been saved!<br><br> You can find it and edit it <a href="/campaigns,page,drafts,section,members_area">here</a>');
+
+define('MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP', 'Set your campaign status by choosing one of these options. Choosing Live will immediately make your campaign public.');
+define('MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP', 'Choose to extend your existing campaign for a fixed number of days.');
+define('MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP', 'Choose to automatically publish an exact clone of this campaign when it closes. It will not have any comments, updates or contributions.');
+
+//member area - message dialog
+define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_TITLE', 'Delete Campaign');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_MSG', 'Are you sure you want to delete your campaign. This is a permanent deletion!');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CONFIRM', 'Yes, continue');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CANCEL', 'Nevermind, cancel');
+
+// global header
+define('MSG_GHEADER_MAINPAGE', 'Bring It Local | Community Crowdfunding');
+define('MSG_GHEADER_ABOUTUS', 'About Us | Bring It Local');
+define('MSG_GHEADER_FAQ', 'Frequently Asked Questions | Bring It Local');
+define('MSG_GHEADER_NEWS', 'Site News | Bring It Local');
+define('MSG_GHEADER_CONTACTUS', 'Contact Us | Bring It Local');
+define('MSG_GHEADER_TERMS', 'Terms of Use | Bring It Local');
+define('MSG_GHEADER_PRIVACY', 'Privacy Policy | Bring It Local');
+define('MSG_GHEADER_HELP', 'Help | Bring It Local');
+define('MSG_GHEADER_SITEFEES', 'Site Fees | Bring It Local');
+define('MSG_GHEADER_LOGIN', 'Login to the site | Bring It Local');
+define('MSG_GHEADER_REGISTER', 'Register for an Account | Bring It Local');
+define('MSG_GHEADER_LANDINGPAGE', 'Local Community Page | Bring It Local');
+define('MSG_GHEADER_SEARCH', 'Quick Select a Non-Profit to Support | Bring It Local');
+define('MSG_GHEADER_MOBILEAPP', 'Mobile Apps | Bring It Local');
+define('MSG_GHEADER_LESLIE', 'Leslie Sheridan | Bring It Local');
+define('MSG_GHEADER_FOUNDERSLETTER', 'Founder\'s Letter | Bring It Local');
+define('MSG_GHEADER_LOALTYPROG', 'Community Loyalty Program | Bring It Local');
+
+
+define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
+
+// footer
+define('MSG_FOOTER_PARTICIPATE', 'Participate');
+define('MSG_FOOTER_ABOUT', 'About');
+define('MSG_FOOTER_FOUNDERS_LETTER', "Founder's Letter");
+define('MSG_FOOTER_SELECT_LANGUAGE', 'Select your language');
+define('MSG_FOOTER_FOLLOW', 'Follow');
+define('MSG_FOOTER_SITE_FEES', 'SITE FEES');
+define('MSG_FOOTER_HELP', 'HELP');
+define('MSG_FOOTER_COPYRIGHT', "Copyright ©2013 Bring It Local LLC. All rights reserved");
+
+ // header translation
+define('MSG_HEADER_SEARCHBOX_SEARCH', 'search');
+
+ // main page
+define('MSG_MAINPAGE_BTN_BROWSE', '<span class="uper">Browse </span><span>our campaigns</span>');
+define('MSG_MAINPAGE_BTN_LEARN', '<span class="uper">Learn </span><span>how it works</span>');
+define('MSG_MAINPAGE_BTN_START', '<span class="uper">Start </span><span>giving today</span>');
+
+ // members area - campaign
+define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME', 'Find by name');
+define('MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN', 'Edit Campaign');
+
+ // global partners
+define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
+define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');
+define('MSG_SEARCH_IN_A_CATEGORY', 'MSG_SEARCH_IN_A_CATEGORY');
+define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
+define('MSG_PARTNER_SUBSCR_INFORMATION', 'Click through here: purchases from any of these vendors will earn money for your non-profit');
+define('MSG_PARTNER_PAGINATION_ALL', 'All');
+define('MSG_PARTNER_PERCENT_GIVEBACK', 'Percent giveback');
+define('MSG_PARTNER_BTN_GO', 'GO');
+
+ //members area - earnings
+define('MSG_MEMBERS_AREA_EARNINGS_EARNINGS', 'Earnings');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_DATE', 'Date');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_CAMPAIGN', 'Campaign');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_AMOUNT', 'Amount');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_VISIBILITY', 'Visibility');
+
+ //members area - contributions
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_CONTRIBUTION', 'Contribution');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_DATE', 'Date');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_CAMPAIGN', 'Campaign');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_AMOUNT', 'Amount');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_VISIBILITY', 'Visibility');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
+
 // tooltips
 define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your paypal account.');
 
 //additions
+define ('MSG_MY_EARNINGS_SUMMARY', 'Summary Report');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_TITLE', 'My Earnings Summary');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_NO_EARNINGS_MADE_SO_FAR', 'You have not made any earnings so far');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_DATE', 'Time period');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_CAMPAIGN_NAME', 'Campaign name');
+define ('MSG_MY_EARNINGS_SUMMARY_REPORT_TOTAL_EARNED', 'Total earned');
+define ('MSG_MY_EARNINGS_SUMMARY_SO_FAR', 'so far');
+
 define ('MSG_COMMUNITY_FUND_HISTORY', 'HISTORY');
 define ('MSG_COMMUNITY_FUND_VOTE_AND_DISBURSEMENTS_HISTORY_TITLE', 'Community Fund Votes and Disbursements History');
 define ('MSG_COMMUNITY_FUND_VOTE_AND_DISBURSEMENTS_HISTORY_EMPTY_MESSAGE', 'No history is available yet, please check the votes report tab.');
@@ -110,7 +200,7 @@ define ('MSG_MY_DEALS', 'My Deals');
 define ('MSG_MY_PROFILE', 'My Profile');
 define ('MSG_CAMPAIGNS', 'Campaigns');
 define ('MSG_MY_CAPMAIGNS', 'My Campaigns');
-define ('MSG_NEW_CAPMAIGN', 'New');
+define ('MSG_NEW_CAPMAIGN', 'Start a new one');
 define ('MSG_DRAFTS_CAPMAIGNS', 'Drafts');
 define ('MSG_LIVE_CAPMAIGNS', 'Live');
 define ('MSG_CLOSED_CAPMAIGNS', 'Closed');

@@ -217,6 +217,7 @@ global $coupon_url;
 
             </div>
         </div>
+        </div>
         <div class="level2" id="menu-cont">
             <ul class="level2-inner">
                 <?php foreach ($np_org_types as $index => $np_org_type): ?>
@@ -272,8 +273,6 @@ global $coupon_url;
               </li>
             </ul>
 
-            <?php var_dump("OK".$campaignName) ?>
-            aaaaa
             <?php if (isset($campaignName)): ?>
                 <div class="text_support">
                     <a href="/<?=$campaignPName?>"><p><?=MSG_YOU_SUPPORT?> <?=$campaignName?></p></a>
