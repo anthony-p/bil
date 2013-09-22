@@ -109,19 +109,21 @@ $featured_columns = 14;
 </div>
 <div class="campaign-content">
     <div class="nav-right">
-        <?php if (isset($vote_us) && $vote_us) : ?>
+		<?php $days=round(($compaigns['end_date']-time())/86400); ?>
+        <?php if ($days>0 && isset($vote_us) && $vote_us) : ?>
             <div class="campaign-details" id="vote_us_block">
-                <?php echo $vote_us; ?>
+                <?= $vote_us ?>
             </div>
         <?php endif; ?>
         <div class="campaign-details">
             <span class="price">$<? echo $compaigns['payment'];?><span> usd</span></span>
             <span class="day">
-                <?php $days=round(($compaigns['end_date']-time())/86400);
-                if($days>0){echo $days."<span> ".MSG_DAYS_LEFT."</span>"; }
-                elseif($compaigns['payment'] == 0)
+                <?php
+                if($days>0){
+					echo $days."<span> ".MSG_DAYS_LEFT."</span>";
+				} elseif($compaigns['payment'] == 0){
                     echo "<span>".MSG_CLOSED."</span>";
-                else {
+                } else {
                     echo "<span>".MSG_SUCCESS."</span>";
                 }
                 ?>
