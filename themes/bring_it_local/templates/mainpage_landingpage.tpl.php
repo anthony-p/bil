@@ -122,7 +122,7 @@ $featured_columns = 14;
 				}, 1000);
 		</script>
 		<?php $days=round(($compaigns['end_date']-time())/86400); ?>
-        <?php if ($days>0 && $compaigns['probid_user_id'] != $session->value('user_id') && isset($vote_us) && $vote_us) : ?>
+        <?php if (isset($vote_us) && $vote_us) : ?>
             <div class="campaign-details" id="vote_us_block">
                 <?= $vote_us ?>
             </div>

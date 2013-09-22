@@ -118,8 +118,7 @@ class projectVotes extends custom_field
     /**
      * @return string
      */
-    function getVotesElement()
-    {
+    function getVotesElement($end_date="", $campaign_owner=""){
         if ($this->user_id && $this->campaign_id) {
             $cfc = $this->checkCfc();
             if (!$cfc) {
@@ -131,8 +130,10 @@ class projectVotes extends custom_field
                             $this->getVotesByCampaign() . ' ' .
                             MSG_VOTES_NUMBER . '</h5>';
                     } else {
-                        $this->votes_element =
-                            '<button id="vote_us">' . MSG_VOTE_US . '</button>';
+						$days=round(($end_date-time())/86400);
+                        if($days>0 && $campaign_owner != $this->user_id ){
+							$this->votes_element = '<button id="vote_us">' . MSG_VOTE_US . '</button>';
+						}
                     }
                 }
             }

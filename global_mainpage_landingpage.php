@@ -546,7 +546,7 @@ if ($session->value('user_id') && $compaignId)
 {
     require_once (dirname(__FILE__) . '/includes/class_project_votes.php');
     $projectVotes = new projectVotes($session->value('user_id'), $compaignId);
-    $vote_us = $projectVotes->getVotesElement();
+    $vote_us = $projectVotes->getVotesElement($compaignData['end_date'], $compaignData['probid_user_id']);
     $template->set('vote_us', $vote_us);
 } else {
     $template->set('vote_us', '');
