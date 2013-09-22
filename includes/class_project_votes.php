@@ -87,7 +87,7 @@ class projectVotes extends custom_field
     function getVotesByCampaign()
     {
         if ($this->campaign_id) {
-            return $this->getField("SELECT count(*) FROM project_votes WHERE campaign_id=" . $this->campaign_id);
+            return $this->getField("SELECT count(*) FROM project_votes WHERE campaign_id=".$this->campaign_id." and MONTH(FROM_UNIXTIME(date)) = MONTH(NOW()) and YEAR(FROM_UNIXTIME(date)) = YEAR(NOW())");
         }
         return 0;
     }
