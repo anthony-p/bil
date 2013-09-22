@@ -62,15 +62,10 @@ class projectVotes extends custom_field
     /**
      * @return bool
      */
-    function checkCfc()
-    {
-        if ($this->user_id && $this->campaign_id) {
-            $cfc = $this->getField("SELECT cfc FROM np_users WHERE user_id=".$this->campaign_id);
-            if ($cfc) {
-                return true;
-            }
+    function checkCfc() {
+        if ($this->campaign_id) {
+            return $this->getField("SELECT cfc FROM np_users WHERE user_id=".$this->campaign_id);
         }
-
         return false;
     }
 
