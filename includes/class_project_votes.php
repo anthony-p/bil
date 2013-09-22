@@ -35,16 +35,10 @@ class projectVotes extends custom_field
         }
     }
 
-    function checkDonated()
-    {
+    function checkDonated() {
         if ($this->user_id) {
-            $donated = $this->getField("SELECT count(*) FROM funders WHERE user_id=" .
-                $this->user_id);
-            if ($donated) {
-                return true;
-            }
+            return $this->getField("SELECT count(*) FROM funders WHERE user_id=".$this->user_id." and MONTH(FROM_UNIXTIME(created_at)) = MONTH(NOW()) and YEAR(FROM_UNIXTIME(created_at)) = YEAR(NOW())");
         }
-
         return false;
     }
 
