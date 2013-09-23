@@ -292,6 +292,10 @@ include_once($fileExtension . 'mailchimp_api_php/Mailchimp.php');
 
 // --- end MailChimp initialization ------------
 
+require_once($fileExtension.'includes/class_campaign.php');
+$campaign = new Campaign();
+$cfc_url = $campaign->getCommunityFundCampaignUrl();
+$template->set('cfc_url', $cfc_url);
 
 include_once ($fileExtension.'includes/class_shop.php');
 include_once ($fileExtension.'includes/functions_addons.php');

@@ -45,11 +45,12 @@ $link = mysql_connect($db_host, $db_username, $db_password);
 mysql_select_db($db_name, $link);
 
 $result_user = mysql_query("SELECT * FROM np_users WHERE username = '$npusername'", $link);
+$campaign_data = mysql_fetch_assoc($result_user);
 $is_user = mysql_num_rows($result_user);
 
 #echo "is user";
 #echo $is_user;
-
+//echo "<br><pre>"; print_r($campaign_data); echo "</pre><br>";
 
 if ($is_user == '1')
 {
@@ -97,6 +98,7 @@ if (isset($_GET['option']))
         logout();
     }
 
+$_SESSION['page_specific_title'] = $campaign_data['project_title'];
 include_once ('global_header.php');
 
 if (isset($_GET['change_language']))

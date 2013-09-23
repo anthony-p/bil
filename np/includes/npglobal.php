@@ -286,6 +286,11 @@ if ($session->value('user_id') > 0)
 #include_once ($fileExtension.'includes/class_shop.php');
 #include_once ($fileExtension.'includes/functions_addons.php');
 
+$sql = "SELECT c.username FROM np_users c WHERE c.cfc = '1' AND MONTH(FROM_UNIXTIME(c.end_date)) = MONTH(NOW())";
+$sql_query_result = $db->query($sql);
+$query_result =  mysql_fetch_array($sql_query_result);
+$template->set('cfc_url', '/'.$query_result['username']);
+		
 $reverse_sect_get = array('open', 'closed', 'scheduled', 'awarded');
 $reverse_sect_provide = array('my_profile', 'my_bids', 'won');
 $template->set('reverse_sect_get', $reverse_sect_get);

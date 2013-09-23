@@ -109,19 +109,33 @@ $featured_columns = 14;
 </div>
 <div class="campaign-content">
     <div class="nav-right">
+		<script type="text/javascript">
+			var state = 0;
+				window.setInterval(function(){
+					if(state == 0){
+						$("#vote_us").css("border", "none");
+						state = 1;
+					} else {
+						$("#vote_us").css("border", "2px solid #8CACAC");
+						state = 0;
+					}
+				}, 1000);
+		</script>
         <?php if (isset($vote_us) && $vote_us) : ?>
             <div class="campaign-details" id="vote_us_block">
-                <?php echo $vote_us; ?>
+                <?= $vote_us ?>
             </div>
         <?php endif; ?>
         <div class="campaign-details">
             <span class="price">$<? echo $compaigns['payment'];?><span> usd</span></span>
             <span class="day">
-                <?php $days=round(($compaigns['end_date']-time())/86400);
-                if($days>0){echo $days."<span> ".MSG_DAYS_LEFT."</span>"; }
-                elseif($compaigns['payment'] == 0)
+                <?php
+				$days=round(($compaigns['end_date']-time())/86400);
+                if($days>0){
+					echo $days."<span> ".MSG_DAYS_LEFT."</span>";
+				} elseif($compaigns['payment'] == 0){
                     echo "<span>".MSG_CLOSED."</span>";
-                else {
+                } else {
                     echo "<span>".MSG_SUCCESS."</span>";
                 }
                 ?>
@@ -150,7 +164,7 @@ $featured_columns = 14;
         </div>
         <div class="navigation-btn">
             <h3><?=MSG_MANY_WAYS_TO_GIVE?></h3>
-            <?php if ($compaigns['active'] != 2 && ($compaigns['end_date']-time())>0 ): ?>
+            <?php if ($compaigns['probid_user_id'] != $session->value('user_id') && $compaigns['active'] != 2 && ($compaigns['end_date']-time())>0): ?>
                 <a href="donate.php?np_userid=<?php echo isset($compaigns['user_id']) ? $compaigns['user_id'] : '0'; ?>"
                    class="donation campaign_donation">
                     <span class="uper"><?=MSG_DONATE_NOW?></span>
@@ -183,11 +197,12 @@ $featured_columns = 14;
             </a>
             */
             ?>
-
-            <a href="/bringitlocal" class="funds">
-                <span class="uper"><?=MSG_COMMUNITY_FOUND?></span>
-                <span><?=MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS?></span>
-            </a>
+			<?php if($compaigns['cfc'] == 0): ?>
+				<a href="<?=$cfc_url;?>" class="funds">
+					<span class="uper"><?=MSG_COMMUNITY_FOUND?></span>
+					<span><?=MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS?></span>
+				</a>
+			<?php endif; ?>
         </div>
     </div>
     <div class="tabulation">
@@ -198,11 +213,11 @@ $featured_columns = 14;
                 <li><?=MSG_COMMENTS?></li>
                 <li><?=MSG_FUNDERS?></li>
                 <li><?=MSG_REWARDS?></li>
+                <li<?= $compaigns['cfc'] == 0 ? ' class="last"': ''?>><?=MSG_WAYS_TO_SUPPORT?></li>
 				<?php if($compaigns['cfc'] == 1): ?>
 				<li><?=MSG_COMMUNITY_FUND_VOTE_REPORT?></li>
-				<li><?=MSG_COMMUNITY_FUND_HISTORY?></li>
+				<li class="last"><?=MSG_COMMUNITY_FUND_HISTORY?></li>
 				<?php endif; ?>
-                <li class="last"><?=MSG_WAYS_TO_SUPPORT?></li>
             </ul>
             <div class="resp-tabs-container">
                 <div class="tab-step">
@@ -220,6 +235,9 @@ $featured_columns = 14;
                 <div class="tab-step">
                     <?php echo $cRewards; ?>
                 </div>
+                <div class="tab-step">
+                    <?php echo $cSupport; ?>
+                </div>
 				<?php if($compaigns['cfc'] == 1): ?>
 				<div class="tab-step">
                     <?php echo $cVoteReport; ?>
@@ -228,9 +246,6 @@ $featured_columns = 14;
                     <?php echo $cHistoryReport; ?>
                 </div>
 				<?php endif; ?>
-                <div class="tab-step">
-                    <?php echo $cSupport; ?>
-                </div>
             </div>
         </div>
     </div>

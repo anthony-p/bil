@@ -1,7 +1,10 @@
 <?php if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 <!--<button id="paypal">PayPal</button>-->
-<script type="text/javascript" src="../scripts/jquery/jquery-1.3.2.js"></script>
+<script type="text/javascript" src='/scripts/jquery/jquery-1.9.1.js'></script>
+<script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
+<script type="text/javascript" src="/scripts/jquery/additional-methods.min.js"></script>
+
 <style>
     #payment_details{
         /*display: none;*/
@@ -13,23 +16,27 @@
 <!--<script src="paypal-button.min.js?merchant=WPGBEPBR4TR5Y" data-button="donate" data-name="product" data-callback="http://devlive.bringitlocal.com/donate.php" data-env="sandbox"></script>-->
 <script>
     $(document).ready(function(){
-        $("#submit").click(function(e){
-            e.preventDefault();
-            if ($("#amount").val() && !isNaN($("#amount").val())) {
-                $("#contribution_form").submit();
-            } else {
-                alert('Input a valid value please!');
-            }
-        });
+        $("#contribution_form").validate({
 
-        $("#amount").keypress(function(e){
-            if (e.keyCode == 13) {
-                e.preventDefault();
-                if ($("#amount").val() && !isNaN($("#amount").val())) {
-                    $("#contribution_form").submit();
-                } else {
-                    alert('Input a valid value please!');
+            errorElement: 'em',
+
+            rules: {
+
+                amount: {
+                    required: true,
+                    number: true,
+                    min: 1
+                },
+                community_amount: {
+                    number: true,
+                    min: 1,
+                    required: function (element) {
+                        return $("#community").val().length > 0;
+                    }
+
                 }
+
+
             }
         });
 

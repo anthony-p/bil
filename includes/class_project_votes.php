@@ -35,16 +35,10 @@ class projectVotes extends custom_field
         }
     }
 
-    function checkDonated()
-    {
+    function checkDonated() {
         if ($this->user_id) {
-            $donated = $this->getField("SELECT count(*) FROM funders WHERE user_id=" .
-                $this->user_id);
-            if ($donated) {
-                return true;
-            }
+            return $this->getField("SELECT count(*) FROM funders WHERE user_id=".$this->user_id." and MONTH(FROM_UNIXTIME(created_at)) = MONTH(NOW()) and YEAR(FROM_UNIXTIME(created_at)) = YEAR(NOW())");
         }
-
         return false;
     }
 
@@ -68,16 +62,10 @@ class projectVotes extends custom_field
     /**
      * @return bool
      */
-    function checkCfc()
-    {
-        if ($this->user_id && $this->campaign_id) {
-            $cfc = $this->getField("SELECT cfc FROM np_users WHERE user_id=" .
-                $this->campaign_id);
-            if ($cfc) {
-                return true;
-            }
+    function checkCfc() {
+        if ($this->campaign_id) {
+            return $this->getField("SELECT cfc FROM np_users WHERE user_id=".$this->campaign_id);
         }
-
         return false;
     }
 
@@ -87,7 +75,7 @@ class projectVotes extends custom_field
     function getVotesByCampaign()
     {
         if ($this->campaign_id) {
-            return $this->getField("SELECT count(*) FROM project_votes WHERE campaign_id=" . $this->campaign_id);
+            return $this->getField("SELECT count(*) FROM project_votes WHERE campaign_id=".$this->campaign_id." and MONTH(FROM_UNIXTIME(date)) = MONTH(NOW()) and YEAR(FROM_UNIXTIME(date)) = YEAR(NOW())");
         }
         return 0;
     }
@@ -118,26 +106,18 @@ class projectVotes extends custom_field
     /**
      * @return string
      */
-    function getVotesElement()
-    {
-        if ($this->user_id && $this->campaign_id) {
-            $cfc = $this->checkCfc();
-            if (!$cfc) {
-                $voted = $this->checkVoted();
-                $donated = $this->checkDonated();
-                if ($donated) {
-                    if ($voted) {
-                        $this->votes_element = '<h5>' .
-                            $this->getVotesByCampaign() . ' ' .
-                            MSG_VOTES_NUMBER . '</h5>';
-                    } else {
-                        $this->votes_element =
-                            '<button id="vote_us">' . MSG_VOTE_US . '</button>';
-                    }
-                }
-            }
+    function getVotesElement($end_date="", $campaign_owner=""){
+        if ($this->campaign_id && !$this->checkCfc()) {
+            if ($this->user_id && $this->checkDonated() && !$this->checkVoted()) {
+				$days=round(($end_date-time())/86400);
+				if($days>0 && $campaign_owner != $this->user_id ){
+					$this->votes_element = '<button id="vote_us">' . MSG_VOTE_US . '</button>';
+				}
+			}
+			if(empty($this->votes_element)) {
+				$this->votes_element = '<h5>'.$this->getVotesByCampaign().' '.MSG_VOTES_NUMBER . '</h5>';
+			}
         }
-
         return $this->votes_element;
     }
 

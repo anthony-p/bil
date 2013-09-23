@@ -19,6 +19,20 @@ include_once ('global_header.php');
 if (isset($_REQUEST['option']))
     $option = $db->rem_special_chars($_REQUEST['option']);
 
+if (isset($_REQUEST['keyword'])) {
+    $keyword = $db->rem_special_chars($_REQUEST['keyword']);
+} else {
+    $keyword = null;
+}
+
+
+if (isset($_REQUEST['order'])) {
+    $order = $db->rem_special_chars($_REQUEST['order']);
+} else {
+    $order = 'DESC';
+}
+
+
 $option = (empty($option)) ? 'auction_search' : $option;
 $template->set('option', $option);
 
@@ -73,7 +87,16 @@ switch ($option)
 		break;
 }
 
-$sql_query = $db->query("SELECT * FROM bl2_users Join np_users WHERE id = probid_user_id ORDER BY create_date DESC");
+if (!empty($keyword)) {
+    $sql_query = $db->query("SELECT * FROM bl2_users as u JOIN np_users as c WHERE u.id = c.probid_user_id
+        AND c.active <> 0
+        AND ( u.first_name LIKE '%{$keyword}%'
+        OR u.last_name LIKE '%{$keyword}%'
+        OR u.organization LIKE '%{$keyword}%')  ORDER BY create_date {$order}");
+} else {
+    $sql_query = $db->query("SELECT * FROM bl2_users JOIN np_users WHERE bl2_users.id = np_users.probid_user_id AND np_users.active <> 0 ORDER BY create_date {$order}");
+}
+
 
 $rows = array();
 

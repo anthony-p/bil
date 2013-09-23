@@ -106,7 +106,8 @@
 <aside class="donation">
   <div class="inner">
       <p><?=MSG_MAKE_HAPPEN?><span><?php echo $compaignData['project_title']; ?></p></span>
-      <?php if ($compaignData['active'] != 2 && ($compaignData['end_date']-time())>0 ): ?>
+	  <?php global $session; ?>
+      <?php if ($compaignData['probid_user_id'] != $session->value('user_id') && $compaignData['active'] != 2 && ($compaignData['end_date']-time())>0 ): ?>
           <a href="donate.php?np_userid=<?php echo $compaignData['user_id']; ?>"
              class="donation campaign_donation">
               <span class="uper"><?=MSG_DONATE_NOW?></span>

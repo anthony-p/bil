@@ -8,134 +8,50 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
-<script language="javascript">
-    function checkEmail() {
-        if (document.registration_form.email_check.value==document.registration_form.email.value) document.registration_form.email_img.style.display="inline";
-        else document.registration_form.email_img.style.display="none";
+<script type="text/javascript" src='/scripts/jquery/jquery-1.9.1.js'></script>
+<script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
+<script type="text/javascript" src="/scripts/jquery/additional-methods.min.js"></script>
+
+<style>
+    .error{
+        color: #ff0000;
+        float: right;
     }
+</style>
 
-    function checkPass() {
-        if (document.registration_form.password.value==document.registration_form.password2.value) document.registration_form.pass_img.style.display="inline";
-        else document.registration_form.pass_img.style.display="none";
-    }
-
-    function form_submit() {
-        document.registration_form.operation.value = '';
-        document.registration_form.edit_refresh.value = '1';
-        document.registration_form.submit();
-    }
-
-    function copy_email_value() {
-        document.registration_form.email_check.value = document.registration_form.email.value;
-    }
-
-    function copy_password_value() {
-        document.registration_form.password2.value = document.registration_form.password.value;
-    }
-
-    function showResult(xmlHttp, id)
-    {
-        if (xmlHttp.readyState == 4)
-        {
-            var response = xmlHttp.responseText;
-
-            document.getElementById('usernameResult').innerHTML = unescape(response);
-        }
-    }
+<script type="text/javascript">
+    $(document).ready(function(){
 
 
+        $("#form_registration").validate({
 
+            errorElement: 'em',
 
-    function showUser(str)
-    {
-        if (str=="")
-        {
-            document.getElementById("txtHint").innerHTML="";
-            return;
-        }
-        if (window.XMLHttpRequest)
-        {// code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-        }
-        else
-        {// code for IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange=function()
-        {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            {
-                document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-            }
-        }
-        xmlhttp.open("GET","getchoice.php?q="+str,true);
-        xmlhttp.send();
-    }
+            rules: {
 
+                fname: "required",
+                lname: "required",
 
-
-
-
-
-    function doHttpRequest() {  // This function does the AJAX request
-        http.open("GET", "/ajaxb.html", true);
-        http.onreadystatechange = getHttpRes;
-        http.send(null);
-    }
-
-    function doHttpRequest2() {  // This function does the AJAX request
-
-
-        http.open("GET", "/ajaxprocessor.php?q="+(document.getElementById('zip_code').value)+"&address="+(document.getElementById('address').value)+"&search_name="+(document.getElementById('search_name').value)+"&city="+(document.getElementById('city').value)+"&distancefrom="+(document.getElementById('distancefrom').value)+"&limitresults="+(document.getElementById('limitresults').value), true);
-                                                                                             //
-
-
-        http.onreadystatechange = getHttpRes;
-        http.send(null);
-    }
-
-    function getHttpRes() {
-        if (http.readyState == 4) {
-            res = http.responseText;  // These following lines get the response and update the page
-            document.getElementById('div1').innerHTML = res;
-        }
-    }
-
-    function getXHTTP() {
-        var xhttp;
-        try {	// The following "try" blocks get the XMLHTTP object for various browsers�
-            xhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e2) {
-                // This block handles Mozilla/Firefox browsers...
-                try {
-                    xhttp = new XMLHttpRequest();
-                } catch (e3) {
-                    xhttp = false;
+                email: {
+                    required: true,
+                    email: true
+                },
+                email_check: {
+                    equalTo: "#email"
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                password2: {
+                    equalTo: "#password"
                 }
             }
-        }
-        return xhttp; // Return the XMLHTTP object
-    }
-
-    var http = getXHTTP(); // This executes when the page first loads.
+        });
 
 
+    });
 </script>
-
-<?
-function fetchstate($statecode){
-    $sql="SELECT name FROM probid_countries WHERE id = '".$statecode."'";
-    $result = mysql_query($sql);
-    $row = mysql_fetch_array( $result );
-    $statename=$row['name'];
-    return $statename;
-}
-?>
-
 
 
 <?=$header_registration_message;?>
@@ -144,7 +60,7 @@ function fetchstate($statecode){
 <?php if(isset($display_formcheck_errors)) echo $display_formcheck_errors;?>
 <?php if(isset($check_voucher_message)) echo $check_voucher_message;?>
 
-<form action="<?=$register_post_url;?>" method="post" name="registration_form" class="registrationForm">
+<form action="<?=$register_post_url;?>" method="post" id="form_registration" name="registration_form" class="registrationForm">
     <input type="hidden" name="operation" value="submit">
     <input type="hidden" name="do" value="<? if(isset($do)) echo $do;?>">
     <input type="hidden" name="user_id" value="<? if (isset($user_details['user_id'])) echo $user_details['user_id'];?>">

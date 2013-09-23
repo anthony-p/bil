@@ -3418,6 +3418,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #contribution_details .top-description .right h2{font-size: 18px;line-height: 20px;}
 #contribution_details .top-description .right p{font:12px/15px "OpenSans";}
 
+.contributions_page .no_earnings_message {font-size: 18px; padding: 50px; text-align: center;}
+
 
 #browsePartners .searchBox .selectME{float:left;}
 #browsePartners  #arrowImg, #categories #arrowImg{margin-top: -14px;}
@@ -3596,3 +3598,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #about_me_content label.twitter{background: url("img/twitter-icon.png") 0 0 no-repeat;}
 #about_me_content label.facebook{background: url("img/face-icon.png") 0 0 no-repeat;}
 #about_me_content h2,#about_me_content h1 {margin: 0 0 20px 0 ; padding: 20px 0px 0; }
+
+#members_area .about_me_table label.social-network-url {width: 165px; background: none; text-transform: none; padding-left: 0; color: #5A5A5A;}
+
+#vote_us_block #vote_us {background: #D0F0F0; border: 2px solid #8CACAC; border-radius: 10px; font-family: OpenSans-Light; font-size: 20px; font-weight: bold; height: 45px; width: 262px; cursor: pointer;}
+#vote_us_block #vote_us:hover {background: #CCEBEB;}
