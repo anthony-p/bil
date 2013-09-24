@@ -302,7 +302,7 @@ class npuser extends npcustom_field
                 $campaign_old = $this->get_sql_row("SELECT username, probid_user_id FROM " . NPDB_PREFIX . "users WHERE user_id=" . $_campaign_id);
 
                 $old_campaign_title = $campaign_old['username'].'_old';
-                $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX . "users SET username ='{$old_campaign_title}' WHERE user_id={$_campaign_id}";
+                $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX . "users SET active=0, username ='{$old_campaign_title}' WHERE user_id={$_campaign_id}";
                 $this->query($sql_update_campaign_query);
 
                 $sql_update_clone_campaign_query = "UPDATE " . NPDB_PREFIX . "users
