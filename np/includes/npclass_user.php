@@ -269,7 +269,7 @@ class npuser extends npcustom_field
      * @param $campagns
      */
     function clone_campaign($campagns)
-    { var_dump($campagns);
+    {
         if (count($campagns)) {
             foreach ($campagns as $_campaign_id) {
                 $sql_clone_record_query = "INSERT INTO " . NPDB_PREFIX . "users(username, password, email,
@@ -283,8 +283,8 @@ class npuser extends npcustom_field
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active)
-                SELECT username, password, email, reg_date, payment_mode, balance, max_credit,
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active, cfc)
+                SELECT username, password, email, end_date+'1', payment_mode, balance, max_credit,
                     salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
                     name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
                     pg_paypal_email, pg_worldpay_id, pg_checkout_id, pg_nochex_email,
@@ -294,7 +294,7 @@ class npuser extends npcustom_field
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date+'2592000', active, cfc
                 FROM ".NPDB_PREFIX."users WHERE user_id={$_campaign_id}";
 
                 $this->query($sql_clone_record_query);
