@@ -91,6 +91,7 @@ if (!empty($keyword)) {
     $sql_query = $db->query("SELECT * FROM bl2_users as u JOIN np_users as c WHERE u.id = c.probid_user_id
         AND c.active <> 0
         AND ( u.first_name LIKE '%{$keyword}%'
+        OR c.project_title LIKE '%{$keyword}%'
         OR u.last_name LIKE '%{$keyword}%'
         OR u.organization LIKE '%{$keyword}%')  ORDER BY create_date {$order}");
 } else {
