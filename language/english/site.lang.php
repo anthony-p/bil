@@ -156,6 +156,7 @@ define ('MSG_SELLER_SEARCH', 'Seller Search');
 define ('MSG_BUYER_SEARCH', 'Buyer Search');
 // misc campaign tags
 define ('MSG_SAVE_CHANGES', 'Save Changes');
+define ('MSG_SAVE', 'Save');
 define ('MSG_DELETE', 'Delete');
 define ('MSG_CREATE_NEW', 'Get started - create your new campaign!');
 define ('MSG_ENTER_PROJECTURL', 'Campaign url');

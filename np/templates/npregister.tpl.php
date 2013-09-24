@@ -987,10 +987,10 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <?=(isset($signup_voucher_box))?$signup_voucher_box:'';?>
             <br />
         <?=(isset($registration_terms_box))?$registration_terms_box:'';?>
-            <input name="form_register_proceed" type="submit"
-                   id="form_register_proceed_save" value="<?=MSG_SAVE_CAMPAIGN?>" class="save_btn partial_save"/>
+            <!--<input name="form_register_proceed" type="submit"
+                   id="form_register_proceed_save" value="<?/*=MSG_SAVE_CAMPAIGN*/?>" class="save_btn partial_save"/>-->
         <input name="form_register_proceed" type="submit" id="form_register_proceed"
-               value="<?=(isset($proceed_button))?$proceed_button:'';?>"/>
+               value="<?=MSG_SAVE?>"/>
     </div>
     </div>
 </fieldset>
