@@ -291,11 +291,11 @@ if ($session->value('user_id') > 0)
 include_once($fileExtension . 'mailchimp_api_php/Mailchimp.php');
 
 // --- end MailChimp initialization ------------
-
-require_once($fileExtension.'includes/class_campaign.php');
-$campaign = new Campaign();
-$cfc_url = $campaign->getCommunityFundCampaignUrl();
-$template->set('cfc_url', $cfc_url);
+if(IN_ADMIN != 1){
+	require_once($fileExtension.'includes/class_campaign.php');
+	$campaign = new Campaign();
+	$template->set('cfc_url', $campaign->getCommunityFundCampaignUrl());
+}
 
 include_once ($fileExtension.'includes/class_shop.php');
 include_once ($fileExtension.'includes/functions_addons.php');
