@@ -109,8 +109,19 @@ $featured_columns = 14;
 </div>
 <div class="campaign-content">
     <div class="nav-right">
-		<?php $days=round(($compaigns['end_date']-time())/86400); ?>
-        <?php if ($days>0 && isset($vote_us) && $vote_us) : ?>
+		<script type="text/javascript">
+			var state = 0;
+				window.setInterval(function(){
+					if(state == 0){
+						$("#vote_us").css("border", "none");
+						state = 1;
+					} else {
+						$("#vote_us").css("border", "2px solid #8CACAC");
+						state = 0;
+					}
+				}, 1000);
+		</script>
+        <?php if (isset($vote_us) && $vote_us) : ?>
             <div class="campaign-details" id="vote_us_block">
                 <?= $vote_us ?>
             </div>
@@ -119,6 +130,7 @@ $featured_columns = 14;
             <span class="price">$<? echo $compaigns['payment'];?><span> usd</span></span>
             <span class="day">
                 <?php
+				$days=round(($compaigns['end_date']-time())/86400);
                 if($days>0){
 					echo $days."<span> ".MSG_DAYS_LEFT."</span>";
 				} elseif($compaigns['payment'] == 0){
@@ -185,11 +197,12 @@ $featured_columns = 14;
             </a>
             */
             ?>
-
-            <a href="<?=$cfc_url;?>" class="funds">
-                <span class="uper"><?=MSG_COMMUNITY_FOUND?></span>
-                <span><?=MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS?></span>
-            </a>
+			<?php if($compaigns['cfc'] == 0): ?>
+				<a href="<?=$cfc_url;?>" class="funds">
+					<span class="uper"><?=MSG_COMMUNITY_FOUND?></span>
+					<span><?=MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS?></span>
+				</a>
+			<?php endif; ?>
         </div>
     </div>
     <div class="tabulation">

@@ -8,7 +8,7 @@
 //-------------------------------------------------
 
 include_once ('includes/global.php');
-session_start();
+if (!isset($_SESSION)) session_start();
 
 $user_details = $session->value('user_id') ? $session->value('user_id') : null;;
 
@@ -56,7 +56,9 @@ $email = '';
 $email = $db->get_sql_field("SELECT np_users.pg_paypal_email FROM np_users, bl2_users WHERE np_users.user_id=" .
     $user_id . " AND np_users.probid_user_id=bl2_users.id", "pg_paypal_email");
 
-$cfc_data = $db->get_sql_row("SELECT user_id, np_users.pg_paypal_email FROM np_users WHERE np_users.cfc=1");
+$time = time();
+$cfc_data = $db->get_sql_row("SELECT user_id, np_users.pg_paypal_email FROM np_users WHERE np_users.cfc=1 AND reg_date<=" .
+    $time . " AND end_date >=" . $time);
 
 $cfc_account = (isset($cfc_data['pg_paypal_email']) && $cfc_data['pg_paypal_email']) ?
     $cfc_data['pg_paypal_email'] : 'communityfund@bringitlocal.com';

@@ -8,7 +8,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-<link href="/css/cupertino/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 
 <link href="css/tabs-style.css" rel="stylesheet">
 <!--<link href="/css/tinyeditor.css" rel="stylesheet">-->
@@ -57,6 +57,7 @@ var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
 var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
 var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
 var err_status = false;
+var err_msg = '';
 
 
 $(document).ready(function()
@@ -68,6 +69,7 @@ $(document).ready(function()
     $("#formElem").submit(function(){
 
         err_status = false;
+        err_msg = '';
         $(".error").each(function(){
             $(this).removeClass("error");
         });
@@ -162,6 +164,7 @@ $(document).ready(function()
             if ($("#time_period").val() == '' || parseInt($("#time_period").val()) != parseFloat($("#time_period").val()) ||
                     !$("#time_period").val().match(regNotEmptyNumbers)) {
                 $("#time_period").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CDAYSP; ?></li>';
                 err_status = true;
             } else {
                 $("#time_period").removeClass("error");
@@ -178,6 +181,7 @@ $(document).ready(function()
 
         if (err_status) {
             $("#p_projectDetail").children('a').click();
+            showValidationErr();
             return false;
         }
 
@@ -280,6 +284,8 @@ $(document).ready(function()
 
     });
 
+    $("#certain_date").datepicker({minDate: '+1d'});
+
     /* == == == == == == == == == == == == == == == == == == == == == == ==*/
     tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
 
@@ -320,6 +326,26 @@ $(document).ready(function()
     });
 
 });
+
+
+function showValidationErr(){
+
+    $('#validation_errors').empty();
+    $('#validation_errors').append('<ul>'+err_msg+'</ul>');
+
+    $("#validation_errors").dialog({
+        resizable: false,
+        height: 200,
+        width: 400,
+        title: "Validation Errors",
+        modal: true,
+        buttons: {
+            OK: function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+}
 
 function checkCampaignUrl(uname){
     var rstatus = false;
@@ -395,7 +421,6 @@ $( document ).ready( function (){
     jQuery("#certain_date").removeAttr('disabled');
     <?php endif; ?>
 
-    $("#certain_date").datepicker();
 
     $(".banner_type").unbind().bind("click",function(){
         if ($(this).val() == "0") {
@@ -973,3 +998,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 </div>
 
 
+<div id="validation_errors" title="Basic dialog" style="display: none;">
+
+</div>

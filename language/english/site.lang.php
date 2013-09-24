@@ -5,12 +5,17 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// new campaigm validation messages
+define('MSG_REGISTER_CAMPAIGN_ERR_CDAYSP', "Sorry, you can&#39;t run your campaign backwards. Use a positive integer!");
+
+
 //save new campaign
 define('MSG_REGISTER_SUCCESS_TYPE3', '<br>Your new campaign has been saved!<br><br> You can find it and edit it <a href="/campaigns,page,drafts,section,members_area">here</a>');
 
 define('MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP', 'Set your campaign status by choosing one of these options. Choosing Live will immediately make your campaign public.');
-define('MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP', 'Choose to extend your existing campaign for a fixed number of days.');
-define('MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP', 'Choose to automatically publish an exact clone of this campaign when it closes. It will not have any comments, updates or contributions.');
+
+define('MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP', 'Choose to extend your existing campaign for a fixed number of days.');
+define('MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP', 'Choose to automatically publish an exact clone of this campaign when it closes. It will not have any comments, updates or contributions.');
 
 //member area - message dialog
 define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_TITLE', 'Delete Campaign');

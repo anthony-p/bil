@@ -1215,11 +1215,11 @@ function clearBannerContent()
                     <input type="radio" name="active" value="0"
                         <?php echo (isset($campaign["active"]) && ($campaign["active"] == 0)) ? "checked" : ''; ?>>
                     <label><?=MSG_ACTIVITY_STATUS_DRAFT?></label>
+					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP?>" style="margin-left: 10px;">
                 </div>
                 <div class="radio">
                     <input type="radio" name="active" value="1" <?php echo (isset($campaign["active"]) && ($campaign["active"] == 1)) ? "checked" : ''; ?>>
                     <label><?=MSG_ACTIVITY_STATUS_LIVE?></label>
-					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP?>" style="margin-left: 10px;">
                 </div>
                 <div class="radio">
                     <input type="radio" name="active" value="2"
