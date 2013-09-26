@@ -576,7 +576,7 @@ define ('MSG_REWARD_SHIPPING_INFORMATION_POSTAL_CODE', 'Postal code');
 define ('MSG_REWARD_CLAIMING_BOTTOM_NOTE', 'By clicking \'continue\', you acknowledge that you understand that you are contributing to a work.');
 define ('MSG_REWARD_CLAIMING_PROVIDE_VALID_EMAIL_ADDRESS', 'Please provide a valid email address');
 define ('MSG_REWARD_CLAIMING_ALL_SHIPPING_FIELD_ARE_REQUIRED', 'All shipping information fields are required');
-define ('MSG_REWARD_CLAIMING_CONTRIBUTION_AMOUNT_MUST_VALID', 'The contribution amount must be a number greater than 0.01');
+define ('MSG_REWARD_CLAIMING_CONTRIBUTION_AMOUNT_MUST_VALID', 'The contribution amount must be a number greater than 1');
 define ('MSG_REWARD_CLAIMING_CONTRIBUTION_IS_LESS_THAN_WHAT_IS_REQUIRED', 'The amount you have chosen is less than what is required for this reward which is');
 define ('MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION', 'You can still donate this amount but you will not receive the reward.');
 define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND', 'Would you like to add $5 toward the Community Fund?');
