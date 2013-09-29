@@ -264,9 +264,7 @@ else
 				$user_id = $user->insert($_POST);
 
                 if ($user_id) {
-//                    $register_success_message = '<p align="center" class="contentfont">' . MSG_REGISTER_SUCCESS_TYPE3 . '</p>';
-//                    header_remove();
-                    header('Location: /campaigns,page,drafts,section,members_area');
+                    $register_success_message = '<p align="center" class="contentfont">' . MSG_REGISTER_SUCCESS_TYPE3 . '</p>';
                 }
 
                 if (isset($_POST["pitch_amoun"])) {
@@ -288,7 +286,7 @@ else
 
 
 
-				$template->set('register_success_header', header5(MSG_REGISTRATION_CONFIRMATION));## PHP Pro Bid v6.00 add signup fee procedure here.
+//				$template->set('register_success_header', header5(MSG_REGISTRATION_CONFIRMATION));## PHP Pro Bid v6.00 add signup fee procedure here.
 				
 				$signup_fee->setts = &$setts;
 
@@ -341,9 +339,10 @@ else
 //					include('language/' . $setts['site_lang'] . '/mails/npregister_success_no_fee_user_notification.php');
 //				}
 
-				$template->set('register_success_message', $register_success_message);
-
-				$template_output .= $template->process('npregister_success.tpl.php');
+                header('Location: /campaigns,page,drafts,section,members_area');
+//				$template->set('register_success_message', $register_success_message);
+//
+//				$template_output .= $template->process('npregister_success.tpl.php');
 			}
 		}
 
