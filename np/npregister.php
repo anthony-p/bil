@@ -265,7 +265,7 @@ else
 
                 if ($user_id) {
 //                    $register_success_message = '<p align="center" class="contentfont">' . MSG_REGISTER_SUCCESS_TYPE3 . '</p>';
-                    header_remove();
+//                    header_remove();
                     header('Location: /campaigns,page,drafts,section,members_area');
                 }
 
