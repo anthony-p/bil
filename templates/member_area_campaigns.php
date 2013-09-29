@@ -43,6 +43,7 @@ if (isset($order) && $order) {
 }
 
 if ($section == 'drafts'){
+    $template->set('explanation_message', MSG_DRAFT_CAMPAIGNS_EXPLANATION);
    $title="draft";
 //    var_dump("SELECT * FROM bl2_users Join np_users
 //        on id = probid_user_id

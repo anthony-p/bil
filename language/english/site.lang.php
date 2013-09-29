@@ -5,6 +5,9 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// draft explanation message
+define('MSG_DRAFT_CAMPAIGNS_EXPLANATION', '<h3>New campaigns are drafts, they need to be set as LIVE</h3><br />');
+
 // new campaigm validation messages
 define('MSG_REGISTER_CAMPAIGN_ERR_CDAYSP', "Sorry, you can&#39;t run your campaign backwards. Use a positive integer!");
 

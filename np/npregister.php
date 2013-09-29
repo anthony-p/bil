@@ -265,6 +265,7 @@ else
 
                 if ($user_id) {
                     $register_success_message = '<p align="center" class="contentfont">' . MSG_REGISTER_SUCCESS_TYPE3 . '</p>';
+                    header('Location: /campaigns,page,drafts,section,members_area');
                 }
 
                 if (isset($_POST["pitch_amoun"])) {

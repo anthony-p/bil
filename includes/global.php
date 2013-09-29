@@ -13,6 +13,10 @@ include_once ($fileExtension.'includes/config.php');
 
 define('INCLUDED', 1);
 
+if (!defined('IN_ADMIN')) {
+    define('IN_ADMIN', 0);
+}
+
 define('DEFAULT_DB_LANGUAGE', 'english');
 define('PC_DM', 1); /* purchased store items display method => 0: old version; 1: new version */
 
