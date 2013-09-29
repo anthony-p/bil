@@ -340,6 +340,19 @@ else
 //					include('language/' . $setts['site_lang'] . '/mails/npregister_success_no_fee_user_notification.php');
 //				}
 
+                if (!headers_sent())
+                    header('Location: /campaigns,page,drafts,section,members_area');
+                else {
+                    echo '<script type="text/javascript">';
+                    echo 'window.location.href="/campaigns,page,drafts,section,members_area";';
+                    echo '</script>';
+                    echo '<noscript>';
+                    echo '<meta http-equiv="refresh" content="0;url=/campaigns,page,drafts,section,members_area" />';
+                    echo '</noscript>';
+                }
+
+//                header('Location: /campaigns,page,drafts,section,members_area');
+
 				$template->set('register_success_message', $register_success_message);
 
 				$template_output .= $template->process('npregister_success.tpl.php');
