@@ -5,7 +5,7 @@
 
         $("#add_comment_btn_submit").click(function(){
 
-            $("#dialog-confirm").dialog({
+            $("#comment-dialog-confirm").dialog({
                 resizable: false,
                 height: 200,
                 width: 450,
@@ -90,7 +90,7 @@
       <?php endforeach; ?>
   </div>
 
-    <div id="dialog-confirm" title="<?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_TITLE; ?>" style="display: none;">
+    <div id="comment-dialog-confirm" title="<?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_TITLE; ?>" style="display: none;">
         <br>
         <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_MSG; ?></p>
     </div>
