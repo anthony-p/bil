@@ -5,6 +5,12 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// campaign page - post comment
+define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_OK', 'Yes, POST my comment now');
+define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_CANCEL', 'Nevermind, cancel');
+define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_TITLE', 'Comment Confirm');
+define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_MSG', 'Choosing POST will make your comment instantly public');
+
 // member area - edit campaign - post update
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK', 'Yes, POST my comment now');
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL', 'Nevermind, cancel');

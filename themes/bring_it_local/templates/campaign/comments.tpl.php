@@ -1,17 +1,50 @@
+<link type="text/css" rel="stylesheet" href="/css/ui-darkness/jquery-ui-1.10.3.custom.css">
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#add_comment_btn_submit").click(function(){
+
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: 200,
+                width: 450,
+                modal: true,
+                buttons: {
+                    "<?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_OK; ?>": function () {
+
+                        $(this).dialog("close");
+                        $("#add_comment").submit();
+                        return true;
+                    },
+                    "<?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_CANCEL; ?>": function () {
+                        $(this).dialog("close");
+                        return false;
+                    }
+                }
+            });
+
+            return false;
+
+        });
+
+
+    });
+</script>
 
 <aside class="announcement user-post">
   <div class="inner">
       <h3><?=MSG_POST_A_COMMENT?></h3>
       <div class="write_post">
           <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
-          <form name="add_comment" method="post" action="/campaign/comments.php">
+          <form name="add_comment" id="add_comment" method="post" action="/campaign/comments.php">
               <input name="compaign" type="hidden" value="<?=$compaignId?>" />
               <textarea name="comment_text"></textarea>
               <div class="check">
                   <input name="keep_private" type="checkbox">
                   <label><?=MSG_KEEP_PRIVATE?></label>
               </div>
-              <input type="submit" value="<?=MSG_SEND?>"/>
+              <input type="submit" id="add_comment_btn_submit" value="<?=MSG_SEND?>"/>
           </form>
       </div>
       <?php foreach($comments as $comment): ?>
@@ -56,4 +89,10 @@
       </div>
       <?php endforeach; ?>
   </div>
+
+    <div id="dialog-confirm" title="<?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_TITLE; ?>" style="display: none;">
+        <br>
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_MSG; ?></p>
+    </div>
+
 </aside>
