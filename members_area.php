@@ -598,7 +598,7 @@ else
 				}
 				else
 				{
-                    $_POST['phone'] = "(" . $_POST['phone_a'] . ")" . $_POST['phone_b'];
+//                    $_POST['phone'] = "(" . $_POST['phone_a'] . ")" . $_POST['phone_b'];
 					$form_submitted = true;
 
                     // ---- MailChimp Subscription ------------------------------------
@@ -682,19 +682,19 @@ else
 
                 if (isset($_POST['newsletter'])) $row_user['is_subscribe_news'] = $_POST['newsletter'];
 
-                $phone_a = $phone_b = '';
-                if (isset($row_user["phone"])) {
-                    $phone_array = explode(")", $row_user["phone"]);
-                    $phone_a = trim(str_replace("(", "", $phone_array[0]));
-                    if (isset($phone_array[1])) {
-                        $phone_b = trim($phone_array[1]);
-                    }
-                }
-
-                if (isset($_POST['phone_a']) && trim($_POST['phone_a'])!="") $row_user['phone_a'] = $_POST['phone_a'];
-                else $row_user["phone_a"] = $phone_a;
-                if (isset($_POST['phone_b']) && trim($_POST['phone_b']) != "") $row_user['phone_b'] = $_POST['phone_b'];
-                else $row_user["phone_b"] = $phone_b;
+//                $phone_a = $phone_b = '';
+//                if (isset($row_user["phone"])) {
+//                    $phone_array = explode(")", $row_user["phone"]);
+//                    $phone_a = trim(str_replace("(", "", $phone_array[0]));
+//                    if (isset($phone_array[1])) {
+//                        $phone_b = trim($phone_array[1]);
+//                    }
+//                }
+//
+//                if (isset($_POST['phone_a']) && trim($_POST['phone_a'])!="") $row_user['phone_a'] = $_POST['phone_a'];
+//                else $row_user["phone_a"] = $phone_a;
+//                if (isset($_POST['phone_b']) && trim($_POST['phone_b']) != "") $row_user['phone_b'] = $_POST['phone_b'];
+//                else $row_user["phone_b"] = $phone_b;
 
                 if (!isset($row_user['first_name'])) {
                     $row_user['first_name'] = isset($_POST['fname']) ? $_POST['fname'] : '';
