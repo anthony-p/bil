@@ -87,12 +87,12 @@ if ($section == 'drafts'){
     $sql_query = $db->query(
         "SELECT * FROM bl2_users Join np_users
         on id = probid_user_id
+        WHERE (np_users.active='2' OR end_date<" . time() . ")
         AND np_users.probid_user_id=" . $session->value('user_id') . $tail_query_part
     );
     $rows = array();
     while ($row = mysql_fetch_array($sql_query)) {
-        if($row["end_date"]<=time()) {
-            $rows[] = $row;}
+        $rows[] = $row;
 
 
     }
