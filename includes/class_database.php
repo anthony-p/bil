@@ -16,7 +16,7 @@ class db_main
 	var $db_prefix = DB_PREFIX; ## for PPB & PPA Integration
 var $npdb_prefix = NPDB_PREFIX;	
 
-	var $display_errors = false; ## by default the sql errors are not displayed; change to true to be displayed (for debugging purposes only)
+	var $display_errors = true; ## by default the sql errors are not displayed; change to true to be displayed (for debugging purposes only)
 	
 	var $categories_table = 'categories';
 
