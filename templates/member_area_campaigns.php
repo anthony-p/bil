@@ -35,7 +35,8 @@ if (!$session->value('user_id'))
 
 $tail_query_part = '';
 if (isset($name_keyword) && $name_keyword) {
-    $tail_query_part .= " AND np_users.name LIKE '%" . $name_keyword . "%'";
+    $tail_query_part .= " AND (np_users.name LIKE '%" . $name_keyword .
+        "%' OR np_users.project_title LIKE '%" . $name_keyword . "%')";
 }
 
 if (isset($order) && $order) {
