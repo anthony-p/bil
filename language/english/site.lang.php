@@ -5,6 +5,12 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// member area - edit campaign - post update
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK', 'Yes, POST my comment now');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL', 'Nevermind, cancel');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE', 'POST Confirm');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG', 'Choosing POST will make your comment instantly public');
+
 // draft explanation message
 define('MSG_DRAFT_CAMPAIGNS_EXPLANATION', '<h3>New campaigns are drafts, they need to be set as LIVE</h3><br />');
 
@@ -28,7 +34,7 @@ define('MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL', 'MSG_REGISTER_CAMPAIGN_ERR_TWITTE
 define('MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE', 'MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE');
 define('MSG_REGISTER_CAMPAIGN_ERR_BANERFILE', 'MSG_REGISTER_CAMPAIGN_ERR_BANERFILE');
 define('MSG_REGISTER_CAMPAIGN_ERR_PIN', 'MSG_REGISTER_CAMPAIGN_ERR_PIN');
-define('MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS', 'MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS');
+define('MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS', 'You need to read and check the terms and conditions before you can save your campaign');
 
 
 //save new campaign

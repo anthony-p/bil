@@ -10,8 +10,10 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <?=(isset($header_selling_page))?$header_selling_page:'';?>
 <?=(isset($display_formcheck_errors))?$display_formcheck_errors:'';?>
 <script src="/scripts/jquery/jquery-1.9.1.js"></script>
-<script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>
-<link type="text/css" rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">
+<script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+<link type="text/css" rel="stylesheet" href="/css/ui-darkness/jquery-ui-1.10.3.custom.css">
+<!--<script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>-->
+<!--<link type="text/css" rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">-->
 
 <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
 <script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
@@ -204,20 +206,42 @@ var countOfPitch = <?php if (isset($pitches) && is_array($pitches)) echo count($
 function projectUpdateComment () {
 
     var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + tinymce.get('project_update_textarea').getContent();
-    $.ajax({
-        url: "/np_compaign_project.php",
-        type: "POST",
-        data: data,
-        success: function(response){
-            var commentObj = jQuery.parseJSON(response);
-            if (commentObj.response == true) {
-                addProjectUpdateComment(commentObj.id);
+
+    $("#dialog-confirm").dialog({
+        resizable: false,
+        height: 200,
+        width: 450,
+        modal: true,
+        buttons: {
+            "<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK; ?>": function () {
+
+                $.ajax({
+                    url: "/np_compaign_project.php",
+                    type: "POST",
+                    async: false,
+                    data: data,
+                    success: function (response) {
+                        var commentObj = jQuery.parseJSON(response);
+                        if (commentObj.response == true) {
+                            addProjectUpdateComment(commentObj.id);
+                        }
+                    },
+                    error: function () {
+                        console.log("failure");
+                    }
+                });
+
+                $(this).dialog("close");
+            },
+            "<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL; ?>": function () {
+                $(this).dialog("close");
+                return false;
             }
-        },
-        error:function(){
-            console.log("failure");
         }
     });
+
+    return false;
+
 }
 
 
@@ -1271,6 +1295,11 @@ function clearBannerContent()
 
 </div>
 
+<div id="dialog-confirm" title="<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE; ?>" style="display: none;">
+    <br>
+
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG; ?></p>
+</div>
 
 <script>
     $( document ).ready( function (){

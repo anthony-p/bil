@@ -82,13 +82,14 @@ if (!$session->value('user_id')) {
             $funders_id[] = $v['user_id'];
         }
 
-        $sql_res = $db->query("SELECT * FROM bl2_users WHERE id IN(".implode(',', $funders_id).");");
-        while ($mysql_row = mysql_fetch_array($sql_res)) {
-            $funders_users[] = $mysql_row;
+        if (count($funders_id)){
+            $sql_res = $db->query("SELECT * FROM bl2_users WHERE id IN(" . implode(',', $funders_id) . ");");
+            while ($mysql_row = mysql_fetch_array($sql_res)) {
+                $funders_users[] = $mysql_row;
+            }
+            include('language/' . $setts['site_lang'] . '/mails/campaign_update_user_notification.php');
         }
 
-
-        include('language/' . $setts['site_lang'] . '/mails/campaign_update_user_notification.php');
 
         // --- END Send email for all campaign funders ----------------
 
