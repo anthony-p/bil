@@ -78,6 +78,7 @@ $(document).ready(function()
         // check 1st tab field and if err - focus this tab
         if ($("#name").val() == '' || !$("#name").val().match(regNotEmptyAlphaNumericWS)) {
             $("#name").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_NAME; ?></li>';
             err_status = true;
         } else {
             $("#name").removeClass("error");
@@ -86,6 +87,7 @@ $(document).ready(function()
         if ($("#tax_company_name").val()!==""){
             if ( !$("#tax_company_name").val().match(regNotEmptyAlphaNumericWS) ) {
                 $("#tax_company_name").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME; ?></li>';
                 err_status = true;
             } else {
                 $("#tax_company_name").removeClass("error");
@@ -94,12 +96,14 @@ $(document).ready(function()
 
         if ($("#address").val() == '') {
             $("#address").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_ADDRESS; ?></li>';
             err_status = true;
         } else {
             $("#address").removeClass("error");
         }
         if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaWS)) {
             $("#city").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CITY; ?></li>';
             err_status = true;
         } else {
             $("#city").removeClass("error");
@@ -108,12 +112,14 @@ $(document).ready(function()
 //                || !$("#zip_code").val().match(regZipCode)
                 ) {
             $("#zip_code").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_ZIP; ?></li>';
             err_status = true;
         } else {
             $("#zip_code").removeClass("error");
         }
         if ($("#phone").val() == '') {
             $("#phone").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PHONE; ?></li>';
             err_status = true;
         } else {
             $("#phone").removeClass("error");
@@ -121,14 +127,24 @@ $(document).ready(function()
 
         if (err_status) {
             $("#p_account").children('a').click();
+            showValidationErr();
+            muteErrFieldsOnChange();
             return false;
         }
 
 
         // check 2nd tab field and if err - focus this tab
         if ( $("#username").val() == '' || !$("#username").val().match(regNotEmptyAlphaNumeric) || checkCampaignUrl($("#username").val()) )  {
-            $("#username").addClass("error");
-            err_status = true;
+            if ( $("#username").val() !== '' ){
+                $("#username").addClass("error");
+                err_status = true;
+            } else {
+                $("#username").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_USERNAME; ?></li>';
+                err_status = true;
+            }
+
+
         } else {
             $("#username").removeClass("error");
         }
@@ -141,20 +157,23 @@ $(document).ready(function()
 //        } else {
 //            $("#campaign_basic").removeClass("error");
 //        }
-        if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaWS)) {
+        if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaWS) || $("#project_title").val().length > 80 ) {
             $("#project_title").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PTITLE; ?></li>';
             err_status = true;
         } else {
             $("#project_title").removeClass("error");
         }
-        if ($("#project_short_description").val() == '' || !$("#project_short_description").val().match(regNotEmptyAlphaWS)) {
+        if ($("#project_short_description").val() == '' || !$("#project_short_description").val().match(regNotEmptyAlphaWS) || $("#project_short_description").val().length > 160) {
             $("#project_short_description").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PDESC; ?></li>';
             err_status = true;
         } else {
             $("#project_short_description").removeClass("error");
         }
         if ($("#founddrasing_goal").val() == '' || parseInt($("#founddrasing_goal").val()) != parseFloat($("#founddrasing_goal").val()) || !$("#founddrasing_goal").val().match(regNotEmptyNumbers) ) {
             $("#founddrasing_goal").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_FDGOAL; ?></li>';
             err_status = true;
         } else {
             $("#founddrasing_goal").removeClass("error");
@@ -173,6 +192,7 @@ $(document).ready(function()
         if ( $("#deadline_type_value").val() == 'certain_date'){
             if ($("#certain_date").val() == '' ) {
                 $("#certain_date").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CDATEP; ?></li>';
                 err_status = true;
             } else {
                 $("#certain_date").removeClass("error");
@@ -182,6 +202,7 @@ $(document).ready(function()
         if (err_status) {
             $("#p_projectDetail").children('a').click();
             showValidationErr();
+            muteErrFieldsOnChange();
             return false;
         }
 
@@ -193,15 +214,17 @@ $(document).ready(function()
         if ($("#url").val() !== ''){
             if (!$("#url").val().match(regUrl)) {
                 $("#url").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_URL; ?></li>';
                 err_status = true;
             } else {
                 $("#url").removeClass("error");
             }
         }
         if ($("#facebook_url").val() !== '') {
-            alert($("#facebook_url").val().indexOf('facebook.com'));
+
             if ($("#facebook_url").val().indexOf('facebook.com') == -1 || !$("#facebook_url").val().match(regUrl)) {
                 $("#facebook_url").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL; ?></li>';
                 err_status = true;
             } else {
                 $("#facebook_url").removeClass("error");
@@ -210,6 +233,7 @@ $(document).ready(function()
         if ($("#twitter_url").val() !== '') {
             if ($("#twitter_url").val().indexOf('twitter.com') == -1 || !$("#twitter_url").val().match(regUrl)) {
                 $("#twitter_url").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL; ?></li>';
                 err_status = true;
             } else {
                 $("#twitter_url").removeClass("error");
@@ -220,6 +244,7 @@ $(document).ready(function()
             var ext = $('#logo').val().split('.').pop().toLowerCase();
             if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
                 $("#logo").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE; ?></li>';
                 err_status = true;
             } else {
                 $("#logo").removeClass("error");
@@ -230,6 +255,7 @@ $(document).ready(function()
             var ext = $('#banner').val().split('.').pop().toLowerCase();
             if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
                 $("#banner").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_BANERFILE; ?></li>';
                 err_status = true;
             } else {
                 $("#banner").removeClass("error");
@@ -238,6 +264,8 @@ $(document).ready(function()
 
         if (err_status) {
             $("#p_projectEdit").children('a').click();
+            showValidationErr();
+            muteErrFieldsOnChange();
             return false;
         }
 
@@ -245,6 +273,7 @@ $(document).ready(function()
 
         if ($("#pin_value").val() == '' ) {
             $("#pin_value").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PIN; ?></li>';
             err_status = true;
         } else {
             $("#pin_value").removeClass("error");
@@ -252,6 +281,7 @@ $(document).ready(function()
 
         if ( !$("[name='agree_terms']").is(':checked') ) {
             $("[name='agree_terms']").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS; ?></li>';
             err_status = true;
         } else {
             $("[name='agree_terms']").removeClass("error");
@@ -259,6 +289,8 @@ $(document).ready(function()
 
         if (err_status) {
             $("#p_confirmation").children('a').click();
+            showValidationErr();
+            muteErrFieldsOnChange();
             return false;
         }
 
@@ -328,6 +360,12 @@ $(document).ready(function()
 });
 
 
+function muteErrFieldsOnChange(){
+    $('.error').change(function () {
+        $(this).removeClass("error");
+    });
+}
+
 function showValidationErr(){
 
     $('#validation_errors').empty();
@@ -350,6 +388,7 @@ function showValidationErr(){
 function checkCampaignUrl(uname){
     var rstatus = false;
 
+
     $.ajax({
         type: "POST",
         async: false,
@@ -359,6 +398,7 @@ function checkCampaignUrl(uname){
     })
             .done(function (result) {
                 rstatus =  result.status;
+                if (rstatus) err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_USERNAMEEXIST; ?></li>';
             });
 
     return rstatus;
