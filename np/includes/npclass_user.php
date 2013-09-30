@@ -255,7 +255,7 @@ class npuser extends npcustom_field
         $closed_campaigns = array();
         $select_query_result = $this->query(
             "SELECT user_id, reg_date, clone_campaign, deadline_type_value, time_period, certain_date, end_date, keep_alive_days
-            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND keep_alive=1"
+            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND (keep_alive=1 OR clone_campaign<>0)"
         );
 
         while ($query_result =  mysql_fetch_array($select_query_result)) {
@@ -283,7 +283,7 @@ class npuser extends npcustom_field
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active, cfc)
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active, cfc, clone_campaign)
                 SELECT username, password, email, end_date+'1', payment_mode, balance, max_credit,
                     salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
                     name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
@@ -294,7 +294,7 @@ class npuser extends npcustom_field
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date+'2592000', active, cfc
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date+'2592000', 0, cfc, clone_campaign
                 FROM ".NPDB_PREFIX."users WHERE user_id={$_campaign_id}";
 
                 $this->query($sql_clone_record_query);
@@ -302,7 +302,7 @@ class npuser extends npcustom_field
                 $campaign_old = $this->get_sql_row("SELECT username, probid_user_id FROM " . NPDB_PREFIX . "users WHERE user_id=" . $_campaign_id);
 
                 $old_campaign_title = $campaign_old['username'].'_old';
-                $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX . "users SET username ='{$old_campaign_title}' WHERE user_id={$_campaign_id}";
+                $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX . "users SET active=0, clone_campaign=0, username ='{$old_campaign_title}' WHERE user_id={$_campaign_id}";
                 $this->query($sql_update_campaign_query);
 
                 $sql_update_clone_campaign_query = "UPDATE " . NPDB_PREFIX . "users

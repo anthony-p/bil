@@ -320,12 +320,9 @@ function fetchstate($statecode){
     <tr>
         <td class="leftCol"><?=MSG_PHONE;?> *</td>
         <td class="contentfont">
-            <? if (isset($edit_user) && $edit_user == 1)	{ ?>
+
             <input name="phone" type="text" id="phone" value="<?=(isset($user_details['phone']))?$user_details['phone']:'';?>" size="25" />
-            <? } else { ?>
-            ( <input name="phone_a" type="text" id="phone_a" value="<?=(isset($user_details['phone_a']))?$user_details['phone_a']:'';?>" size="5" /> )
-            <input name="phone_b" type="text" id="phone_b" value="<?=(isset($user_details['phone_b']))?$user_details['phone_b']:'';?>" size="25" />
-            <? } ?></td>
+            </td>
     </tr>
 
     <!--tr class="reguser">

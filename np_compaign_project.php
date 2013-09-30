@@ -247,5 +247,3 @@ if (!$session->value('user_id')) {
 
 }
 
-
-

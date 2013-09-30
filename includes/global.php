@@ -13,6 +13,10 @@ include_once ($fileExtension.'includes/config.php');
 
 define('INCLUDED', 1);
 
+if (!defined('IN_ADMIN')) {
+    define('IN_ADMIN', 0);
+}
+
 define('DEFAULT_DB_LANGUAGE', 'english');
 define('PC_DM', 1); /* purchased store items display method => 0: old version; 1: new version */
 
@@ -291,11 +295,11 @@ if ($session->value('user_id') > 0)
 include_once($fileExtension . 'mailchimp_api_php/Mailchimp.php');
 
 // --- end MailChimp initialization ------------
-
-require_once($fileExtension.'includes/class_campaign.php');
-$campaign = new Campaign();
-$cfc_url = $campaign->getCommunityFundCampaignUrl();
-$template->set('cfc_url', $cfc_url);
+if(IN_ADMIN != 1){
+	require_once($fileExtension.'includes/class_campaign.php');
+	$campaign = new Campaign();
+	$template->set('cfc_url', $campaign->getCommunityFundCampaignUrl());
+}
 
 include_once ($fileExtension.'includes/class_shop.php');
 include_once ($fileExtension.'includes/functions_addons.php');

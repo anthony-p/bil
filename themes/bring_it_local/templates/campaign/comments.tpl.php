@@ -1,4 +1,3 @@
-
 <aside class="announcement user-post">
   <div class="inner">
       <h3><?=MSG_POST_A_COMMENT?></h3>

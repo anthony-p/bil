@@ -76,6 +76,9 @@ function submit_form(form_name) {
     });
 </script>
 <div class="myCampaigs">
+    <?php if (isset($explanation_message) && $explanation_message): ?>
+    <?php echo $explanation_message; ?>
+    <?php endif; ?>
     <h2><?php echo $campaign_title;?> <?=MSG_CAMPAIGNS?></h2>
 <!--    <form accept="#">-->
 <!--        <input type="text" value="" placeholder="Find by name" name="keyword">-->

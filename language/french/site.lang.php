@@ -1,4 +1,7 @@
 <?
+
+// draft explanation message
+define('MSG_DRAFT_CAMPAIGNS_EXPLANATION', '<h3>New campaigns are drafts, they need to be set as LIVE</h3><br />');
 define ('MSG_MM_ABOUT_ME', 'À propos de moi');
 define ('MSG_MM_VIEW', 'Voir');
 define ('MSG_MM_ABOUT_ME', 'About Me');

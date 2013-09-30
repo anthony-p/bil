@@ -35,7 +35,8 @@ if (!$session->value('user_id'))
 
 $tail_query_part = '';
 if (isset($name_keyword) && $name_keyword) {
-    $tail_query_part .= " AND np_users.name LIKE '%" . $name_keyword . "%'";
+    $tail_query_part .= " AND (np_users.name LIKE '%" . $name_keyword .
+        "%' OR np_users.project_title LIKE '%" . $name_keyword . "%')";
 }
 
 if (isset($order) && $order) {
@@ -43,6 +44,7 @@ if (isset($order) && $order) {
 }
 
 if ($section == 'drafts'){
+    $template->set('explanation_message', MSG_DRAFT_CAMPAIGNS_EXPLANATION);
    $title="draft";
 //    var_dump("SELECT * FROM bl2_users Join np_users
 //        on id = probid_user_id
@@ -86,12 +88,12 @@ if ($section == 'drafts'){
     $sql_query = $db->query(
         "SELECT * FROM bl2_users Join np_users
         on id = probid_user_id
+        WHERE (np_users.active='2' OR end_date<" . time() . ")
         AND np_users.probid_user_id=" . $session->value('user_id') . $tail_query_part
     );
     $rows = array();
     while ($row = mysql_fetch_array($sql_query)) {
-        if($row["end_date"]<=time()) {
-            $rows[] = $row;}
+        $rows[] = $row;
 
 
     }

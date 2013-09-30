@@ -265,6 +265,7 @@ else
 
                 if ($user_id) {
                     $register_success_message = '<p align="center" class="contentfont">' . MSG_REGISTER_SUCCESS_TYPE3 . '</p>';
+//                    header('Location: /campaigns,page,drafts,section,members_area');
                 }
 
                 if (isset($_POST["pitch_amoun"])) {
@@ -338,6 +339,19 @@ else
 //					$mail_input_id = $user_id;
 //					include('language/' . $setts['site_lang'] . '/mails/npregister_success_no_fee_user_notification.php');
 //				}
+
+                if (!headers_sent())
+                    header('Location: /campaigns,page,drafts,section,members_area');
+                else {
+                    echo '<script type="text/javascript">';
+                    echo 'window.location.href="/campaigns,page,drafts,section,members_area";';
+                    echo '</script>';
+                    echo '<noscript>';
+                    echo '<meta http-equiv="refresh" content="0;url=/campaigns,page,drafts,section,members_area" />';
+                    echo '</noscript>';
+                }
+
+//                header('Location: /campaigns,page,drafts,section,members_area');
 
 				$template->set('register_success_message', $register_success_message);
 
