@@ -463,7 +463,7 @@ global $coupon_url;
                 <span><?=MSG_BROWSE_CAMPAIGNS;?></span>
                 <ul>
                     <li>
-                        <a href="/search.php?order_by=reg_date&order_type=DESC">
+                        <a href="/np/npregister.php">
                             <span><?=MSG_NEWCAMPAIGNS;?></span>
                         </a>
                     </li>
