@@ -48,6 +48,7 @@ include_once('includes/grab_video_thumbnail.php');
 </script>
 
 <h2> <?=MSG_ALL_CAMPAIGNS?></h2>
+<fieldset>    <div class="holder"></div></fieldset>
  <div class="clear"></div>
 <form id="search_by_name" action="campaigns.php">
     <!--    <div class="select">-->
@@ -71,9 +72,7 @@ include_once('includes/grab_video_thumbnail.php');
 <!--      </select>-->
 <!-- </div>-->
 <div class="searchBox">
-    <fieldset>    <div class="holder"></div></fieldset>
-
-    <div class="clear"></div>
+<div class="clear"></div>
     <ul class="list" id="pagination">
         <?php $counter=0; foreach( $compaigns as $row): $counter++;?>
             <li class="<?php  if(($counter % 4)==0){ echo "fourth";}?>">
