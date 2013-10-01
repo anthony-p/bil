@@ -62,7 +62,6 @@ include_once('includes/grab_video_thumbnail.php');
         <button type="submit"></button>
     </div>
 </form>
-<fieldset>    <div class="holder"></div></fieldset>
 
 <!--<div class="select">-->
 <!--     <select id="order_result" name="names" class="changeMe">-->
@@ -72,7 +71,9 @@ include_once('includes/grab_video_thumbnail.php');
 <!--      </select>-->
 <!-- </div>-->
 <div class="searchBox">
-<div class="clear"></div>
+    <fieldset>    <div class="holder"></div></fieldset>
+
+    <div class="clear"></div>
     <ul class="list" id="pagination">
         <?php $counter=0; foreach( $compaigns as $row): $counter++;?>
             <li class="<?php  if(($counter % 4)==0){ echo "fourth";}?>">
