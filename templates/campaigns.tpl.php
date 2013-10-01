@@ -47,8 +47,8 @@ include_once('includes/grab_video_thumbnail.php');
 
 </script>
 
+<div class="searchBox">
 <h2> <?=MSG_ALL_CAMPAIGNS?></h2>
- <div class="clear"></div>
 <form id="search_by_name" action="campaigns.php">
     <!--    <div class="select">-->
     <select id="order_result" name="names" class="changeMe">

@@ -67,10 +67,8 @@ include_once('includes/grab_video_thumbnail.php');
       <button type="submit"></button>
   </div>
 </form>
-
     <div class="searchBox">
-        <fieldset>    <div class="holder"></div></fieldset>
-        <div class="clear"></div>
+    <div class="clear"></div>
     <ul class="list" id="pagination">
     <?php $counter=0; foreach ($campaigns as $campaign):  $counter++; ?>
         <li  class="<?php  if(($counter % 4)==0){ echo "fourth";}?>">
