@@ -26,8 +26,8 @@ if (isset($_REQUEST['keyword'])) {
 }
 
 
-if (isset($_REQUEST['order'])) {
-    $order = $db->rem_special_chars($_REQUEST['order']);
+if (isset($_REQUEST['names'])) {
+    $order = $db->rem_special_chars($_REQUEST['names']);
 } else {
     $order = 'DESC';
 }
