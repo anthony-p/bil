@@ -47,9 +47,7 @@ include_once('includes/grab_video_thumbnail.php');
 
 </script>
 
-<div class="searchBox">
 <h2> <?=MSG_ALL_CAMPAIGNS?></h2>
-<fieldset>    <div class="holder"></div></fieldset>
  <div class="clear"></div>
 <form id="search_by_name" action="campaigns.php">
     <!--    <div class="select">-->
@@ -64,6 +62,7 @@ include_once('includes/grab_video_thumbnail.php');
         <button type="submit"></button>
     </div>
 </form>
+<fieldset>    <div class="holder"></div></fieldset>
 
 <!--<div class="select">-->
 <!--     <select id="order_result" name="names" class="changeMe">-->
@@ -72,7 +71,7 @@ include_once('includes/grab_video_thumbnail.php');
 <!--        <option value="DESC" class="order">Date desc</option>-->
 <!--      </select>-->
 <!-- </div>-->
-
+<div class="searchBox">
 <div class="clear"></div>
     <ul class="list" id="pagination">
         <?php $counter=0; foreach( $compaigns as $row): $counter++;?>
