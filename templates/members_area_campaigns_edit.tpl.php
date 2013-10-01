@@ -9,9 +9,11 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <?=(isset($header_selling_page))?$header_selling_page:'';?>
 <?=(isset($display_formcheck_errors))?$display_formcheck_errors:'';?>
+<link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+
 <script src="/scripts/jquery/jquery-1.9.1.js"></script>
 <script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>
-<link type="text/css" rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">
+<!--<link type="text/css" rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">-->
 
 <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
 <script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
@@ -51,6 +53,57 @@ $( document ).ready( function (){
     <?php endif; ?>
 
 });
+
+function confirmDeleteRewards(id){
+
+    var data = 'delete_project_updates=true' + '&updates_id=' + id;
+
+    $("#confirm_dialog_box").dialog({
+        resizable: false,
+        height: 200,
+        width: 400,
+        modal: true,
+        buttons: {
+            '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK; ?>': function () {
+
+                is_new = $("#is_new_" + id).val();
+                if (is_new == '1') {
+                    has_new_reward_form = false;
+                    $("#reward_block_" + id).slideUp(750);
+                } else {
+                    $.ajax({
+                        url: "/np_compaign_project",
+                        type: "POST",
+                        async: false,
+                        data: {delete_project_rewards: true, rewards_id: id},
+                        success: function (response) {
+                            response = jQuery.parseJSON(response).response;
+                            if (response == true) {
+                                $("#reward_block_" + id).slideUp(750);
+                            } else {
+                                alert(response);
+                            }
+                        },
+                        error: function () {
+                            alert("Error");
+                        }
+                    });
+                }
+
+
+
+                $(this).dialog("close");
+            },
+            '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_CANCEL; ?>': function(){
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    return false;
+}
+
+
 
 function bannerTypeSelect(flag){
     if (flag == "0") {
@@ -290,6 +343,10 @@ function projectUpdateDelete( id ){
 
 
 function deleteProjectReward (id){
+
+    confirmDeleteRewards(id);
+    return false;
+
 	is_new = $("#is_new_" + id).val();
 	if(is_new == '1'){
 		has_new_reward_form = false;
@@ -1271,6 +1328,10 @@ function clearBannerContent()
 
 </div>
 
+<div id="confirm_dialog_box" title="<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE; ?>" style="display: none;">
+    <br>
+    <p><?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG; ?></p>
+</div>
 
 <script>
     $( document ).ready( function (){

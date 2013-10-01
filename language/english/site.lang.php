@@ -5,6 +5,12 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+// campaign edit - delete rewards confirmation
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE', 'Delete Reward Confirm');
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG', 'MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG');
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK', 'Delete');
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_CANCEL', 'Cancel');
+
 // campaign page - post comment
 define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_OK', 'Yes, POST my comment now');
 define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_CANCEL', 'Nevermind, cancel');
