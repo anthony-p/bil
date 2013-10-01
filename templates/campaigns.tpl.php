@@ -71,7 +71,7 @@ include_once('includes/grab_video_thumbnail.php');
 <!--      </select>-->
 <!-- </div>-->
 <div class="searchBox">
-    <fieldset>    <div class="holder"></div></fieldset>
+    <fieldset style="margin-bottom: 0">    <div class="holder"></div></fieldset>
 
     <div class="clear"></div>
     <ul class="list" id="pagination">
