@@ -33,8 +33,6 @@ if (isset($_REQUEST['names'])) {
 }
 
 
-
-
 $option = (empty($option)) ? 'auction_search' : $option;
 $template->set('option', $option);
 
