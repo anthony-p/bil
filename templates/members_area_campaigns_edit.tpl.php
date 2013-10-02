@@ -1638,12 +1638,7 @@ function clearBannerContent()
             </div>
             <div class="account-row">
                 <label><?=MSG_CRON_CONFIG?></label>
-                <div class="radio">
-                    <input type="radio" name="clone_campaign" value="1"
-                        <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 1)) ? "checked" : ''; ?>>
-                    <label><?=MSG_CLONE_CAMPAIGN?></label>
-					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
-                </div>
+
                 <div class="radio">
                     <input type="radio" name="clone_campaign" value="2"
                         <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 2)) ? "checked" : ''; ?>>
@@ -1660,6 +1655,12 @@ function clearBannerContent()
             </div>
 
             <div class="clear"></div>
+            <div class="radio">
+                <input type="radio" name="clone_campaign" value="1"
+                    <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 1)) ? "checked" : ''; ?>>
+                <label><?=MSG_CLONE_CAMPAIGN?></label>
+                <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
+            </div>
             <div class="radio">
                 <input type="radio" name="clone_campaign" value="0"
                     <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 0)) ? "checked" : ''; ?>>
