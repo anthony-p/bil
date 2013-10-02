@@ -1635,6 +1635,14 @@ function clearBannerContent()
                         <?php echo (isset($campaign["active"]) && ($campaign["active"] == 2)) ? "checked" : ''; ?>>
                     <label><?=MSG_ACTIVITY_STATUS_CLOSED?></label>
                 </div>
+                <div class="input_row">
+                    <input type="text" name="keep_alive_days" id="keep_alive_days"
+                           value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>" />
+                    <label><?=MSG_DAYS?></label>
+                    <input type="checkbox" name="keep_alive" id="keep_alive" value="1"
+                        <?php echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?> />
+                </div>
+
             </div>
             <div class="account-row">
                 <label><?=MSG_CRON_CONFIG?></label>
@@ -1645,13 +1653,6 @@ function clearBannerContent()
                     <label><?=MSG_EXTENDS_DATE_EXISTING_CAMPAIGN?></label>
 					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
                 </div>
-            </div>
-            <div class="input_row">
-                <input type="text" name="keep_alive_days" id="keep_alive_days"
-                       value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>" />
-                <label><?=MSG_DAYS?></label>
-                <input type="checkbox" name="keep_alive" id="keep_alive" value="1"
-                    <?php echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?> />
             </div>
 
             <div class="clear"></div>
