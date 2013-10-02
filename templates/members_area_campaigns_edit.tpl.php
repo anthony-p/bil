@@ -9,10 +9,11 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <?=(isset($header_selling_page))?$header_selling_page:'';?>
 <?=(isset($display_formcheck_errors))?$display_formcheck_errors:'';?>
-<link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<!--<link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">-->
 
-<script src="/scripts/jquery/jquery-1.9.1.js"></script>
-<script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>
+<!--<script src="/scripts/jquery/jquery-1.9.1.js"></script>-->
+
+<!--<script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>-->
 <!--<link type="text/css" rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.10.3.custom.min.css">-->
 
 <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
@@ -21,13 +22,293 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
 <!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/plugins/moxiemanager/editor_plugin.js" js="text/javascript"></script>-->
 
+<style>
+
+    .error {
+        border: 1px solid #ff0000;
+        background-color: #ff0000;
+    }
+
+</style>
 
 
 <script type="text/javascript">
 
-$( document ).ready( function (){
+var regNotEmptyAlpha = /^([\w]+)$/i;
+var regNotEmptyNumbers = /^([\d]+)$/i;
+var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
+var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
+var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
+var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
+var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
+var err_status = false;
+var err_msg = '';
 
-    $("#certain_date").datepicker();
+
+$(document).ready( function (){
+
+    $("#certain_date").datepicker({minDate: '+1d'});
+
+
+
+    $('#formElem').submit(function(){
+
+        err_status = false;
+        err_msg = '';
+        $(".error").each(function () {
+            $(this).removeClass("error");
+        });
+
+
+
+        // check 1st tab field and if err - focus this tab
+        if ($("#name").val() == '' || !$("#name").val().match(regNotEmptyAlphaNumericWS)) {
+            $("#name").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_NAME; ?></li>';
+            err_status = true;
+        } else {
+            $("#name").removeClass("error");
+        }
+
+        if ($("#tax_company_name").val() !== "") {
+            if (!$("#tax_company_name").val().match(regNotEmptyAlphaNumericWS)) {
+                $("#tax_company_name").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME; ?></li>';
+                err_status = true;
+            } else {
+                $("#tax_company_name").removeClass("error");
+            }
+        }
+
+        if ($("#address").val() == '') {
+            $("#address").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_ADDRESS; ?></li>';
+            err_status = true;
+        } else {
+            $("#address").removeClass("error");
+        }
+        if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaWS)) {
+            $("#city").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CITY; ?></li>';
+            err_status = true;
+        } else {
+            $("#city").removeClass("error");
+        }
+        if ($("#zip_code").val() == ''
+//                || !$("#zip_code").val().match(regZipCode)
+                ) {
+            $("#zip_code").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_ZIP; ?></li>';
+            err_status = true;
+        } else {
+            $("#zip_code").removeClass("error");
+        }
+        if ($("#state").val() == '' ) {
+            $("#state").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_STATE; ?></li>';
+            err_status = true;
+        } else {
+            $("#zip_code").removeClass("error");
+        }
+        if ($("#phone").val() == '') {
+            $("#phone").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PHONE; ?></li>';
+            err_status = true;
+        } else {
+            $("#phone").removeClass("error");
+        }
+
+        if (err_status) {
+            $("#p_account").children('a').click();
+            showValidationErr();
+            muteErrFieldsOnChange();
+            return false;
+        }
+
+        // check 2nd tab field and if err - focus this tab
+
+        if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaWS) || $("#project_title").val().length > 80) {
+            $("#project_title").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PTITLE; ?></li>';
+            err_status = true;
+        } else {
+            $("#project_title").removeClass("error");
+        }
+        if ($("#project_short_description").val() == '' || !$("#project_short_description").val().match(regNotEmptyAlphaWS) || $("#project_short_description").val().length > 160) {
+            $("#project_short_description").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PDESC; ?></li>';
+            err_status = true;
+        } else {
+            $("#project_short_description").removeClass("error");
+        }
+        if ($("#founddrasing_goal").val() == '' || parseInt($("#founddrasing_goal").val()) != parseFloat($("#founddrasing_goal").val()) || !$("#founddrasing_goal").val().match(regNotEmptyNumbers)) {
+            $("#founddrasing_goal").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_FDGOAL; ?></li>';
+            err_status = true;
+        } else {
+            $("#founddrasing_goal").removeClass("error");
+        }
+
+        if ($("#deadline_type_value").val() == 'time_period') {
+            if ($("#time_period").val() == '' || parseInt($("#time_period").val()) != parseFloat($("#time_period").val()) || !$("#time_period").val().match(regNotEmptyNumbers)) {
+                $("#time_period").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CDAYSP; ?></li>';
+                err_status = true;
+            } else {
+                $("#time_period").removeClass("error");
+            }
+        }
+        if ($("#deadline_type_value").val() == 'certain_date') {
+            if ($("#certain_date").val() == '') {
+                $("#certain_date").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CDATEP; ?></li>';
+                err_status = true;
+            } else {
+                $("#certain_date").removeClass("error");
+            }
+        }
+
+        if (err_status) {
+            $("#p_projectDetail").children('a').click();
+            showValidationErr();
+            muteErrFieldsOnChange();
+            return false;
+        }
+
+        // check 3nd tab field and if err - focus this tab
+
+        if ($("#url").val() !== '') {
+            if (!$("#url").val().match(regUrl)) {
+                $("#url").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_URL; ?></li>';
+                err_status = true;
+            } else {
+                $("#url").removeClass("error");
+            }
+        }
+        if ($("#facebook_url").val() !== '') {
+
+            if ($("#facebook_url").val().indexOf('facebook.com') == -1 || !$("#facebook_url").val().match(regUrl)) {
+                $("#facebook_url").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL; ?></li>';
+                err_status = true;
+            } else {
+                $("#facebook_url").removeClass("error");
+            }
+        }
+        if ($("#twitter_url").val() !== '') {
+            if ($("#twitter_url").val().indexOf('twitter.com') == -1 || !$("#twitter_url").val().match(regUrl)) {
+                $("#twitter_url").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL; ?></li>';
+                err_status = true;
+            } else {
+                $("#twitter_url").removeClass("error");
+            }
+        }
+
+        if ($('#logo').val() !== '') {
+            var ext = $('#logo').val().split('.').pop().toLowerCase();
+            if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                $("#logo").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE; ?></li>';
+                err_status = true;
+            } else {
+                $("#logo").removeClass("error");
+            }
+        }
+
+        if ($("input:radio[name='banner_type']:checked").val() == 0 && $('#banner').val() !== '') {
+            var ext = $('#banner').val().split('.').pop().toLowerCase();
+            if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                $("#banner").addClass("error");
+                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_BANERFILE; ?></li>';
+                err_status = true;
+            } else {
+                $("#banner").removeClass("error");
+            }
+        }
+
+        if (err_status) {
+            $("#p_projectEdit").children('a').click();
+            showValidationErr();
+            muteErrFieldsOnChange();
+            return false;
+        }
+
+
+        return true;
+
+    });
+
+    // load state list
+    $("#country").change(function () {
+
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "/ajaxprocessors",
+            dataType: 'json',
+            data: {do: 'stateList', country_id: $("#country").val()}
+        })
+                .done(function (result) {
+                    $("#states_box").empty();
+                    $("#states_box").append(result.data);
+                });
+
+    });
+
+    /* == == == == == == == == == == == == == == == == == == == == == == ==*/
+    tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
+
+    tinymce.init({
+        selector: '.campaign_basic',
+        plugins: [
+            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
+        ],
+        toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+        toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
+        toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
+
+        menubar: false,
+        image_advtab: true,
+        toolbar_items_size: 'small',
+
+        style_formats: [
+            {title: 'Bold text', inline: 'b'},
+            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+            {title: 'Example 1', inline: 'span', classes: 'example1'},
+            {title: 'Example 2', inline: 'span', classes: 'example2'},
+            {title: 'Table styles'},
+            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+        ]
+    });
+    tinymce.init({
+        selector: '.project_update_textarea',
+        plugins: [
+            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
+        ],
+        toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+        toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
+        toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
+
+        menubar: false,
+        toolbar_items_size: 'small',
+
+        style_formats: [
+            {title: 'Bold text', inline: 'b'},
+            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+            {title: 'Example 1', inline: 'span', classes: 'example1'},
+            {title: 'Example 2', inline: 'span', classes: 'example2'},
+            {title: 'Table styles'},
+            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+        ]
+    });
 
     goToSelectedTab();
 
@@ -53,6 +334,31 @@ $( document ).ready( function (){
     <?php endif; ?>
 
 });
+
+function muteErrFieldsOnChange() {
+    $('.error').change(function () {
+        $(this).removeClass("error");
+    });
+}
+
+function showValidationErr() {
+
+    $('#validation_errors').empty();
+    $('#validation_errors').append('<ul>' + err_msg + '</ul>');
+
+    $("#validation_errors").dialog({
+        resizable: false,
+        height: 200,
+        width: 400,
+        title: "Validation Errors",
+        modal: true,
+        buttons: {
+            OK: function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+}
 
 function confirmDeleteRewards(id){
 
@@ -221,10 +527,11 @@ function submit_form(form_name) {
 
 
 function form_submit() {
-    document.registration_form.operation.value = '';
-    document.registration_form.get_states.value = 'true';
-    document.registration_form.edit_refresh.value = '1';
-    document.registration_form.submit();
+//    document.registration_form.operation.value = '';
+//    document.registration_form.get_states.value = 'true';
+//    document.registration_form.edit_refresh.value = '1';
+//    document.registration_form.submit();
+
 }
 
 
@@ -262,6 +569,7 @@ function projectUpdateComment () {
         type: "POST",
         data: data,
         success: function(response){
+            alert(response);
             var commentObj = jQuery.parseJSON(response);
             if (commentObj.response == true) {
                 addProjectUpdateComment(commentObj.id);
@@ -372,31 +680,74 @@ function deleteProjectReward (id){
 }
 
 function validateProjectReward(id){
-	if($("#reward_amount_"+id).val() == ""){
-		alert("<?= MSG_REWARD_AMOUNT_MUST_BE_SPECIFIED ?>");
-		return false;
+
+    var v_err_msg = "";
+    var v_err = false;
+
+    $("#reward_amount_" + id).removeClass("error");
+    $("#reward_name_" + id).removeClass("error");
+    $("#reward_short_description_" + id).removeClass("error");
+    $("#reward_available_number_" + id).removeClass("error");
+
+
+	if($("#reward_amount_"+id).val() == "" ){
+		v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_SPECIFIED ?></li>";
+        $("#reward_amount_" + id).addClass("error");
+		v_err = true;
 	}
 	
 	if(!$.isNumeric($("#reward_amount_"+id).val())){
-		alert("<?= MSG_REWARD_AMOUNT_MUST_BE_A_NUMBER ?>");
-		return false;
+        v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_A_NUMBER ?></li>";
+        $("#reward_amount_" + id).addClass("error");
+        v_err = true;
 	}
-	
+
+    if (parseInt($("#reward_amount_" + id).val()) < 1){
+        v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO ?></li>";
+        $("#reward_amount_" + id).addClass("error");
+        v_err = true;
+    }
+
 	if($("#reward_name_"+id).val() == ""){
-		alert("<?= MSG_REWARD_NAME_MUST_BE_SPECIFIED ?>");
-		return false;
+        v_err_msg += "<li><?= MSG_REWARD_NAME_MUST_BE_SPECIFIED ?></li>";
+        $("#reward_name_" + id).addClass("error");
+        v_err = true;
 	}
 	
 	if($("#reward_short_description_"+id).val() == ""){
-		alert("<?= MSG_REWARD_SHORT_DESCRIPTION_MUST_BE_SPECIFIED ?>");
-		return false;
+        v_err_msg += "<li><?= MSG_REWARD_SHORT_DESCRIPTION_MUST_BE_SPECIFIED ?></li>";
+        $("#reward_short_description_" + id).addClass("error");
+        v_err = true;
 	}
 	
 	if($("#reward_available_number_"+id).val() != '' && !$.isNumeric($("#reward_available_number_"+id).val())){
-		alert("<?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?>");
-		return false;
+        v_err_msg += "<li><?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?></li>";
+        $("#reward_available_number_" + id).addClass("error");
+        v_err = true;
 	}
-	
+
+    if (v_err){
+        muteErrFieldsOnChange();
+
+        $('#validation_errors').empty();
+        $('#validation_errors').append('<ul>' + v_err_msg + '</ul>');
+
+        $("#validation_errors").dialog({
+            resizable: false,
+            height: 200,
+            width: 400,
+            title: "Validation Errors",
+            modal: true,
+            buttons: {
+                OK: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        return false;
+    }
+
+
 	return true;
 }
 
@@ -443,7 +794,8 @@ function saveProjectReward (id){
 var has_new_reward_form = false;
 
 function addNewRewardToProject() {
-	if(!has_new_reward_form){
+
+    if(!has_new_reward_form){
 		$.ajax({
 			url:"/np_compaign_project",
 			type: "POST",
@@ -579,7 +931,7 @@ function clearBannerContent()
                 <span><?=MSG_FULL_NAME_EXPL;?></span>
             </div>
             <div class="account-row">
-                <label> <?=MSG_COMPANY_NAME;?> *</label>
+                <label> <?=MSG_COMPANY_NAME;?></label>
                 <input name="tax_company_name" type="text" id="tax_company_name"
                        value="<?php echo isset($campaign["tax_company_name"]) ? $campaign["tax_company_name"] : ''; ?>"
                        size="40" maxlength="30" />
@@ -611,7 +963,7 @@ function clearBannerContent()
             </div>
             <div class="account-row">
                 <label><?=MSG_STATE;?> *</label>
-                <?=$state_box;?>
+                <div id="states_box"><?= $state_box; ?></div>
 
                 <input type ="hidden" name="lat" id="lat" value= "<?=$campaign['lat'];?>" />
                 <input type ="hidden" name="lng" id="lng" value= "<?=$campaign['lng'];?>" />
@@ -914,7 +1266,7 @@ function clearBannerContent()
 
                 <div id="MultiPowUpload_holder">
 
-                    <input class="file" name="logo" id="logo" type='file' multiple title="logo file"/>
+                    <input class="file" name="logo" id="logo" accept="image/*" type='file' multiple title="logo file"/>
                     <span style="cursor: pointer;" onclick="clearLogoContent()"><?=MSG_CLEAR?></span>
                 </div>
 
@@ -959,7 +1311,7 @@ function clearBannerContent()
 
                 <br />
 
-                <input  class="file" name="banner" id="banner" type='file' multiple title="banner file" <?php if ( strstr($campaign["banner"], "http://")) { echo "style='display:none'";}?>/>
+                <input  class="file" name="banner" id="banner" accept="image/*" type='file' multiple title="banner file" <?php if ( strstr($campaign["banner"], "http://")) { echo "style='display:none'";}?>/>
                 <span style="cursor: pointer" onclick="clearBannerContent()"><?=MSG_CLEAR?></span>
                 <div id="vide_select_block" <?php if ( !strstr($campaign["banner"], "http://")) { echo "style='display:none'";}?>>
 
@@ -1332,64 +1684,5 @@ function clearBannerContent()
     <br>
     <p><?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG; ?></p>
 </div>
-
-<script>
-    $( document ).ready( function (){
-
-        /* == == == == == == == == == == == == == == == == == == == == == == ==*/
-        tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
-
-        tinymce.init({
-            selector:'.campaign_basic',
-            plugins: [
-                "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-                		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
-            ],
-            toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-            	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
-            	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
-
-            	menubar: false,
-                image_advtab: true,
-            	toolbar_items_size: 'small',
-
-            	style_formats: [
-            		{title: 'Bold text', inline: 'b'},
-            		{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-            		{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-            		{title: 'Example 1', inline: 'span', classes: 'example1'},
-            		{title: 'Example 2', inline: 'span', classes: 'example2'},
-            		{title: 'Table styles'},
-            		{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-            	]
-        });
-        tinymce.init({
-            selector:'.project_update_textarea',
-            plugins: [
-                "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-                		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                		"table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
-            ],
-            toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-            	toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
-            	toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
-
-            	menubar: false,
-            	toolbar_items_size: 'small',
-
-            	style_formats: [
-            		{title: 'Bold text', inline: 'b'},
-            		{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-            		{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-            		{title: 'Example 1', inline: 'span', classes: 'example1'},
-            		{title: 'Example 2', inline: 'span', classes: 'example2'},
-            		{title: 'Table styles'},
-            		{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-            	]
-        });
-        
-
-    });
-
-</script>
+<div id="validation_errors" title="Basic dialog" style="display: none;">
+</div>
