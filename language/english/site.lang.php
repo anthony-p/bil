@@ -66,6 +66,7 @@ define('MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE', 'MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE
 define('MSG_REGISTER_CAMPAIGN_ERR_BANERFILE', 'MSG_REGISTER_CAMPAIGN_ERR_BANERFILE');
 define('MSG_REGISTER_CAMPAIGN_ERR_PIN', 'MSG_REGISTER_CAMPAIGN_ERR_PIN');
 define('MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS', 'You need to read and check the terms and conditions before you can save your campaign');
+define('MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS', 'You need to read and check the terms and conditions before you can save your campaign');
 
 
 //save new campaign
@@ -183,6 +184,7 @@ define ('MSG_LOGIN_BUTTON', 'login');
 define ('MSG_CONTINUE_WITHOUT_LOGIN', 'continue without logging in');
 define ('MSG_DONATION_LOGIN_INVITATION_POPUP_TITLE', 'Would you like to login?');
 define ('MSG_DONATION_LOGIN_INVITATION', 'If you login to the site before making this donation, you\'ll earn a vote in how the Community Fund gets used this month.');
+define ('MSG_DONATION_INVALID_AMOUNT', 'The amount must be an integer value (no coma allowed)!');
 define ('MSG_REWARD_CONTINUE', 'continue');
 define ('MSG_YOUR_CONTRIBUTION_TO_COMMUNITY_FUND', 'Your contribution to the community fund:');
 define ('MSG_PLEASE_SEND', 'Please send me updates');
