@@ -5,6 +5,11 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+define('MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO', 'MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO');
+
+// new campaigm validation messages
+define('MSG_REGISTER_CAMPAIGN_ERR_STATE','MSG_REGISTER_CAMPAIGN_ERR_STATE');
+
 // campaign edit - delete rewards confirmation
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE', 'Delete Reward Confirm');
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG', 'MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG');
