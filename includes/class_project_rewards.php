@@ -136,7 +136,7 @@ class projectRewards extends custom_field {
 					<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
 				</div>
 			</div>
-            <div class="clear" />
+            <div class="clear"> </div>
             <input type="button" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;"
                     style="border: 1px solid #ddd;
                     -moz-border-radius: 3px;
