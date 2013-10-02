@@ -25,7 +25,11 @@ $fv->check_box($frmchk_details['zip_code'], MSG_ZIP_CODE, array('field_empty', '
 
 if (isset($frmchk_details["deadline_type_value"])) {
     if ($frmchk_details["deadline_type_value"] == "time_period") {
-        $fv->check_box($frmchk_details['time_period'], MSG_DEADLINE_TIME_PERIOD, array('field_empty', 'field_integer'));
+        $fv->check_box(
+            $frmchk_details['time_period'],
+            MSG_DEADLINE_TIME_PERIOD,
+            array('field_empty', 'field_integer_not_null')
+        );
     } elseif ($frmchk_details["deadline_type_value"] == "certain_date") {
         $fv->check_box($frmchk_details['certain_date'], MSG_DEADLINE_CERTAIN_DATE, array('field_empty'));
     }
