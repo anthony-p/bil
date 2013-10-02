@@ -1638,26 +1638,14 @@ function clearBannerContent()
             </div>
             <div class="account-row">
                 <label><?=MSG_CRON_CONFIG?></label>
-                <div class="radio">
-                    <input type="radio" name="clone_campaign" value="1"
-                        <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 1)) ? "checked" : ''; ?>>
-                    <label><?=MSG_CLONE_CAMPAIGN?></label>
-					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
-                </div>
+
                 <div class="radio">
                     <input type="radio" name="clone_campaign" value="2"
                         <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 2)) ? "checked" : ''; ?>>
                     <label><?=MSG_EXTENDS_DATE_EXISTING_CAMPAIGN?></label>
 					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
                 </div>
-                <div class="radio">
-                    <input type="radio" name="clone_campaign" value="0"
-                        <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 0)) ? "checked" : ''; ?>>
-                    <label><?=MSG_LET_CAMPAIGN_CLOSE?></label>
-                    <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_LET_CAMPAIGN_CLOSE?>" style="margin-left: 10px;">
-                </div>
             </div>
-            <div class="clear"></div>
             <div class="input_row">
                 <input type="text" name="keep_alive_days" id="keep_alive_days"
                        value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>" />
@@ -1665,6 +1653,21 @@ function clearBannerContent()
                 <input type="checkbox" name="keep_alive" id="keep_alive" value="1"
                     <?php echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?> />
             </div>
+
+            <div class="clear"></div>
+            <div class="radio">
+                <input type="radio" name="clone_campaign" value="1"
+                    <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 1)) ? "checked" : ''; ?>>
+                <label><?=MSG_CLONE_CAMPAIGN?></label>
+                <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
+            </div>
+            <div class="radio">
+                <input type="radio" name="clone_campaign" value="0"
+                    <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 0)) ? "checked" : ''; ?>>
+                <label><?=MSG_LET_CAMPAIGN_CLOSE?></label>
+                <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_LET_CAMPAIGN_CLOSE?>" style="margin-left: 10px;">
+            </div>
+
             <div class="next">
                 <input type="button" onclick="prevStepShow('p_projectStatus')" value="<?=MSG_PREV?>" class="next_btn" />
                 <div class="right">
