@@ -10,10 +10,44 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 <!-- TODO: check JS scripts and remove conflicts -->
-<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
-<script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+<!--<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>-->
+<!--<script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>-->
+<style>
+    .error {
+        border: 1px solid #ff0000;
+        background-color: #ff0000;
+    }
+</style>
 
 <script language="javascript">
+
+
+    function muteErrFieldsOnChange() {
+        $('.error').change(function () {
+            $(this).removeClass("error");
+        });
+    }
+
+    function showValidationErr() {
+
+        $('#validation_errors').empty();
+        $('#validation_errors').append('<ul>' + err_msg + '</ul>');
+
+        $("#validation_errors").dialog({
+            resizable: false,
+            height: 200,
+            width: 400,
+            title: "Validation Errors",
+            modal: true,
+            buttons: {
+                OK: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }
+
+
     function checkEmail() {
         if (document.registration_form.email_check.value==document.registration_form.email.value) document.registration_form.email_img.style.display="inline";
         else document.registration_form.email_img.style.display="none";
@@ -25,9 +59,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     }
 
     function form_submit() {
-        document.registration_form.operation.value = '';
-        document.registration_form.edit_refresh.value = '1';
-        document.registration_form.submit();
+//        document.registration_form.operation.value = '';
+//        document.registration_form.edit_refresh.value = '1';
+//        document.registration_form.submit();
     }
 
     function copy_email_value() {
@@ -178,7 +212,119 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 <script type="text/javascript">
 
+    var regNotEmptyAlpha = /^([\w]+)$/i;
+    var regNotEmptyNumbers = /^([\d]+)$/i;
+    var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
+    var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
+    var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
+    var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
+    var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
+    var regEmail = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
+    var err_status = false;
+    var err_msg = '';
+
     $(document).ready(function () {
+
+
+        $("#registration_form").submit(function(){
+
+            err_status = false;
+            err_msg = '';
+            $(".error").each(function () {
+                $(this).removeClass("error");
+            });
+
+            if ($("#fname").val() == '' || !$("#fname").val().match(regNotEmptyAlphaNumericWS)) {
+                $("#fname").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME; ?></li>';
+                err_status = true;
+            }
+            if ($("#lname").val() == '' || !$("#lname").val().match(regNotEmptyAlphaNumericWS)) {
+                $("#lname").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME; ?></li>';
+                err_status = true;
+            }
+            if ($("#organization").val() !== '' && !$("#organization").val().match(regNotEmptyAlphaNumericWS)) {
+                $("#organization").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION; ?></li>';
+                err_status = true;
+            }
+            if ($("#address").val() == '' || !$("#address").val().match(regNotEmptyAlphaNumericWS)) {
+                $("#address").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS; ?></li>';
+                err_status = true;
+            }
+            if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaNumericWS)) {
+                $("#city").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY; ?></li>';
+                err_status = true;
+            }
+            if ($("#state").val() == '' || !$("#state").val().match(regNotEmptyAlphaNumericWS)) {
+                $("#state").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE; ?></li>';
+                err_status = true;
+            }
+            if ($("#postal_code").val() == '') {
+                $("#postal_code").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP; ?></li>';
+                err_status = true;
+            }
+            if ($("#phone").val() == '') {
+                $("#phone").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PHONE; ?></li>';
+                err_status = true;
+            }
+
+            if ($("#email").val() == '' || !$("#email").val().match(regEmail)) {
+                $("#email").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EMAIL; ?></li>';
+                err_status = true;
+            }
+            if ($("#email_check").val() == '' || !$("#email_check").val().match(regEmail)) {
+                $("#email_check").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL; ?></li>';
+                err_status = true;
+            }
+            if ($("#email").val() !== !$("#email_check").val()) {
+                $("#email").addClass("error");
+                $("#email_check").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL; ?></li>';
+                err_status = true;
+            }
+            if ($("#pin_value").val() == '') {
+                $("#pin_value").addClass("error");
+                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN; ?></li>';
+                err_status = true;
+            }
+
+            if (err_status) {
+                showValidationErr();
+                muteErrFieldsOnChange();
+                return false;
+            } else {
+                // all ok
+                return true;
+            }
+
+//            return false;
+        });
+
+        // load state list
+        $("#country").change(function () {
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "/ajaxprocessors",
+                dataType: 'json',
+                data: {do: 'stateList', country_id: $("#country").val()}
+            })
+                    .done(function (result) {
+                        $("#states_box").empty();
+                        $("#states_box").append(result.data);
+                    });
+
+        });
+
 
         $('.form_tooltip').tooltip({
             track: true
@@ -205,7 +351,7 @@ function fetchstate($statecode){
 <?php if (isset($display_formcheck_errors)) echo $display_formcheck_errors;?>
 <?php if(isset($check_voucher_message)) echo $check_voucher_message;?>
 
-<form action="<?php if(isset($register_post_url)) echo $register_post_url;?>" method="post" name="registration_form" class="registrationForm">
+<form action="<?php if(isset($register_post_url)) echo $register_post_url;?>" method="post" name="registration_form" id="registration_form" class="registrationForm">
 <input type="hidden" name="operation" value="submit">
 <input type="hidden" name="do" value="<?=$do;?>">
 <input type="hidden" name="user_id" value="<?=$user_details['id'];?>">
@@ -308,7 +454,7 @@ function fetchstate($statecode){
     <tr>
         <td class="leftCol"><?=MSG_STATE;?> *</td>
         <td class="contentfont">
-            <?=$state_box;?>
+            <div id="states_box"><?= $state_box; ?></div>
 <!--            <input name="state" type="text" id="state" value="--><?//=(isset($user_details['state']))?$user_details['state']:'';?><!--" size="25" />-->
         </td>
     </tr>
@@ -606,3 +752,5 @@ function fetchstate($statecode){
     </tr>
 </table>
 </form>
+<div id="validation_errors" title="Basic dialog" style="display: none;">
+</div>
