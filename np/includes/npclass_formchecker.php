@@ -63,6 +63,10 @@ class npformchecker extends npdatabase
 						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_FIELD_INTEGER;
 						$this->field_integer($field_value, $msg);
 						break;
+					case 'field_integer_not_null':
+						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_FIELD_INTEGER;
+						$this->field_integer($field_value, $msg, true);
+						break;
 					case 'field_float':
 						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_FIELD_FLOAT;
 						$this->field_float($field_value, $msg);
@@ -344,7 +348,7 @@ class npformchecker extends npdatabase
 	}
 
 	// check whether input is an integer - not working function - so avoid using it.
-	function field_integer($value, $msg)
+	function field_integer($value, $msg, $not_null = false)
 	{
 //		$numeric_value = floatval($value);
 
@@ -354,10 +358,13 @@ class npformchecker extends npdatabase
 			$this->error_list[] = array("value" => $value, "msg" => $msg);
 			return false;
 		}
-		else
-		{
-			return true;
-		}
+
+        if ($not_null && !$value) {
+            $this->error_list[] = array("value" => $value, "msg" => $msg);
+            return false;
+        }
+
+        return true;
 	}
 
 	// check whether input is a float
