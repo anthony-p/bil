@@ -285,7 +285,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL; ?></li>';
                 err_status = true;
             }
-            if ($("#email").val() !== !$("#email_check").val()) {
+            if ($("#email").val() !== $("#email_check").val()) {
                 $("#email").addClass("error");
                 $("#email_check").addClass("error");
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL; ?></li>';
