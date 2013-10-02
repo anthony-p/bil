@@ -82,13 +82,15 @@ if (!$session->value('user_id')) {
             $funders_id[] = $v['user_id'];
         }
 
-        $sql_res = $db->query("SELECT * FROM bl2_users WHERE id IN(".implode(',', $funders_id).");");
-        while ($mysql_row = mysql_fetch_array($sql_res)) {
-            $funders_users[] = $mysql_row;
+        if (count($funders_id)){
+            $sql_res = $db->query("SELECT * FROM bl2_users WHERE id IN(" . implode(',', $funders_id) . ");");
+            while ($mysql_row = mysql_fetch_array($sql_res)) {
+                $funders_users[] = $mysql_row;
+            }
+
+            include('language/' . $setts['site_lang'] . '/mails/campaign_update_user_notification.php');
         }
 
-
-        include('language/' . $setts['site_lang'] . '/mails/campaign_update_user_notification.php');
 
         // --- END Send email for all campaign funders ----------------
 
@@ -99,7 +101,8 @@ if (!$session->value('user_id')) {
             echo json_encode(array("response" => "error"));
         }
 
-    } elseif ($_POST['add_project_rewards'] == true) {
+    }
+    elseif ($_POST['add_project_rewards'] == true) {
 
         $data['project_id'] = $_POST['project_id'];
 
@@ -165,7 +168,8 @@ if (!$session->value('user_id')) {
             echo json_encode(array("response" => "error"));
 
         }
-	} elseif($_POST['save_project_rewards'] == true){
+	}
+    elseif($_POST['save_project_rewards'] == true){
 		if(isset($_POST["reward_estimated_delivery_date"]) && !empty($_POST["reward_estimated_delivery_date"])){
 			$estimated_delivery_date = strtotime($_POST["reward_estimated_delivery_date"]);
 			if($estimated_delivery_date == 0){
@@ -186,7 +190,8 @@ if (!$session->value('user_id')) {
 		$projectRewards   = new projectRewards();
 		$result = $projectRewards->save($reward, $session->value('user_id'));
 		echo json_encode(array("response" => $result));
-	} elseif ($_POST['update_project_rewards'] == true){
+	}
+    elseif ($_POST['update_project_rewards'] == true){
 		if(isset($_POST["reward_estimated_delivery_date"]) && !empty($_POST["reward_estimated_delivery_date"])){
 			$estimated_delivery_date = strtotime($_POST["reward_estimated_delivery_date"]);
 			if($estimated_delivery_date == 0){
@@ -206,18 +211,21 @@ if (!$session->value('user_id')) {
 		$projectRewards   = new projectRewards();
 		$result = $projectRewards->update($reward, $session->value('user_id'));
 		echo json_encode(array("response" => $result));
-    } elseif ($_POST['delete_project_rewards'] == true) {
+    }
+    elseif ($_POST['delete_project_rewards'] == true) {
         $rewardId = isset($_POST["rewards_id"]) ? $_POST["rewards_id"] : '';
 		$projectRewards   = new projectRewards();
         $result = $projectRewards->delete($rewardId, $session->value('user_id'));
 		echo json_encode(array("response" => $result));	
-	} elseif($_POST['addNewRewardToProject']) {
+	}
+    elseif($_POST['addNewRewardToProject']) {
 		$has_new_reward_form = isset($_POST['has_new_reward_form']) && $_POST['has_new_reward_form'] == 'true' ? false : true;
 		$campaign_id = isset($_POST['campaign_id']) ? $_POST['campaign_id'] : '';
 		$projectRewards   = new projectRewards();
 		$result = $projectRewards->addNewRewardForm($campaign_id, $has_new_reward_form);
 		echo json_encode(array("response" => $result));
-    } elseif ($_POST['delete_project_updates'] == true) {
+    }
+    elseif ($_POST['delete_project_updates'] == true) {
 
 
 

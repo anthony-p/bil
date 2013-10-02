@@ -5314,7 +5314,7 @@ else
             $post_country = ($campaign['country']) ? $campaign['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
 
-            $template->set('country_dropdown', $tax->countries_dropdown('country', $post_country, 'registration_form'));
+            $template->set('country_dropdown', $tax->countries_dropdown('country', $post_country));
 
             $template->set("project_country",getProjectCategoryListToHTML());
             $template->set('state_box', $tax->states_box('state', $campaign['state'], $post_country));
