@@ -684,37 +684,51 @@ function validateProjectReward(id){
     var v_err_msg = "";
     var v_err = false;
 
+    $("#reward_amount_" + id).removeClass("error");
+    $("#reward_name_" + id).removeClass("error");
+    $("#reward_short_description_" + id).removeClass("error");
+    $("#reward_available_number_" + id).removeClass("error");
+
+
 	if($("#reward_amount_"+id).val() == "" ){
 		v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_SPECIFIED ?></li>";
+        $("#reward_amount_" + id).addClass("error");
 		v_err = true;
 	}
 	
 	if(!$.isNumeric($("#reward_amount_"+id).val())){
         v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_A_NUMBER ?></li>";
+        $("#reward_amount_" + id).addClass("error");
         v_err = true;
 	}
 
     if (parseInt($("#reward_amount_" + id).val()) < 1){
         v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO ?></li>";
+        $("#reward_amount_" + id).addClass("error");
         v_err = true;
     }
 
 	if($("#reward_name_"+id).val() == ""){
         v_err_msg += "<li><?= MSG_REWARD_NAME_MUST_BE_SPECIFIED ?></li>";
+        $("#reward_name_" + id).addClass("error");
         v_err = true;
 	}
 	
 	if($("#reward_short_description_"+id).val() == ""){
         v_err_msg += "<li><?= MSG_REWARD_SHORT_DESCRIPTION_MUST_BE_SPECIFIED ?></li>";
+        $("#reward_short_description_" + id).addClass("error");
         v_err = true;
 	}
 	
 	if($("#reward_available_number_"+id).val() != '' && !$.isNumeric($("#reward_available_number_"+id).val())){
         v_err_msg += "<li><?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?></li>";
+        $("#reward_available_number_" + id).addClass("error");
         v_err = true;
 	}
 
     if (v_err){
+        muteErrFieldsOnChange();
+
         $('#validation_errors').empty();
         $('#validation_errors').append('<ul>' + v_err_msg + '</ul>');
 
