@@ -5,6 +5,12 @@
 <script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
 <script type="text/javascript" src="/scripts/jquery/additional-methods.min.js"></script>
 
+<link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+
+<link href="/css/tabs-style.css" rel="stylesheet">
+
+<script src="/scripts/jquery/jquery-ui.js"></script>
+
 <style>
     #payment_details{
         /*display: none;*/
@@ -40,6 +46,23 @@
             }
         });
 
+        $("#contribution_form").submit(function(e){
+//            e.preventDefault();
+            var amount = $("#amount").val();
+            var community_amount = $("#community_amount").val();
+            if (amount && $.isNumeric(amount)) {
+                if (Math.floor(amount) == amount) {
+                    if (community_amount && (!($.isNumeric(community_amount)) || Math.floor(community_amount) != community_amount)) {
+                        showErrorPopup(e);
+                    } else {
+                        $("#contribution_form").submit();
+                    }
+                } else {
+                    showErrorPopup(e);
+                }
+            }
+        });
+
         $("#community").click(function(){
             if($("#community").is(":checked")){
                 $("#community_amount").removeAttr("disabled");
@@ -48,6 +71,27 @@
             }
         });
     });
+
+        function showErrorPopup(e)
+        {
+            e.preventDefault();
+            var err_msg = '<?php echo MSG_DONATION_INVALID_AMOUNT; ?>';
+            $('#validation_errors').empty();
+            $('#validation_errors').append('<p>'+err_msg+'</p>');
+
+            $("#validation_errors").dialog({
+                resizable: false,
+                height: 180,
+                width: 300,
+                title: "Validation Errors",
+                modal: true,
+                buttons: {
+                    OK: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        }
 </script>
 <div id="container">
     <form id="contribution_form" method="post" action="chained.php">
@@ -97,3 +141,5 @@
         </div>
     </form>
 </div>
+
+<div id="validation_errors" title="Basic dialog" style="display: none;">

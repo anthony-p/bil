@@ -22,21 +22,30 @@ global $coupon_url;
     <link href="/themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
     <link href="/themes/<?=$setts['default_theme'];?>/tabs-style.css" rel="stylesheet" type="text/css">
     <link href="/themes/<?=$setts['default_theme'];?>/responsive.css" rel="stylesheet" type="text/css">
+
+    <link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css">
 <!--    <script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>-->
 
-    <script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
-    <script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+    <script type="text/javascript" src='/scripts/jquery/jquery-1.9.1.js'></script>
+    <script type="text/javascript" src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 
-    <script language=JavaScript src='/scripts/jquery/jquery.blockUI.js'></script>
-    <link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src='/scripts/jquery/jquery.blockUI.js'></script>
+    <script type="text/javascript" src="/scripts/jquery/jquery.polyglot.language.switcher.js"></script>
 
+    <script type="text/javascript" src='/scripts/jquery/sliding.form.js'></script>
+    <script type="text/javascript" src='/scripts/jquery/pagination.js'></script>
+    <script type="text/javascript" src='/scripts/jquery/sort.js'></script>
 
-
-
-    <script language=JavaScript src='/scripts/jquery/pagination.js'></script>
-    <script language=JavaScript src='/scripts/jquery/sort.js'></script>
-    <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
 <!--    <script language=JavaScript src='/ckeditor/ckeditor.js'></script>-->
+
+<!--[if IE]>
+    <script type="text/javascript" src="/scripts/jquery/placeholder.js"></script>
+<![endif]-->
+
+    <script type="text/javascript" src="themes/<?= $setts['default_theme']; ?>/main.js" type="text/javascript"></script>
+    <script type="text/javascript" src='/scripts/vendor.js'></script>
+
+
 
     <style type="text/css">
         <!--
@@ -49,7 +58,7 @@ global $coupon_url;
         -->
     </style>
     <!--[if IE 8]>
-    <script>
+    <script type="text/javascript">
         document.createElement('header');
         document.createElement('nav');
         document.createElement('section');
@@ -60,14 +69,12 @@ global $coupon_url;
     <link rel="stylesheet" type="text/css" media="screen" href="/themes/<?=$setts['default_theme'];?>/ie.css" />
     <![endif]-->
 
-    <!--[if IE]>
-    <script type="text/javascript" src="/scripts/jquery/placeholder.js"> </script>
-    <![endif]-->
+
 
     <script type="text/javascript">  document.createElement('header');  document.createElement('hgroup');  document.createElement('nav');  document.createElement('menu');  document.createElement('section');  document.createElement('article');  document.createElement('aside');  document.createElement('footer'); </script>
-    <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
-    <script src="/scripts/jquery/jquery.polyglot.language.switcher.js" type="text/javascript"></script>
-    <script>
+
+    <script type="text/javascript">
+
         $(document).ready(function() {
             $('#menu').click(function(){
                 if ($("#menu-cont").is(":hidden")) {
@@ -131,7 +138,7 @@ global $coupon_url;
 
     <!--    <script language=JavaScript src='/scripts/jquery/transit.js'></script>-->
 
-    <script language="javascript" src="themes/<?=$setts['default_theme'];?>/main.js" type="text/javascript"></script>
+
     <!--    <script language=JavaScript src='scripts/innovaeditor.js'></script>-->
     <script type="text/javascript">
         var currenttime = '<?=$current_time_display;?>';
@@ -151,7 +158,7 @@ global $coupon_url;
     </script>
 <!--    <script src="/scripts/jquery/jquery.polyglot.language.switcher.js" type="text/javascript"></script>-->
 
-    <script language=JavaScript src='/scripts/vendor.js'></script>
+
 
     <script type="text/javascript">
         function popupAlert(shop_url)
@@ -187,7 +194,7 @@ global $coupon_url;
 
         var emailRegexp = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
 
-        $.noConflict();
+//        $.noConflict();
         jQuery(document).ready(function ($) {
 
 
@@ -463,7 +470,7 @@ global $coupon_url;
                 <span><?=MSG_BROWSE_CAMPAIGNS;?></span>
                 <ul>
                     <li>
-                        <a href="/search.php?order_by=reg_date&order_type=DESC">
+                        <a href="/np/npregister.php">
                             <span><?=MSG_NEWCAMPAIGNS;?></span>
                         </a>
                     </li>

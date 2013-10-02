@@ -26,10 +26,10 @@ if (isset($_REQUEST['keyword'])) {
 }
 
 
-if (isset($_REQUEST['order'])) {
-    $order = $db->rem_special_chars($_REQUEST['order']);
+if (isset($_REQUEST['names'])) {
+    $order = $db->rem_special_chars($_REQUEST['names']);
 } else {
-    $order = 'DESC';
+    $order = '';
 }
 
 
@@ -88,14 +88,29 @@ switch ($option)
 }
 
 if (!empty($keyword)) {
-    $sql_query = $db->query("SELECT * FROM bl2_users as u JOIN np_users as c WHERE u.id = c.probid_user_id
+    $query1 = "SELECT * FROM bl2_users as u JOIN np_users as c WHERE u.id = c.probid_user_id
         AND c.active <> 0
         AND ( u.first_name LIKE '%{$keyword}%'
         OR c.project_title LIKE '%{$keyword}%'
         OR u.last_name LIKE '%{$keyword}%'
-        OR u.organization LIKE '%{$keyword}%')  ORDER BY create_date {$order}");
+        OR u.organization LIKE '%{$keyword}%')";
+        if (!empty($order)) {
+            $order_query = " ORDER BY create_date {$order}";
+            $sql_query = $db->query($query1.$order_query );
+        } else {
+            $sql_query = $db->query($query1);
+        }
+
 } else {
-    $sql_query = $db->query("SELECT * FROM bl2_users JOIN np_users WHERE bl2_users.id = np_users.probid_user_id AND np_users.active <> 0 ORDER BY create_date {$order}");
+    $query1 = "SELECT * FROM bl2_users JOIN np_users WHERE bl2_users.id = np_users.probid_user_id AND np_users.active <> 0";
+    if (!empty($order)) {
+        $order_query = " ORDER BY create_date {$order}";
+        $q = $query1.$order_query;
+        echo $q;
+        $sql_query = $db->query($q);
+    } else {
+        $sql_query = $db->query($query1);
+    }
 }
 
 

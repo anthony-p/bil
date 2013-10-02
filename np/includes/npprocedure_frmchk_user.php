@@ -48,7 +48,11 @@ if (isset($frmchk_details["deadline_type_value"])) {
 
     if ($frmchk_details["deadline_type_value"] == "time_period") {
 
-        $fv->check_box($frmchk_details['time_period'], MSG_DEADLINE_TIME_PERIOD, array('field_empty', 'field_integer'));
+        $fv->check_box(
+            $frmchk_details['time_period'],
+            MSG_DEADLINE_TIME_PERIOD,
+            array('field_empty', 'field_integer_not_null')
+        );
 
     } elseif ($frmchk_details["deadline_type_value"] == "certain_date") {
 

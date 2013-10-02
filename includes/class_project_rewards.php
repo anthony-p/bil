@@ -98,7 +98,7 @@ class projectRewards extends custom_field {
 			<div class="reward_title">
 				<div class="reward_title_label"><?=MSG_REWARD;?></div>
 				<div class="rewards-actions">
-					<button onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" class="validate-reward"></button>
+					<!--<button onclick="<?/*=isset($reward['id']) ? 'update' : 'save';*/?>ProjectReward('<?/*= $reward_id; */?>'); return false;" class="validate-reward"></button>-->
 					<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
 				</div>
 			</div>
@@ -136,6 +136,8 @@ class projectRewards extends custom_field {
 					<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
 				</div>
 			</div>
+            <div class="clear"> </div>
+            <input type="button" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
 			<script>
 				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker({ 
 					dateFormat: "mm/dd/yy", 
@@ -153,7 +155,7 @@ class projectRewards extends custom_field {
 					],
 					toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
 						toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
-						toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
+						toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
 
 						menubar: false,
 						toolbar_items_size: 'small',
@@ -305,7 +307,7 @@ class projectRewards extends custom_field {
 					</div>
 					<div class="reward_contribute_summary_value_line" <?= $reward['is_community_fund'] == 0 ? '' : 'style="display: none;"' ?>>
 						<label><?= MSG_YOUR_CONTRIBUTION_TO_COMMUNITY_FUND; ?></label>
-						<div id="contribution_to_community_amount_value">$0.00</div>
+						<div id="contribution_to_community_amount_value">$0</div>
 					</div>
 					<div class="reward_contribute_summary_value_line reward_contribute_summary_total">
 						<label><?= MSG_REWARD_TOTAL; ?></label>
@@ -325,7 +327,7 @@ class projectRewards extends custom_field {
 			<label style="width: 361px;margin-left: 8px; float: left;"><?= MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND ?></label><br />
 			</div>
 			<label>$</label>
-			<input type="text" id="reward_contribution_community_amount" disabled="disabled" value="5.00" />
+			<input type="text" id="reward_contribution_community_amount" disabled="disabled" value="5" />
 				<?php endif; ?>
 			</div>
 			<div class="reward_contribute_title"><?= MSG_YOUR_REWARD; ?></div>
@@ -397,7 +399,7 @@ class projectRewards extends custom_field {
 				
 				if($("#reward_contribution_community_amount_enable").is(":checked")){
 					contribution_to_community_fund = $("#reward_contribution_community_amount").val();
-					if(!$.isNumeric(contribution_to_community_fund) || contribution_to_community_fund < 0.01){
+					if(Math.floor(contribution_to_community_fund) != contribution_to_community_fund || contribution_to_community_fund < 1){
 						contribution_to_community_fund = 5;
 					}
 				} else {
@@ -421,43 +423,47 @@ class projectRewards extends custom_field {
 				$("#contributor_name_value").html($.trim(value) == "" ? "- - - - - -" : value);
 			});
 			function summaryDetailsRefresh(){
+				contribution = $("#reward_contribution_value").val();
+				if(Math.floor(contribution) != contribution || contribution < 1){ contribution = <?= $reward['amount']; ?>; }
+				$("#contribution_amount_value").html("$" + parseInt(contribution));
 				if($("#reward_contribution_community_amount_enable").is(":checked")){
 					$("#reward_contribution_community_amount").removeAttr("disabled");
 					value = $("#reward_contribution_community_amount").val();
-					if(!$.isNumeric(value) || value < 0.01){ value = 5.00; }
-					$("#contribution_to_community_amount_value").html("$"+value);
-					value = parseFloat(value) + parseFloat($("#reward_contribution_value").val());
-					$("#contribution_total_amount").html("$"+value.toFixed(2));
+					if(Math.floor(value) != value || value < 1){ value = 5; }
+					$("#contribution_to_community_amount_value").html("$"+parseInt(value));
+					value = parseInt(value) + parseInt(contribution);
+					$("#contribution_total_amount").html("$"+value);
 				} else {
 					$("#reward_contribution_community_amount").attr("disabled", "disabled");
-					$("#contribution_to_community_amount_value").html("$0.00");
-					$("#contribution_total_amount").html($("#contribution_amount_value").html());
+					$("#contribution_to_community_amount_value").html("$0");
+					$("#contribution_total_amount").html("$"+parseInt(contribution));
 				}
 			}
 			$("#reward_contribution_community_amount_enable").click(summaryDetailsRefresh);
 			$("#reward_contribution_community_amount").keyup(summaryDetailsRefresh);
-			$("#reward_contribution_value").keyup(function(){
-				value = $("#reward_contribution_value").val();
-				if($.isNumeric(value) && value >= 0.01){
-					$("#contribution_amount_value").html("$"+value);
-					$("#contribution_total_amount").html("$"+value);
-				} else {
-					$("#contribution_amount_value").html("$"+<?= $reward['amount']; ?>);
-					$("#contribution_total_amount").html("$"+<?= $reward['amount']; ?>);
-				}
-			});
+			$("#reward_contribution_value").keyup(summaryDetailsRefresh);
 			$("#reward_contribution_value").blur(function(){
-				value = $("#reward_contribution_value").val();
-				if(!$.isNumeric(value) || value < 0.01){
+				contribution = $("#reward_contribution_value").val();
+				if(Math.floor(contribution) != contribution || contribution < 1){
 					alert("<?= MSG_REWARD_CLAIMING_CONTRIBUTION_AMOUNT_MUST_VALID; ?>");
-					$("#contribution_amount_value").html("$"+<?= $reward['amount']; ?>);
-					$("#contribution_total_amount").html("$"+<?= $reward['amount']; ?>);
+					contribution = <?= $reward['amount']; ?>;
 				} else {
-					if(value < <?= $reward['amount']; ?>){
+					if(contribution < <?= $reward['amount']; ?>){
 						alert("<?= MSG_REWARD_CLAIMING_CONTRIBUTION_IS_LESS_THAN_WHAT_IS_REQUIRED . '$'.$reward['amount'].'\n'.MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION;?>");
 					}
-					$("#contribution_amount_value").html("$"+value);
+				}
+				$("#contribution_amount_value").html("$" + parseInt(contribution));
+				if($("#reward_contribution_community_amount_enable").is(":checked")){
+					$("#reward_contribution_community_amount").removeAttr("disabled");
+					value = $("#reward_contribution_community_amount").val();
+					if(Math.floor(value) != value || value < 1){ value = 5; }
+					$("#contribution_to_community_amount_value").html("$"+parseInt(value));
+					value = parseInt(value) + parseInt(contribution);
 					$("#contribution_total_amount").html("$"+value);
+				} else {
+					$("#reward_contribution_community_amount").attr("disabled", "disabled");
+					$("#contribution_to_community_amount_value").html("$0");
+					$("#contribution_total_amount").html("$" + parseInt(contribution));
 				}
 			});
 			$("#reward_contribution_email").blur(function(){

@@ -3383,7 +3383,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .myCampaigs .list li dl dt{float: left;   width: 150px; font:12px/15px "OpenSans-Bold"; color:#333; text-transform: uppercase; margin: 5px 0;}
 .myCampaigs .list li dl dd {float:left; width: 270px; font:12px/15px "OpenSans";margin: 5px 0;}
 .myCampaigs .campaignsButtons{ margin-top: 10px; padding: 10px 0; background: #f3f3f3;}
-.myCampaigs .campaignsButtons a{padding:2px 17px;border: 0;font:11px/20px "OpenSans-Light";  color: #fff;   text-transform: uppercase;  cursor: pointer;}
+.myCampaigs .campaignsButtons a{padding:8px 25px;border: 0;font:12px/20px "OpenSans-Light";  color: #fff;   text-transform: uppercase;  cursor: pointer;}
 .myCampaigs .campaignsButtons a.view{background: #7eb041;  text-shadow: 0px 0px 1px #9ec471;}
 .myCampaigs .campaignsButtons a.view:hover{background: #76a43d;}
 .myCampaigs .campaignsButtons a.delete{background: #ff7f24;text-shadow: 0px 0px 1px #ffdfc9;}
@@ -3442,8 +3442,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .main_campaigns_page h2{margin:0 20px; padding:20px 20px 0;font: 14px/29px "OpenSans-SemiBold"; text-transform: uppercase; color: #7eb041;border-bottom: 1.5px solid #dedede;text-align: left;}
 .main_campaigns_page ul{display: block; margin: 40px  0 0 40px;}
 .main_campaigns_page ul li{float:left; clear:both; margin: 5px 0;width:450px;}
-.main_campaigns_page ul li span{float:left; font: 12px/27px "OpenSans"; color: #999999; text-align: center; text-transform: uppercase;}
-.main_campaigns_page ul li a{float:right; margin-left: 30px; color:#fff; font:15px/27px "OpenSans-Light"; text-transform: capitalize; width: 120px; text-align: center;border-radius:5px; }
+.main_campaigns_page ul li span{float:left; font: 12px/40px "OpenSans"; color: #999999; text-align: center; text-transform: uppercase;}
+.main_campaigns_page ul li a{float:right; margin-left: 30px; color:#fff; font:15px/40px "OpenSans-Light"; text-transform: capitalize; width: 135px; text-align: center;border-radius:5px; }
 .main_campaigns_page ul li a.create{background: #f21b43; text-shadow: 0px 0px 1px #f98da1;}
 .main_campaigns_page ul li a.edit{background: #0077c0; text-shadow: 0px 0px 1px #60aad8;}
 .main_campaigns_page ul li a.view{background: #ffa800; text-shadow: 0px 0px 1px #ffdfc9;}
@@ -3453,9 +3453,9 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 
 
-#steps form .input_row{float:left; clear: both; width: 100%; margin:20px 0 0 0;}
+#steps form .input_row{float:right; clear:both;margin:20px 0 0 0;}
 #steps form .input_row input[type="text"]{float:left;width:16px;}
-#steps form .input_row input[type="checkbox"]{float:left;margin-top: 8px;}
+#steps form .input_row input[type="checkbox"]{float:left;margin: 8px 0 0 0;}
 .input_row label{float:left; font:12px/27px "OpenSans"; color:#333; margin:0 20px;}
 #campaign_basic_fontsizeselect,
 #campaign_basic_fontselect,

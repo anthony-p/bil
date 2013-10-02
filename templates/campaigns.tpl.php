@@ -70,8 +70,10 @@ include_once('includes/grab_video_thumbnail.php');
 <!--        <option value="DESC" class="order">Date desc</option>-->
 <!--      </select>-->
 <!-- </div>-->
+<div class="searchBox">
+    <fieldset style="margin-bottom: 0">    <div class="holder"></div></fieldset>
 
-<div class="clear"></div>
+    <div class="clear"></div>
     <ul class="list" id="pagination">
         <?php $counter=0; foreach( $compaigns as $row): $counter++;?>
             <li class="<?php  if(($counter % 4)==0){ echo "fourth";}?>">
