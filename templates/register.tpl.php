@@ -16,6 +16,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     .error{
         color: #ff0000;
         float: right;
+        clear: both;
     }
 </style>
 
