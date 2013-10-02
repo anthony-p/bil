@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright Â©2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -35,7 +35,7 @@ $message_content = '
 <blockquote>
 I want to share with you my personal perspective on our mission and how the idea of Bring It Local came to be.
 <br><br>
-Our local communities – our schools, our local businesses, our middle class – are going broke. Millions of dollars are needlessly escaping local communities through online shopping. 
+Our local communities â€“ our schools, our local businesses, our middle class â€“ are going broke. Millions of dollars are needlessly escaping local communities through online shopping. 
 Dollars that could fund local schools, local businesses and local services are vacuumed up by an increasingly small number of huge companies and do not return.
 <br><br>
 

@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright Â©2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 ## (Mods-Store) -> Shopping Cart											##
 ## mod version	 -> 1.01														##
