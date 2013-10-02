@@ -75,7 +75,7 @@ function submit_form(form_name) {
         });
     });
 </script>
-<div class="searchBox">
+<div class="myCampaigs">
     <?php if (isset($explanation_message) && $explanation_message): ?>
     <?php echo $explanation_message; ?>
     <?php endif; ?>
