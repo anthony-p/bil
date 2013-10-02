@@ -99,7 +99,6 @@ class projectRewards extends custom_field {
 				<div class="reward_title_label"><?=MSG_REWARD;?></div>
 				<div class="rewards-actions">
 					<button onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" class="validate-reward"></button>
-					<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
 				</div>
 			</div>
 			<div class="reward_content">
@@ -136,7 +135,9 @@ class projectRewards extends custom_field {
 					<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
 				</div>
 			</div>
-			<script>
+            <!--<button onclick="deleteProjectReward('<?/*= $reward_id; */?>'); return false;" class="delete-reward"></button>-->
+            <input type="button" value="<?=MSG_SEND?>" onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" />
+        <script>
 				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker({ 
 					dateFormat: "mm/dd/yy", 
 					changeMonth: true,
