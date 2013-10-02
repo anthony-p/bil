@@ -98,7 +98,8 @@ class projectRewards extends custom_field {
 			<div class="reward_title">
 				<div class="reward_title_label"><?=MSG_REWARD;?></div>
 				<div class="rewards-actions">
-					<button onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" class="validate-reward"></button>
+					<!--<button onclick="<?/*=isset($reward['id']) ? 'update' : 'save';*/?>ProjectReward('<?/*= $reward_id; */?>'); return false;" class="validate-reward"></button>-->
+					<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
 				</div>
 			</div>
 			<div class="reward_content">
@@ -135,9 +136,15 @@ class projectRewards extends custom_field {
 					<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
 				</div>
 			</div>
-            <!--<button onclick="deleteProjectReward('<?/*= $reward_id; */?>'); return false;" class="delete-reward"></button>-->
-            <input type="button" value="<?=MSG_SEND?>" onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" />
-        <script>
+            <div class="clear" />
+            <input type="button" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;"
+                    style="border: 1px solid #ddd;
+                    -moz-border-radius: 3px;
+                    -webkit-border-radius: 3px;
+                    border-radius: 3px;
+                    outline: none;"
+            />
+			<script>
 				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker({ 
 					dateFormat: "mm/dd/yy", 
 					changeMonth: true,
