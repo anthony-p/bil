@@ -137,13 +137,7 @@ class projectRewards extends custom_field {
 				</div>
 			</div>
             <div class="clear"> </div>
-            <input type="button" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;"
-                    style="border: 1px solid #ddd;
-                    -moz-border-radius: 3px;
-                    -webkit-border-radius: 3px;
-                    border-radius: 3px;
-                    outline: none;"
-            />
+            <input type="button" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
 			<script>
 				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker({ 
 					dateFormat: "mm/dd/yy", 
