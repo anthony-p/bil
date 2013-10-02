@@ -81,8 +81,8 @@
 
             $("#validation_errors").dialog({
                 resizable: false,
-                height: 150,
-                width: 250,
+                height: 180,
+                width: 300,
                 title: "Validation Errors",
                 modal: true,
                 buttons: {
