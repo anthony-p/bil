@@ -3453,9 +3453,9 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 
 
-#steps form .input_row{float:left; clear: both; width: 100%; margin:20px 0 0 0;}
+#steps form .input_row{float:right; clear:both;margin:20px 0 0 0;}
 #steps form .input_row input[type="text"]{float:left;width:16px;}
-#steps form .input_row input[type="checkbox"]{float:left;margin-top: 8px;}
+#steps form .input_row input[type="checkbox"]{float:left;margin: 8px 0 0 0;}
 .input_row label{float:left; font:12px/27px "OpenSans"; color:#333; margin:0 20px;}
 #campaign_basic_fontsizeselect,
 #campaign_basic_fontselect,
