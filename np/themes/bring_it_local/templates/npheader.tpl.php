@@ -10,504 +10,146 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 global $coupon_url;
 ?>
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"-->
-<!--    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>--><?php //echo $page_title; echo (isset($page_specific_title))?$page_specific_title:'' ;?><!--</title>-->
-<!--    <meta http-equiv=”X-UA-Compatible” content=”IE=9″ />-->
-<!--    <meta name="viewport" content="width=device-width; initial-scale=1.0">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
-<!--    --><?//=$page_meta_tags;?>
-<!--    <link rel="shortcut icon" href="http://www.bringitlocal.com/images/favicon.ico" />-->
-<!--    <link href="/themes/--><?//=$setts['default_theme'];?><!--/style.css" rel="stylesheet" type="text/css">-->
-<!--    <link href="/themes/responsive.css" rel="stylesheet" type="text/css">-->
-<!---->
-<!---->
-<!--    <script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>-->
-<!--    <script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>-->
-<!---->
-<!--    <script type="text/javascript" src="/scripts/jquery/jquery.polyglot.language.switcher.js" ></script>-->
-<!--    <script type="text/javascript" src='/scripts/jquery/transit.js'></script>-->
-<!--    <script type="text/javascript" src="/themes/--><?//= $setts['default_theme']; ?><!--/main.js" type="text/javascript"></script>-->
-<!--    <script type="text/javascript" src='/scripts/innovaeditor.js'></script>-->
-<!--    <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>-->
-<!--    <script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>-->
-<!--    <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>-->
-<!--    <script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>-->
-<!--    <script language=JavaScript src='/scripts/jquery/jquery.maskedinput.min.js'></script>-->
-<!---->
-<!---->
-<!--    <style type="text/css">-->
-<!--        <!---->
-<!--        .lb {-->
-<!--            background-image:  url(/themes/--><?//=$setts['default_theme'];?><!--/img/lb_bg.gif);-->
-<!--        }-->
-<!--        .db {-->
-<!--            background-image:  url(/themes/--><?//=$setts['default_theme'];?><!--/img/db_bg.gif);-->
-<!--        }-->
-<!--        -->-->
-<!--    </style>-->
-<!---->
-<!--    <script type="text/javascript">  document.createElement('header');  document.createElement('hgroup');  document.createElement('nav');  document.createElement('menu');  document.createElement('section');  document.createElement('article');  document.createElement('aside');  document.createElement('footer'); </script>-->
-<!--    -->
-<!--    <script>-->
-<!--        $(document).ready(function() {-->
-<!--            $('#menu').click(function(){-->
-<!--                if ($("#menu-cont").is(":hidden")) {-->
-<!--                    $("#menu-cont").slideDown("slow");-->
-<!--                    $('#menu').addClass('arrow');-->
-<!--                } else {-->
-<!--                    $("#menu-cont").slideUp("slow");-->
-<!--                    $('#menu').removeClass('arrow');-->
-<!--                }-->
-<!--            });-->
-<!---->
-<!--            $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({-->
-<!--                effect: 'fade',-->
-<!--                testMode: true-->
-<!--            });-->
-<!---->
-<!---->
-<!--            $(".myCampaigs .list li:odd").addClass("odd");-->
-<!--            $(".list li:last-child").addClass("last");-->
-<!--            $(".rows-list li:last-child").addClass("last");-->
-<!--            $(".announcement > .post:first-child").addClass("first");-->
-<!--            $(".member-menu > li:last-child").addClass("last")-->
-<!--        });-->
-<!---->
-<!--    </script>-->
-<!---->
-<!--    <link href="/slider-test/engine1/style.css" rel="stylesheet" type="text/css">-->
-<!---->
-<!---->
-<!---->
-<!--    <script type="text/javascript">-->
-<!--        var currenttime = '--><?//=$current_time_display;?><!--';-->
-<!--        var serverdate=new Date(currenttime);-->
-<!--        function padlength(what){-->
-<!--            var output=(what.toString().length==1)? "0"+what : what;-->
-<!--            return output;-->
-<!--        }-->
-<!--        function displaytime(){-->
-<!--            serverdate.setSeconds(serverdate.getSeconds()+1)-->
-<!--            var timestring=padlength(serverdate.getHours())+":"+padlength(serverdate.getMinutes())+":"+padlength(serverdate.getSeconds());-->
-<!--            document.getElementById("servertime").innerHTML=timestring;-->
-<!--        }-->
-<!--        window.onload=function(){-->
-<!--            // setInterval("displaytime()", 1000);-->
-<!--        }-->
-<!--    </script>-->
-<!---->
-<!--    <script type="text/javascript">-->
-<!--        function popupAlert(shop_url)-->
-<!--        {-->
-<!--            --><?//
-//                global $nonloggedin_check;
-//                echo $nonloggedin_check;
-//
-//                if (isset($_COOKIE['glob_alert']) && $_COOKIE['glob_alert']=="0")
-//                {
-//                    echo "return;";
-//                }
-//
-//                if(empty($_COOKIE['np_userid'])) {
-//                    echo "return;";
-//                }
-//                else
-//                {
-//                    echo "var npid=".$_COOKIE['np_userid'].";";
-//                }
-//
-//            ?>
-<!--            day = new Date();-->
-<!--            id = day.getTime();-->
-<!--            //check cookies switch-->
-<!--            URL="global_partner_alert.php?npid=" + npid + "&shop_url=" + shop_url;-->
-<!--            eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,location=0,statusbar=1,menubar=0,resizable=0,width=750,height=525,left = 100,top = 134');");-->
-<!--        }-->
-<!--    </script>-->
-<!---->
-<!--    <!---->
-<!--    /* @license-->
-<!--     * MyFonts Webfont Build ID 2115466, 2012-02-29T08:03:14-0500-->
-<!--     *-->
-<!--     * The fonts listed in this notice are subject to the End User License-->
-<!--     * Agreement(s) entered into by the website owner. All other parties are-->
-<!--     * explicitly restricted from using the Licensed Webfonts(s).-->
-<!--     *-->
-<!--     * You may obtain a valid license at the URLs below.-->
-<!--     *-->
-<!--     * Webfont: Calluna Sans Regular by exljbris-->
-<!--     * URL: http://www.myfonts.com/fonts/exljbris/calluna-sans/regular/-->
-<!--     * Copyright: Copyright (c) 2010 by Jos Buivenga. All rights reserved.-->
-<!--     * Licensed pageviews: unlimited-->
-<!--     *-->
-<!--     * Webfont: Francisco Serial by SoftMaker-->
-<!--     * URL: http://www.myfonts.com/fonts/softmaker/francisco-serial/regular/-->
-<!--     * Copyright: Copyright (c) 2011 by SoftMaker Software GmbH and its licensors. All-->
-<!--     * rights reserved.-->
-<!--     * Licensed pageviews: unlimited-->
-<!--     *-->
-<!--     *-->
-<!--     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2115466-->
-<!--     *-->
-<!--     * � 2012 Bitstream Inc-->
-<!--    */-->
-<!--    -->-->
-<!--<!--    <link rel="stylesheet" type="text/css" href="webfonts/MyFontsWebfontsKit.css">-->-->
-<!--</head>-->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<?php if(!isset($page_specific_title)) $page_specific_title =''; ?>
-<title><?=$page_title. $page_specific_title;?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
-<meta http-equiv=”X-UA-Compatible” content=”IE=9″ />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<?=$page_meta_tags;?>
-<link rel="shortcut icon" href="http://www.bringitlocal.com/images/favicon.ico" />
-<link href="/themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
-<link href="/themes/<?=$setts['default_theme'];?>/tabs-style.css" rel="stylesheet" type="text/css">
-<link href="/themes/<?=$setts['default_theme'];?>/responsive.css" rel="stylesheet" type="text/css">
-
-<link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css">
-<!--    <script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>-->
-
-<script type="text/javascript" src='/scripts/jquery/jquery-1.9.1.js'></script>
-<script type="text/javascript" src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
-
-<script type="text/javascript" src='/scripts/jquery/jquery.blockUI.js'></script>
-<script type="text/javascript" src="/scripts/jquery/jquery.polyglot.language.switcher.js"></script>
-
-<script type="text/javascript" src='/scripts/jquery/sliding.form.js'></script>
-<script type="text/javascript" src='/scripts/jquery/pagination.js'></script>
-<script type="text/javascript" src='/scripts/jquery/sort.js'></script>
-
-<!--    <script language=JavaScript src='/ckeditor/ckeditor.js'></script>-->
-
-<!--[if IE]>
-<script type="text/javascript" src="/scripts/jquery/placeholder.js"></script>
-<![endif]-->
-
-<script type="text/javascript" src="themes/<?= $setts['default_theme']; ?>/main.js" type="text/javascript"></script>
-<script type="text/javascript" src='/scripts/vendor.js'></script>
+    <title><?php echo $page_title; echo (isset($page_specific_title))?$page_specific_title:'' ;?></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <?=$page_meta_tags;?>
+    <link rel="shortcut icon" href="http://www.bringitlocal.com/images/favicon.ico" />
+    <link href="/themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
+    <link href="/themes/responsive.css" rel="stylesheet" type="text/css">
 
 
+    <script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
+    <script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 
-<style type="text/css">
-    <!--
-    .lb {
-        background-image:  url(themes/<?=$setts['default_theme'];?>/img/lb_bg.gif);
-    }
-    .db {
-        background-image:  url(themes/<?=$setts['default_theme'];?>/img/db_bg.gif);
-    }
-    -->
-</style>
-<!--[if IE 8]>
-<script type="text/javascript">
-    document.createElement('header');
-    document.createElement('nav');
-    document.createElement('section');
-    document.createElement('article');
-    document.createElement('aside');
-    document.createElement('footer');
-</script>
-<link rel="stylesheet" type="text/css" media="screen" href="/themes/<?=$setts['default_theme'];?>/ie.css" />
-<![endif]-->
+    <script type="text/javascript" src="/scripts/jquery/jquery.polyglot.language.switcher.js" ></script>
+    <script type="text/javascript" src='/scripts/jquery/transit.js'></script>
+    <script type="text/javascript" src="/themes/<?= $setts['default_theme']; ?>/main.js" type="text/javascript"></script>
+    <script type="text/javascript" src='/scripts/innovaeditor.js'></script>
+    <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
+    <script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>
+    <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
+    <script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
+    <script language=JavaScript src='/scripts/jquery/jquery.maskedinput.min.js'></script>
 
 
+    <style type="text/css">
+        <!--
+        .lb {
+            background-image:  url(/themes/<?=$setts['default_theme'];?>/img/lb_bg.gif);
+        }
+        .db {
+            background-image:  url(/themes/<?=$setts['default_theme'];?>/img/db_bg.gif);
+        }
+        -->
+    </style>
 
-<script type="text/javascript">  document.createElement('header');  document.createElement('hgroup');  document.createElement('nav');  document.createElement('menu');  document.createElement('section');  document.createElement('article');  document.createElement('aside');  document.createElement('footer'); </script>
+    <script type="text/javascript">  document.createElement('header');  document.createElement('hgroup');  document.createElement('nav');  document.createElement('menu');  document.createElement('section');  document.createElement('article');  document.createElement('aside');  document.createElement('footer'); </script>
 
-<script type="text/javascript">
+    <script>
+        $(document).ready(function() {
+            $('#menu').click(function(){
+                if ($("#menu-cont").is(":hidden")) {
+                    $("#menu-cont").slideDown("slow");
+                    $('#menu').addClass('arrow');
+                } else {
+                    $("#menu-cont").slideUp("slow");
+                    $('#menu').removeClass('arrow');
+                }
+            });
 
-    $(document).ready(function() {
-        $('#menu').click(function(){
-            if ($("#menu-cont").is(":hidden")) {
-                $("#menu-cont").slideDown("slow");
-                $('#menu').addClass('arrow');
-            } else {
-                $("#menu-cont").slideUp("slow");
-                $('#menu').removeClass('arrow');
-            }
-        });
-
-        if ($.fn.polyglotLanguageSwitcher){
             $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
                 effect: 'fade',
                 testMode: true
             });
-        } else {
-            $.getScript("/scripts/jquery/jquery.polyglot.language.switcher.js", function(data, textStatus, jqxhr) {
-                $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
-                    effect: 'fade',
-                    testMode: true
-                });
-            });
+
+            $(".list li:last-child").addClass("last");
+        });
+
+    </script>
+
+    <link href="/slider-test/engine1/style.css" rel="stylesheet" type="text/css">
+
+
+
+    <script type="text/javascript">
+        var currenttime = '<?=$current_time_display;?>';
+        var serverdate=new Date(currenttime);
+        function padlength(what){
+            var output=(what.toString().length==1)? "0"+what : what;
+            return output;
         }
+        function displaytime(){
+            serverdate.setSeconds(serverdate.getSeconds()+1)
+            var timestring=padlength(serverdate.getHours())+":"+padlength(serverdate.getMinutes())+":"+padlength(serverdate.getSeconds());
+            document.getElementById("servertime").innerHTML=timestring;
+        }
+        window.onload=function(){
+            // setInterval("displaytime()", 1000);
+        }
+    </script>
 
-        $(".myCampaigs .list li:odd").addClass("odd");
-        $(".list li:last-child").addClass("last");
-        $(".rows-list li:last-child").addClass("last");
-        $(".announcement > .post:first-child").addClass("first");
-        $(".member-menu > li:last-child").addClass("last")
-    });
-    /*$(function() {
-     if ($("div.holder"))
-     $("div.holder").jPages({
-     containerID: "pagination"
-     });
-     });*/
-    var countOfPitch = 0;
-    function addPitch(){
-        var pitches = parseInt($("#pitches_number").val());
-        $("#pitches_number").val(pitches + 1);
-        aux = $("<div class='pitch-content'> </div>");
-        aux.html($("#pitch_template").html());
-        aux.find("#amoun").attr("id","pitch["+countOfPitch+"][0]").attr("name","pitch_amoun["+countOfPitch+"]");
-        aux.find("#name").attr("id","pitch["+countOfPitch+"][1]").attr("name","pitch_name["+countOfPitch+"]");
-        aux.find("#description").attr("id","pitch["+countOfPitch+"][2]").attr("name","pitch_description["+countOfPitch+"]");
-        $("#pitch_box").append(aux);
-        countOfPitch +=1;
-        console.log(countOfPitch);
+    <script type="text/javascript">
+        function popupAlert(shop_url)
+        {
+            <?
+                global $nonloggedin_check;
+                echo $nonloggedin_check;
 
-        $('.removePitchButton').unbind().bind('click',function(){
-            var pitches = parseInt($("#pitches_number").val());
-            $("#pitches_number").val(pitches - 1);
-            $(this).parent().remove();
-        });
-
-
-    }
-</script>
-
-
-<!--    <script language=JavaScript src='/scripts/jquery/transit.js'></script>-->
-
-
-<!--    <script language=JavaScript src='scripts/innovaeditor.js'></script>-->
-<script type="text/javascript">
-    var currenttime = '<?=$current_time_display;?>';
-    var serverdate=new Date(currenttime);
-    function padlength(what){
-        var output=(what.toString().length==1)? "0"+what : what;
-        return output;
-    }
-    function displaytime(){
-        serverdate.setSeconds(serverdate.getSeconds()+1)
-        var timestring=padlength(serverdate.getHours())+":"+padlength(serverdate.getMinutes())+":"+padlength(serverdate.getSeconds());
-        document.getElementById("servertime").innerHTML=timestring;
-    }
-    window.onload=function(){
-        // setInterval("displaytime()", 1000);
-    }
-</script>
-<!--    <script src="/scripts/jquery/jquery.polyglot.language.switcher.js" type="text/javascript"></script>-->
-
-
-
-<script type="text/javascript">
-    function popupAlert(shop_url)
-    {
-        <?
-            global $nonloggedin_check;
-            echo $nonloggedin_check;
-
-            if (!isset($_COOKIE['glob_alert']) || $_COOKIE['glob_alert']=="0")
-            {
-                echo "return;";
-            }
-
-            if(!isset($_COOKIE['np_userid']) || empty($_COOKIE['np_userid'])) {
-                echo "return;";
-            }
-            else
-            {
-                echo "var npid=".$_COOKIE['np_userid'].";";
-            }
-
-        ?>
-        day = new Date();
-        id = day.getTime();
-        //check cookies switch
-        URL="global_partner_alert.php?npid=" + npid + "&shop_url=" + shop_url;
-        eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,location=0,statusbar=1,menubar=0,resizable=0,width=750,height=525,left = 100,top = 134');");
-    }
-</script>
-
-
-<script type="text/javascript">
-
-    var emailRegexp = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
-
-    //        $.noConflict();
-    jQuery(document).ready(function ($) {
-
-
-        $(".onpageSubscribeEmail").submit(function(){
-
-            var email = '';
-
-            $(this).find(":input").each(function(i){
-                if ($(this).attr('name') == 'email') {
-
-                    if (emailRegexp.test($(this).val())) {
-                        email = $(this).val();
-                    } else {
-                        $(this).addClass("ui-state-error");
-                    }
+                if (isset($_COOKIE['glob_alert']) && $_COOKIE['glob_alert']=="0")
+                {
+                    echo "return;";
                 }
 
-            });
-
-            if ( email !== "" ) {
-                // email address is correct - proceed
-                $(this).find(":input").removeClass("ui-state-error");
-
-//                    alert('subscribe: ' + email);
-
-                $.blockUI({ css: {
-                    border: 'none',
-                    padding: '15px',
-                    backgroundColor: '#000',
-                    '-webkit-border-radius': '10px',
-                    '-moz-border-radius': '10px',
-                    opacity: .75,
-                    color: '#fff'
-                } });
-
-                $.ajax({
-                    type: "POST",
-                    url: "/ajaxprocessors.php",
-                    dataType: 'json',
-
-                    data: { do: "subscribe", email: email }
-                }).done(function (msg) {
-                        if (msg.code == 0){
-                            $.unblockUI();
-                            $(".onpageSubscribeEmail").find("input[name*='mail']").val('');
-                        } else {
-                            $.unblockUI();
-                            $(".onpageSubscribeEmail").find("input[name*='mail']").addClass("ui-state-error");
-                        }
-
-
-                    });
-
-
-
-            } else {
-                // email is wrong - highlight input
-//                    setTimeout( '$(".onpageSubscribeEmail").find(":input").removeClass("ui-state-error");', 5000);
-
-            }
-
-
-            return false;
-
-        });
-
-
-
-        $(".modalSubscribeLink").click(function () {
-
-            $("#menu-cont").slideUp();
-
-            $("#dialogModalSubscribe").dialog({
-                height: 300,
-                width: 350,
-                modal: true,
-                buttons: {
-                    Submit: function () {
-
-                        if ( emailRegexp.test($("#dialogModalSubscribeEmail").val()) ){
-//                                $("#dialogModalSubscribeEmail").removeClass("ui-state-error");
-                            $(this).dialog("close");
-
-                            $.blockUI({ css: {
-                                border: 'none',
-                                padding: '15px',
-                                backgroundColor: '#000',
-                                '-webkit-border-radius': '10px',
-                                '-moz-border-radius': '10px',
-                                opacity: .75,
-                                color: '#fff'
-                            } });
-
-                            $.ajax({
-                                type: "POST",
-                                url: "/ajaxprocessors.php",
-                                dataType: 'json',
-
-                                data: { do: "subscribe", email: $("#dialogModalSubscribeEmail").val() }
-                            }).done(function (msg) {
-                                    if (msg.code == 0) {
-                                        $.unblockUI();
-                                        $("#dialogModalSubscribeEmail").val('');
-                                        $("#dialogModalSubscribeEmail").removeClass("ui-state-error");
-                                    } else {
-                                        $.unblockUI();
-                                        $("#dialogModalSubscribeEmail").addClass("ui-state-error");
-                                    }
-
-                                });
-
-
-                        } else {
-                            $("#dialogModalSubscribeEmail").addClass("ui-state-error");
-                        }
-
-                        return false;
-                    },
-                    Cancel: function () {
-                        $(this).dialog("close");
-                    }
-                },
-                close: function () {
-                    $('#dialogModalSubscribe').dialog("close");
+                if(empty($_COOKIE['np_userid'])) {
+                    echo "return;";
                 }
-            });
-            return false;
-        });
+                else
+                {
+                    echo "var npid=".$_COOKIE['np_userid'].";";
+                }
 
-    });
+            ?>
+            day = new Date();
+            id = day.getTime();
+            //check cookies switch
+            URL="global_partner_alert.php?npid=" + npid + "&shop_url=" + shop_url;
+            eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,location=0,statusbar=1,menubar=0,resizable=0,width=750,height=525,left = 100,top = 134');");
+        }
+    </script>
 
-
-
-
-</script>
-
-<!--
-/* @license
- * MyFonts Webfont Build ID 2115466, 2012-02-29T08:03:14-0500
- *
- * The fonts listed in this notice are subject to the End User License
- * Agreement(s) entered into by the website owner. All other parties are
- * explicitly restricted from using the Licensed Webfonts(s).
- *
- * You may obtain a valid license at the URLs below.
- *
- * Webfont: Calluna Sans Regular by exljbris
- * URL: http://www.myfonts.com/fonts/exljbris/calluna-sans/regular/
- * Copyright: Copyright (c) 2010 by Jos Buivenga. All rights reserved.
- * Licensed pageviews: unlimited
- *
- * Webfont: Francisco Serial by SoftMaker
- * URL: http://www.myfonts.com/fonts/softmaker/francisco-serial/regular/
- * Copyright: Copyright (c) 2011 by SoftMaker Software GmbH and its licensors. All
- * rights reserved.
- * Licensed pageviews: unlimited
- *
- *
- * License: http://www.myfonts.com/viewlicense?type=web&buildid=2115466
- *
- * � 2012 Bitstream Inc
-*/
--->
-<link rel="stylesheet" type="text/css" href="webfonts/MyFontsWebfontsKit.css">
+    <!--
+    /* @license
+     * MyFonts Webfont Build ID 2115466, 2012-02-29T08:03:14-0500
+     *
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are
+     * explicitly restricted from using the Licensed Webfonts(s).
+     *
+     * You may obtain a valid license at the URLs below.
+     *
+     * Webfont: Calluna Sans Regular by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/calluna-sans/regular/
+     * Copyright: Copyright (c) 2010 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: unlimited
+     *
+     * Webfont: Francisco Serial by SoftMaker
+     * URL: http://www.myfonts.com/fonts/softmaker/francisco-serial/regular/
+     * Copyright: Copyright (c) 2011 by SoftMaker Software GmbH and its licensors. All
+     * rights reserved.
+     * Licensed pageviews: unlimited
+     *
+     *
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2115466
+     *
+     * � 2012 Bitstream Inc
+    */
+    -->
+    <link rel="stylesheet" type="text/css" href="webfonts/MyFontsWebfontsKit.css">
 </head>
 <body id="<?=isset($GLOBALS['body_id'])?$GLOBALS['body_id']:0?>">
 <div id="outerContainer">
