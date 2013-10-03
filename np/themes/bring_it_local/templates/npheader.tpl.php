@@ -66,8 +66,11 @@ global $coupon_url;
                 testMode: true
             });
 
+            $(".myCampaigs .list li:odd").addClass("odd");
             $(".list li:last-child").addClass("last");
-        });
+            $(".rows-list li:last-child").addClass("last");
+            $(".announcement > .post:first-child").addClass("first");
+            $(".member-menu > li:last-child").addClass("last")        });
 
     </script>
 
