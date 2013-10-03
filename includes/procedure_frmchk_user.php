@@ -9,6 +9,7 @@
 if ( !defined('FRMCHK_USER') ) { die("Access Denied"); }
 
 $fv = new formchecker;
+$fv->setUserId($session->value('user_id'));
 /*
 if ($frmchk_details['tax_account_type'] == 1)
 {
@@ -101,6 +102,8 @@ if (!$frmchk_user_edit || !empty($frmchk_details['password']))
 {
     $fv->check_box($frmchk_details['password'], MSG_CREATE_PASS, array('within_length', 'pass_confirm'), $_POST['password2'], MSG_VERIFY_PASS);
 }
+
+$fv->check_box($frmchk_details['old_password'], MSG_OLD_PASS, array('check_password'));
 
 $confirmed_paypal_email = false;
 if ((isset($frmchk_details['pg_paypal_email']) && $frmchk_details['pg_paypal_email']) ||

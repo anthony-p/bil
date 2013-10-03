@@ -3,7 +3,7 @@
 || #################################################################### ||
 || # functions.inc.php 6.00, for use with PhpProBid v6.00+				 # ||
 || # ---------------------------------------------------------------- # ||
-|| # Copyright © 2005 RENS Management, LLC. All Rights Reserved.      # ||
+|| # Copyright Â© 2005 RENS Management, LLC. All Rights Reserved.      # ||
 || # This file is licensed under the End User Licensue Agreement at   # ||
 || #                 http://probid.rensmllc.com/eula.pdf              # ||
 || # -----------------  THIS IS NOT FREE SOFTWARE ------------------- # ||

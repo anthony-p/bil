@@ -48,6 +48,8 @@ define ('GMSG_NO', 'No');
 define ('GMSG_ORDER', 'Order');
 define ('GMSG_CATEGORY', 'Category');
 
+define ('GMSG_INCORRECT_PASSWORD', 'Incorrect Password');
+
 define ('GMSG_PAYPAL_FIRST_NAME', 'PayPal Account First Name');
 define ('GMSG_PAYPAL_LAST_NAME', 'PayPal Account Last Name');
 define ('GMSG_PAYPAL_EMAIL', 'PayPal Email Address');

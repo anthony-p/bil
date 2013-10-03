@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.00															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright Â©2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -13,7 +13,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <head>
 <link href="themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
 <title><?=$setts['sitename'];?> - <?=MSG_MAINTENANCE_MODE;?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 </head>
 
 <body>

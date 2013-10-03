@@ -3693,3 +3693,5 @@ ALTER TABLE `np_users` ADD COLUMN `parrent_id` INT NOT NULL AFTER `cfc` ;
 ALTER TABLE `np_users` ADD COLUMN `clone_campaign` INT NOT NULL DEFAULT 0  AFTER `active` ;
 
 alter table `project_rewards` drop column `create_at`, drop column `parrent_id`;
+
+alter table `project_rewards` change `amount` `amount` int(11) NOT NULL;

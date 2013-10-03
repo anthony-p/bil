@@ -1,8 +1,8 @@
 <?
 #################################################################
-## PHP Pro Bid v6.00															##
+## PHP Pro Bid v6.00										   ##
 ##-------------------------------------------------------------##
-## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright 2007 PHP Pro Software LTD. All rights reserved.   ##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -18,9 +18,13 @@ include_once ('includes/class_custom_field.php');
 include_once ('includes/class_user.php');
 include_once ('includes/functions_login.php');
 
-if ($session->value('membersarea')=='Active')
+
+$ActiveTest=$session->value('membersarea');
+
+//This is Unpredicted PHP Good example  when you compare 0=='Active  0-is number and 'active' is string
+if ($ActiveTest==='Active')
 {
-	header_redirect('index.php');
+    header_redirect('/members_area.php');//header_redirect('index.php');
 }
 else
 {
@@ -105,4 +109,3 @@ else
 
 	echo $template_output;
 }
-?>

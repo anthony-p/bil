@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright Â©2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -41,7 +41,7 @@ Every time you shop with Bring It Local, you collect Bring It Local community lo
 <br><br>
 All gift certificates are purchased at face value by Bring It Local, so you can be sure that your activity at Bring It Local brings real cash into your community. Merchants can enroll in the community loyalty program when they start working with Bring It Local.
 <br><br>
-What It’s Worth<br>
+What Itâ€™s Worth<br>
 You can earn loyalty points in many different ways. And once you reach 200, you can buy yourself a present to thank yourself for supporting your community. 
 <br><br>
 <table><tr><td>Activity</td><td>Points Earned</td></tr>

@@ -9,6 +9,8 @@
 class formchecker extends database
 {
 
+    private $user_id = 0;
+
 	var $error_list;
 
 	var $methods = array(
@@ -17,6 +19,14 @@ class formchecker extends database
 		'field_html', 'field_js', 'field_iframes', 'within_length', 'within_range', 'is_email_address',
 		'field_amount', 'field_smaller', 'field_greater', 'field_equal'
 	);
+
+    /**
+     * @param $user_id
+     */
+    public function setUserId($user_id)
+    {
+        $this->user_id = $user_id;
+    }
 
 	function formchecker()
 	{
@@ -44,6 +54,10 @@ class formchecker extends database
 					case 'pass_confirm':
 						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_AND . ' "' . $field_value_display_two . '" ' . GMSG_MUST_MATCH;
 						$this->pass_confirm($field_value, $field_value_two, $msg);
+						break;
+					case 'check_password':
+						$msg = GMSG_INCORRECT_PASSWORD;
+						$this->check_password($field_value, $msg);
 						break;
 					case 'field_string':
 						$msg = GMSG_THE . ' "' . $field_value_display . '" ' . GMSG_FRMCHK_FIELD_STRING;
@@ -493,6 +507,30 @@ class formchecker extends database
 		else
 		{
 			$this->error_list[] = array("value" => $value, "msg" => $msg);
+			return false;
+		}
+	}
+
+	// validate user
+	function check_password($password, $msg)
+	{
+        $salt = $this->get_sql_field("SELECT salt FROM bl2_users WHERE id='" . $this->user_id . "'", "salt");
+
+        $password_hashed = password_hash($password, $salt);
+
+        $login_query = $this->query(
+            "SELECT * FROM `bl2_users` WHERE id='$this->user_id' AND password=MD5(CONCAT(MD5('$password'),salt)) "
+        );
+
+        $is_login = $this->num_rows($login_query);
+
+		if ($is_login)
+		{
+			return true;
+		}
+		else
+		{
+			$this->error_list[] = array("value" => $password, "msg" => $msg);
 			return false;
 		}
 	}

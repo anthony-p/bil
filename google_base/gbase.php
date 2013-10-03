@@ -3,7 +3,7 @@
 || #################################################################### ||
 || # gbase.php 6.00, for use with PhpProBid script v6.00		          # ||
 || # ---------------------------------------------------------------- # ||
-|| # Copyright © 2006 RENS Management, LLC. All Rights Reserved.      # ||
+|| # Copyright Â© 2006 RENS Management, LLC. All Rights Reserved.      # ||
 || # This file is licensed under the End User Licensue Agreement at   # ||
 || #                 http://probid.rensmllc.com/eula.pdf              # ||
 || # -----------------  THIS IS NOT FREE SOFTWARE ------------------- # ||

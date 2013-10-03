@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright Â©2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 ## (Mods-Store) -> Shopping Cart											##
 #################################################################
@@ -18,7 +18,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 -
 <?=MSG_DISPLAY_INVOICE;?>
 </title>
-<meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
