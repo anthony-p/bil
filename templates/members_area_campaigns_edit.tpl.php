@@ -1315,9 +1315,11 @@ function clearBannerContent()
                 <span style="cursor: pointer" onclick="clearBannerContent()"><?=MSG_CLEAR?></span>
                 <div id="vide_select_block" <?php if ( !strstr($campaign["banner"], "http://")) { echo "style='display:none'";}?>>
 
-                    <input type="text" name="video_url" id="video_url" value="<?php if ( strstr($campaign["banner"], "http://")) { echo $campaign["banner"];}?>">
+                    <div class="float:right;">
+                        <input type="text" name="video_url" id="video_url" value="<?php if ( strstr($campaign["banner"], "http://")) { echo $campaign["banner"];}?>">
 
-                    <input type="button" id="loadVideo" onclick="loadBannerVideo()" value="Get">
+                        <input type="button" id="loadVideo" onclick="loadBannerVideo()" value="Get">
+                    </div>
 
                 </div>
 
