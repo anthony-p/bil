@@ -5233,6 +5233,8 @@ else
             $rows = array();
         $template->set('campaigns_list', $rows);
         $template->set('section', $section);
+        $template->set('keyword', $name_keyword);
+        $template->set('order', $order);
 
         if ($section == 'main') {
                 $members_area_page_content = $template->process('members_area_campaigns_main.tpl.php');

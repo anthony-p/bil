@@ -21,6 +21,19 @@ $np_user = new npuser();
 
 $campaigns = $np_user->selectAllLive();
 
+if (isset($_REQUEST['keyword'])) {
+    $keyword = $db->rem_special_chars($_REQUEST['keyword']);
+} else {
+    $keyword = null;
+}
+
+
+if (isset($_REQUEST['names'])) {
+    $order = $db->rem_special_chars($_REQUEST['names']);
+} else {
+    $order = '';
+}
+
 $option = $db->rem_special_chars(
     isset($_REQUEST['option']) ? $_REQUEST['option'] : ''
 );
@@ -78,6 +91,10 @@ switch ($option)
 		break;
 }
 $template->set('search_options_title', $search_options_title);
+var_dump($keyword);
+var_dump($order);
+$template->set('keyword', $keyword);
+$template->set('order', $order);
 $template->set('campaigns', $campaigns);
 
 $template_output .= $template->process('search.tpl.php');

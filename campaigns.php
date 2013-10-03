@@ -96,6 +96,7 @@ if (!empty($keyword)) {
         OR u.organization LIKE '%{$keyword}%')";
         if (!empty($order)) {
             $order_query = " ORDER BY create_date {$order}";
+            echo $query1.$order_query;
             $sql_query = $db->query($query1.$order_query );
         } else {
             $sql_query = $db->query($query1);
@@ -121,6 +122,8 @@ while ($row = mysql_fetch_array($sql_query)) {
 
 }
 
+$template->set('keyword', $keyword);
+$template->set('order', $order);
 $template->set('compaigns', $rows);
 $template->set('search_options_title', $search_options_title);
 

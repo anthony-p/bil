@@ -14,6 +14,22 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 function submit_form(form_name) {
 	form_name.submit();
 }
+
+function select(order, obj)
+{
+
+    var orderSelected = $(obj).attr('rel');
+    console.log(orderSelected);
+    $element = $('#order_result');
+    $options = $element.find('option');
+    $wanted_element = $options.filter(function () {
+        return $(this).val() == orderSelected || $(this).text() == orderSelected
+    });
+    console.log($wanted_element);
+    $wanted_element.attr("selected", true);
+
+    $("#search_by_name").submit();
+}
 </script>
 <script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 <script>
@@ -61,6 +77,8 @@ function submit_form(form_name) {
         });
         $(".myCampaigs .list li:odd").addClass("odd");
 
+
+
         $("#search_by_name").submit(function(e){
             e.preventDefault();
             var window_location = '/campaigns,page,<?php echo $section; ?>,section,';
@@ -80,26 +98,15 @@ function submit_form(form_name) {
     <?php echo $explanation_message; ?>
     <?php endif; ?>
     <h2><?php echo $campaign_title;?> <?=MSG_CAMPAIGNS?></h2>
-<!--    <form accept="#">-->
-<!--        <input type="text" value="" placeholder="Find by name" name="keyword">-->
-<!--        <button type="submit"></button>-->
-<!--    </form>-->
-<!--    <div class="select">-->
-<!--        <select id="order_result" name="names" class="changeMe">-->
-<!--            <option value="0" selected="selected" class="order">Sort by</option>-->
-<!--            <option value="" class="order">Date asc</option>-->
-<!--            <option value="" class="order">Date des</option>-->
-<!--        </select>-->
-<!--    </div>-->
 
     <form id="search_by_name" accept="#">
         <select id="order_result" name="order" class="changeMe">
             <option value="" selected="selected" class="order"><?=MSG_SORT_BY?></option>
-            <option value="ASC" class="order"><?=MSG_DATE_ASC?></option>
-            <option value="DESC" class="order"><?=MSG_DATE_DESC?></option>
+            <option value="ASC" <?php if ($order == "ASC") echo 'selected';?> class="order"><?=MSG_DATE_ASC?></option>
+            <option value="DESC" <?php if ($order == "DESC") echo 'selected';?> class="order"><?=MSG_DATE_DESC?></option>
         </select>
         <div class="search-input">
-            <input type="text" value="" placeholder="<?= MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME; ?>" name="keyword" id="name">
+            <input type="text" value="<?php if(!empty($keyword)) echo $keyword;?>" placeholder="<?= MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME; ?>" name="keyword" id="name">
             <button type="submit"></button>
         </div>
     </form>
