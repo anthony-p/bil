@@ -117,6 +117,15 @@ $(document).ready(function()
         } else {
             $("#zip_code").removeClass("error");
         }
+        /* adding State Validation */
+        if ($("#state").val() == '' ) {
+            $("#state").addClass("error");
+            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_STATE; ?></li>';
+            err_status = true;
+        } else {
+            $("#state").removeClass("error");
+        }
+
         if ($("#phone").val() == '') {
             $("#phone").addClass("error");
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PHONE; ?></li>';
