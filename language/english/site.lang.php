@@ -79,7 +79,7 @@ define('MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP', 'Choose to automatically publis
 
 //member area - message dialog
 define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_TITLE', 'Delete Campaign');
-define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_MSG', 'Are you sure you want to delete your campaign. This is a permanent deletion!');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_MSG', "Are you sure you want to delete <strong>%name%</strong>.<br>This is a permanent deletion!");
 define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CONFIRM', 'Yes, continue');
 define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CANCEL', 'Nevermind, cancel');
 

@@ -25,7 +25,13 @@ function submit_form(form_name) {
         $(".delete").click(function(){
 
             var del_id = $(this).attr('id');
+            var cmpgname = $(this).parent().parent().parent().find(".row_campaign_name").html();
+            var dialog_msg = '<?= MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_MSG; ?>';
 
+            dialog_msg =  dialog_msg.replace("%name%", cmpgname) ;
+
+            $("#dialog-confirm-msg").empty();
+            $("#dialog-confirm-msg").append(dialog_msg);
 
             $("#dialog-confirm").dialog({
                 resizable: false,
@@ -110,7 +116,7 @@ function submit_form(form_name) {
         <li id="li_<?php echo $row["user_id"]?>">
             <dl>
                 <dt><?=MSG_CAMPAIGN_NAME?>:</dt>
-                <dd><?= $row['project_title'];?></dd>
+                <dd class="row_campaign_name"><?= $row['project_title'];?></dd>
                 <dt><?=MSG_CREATE_AT?>:</dt>
                 <dd><?= date("m/d/y",$row['reg_date'])?></dd>
                 <dt><?=MSG_CLOSED_ON?>:</dt>
@@ -135,5 +141,5 @@ function submit_form(form_name) {
 
 <div id="dialog-confirm" title="<?= MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_TITLE; ?>" style="display: none;">
     <br>
-    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><?= MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_MSG; ?></p>
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><p id="dialog-confirm-msg"></p></p>
 </div>
