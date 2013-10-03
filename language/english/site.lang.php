@@ -339,6 +339,7 @@ define ('MSG_MEMBERS_AREA_TITLE', 'Members Area');
 define ('MSG_REGISTRATION_ENTER_MAIN_INFO', 'Enter Main User Information');
 define ('MSG_REGISTRATION', 'Create an account');
 define ('MSG_SELL_ITEM', 'Sell');
+define ('MSG_OLD_PASS', 'Password');
 define ('MSG_CREATE_PASS', 'Create Password');
 define ('MSG_VERIFY_PASS', 'Verify Password');
 define ('MSG_EMAIL_ADDRESS', 'Email Address');

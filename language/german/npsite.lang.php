@@ -21,6 +21,7 @@ define ('MSG_REGISTRATION_ENTER_MAIN_INFO', 'Enter Main User Information');
 define ('MSG_REGISTRATION', 'Non Profit Organization Registration');
 define ('MSG_SELL_ITEM', 'SELL');
 
+define ('MSG_OLD_PASS', 'Password');
 define ('MSG_CREATE_PASS', 'Create Password');
 define ('MSG_VERIFY_PASS', 'Verify Password');
 define ('MSG_EMAIL_ADDRESS', 'Email Address');

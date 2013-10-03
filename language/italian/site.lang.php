@@ -188,6 +188,7 @@ define ('MSG_MEMBERS_AREA_TITLE', 'Area iscritti');
 define ('MSG_REGISTRATION_ENTER_MAIN_INFO', 'Inserisci informazioni principali utente');
 define ('MSG_REGISTRATION', 'Crea un account');
 define ('MSG_SELL_ITEM', 'Vendi');
+define ('MSG_OLD_PASS', 'Password');
 define ('MSG_CREATE_PASS', 'Crea una password');
 define ('MSG_VERIFY_PASS', 'Verifica a password');
 define ('MSG_EMAIL_ADDRESS', 'Indirizzo e-mail');
