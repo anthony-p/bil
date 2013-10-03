@@ -4,7 +4,7 @@ body {background:url("img/paper.png") 0 0;}
 a {text-decoration: none;}
 a:hover {text-decoration:none;}
 
-img{border:0;}
+img[border:0;]
 ul,ol{list-style:none;}
 h1, h2, h3, h4, h5, p, form {
     margin: 0px;
@@ -15,7 +15,6 @@ input{outline: none;}
     visibility: hidden;
     line-height: 0;
     height: 0;}
-
 .clearfix:after {
     content: ".";
     display: block;
@@ -42,14 +41,7 @@ html[xmlns] .clearfix {
 * html .clearfix {
     height: 1%;
 }
-.inline-block {
-/*Cross-brower inline-block*/
-    display: -moz-inline-stack;
-    display: inline-block;
-    vertical-align: top;
-    zoom: 1;
-    *display: inline;
-}
+
 /*STRUCTURE*/
 
 #topBanner {
@@ -279,7 +271,7 @@ margin: 20px 0 40px;
     border: 0;
     background: #0077c0;
 
-    text-shadow: 0 0 1px #60aad8;
+    text-shadow: 0px 0px 1px #60aad8;
     font: 12px/17px "OpenSans";
     text-align: center;
     color: #fff;
@@ -2601,7 +2593,7 @@ header .innerContainer  .topNav a.last{background:none !important;}
 header .innerContainer  .topNav a:hover{color:#fff;}
 header .innerContainer  .topNav form{float:left;}
 header .innerContainer  .topNav input{float:left; height:29px; border:0;width:107px;text-transform:capitalize; margin-left:16px; background:url("img/search.png") 0 0;
-  font:13px/29px OpenSans-SemiBold; color:#222222;}
+    padding:0 30px 0 13px;font:13px/29px OpenSans-SemiBold; color:#222222;}
 header .innerContainer  .topNav .np_search input{width:150px;}
 header .innerContainer  .topNav button{float:left; height:29px; border:0;width:30px; background: url("img/input-search.png") right no-repeat; cursor: pointer;}
 header .innerContainer nav ul li.level a{background: url("img/down_arrow.png") right 9px no-repeat; padding-right: 16px; display: inline-block;}
@@ -3416,24 +3408,16 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 /**/
 #contribution_form{ float: left;    clear: both;    width: 100%;    background: #fff;    padding-bottom: 30px;    box-shadow: 0 0 6px rgba(5, 5, 5, 0.5);    border-radius: 8px;    margin: 20px 0 40px;}
-#contribution_form h2 { float:none;margin-bottom:1em;}
-#contribution_form p { margin-bottom: 1em;}
 #contribution_details{width:800px; margin: 20px auto;}
 #contribution_details h3{font: 14px/29px "OpenSans-SemiBold";    text-transform: uppercase;    color: #7eb041;    border-bottom: 1.5px solid #dedede;    padding: 5px 0;}
-#contribution_qty{float:left;}
-#contribution_qty #submit {margin:auto; display: block}
-#contribution_qty input[type="text"]{height: 25px; line-height:25px;vertical-align: middle; width: 250px;    border: 1px solid #ddd;    border-radius: 3px;    outline: none;  padding: 0 10px;}
+#contribution_qty, #submit{float:left;}
+#contribution_qty input{height: 25px;    width: 250px;    border: 1px solid #ddd;    border-radius: 3px;    outline: none;    padding: 5px;    padding: 0 10px;}
 #contribution_details .top-description .left{height:135px; width:200px; border:4px solid rgb(199, 198, 198); border-radius:4px;}
 #contribution_details .top-description .left img{width:100%; height: 100%;}
 #contribution_details .top-description .right{width:500px; float:left; margin-left: 20px;}
 #contribution_details .top-description .right h2{font-size: 18px;line-height: 20px;}
 #contribution_details .top-description .right p{font:12px/15px "OpenSans";}
-.community_donate, .paypal_donate { margin-bottom: 1em; width: 80%;padding:1em}
-.community_donate {
-    background:#CCE0F0;
-}
-.community_donate label { width:40%; margin-right:10px;}
-#community { margin-right: 10px; vertical-align:middle;vertical-align:-webkit-baseline-middle;}
+
 .contributions_page .no_earnings_message {font-size: 18px; padding: 50px; text-align: center;}
 
 
