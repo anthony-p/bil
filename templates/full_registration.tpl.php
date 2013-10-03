@@ -603,12 +603,12 @@ function fetchstate($statecode){
         </td>
         <td class="contentfont"><input name="email" type="text" class="contentfont" id="email" value="<?=(isset($user_details['email']))?$user_details['email']:'';?>" size="40" maxlength="120" <? echo (defined('IN_ADMIN') && IN_ADMIN == 1) ? 'onchange="copy_email_value();"' : ''; ?> /></td>
     </tr>
-    <?php if(!isset($user_details['id']) || !$user_details['id']): ?>
+    <?php /* if(!isset($user_details['id']) || !$user_details['id']): ?>
         <tr class="reguser">
             <td>&nbsp;</td>
             <td><?=MSG_EMAIL_EXPLANATION;?></td>
         </tr>
-    <?php endif; ?>
+    <?php endif; */?>
     <tr>
         <td class="contentfont"><?=MSG_RETYPE_EMAIL;?> *</td>
         <td class="contentfont"><input name="email_check" type="text" class="contentfont" id="email_check" value="<?=$email_check_value;?>" size="40" maxlength="120" onkeyup="checkEmail();">
