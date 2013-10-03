@@ -6,23 +6,23 @@
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
 // member area - account details validation
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PHONE', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PHONE');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EMAIL', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EMAIL');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN', 'MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME', 'The First Name field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME', 'The Last Name field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION', 'The Organization field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS', 'The Address field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY', 'The City field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE', 'The State field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP', 'The Zip Code field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PHONE', 'The Phone field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EMAIL', 'The Email field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL', 'The Confirm Email field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL', 'The Confirm Email field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN', 'The Registration Pin field vas not completed correctly');
 
-define('MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO', 'MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO');
+define('MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO', 'The Amount must be above zero');
 
 // new campaigm validation messages
-define('MSG_REGISTER_CAMPAIGN_ERR_STATE','MSG_REGISTER_CAMPAIGN_ERR_STATE');
+define('MSG_REGISTER_CAMPAIGN_ERR_STATE','The State field vas not completed correctly');
 
 // campaign edit - delete rewards confirmation
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE', 'Delete Reward Confirm');
@@ -47,25 +47,24 @@ define('MSG_DRAFT_CAMPAIGNS_EXPLANATION', '<h3>New campaigns are drafts, they ne
 
 // new campaigm validation messages
 define('MSG_REGISTER_CAMPAIGN_ERR_CDAYSP', "Sorry, you can&#39;t run your campaign backwards. Use a positive integer!");
-define('MSG_REGISTER_CAMPAIGN_ERR_NAME', 'MSG_REGISTER_CAMPAIGN_ERR_NAME');
-define('MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME', 'MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME');
-define('MSG_REGISTER_CAMPAIGN_ERR_ADDRESS', 'MSG_REGISTER_CAMPAIGN_ERR_ADDRESS');
-define('MSG_REGISTER_CAMPAIGN_ERR_CITY', 'MSG_REGISTER_CAMPAIGN_ERR_CITY');
-define('MSG_REGISTER_CAMPAIGN_ERR_ZIP', 'MSG_REGISTER_CAMPAIGN_ERR_ZIP');
-define('MSG_REGISTER_CAMPAIGN_ERR_PHONE', 'MSG_REGISTER_CAMPAIGN_ERR_PHONE');
-define('MSG_REGISTER_CAMPAIGN_ERR_PTITLE', 'MSG_REGISTER_CAMPAIGN_ERR_PTITLE');
-define('MSG_REGISTER_CAMPAIGN_ERR_PDESC', 'MSG_REGISTER_CAMPAIGN_ERR_PDESC');
-define('MSG_REGISTER_CAMPAIGN_ERR_FDGOAL', 'MSG_REGISTER_CAMPAIGN_ERR_FDGOAL');
-define('MSG_REGISTER_CAMPAIGN_ERR_CDATEP', 'MSG_REGISTER_CAMPAIGN_ERR_CDATEP');
-define('MSG_REGISTER_CAMPAIGN_ERR_USERNAME', 'MSG_REGISTER_CAMPAIGN_ERR_USERNAME');
-define('MSG_REGISTER_CAMPAIGN_ERR_USERNAMEEXIST', 'MSG_REGISTER_CAMPAIGN_ERR_USERNAMEEXIST');
-define('MSG_REGISTER_CAMPAIGN_ERR_URL', 'MSG_REGISTER_CAMPAIGN_ERR_URL');
-define('MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL', 'MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL');
-define('MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL', 'MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL');
-define('MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE', 'MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE');
-define('MSG_REGISTER_CAMPAIGN_ERR_BANERFILE', 'MSG_REGISTER_CAMPAIGN_ERR_BANERFILE');
-define('MSG_REGISTER_CAMPAIGN_ERR_PIN', 'MSG_REGISTER_CAMPAIGN_ERR_PIN');
-define('MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS', 'You need to read and check the terms and conditions before you can save your campaign');
+define('MSG_REGISTER_CAMPAIGN_ERR_NAME', 'The Full Name field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME', 'The Company Name field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_ADDRESS', 'The Address field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_CITY', 'The City field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_ZIP', 'The Zip Code field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PHONE', 'The Phone field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PTITLE', 'The Project Title field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PDESC', 'The Short Description field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_FDGOAL', 'The Found Rising Goal field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_CDATEP', 'The Date field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_USERNAME', 'The Project Url field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_USERNAMEEXIST', 'The Project Url already exists');
+define('MSG_REGISTER_CAMPAIGN_ERR_URL', 'The Web Address field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL', 'The Facebook Page field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL', 'The Twitter Page field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE', 'The Logo file is not correct');
+define('MSG_REGISTER_CAMPAIGN_ERR_BANERFILE', 'The Logo file is not correct');
+define('MSG_REGISTER_CAMPAIGN_ERR_PIN', 'The banner field vas not completed correctly');
 define('MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS', 'You need to read and check the terms and conditions before you can save your campaign');
 
 

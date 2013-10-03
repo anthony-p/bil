@@ -1,4 +1,63 @@
 <?php
+// member area - account details validation
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME', 'The First Name field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME', 'The Last Name field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION', 'The Organization field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS', 'The Address field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY', 'The City field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE', 'The State field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP', 'The Zip Code field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PHONE', 'The Phone field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EMAIL', 'The Email field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL', 'The Confirm Email field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL', 'The Confirm Email field vas not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN', 'The Registration Pin field vas not completed correctly');
+
+define('MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO', 'The Amount must be above zero');
+
+// new campaigm validation messages
+define('MSG_REGISTER_CAMPAIGN_ERR_STATE','The State field vas not completed correctly');
+
+// campaign edit - delete rewards confirmation
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE', 'Delete Reward Confirm');
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG', 'MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG');
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK', 'Delete');
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_CANCEL', 'Cancel');
+
+// campaign page - post comment
+define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_OK', 'Yes, POST my comment now');
+define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_CANCEL', 'Nevermind, cancel');
+define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_TITLE', 'Comment Confirm');
+define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_MSG', 'Choosing POST will make your comment instantly public');
+
+// member area - edit campaign - post update
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK', 'Yes, POST my comment now');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL', 'Nevermind, cancel');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE', 'POST Confirm');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG', 'Choosing POST will make your comment instantly public');
+
+// new campaigm validation messages
+define('MSG_REGISTER_CAMPAIGN_ERR_CDAYSP', "Sorry, you can&#39;t run your campaign backwards. Use a positive integer!");
+define('MSG_REGISTER_CAMPAIGN_ERR_NAME', 'The Full Name field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME', 'The Company Name field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_ADDRESS', 'The Address field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_CITY', 'The City field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_ZIP', 'The Zip Code field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PHONE', 'The Phone field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PTITLE', 'The Project Title field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PDESC', 'The Short Description field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_FDGOAL', 'The Found Rising Goal field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_CDATEP', 'The Date field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_USERNAME', 'The Project Url field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_USERNAMEEXIST', 'The Project Url already exists');
+define('MSG_REGISTER_CAMPAIGN_ERR_URL', 'The Web Address field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL', 'The Facebook Page field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL', 'The Twitter Page field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE', 'The Logo file is not correct');
+define('MSG_REGISTER_CAMPAIGN_ERR_BANERFILE', 'The Logo file is not correct');
+define('MSG_REGISTER_CAMPAIGN_ERR_PIN', 'The banner field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS', 'You need to read and check the terms and conditions before you can save your campaign');
+
 define ('MSG_MM_ABOUT_ME', 'Sobre mí');
 define ('MSG_MM_VIEW', 'Ver');
 define ('MSG_FEATURED_LOCALAUCTIONS', 'Compras locales: subastas destacadas de seguidores locales');
