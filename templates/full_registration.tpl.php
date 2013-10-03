@@ -662,6 +662,14 @@ function fetchstate($statecode){
         <td class="contentfont"><input name="password2" type="password" autocomplete="off" id="password2" size="40" maxlength="20" onkeyup="checkPass();" />
             <img src="<?=(isset($path_relative))?$path_relative:'';?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="pass_img" align="absmiddle" style="display:none;" /></td>
     </tr>
+    <tr>
+        <td  class="contentfont"><?=MSG_OLD_PASS;?> *
+        </td>
+        <td class="contentfont">
+            <input name="old_password" type="password" class="contentfont" autocomplete="off"
+                   id="old_password" size="40" maxlength="20" />
+        </td>
+    </tr>
 </table>
 <?=$custom_sections_table;?>
 <? if (defined('IN_ADMIN') && IN_ADMIN == 1) { ?>

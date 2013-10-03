@@ -7,6 +7,9 @@
 ## (Mods-Store) -> Shopping Cart											##
 #################################################################
 
+
+define ('GMSG_INCORRECT_PASSWORD', 'Incorrect Password');
+
 define ('LANG_CODEPAGE', 'utf-8');
 
 define ('GMSG_LOGIN_SECURELY', 'Login Securely');
