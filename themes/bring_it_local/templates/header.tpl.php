@@ -27,7 +27,7 @@ global $coupon_url;
 
     <link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css">
 <!--    <script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>-->
-
+    <script type="text/javascript" src="/scripts/swfupload/swfupload.js"></script>
     <script type="text/javascript" src='/scripts/jquery/jquery-1.9.1.js'></script>
     <script type="text/javascript" src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 

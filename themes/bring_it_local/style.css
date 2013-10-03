@@ -2601,7 +2601,7 @@ header .innerContainer  .topNav a.last{background:none !important;}
 header .innerContainer  .topNav a:hover{color:#fff;}
 header .innerContainer  .topNav form{float:left;}
 header .innerContainer  .topNav input{float:left; height:29px; border:0;width:107px;text-transform:capitalize; margin-left:16px; background:url("img/search.png") 0 0;
-    padding:0 30px 0 13px;font:13px/29px OpenSans-SemiBold; color:#222222;}
+  font:13px/29px OpenSans-SemiBold; color:#222222;}
 header .innerContainer  .topNav .np_search input{width:150px;}
 header .innerContainer  .topNav button{float:left; height:29px; border:0;width:30px; background: url("img/input-search.png") right no-repeat; cursor: pointer;}
 header .innerContainer nav ul li.level a{background: url("img/down_arrow.png") right 9px no-repeat; padding-right: 16px; display: inline-block;}

@@ -21,7 +21,7 @@ global $coupon_url;
     <link href="/themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
     <link href="/themes/responsive.css" rel="stylesheet" type="text/css">
 
-
+    <script type="text/javascript" src="/scripts/swfupload/swfupload.js"></script>
     <script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
     <script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 
