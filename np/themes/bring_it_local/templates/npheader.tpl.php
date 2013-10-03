@@ -10,7 +10,8 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 global $coupon_url;
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
     <title><?php echo $page_title; echo (isset($page_specific_title))?$page_specific_title:'' ;?></title>
@@ -67,7 +68,12 @@ global $coupon_url;
                 testMode: true
             });
 
+
+            $(".myCampaigs .list li:odd").addClass("odd");
             $(".list li:last-child").addClass("last");
+            $(".rows-list li:last-child").addClass("last");
+            $(".announcement > .post:first-child").addClass("first");
+            $(".member-menu > li:last-child").addClass("last")
         });
 
     </script>
@@ -149,7 +155,7 @@ global $coupon_url;
      * � 2012 Bitstream Inc
     */
     -->
-    <link rel="stylesheet" type="text/css" href="webfonts/MyFontsWebfontsKit.css">
+<!--    <link rel="stylesheet" type="text/css" href="webfonts/MyFontsWebfontsKit.css">-->
 </head>
 <body id="<?=isset($GLOBALS['body_id'])?$GLOBALS['body_id']:0?>">
 <div id="outerContainer">
