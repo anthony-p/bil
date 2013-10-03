@@ -221,7 +221,7 @@ span.error{
 .account-row.enter-pin{width:450px; margin: 10px 0;}
 .account-row .img-pin{float:right; width:130px; height:20px; clear: none;}
 .account-row input[type="checkbox"]{width: 16px; margin-right: 10px;}
-#steps form #form_register_proceed{float:right;padding: 5px !important;font:bold 10px/16px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: uppercase;cursor: pointer; border:0!important;  background: #7eb041;}
+#steps form #form_register_proceed{float:right;padding: 5px !important;font:bold 13px/16px "OpenSans-Light";    display: block;  letter-spacing: .025em;  text-align: center;  color: #fff; text-transform: uppercase;cursor: pointer; border:0!important;  background: #7eb041;}
 .pitch-tab .next {float:left;}
 #steps form .border .reguser input{margin-right: 10px;}
 .terms_conditions{font: 14px "OpenSans-Bold"; color:#333;}
