@@ -288,7 +288,7 @@ if (is_dir('install'))
 #ob_start();
 ?>
 	
-	<script type="text/javascript" src="/scripts/swfupload/swfupload.js"></script>
+<!--	<script type="text/javascript" src="/scripts/swfupload/swfupload.js"></script>-->
 	
 
 <?
