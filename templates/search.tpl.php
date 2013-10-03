@@ -38,6 +38,20 @@ include_once('includes/grab_video_thumbnail.php');
 <script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
 <script>
 
+    function select(order, obj)
+    {
+        var orderSelected = $(obj).attr('rel');
+        console.log(orderSelected);
+        $element = $('#order_result');
+        $options = $element.find('option');
+        $wanted_element = $options.filter(function () {
+            return $(this).val() == orderSelected || $(this).text() == orderSelected
+        });
+        console.log($wanted_element);
+        $wanted_element.attr("selected", true);
+
+        $("#search_by_name").submit();
+    }
 
     jQuery(document).ready(function(){
 
@@ -51,6 +65,8 @@ include_once('includes/grab_video_thumbnail.php');
             }
         });
 
+
+
     });
 
 </script>
@@ -59,11 +75,11 @@ include_once('includes/grab_video_thumbnail.php');
 <form id="search_by_name" accept="#">
         <select id="order_result" name="names" class="changeMe">
             <option value="0" selected="selected" class="order">Sort by</option>
-            <option value="ASC" class="order">Date asc</option>
-            <option value="DESC" class="order">Date desc</option>
+            <option value="ASC" <?php if ($order == "ASC") echo 'selected';?> class="order">Date asc</option>
+            <option value="DESC" <?php if ($order == "DESC") echo 'selected';?> class="order">Date desc</option>
         </select>
   <div class="search-input">
-      <input type="text" value="" placeholder="Find by name" name="keyword">
+      <input type="text" value="<?php if(!empty($keyword)) echo $keyword;?>" placeholder="Find by name" name="keyword">
       <button type="submit"></button>
   </div>
 </form>
