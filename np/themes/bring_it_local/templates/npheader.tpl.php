@@ -16,6 +16,7 @@ global $coupon_url;
     <title><?php echo $page_title; echo (isset($page_specific_title))?$page_specific_title:'' ;?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <?=$page_meta_tags;?>
     <link rel="shortcut icon" href="http://www.bringitlocal.com/images/favicon.ico" />
     <link href="/themes/<?=$setts['default_theme'];?>/style.css" rel="stylesheet" type="text/css">
