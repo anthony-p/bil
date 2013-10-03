@@ -10,7 +10,6 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 global $coupon_url;
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
     <title><?php echo $page_title; echo (isset($page_specific_title))?$page_specific_title:'' ;?></title>
