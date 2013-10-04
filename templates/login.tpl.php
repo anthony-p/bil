@@ -32,13 +32,12 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                <?=$setts['sitename'];?>
                <?=MSG_USER?>?
            </h2>
-
            <form action="<?=($setts['enable_enhanced_ssl']) ? $setts['site_path_ssl'] : SITE_PATH;?>login.php" method="post">
                <input type="hidden" name="operation" value="submit">
                <input type="hidden" name="redirect" value="<?=$redirect;?>">
                <input type="hidden" name="sc_id" value="<?=$sc_id;?>">
                <div class="form-row">
-                   <input name="email" type="text" id="email" placeholder="<?=MSG_EMAIL_ADDRESS?>" class="text">
+                   <input name="email" type="text" id="email" placeholder="<?=MSG_EMAIL_ADDRESS?>" value="<?=$_COOKIE['probid_username_cookie']?>" class="text">
                </div>
                <div class="form-row">
                    <input name="password" type="password" id="password" placeholder="<?=MSG_PASSWORD?>" class="text" />
