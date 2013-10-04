@@ -70,15 +70,18 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
 <ul class="member-menu">
 <? if ($member_active == 'Active') { ?>
     <li <?php if ($selected_section == 'my_profile'): ?> class="active" <?php endif; ?>>
+        <div>
         <a href="/account,page,main,section,members_area"><?=MSG_MM_PROFILE?></a>
          <ul>
              <li><a href="<?=process_link('members_area', array('page' => 'account', 'section' => 'editinfo'));?>"><?=MSG_MM_PERSONAL_INFO;?></a></li>
 <!--             <li><a href="--><?//=process_link('members_area', array('page' => 'account', 'section' => 'management'));?><!--">--><?//=MSG_MM_MANAGE_ACCOUNT;?><!--</a></li>-->
-             <li><a href="javascript:void(0)"><?=MSG_MM_ABOUT_ME?></a>
-                 <ul>
-                    <li><a href="/about_me,page,edit,section,members_area"><?=MSG_MM_EDIT?></a></li>
-                    <li><a href="/about_me,page,view,section,members_area"><?=MSG_MM_VIEW?></a></li>
-                 </ul>
+             <li>
+                     <a href="javascript:void(0)"><?=MSG_MM_ABOUT_ME?></a>
+                     <ul>
+                         <li><a href="/about_me,page,edit,section,members_area"><?=MSG_MM_EDIT?></a></li>
+                         <li><a href="/about_me,page,view,section,members_area"><?=MSG_MM_VIEW?></a></li>
+                     </ul>
+
              </li>
 <?php /*
              <li><a href="javascript:void(0)"><?=MSG_MESSAGES?></a>
@@ -103,27 +106,30 @@ $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email =
             <!--            <li><a href="/lilian.codreanu@gmail.com" target="_blank"> Your public landing page </a></li>-->
             <!--            <li><a href="/np/toolkit.doc" target="_blank"> Toolkit - download as word doc </a></li>-->
 <!--            <li><a href="/widget,page,view,section,members_area#8ec3489f027e" target="_blank"> Widget </a></li>-->
-        </ul>
+        </ul></div>
     </li>
 
 <!--<li><a href="--><?//=process_link('members_area', array('page' => 'summary'));?><!--">--><?//=MSG_MM_SUMMARY;?><!--</a></li>-->
     <li <?php if ($selected_section == 'my_campaigns'): ?> class="active" <?php endif; ?>>
+        <div>
         <a href="/campaigns,page,main,section,members_area#8ec3489f027e"><?=MSG_MY_CAPMAIGNS?></a>
         <ul>
             <li><a href="/np/npregister.php"><?=MSG_NEW_CAPMAIGN?></a></li>
             <li><a href="/campaigns,page,drafts,section,members_area#8ec3489f027e"><?=MSG_DRAFTS_CAPMAIGNS?></a></li>
             <li><a href="/campaigns,page,live,section,members_area#8ec3489f027e"><?=MSG_LIVE_CAPMAIGNS?></a></li>
             <li><a href="/campaigns,page,closed,section,members_area#8ec3489f027e"><?=MSG_CLOSED_CAPMAIGNS?></a></li>
-        </ul>
+        </ul></div>
     </li>
     <li <?php if ($selected_section == 'my_contributions'): ?> class="active" <?php endif; ?>>
         <a href="/contributions,page,main,section,members_area#8ec3489f027e"><?=MSG_MY_CONTRIBUTIONS?></a>
     </li>
     <li <?php if ($selected_section == 'my_earnings'): ?> class="active" <?php endif; ?>>
+        <div>
         <a href="/earnings,page,main,section,members_area#8ec3489f027e"><?= MSG_MY_EARNINGS ?></a>
 		<ul>
             <li><a href="/earnings,page,summary,section,members_area#8ec3489f027e"><?=MSG_MY_EARNINGS_SUMMARY?></a></li>
         </ul>
+            </div>
     </li>
     <li <?php if ($selected_section == 'my_clone_campaigns'): ?> class="active" <?php endif; ?>>
         <a href="/clone_campaigns,page,main,section,members_area#8ec3489f027e"><?=MSG_MY_CLONE_CAMPAIGNS ?></a>
