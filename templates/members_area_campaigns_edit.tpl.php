@@ -1622,54 +1622,53 @@ function clearBannerContent()
                 <label><?=MSG_ACTIVITY_STATUS;?> *</label>
                 <!--            <input type="text" name="founddrasing_goal" value="500" id="founddrasing_goal" >-->
                 <!--            <div class="clear"></div>-->
-                <div class="radio">
-                    <input type="radio" name="active" value="0"
-                        <?php echo (isset($campaign["active"]) && ($campaign["active"] == 0)) ? "checked" : ''; ?>>
-                    <label><?=MSG_ACTIVITY_STATUS_DRAFT?></label>
-					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP?>" style="margin-left: 10px;">
-                </div>
-                <div class="radio">
-                    <input type="radio" name="active" value="1" <?php echo (isset($campaign["active"]) && ($campaign["active"] == 1)) ? "checked" : ''; ?>>
-                    <label><?=MSG_ACTIVITY_STATUS_LIVE?></label>
-                </div>
-                <div class="radio">
-                    <input type="radio" name="active" value="2"
-                        <?php echo (isset($campaign["active"]) && ($campaign["active"] == 2)) ? "checked" : ''; ?>>
-                    <label><?=MSG_ACTIVITY_STATUS_CLOSED?></label>
-                </div>
+
+                    <div class="radio">
+                        <input type="radio" name="active" value="0"
+                            <?php echo (isset($campaign["active"]) && ($campaign["active"] == 0)) ? "checked" : ''; ?>>
+                        <label><?=MSG_ACTIVITY_STATUS_DRAFT?></label>
+                        <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP?>" style="margin-left: 10px;">
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="active" value="1" <?php echo (isset($campaign["active"]) && ($campaign["active"] == 1)) ? "checked" : ''; ?>>
+                        <label><?=MSG_ACTIVITY_STATUS_LIVE?></label>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="active" value="2"
+                            <?php echo (isset($campaign["active"]) && ($campaign["active"] == 2)) ? "checked" : ''; ?>>
+                        <label><?=MSG_ACTIVITY_STATUS_CLOSED?></label>
+                    </div>
+
             </div>
-            <div class="account-row">
+            <div class="account-row campaign-cron">
                 <label><?=MSG_CRON_CONFIG?></label>
 
-                <div class="radio">
+                <div class="radio extend-params">
                     <input type="radio" name="clone_campaign" value="2"
                         <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 2)) ? "checked" : ''; ?>>
-                    <label><?=MSG_EXTENDS_DATE_EXISTING_CAMPAIGN?></label>
+                    <label><?=MSG_EXTENDS_DATE_EXISTING_CAMPAIGN?></label><input type="checkbox" name="keep_alive" id="keep_alive" value="1"
+                        <?php echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?> /> <input type="text" name="keep_alive_days" id="keep_alive_days"
+                                                                                  value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>" />
+                    <label><?=MSG_DAYS?></label>
 					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
                 </div>
-                <div class="input_row">
-                    <input type="text" name="keep_alive_days" id="keep_alive_days"
-                           value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>" />
-                    <label><?=MSG_DAYS?></label>
-                    <input type="checkbox" name="keep_alive" id="keep_alive" value="1"
-                        <?php echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?> />
+
+                <div class="radio">
+                    <input type="radio" name="clone_campaign" value="1"
+                        <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 1)) ? "checked" : ''; ?>>
+                    <label><?=MSG_CLONE_CAMPAIGN?></label>
+                    <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
                 </div>
-
+                <div class="radio">
+                    <input type="radio" name="clone_campaign" value="0"
+                        <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 0)) ? "checked" : ''; ?>>
+                    <label><?=MSG_LET_CAMPAIGN_CLOSE?></label>
+                    <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_LET_CAMPAIGN_CLOSE?>" style="margin-left: 10px;">
+                </div>
             </div>
 
-            <div class="clear"></div>
-            <div class="radio">
-                <input type="radio" name="clone_campaign" value="1"
-                    <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 1)) ? "checked" : ''; ?>>
-                <label><?=MSG_CLONE_CAMPAIGN?></label>
-                <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
-            </div>
-            <div class="radio">
-                <input type="radio" name="clone_campaign" value="0"
-                    <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 0)) ? "checked" : ''; ?>>
-                <label><?=MSG_LET_CAMPAIGN_CLOSE?></label>
-                <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_LET_CAMPAIGN_CLOSE?>" style="margin-left: 10px;">
-            </div>
+
+
 
             <div class="next">
                 <input type="button" onclick="prevStepShow('p_projectStatus')" value="<?=MSG_PREV?>" class="next_btn" />
