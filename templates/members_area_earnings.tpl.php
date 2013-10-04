@@ -11,7 +11,7 @@
         <?php foreach ($info_earning_campaigns as $_campaign) : ?>
             <tr>
                 <td>
-                    <?=date("m-d-Y H:m" , $_campaign["created_at"])?>
+                    <?=date("m-d-Y H:i" , $_campaign["created_at"])?>
                 </td>
                 <td>
                     <?=$_campaign['project_title']?>
