@@ -7,7 +7,7 @@ a:hover {text-decoration:none;}
 img{border:0;}
 ul,ol{list-style:none;}
 h1, h2, h3, h4, h5, p, form {
-    margin: 0px;
+    margin: 0;
 }
 /*header img{ width:100%;}*/
 input{outline: none;}
@@ -16,7 +16,7 @@ input{outline: none;}
     line-height: 0;
     height: 0;}
 
-.clearfix:after, .clfix:after {
+.clearfix:after, .clrfix:after {
     content: ".";
     display: block;
     clear: both;
@@ -2738,11 +2738,12 @@ h2.resp-accordion:first-child { border-top: 1px solid #c1c1c1 !important;}
 .resp-tab-content aside.social ul li{display: inline-block; float:left; margin-left: 25px;height:20px;}
 .resp-tab-content aside.social ul li.buttons a{display: block;}
 .resp-tab-content aside.social ul li.buttons a span{ border: 1px solid #cfcfcf; display:block;border-radius:4px;background: url("img/asside_btn.png") 0 0; font:12px/18px "OpenSans-SemiBold"; padding: 0 25px; text-transform: uppercase; color:rgb(173, 173, 173); text-shadow: 0 0 1px rgba(116, 114, 114,0.5);}
-.resp-tab-content aside.info{ width:100%;  }
+.resp-tab-content aside.info{ width:100%;}
+.info h1, .info h2, .info h3 {margin-bottom:1em}
 .resp-tab-content aside.info div.inner {padding:13px 25px 12px 30px;}
-.resp-tab-content aside.info p{font: 16px/20px "OpenSans"; color:#000;}
+.resp-tab-content aside.info p{font: 1.1em/1.5em "OpenSans"; color:#000;}
 .resp-tab-content aside.donation div{padding:0;float:none;}
-.resp-tab-content aside.donation p{float:left; width:310px; font:14px/20px "OpenSans-SemiBold"; color:#000;margin:20px 0 0 35px;}
+.resp-tab-content aside.donation p{float:left; width:310px; font:14px/20px "OpenSans-SemiBold"; color:#000;margin:16px 18px 16px 30px}
 .resp-tab-content aside.donation p span{text-shadow:0 0 1px rgb(190, 190, 190);}
 .resp-tab-content aside.donation a{width:240px;float:right;background: #f21b43; border-radius: 10px;  box-shadow: inset 0px 0px 5px rgba(53, 48, 48, 0.5);padding: 12px 0 15px 0; }
 .resp-tab-content aside.donation a span{font: 12px/17px "OpenSans";width: 100%; display: block; letter-spacing: .025em; text-align: center; color: #fff; text-transform: none; text-shadow: 0px 0px 1px #f98da1;}
@@ -2759,21 +2760,21 @@ h2.resp-accordion:first-child { border-top: 1px solid #c1c1c1 !important;}
 
 /*update tab*/
 .resp-tab-content aside.announcement{margin: 0;padding: 30px 0 10px;}
-.resp-tab-content aside.announcement div.inner{padding: 0px 30px 0 ;}
+.resp-tab-content aside.announcement div.inner{padding: 0 30px 0 ;}
 .resp-tab-content aside.announcement span{color:#1f1f1f;font:14px "OpenSans-SemiBold"; float:left;padding-left:9px; background: url("img/border-up.png") 0 3px  no-repeat; clear: right;}
 .resp-tab-content aside.announcement a{color: #0077c0; font:14px "OpenSans"; float:left;margin-right:7px;}
 .resp-tab-content aside.announcement p{font:15px/21px "OpenSans"; color:#1f1f1f;}
 .resp-tab-content aside.announcement .post a{margin: 0; float: none; line-height: 24px;}
-.resp-tab-content aside.announcement .post{float:left;width: 100%;padding:10px 0 20px 0; border-top:1px solid #cccccc;}
+.resp-tab-content aside.announcement .post{width: 100%;padding:10px 0 20px 0; border-top:1px solid #cccccc;}
 .resp-tab-content aside.announcement .post.first{border:0;}
-.resp-tab-content aside.announcement .user-photo{float:left; width:50px;margin-top: 7px}
-.resp-tab-content aside.announcement .posted-mess{float:left;width:494px;}
+.resp-tab-content aside.announcement .user-photo{ width:50px;margin:0 10px 10px 0; float:left; }
+.resp-tab-content aside.announcement .posted-mess{margin-left:70px}
 
 /*comments*/
 aside.announcement h3{font:15px "OpenSans-SemiBold" ; color:#7eb041; text-transform: uppercase;}
-aside.announcement .write_post{background:#ececec;width:100%; margin-top: 18px; padding: 15px 0 10px 0; float:left;}
-aside.announcement .write_post .user-photo{margin: 0 15px;}
-aside.announcement .write_post form{float:left; width:465px;padding-right: 15px;}
+aside.announcement .write_post{background:#ececec;width:auto; margin-top: 18px; padding: 15px; }
+aside.announcement .write_post .user-photo{margin: 0 0 1em;float:none;}
+aside.announcement .write_post form{width:465px;padding-right: 15px;}
 aside.announcement .write_post form textarea{width:463px;height:113px;margin-bottom: 10px;}
 aside.announcement .write_post form label{font:12px/14px "OpenSans-SemiBold"; color:#666666;margin-left: 10px;}
 aside.announcement .write_post form input[type="submit"]{white-space: nowrap;float: right; background: #272727; color:#fff; border: 0; border-radius: 4px; font:15px/29px "OpenSans-SemiBold";padding: 0 20px;text-transform: uppercase; cursor: pointer;}
