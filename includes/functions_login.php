@@ -209,9 +209,16 @@ function logout ($logout_admin = false, $redirect = true, $logout_pps = true)
 		$session->unregister('username');
 		$session->unregister('user_id');
 		$session->unregister('is_seller');
-		$session->unregister('remember_username');
+        $username_cookie = $session->cookie_value('username_cookie');
+        if (!empty($username_cookie)) {
+            $session->unregister('remember_username');
+        } else {
+            $session->unset_cookie('username_cookie');
+            $session->unregister('remember_username');
+        }
 
-		$session->unset_cookie('username_cookie');
+
+
 
 /* commenting out magneto code. eb aug 13 2013
         try{

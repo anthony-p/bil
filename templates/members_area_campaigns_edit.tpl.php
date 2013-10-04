@@ -108,7 +108,7 @@ $(document).ready( function (){
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_STATE; ?></li>';
             err_status = true;
         } else {
-            $("#zip_code").removeClass("error");
+            $("#state").removeClass("error");
         }
         if ($("#phone").val() == '') {
             $("#phone").addClass("error");
