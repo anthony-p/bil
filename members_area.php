@@ -5423,6 +5423,7 @@ else
                     $keep_alive = (isset($_POST["keep_alive"]) && $_POST["keep_alive"]) ? 1 : 0;
                     $keep_alive_days = (isset($_POST["keep_alive_days"]) && $_POST["keep_alive_days"]) ?
                         $_POST["keep_alive_days"] : 0;
+//                    var_dump($_POST["url"]); exit;
 
                     $mysql_update_query = "UPDATE np_users SET
                     project_category='" . $_POST["project_category"] . "',
@@ -5437,9 +5438,9 @@ else
                     time_period='" . $_POST["time_period"] . "',
                     certain_date='" . $certain_date . "',
                     end_date='" . $_POST["end_date"] . "',
-                    url='" . $_POST["url"] . "',
-                    facebook_url='" . $_POST["facebook_url"] . "',
-                    twitter_url='" . $_POST["twitter_url"] . "',
+                    url='" . urlencode($_POST["url"]) . "',
+                    facebook_url='" . urlencode($_POST["facebook_url"]) . "',
+                    twitter_url='" . urlencode($_POST["twitter_url"]) . "',
                     name='" . $_POST["name"] . "',
                     tax_company_name='" . $_POST["tax_company_name"] . "',
                     address='" . $_POST["address"] . "',

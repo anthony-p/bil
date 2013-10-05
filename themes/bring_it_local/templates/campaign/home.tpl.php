@@ -49,9 +49,9 @@
                         <a target="_blank" href="<?php
                         if (isset($compaignData['facebook_url']) && $compaignData['facebook_url']) {
                             if (strpos($compaignData['facebook_url'], 'http') === 0) {
-                                echo $compaignData['facebook_url'];
+                                echo urldecode($compaignData['facebook_url']);
                             } else {
-                                echo 'http://' . $compaignData['facebook_url'];
+                                echo 'http://' . urldecode($compaignData['facebook_url']);
                             }
                         } else {
                             echo '#';
@@ -65,9 +65,9 @@
                     <a target="_blank" href="<?php
                     if (isset($compaignData['twitter_url']) && $compaignData['twitter_url']) {
                         if (strpos($compaignData['twitter_url'], 'http') === 0) {
-                            echo $compaignData['twitter_url'];
+                            echo urldecode($compaignData['twitter_url']);
                         } else {
-                            echo 'http://' . $compaignData['twitter_url'];
+                            echo 'http://' . urldecode($compaignData['twitter_url']);
                         }
                     } else {
                         echo '#';
@@ -89,7 +89,14 @@
                     <!--        </li>-->
                     <?php if (isset($compaignData['url']) && $compaignData['url']): ?>
                 <li>
-                    <a target="_blank" href="http://<? echo $compaignData["url"]; ?>" target="_blank">Website</a>
+                <?php
+                if (strpos($compaignData['url'], 'http') === 0) {
+                    $website_url = urldecode($compaignData['url']);
+                } else {
+                    $website_url = 'http://' . urldecode($compaignData['url']);
+                }
+                ?>
+                    <a target="_blank" href="<? echo urldecode($website_url); ?>" target="_blank">Website</a>
                     <!--            <label></label>-->
                 </li>
             <?php endif; ?>

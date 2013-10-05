@@ -544,8 +544,8 @@ class npuser extends npcustom_field
 			'" . $user_details['orgtype'] . "','" . $user_details['lat'] . "','" . $user_details['lng'] . "',
             '" . $user_details['logo'] . "','" . $user_details['banner'] . "','" . $user_details['user_submitted'] . "',
             '" . $user_details['npverified']	. "', '" . 	$user_details['affiliate']	.
-        "', '" . $user_details['pitch_text']	. "', '" . $user_details['url']	.
-        "', '" . $user_details['facebook_url']	. "', '" . $user_details['twitter_url']	.
+        "', '" . $user_details['pitch_text']	. "', '" . urlencode($user_details['url'])	.
+        "', '" . urlencode($user_details['facebook_url'])	. "', '" . urlencode($user_details['twitter_url'])	.
         "', '" . $user_details['project_category'] . "', '". $user_details['project_title'] .
         "', '" . $user_details['campaign_basic'] . "', '" . $user_details['project_short_description'] .
         "', '" . $user_details['founddrasing_goal'] . "', '" . $user_details['funding_type'] .

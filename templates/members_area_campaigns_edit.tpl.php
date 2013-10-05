@@ -1222,7 +1222,7 @@ function clearBannerContent()
 
                     <label><?=MSG_WEBSITE_ADDRESS_INSTRUCTIONS;?></label>
 
-                    <input name="url" type="text" class="contentfont" id="url" value="<?=$campaign['url'];?>" size="40" />
+                    <input name="url" type="text" class="contentfont" id="url" value="<?=urldecode($campaign['url']);?>" size="40" />
 
                     <span><?=MSG_WEBSITE_ADDRESS_INSTRUCTIONS2;?></span>
 
@@ -1234,7 +1234,7 @@ function clearBannerContent()
 
                     <label><?=MSG_FACEBOOK_PAGE_INSTRUCTIONS;?></label>
 
-                    <input name="facebook_url" type="text" class="contentfont" id="facebook_url" value="<?=$campaign['facebook_url'];?>" size="40" />
+                    <input name="facebook_url" type="text" class="contentfont" id="facebook_url" value="<?=urldecode($campaign['facebook_url']);?>" size="40" />
 
                 </div>
 
@@ -1244,7 +1244,7 @@ function clearBannerContent()
 
                     <label><?=MSG_TWITTER_PAGE_INSTRUCTIONS;?></label>
 
-                    <input name="twitter_url" type="text" class="contentfont" id="twitter_url" value="<?=$campaign['twitter_url'];?>" size="40" />
+                    <input name="twitter_url" type="text" class="contentfont" id="twitter_url" value="<?=urldecode($campaign['twitter_url']);?>" size="40" />
 
             </div>
 
