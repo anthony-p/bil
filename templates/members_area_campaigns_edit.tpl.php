@@ -39,6 +39,7 @@ var regNotEmptyNumbers = /^([\d]+)$/i;
 var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
 var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
 var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
+var regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars = /^([\w\d\sáíóúăşţäößàâçéèêëîïôûùüÿñæœ .-_&]+)$/i;
 var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
 var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
 var err_status = false;
@@ -62,7 +63,7 @@ $(document).ready( function (){
 
 
         // check 1st tab field and if err - focus this tab
-        if ($("#name").val() == '' || !$("#name").val().match(regNotEmptyAlphaNumericWS)) {
+        if ($("#name").val() == '' || !$("#name").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
             $("#name").addClass("error");
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_NAME; ?></li>';
             err_status = true;
@@ -71,7 +72,7 @@ $(document).ready( function (){
         }
 
         if ($("#tax_company_name").val() !== "") {
-            if (!$("#tax_company_name").val().match(regNotEmptyAlphaNumericWS)) {
+            if (!$("#tax_company_name").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
                 $("#tax_company_name").addClass("error");
                 err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME; ?></li>';
                 err_status = true;
@@ -87,7 +88,7 @@ $(document).ready( function (){
         } else {
             $("#address").removeClass("error");
         }
-        if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaWS)) {
+        if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
             $("#city").addClass("error");
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CITY; ?></li>';
             err_status = true;
@@ -127,14 +128,14 @@ $(document).ready( function (){
 
         // check 2nd tab field and if err - focus this tab
 
-        if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaWS) || $("#project_title").val().length > 80) {
+        if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars) || $("#project_title").val().length > 80) {
             $("#project_title").addClass("error");
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PTITLE; ?></li>';
             err_status = true;
         } else {
             $("#project_title").removeClass("error");
         }
-        if ($("#project_short_description").val() == '' || !$("#project_short_description").val().match(regNotEmptyAlphaWS) || $("#project_short_description").val().length > 160) {
+        if ($("#project_short_description").val() == '' || !$("#project_short_description").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars) || $("#project_short_description").val().length > 160) {
             $("#project_short_description").addClass("error");
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PDESC; ?></li>';
             err_status = true;

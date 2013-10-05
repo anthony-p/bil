@@ -597,5 +597,8 @@ define ('MSG_VOTES_NUMBER', 'Votes');
 define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_SUBJECT', 'you received a comment on your Bring It Local campaign');
 define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_BODY', 'Your campaign received a comment. Go here to see what someone said about your campaign:');
 
+define ('MSG_PASSWORD_REQUIRED', 'Password Required');
+define ('MSG_VERIFY_PASSWORD_REQUIRED', 'Verify Password Required');
+
 //define ('', '');
 ?>

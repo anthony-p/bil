@@ -391,4 +391,7 @@ define ('MSG_REWARD_AVAILABLE_NUMBER', 'Nombre disponible');
 define ('MSG_REWARD_ESTIMATED_DELIVERY', 'Livraison estimée le');
 define ('MSG_REWARD_SHIPPING_ADDRESS_REQUIRED', 'Adresse de livraison requise');
 
+define ('MSG_PASSWORD_REQUIRED', 'Password Required');
+define ('MSG_VERIFY_PASSWORD_REQUIRED', 'Verify Password Required');
+
 ?>

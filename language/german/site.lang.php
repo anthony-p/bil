@@ -395,5 +395,8 @@ define ('MSG_LOGO', 'Upload your logogggggg');
 define ('MSG_LOGO_UPLOAD_PROGRESS_TITLE', 'Upload progressgggggg');
 define ('MSG_LOGO_STOP_UPLOAD', 'Stop uploadgggggg');
 
+define ('MSG_PASSWORD_REQUIRED', 'Password Required');
+define ('MSG_VERIFY_PASSWORD_REQUIRED', 'Verify Password Required');
+
 //define ('', 'gggggg');
 ?>
