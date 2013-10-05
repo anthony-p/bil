@@ -473,16 +473,21 @@ class formchecker extends database
 	// check whether input is a valid phone number (numbers and . , ( ) - allowed only)
 	function is_phone($value, $msg)
 	{
-		$pattern = "/^[^a-zA-Z]/";
-		if(preg_match($pattern, $value))
+//		$pattern = "/^[^a-zA-Z]/";
+		$pattern = "/(\d{1,7})\d{5,15}/";
+        $phone = str_replace(array(' ', '-'), '', $value);
+		if(preg_match($pattern, $phone))
 		{
-			return true;
+            $phone = trim($phone, '(');
+            $phone = explode(')', $phone);
+            if (isset($phone[0]) && !preg_match("/\D/", $phone[0]) &&
+                isset($phone[1]) && !preg_match("/\D/", $phone[1])) {
+                return true;
+            }
 		}
-		else
-		{
-			$this->error_list[] = array("value" => $value, "msg" => $msg);
-			return false;
-		}
+
+        $this->error_list[] = array("value" => $value, "msg" => $msg);
+        return false;
 	}
 	
 	// fulltext search for duplicate fields - still need some kind of workaround because short email addresses dont work

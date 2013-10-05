@@ -36,7 +36,7 @@ if (isset($frmchk_details['organization']) && $frmchk_details['organization']) {
 //$fv->check_box($frmchk_details['state'], MSG_STATE, array('field_empty', 'field_html'));
 //$fv->check_box($frmchk_details['zip_code'], MSG_ZIP_CODE, array('field_empty', 'field_html'));
 
-/*
+
 if (!$frmchk_user_edit)
 {
 	$fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html', 'is_phone'));
@@ -46,7 +46,7 @@ else
 {
 	$fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html', 'is_phone'));
 }
-
+/*
 if (!$frmchk_user_edit && IN_ADMIN != 1)
 {
 	$frmchk_birthdate = ($setts['birthdate_type'] == 1) ? mktime(0, 0, 0, 1, 1, intval($frmchk_details['birthdate_year'])) : mktime(0, 0, 0, intval($frmchk_details['dob_month']), intval($frmchk_details['dob_day']), intval($frmchk_details['dob_year']));
@@ -98,7 +98,7 @@ $fv->check_box($frmchk_details['email'], MSG_EMAIL_ADDRESS, array('is_email_addr
     $fv->check_box($frmchk_details['username'], MSG_CREATE_USERNAME, array('field_empty', 'field_html'));
 }*/
 
-if (!$frmchk_user_edit || !empty($frmchk_details['password']))
+if (!$frmchk_user_edit || !empty($frmchk_details['password']) || !empty($frmchk_details['password2']))
 {
     $fv->check_box($frmchk_details['password'], MSG_CREATE_PASS, array('within_length', 'pass_confirm'), $_POST['password2'], MSG_VERIFY_PASS);
 }
