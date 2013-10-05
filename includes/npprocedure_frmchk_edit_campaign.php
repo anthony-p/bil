@@ -50,16 +50,16 @@ if (isset($frmchk_details["logo"]) && $frmchk_details["logo"])
 if (isset($frmchk_details["banner"]) && $frmchk_details["banner"])
     $fv->check_box($frmchk_details['banner'], MSG_BANNER, array('field_image'));
 
-$confirmed_campaign_paypal_email = true;
-//$confirmed_campaign_paypal_email = false;
-//if ((isset($frmchk_details["pg_paypal_email"]) && $frmchk_details["pg_paypal_email"]) ||
-//    (isset($frmchk_details["pg_paypal_first_name"]) && $frmchk_details["pg_paypal_first_name"]) ||
-//    (isset($frmchk_details["pg_paypal_last_name"]) && $frmchk_details["pg_paypal_last_name"]) ||
-//    (isset($frmchk_details["active"]) && ($frmchk_details["active"] === "1" || $frmchk_details["active"] === 1))) {
-//    $confirmed_campaign_paypal_email = $fv->check_box($frmchk_details['pg_paypal_email'], MSG_PG_PAYPAL_EMAIL_ADDRESS, array('field_empty', 'is_paypal_email_address'));
-//    $fv->check_box($frmchk_details['pg_paypal_first_name'], MSG_PG_PAYPAL_FIRST_NAME, array('field_empty'));
-//    $fv->check_box($frmchk_details['pg_paypal_last_name'], MSG_PG_PAYPAL_LAST_NAME, array('field_empty'));
-//}
+//$confirmed_campaign_paypal_email = true;
+$confirmed_campaign_paypal_email = false;
+if ((isset($frmchk_details["pg_paypal_email"]) && $frmchk_details["pg_paypal_email"]) ||
+    (isset($frmchk_details["pg_paypal_first_name"]) && $frmchk_details["pg_paypal_first_name"]) ||
+    (isset($frmchk_details["pg_paypal_last_name"]) && $frmchk_details["pg_paypal_last_name"]) ||
+    (isset($frmchk_details["active"]) && ($frmchk_details["active"] === "1" || $frmchk_details["active"] === 1))) {
+    $confirmed_campaign_paypal_email = $fv->check_box($frmchk_details['pg_paypal_email'], MSG_PG_PAYPAL_EMAIL_ADDRESS, array('field_empty', 'is_paypal_email_address'));
+    $fv->check_box($frmchk_details['pg_paypal_first_name'], MSG_PG_PAYPAL_FIRST_NAME, array('field_empty'));
+    $fv->check_box($frmchk_details['pg_paypal_last_name'], MSG_PG_PAYPAL_LAST_NAME, array('field_empty'));
+}
 
 if ((isset($frmchk_details["username"]) && $frmchk_details["username"]) ||
     (isset($frmchk_details["active"]) &&
