@@ -5,6 +5,17 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+//static content pages
+
+define('MSG_HELP_TOPICS', 'Help');
+define('MSG_TERMS', 'Terms and Conditions');
+define('MSG_CONTACT_US', 'Contact us');
+define('MSG_QUESTION_QUERY', 'Message');
+define('MSG_PIN_CODE', 'Are you human code');
+define('MSG_PRIVACY', 'Privacy policy');
+define('MSG_FAQ_TITLE', 'FAQs');
+define('MSG_ABOUT_US', 'About us');
+
 // member area - account details validation
 define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME', 'The First Name field was not completed correctly');
 define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME', 'The Last Name field was not completed correctly');
