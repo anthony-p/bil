@@ -43,7 +43,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                    <input name="password" type="password" id="password" placeholder="<?=MSG_PASSWORD?>" class="text" />
                </div>
                <div class="form-row check">
-                   <input type="checkbox" name="remember_username" value="1" <?php if(isset($_COOKIE['remember_me'])) {
+                   <input type="checkbox" name="remember_username" value="1" <?php if(isset($_COOKIE['probid_username_cookie'])) {
                        echo 'checked="checked"';
                    }
                    else {
