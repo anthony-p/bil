@@ -5,6 +5,12 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+//click through shopping
+define('MSG_FEATURED_AFFILIATES', 'Featured vendors');
+define('MSG_BROWSE_AFFILIATES', 'Click through and shop - a percent will stay in your community');
+define('MSG_SEARCH_IN_A_CATEGORY', 'Search');
+define('MSG_PARTNER_NAME', 'Vendor name');
+
 //static content pages
 
 define('MSG_HELP_TOPICS', 'Help');
@@ -142,7 +148,7 @@ define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
 define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');
 define('MSG_SEARCH_IN_A_CATEGORY', 'MSG_SEARCH_IN_A_CATEGORY');
 define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
-define('MSG_PARTNER_SUBSCR_INFORMATION', 'Click through here: purchases from any of these vendors will earn money for your non-profit');
+define('MSG_PARTNER_SUBSCR_INFORMATION', 'Click through here: purchases from any of these vendors will earn money for whatever campaign you support');
 define('MSG_PARTNER_PAGINATION_ALL', 'All');
 define('MSG_PARTNER_PERCENT_GIVEBACK', 'Percent giveback');
 define('MSG_PARTNER_BTN_GO', 'GO');
