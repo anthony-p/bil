@@ -53,7 +53,7 @@ $(function() {
 		Also, after sliding, we trigger the focus on the first 
 		input element of the new fieldset
 		If we clicked on the last link (confirmation), then we validate
-		all the fieldsets, otherwise we validate the previous one
+		all the fieldsets, otherwise we validate the previous onesliderTabs
 		before the form slided
 		*/
         $('#steps').stop().animate({
