@@ -95,7 +95,7 @@ if (!empty($keyword)) {
         OR u.last_name LIKE '%{$keyword}%'
         OR u.organization LIKE '%{$keyword}%')";
         if (!empty($order)) {
-            $order_query = " ORDER BY create_date {$order}";
+            $order_query = " ORDER BY c.reg_date {$order}";
             echo $query1.$order_query;
             $sql_query = $db->query($query1.$order_query );
         } else {
@@ -105,9 +105,8 @@ if (!empty($keyword)) {
 } else {
     $query1 = "SELECT * FROM bl2_users JOIN np_users WHERE bl2_users.id = np_users.probid_user_id AND np_users.active <> 0";
     if (!empty($order)) {
-        $order_query = " ORDER BY create_date {$order}";
+        $order_query = " ORDER BY np_users.reg_date {$order}";
         $q = $query1.$order_query;
-        echo $q;
         $sql_query = $db->query($q);
     } else {
         $sql_query = $db->query($query1);
