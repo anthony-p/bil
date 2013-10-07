@@ -5,6 +5,7 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+
 //click through shopping
 define('MSG_FEATURED_AFFILIATES', 'Featured vendors');
 define('MSG_BROWSE_AFFILIATES', 'Click through and shop - a percent will stay in your community');
@@ -16,6 +17,7 @@ define('MSG_PARTNER_NAME', 'Vendor name');
 define('MSG_HELP_TOPICS', 'Help');
 define('MSG_TERMS', 'Terms and Conditions');
 define('MSG_CONTACT_US', 'Contact us');
+define('MSG_CONTACT_EMAIL_SENT_SUCCESS', 'Thanks for sending us your message. Please expect to hear from us shortly.');
 define('MSG_QUESTION_QUERY', 'Message');
 define('MSG_PIN_CODE', 'Are you human code');
 define('MSG_PRIVACY', 'Privacy policy');
