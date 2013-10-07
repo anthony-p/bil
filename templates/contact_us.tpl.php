@@ -37,12 +37,12 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             </b></td>
          <td><input name="email" type="text" class="contentfont" id="email" value="<?=$user_details['email'];?>" size="50" <? echo ($topic_id) ? 'readonly' : '';?>></td>
       </tr>
-      <tr class="c1">
+   <!--   <tr class="c1">
          <td align="right" nowrap><strong>
-            <?=MSG_USERNAME;?>
+            <?/*=MSG_USERNAME;*/?>
             </strong></td>
-         <td><input name="username" type="text" class="contentfont" id="username" value="<?=$user_details['username'];?>" size="50" <? echo ($topic_id) ? 'readonly' : '';?>></td>
-      </tr>
+         <td><input name="username" type="text" class="contentfont" id="username" value="<?/*=$user_details['username'];*/?>" size="50" <?/* echo ($topic_id) ? 'readonly' : '';*/?>></td>
+      </tr>-->
       <tr class="c4">
          <td colspan="2"></td>
       </tr>
