@@ -96,7 +96,6 @@ if (!empty($keyword)) {
         OR u.organization LIKE '%{$keyword}%')";
         if (!empty($order)) {
             $order_query = " ORDER BY c.reg_date {$order}";
-            echo $query1.$order_query;
             $sql_query = $db->query($query1.$order_query );
         } else {
             $sql_query = $db->query($query1);
