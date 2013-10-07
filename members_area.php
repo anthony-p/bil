@@ -5186,7 +5186,11 @@ else
     }
     /*end earning page*/
 
-    if ($page == 'clone_campaigns') /* BEGIN -> CONTRIBUTIONS PAGE */
+
+    /**
+     * this tab is removed because is specificated in task
+     */
+    /*if ($page == 'clone_campaigns')
     {
         if ($section == 'main')
         {
@@ -5222,7 +5226,7 @@ else
             $template->set('members_area_page_content', $members_area_page_content);
 
         }
-    }
+    }*/
 
     if ($page == 'campaigns') /* BEGIN -> CAMPAIGNS PAGE */
     {
