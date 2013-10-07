@@ -262,6 +262,7 @@ define ('MSG_NEWEST_ITEMS_FIRST', 'Elementi pi˘ recenti prima');
 define ('MSG_LOWEST_PRICES_FIRST', 'Prezzo pi˘ basso prima ');
 define ('MSG_RETRIEVE_YOUR_PASSWORD', 'Recupera la tua password');
 define ('MSG_REMEMBER_USERNAME_FORGOT_PASS', 'Ricorda il tuo nome utente, but forgot your password?,');
+define ('MSG_REMEMBER_EMAIL_FORGOT_PASS', 'Ricorda il tuo email, but forgot your password?,');
 define ('MSG_ENTER_YOUR_EMAIL', 'Inserisci il tuo indirizzo e-mail');
 define ('MSG_ENTER_YOUR_USERNAME', 'Inserisci il tuo nome utente');
 define ('MSG_REMEMBER_PASS_FORGOT_USERNAME', 'Ricorda la tua password, but forgot your username? ,');
