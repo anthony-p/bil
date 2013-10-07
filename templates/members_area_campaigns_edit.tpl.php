@@ -1647,9 +1647,11 @@ function clearBannerContent()
                 <div class="radio extend-params">
                     <input type="radio" name="clone_campaign" value="2"
                         <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 2)) ? "checked" : ''; ?>>
-                    <label><?=MSG_EXTENDS_DATE_EXISTING_CAMPAIGN?></label><input type="checkbox" name="keep_alive" id="keep_alive" value="1"
-                        <?php echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?> /> <input type="text" name="keep_alive_days" id="keep_alive_days"
-                                                                                  value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>" />
+                    <label><?=MSG_EXTENDS_DATE_EXISTING_CAMPAIGN?></label>
+<!--                    <input type="checkbox" name="keep_alive" id="keep_alive" value="1"-->
+<!--                        --><?php //echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?><!-- /> -->
+                    <input type="text" name="keep_alive_days" id="keep_alive_days"
+                           value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>" />
                     <label><?=MSG_DAYS?></label>
 					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
                 </div>

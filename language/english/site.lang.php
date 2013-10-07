@@ -144,10 +144,10 @@ define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME', 'Find by name');
 define('MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN', 'Edit Campaign');
 
  // global partners
-define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
-define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');
-define('MSG_SEARCH_IN_A_CATEGORY', 'MSG_SEARCH_IN_A_CATEGORY');
-define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
+//define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
+//define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');
+//define('MSG_SEARCH_IN_A_CATEGORY', 'MSG_SEARCH_IN_A_CATEGORY');
+//define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
 define('MSG_PARTNER_SUBSCR_INFORMATION', 'Click through here: purchases from any of these vendors will earn money for whatever campaign you support');
 define('MSG_PARTNER_PAGINATION_ALL', 'All');
 define('MSG_PARTNER_PERCENT_GIVEBACK', 'Percent giveback');
