@@ -36,7 +36,7 @@ define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL', 'The Confirm Email field was 
 define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL', 'The Confirm Email field was not completed correctly');
 define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN', 'The Registration Pin field was not completed correctly');
 
-define('MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO', 'The Amount must be above zero');
+define('MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO', 'The Amount must be above or equal zero');
 
 // new campaigm validation messages
 define('MSG_REGISTER_CAMPAIGN_ERR_STATE','The State field was not completed correctly');

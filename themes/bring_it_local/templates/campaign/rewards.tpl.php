@@ -50,7 +50,7 @@ global $session;
 			<div class="reward_display">
 				<div class="reward_amount">$<?= $project_reward['amount']; ?></div>
 				<div class="reward_name"><?= $project_reward['name']; ?></div>
-				<div class="reward_description"><?= $project_reward['description']; ?></div>
+				<div class="reward_description"><?= $project_reward['short_description']; ?></div>
 				<div class="reward_bottom">
 					<div class="reward_claimed_number"><?= $project_reward['given_number']; ?> <?= MSG_CLAIMED_NUMBER_LABEL; ?></div>
 		<?php if($compaignData['probid_user_id'] != $session->value('user_id') && $available && $compaignData['active'] != 2 && ($compaignData['end_date']-time())>0) : ?>
