@@ -3381,8 +3381,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .view_campaign_btn:hover{background:#e2193f;}
 .myCampaigs h2{display:block; text-transform: uppercase; padding: 0 0 10px 0; margin-bottom:20px; border-bottom: 3px solid #dedede;font: 18px/29px "OpenSans-SemiBold"; color: #7eb041;}
 .myCampaigs form{float:right; margin:10px 0; display:inline-block;}
-.myCampaigs form .selectME{float:left; width:230px !important;}
-.myCampaigs form .search-input{float:left;}
+.myCampaigs form .selectME{float:right; width:235px !important;}
+.myCampaigs form .search-input{float:left; margin-right: 20px;}
 .myCampaigs form input{float:left; height:24px; border:0;width:150px;text-transform:capitalize; margin-left:16px; background: #fff;
                         border: 1px solid #dedede;  padding:0 30px 0 13px;font:11px/24px OpenSans-SemiBold; color:#222222; border-top-left-radius: 7px; border-bottom-left-radius: 7px;}
 .myCampaigs form button{float:left; height:26px; border:0;width:26px; background:#dedede url("img/input-arrow.png") center no-repeat; cursor: pointer;border-top-right-radius: 16px; border-bottom-right-radius: 16px;}
