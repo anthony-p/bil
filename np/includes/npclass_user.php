@@ -255,7 +255,7 @@ class npuser extends npcustom_field
         $closed_campaigns = array();
         $select_query_result = $this->query(
             "SELECT user_id, reg_date, clone_campaign, deadline_type_value, time_period, certain_date, end_date, keep_alive_days
-            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND (keep_alive=1 OR clone_campaign<>0)"
+            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND clone_campaign<>0"
         );
 
         while ($query_result =  mysql_fetch_array($select_query_result)) {

@@ -33,7 +33,7 @@ class session
 
 	function value($variable)
 	{
-		return $_SESSION[SESSION_PREFIX.$variable];
+		return isset($_SESSION[SESSION_PREFIX.$variable]) ? $_SESSION[SESSION_PREFIX.$variable] : null;
 	}
 
 	function is_set($variable)
