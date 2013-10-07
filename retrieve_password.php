@@ -84,7 +84,7 @@ else
             $template->set('submitted', 1);
 			$template->set('retrieve_password_msg', '<div align="center" class="errormessage">' . MSG_NEW_PASSWORD_EMAILED . '</div>');
 			
-			$mail_input_id = $post_details['username'];
+			$mail_input_id = $post_details['email'];
 			include('language/' . $setts['site_lang'] . '/mails/retrieve_password.php');
 		}
 	}
