@@ -16,7 +16,7 @@ Your password to %2$s has been successfully reset.
 
 Your login details are:
 
-	- email: %3$s
+	- username: %3$s
 	- password: %4$s
 
 Best regards,
