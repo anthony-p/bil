@@ -22,8 +22,6 @@ Your login details are:
 Best regards,
 The %2$s staff';
 
-var_dump($text_message); exit;
-
 ## html message - editable
 $html_message = 'Dear %1$s, <br>
 <br>
