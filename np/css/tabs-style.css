@@ -241,5 +241,5 @@ span.error{
 
 
 
-.account-row span.clear_btn{float:left; clear: none; margin: 0 0 0 15px; cursor: pointer;    background: #92c150;  border: 0; padding: 0 10px;  height: 28px;border-radius: 4px;  font: 11px "OpenSans";
+.account-row span.clear_btn{float:left; clear: none; margin: 3px 0 0 15px; cursor: pointer;    background: #92c150;  border: 0; padding: 0 10px;  height: 28px;border-radius: 4px;  font: 11px/28px "OpenSans";
     color: #fff;   text-shadow: 0px 0px 3px #000;}
