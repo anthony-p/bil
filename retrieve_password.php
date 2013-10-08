@@ -33,10 +33,11 @@ else
 	$template->set('header_message', header5(MSG_RETRIEVE_YOUR_PASSWORD));
 
 	$post_details = $db->rem_special_chars_array($_POST);
-	if ($_REQUEST['operation'] == 'retrieve_password')
+	if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'retrieve_password')
 	{
-		$is_user = $db->count_rows('users', "WHERE username='" . $post_details['username'] . "' AND email='" . $post_details['email'] . "'");
-		
+//		$is_user = $db->count_rows('users', "WHERE username='" . $post_details['username'] . "' AND email='" . $post_details['email'] . "'");
+		$is_user = $db->query("SELECT COUNT(id) FROM bl2_users WHERE email='" . $post_details['email'] . "'");
+
 		if (!$is_user)
 		{
 			$template->set('retrieve_password_msg', '<div align="center" class="errormessage">' . MSG_RETRIEVE_USER_ERROR . '</div>');
@@ -50,8 +51,11 @@ else
 			$salt = $user->create_salt();
 			$password_hashed = password_hash($new_password, $salt);
 
-			$db->query("UPDATE " . DB_PREFIX . "users SET password='" . $password_hashed . "', salt='" . $salt . "' WHERE
-				username='" . $post_details['username'] . "'");
+			$db->query("UPDATE bl2_users SET password='" . $password_hashed . "', salt='" . $salt . "' WHERE
+				email='" . $post_details['email'] . "'");
+
+//			$db->query("UPDATE " . DB_PREFIX . "users SET password='" . $password_hashed . "', salt='" . $salt . "' WHERE
+//				username='" . $post_details['username'] . "'");
 
 /* commenting out magneto code
             global $coupon_http_username;
@@ -80,27 +84,27 @@ else
             $template->set('submitted', 1);
 			$template->set('retrieve_password_msg', '<div align="center" class="errormessage">' . MSG_NEW_PASSWORD_EMAILED . '</div>');
 			
-			$mail_input_id = $post_details['username'];
+			$mail_input_id = $post_details['email'];
 			include('language/' . $setts['site_lang'] . '/mails/retrieve_password.php');
 		}
 	}
-	else if ($_REQUEST['operation'] == 'retrieve_username')
-	{
-		$is_user = $db->count_rows('users', "WHERE email='" . $post_details['email_address'] . "'");
-        echo "ret:".$is_user.$post_details['email_address'];
-		if (!$is_user)
-		{
-			$template->set('retrieve_username_msg', '<div class="errormessage">' . MSG_RETRIEVE_USER_ERROR . '</div>');
-		}
-		else 
-		{
-			$template->set('submitted', 1);
-			$template->set('retrieve_username_msg', '<div class="errormessage">' . MSG_USERNAME_EMAILED . '</div>');
-			
-			$mail_input_id = $post_details['email_address'];
-			include('language/' . $setts['site_lang'] . '/mails/retrieve_username.php');
-		}
-	}
+//	else if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'retrieve_username')
+//	{
+//		$is_user = $db->count_rows('users', "WHERE email='" . $post_details['email_address'] . "'");
+//        echo "ret:".$is_user.$post_details['email_address'];
+//		if (!$is_user)
+//		{
+//			$template->set('retrieve_username_msg', '<div class="errormessage">' . MSG_RETRIEVE_USER_ERROR . '</div>');
+//		}
+//		else
+//		{
+//			$template->set('submitted', 1);
+//			$template->set('retrieve_username_msg', '<div class="errormessage">' . MSG_USERNAME_EMAILED . '</div>');
+//
+//			$mail_input_id = $post_details['email_address'];
+//			include('language/' . $setts['site_lang'] . '/mails/retrieve_username.php');
+//		}
+//	}
 	$template->set('post_details', $post_details);
 
 	$template_output .= $template->process('retrieve_password.tpl.php');

@@ -217,6 +217,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
     var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
     var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
+    var regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars = /^([\w\d\sáíóúăşţäößàâçéèêëîïôûùüÿñæœ .-_&]+)$/i;
     var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
     var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
     var regEmail = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
@@ -234,32 +235,32 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 $(this).removeClass("error");
             });
 
-            if ($("#fname").val() == '' || !$("#fname").val().match(regNotEmptyAlphaNumericWS)) {
+            if ($("#fname").val() == '' || !$("#fname").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
                 $("#fname").addClass("error");
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME; ?></li>';
                 err_status = true;
             }
-            if ($("#lname").val() == '' || !$("#lname").val().match(regNotEmptyAlphaNumericWS)) {
+            if ($("#lname").val() == '' || !$("#lname").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
                 $("#lname").addClass("error");
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME; ?></li>';
                 err_status = true;
             }
-            if ($("#organization").val() !== '' && !$("#organization").val().match(regNotEmptyAlphaNumericWS)) {
+            if ($("#organization").val() !== '' && !$("#organization").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
                 $("#organization").addClass("error");
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION; ?></li>';
                 err_status = true;
             }
-            if ($("#address").val() == '' || !$("#address").val().match(regNotEmptyAlphaNumericWS)) {
+            if ($("#address").val() == '') {
                 $("#address").addClass("error");
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS; ?></li>';
                 err_status = true;
             }
-            if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaNumericWS)) {
+            if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
                 $("#city").addClass("error");
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY; ?></li>';
                 err_status = true;
             }
-            if ($("#state").val() == '' || !$("#state").val().match(regNotEmptyAlphaNumericWS)) {
+            if ($("#state").val() == '' || !$("#state").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
                 $("#state").addClass("error");
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE; ?></li>';
                 err_status = true;
@@ -267,6 +268,16 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             if ($("#postal_code").val() == '') {
                 $("#postal_code").addClass("error");
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP; ?></li>';
+                err_status = true;
+            }
+            if ($("#old_password").val() == '') {
+                $("#old_password").addClass("error");
+                err_msg += '<li><?= MSG_PASSWORD_REQUIRED; ?></li>';
+                err_status = true;
+            }
+            if ($("#password").val() != '' && $("#password2").val() == '') {
+                $("#password2").addClass("error");
+                err_msg += '<li><?= MSG_VERIFY_PASSWORD_REQUIRED; ?></li>';
                 err_status = true;
             }
             if ($("#phone").val() == '') {
@@ -649,7 +660,7 @@ function fetchstate($statecode){
     </tr>
  */ ?>
     <tr>
-        <td  class="contentfont"><?=MSG_CREATE_PASS;?> *
+        <td  class="contentfont"><?=MSG_CREATE_PASS;?>
         </td>
         <td class="contentfont"><input name="password" type="password" class="contentfont" autocomplete="off" id="password" size="40" maxlength="20" <? echo ((defined('IN_ADMIN')) && IN_ADMIN == 1) ? 'onchange="copy_password_value();"' : ''; ?> /></td>
     </tr>
@@ -658,7 +669,7 @@ function fetchstate($statecode){
 			<td><?=MSG_PASSWORD_EXPLANATION;?></td>
 		</tr-->
     <tr>
-        <td  class="contentfont"><?=MSG_VERIFY_PASS;?> *</td>
+        <td  class="contentfont"><?=MSG_VERIFY_PASS;?></td>
         <td class="contentfont"><input name="password2" type="password" autocomplete="off" id="password2" size="40" maxlength="20" onkeyup="checkPass();" />
             <img src="<?=(isset($path_relative))?$path_relative:'';?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="pass_img" align="absmiddle" style="display:none;" /></td>
     </tr>

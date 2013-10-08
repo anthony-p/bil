@@ -1,7 +1,7 @@
 <aside class="announcement user-post">
   <div class="inner">
       <h3><?=MSG_POST_A_COMMENT?></h3>
-      <div class="write_post">
+      <div class="write_post clrfix">
           <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
           <form name="add_comment" method="post" action="/campaign/comments.php">
               <input name="compaign" type="hidden" value="<?=$compaignId?>" />

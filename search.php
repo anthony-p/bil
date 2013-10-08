@@ -91,8 +91,8 @@ switch ($option)
 		break;
 }
 $template->set('search_options_title', $search_options_title);
-var_dump($keyword);
-var_dump($order);
+//var_dump($keyword);
+//var_dump($order);
 $template->set('keyword', $keyword);
 $template->set('order', $order);
 $template->set('campaigns', $campaigns);

@@ -53,7 +53,7 @@ $(function() {
 		Also, after sliding, we trigger the focus on the first 
 		input element of the new fieldset
 		If we clicked on the last link (confirmation), then we validate
-		all the fieldsets, otherwise we validate the previous one
+		all the fieldsets, otherwise we validate the previous onesliderTabs
 		before the form slided
 		*/
         $('#steps').stop().animate({
@@ -72,17 +72,17 @@ $(function() {
 	clicking on the tab (on the last input of each fieldset), makes the form
 	slide to the next step
 	*/
-//	$('#formElem > fieldset').each(function(){
-//		var $fieldset = $(this);
-//		$fieldset.children(':last').find(':input').keydown(function(e){
-//			if (e.which == 9){
-//				$('#navigation li:nth-child(' + (parseInt(current)+1) + ') a').click();
-//				/* force the blur for validation */
-//				$(this).blur();
-//				e.preventDefault();
-//			}
-//		});
-//	});
+	$('#formElem > fieldset').each(function(){
+		var $fieldset = $(this);
+        $fieldset.find(':input').last().keydown(function(e){
+			if (e.which == 9){
+				$('#navigation li:nth-child(' + (parseInt(current)+1) + ') a').click();
+				/* force the blur for validation */
+				$(this).blur();
+				e.preventDefault();
+			}
+		});
+	});
 	
 	/*
 	validates errors on all the fieldsets

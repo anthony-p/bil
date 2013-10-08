@@ -50,6 +50,7 @@ if (isset($frmchk_details["logo"]) && $frmchk_details["logo"])
 if (isset($frmchk_details["banner"]) && $frmchk_details["banner"])
     $fv->check_box($frmchk_details['banner'], MSG_BANNER, array('field_image'));
 
+//$confirmed_campaign_paypal_email = true;
 $confirmed_campaign_paypal_email = false;
 if ((isset($frmchk_details["pg_paypal_email"]) && $frmchk_details["pg_paypal_email"]) ||
     (isset($frmchk_details["pg_paypal_first_name"]) && $frmchk_details["pg_paypal_first_name"]) ||

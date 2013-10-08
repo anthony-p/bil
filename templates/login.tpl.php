@@ -37,13 +37,19 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                <input type="hidden" name="redirect" value="<?=$redirect;?>">
                <input type="hidden" name="sc_id" value="<?=$sc_id;?>">
                <div class="form-row">
-                   <input name="email" type="text" id="email" placeholder="<?=MSG_EMAIL_ADDRESS?>" value="<?=$_COOKIE['probid_username_cookie']?>" class="text">
+                   <input name="email" type="text" id="email" placeholder="<?=MSG_EMAIL_ADDRESS?>" value="<?=isset($_COOKIE['probid_username_cookie']) ? $_COOKIE['probid_username_cookie'] : ''; ?>" class="text">
                </div>
                <div class="form-row">
                    <input name="password" type="password" id="password" placeholder="<?=MSG_PASSWORD?>" class="text" />
                </div>
                <div class="form-row check">
-                   <input type="checkbox" name="remember_username" value="1">
+                   <input type="checkbox" name="remember_username" value="1" <?php if(isset($_COOKIE['probid_username_cookie'])) {
+                       echo 'checked="checked"';
+                   }
+                   else {
+                       echo '';
+                   }
+                   ?>>
                    <label><?=MSG_REMEMBER_ME;?></label>
 
                </div>

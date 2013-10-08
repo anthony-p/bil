@@ -5,24 +5,43 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
-// member area - account details validation
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME', 'The First Name field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME', 'The Last Name field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION', 'The Organization field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS', 'The Address field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY', 'The City field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE', 'The State field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP', 'The Zip Code field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PHONE', 'The Phone field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EMAIL', 'The Email field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL', 'The Confirm Email field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL', 'The Confirm Email field vas not completed correctly');
-define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN', 'The Registration Pin field vas not completed correctly');
 
-define('MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO', 'The Amount must be above zero');
+//click through shopping
+define('MSG_FEATURED_AFFILIATES', 'Featured vendors');
+define('MSG_BROWSE_AFFILIATES', 'Click through and shop - a percent will stay in your community');
+define('MSG_SEARCH_IN_A_CATEGORY', 'Search');
+define('MSG_PARTNER_NAME', 'Vendor name');
+
+//static content pages
+
+define('MSG_HELP_TOPICS', 'Help');
+define('MSG_TERMS', 'Terms and Conditions');
+define('MSG_CONTACT_US', 'Contact us');
+define('MSG_CONTACT_EMAIL_SENT_SUCCESS', 'Thanks for sending us your message. Please expect to hear from us shortly.');
+define('MSG_QUESTION_QUERY', 'Message');
+define('MSG_PIN_CODE', 'Are you human code');
+define('MSG_PRIVACY', 'Privacy policy');
+define('MSG_FAQ_TITLE', 'FAQs');
+define('MSG_ABOUT_US', 'About us');
+
+// member area - account details validation
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME', 'The First Name field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME', 'The Last Name field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION', 'The Organization field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS', 'The Address field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY', 'The City field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE', 'The State field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP', 'The Zip Code field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PHONE', 'The Phone field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EMAIL', 'The Email field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL', 'The Confirm Email field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL', 'The Confirm Email field was not completed correctly');
+define('MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN', 'The Registration Pin field was not completed correctly');
+
+define('MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO', 'The Amount must be above or equal zero');
 
 // new campaigm validation messages
-define('MSG_REGISTER_CAMPAIGN_ERR_STATE','The State field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_STATE','The State field was not completed correctly');
 
 // campaign edit - delete rewards confirmation
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE', 'Delete Reward Confirm');
@@ -43,28 +62,28 @@ define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE', 'POST Confirm');
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG', 'Choosing POST will make your comment instantly public');
 
 // draft explanation message
-define('MSG_DRAFT_CAMPAIGNS_EXPLANATION', '<h3>New campaigns are drafts, they need to be set as LIVE</h3><br />');
+define('MSG_DRAFT_CAMPAIGNS_EXPLANATION', '<h3>New campaigns are drafts, they need to be set as LIVE</h3>Make your campaign live by clicking EDIT and then selecting \'Live\' in the status tab');
 
 // new campaigm validation messages
 define('MSG_REGISTER_CAMPAIGN_ERR_CDAYSP', "Sorry, you can&#39;t run your campaign backwards. Use a positive integer!");
-define('MSG_REGISTER_CAMPAIGN_ERR_NAME', 'The Full Name field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME', 'The Company Name field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_ADDRESS', 'The Address field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_CITY', 'The City field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_ZIP', 'The Zip Code field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_PHONE', 'The Phone field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_PTITLE', 'The Project Title field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_PDESC', 'The Short Description field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_FDGOAL', 'The Found Rising Goal field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_CDATEP', 'The Date field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_USERNAME', 'The Project Url field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_NAME', 'The Full Name field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME', 'The Company Name field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_ADDRESS', 'The Address field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_CITY', 'The City field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_ZIP', 'The Zip Code field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PHONE', 'The Phone field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PTITLE', 'The Project Title field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PDESC', 'The Short Description field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_FDGOAL', 'The fund-raising goal field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_CDATEP', 'The Date field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_USERNAME', 'The Project Url field was not completed correctly');
 define('MSG_REGISTER_CAMPAIGN_ERR_USERNAMEEXIST', 'The Project Url already exists');
-define('MSG_REGISTER_CAMPAIGN_ERR_URL', 'The Web Address field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL', 'The Facebook Page field vas not completed correctly');
-define('MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL', 'The Twitter Page field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_URL', 'The Web Address field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL', 'The Facebook Page field was not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL', 'The Twitter Page field was not completed correctly');
 define('MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE', 'The Logo file is not correct');
 define('MSG_REGISTER_CAMPAIGN_ERR_BANERFILE', 'The Logo file is not correct');
-define('MSG_REGISTER_CAMPAIGN_ERR_PIN', 'The banner field vas not completed correctly');
+define('MSG_REGISTER_CAMPAIGN_ERR_PIN', 'You need to enter a matching pin number before saving your campaign');
 define('MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS', 'You need to read and check the terms and conditions before you can save your campaign');
 
 
@@ -127,11 +146,11 @@ define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME', 'Find by name');
 define('MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN', 'Edit Campaign');
 
  // global partners
-define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
-define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');
-define('MSG_SEARCH_IN_A_CATEGORY', 'MSG_SEARCH_IN_A_CATEGORY');
-define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
-define('MSG_PARTNER_SUBSCR_INFORMATION', 'Click through here: purchases from any of these vendors will earn money for your non-profit');
+//define('MSG_FEATURED_AFFILIATES', 'MSG_FEATURED_AFFILIATES');
+//define('MSG_BROWSE_AFFILIATES', 'MSG_BROWSE_AFFILIATES');
+//define('MSG_SEARCH_IN_A_CATEGORY', 'MSG_SEARCH_IN_A_CATEGORY');
+//define('MSG_PARTNER_NAME', 'MSG_PARTNER_NAME');
+define('MSG_PARTNER_SUBSCR_INFORMATION', 'Click through here: purchases from any of these vendors will earn money for whatever campaign you support');
 define('MSG_PARTNER_PAGINATION_ALL', 'All');
 define('MSG_PARTNER_PERCENT_GIVEBACK', 'Percent giveback');
 define('MSG_PARTNER_BTN_GO', 'GO');
@@ -238,11 +257,11 @@ define ('MSG_CREATE_PROJECT_TITLE', 'Project Title');
 define ('MSG_CREATE_PROJECT_SHORT_DESCRIPTION', 'Short description');
 define ('MSG_CREATE_PROJECT_QUESTION_FOUNDRAISING_GOAL', 'What is your fundraising goal?');
 define ('MSG_WEBSITE_ADDRESS_INSTRUCTIONS', 'Enter your web address<br>(optional)');
-define ('MSG_WEBSITE_ADDRESS_INSTRUCTIONS2', 'Enter your web address in the format - www.myaddress.com');
+define ('MSG_WEBSITE_ADDRESS_INSTRUCTIONS2', 'Enter your web address in the format - http://www.myaddress.com');
 define ('MSG_FACEBOOK_PAGE_INSTRUCTIONS', 'Enter your facebook page<br>(optional)');
 define ('MSG_TWITTER_PAGE_INSTRUCTIONS', 'Enter your twitter page<br>(optional)');
 define ('MSG_LOGO_DESC', 'Upload your logo! (optional) - it will display on your campaign page');
-define ('MSG_ACTIVITY_STATUS', 'Activity status');
+define ('MSG_ACTIVITY_STATUS', '<strong>Set the current status of this campaign:</strong>');
 define ('MSG_ACTIVITY_STATUS_LIVE', 'Live');
 define ('MSG_ACTIVITY_STATUS_DRAFT', 'Draft');
 define ('MSG_ACTIVITY_STATUS_CLOSED', 'Closed');
@@ -285,7 +304,7 @@ define ('MSG_VIEW_CAMPAIGN', 'View Campaign');
 define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account information');
 define ('MSG_ALSO_FIND_ME', ' Also Find Me on');
 define ('MSG_POSTED_A_COMMENT', 'posted a comment');
-define ('MSG_POSTALE_CODE', 'Postale Code');
+define ('MSG_POSTALE_CODE', 'Postal Code');
 define ('MSG_COMMUNITY_CROWDFUNDING', 'Community crowdfunding');
 define ('MSG_DONATIONS_AUCTIONS', 'Donations, auctions, click through shopping');
 define ('MSG_ALL_CAMPAIGNS', 'All Campaigns');
@@ -413,6 +432,7 @@ define ('MSG_NEWEST_ITEMS_FIRST', 'Newest Items First');
 define ('MSG_LOWEST_PRICES_FIRST', 'Lowest Prices First');
 define ('MSG_RETRIEVE_YOUR_PASSWORD', 'Retrieve your Password');
 define ('MSG_REMEMBER_USERNAME_FORGOT_PASS', 'Remember your username, but forgot your password?');
+define ('MSG_REMEMBER_EMAIL_FORGOT_PASS', 'Remember your email, but forgot your password?');
 define ('MSG_ENTER_YOUR_EMAIL', 'Enter your Email Address');
 define ('MSG_ENTER_YOUR_USERNAME', 'Enter your Username');
 define ('MSG_REMEMBER_PASS_FORGOT_USERNAME', 'Remember your password, but forgot your username? ');
@@ -582,10 +602,10 @@ define ('MSG_REWARD_CLAIMING_CONTRIBUTION_AMOUNT_MUST_VALID', 'The contribution 
 define ('MSG_REWARD_CLAIMING_CONTRIBUTION_IS_LESS_THAN_WHAT_IS_REQUIRED', 'The amount you have chosen is less than what is required for this reward which is');
 define ('MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION', 'You can still donate this amount but you will not receive the reward.');
 define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND', 'Would you like to add $5 toward the Community Fund?');
-define ('MSG_EXTENDS_DATE_EXISTING_CAMPAIGN', 'Extends the date of the existing campaign');
+define ('MSG_EXTENDS_DATE_EXISTING_CAMPAIGN', 'Extend the date of the existing campaign for ');
 define ('MSG_CLONE_CAMPAIGN', 'Clone campaign');
-define ('MSG_LET_CAMPAIGN_CLOSE', 'Let this campaign close as schedule');
-define ('MSG_CRON_CONFIG', 'Cron File');
+define ('MSG_LET_CAMPAIGN_CLOSE', 'Let this campaign close on schedule');
+define ('MSG_CRON_CONFIG', '<strong>Set the future status:</strong>');
 
 
 // Vote Us Section
@@ -596,6 +616,9 @@ define ('MSG_VOTES_NUMBER', 'Votes');
 // Mail Section
 define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_SUBJECT', 'you received a comment on your Bring It Local campaign');
 define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_BODY', 'Your campaign received a comment. Go here to see what someone said about your campaign:');
+
+define ('MSG_PASSWORD_REQUIRED', 'Password Required');
+define ('MSG_VERIFY_PASSWORD_REQUIRED', 'Verify Password Required');
 
 //define ('', '');
 ?>

@@ -255,7 +255,7 @@ class npuser extends npcustom_field
         $closed_campaigns = array();
         $select_query_result = $this->query(
             "SELECT user_id, reg_date, clone_campaign, deadline_type_value, time_period, certain_date, end_date, keep_alive_days
-            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND (keep_alive=1 OR clone_campaign<>0)"
+            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND clone_campaign<>0"
         );
 
         while ($query_result =  mysql_fetch_array($select_query_result)) {
@@ -283,7 +283,8 @@ class npuser extends npcustom_field
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active, cfc, clone_campaign)
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active,
+                    cfc, clone_campaign, votes)
                 SELECT username, password, email, end_date+'1', payment_mode, balance, max_credit,
                     salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
                     name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
@@ -294,7 +295,8 @@ class npuser extends npcustom_field
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date+'2592000', 0, cfc, clone_campaign
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date+'2592000', 0,
+                    cfc, clone_campaign, votes
                 FROM ".NPDB_PREFIX."users WHERE user_id={$_campaign_id}";
 
                 $this->query($sql_clone_record_query);
@@ -542,8 +544,8 @@ class npuser extends npcustom_field
 			'" . $user_details['orgtype'] . "','" . $user_details['lat'] . "','" . $user_details['lng'] . "',
             '" . $user_details['logo'] . "','" . $user_details['banner'] . "','" . $user_details['user_submitted'] . "',
             '" . $user_details['npverified']	. "', '" . 	$user_details['affiliate']	.
-        "', '" . $user_details['pitch_text']	. "', '" . $user_details['url']	.
-        "', '" . $user_details['facebook_url']	. "', '" . $user_details['twitter_url']	.
+        "', '" . $user_details['pitch_text']	. "', '" . urlencode($user_details['url'])	.
+        "', '" . urlencode($user_details['facebook_url'])	. "', '" . urlencode($user_details['twitter_url'])	.
         "', '" . $user_details['project_category'] . "', '". $user_details['project_title'] .
         "', '" . $user_details['campaign_basic'] . "', '" . $user_details['project_short_description'] .
         "', '" . $user_details['founddrasing_goal'] . "', '" . $user_details['funding_type'] .

@@ -39,6 +39,7 @@ var regNotEmptyNumbers = /^([\d]+)$/i;
 var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
 var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
 var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
+var regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars = /^([\w\d\sáíóúăşţäößàâçéèêëîïôûùüÿñæœ .-_&]+)$/i;
 var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
 var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
 var err_status = false;
@@ -62,7 +63,7 @@ $(document).ready( function (){
 
 
         // check 1st tab field and if err - focus this tab
-        if ($("#name").val() == '' || !$("#name").val().match(regNotEmptyAlphaNumericWS)) {
+        if ($("#name").val() == '' || !$("#name").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
             $("#name").addClass("error");
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_NAME; ?></li>';
             err_status = true;
@@ -71,7 +72,7 @@ $(document).ready( function (){
         }
 
         if ($("#tax_company_name").val() !== "") {
-            if (!$("#tax_company_name").val().match(regNotEmptyAlphaNumericWS)) {
+            if (!$("#tax_company_name").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
                 $("#tax_company_name").addClass("error");
                 err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME; ?></li>';
                 err_status = true;
@@ -87,7 +88,7 @@ $(document).ready( function (){
         } else {
             $("#address").removeClass("error");
         }
-        if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaWS)) {
+        if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
             $("#city").addClass("error");
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CITY; ?></li>';
             err_status = true;
@@ -127,14 +128,14 @@ $(document).ready( function (){
 
         // check 2nd tab field and if err - focus this tab
 
-        if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaWS) || $("#project_title").val().length > 80) {
+        if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars) || $("#project_title").val().length > 80) {
             $("#project_title").addClass("error");
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PTITLE; ?></li>';
             err_status = true;
         } else {
             $("#project_title").removeClass("error");
         }
-        if ($("#project_short_description").val() == '' || !$("#project_short_description").val().match(regNotEmptyAlphaWS) || $("#project_short_description").val().length > 160) {
+        if ($("#project_short_description").val() == '' || !$("#project_short_description").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars) || $("#project_short_description").val().length > 160) {
             $("#project_short_description").addClass("error");
             err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PDESC; ?></li>';
             err_status = true;
@@ -702,7 +703,7 @@ function validateProjectReward(id){
         v_err = true;
 	}
 
-    if (parseInt($("#reward_amount_" + id).val()) < 1){
+    if (parseInt($("#reward_amount_" + id).val()) < 0){
         v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO ?></li>";
         $("#reward_amount_" + id).addClass("error");
         v_err = true;
@@ -1222,7 +1223,7 @@ function clearBannerContent()
 
                     <label><?=MSG_WEBSITE_ADDRESS_INSTRUCTIONS;?></label>
 
-                    <input name="url" type="text" class="contentfont" id="url" value="<?=$campaign['url'];?>" size="40" />
+                    <input name="url" type="text" class="contentfont" id="url" value="<?=urldecode($campaign['url']);?>" size="40" />
 
                     <span><?=MSG_WEBSITE_ADDRESS_INSTRUCTIONS2;?></span>
 
@@ -1234,7 +1235,7 @@ function clearBannerContent()
 
                     <label><?=MSG_FACEBOOK_PAGE_INSTRUCTIONS;?></label>
 
-                    <input name="facebook_url" type="text" class="contentfont" id="facebook_url" value="<?=$campaign['facebook_url'];?>" size="40" />
+                    <input name="facebook_url" type="text" class="contentfont" id="facebook_url" value="<?=urldecode($campaign['facebook_url']);?>" size="40" />
 
                 </div>
 
@@ -1244,7 +1245,7 @@ function clearBannerContent()
 
                     <label><?=MSG_TWITTER_PAGE_INSTRUCTIONS;?></label>
 
-                    <input name="twitter_url" type="text" class="contentfont" id="twitter_url" value="<?=$campaign['twitter_url'];?>" size="40" />
+                    <input name="twitter_url" type="text" class="contentfont" id="twitter_url" value="<?=urldecode($campaign['twitter_url']);?>" size="40" />
 
             </div>
 
@@ -1622,54 +1623,55 @@ function clearBannerContent()
                 <label><?=MSG_ACTIVITY_STATUS;?> *</label>
                 <!--            <input type="text" name="founddrasing_goal" value="500" id="founddrasing_goal" >-->
                 <!--            <div class="clear"></div>-->
-                <div class="radio">
-                    <input type="radio" name="active" value="0"
-                        <?php echo (isset($campaign["active"]) && ($campaign["active"] == 0)) ? "checked" : ''; ?>>
-                    <label><?=MSG_ACTIVITY_STATUS_DRAFT?></label>
-					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP?>" style="margin-left: 10px;">
-                </div>
-                <div class="radio">
-                    <input type="radio" name="active" value="1" <?php echo (isset($campaign["active"]) && ($campaign["active"] == 1)) ? "checked" : ''; ?>>
-                    <label><?=MSG_ACTIVITY_STATUS_LIVE?></label>
-                </div>
-                <div class="radio">
-                    <input type="radio" name="active" value="2"
-                        <?php echo (isset($campaign["active"]) && ($campaign["active"] == 2)) ? "checked" : ''; ?>>
-                    <label><?=MSG_ACTIVITY_STATUS_CLOSED?></label>
-                </div>
+
+                    <div class="radio">
+                        <input type="radio" name="active" value="0"
+                            <?php echo (isset($campaign["active"]) && ($campaign["active"] == 0)) ? "checked" : ''; ?>>
+                        <label><?=MSG_ACTIVITY_STATUS_DRAFT?></label>
+                        <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP?>" style="margin-left: 10px;">
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="active" value="1" <?php echo (isset($campaign["active"]) && ($campaign["active"] == 1)) ? "checked" : ''; ?>>
+                        <label><?=MSG_ACTIVITY_STATUS_LIVE?></label>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="active" value="2"
+                            <?php echo (isset($campaign["active"]) && ($campaign["active"] == 2)) ? "checked" : ''; ?>>
+                        <label><?=MSG_ACTIVITY_STATUS_CLOSED?></label>
+                    </div>
+
             </div>
-            <div class="account-row">
+            <div class="account-row campaign-cron">
                 <label><?=MSG_CRON_CONFIG?></label>
 
-                <div class="radio">
+                <div class="radio extend-params">
                     <input type="radio" name="clone_campaign" value="2"
                         <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 2)) ? "checked" : ''; ?>>
                     <label><?=MSG_EXTENDS_DATE_EXISTING_CAMPAIGN?></label>
-					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
-                </div>
-                <div class="input_row">
+<!--                    <input type="checkbox" name="keep_alive" id="keep_alive" value="1"-->
+<!--                        --><?php //echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?><!-- /> -->
                     <input type="text" name="keep_alive_days" id="keep_alive_days"
                            value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>" />
                     <label><?=MSG_DAYS?></label>
-                    <input type="checkbox" name="keep_alive" id="keep_alive" value="1"
-                        <?php echo (isset($campaign["keep_alive"]) && $campaign["keep_alive"]) ? 'checked' : ''; ?> />
+					<img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
                 </div>
 
+                <div class="radio">
+                    <input type="radio" name="clone_campaign" value="1"
+                        <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 1)) ? "checked" : ''; ?>>
+                    <label><?=MSG_CLONE_CAMPAIGN?></label>
+                    <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
+                </div>
+                <div class="radio">
+                    <input type="radio" name="clone_campaign" value="0"
+                        <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 0)) ? "checked" : ''; ?>>
+                    <label><?=MSG_LET_CAMPAIGN_CLOSE?></label>
+                    <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_LET_CAMPAIGN_CLOSE?>" style="margin-left: 10px;">
+                </div>
             </div>
 
-            <div class="clear"></div>
-            <div class="radio">
-                <input type="radio" name="clone_campaign" value="1"
-                    <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 1)) ? "checked" : ''; ?>>
-                <label><?=MSG_CLONE_CAMPAIGN?></label>
-                <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP?>" style="margin-left: 10px;">
-            </div>
-            <div class="radio">
-                <input type="radio" name="clone_campaign" value="0"
-                    <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 0)) ? "checked" : ''; ?>>
-                <label><?=MSG_LET_CAMPAIGN_CLOSE?></label>
-                <img src="/images/question_help.png" height="16" alt="help" title="<?=MSG_LET_CAMPAIGN_CLOSE?>" style="margin-left: 10px;">
-            </div>
+
+
 
             <div class="next">
                 <input type="button" onclick="prevStepShow('p_projectStatus')" value="<?=MSG_PREV?>" class="next_btn" />

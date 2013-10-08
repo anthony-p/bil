@@ -262,6 +262,7 @@ define ('MSG_NEWEST_ITEMS_FIRST', 'Recién publicados');
 define ('MSG_LOWEST_PRICES_FIRST', 'Precios más bajos');
 define ('MSG_RETRIEVE_YOUR_PASSWORD', 'Recuperar contraseña');
 define ('MSG_REMEMBER_USERNAME_FORGOT_PASS', '¿Recuerdas tu nombre de usuario pero olvidaste tu contraseña?');
+define ('MSG_REMEMBER_EMAIL_FORGOT_PASS', '¿Recuerdas tu email pero olvidaste tu contraseña?');
 define ('MSG_ENTER_YOUR_EMAIL', 'Introduce tu dirección de email');
 define ('MSG_ENTER_YOUR_USERNAME', 'Introduce tu nombre de usuario');
 define ('MSG_REMEMBER_PASS_FORGOT_USERNAME', '¿Recuerdas tu contraseña pero olvidaste tu nombre de usuario?');
@@ -386,3 +387,6 @@ define ('MSG_REWARD_DESCRIPTION', 'Descripción');
 define ('MSG_REWARD_AVAILABLE_NUMBER', 'Disponibles (nº)');
 define ('MSG_REWARD_ESTIMATED_DELIVERY', 'Entrega estimada');
 define ('MSG_REWARD_SHIPPING_ADDRESS_REQUIRED', 'Se necesita dirección de envío');
+
+define ('MSG_PASSWORD_REQUIRED', 'Password Required');
+define ('MSG_VERIFY_PASSWORD_REQUIRED', 'Verify Password Required');

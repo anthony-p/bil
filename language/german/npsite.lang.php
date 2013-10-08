@@ -790,6 +790,7 @@ define ('MSG_NEWEST_ITEMS_FIRST', 'Newest Items First');
 define ('MSG_LOWEST_PRICES_FIRST', 'Lowest Prices First');
 define ('MSG_RETRIEVE_YOUR_PASSWORD', 'Retrieve your Password');
 define ('MSG_REMEMBER_USERNAME_FORGOT_PASS', 'Remember your username, but forgot your password?');
+define ('MSG_REMEMBER_EMAIL_FORGOT_PASS', 'Remember your email, but forgot your password?');
 define ('MSG_ENTER_YOUR_EMAIL', 'Enter your Email Address');
 define ('MSG_ENTER_YOUR_USERNAME', 'Enter your Username');
 define ('MSG_REMEMBER_PASS_FORGOT_USERNAME', 'Remember your password, but forgot your username? ');

@@ -5141,7 +5141,9 @@ else
     {
         if ($section == 'main')
         {
-            $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id ORDER BY funders.created_at DESC");
+            $userID = $session->value('user_id');
+            $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id
+                WHERE np_users.probid_user_id=".$userID." ORDER BY funders.created_at DESC");
             $nrElement = mysql_num_rows($campaigns_result);
 
             $per_page = 10;
@@ -5156,7 +5158,7 @@ else
 
             $campaigns_query_result = $db->query("SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at, funders.user_id, np_users.project_title
                 FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id
-                LEFT JOIN bl2_users ON bl2_users.id = funders.user_id
+                LEFT JOIN bl2_users ON bl2_users.id = np_users.probid_user_id
                 WHERE np_users.probid_user_id=" . $session->value('user_id')."
                 ORDER BY funders.created_at DESC limit $start, $per_page");
 
@@ -5186,7 +5188,11 @@ else
     }
     /*end earning page*/
 
-    if ($page == 'clone_campaigns') /* BEGIN -> CONTRIBUTIONS PAGE */
+
+    /**
+     * this tab is removed because is specificated in task
+     */
+    /*if ($page == 'clone_campaigns')
     {
         if ($section == 'main')
         {
@@ -5222,7 +5228,7 @@ else
             $template->set('members_area_page_content', $members_area_page_content);
 
         }
-    }
+    }*/
 
     if ($page == 'campaigns') /* BEGIN -> CAMPAIGNS PAGE */
     {
@@ -5423,6 +5429,7 @@ else
                     $keep_alive = (isset($_POST["keep_alive"]) && $_POST["keep_alive"]) ? 1 : 0;
                     $keep_alive_days = (isset($_POST["keep_alive_days"]) && $_POST["keep_alive_days"]) ?
                         $_POST["keep_alive_days"] : 0;
+//                    var_dump($_POST["url"]); exit;
 
                     $mysql_update_query = "UPDATE np_users SET
                     project_category='" . $_POST["project_category"] . "',
@@ -5437,9 +5444,9 @@ else
                     time_period='" . $_POST["time_period"] . "',
                     certain_date='" . $certain_date . "',
                     end_date='" . $_POST["end_date"] . "',
-                    url='" . $_POST["url"] . "',
-                    facebook_url='" . $_POST["facebook_url"] . "',
-                    twitter_url='" . $_POST["twitter_url"] . "',
+                    url='" . urlencode($_POST["url"]) . "',
+                    facebook_url='" . urlencode($_POST["facebook_url"]) . "',
+                    twitter_url='" . urlencode($_POST["twitter_url"]) . "',
                     name='" . $_POST["name"] . "',
                     tax_company_name='" . $_POST["tax_company_name"] . "',
                     address='" . $_POST["address"] . "',
