@@ -1268,7 +1268,7 @@ function clearBannerContent()
                 <div id="MultiPowUpload_holder">
 
                     <input class="file" name="logo" id="logo" accept="image/*" type='file' multiple title="logo file"/>
-                    <span style="cursor: pointer;" onclick="clearLogoContent()"><?=MSG_CLEAR?></span>
+                    <span style="cursor: pointer;" onclick="clearLogoContent()" class="clear_btn"><?=MSG_CLEAR?></span>
                 </div>
 
 
@@ -1313,7 +1313,7 @@ function clearBannerContent()
                 <br />
 
                 <input  class="file" name="banner" id="banner" accept="image/*" type='file' multiple title="banner file" <?php if ( strstr($campaign["banner"], "http://")) { echo "style='display:none'";}?>/>
-                <span style="cursor: pointer" onclick="clearBannerContent()"><?=MSG_CLEAR?></span>
+                <span style="cursor: pointer" onclick="clearBannerContent()" class="clear_btn"><?=MSG_CLEAR?></span>
                 <div id="vide_select_block" <?php if ( !strstr($campaign["banner"], "http://")) { echo "style='display:none'";}?>>
 
                     <div class="float:right;">

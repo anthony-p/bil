@@ -5,6 +5,7 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+
 //click through shopping
 define('MSG_FEATURED_AFFILIATES', 'Featured vendors');
 define('MSG_BROWSE_AFFILIATES', 'Click through and shop - a percent will stay in your community');
@@ -16,6 +17,7 @@ define('MSG_PARTNER_NAME', 'Vendor name');
 define('MSG_HELP_TOPICS', 'Help');
 define('MSG_TERMS', 'Terms and Conditions');
 define('MSG_CONTACT_US', 'Contact us');
+define('MSG_CONTACT_EMAIL_SENT_SUCCESS', 'Thanks for sending us your message. Please expect to hear from us shortly.');
 define('MSG_QUESTION_QUERY', 'Message');
 define('MSG_PIN_CODE', 'Are you human code');
 define('MSG_PRIVACY', 'Privacy policy');
@@ -60,7 +62,7 @@ define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE', 'POST Confirm');
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG', 'Choosing POST will make your comment instantly public');
 
 // draft explanation message
-define('MSG_DRAFT_CAMPAIGNS_EXPLANATION', '<h3>New campaigns are drafts, they need to be set as LIVE</h3><br />');
+define('MSG_DRAFT_CAMPAIGNS_EXPLANATION', '<h3>New campaigns are drafts, they need to be set as LIVE</h3>Make your campaign live by clicking EDIT and then selecting \'Live\' in the status tab');
 
 // new campaigm validation messages
 define('MSG_REGISTER_CAMPAIGN_ERR_CDAYSP', "Sorry, you can&#39;t run your campaign backwards. Use a positive integer!");
@@ -302,7 +304,7 @@ define ('MSG_VIEW_CAMPAIGN', 'View Campaign');
 define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account information');
 define ('MSG_ALSO_FIND_ME', ' Also Find Me on');
 define ('MSG_POSTED_A_COMMENT', 'posted a comment');
-define ('MSG_POSTALE_CODE', 'Postale Code');
+define ('MSG_POSTALE_CODE', 'Postal Code');
 define ('MSG_COMMUNITY_CROWDFUNDING', 'Community crowdfunding');
 define ('MSG_DONATIONS_AUCTIONS', 'Donations, auctions, click through shopping');
 define ('MSG_ALL_CAMPAIGNS', 'All Campaigns');
@@ -430,6 +432,7 @@ define ('MSG_NEWEST_ITEMS_FIRST', 'Newest Items First');
 define ('MSG_LOWEST_PRICES_FIRST', 'Lowest Prices First');
 define ('MSG_RETRIEVE_YOUR_PASSWORD', 'Retrieve your Password');
 define ('MSG_REMEMBER_USERNAME_FORGOT_PASS', 'Remember your username, but forgot your password?');
+define ('MSG_REMEMBER_EMAIL_FORGOT_PASS', 'Remember your email, but forgot your password?');
 define ('MSG_ENTER_YOUR_EMAIL', 'Enter your Email Address');
 define ('MSG_ENTER_YOUR_USERNAME', 'Enter your Username');
 define ('MSG_REMEMBER_PASS_FORGOT_USERNAME', 'Remember your password, but forgot your username? ');

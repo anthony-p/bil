@@ -39,8 +39,8 @@ if (isset($frmchk_details['organization']) && $frmchk_details['organization']) {
 
 if (!$frmchk_user_edit)
 {
-	$fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html', 'is_phone'));
-	$fv->check_box($frmchk_details['phone_b'], MSG_PHONE_B, array('field_empty', 'field_html', 'is_phone'));
+//	$fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html', 'is_phone'));
+//	$fv->check_box($frmchk_details['phone_b'], MSG_PHONE_B, array('field_empty', 'field_html', 'is_phone'));
 }
 else
 {

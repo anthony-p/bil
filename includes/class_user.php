@@ -142,6 +142,8 @@ class user extends custom_field
         $user_details = $this->sqlEscapeString($user_details);
         $salt = $this->create_salt();
         $password_hashed = password_hash($user_details['password'], $salt);
+
+        $newsletter = isset($user_details['newsletter']) ? $user_details['newsletter'] : 0;
       
                         			
                    $this->query("INSERT INTO " . $this->db_name . ".bl2_users
@@ -149,7 +151,7 @@ class user extends custom_field
         `salt`, `active`, `create_date`, `last_login`, `is_subscribe_news`)
          VALUES (NULL, '{$user_details['fname']}', '{$user_details['lname']}',
          '{$user_details['organization']}', '{$user_details['email']}', '$password_hashed',
-         '$salt', '0', '".time()."', '".time()."', '{$user_details['newsletter']}');");
+         '$salt', '0', '".time()."', '".time()."', '{$newsletter}');");
 
         $user_id = $this->insert_id();
 
