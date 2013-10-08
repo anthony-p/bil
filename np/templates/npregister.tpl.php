@@ -986,7 +986,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 <img src="<?php echo $user_details['banner']; ?>" />
             <?php endif; ?>
             <input class="file" name="banner" id="banner" type='file' multiple title="banner file"/>
-            <span style="cursor: pointer" onclick="clearBannerContent()">Clear</span>
+            <span style="cursor: pointer" onclick="clearBannerContent()" class="clear_btn">Clear</span>
             <div id="vide_select_block" style="display: none">
                 <input type="text" name="video_url" id="video_url" value="">
                 <input type="button" id="loadVideo" value="Get">
