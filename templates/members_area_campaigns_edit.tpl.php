@@ -1267,7 +1267,7 @@ function clearBannerContent()
                 <div id="MultiPowUpload_holder">
 
                     <input class="file" name="logo" id="logo" accept="image/*" type='file' multiple title="logo file"/>
-                    <span style="cursor: pointer;" onclick="clearLogoContent()"><?=MSG_CLEAR?></span>
+                    <span style="cursor: pointer;" onclick="clearLogoContent()" class="clear_btn"><?=MSG_CLEAR?></span>
                 </div>
 
 
