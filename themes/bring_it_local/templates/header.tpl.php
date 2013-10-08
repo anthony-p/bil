@@ -80,14 +80,16 @@ global $coupon_url;
         $(document).ready(function() {
             $('#menu').click(function(){
                 if ($("#menu-cont").is(":hidden")) {
-                    $("#menu-cont").slideDown("slow");
+//                    $("#menu-cont").slideDown("slow");
                     $('#menu').addClass('arrow');
                 } else {
                     $("#menu-cont").slideUp("slow");
                     $('#menu').removeClass('arrow');
                 }
             });
-
+            $("#menu").on('click', function(){
+                $("#menu-cont").slideToggle("slow");
+            });
             if ($.fn.polyglotLanguageSwitcher){
                 $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
                     effect: 'fade',
