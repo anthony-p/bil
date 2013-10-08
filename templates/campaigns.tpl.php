@@ -136,6 +136,7 @@ include_once('includes/grab_video_thumbnail.php');
                     $current_time=time();
                     ?>
                     <span class="price">$<?php echo $row['payment'];?></span>
+                    <span class="votes">Votes:<?php if(!empty($row['votes']))  {echo $row['votes'];} else {echo '0';}?></span>
                     <?php if ($current_time > $end_time): ?>
                         <span class="day">0</span>
                     <?php else: ?>
