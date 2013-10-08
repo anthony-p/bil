@@ -569,36 +569,3 @@ global $coupon_url;
             <? } ?>
         </div><!-- end leftColumn -->
         <div id="middleColumn">
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#menu').click(function(){
-            if ($("#menu-cont").is(":hidden")) {
-                $("#menu-cont").slideDown("slow");
-                $('#menu').addClass('arrow');
-            } else {
-                $("#menu-cont").slideUp("slow");
-                $('#menu').removeClass('arrow');
-            }
-        });
-
-        if ($.fn.polyglotLanguageSwitcher){
-            $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
-                effect: 'fade',
-                testMode: true
-            });
-        } else {
-            $.getScript("/scripts/jquery/jquery.polyglot.language.switcher.js", function(data, textStatus, jqxhr) {
-                $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
-                    effect: 'fade',
-                    testMode: true
-                });
-            });
-        }
-
-        $(".myCampaigs .list li:odd").addClass("odd");
-        $(".list li:last-child").addClass("last");
-        $(".rows-list li:last-child").addClass("last");
-        $(".announcement > .post:first-child").addClass("first");
-        $(".member-menu > li:last-child").addClass("last")
-    });
-</script>
