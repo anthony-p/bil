@@ -237,3 +237,9 @@ span.error{
 .next .save_btn:hover{ background:#f39f00; }
 
 #steps form #loadVideo {float:right; margin:0 20px 0 0;white-space: nowrap; background: #272727; color: #fff;border: 0; border-radius: 4px; font: 15px/29px "OpenSans-SemiBold"; padding: 0 20px; text-transform: uppercase;cursor: pointer;}
+
+
+
+
+.account-row span.clear_btn{float:left; clear: none; margin: 0 0 0 15px; cursor: pointer;    background: #92c150;  border: 0; padding: 0 10px;  height: 28px;border-radius: 4px;  font: 11px "OpenSans";
+    color: #fff;   text-shadow: 0px 0px 3px #000;}
