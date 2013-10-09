@@ -171,6 +171,7 @@ $featured_columns = 14;
                     <span><?=MSG_MAKE_DONATION?></span>
                 </a>
             <?php endif; ?>
+			<?php if($compaigns['include_clickthrough'] == 1): ?>
             <a href="/global_partners.php<?php /*
             if (isset($compaigns['url']) && $compaigns['url']) {
                 if (strpos($compaigns['url'], 'http') === 0) {
@@ -185,6 +186,7 @@ $featured_columns = 14;
                 <span class="uper"><?=MSG_SHOP_ONLINE?></span>
                 <span><?=MSG_SHOP_ONLINE_INFORMATION_ABOUT_ONLINE_RETAILERS?></span>
             </a>
+			<?php endif; ?>
             <?php
             /*
             <a href="/categories.php" class="auctions">
