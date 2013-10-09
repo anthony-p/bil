@@ -288,6 +288,7 @@ class user extends custom_field
     function update_magento($user_details, $new_password)
     {
         $result = '';
+        return $result;
         try {
             $user_info = $this->get_sql_row("SELECT username FROM
             			" . DB_PREFIX . "users WHERE user_id=" . $user_details['user_id']);

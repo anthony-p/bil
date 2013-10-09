@@ -171,7 +171,7 @@ define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_VISIBILITY', 'Visibility');
 define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
 
 // tooltips
-define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your paypal account.');
+define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your PayPal account. A green check indicates that your PayPal information has been successfully verified.');
 
 //additions
 define ('MSG_MY_EARNINGS_SUMMARY', 'Summary Report');
@@ -358,9 +358,9 @@ define ('MSG_MEMBERS_AREA_TITLE', 'Members Area');
 define ('MSG_REGISTRATION_ENTER_MAIN_INFO', 'Enter Main User Information');
 define ('MSG_REGISTRATION', 'Create an account');
 define ('MSG_SELL_ITEM', 'Sell');
-define ('MSG_OLD_PASS', 'Password');
-define ('MSG_CREATE_PASS', 'Create Password');
-define ('MSG_VERIFY_PASS', 'Verify Password');
+define ('MSG_OLD_PASS', 'Confirm your current password');
+define ('MSG_CREATE_PASS', 'Create a new password');
+define ('MSG_VERIFY_PASS', 'Re-enter the new password');
 define ('MSG_EMAIL_ADDRESS', 'Email Address');
 define ('MSG_PAYPAL_EMAIL_FIRST_NAME', 'PayPal Account First Name');
 define ('MSG_PAYPAL_EMAIL_LAST_NAME', 'PayPal Account Last Name');
@@ -443,7 +443,7 @@ define ('MSG_USERNAME_EMAILED', 'Your username has been sent to the E-Mail addre
 define ('MSG_USER_ACCOUNT_CONFIRMATION', 'User Account Confirmation');
 define ('MSG_ACC_ACTIVATE_SUCCESS', 'Your account was successfully activated. <br>You can now login using your username and password.');
 define ('MSG_ACC_ACTIVATE_FAILURE', 'Error: Account activation is not possible using this feature or the activation details you have submitted are invalid.');
-define ('MSG_DIRECT_PAYMENT_SETTINGS', 'Direct Payment Settings');
+define ('MSG_DIRECT_PAYMENT_SETTINGS', 'Valid PayPal account information');
 define ('MSG_ACCOUNT_DETAILS', 'Account Details');
 define ('MSG_ACCOUNT_TYPE', 'Account Type');
 define ('MSG_CLEAR_ACC_BALANCE', 'Clear Account Balance');
