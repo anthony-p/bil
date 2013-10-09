@@ -613,6 +613,7 @@ function addProjectUpdateComment( id ){
         '/div>' +
         '</li>');
     $("#project_update_textarea").val('');
+    tinymce.get('project_update_textarea').setContent('');
 }
 
 
