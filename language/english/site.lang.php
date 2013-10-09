@@ -443,7 +443,7 @@ define ('MSG_USERNAME_EMAILED', 'Your username has been sent to the E-Mail addre
 define ('MSG_USER_ACCOUNT_CONFIRMATION', 'User Account Confirmation');
 define ('MSG_ACC_ACTIVATE_SUCCESS', 'Your account was successfully activated. <br>You can now login using your username and password.');
 define ('MSG_ACC_ACTIVATE_FAILURE', 'Error: Account activation is not possible using this feature or the activation details you have submitted are invalid.');
-define ('MSG_DIRECT_PAYMENT_SETTINGS', 'Direct Payment Settings');
+define ('MSG_DIRECT_PAYMENT_SETTINGS', 'Valid PayPal account information');
 define ('MSG_ACCOUNT_DETAILS', 'Account Details');
 define ('MSG_ACCOUNT_TYPE', 'Account Type');
 define ('MSG_CLEAR_ACC_BALANCE', 'Clear Account Balance');
