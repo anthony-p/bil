@@ -562,7 +562,7 @@ function changeDeadlineType(obj,id)
 
 var countOfPitch = <?php if (isset($pitches) && is_array($pitches)) echo count($pitches); else { ?>0<?php } ?>;
 
-function projectUpdateComment () {
+function projectUpdateComment() {
 
     var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + tinymce.get('project_update_textarea').getContent();
     $.ajax({
@@ -1557,7 +1557,6 @@ function clearBannerContent()
                         </div>
                     </li>
                 <?php endforeach;?>
-
             </ul>
 
 

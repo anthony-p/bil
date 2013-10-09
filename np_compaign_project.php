@@ -55,7 +55,7 @@ if (!$session->value('user_id')) {
             $currentTime .
             "')";
         $sql_insert_pitch = $db->query($insert_query);
-        $recordId = $db->query("SELECT id FROM project_updates ORDER BY id DESC LIMIT 1");
+        $recordId = $db->query("SELECT * FROM project_updates ORDER BY id DESC LIMIT 1");
         $rowSearched = array();
         while ($row = mysql_fetch_array($recordId)) {
             $rowSearched = $row;
@@ -73,13 +73,16 @@ if (!$session->value('user_id')) {
         $u_user = $db->fetch_array($sql_res);
 
         // select all founder's id for this campaign
+        $funders = array();
         $sql_res = $db->query("SELECT * FROM funders WHERE campaign_id ='".intval($_POST['project_id'])."'; ");
         while ($mysql_row = mysql_fetch_array($sql_res)) {
             $funders[] = $mysql_row;
         }
         $funders_id = array();
-        foreach($funders as $k=>$v){
-            $funders_id[] = $v['user_id'];
+        if (!empty($funders)) {
+            foreach($funders as $k=>$v){
+                $funders_id[] = $v['user_id'];
+            }
         }
 
         if (count($funders_id)){
@@ -96,7 +99,7 @@ if (!$session->value('user_id')) {
 
 
         if (!empty($recordId)) {
-            echo json_encode(array("response" => true, "id" => $rowSearched['id']));
+            echo json_encode(array("response" => true, "id" => $rowSearched['id'], 'comment' => $rowSearched['comment']));
         } else {
             echo json_encode(array("response" => "error"));
         }
