@@ -570,7 +570,6 @@ function projectUpdateComment() {
         type: "POST",
         data: data,
         success: function(response){
-            alert(response);
             var commentObj = jQuery.parseJSON(response);
             if (commentObj.response == true) {
                 addProjectUpdateComment(commentObj.id);
