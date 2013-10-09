@@ -236,8 +236,7 @@ global $coupon_url;
                         type: "POST",
                         url: "/ajaxprocessors.php",
                         dataType: 'json',
-
-                        data: { do: "subscribe", email: email }
+                        data: {'do': 'subscribe', 'email': email}
                     }).done(function (msg) {
                                 if (msg.code == 0){
                                     $.unblockUI();
@@ -295,7 +294,7 @@ global $coupon_url;
                                     url: "/ajaxprocessors.php",
                                     dataType: 'json',
 
-                                    data: { do: "subscribe", email: $("#dialogModalSubscribeEmail").val() }
+                                    data: { 'do': 'subscribe', 'email': $("#dialogModalSubscribeEmail").val() }
                                 }).done(function (msg) {
                                             if (msg.code == 0) {
                                                 $.unblockUI();
