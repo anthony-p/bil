@@ -322,7 +322,7 @@ define ('MSG_CAMPAIGN_HOME', 'Campaign home');
 define ('MSG_FUNDERS', 'FUNDERS');
 define ('MSG_DEDICATE_PORTION_FOR_YOUR_DONATIONS', 'Dedicate a portion of your donations to the Community Fund');
 define ('MSG_WAYS_TO_SUPPORT', 'Shop Online');
-define ('MSG_DEADLINE', 'Deadline');
+define ('MSG_DEADLINE', 'Duration *');
 define ('MSG_TIMEPERIOD', '# of days');
 define ('MSG_DATE', 'date');
 define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 160 pixels wide.');
@@ -619,8 +619,6 @@ define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_BODY', 'Your campaign received a comm
 
 define ('MSG_PASSWORD_REQUIRED', 'Password Required');
 define ('MSG_VERIFY_PASSWORD_REQUIRED', 'Verify Password Required');
-
-define ('MSG_YOUR_AUCTION', 'Your auction');
 
 //define ('', '');
 ?>
