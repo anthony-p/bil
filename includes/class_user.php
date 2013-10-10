@@ -175,7 +175,7 @@ class user extends custom_field
 
 		$user_details = $this->rem_special_chars_array($user_details);
 
-		$phone = '(' . $user_details['phone_a'] . ') ' . $user_details['phone_b'];
+		$phone = $user_details['phone_a'] .  $user_details['phone_b'];
 
 		if ($this->setts['birthdate_type'] == 1)
 		{
@@ -383,7 +383,7 @@ class user extends custom_field
         try{
 
             $user_details = $this->rem_special_chars_array($user_details);
-            $phone = '(' . $user_details['phone_a'] . ') ' . $user_details['phone_b'];
+            $phone = $user_details['phone_a']  . $user_details['phone_b'];
 
             if ($this->setts['birthdate_type'] == 1)
             {
@@ -478,7 +478,7 @@ class user extends custom_field
             $prefix = "bl2_";
 
             $user_details = $this->rem_special_chars_array($user_details);
-            $phone = '(' . $user_details['phone_a'] . ') ' . $user_details['phone_b'];
+            $phone = $user_details['phone_a'] . $user_details['phone_b'];
 
 //            if ($this->setts['birthdate_type'] == 1)
 //            {

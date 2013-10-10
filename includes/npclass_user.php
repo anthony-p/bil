@@ -29,7 +29,7 @@ class npuser extends npcustom_field
 
 		$user_details = $this->rem_special_chars_array($user_details);
 
-		$phone = '(' . $user_details['phone_a'] . ') ' . $user_details['phone_b'];
+		$phone =  $user_details['phone_a']  . $user_details['phone_b'];
 
 		if ($this->setts['birthdate_type'] == 1)
 		{
