@@ -322,7 +322,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                    id="founddrasing_goal" >(USD)
         </div>
         <div class="account-row deadline">
-            <label><?="Deadline";?> </label>
+            <label><?=MSG_DEADLINE;?> </label>
 
                         <span>
                         <input type="hidden" name="deadline_type_value" id="deadline_type_value"
