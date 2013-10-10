@@ -19,9 +19,6 @@ function validateCampaignForm(form, messages) {
             return this.optional(element) || phone_number.length > 9 &&
                 phone_number.match(/^((\+)?[1-9]{1,2})?([-\s\.])?((\(\d{1,4}\))|\d{1,4})(([-\s\.])?[0-9]{1,12}){1,2}$/);
         });
-    $.validator.addMethod("nospaces", function(value, element) {
-        return value.indexOf(" ") < 0 && value != "";
-    }, "Space are not allowed");
 
     $.validator.addMethod('facebook', function(url, element) {
         return this.optional(element) || (url.indexOf('facebook.com') != -1);
@@ -43,7 +40,6 @@ function validateCampaignForm(form, messages) {
             state: "required",
             phone: {
                 required: true,
-                phone: true,
                 minlength: 6
             },
             pg_paypal_email: {
@@ -54,7 +50,8 @@ function validateCampaignForm(form, messages) {
             pg_paypal_last_name: "required",
             username: {
                 required:true,
-                nospaces:true
+                nowhitespace:true,
+                alphanumeric:true
             },
             project_title: {
                 required:true,
