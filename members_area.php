@@ -5462,7 +5462,8 @@ else
                     confirmed_paypal_email='" . $_POST["confirmed_paypal_email"] . "',
                     keep_alive='" . $keep_alive . "',
                     keep_alive_days='" . $keep_alive_days . "',
-                    pitch_text='" . $pitch_text . "'";
+                    pitch_text='" . $pitch_text . "',
+					include_clickthrough='" . $_POST["include_clickthrough"]."'";
 
                     if (isset($_POST["username"]) && $_POST["username"]) {
                         $mysql_update_query .= ", username='" . $_POST["username"] . "'";

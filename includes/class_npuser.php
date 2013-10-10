@@ -228,7 +228,8 @@ if ($_REQUEST['operation'] == 'submit') {
         pg_paypal_email='" . $_POST["pg_paypal_email"] . "',
         pg_paypal_first_name='" . $_POST["pg_paypal_first_name"] . "',
         pg_paypal_last_name='" . $_POST["pg_paypal_last_name"] . "',
-        pitch_text='" . $_POST["pitch_text"] . "'";
+        pitch_text='" . $_POST["pitch_text"] . "',
+		include_clickthrough='" . $_POST["include_clickthrough"]."'";
 
         if (isset($_POST["username"]) && $_POST["username"]) {
             $mysql_update_query .= ", username='" . $_POST["username"] . "'";
