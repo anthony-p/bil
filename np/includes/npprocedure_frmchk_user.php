@@ -153,9 +153,9 @@ if (!$frmchk_user_edit)
 
 	if ((isset($frmchk_details['phone_a']) && $frmchk_details['phone_a']) ||
         (isset($frmchk_details['phone_b']) && $frmchk_details['phone_b'])) {
-        $fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html', 'is_phone'));
+        $fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html'));
 
-        $fv->check_box($frmchk_details['phone_b'], MSG_PHONE_B, array('field_empty', 'field_html', 'is_phone'));
+        $fv->check_box($frmchk_details['phone_b'], MSG_PHONE_B, array('field_empty', 'field_html'));
     }
 
 }
@@ -164,7 +164,7 @@ else
 
 {
 
-	$fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html', 'is_phone'));
+	$fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html'));
 
 }
 

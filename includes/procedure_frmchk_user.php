@@ -44,7 +44,7 @@ if (!$frmchk_user_edit)
 }
 else
 {
-	$fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html', 'is_phone'));
+	$fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html'));
 }
 /*
 if (!$frmchk_user_edit && IN_ADMIN != 1)

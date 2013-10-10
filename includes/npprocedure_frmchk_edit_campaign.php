@@ -103,7 +103,7 @@ $fv->check_box($frmchk_details['founddrasing_goal'], MSG_CREATE_PROJECT_QUESTION
 $fv->check_box($frmchk_details['deadline_type_value'], MSG_DEADLINE, array('field_empty'));
 /*$fv->check_box($frmchk_details['pitch_text'], MSG_PITCH_TEXT, array('field_empty', 'field_html'));*/
 
-$fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html', 'is_phone'));
+$fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html'));
 //if (!$frmchk_user_edit)
 //{
 //	$fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html', 'is_phone'));

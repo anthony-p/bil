@@ -50,12 +50,12 @@ include_once ('includes/functions_login.php');
             }
             if (!$frmchk_user_edit)
             {
-                $fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html', 'is_phone'));
-                $fv->check_box($frmchk_details['phone_b'], MSG_PHONE_B, array('field_empty', 'field_html', 'is_phone'));
+                $fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html'));
+                $fv->check_box($frmchk_details['phone_b'], MSG_PHONE_B, array('field_empty', 'field_html'));
             }
             else
             {
-                $fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html', 'is_phone'));
+                $fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_html'));
             }
             if (!$frmchk_user_edit && (!defined('IN_ADMIN') || IN_ADMIN != 1))
             {
