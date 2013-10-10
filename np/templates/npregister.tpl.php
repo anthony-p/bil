@@ -11,7 +11,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 <link href="/themes/bring_it_local/tabs-style.css" rel="stylesheet">
 
-<script type="text/javascript" src='/scripts/jquery/jquery.validate.js'></script>
+<script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
 <script type="text/javascript" src='/scripts/jquery/additional-methods.min.js'></script>
 <script type="text/javascript">
 
