@@ -6,7 +6,7 @@ body{
     color:#444444;
     font-size:13px;
     background: #f2f2f2;
-    font-family:"Century Gothic", Helvetica, sans-serif;
+    /*font-family:"Century Gothic", Helvetica, sans-serif;*/
 }
 #content{
     margin:15px auto;
@@ -205,7 +205,7 @@ span.error{
 .account-row.deadline{margin-top: 20px;}
 .account-row.deadline span{float:right; margin: 0 0 10px 0; clear: none;}
 .account-row.deadline input[type="radio"]{float:left; margin-left: 10px;}
-.account-row.deadline .radio-span{float:right;width:72px;margin-top: 6px;}
+.account-row.banner .radio-span{float:right;width:72px;margin-top: 6px;}
 .account-tab h5{float:left; clear: both; width: 100%; font:13px/16px "OpenSans-SemiBold"; color:#7eb041; border-bottom: 1px solid #dedede; padding: 15px 0;}
 .account-row .upload label{font-size: 11px; line-height: 14px;margin-left: 10px; float: left;}
 .account-tab  .pitch{float:left; clear: both; margin-top: 10px;}

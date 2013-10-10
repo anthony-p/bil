@@ -2,7 +2,8 @@ $(function() {
 	/*
 	number of fieldsets
 	*/
-	var fieldsetCount = $('#formElem').children().length;
+    var formElem = $('#formElem'),
+        fieldsetCount = formElem.children().length;
 	
 	/*
 	current position of fieldset / navigation link
@@ -25,7 +26,7 @@ $(function() {
 	/*
 	to avoid problems in IE, focus the first input of the form
 	*/
-	$('#formElem').children(':first').find(':input:first').focus();	
+	formElem.children(':first').find(':input:first').focus();
 	
 	/*
 	show the navigation bar

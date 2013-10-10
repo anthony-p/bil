@@ -3502,17 +3502,18 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 
 /* Rewards page */
-.reward_block {border: 1px solid #000; float: left; width: 100%; margin: 20px auto;}
+.reward_block {border: 1px solid #000; width: 100%; margin-bottom: 1em;}
 .reward_block .reward_title {border-bottom: 1px solid #000; font-weight: bold; font-size: 15px; height: 35px; background: #EEE;}
 .reward_block .reward_title .reward_title_label {display: inline-block; margin: 7px;}
 .reward_block .reward_content {padding: 10px; width: 95%; float: left;}
 .reward_block input[type="submit"] {float:right; margin: 20px;white-space: nowrap; background: #272727; color: #fff;border: 0; border-radius: 4px; font: 15px/29px "OpenSans-SemiBold"; padding: 0 20px; text-transform: uppercase;cursor: pointer;}
 .reward_block .account-row{width: 100%; padding: 0;}
-.reward_block .account-row label {text-align: right; width: 290px;}
-#steps form .reward_block  .account-row input[type="text"] {width: 330px;}
-#steps form .reward_block  .account-row textarea {max-width: 340px; min-width: 340px;}
+.reward_block .account-row label {text-align: right; width: 270px;}
+#steps form .reward_block  .account-row input[type="text"] {width: 310px;}
+#steps form .reward_block  .account-row textarea {max-width: 340px; min-width: 320px;}
 .reward_shipping_address_required {margin: 0 10px 15px 217px;}
 .rewards-actions {float: right; margin-top: 4px;}
+#steps form .post-reward {float: right; margin: 1em;    }
 #steps form button#add_new_reward_button {border:none; outline:none; border-radius: 10px; color: #ffffff; display: block; cursor:pointer; margin: 0px auto; clear:both; padding: 7px 25px; text-shadow: 0 1px 1px #777; font-weight:bold; font-family:"Century Gothic", Helvetica, sans-serif; font-size:22px; box-shadow:0px 0px 3px #aaa; background:#4797ED;}
 #steps form button.delete-reward, #steps form button.delete-reward:hover, #steps form button.validate-reward, #steps form button.validate-reward:hover {border:none; outline:none; width: 24px; height: 24px; border-radius: 0; padding: 0; margin-right: 7px; display: inline-block;}
 #steps form button.delete-reward, #steps form button.delete-reward:hover { background: url('img/trash.png');}
@@ -3605,8 +3606,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 #directPayment{background: rgba(201, 198, 198,0.2);}
 #members_area #directPayment th{background: url("img/check_mark.png") 0 0 no-repeat;padding-left: 37px;}
-.paypal_block{float:left; width: 100%;background: rgba(201, 198, 198,0.2); position: relative;  padding:10px 0;}
-.paypal_block .checked{background: url("img/check_mark.png") 0 0 no-repeat; position: absolute;display: block; width:32px ; height:32px;top:0; left:2px; ;}
+.paypal_block{background: rgba(201, 198, 198,0.2); position: relative;  padding:10px 35px;}
+.paypal_block .checked{background: url("img/check_mark.png") 0 0 no-repeat; position: absolute;display: block; width:32px ; height:32px;top:5px; left:2px; ;}
 .paypal_checked{background: url("img/check_mark.png") 0 0 no-repeat;display: block; width:32px ; height:32px; margin: 0 auto;}
 
 .about_me_content{float: left;margin:0 0 20px 20px; padding: 15px; background: #fff;  border-radius: 13px;box-shadow: 0 0 10px rgba(34, 31, 31,0.2);}

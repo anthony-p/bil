@@ -9,622 +9,109 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 <link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<link href="/themes/bring_it_local/tabs-style.css" rel="stylesheet">
 
-<link href="css/tabs-style.css" rel="stylesheet">
-<!--<link href="/css/tinyeditor.css" rel="stylesheet">-->
-<!--<script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>-->
-<!--<script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>-->
-<!--<script language=JavaScript src='/scripts/jquery/jquery-ui-custom.js'></script>-->
-<!--<script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>-->
-<!--<script language=JavaScript src='/scripts/jquery/tiny.editor.js'></script>-->
-<!--<script language="JavaScript" src="/scripts/jquery/tiny.editor.js" js="text/javascript"></script>-->
-<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/tiny_mce_src.js" js="text/javascript"></script>-->
-<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
-<!--<script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>-->
-<!--<script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>-->
+<script type="text/javascript" src='/scripts/jquery/jquery.validate.js'></script>
+<script type="text/javascript" src='/scripts/jquery/additional-methods.min.js'></script>
+<script type="text/javascript">
 
-<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
-<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/plugins/moxiemanager/editor_plugin.js" js="text/javascript"></script>-->
-
-<!--<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">-->
-<style>
-    /*.prev_container{*/
-        /*overflow: auto;*/
-        /*width: 300px;*/
-        /*height: 100%;*/
-    /*}*/
-
-    /*.prev_thumb{*/
-        /*margin: 10px;*/
-        /*height: 100px;*/
-    /*}*/
+    window.error_messages = {
+        name: "<?= MSG_REGISTER_CAMPAIGN_ERR_NAME; ?>",
+        tax_company_name: "<?= MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME; ?>",
+        address: "<?= MSG_REGISTER_CAMPAIGN_ERR_ADDRESS; ?>",
+        city: "<?= MSG_REGISTER_CAMPAIGN_ERR_CITY; ?>",
+        zipcode: "<?= MSG_REGISTER_CAMPAIGN_ERR_ZIP; ?>",
+        phone: "<?= MSG_REGISTER_CAMPAIGN_ERR_PHONE; ?>",
+        title: "<?= MSG_REGISTER_CAMPAIGN_ERR_PTITLE; ?>",
+        pdesc: "<?= MSG_REGISTER_CAMPAIGN_ERR_PDESC; ?>",
+        date: "<?= MSG_REGISTER_CAMPAIGN_ERR_CDATEP; ?>",
+        url: "<?= MSG_REGISTER_CAMPAIGN_ERR_USERNAME; ?>",
+        facebook_url:"<?= MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL; ?>",
+        twitter_url:"<?= MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL; ?>;",
+        logo: "<?= MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE; ?>",
+        date_format:"<?= MSG_DEADLINE_CERTAIN_DATE; ?>",
+        days_format:"<?= MSG_DEADLINE_TIME_PERIOD; ?>"
+    };
+    window.messages = {
+        confirm_delete_button: '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK; ?>',
+        confirm_cancel_button: '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_CANCEL; ?>',
+    };
 
 
-    .error{
-        border: 1px solid #ff0000;
-        background-color: #ff0000;
-    }
+</script>
+<script type="text/javascript" src="/scripts/campaign_form_validate.js"></script>
+<script type="text/javascript" src="/scripts/init_tinymce.js"></script>
+<script type="text/javascript">
 
-</style>
+    $(document).ready(function () {
 
-<script language="javascript">
-
-var regNotEmptyAlpha = /^([\w]+)$/i;
-var regNotEmptyNumbers = /^([\d]+)$/i;
-var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
-var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
-var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
-var regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars = /^([\w\d\sáíóúăşţäößàâçéèêëîïôûùüÿñæœ .-_&]+)$/i;
-var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
-var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
-var err_status = false;
-var err_msg = '';
-
-
-$(document).ready(function()
-{
-
-
-
-    // form validation
-    $("#formElem").submit(function(){
-
-        err_status = false;
-        err_msg = '';
-        $(".error").each(function(){
-            $(this).removeClass("error");
+        /* Form validated before submit */
+        $('input[type="submit"]').each(function() {
+            $(this).on('click', function(e){
+                e.preventDefault();
+                var formElem = $('#formElem');
+                validateCampaignForm(formElem, error_messages);
+                $("#pin_value" ).rules( "add", {
+                    required: true,
+                    messages: {
+                        required: "<?= MSG_REGISTER_CAMPAIGN_ERR_PIN; ?>"
+                    }
+                });
+                $('input[name="agree_terms"]').rules( "add", {
+                    required: true,
+                    messages: {
+                        required: "<?= MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS; ?>"
+                    }
+                });
+                if (formElem.valid()) {formElem.submit();}
+            })
         });
 
 
-        // check 1st tab field and if err - focus this tab
-        if ($("#name").val() == '' || !$("#name").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
-            $("#name").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_NAME; ?></li>';
-            err_status = true;
-        } else {
-            $("#name").removeClass("error");
-        }
 
-        if ($("#tax_company_name").val()!==""){
-            if ( !$("#tax_company_name").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars) ) {
-                $("#tax_company_name").addClass("error");
-                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME; ?></li>';
-                err_status = true;
+        <?php if (isset($user_details['video_url']) && $user_details['video_url']): ?>
+        $("#vide_select_block").css("display", "inline");
+        $("#banner").css("display", "none");
+        $("#banner").val("");
+        $("#video_url").val("<?php echo isset($user_details['video_url']) ? $user_details['video_url'] : ''; ?>");
+        $("#banner_type_image").removeAttr("checked");
+        $("#banner_type_video").attr("checked", "checked");
+        <?php endif; ?>
+
+        <?php if (isset($user_details['deadline_type_value']) && $user_details['deadline_type_value'] == "time_period"): ?>
+        jQuery("#time_period").removeAttr('disabled');
+        <?php elseif (isset($user_details['deadline_type_value']) && $user_details['deadline_type_value'] == "certain_date"): ?>
+        jQuery("#certain_date").removeAttr('disabled');
+        <?php endif; ?>
+
+
+        $(".banner_type").unbind().bind("click", function () {
+            if ($(this).val() == "0") {
+                $("#vide_select_block").css("display", "none");
+                $("#video_url").val("");
+                $("#banner").css("display", "inline");
             } else {
-                $("#tax_company_name").removeClass("error");
+                $("#vide_select_block").css("display", "inline");
+                $("#banner").css("display", "none");
+                $("#banner").val("");
             }
-        }
-
-        if ($("#address").val() == '') {
-            $("#address").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_ADDRESS; ?></li>';
-            err_status = true;
-        } else {
-            $("#address").removeClass("error");
-        }
-        if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
-            $("#city").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CITY; ?></li>';
-            err_status = true;
-        } else {
-            $("#city").removeClass("error");
-        }
-        if ($("#zip_code").val() == ''
-//                || !$("#zip_code").val().match(regZipCode)
-                ) {
-            $("#zip_code").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_ZIP; ?></li>';
-            err_status = true;
-        } else {
-            $("#zip_code").removeClass("error");
-        }
-        /* adding State Validation */
-        if ($("#state").val() == '' ) {
-            $("#state").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_STATE; ?></li>';
-            err_status = true;
-        } else {
-            $("#state").removeClass("error");
-        }
-
-        if ($("#phone").val() == '') {
-            $("#phone").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PHONE; ?></li>';
-            err_status = true;
-        } else {
-            $("#phone").removeClass("error");
-        }
-
-        if (err_status) {
-            $("#p_account").children('a').click();
-            showValidationErr();
-            muteErrFieldsOnChange();
-            return false;
-        }
-
-
-        // check 2nd tab field and if err - focus this tab
-        if ( $("#username").val() == '' || !$("#username").val().match(regNotEmptyAlphaNumeric) || checkCampaignUrl($("#username").val()) )  {
-            if ( $("#username").val() !== '' ){
-                $("#username").addClass("error");
-                err_status = true;
-            } else {
-                $("#username").addClass("error");
-                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_USERNAME; ?></li>';
-                err_status = true;
-            }
-
-
-        } else {
-            $("#username").removeClass("error");
-        }
-
-//        var mce_cont = tinyMCE.activeEditor.getBody();
-//
-//        if ($(mce_cont).html() == '<p><br data-mce-bogus="1"></p>' && $(mce_cont).text() == '') {
-//            $("#campaign_basic").addClass("error");
-//            err_status = true;
-//        } else {
-//            $("#campaign_basic").removeClass("error");
-//        }
-        if ($("#project_title").val() == '' || !$("#project_title").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars) || $("#project_title").val().length > 80 ) {
-            $("#project_title").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PTITLE; ?></li>';
-            err_status = true;
-        } else {
-            $("#project_title").removeClass("error");
-        }
-        if ($("#project_short_description").val() == '' || !$("#project_short_description").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars) || $("#project_short_description").val().length > 160) {
-            $("#project_short_description").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PDESC; ?></li>';
-            err_status = true;
-        } else {
-            $("#project_short_description").removeClass("error");
-        }
-        if ($("#founddrasing_goal").val() == '' || parseInt($("#founddrasing_goal").val()) != parseFloat($("#founddrasing_goal").val()) || !$("#founddrasing_goal").val().match(regNotEmptyNumbers) ) {
-            $("#founddrasing_goal").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_FDGOAL; ?></li>';
-            err_status = true;
-        } else {
-            $("#founddrasing_goal").removeClass("error");
-        }
-
-        if ( $("#deadline_type_value").val() == 'time_period' ){
-            if ($("#time_period").val() == '' || parseInt($("#time_period").val()) != parseFloat($("#time_period").val()) ||
-                    !$("#time_period").val().match(regNotEmptyNumbers)) {
-                $("#time_period").addClass("error");
-                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CDAYSP; ?></li>';
-                err_status = true;
-            } else {
-                $("#time_period").removeClass("error");
-            }
-        }
-        if ( $("#deadline_type_value").val() == 'certain_date'){
-            if ($("#certain_date").val() == '' ) {
-                $("#certain_date").addClass("error");
-                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_CDATEP; ?></li>';
-                err_status = true;
-            } else {
-                $("#certain_date").removeClass("error");
-            }
-        }
-
-        if (err_status) {
-            $("#p_projectDetail").children('a').click();
-            showValidationErr();
-            muteErrFieldsOnChange();
-            return false;
-        }
-
-
-
-
-        // check 3nd tab field and if err - focus this tab
-
-        if ($("#url").val() !== ''){
-            if (!$("#url").val().match(regUrl)) {
-                $("#url").addClass("error");
-                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_URL; ?></li>';
-                err_status = true;
-            } else {
-                $("#url").removeClass("error");
-            }
-        }
-        if ($("#facebook_url").val() !== '') {
-
-            if ($("#facebook_url").val().indexOf('facebook.com') == -1 || !$("#facebook_url").val().match(regUrl)) {
-                $("#facebook_url").addClass("error");
-                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_FACEBOOKURL; ?></li>';
-                err_status = true;
-            } else {
-                $("#facebook_url").removeClass("error");
-            }
-        }
-        if ($("#twitter_url").val() !== '') {
-            if ($("#twitter_url").val().indexOf('twitter.com') == -1 || !$("#twitter_url").val().match(regUrl)) {
-                $("#twitter_url").addClass("error");
-                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL; ?></li>';
-                err_status = true;
-            } else {
-                $("#twitter_url").removeClass("error");
-            }
-        }
-
-        if($('#logo').val() !== ''){
-            var ext = $('#logo').val().split('.').pop().toLowerCase();
-            if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-                $("#logo").addClass("error");
-                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE; ?></li>';
-                err_status = true;
-            } else {
-                $("#logo").removeClass("error");
-            }
-        }
-
-        if ($("input:radio[name='banner_type']:checked").val() == 0 && $('#banner').val() !== '') {
-            var ext = $('#banner').val().split('.').pop().toLowerCase();
-            if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-                $("#banner").addClass("error");
-                err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_BANERFILE; ?></li>';
-                err_status = true;
-            } else {
-                $("#banner").removeClass("error");
-            }
-        }
-
-        if (err_status) {
-            $("#p_projectEdit").children('a').click();
-            showValidationErr();
-            muteErrFieldsOnChange();
-            return false;
-        }
-
-        // check 4d tab field and if err - focus this tab
-
-        if ($("#pin_value").val() == '' ) {
-            $("#pin_value").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_PIN; ?></li>';
-            err_status = true;
-        } else {
-            $("#pin_value").removeClass("error");
-        }
-
-        if ( !$("[name='agree_terms']").is(':checked') ) {
-            $("[name='agree_terms']").addClass("error");
-            err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_AGREETERMS; ?></li>';
-            err_status = true;
-        } else {
-            $("[name='agree_terms']").removeClass("error");
-        }
-
-        if (err_status) {
-            $("#p_confirmation").children('a').click();
-            showValidationErr();
-            muteErrFieldsOnChange();
-            return false;
-        }
-
-
-        return true;
-    });
-
-    //$("#phone").mask("(999) 999-9999");
-
-    // load state list
-    $("#country").change(function(){
-        $.ajax({
-            type: "POST",
-            async: false,
-            url: "/ajaxprocessors",
-            dataType: 'json',
-            data: {do:'stateList', country_id: $("#country").val()}
-        })
-        .done(function(result){
-                    $("#states_box").empty();
-                    $("#states_box").append(result.data);
         });
 
-    });
-
-    $("#certain_date").datepicker({minDate: '+1d'});
-
-    /* == == == == == == == == == == == == == == == == == == == == == == ==*/
-    tinymce.PluginManager.load('moxiemanager', '/scripts/jquery/tinymce/plugins/moxiemanager/plugin.js');
-
-    tinymce.init({
-        selector: '.campaign_basic',
-        plugins: [
-            "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-            "table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
-        ],
-        toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-        toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
-        toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
-
-        menubar: false,
-        image_advtab: true,
-        toolbar_items_size: 'small',
-
-        style_formats: [
-            {title: 'Bold text', inline: 'b'},
-            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-            {title: 'Example 1', inline: 'span', classes: 'example1'},
-            {title: 'Example 2', inline: 'span', classes: 'example2'},
-            {title: 'Table styles'},
-            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-        ]
-    });
-
-
-    $('.file').preimage();
-
-    $(".partial_save").click(function(){
-//        alert(this.id);
-        $('#formElem').append(
-            '<input type="hidden" name="registration_integrity" value="partial_registration" />'
-        );
-    });
-
-});
-
-
-function muteErrFieldsOnChange(){
-    $('.error').change(function () {
-        $(this).removeClass("error");
-    });
-}
-
-function showValidationErr(){
-
-    $('#validation_errors').empty();
-    $('#validation_errors').append('<ul>'+err_msg+'</ul>');
-
-    $("#validation_errors").dialog({
-        resizable: false,
-        height: 200,
-        width: 400,
-        title: "Validation Errors",
-        modal: true,
-        buttons: {
-            OK: function () {
-                $(this).dialog("close");
+        $("#loadVideo").unbind().bind("click", function () {
+            var url = $("#video_url").val();
+            if (url === null) {
+                return "";
             }
-        }
-    });
-}
+            var vURL = processURL(url);
 
-function checkCampaignUrl(uname){
-    var rstatus = false;
-
-
-    $.ajax({
-        type: "POST",
-        async: false,
-        url: "/ajaxprocessors.php",
-        dataType: 'json',
-        data: {do: 'checkCampaignName', name: uname }
-    })
-            .done(function (result) {
-                rstatus =  result.status;
-                if (rstatus) err_msg += '<li><?= MSG_REGISTER_CAMPAIGN_ERR_USERNAMEEXIST; ?></li>';
-            });
-
-    return rstatus;
-
-}
-
-function checkEmail() {
-    if (document.registration_form.email_check.value==document.registration_form.email.value) document.registration_form.email_img.style.display="inline";
-    else document.registration_form.email_img.style.display="none";
-}
-
-function checkPass() {
-    if (document.registration_form.password.value==document.registration_form.password2.value) document.registration_form.pass_img.style.display="inline";
-    else document.registration_form.pass_img.style.display="none";
-}
-
-function form_submit() {
-    document.registration_form.operation.value = '';
-    document.registration_form.edit_refresh.value = '1';
-    document.registration_form.submit();
-}
-
-function copy_email_value() {
-    document.registration_form.email_check.value = document.registration_form.email.value;
-}
-
-function copy_password_value() {
-    document.registration_form.password2.value = document.registration_form.password.value;
-}
-
-
-function changeDeadlineType(obj,id)
-{
-    jQuery("#time_period").attr('disabled','disabled');
-    jQuery("#time_period").val('');
-    jQuery("#certain_date").attr('disabled','disabled');
-    jQuery("#certain_date").val('');
-    if (obj.attr('checked') == false) {
-        jQuery("#"+id).attr('disabled','disabled');
-    } else {
-        jQuery("#"+id).removeAttr('disabled');
-        jQuery("#deadline_type_value").val(id);
-    }
-}
-
-$( document ).ready( function (){
-
-    <?php if (isset($user_details['video_url']) && $user_details['video_url']): ?>
-    $("#vide_select_block").css("display","inline");
-    $("#banner").css("display","none");
-    $("#banner").val("");
-    $("#video_url").val("<?php echo isset($user_details['video_url']) ? $user_details['video_url'] : ''; ?>");
-    $("#banner_type_image").removeAttr("checked");
-    $("#banner_type_video").attr("checked", "checked");
-    <?php endif; ?>
-
-    <?php if (isset($user_details['deadline_type_value']) && $user_details['deadline_type_value'] == "time_period"): ?>
-    jQuery("#time_period").removeAttr('disabled');
-    <?php elseif (isset($user_details['deadline_type_value']) && $user_details['deadline_type_value'] == "certain_date"): ?>
-    jQuery("#certain_date").removeAttr('disabled');
-    <?php endif; ?>
-
-
-    $(".banner_type").unbind().bind("click",function(){
-        if ($(this).val() == "0") {
-            $("#vide_select_block").css("display","none");
-            $("#video_url").val("");
-            $("#banner").css("display","inline");
-        } else {
-            $("#vide_select_block").css("display","inline");
-            $("#banner").css("display","none");
-            $("#banner").val("");
-        }
-    });
-
-    $("#loadVideo").unbind().bind("click",function(){
-        var url =$("#video_url").val();
-        if(url === null){ return ""; }
-        var vURL = processURL(url);
-
-        if(!vURL) return;
-        setPrevImage(vURL);
-    });
-});
-
-/**
- *
- * @param vURL
- */
-function setPrevImage(vURL)
-{
-    if ($("#video_thumb").length > 0) {
-        $("#video_thumb").attr("src",vURL);
-    } else {
-        $("#prev_banner").append('<img width="180px" id="video_thumb" src="'+vURL+'" />');
-    }
-    $("#prev_banner > .prev_thumb").remove();
-}
-
-/**
- *
- * @param url
- * @returns {*}
- */
-function processURL(url){
-    var id;
-
-    if (url.indexOf('youtube.com') > -1) {
-        results = url.match("[\\?&]v=([^&#]*)");
-        id = ( results === null ) ? url : results[1];
-        return processYouTube(id);
-    } else if (url.indexOf('youtu.be') > -1) {
-        url = url.replace("http://","");
-        id = url.split('/')[1];
-        return processYouTube(id);
-    } else if (url.indexOf('vimeo.com') > -1) {
-        url = url.replace("http://","");
-        if (url.match(/^vimeo.com\/[0-9]+/)) {
-            id = url.split('/')[1];
-        } else if (url.match(/^vimeo.com\/channels\/[\d\w]+#[0-9]+/)) {
-            id = url.split('#')[1];
-        } else if (url.match(/vimeo.com\/groups\/[\d\w]+\/videos\/[0-9]+/)) {
-            id = url.split('/')[4];
-        } else {
-            throw new Error('Unsupported Vimeo URL');
-        }
-
-        $.ajax({
-            url: 'http://vimeo.com/api/v2/video/' + id + '.json',
-            dataType: 'jsonp',
-            success: function(data) {
-                setPrevImage(data[0].thumbnail_large);
-            }
+            if (!vURL) return;
+            setPrevImage(vURL);
         });
-    } else if (ImageExistFromUrl(url)) {
-        return url;
-    } else {
-        throw new Error('Unrecognised URL');
-    }
-
-    function processYouTube(id) {
-        if (!id) {
-            throw new Error('Unsupported YouTube URL');
-        }
-
-        return "http://img.youtube.com/vi/"+id+"/0.jpg";
-    }
-}
-
-function ImageExistFromUrl(url)
-{
-    var img = new Image();
-    img.src = url;
-    if (img.height != 0) {
-        return true
-    } else {
-        return false;
-    }
-}
-
-function clearLogoContent()
-{
-    var control = $("#logo");
-    control.replaceWith( control = control.clone( true ) );
-}
-
-function clearBannerContent()
-{
-    var control = $("#banner");
-    control.replaceWith( control = control.clone( true ) );
-}
-
-/**
- * Switch Next Form Panel
- * @param id
- */
-function nextStepShow(id){
-    $("#"+id).next().find("a").first().click();
-}
-function prevStepShow(id){
-    $("#"+id).prev().find("a").first().click();
-}
-
-/**
- *
- */
-
-var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_details["pitches_number"]; else { ?>0<?php } ?>;
-/*function addPitch(){
-//    alert(2);
-    var pitches = parseInt($("#pitches_number").val());
-    $("#pitches_number").val(pitches + 1);
-    aux = $("<div class='pitch-content'> </div>");
-    aux.html($("#pitch_template").html());
-    aux.find("#amoun").attr("id","pitch["+countOfPitch+"][0]").attr("name","pitch_amoun["+countOfPitch+"]");
-    aux.find("#name").attr("id","pitch["+countOfPitch+"][1]").attr("name","pitch_name["+countOfPitch+"]");
-    aux.find("#description").attr("id","pitch["+countOfPitch+"][2]").attr("name","pitch_description["+countOfPitch+"]");
-    $("#pitch_box").append(aux);
-    countOfPitch +=1;
-    console.log(countOfPitch);
-
-    $('.removePitchButton').unbind().bind('click',function(){
-        var pitches = parseInt($("#pitches_number").val());
-        $("#pitches_number").val(pitches - 1);
-        $(this).parent().remove();
     });
 
 
-}*/
-/**
- * <div id="pitch_template">
- <div style="display: block"><span>Amount *</span> <input id="amoun" type="text" value="" placeholder="" /> </div>
- <div style="display: block"><span>Nmae *</span> <input id="name" type="text" value="" placeholder="" /> </div>
- <div style="display: block"><span>Description *</span> <textarea id="description"rows="5" cols="3"></textarea> </div>
- </div>
- */
+    var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_details["pitches_number"]; else { ?>0<?php } ?>;
+
 </script>
 <span id="noscriptdiv" style="border:1px  solid #FF0000;display:block;padding:5px;text-align:left; background: #FDF2F2;color:#000;">Active Scripting (JavaScript) should be enabled in your browser for this application to function properly!</span>
 
@@ -701,7 +188,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <option value="Artistic: art gallerie">Artistic: art gallery</option>
         <option value="Artistic: writers' organization">Artistic: writers' organization</option>
         <option value="Artistic: youth music group">Artistic: youth music group </option>
-<!--        <option value="Other">Other </option>-->
         </select>
         <input type="hidden" name="tax_account_type" type="radio" value="1" />
         <span><?=MSG_REGISTER_AS_DESC;?></span>
@@ -713,7 +199,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <span><?=MSG_FULL_NAME_EXPL;?> *</span>
     </div>
 
-    <? #if ($user_details['tax_account_type']) { ?>
     <div class="account-row">
         <label><?=MSG_COMPANY_NAME;?> </label>
         <input name="tax_company_name" type="text" class="contentfont" id="tax_company_name" value="<?=isset($user_details['tax_company_name'])?$user_details['tax_company_name']:'';?>" size="40" />
@@ -746,9 +231,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
         ?>
         <input type ="hidden" name="geoaddress" id="geoaddress" value= "<?=(isset($user_details['address']))?$user_details['address']:'' .",". $city .",". $zip_code;?>"/>
-        <?
-        #include 'includes/npgeocode_user.php';
-        ?>
 
         <input type ="hidden" name="lat" id="lat" value= "<?=(isset($user_details['lat']))?$user_details['lat']:'';?>" />
         <input type ="hidden" name="lng" id="lng" value= "<?=(isset($user_details['lng']))?$user_details['lng']:'';?>" />
@@ -786,7 +268,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <input name="form_register_proceed" type="submit" id="form_register_proceed_account"
                value="<?=MSG_SAVE_CAMPAIGN?>" class="save_btn partial_save"/>
         <div class="right">
-            <input type="button" onclick="nextStepShow('p_account')" value="<?=MSG_NEXT?>" class="next_btn" />    </div>
+            <input type="button" value="<?=MSG_NEXT?>" class="next_btn" />    </div>
         </div>
     </div>
 
@@ -807,7 +289,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         </div>
         <div class="account-row">
             <label><?=MSG_CREATE_PROJECT_CHOOSE_CATEGORY;?> *</label>
-<!--            --><?//=$project_country?>
             <select name="project_category" id="project_category">
                 <?php foreach ($project_category as $category): ?>
                     <option value="<?php echo $category["id"]; ?>"
@@ -827,7 +308,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <input type="text" name="project_title"
                    value="<?php echo isset($user_details['project_title']) ? $user_details['project_title'] : '' ?>"
                    id="project_title" maxlength="80" size="40" >
-         <!--   <span><?/*=MSG_CREATE_PROJECT_CAMPAIGN_BASIC_EXPLANATION;*/?></span>-->
         </div>
         <div class="account-row">
             <label><?=MSG_CREATE_PROJECT_SHORT_DESCRIPTION;?> *</label>
@@ -844,13 +324,12 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <div class="account-row deadline">
             <label><?="Deadline";?> </label>
 
-<!--            --><?php //var_dump($user_details['deadline_type_value']); ?>
                         <span>
                         <input type="hidden" name="deadline_type_value" id="deadline_type_value"
                                value="<?php echo (isset($user_details['deadline_type_value'])) ? $user_details['deadline_type_value'] : '' ?>">
                         </span>
                         <span>
-                      <span class="radio-span"> <input type="radio" name="deadline_type" value="deadline_type" onclick="changeDeadlineType(jQuery(this),'time_period')"
+                      <span class="radio-span"> <input type="radio" name="deadline_type" id="deadline_type_days" value="deadline_type" onclick="changeDeadlineType(jQuery(this),'time_period')"
                               <?php echo (isset($user_details['deadline_type_value']) && $user_details['deadline_type_value'] == "time_period") ? 'checked="checked"' : '' ?>>
                        # of days</span>
                        <input type="text" name="time_period" id="time_period" disabled="disabled"
@@ -860,7 +339,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 
                           <span>
                               <span class="radio-span">
-                              <input type="radio" name="deadline_type" value="deadline_type" onclick="changeDeadlineType(jQuery(this),'certain_date')"
+                              <input type="radio" name="deadline_type" id="deadline_type_date" value="deadline_type" onclick="changeDeadlineType(jQuery(this),'certain_date')"
                                   <?php echo (isset($user_details['deadline_type_value']) && $user_details['deadline_type_value'] == "certain_date") ? 'checked="checked"' : '' ?>>
                       (date)
                          </span>
@@ -873,8 +352,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <? if ( defined('IN_ADMIN') && IN_ADMIN == 1) { ?>
             <div class="account-row taxt-settings">
                 <h6><?=AMSG_PAYMENT_SETTINGS;?></h6>
-                <!--                   <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1">-->
-                <!--                   <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1">-->
                 <input type="radio" name="payment_mode" value="2" <? echo ($user_details['payment_mode']==2) ? 'checked' : '';?>
                 <label><?=AMSG_PAYMENT_MODE;?></label>
                 <div class="clear"></div>
@@ -912,8 +389,8 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                     <input name="form_register_proceed" type="submit" id="form_register_proceed_details"
                            value="<?=MSG_SAVE_CAMPAIGN?>" class="save_btn partial_save"/>
                     <div class="right">
-                        <input type="button" onclick="prevStepShow('p_projectDetail')"  value="<?=MSG_PREV?>" class="next_btn" />
-                        <input type="button" onclick="nextStepShow('p_projectDetail')" value="<?=MSG_NEXT?>" class="next_btn" />
+                        <input type="button" value="<?=MSG_PREV?>" class="prev_btn" />
+                        <input type="button" value="<?=MSG_NEXT?>" class="next_btn" />
                     </div>
                 </div>
         </div>
@@ -926,8 +403,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
 <fieldset class="step">
     <div class="tabs">
         <h4><?=MSG_WEBSITE_ADDRESS;?></h4>
-        <!--                <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
-        <!--                <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
         <div class="account-tab">
         <div class="account-row">
             <label><?=MSG_WEBSITE_ADDRESS_INSTRUCTIONS;?></label>
@@ -946,8 +421,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         </div>
 
         <h5><?=MSG_LOGO_DESC;?></h5>
-        <!--               <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
-        <!--               <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
         <div class="account-row">
             <?php if(isset($logo_image) && $logo_image): ?>
                 <input type="hidden" name="valid_logo_image" id="valid_logo_image" value="<?php echo $logo_image; ?>"/>
@@ -958,7 +431,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             <?php endif; ?>
             <div id="MultiPowUpload_holder">
                 <input class="file" name="logo" id="logo" accept="image/*" type='file' multiple title="logo file"/>
-                <span style="cursor: pointer;" onclick="clearLogoContent()">Clear</span>
+                <span class="clear-file-input">Clear</span>
             </div>
 
             <div id="serverresponse">
@@ -967,8 +440,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
             </div>
         </div>
         <h5>Your Story (<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>
-        <!--                 <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
-        <!--                    <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
 
         <div class="account-row">
             <div class="upload">
@@ -986,7 +457,7 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 <img src="<?php echo $user_details['banner']; ?>" />
             <?php endif; ?>
             <input class="file" name="banner" id="banner" type='file' multiple title="banner file"/>
-            <span style="cursor: pointer" onclick="clearBannerContent()" class="clear_btn">Clear</span>
+            <span class="clear-file-input" >Clear</span>
             <div id="vide_select_block" style="display: none">
                 <input type="text" name="video_url" id="video_url" value="">
                 <input type="button" id="loadVideo" value="Get">
@@ -1001,8 +472,8 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
                 <input name="form_register_proceed" type="submit"
                        id="form_register_proceed_enhance" value="<?=MSG_SAVE_CAMPAIGN?>" class="save_btn partial_save"/>
                 <div class="right">
-                    <input type="button" onclick="prevStepShow('p_projectEdit')"  value="<?=MSG_PREV?>" class="next_btn" />
-                    <input type="button" onclick="nextStepShow('p_projectEdit')" value="<?=MSG_NEXT?>" class="next_btn" />
+                    <input type="button"  value="<?=MSG_PREV?>" class="prev_btn" />
+                    <input type="button"  value="<?=MSG_NEXT?>" class="next_btn" />
                 </div>
             </div>
 
@@ -1015,8 +486,6 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
     <div class="tabs">
         <div class="account-tab">
         <? if ((!defined('IN_ADMIN') || IN_ADMIN != 1) && (!isset($edit_user) || !$edit_user ) ) { ?>
-            <!--                           <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
-            <!--                           <img src="themes/--><?//=$setts['default_theme'];?><!--/img/pixel.gif" width="1" height="1" />-->
             <div class="account-row enter-pin">
                 <label><?=MSG_REG_PIN;?></label>
                 <span class="img-pin"><?=$pin_image_output;?></span>
@@ -1037,11 +506,11 @@ var countOfPitch = <?php if (isset($user_details["pitches_number"])) echo $user_
         <?=(isset($signup_voucher_box))?$signup_voucher_box:'';?>
             <br />
         <?=(isset($registration_terms_box))?$registration_terms_box:'';?>
-            <!--<input name="form_register_proceed" type="submit"
-                   id="form_register_proceed_save" value="<?/*=MSG_SAVE_CAMPAIGN*/?>" class="save_btn partial_save"/>-->
          <div class="next">
-             <input type="button" onclick="prevStepShow('p_confirmation')" value="<?= MSG_PREV ?>" class="next_btn" />
-             <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE?>"/>
+             <input type="button" value="<?= MSG_PREV ?>" class="prev_btn" />
+             <div class="right">
+                 <input name="form_register_proceed" type="submit" id="form_register_proceed" class="save_btn" value="<?=MSG_SAVE?>"/>
+             </div>
          </div>
     </div>
     </div>

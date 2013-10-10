@@ -94,7 +94,7 @@ class projectRewards extends custom_field {
 			$reward['estimated_delivery_date'] = date("m/d/Y", strtotime($reward['estimated_delivery_date']));
 		}
 		ob_start();
-		?><div class="reward_block" id="reward_block_<?= $reward_id; ?>">
+		?><div class="reward_block clrfix" id="reward_block_<?= $reward_id; ?>">
 			<div class="reward_title">
 				<div class="reward_title_label"><?=MSG_REWARD;?></div>
 				<div class="rewards-actions">
@@ -137,7 +137,7 @@ class projectRewards extends custom_field {
 				</div>
 			</div>
             <div class="clear"> </div>
-            <input type="button" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
+            <input type="button" class="post-reward" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
 			<script>
 				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker({ 
 					dateFormat: "mm/dd/yy", 
