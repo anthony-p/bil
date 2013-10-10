@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.04															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -18,7 +18,7 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,lo
 
 
 <div class="mainhead"><img src="images/user.gif" align="absmiddle"> <?=$header_section;?></div>
-<?=$msg_changes_saved;?>
+<?=isset($msg_changes_saved) ? $msg_changes_saved : '';?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
    <tr>
       <td width="4"><img src="images/c1.gif" width="4" height="4"></td>
@@ -44,14 +44,15 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,lo
                   <td colspan="3"><?=GMSG_USER_SEARCH;?></td>
                </tr>
                <tr class="c2">
-                  <td><?=AMSG_USERNAME;?>
+                  <td><?=AMSG_NAME;?>
                      :</td>
-                  <td colspan="2"><input name="keywords_name" type="text" id="keywords_name" value="<?=$keywords_name;?>" /></td>
+                  <td colspan="2"><input name="keywords_name" type="text" id="keywords_name"
+                                         value="<?=isset($keywords_name) ? $keywords_name : '';?>" /></td>
                </tr>
                <tr class="c1">
                   <td><?=AMSG_EMAIL_ADDR;?>
                      :</td>
-                  <td><input name="keywords_email" type="text" id="keywords_email" value="<?=$keywords_email;?>" /></td>
+                  <td><input name="keywords_email" type="text" id="keywords_email" value="<?=isset($keywords_email) ? $keywords_email : '';?>" /></td>
                   <td><input name="form_user_search" type="submit" id="form_user_search" value="<?=GMSG_SEARCH;?>" /></td>
                </tr>
             </form>
@@ -78,15 +79,15 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,lo
    </tr>
    <? } ?>
    <tr class="c4">
-      <td width="130"><?=AMSG_USERNAME;?>
+      <td width="130"><?=AMSG_NAME;?>
          &nbsp;
          <?=$page_order_username;?></td>
-      <td width="240"><?=AMSG_USER_DETAILS;?>
+      <td width="240"><?=AMSG_EMAIL_ADDR;?>
          &nbsp;
          <?=$page_order_reg_date;?></td>
-      <td align="center"><?=AMSG_ACCOUNT_DETAILS;?></td>
+      <td align="center"><?=AMSG_COUNTRY;?></td>
       <? if ($setts['enable_tax']) { ?>
-      <td width="210" align="center"><?=GMSG_TAX_SETTINGS;?></td>
+      <td width="210" align="center"><?=AMSG_STATE;?></td>
       <? } ?>
       <td width="110" align="center"><?=AMSG_OPTIONS;?></td>
    </tr>

@@ -14,7 +14,7 @@ include_once ('../includes/global.php');
 
 include_once ('../includes/functions_login.php');
 
-if (eregi('logout', $_GET['option']))
+if (isset($_GET['option']) && eregi('logout', $_GET['option']))
 {
 	logout(true);
 }
@@ -38,7 +38,7 @@ if ($sessionActive!='Active')
 else
 {
 	$msg_shown = false;
-	if ($_GET['viewmsg']==1)
+	if (isset($_GET['viewmsg']) && $_GET['viewmsg']==1)
 	{
 		$insufficient_priv_msg = '<table width="100%" bgcolor="red"><tr><td align="center"> 			'.
 			'<font size="+1" color="#ffffff">' . AMSG_INSUFFICIENT_LVL_MSG . '</font></td></tr></table>';

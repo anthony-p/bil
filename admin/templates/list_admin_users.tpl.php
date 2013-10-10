@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.04															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -12,8 +12,8 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <div class="mainhead"><img src="images/user.gif" align="absmiddle">
    <?=$header_section;?>
 </div>
-<?=$msg_changes_saved;?>
-<?=$display_formcheck_errors;?>
+<?=isset($msg_changes_saved) ? $msg_changes_saved : '';?>
+<?=isset($display_formcheck_errors) ? $display_formcheck_errors : '';?>
 <?=$management_box;?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
    <tr>

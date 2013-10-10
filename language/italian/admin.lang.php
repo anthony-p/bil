@@ -546,6 +546,7 @@ define('AMSG_RP_FEE_DESC', 'Enter a fee for enabling reserve price on an auction
 define('AMSG_REL_FEES_RED_FEE_DESC', 'Enter a reduction percentage in case an auction is relisted. This is a percentage amount.');
 define('AMSG_WA_SETUP_FEE_DESC', 'Enter a fee for setting up a wanted ad. This is a flat fee.');
 define('AMSG_COUNTRY', 'Country');
+define('AMSG_STATE', 'State');
 define('AMSG_ACCOUNT_STATUS', 'Account Status');
 define('AMSG_ENABLE_AUCT_APPROVAL', 'Enable Auctions Approval');
 define('AMSG_AUCT_APPROVAL_NOTE', 'Note: By checking the checkbox above, all auctions will require admin approval.<br>

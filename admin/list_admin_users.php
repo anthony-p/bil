@@ -2,7 +2,7 @@
 #################################################################
 ## PHP Pro Bid v6.00															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
@@ -27,7 +27,7 @@ else
 
 	$form_submitted = false;
 
-	if ($_REQUEST['do'] == 'add_user')
+	if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'add_user')
 	{
 		if ($_REQUEST['operation'] == 'submit')
 		{
@@ -62,7 +62,7 @@ else
 			$management_box = $template->process('list_admin_users_add_admin_user.tpl.php');
 		}
 	}
-	else if ($_REQUEST['do'] == 'edit_user')
+	else if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'edit_user')
 	{
 		$row_user = $db->get_sql_row("SELECT id, username, password, date_created, date_lastlogin, level FROM
 			" . DB_PREFIX . "admins WHERE id=" . $_REQUEST['id']);
@@ -113,7 +113,7 @@ else
 			$management_box = $template->process('list_admin_users_add_admin_user.tpl.php');
 		}
 	}
-	else if ($_REQUEST['do'] == 'delete_user')
+	else if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'delete_user')
 	{
 		$nb_admin_users = $db->count_rows('admins'); // if like this it will count all rows in a table (or more tables)
 
@@ -134,6 +134,10 @@ else
 	$sql_select_users = $db->query("SELECT id, username, date_created, date_lastlogin, level FROM
 		" . DB_PREFIX ."admins");
 
+    $counter = 0;
+    if (!isset($admin_users_content)) {
+        $admin_users_content = '';
+    }
 	while ($user_details = $db->fetch_array($sql_select_users))
 	{
 		$background = ($counter++%2) ? 'c1' : 'c2';

@@ -9,7 +9,7 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-<?=$insufficient_priv_msg;?>
+<?= isset($insufficient_priv_msg) ? $insufficient_priv_msg : '' ;?>
 <!-- Draw main menu on Admin home page -->
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">

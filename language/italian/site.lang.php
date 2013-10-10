@@ -389,3 +389,5 @@ define ('MSG_REWARD_SHIPPING_ADDRESS_REQUIRED', 'Indirizzo di consegna richiesto
 
 define ('MSG_PASSWORD_REQUIRED', 'Password Required');
 define ('MSG_VERIFY_PASSWORD_REQUIRED', 'Verify Password Required');
+
+define ('MSG_YOUR_AUCTION', 'Your auction');
