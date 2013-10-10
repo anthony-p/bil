@@ -611,6 +611,23 @@ if (!defined('INCLUDED')) {
                     </div>
                 </div>
             </div>
+			<div class="account-row">
+                <label><strong><?=MSG_INCLUDE_CLICKTHROUGH_STATUS;?></strong></label>
+				<div class="radio">
+					<input type="radio" name="include_clickthrough" value="0" <?php echo (isset($campaign["include_clickthrough"]) && ($campaign["include_clickthrough"] == 0)) ? "checked" : ''; ?>>
+					<label><?=MSG_INCLUDE_CLICKTHROUGH_STATUS_NO?></label>
+				</div>
+				<div class="radio">
+					<input type="radio" name="include_clickthrough" value="1" <?php echo (isset($campaign["include_clickthrough"]) && ($campaign["include_clickthrough"] == 1)) ? "checked" : ''; ?>>
+					<label><?=MSG_INCLUDE_CLICKTHROUGH_STATUS_YES?></label>
+				</div>
+            </div>
+            <div class="next">
+                <input type="button" onclick="prevStepShow('p_projectStatus')" value="<?=MSG_PREV?>" class="next_btn" />
+                <div class="right">
+                    <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE_CHANGES?>" class="save_btn"/>
+                </div>
+            </div>
         </div>
         </fieldset>
     </form>

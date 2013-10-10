@@ -12,6 +12,9 @@ define('MSG_FEATURED_AFFILIATES', 'Featured vendors');
 define('MSG_BROWSE_AFFILIATES', 'Click through and shop - a percent will stay in your community');
 define('MSG_SEARCH_IN_A_CATEGORY', 'Search');
 define('MSG_PARTNER_NAME', 'Vendor name');
+define('MSG_INCLUDE_CLICKTHROUGH_STATUS', 'Allow the big corporate vendors to be associated with my campaign');
+define('MSG_INCLUDE_CLICKTHROUGH_STATUS_YES', 'Yes');
+define('MSG_INCLUDE_CLICKTHROUGH_STATUS_NO', 'No');
 
 //static content pages
 
