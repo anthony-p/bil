@@ -72,7 +72,8 @@ if (!defined('INCLUDED')) {
         <?php elseif (isset($user_details['deadline_type_value']) && $user_details['deadline_type_value'] == "certain_date"): ?>
         $('#certain_date').removeAttr('disabled');
         <?php endif; ?>
-        $('#add_new_reward_button').on('click', function () {
+        $('#add_new_reward_button').on('click', function (e) {
+            e.preventDefault();
             addNewRewardToProject("<?= MSG_REWARD_NEEDS_TO_BE_SAVED ?>", <?= $campaign['user_id']; ?>)
         });
         $('.delete_reward_comment').on('click', function(e) {

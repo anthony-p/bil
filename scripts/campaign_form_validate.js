@@ -297,23 +297,29 @@ function changeDeadlineType(obj, id) {
     certaindate.next('label').remove();
 }
 function projectUpdateComment() {
+    /* Getting content */
+    var wisiwyg = tinymce.get('project_update_textarea'),
+        comment = wisiwyg.getContent();
 
-    var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + tinymce.get('project_update_textarea').getContent();
-    $.ajax({
-        url: "/np_compaign_project.php",
-        type: "POST",
-        data: data,
-        success: function (response) {
+    /* If empty do nothing */
+    if (!comment) {return false;} else {
+        var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + comment;
+        $.ajax({
+            url: "/np_compaign_project.php",
+            type: "POST",
+            data: data,
+            success: function (response) {
 
-            var commentObj = $.parseJSON(response);
-            if (commentObj.response == true) {
-                addProjectUpdateComment(commentObj.id);
+                var commentObj = $.parseJSON(response);
+                if (commentObj.response == true) {
+                    addProjectUpdateComment(commentObj.id);
+                }
+            },
+            error: function () {
+                console.log("failure");
             }
-        },
-        error: function () {
-            console.log("failure");
-        }
-    });
+        });
+    }
 }
 
 has_new_reward_form = false;
@@ -342,8 +348,7 @@ function addProjectUpdateComment(id) {
     /* Getting content */
     var wisiwyg = tinymce.get('project_update_textarea'),
         comment = wisiwyg.getContent();
-    /* If empty do nothing */
-    if (!comment) return false;
+
     /* Adding row with update text */
     $("#project_update_post_comments").prepend('<li id="project_update_comment_row' + id + '">' +
         '<p>' + comment + '</p>' +
