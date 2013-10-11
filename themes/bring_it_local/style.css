@@ -1995,8 +1995,10 @@ footer .copyright .innerContainer .copiright-info{float: right;
 /*registration page*/
 #register .barTitleNew {
     padding-left: 20px;
-    text-align:center;
     margin-bottom:1em;
+}
+#register .registered_title .barTitleNew {
+    text-align:center;
 }
 .registered_message .contentfont{
     font:14px/18px "OpenSans", sans-serif;
