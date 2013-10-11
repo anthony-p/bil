@@ -35,6 +35,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
         $("#validation_errors").dialog({
             resizable: false,
+            draggable:false,
             height: 200,
             width: 400,
             title: "Validation Errors",

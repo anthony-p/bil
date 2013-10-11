@@ -92,7 +92,6 @@ function validateCampaignForm(form, messages) {
                 accept:"image/*"
             },
             banner: {
-
                 accept:"image/*"
             },
             video_url: {
