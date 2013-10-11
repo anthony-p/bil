@@ -81,7 +81,8 @@ function validateCampaignForm(form, messages) {
                       return $('#deadline_type_days:checked');
                   }
               },
-              digits:true
+              digits:true,
+              min: 1
 
             },
             url: {
