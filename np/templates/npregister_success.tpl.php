@@ -10,5 +10,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 
 <?=$register_success_header;?>
-<?//=$payment_table_display;?>
-<?=$register_success_message;?>
+<div class="registered_message">
+    <?=$register_success_message;?>
+</div>
