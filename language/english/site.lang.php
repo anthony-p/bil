@@ -61,6 +61,12 @@ define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL', 'Nevermind, canc
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE', 'POST Confirm');
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG', 'Choosing POST will make your comment instantly public');
 
+// campaign edit - edit campaign -delete update
+define('MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_OK', 'Delete');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_CANCEL', 'Nevermind, cancel');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_MSG', 'Delete Update Confirm');
+define('MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_TITLE', 'Confirm delete action');
+
 // draft explanation message
 define('MSG_DRAFT_CAMPAIGNS_EXPLANATION', '<h3>New campaigns are drafts, they need to be set as LIVE</h3>Make your campaign live by clicking EDIT and then selecting \'Live\' in the status tab');
 

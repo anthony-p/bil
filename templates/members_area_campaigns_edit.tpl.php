@@ -35,14 +35,19 @@ if (!defined('INCLUDED')) {
         days_format:"<?= MSG_DEADLINE_TIME_PERIOD; ?>"
     };
     window.messages = {
-        confirm_delete_button: '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK; ?>',
-        confirm_cancel_button: '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_CANCEL; ?>'
+        confirm_delete_reward_button: '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK; ?>',
+        confirm_cancel_reward_button: '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_CANCEL; ?>',
+        delete_reward_text: '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG; ?>',
+        confirm_delete_update_button: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_OK; ?>',
+        confirm_cancel_update_button: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_CANCEL; ?>',
+        delete_update_title: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_TITLE; ?>',
+        delete_update_text: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_MSG; ?>'
     };
 
 
 </script>
-<script type="text/javascript" src="/scripts/campaign_form_validate.js"></script>
 <script type="text/javascript" src="/scripts/init_tinymce.js"></script>
+<script type="text/javascript" src="/scripts/campaign_form_validate.js"></script>
 <script type="text/javascript">
 
     $(document).on('ready', function () {
@@ -606,9 +611,6 @@ if (!defined('INCLUDED')) {
 
 <!-- Dialogs bodies -->
 <div id="confirm_dialog_box" title="<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE; ?>" style="display: none;">
-    <br>
-
     <p><?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG; ?></p>
 </div>
-<div id="validation_errors" title="Basic dialog" >
-</div>
+

@@ -2,15 +2,6 @@
  * Created by Anastasia Batieva on 07.10.13.
  */
 
-var regNotEmptyAlpha = /^([\w]+)$/i;
-var regNotEmptyNumbers = /^([\d]+)$/i;
-var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
-var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
-var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
-var regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars = /^([\w\d\sáíóúăşţäößàâçéèêëîïôûùüÿñæœ .-_&]+)$/i;
-var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
-var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
-var err_status = false;
 var err_msg = '';
 
 
@@ -151,27 +142,6 @@ function goToSelectedTab() {
 
 }
 
-
-function showValidationErr() {
-
-    var validationerrors = $('#validation_errors');
-
-    validationerrors.empty();
-    validationerrors.append('<ul>' + err_msg + '</ul>');
-
-    validationerrors.dialog({
-        resizable: false,
-        height: 200,
-        width: 400,
-        title: "Validation Errors",
-        modal: true,
-        buttons: {
-            OK: function () {
-                $(this).dialog("close");
-            }
-        }
-    });
-}
 function bannerTypeSelect(flag) {
     var banner = $("#banner");
     if (flag == "0") {
@@ -299,10 +269,10 @@ function changeDeadlineType(obj, id) {
 function projectUpdateComment() {
     /* Getting content */
     var wisiwyg = tinymce.get('project_update_textarea'),
-        comment = wisiwyg.getContent();
+        comment = wisiwyg.getContent({format : 'text'});
 
     /* If empty do nothing */
-    if (!comment) {return false;} else {
+    if (!$('#project_update_textarea').val()) {return false;} else {
         var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + comment;
         $.ajax({
             url: "/np_compaign_project.php",
@@ -377,14 +347,16 @@ function addProjectRewardComment(id) {
 
 function projectUpdateDelete(id) {
     var data = 'delete_project_updates=true' + '&updates_id=' + id;
+    $('#confirm_dialog_box').html(window.messages.delete_update_text);
     $("#confirm_dialog_box").dialog({
         resizable: false,
+        title:window.messages.delete_update_title,
         height: 200,
         width: 400,
         modal: true,
         buttons: [
             {
-                text: 'Delete',
+                text: window.messages.confirm_delete_update_button,
                 click: function () {
 
                     $.ajax({
@@ -405,7 +377,7 @@ function projectUpdateDelete(id) {
                 }
             },
             {
-                text: 'Cancel',
+                text: window.messages.confirm_cancel_update_button,
                 click: function () {
                     $(this).dialog("close");
                 }
@@ -538,7 +510,7 @@ function validateProjectReward(id) {
 
     var v_err_msg = "";
     var v_err = false;
-
+    // TODO: jquery validate for this part too. Requires changes in reward's form html generator
     $("#reward_amount_" + id).removeClass("error");
     $("#reward_name_" + id).removeClass("error");
     $("#reward_short_description_" + id).removeClass("error");
@@ -557,7 +529,7 @@ function validateProjectReward(id) {
         v_err = true;
     }
 
-    if (parseInt($("#reward_amount_" + id).val()) < 0) {
+    if (parseInt($("#reward_amount_" + id).val()) <= 0) {
         v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO ?></li>";
         $("#reward_amount_" + id).addClass("error");
         v_err = true;
