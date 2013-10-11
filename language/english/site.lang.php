@@ -45,7 +45,7 @@ define('MSG_REGISTER_CAMPAIGN_ERR_STATE','The State field was not completed corr
 
 // campaign edit - delete rewards confirmation
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE', 'Delete Reward Confirm');
-define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG', 'MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG');
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG', 'This will permanently delete this reward.');
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK', 'Delete');
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_CANCEL', 'Cancel');
 
