@@ -77,7 +77,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </tr>
     <tr>
         <td>
-            <label style="width: 80px;">google++</label>
+            <label style="width: 80px;">google+</label>
             <label class="social-network-url">https://plus.google.com/</label><input type="text" name="google_link" value="<?=str_replace('https://plus.google.com/', '', $user_details['google_link']);?>" />
         </td>
     </tr>
