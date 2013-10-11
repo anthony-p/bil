@@ -269,11 +269,11 @@ function changeDeadlineType(obj, id) {
 function projectUpdateComment() {
     /* Getting content */
     var wisiwyg = tinymce.get('project_update_textarea'),
-        comment = wisiwyg.getContent({format : 'text'});
+        comment = wisiwyg.getContent({format : 'text'}).replace(/<\/?[^>]+>/gi, '').trim();
 
     /* If empty do nothing */
-    if (!$('#project_update_textarea').val()) {return false;} else {
-        var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + comment;
+    if (!comment) {return false;} else {
+        var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + wisiwyg.getContent();
         $.ajax({
             url: "/np_compaign_project.php",
             type: "POST",
