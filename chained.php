@@ -10,11 +10,15 @@
 include_once ('includes/global.php');
 if (!isset($_SESSION)) session_start();
 
-$user_details = $session->value('user_id') ? $session->value('user_id') : null;;
+$user_details = $session->value('user_id') ? $session->value('user_id') : null;
+
+$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$domain_name = $protocol . $_SERVER['SERVER_NAME'];
+
 
 
 if (!isset($_POST["amount"]))
-    header('location: http://dev2.bringitlocal.com/');
+    header('location: ' . $domain_name);
 
 require_once ("paypalplatform.php");
 
@@ -92,10 +96,10 @@ if (($beneficiar_amount >= $bring_it_local_amount) && ($beneficiar_amount >= $co
 
 // Request specific required fields
 $actionType			= "PAY";
-$cancelUrl			= "http://" . $_SERVER['SERVER_NAME'] . "/donate_cancel.php";	// TODO - If you are not executing the Pay call for a preapproval,
+$cancelUrl			= $domain_name . "/donate_cancel.php";	// TODO - If you are not executing the Pay call for a preapproval,
 //        then you must set a valid cancelUrl for the web approval flow
 //        that immediately follows this Pay call
-$returnUrl			= "http://" . $_SERVER['SERVER_NAME'] . "/donate_success.php";	// TODO - If you are not executing the Pay call for a preapproval,
+$returnUrl			= $domain_name . "/donate_success.php";	// TODO - If you are not executing the Pay call for a preapproval,
 //        then you must set a valid returnUrl for the web approval flow
 //        that immediately follows this Pay call
 $currencyCode		= "USD";
@@ -145,7 +149,7 @@ $receiverInvoiceIdArray = array(
 $senderEmail					= "";		// TODO - If you are executing the Pay call against a preapprovalKey, you should set senderEmail
 //        It is not required if the web approval flow immediately follows this Pay call
 $feesPayer						= "";
-$ipnNotificationUrl				= "http://" . $_SERVER['SERVER_NAME'] . "/donate_notify_url.php";
+$ipnNotificationUrl				= $domain_name . "/donate_notify_url.php";
 $memo							= "";		// maxlength is 1000 characters
 $pin							= "";		// TODO - If you are executing the Pay call against an existing preapproval
 //        the requires a pin, then you must set this
