@@ -592,6 +592,14 @@ class user extends custom_field
         try{
 
 		$user_details = $this->rem_special_chars_array($user_details);
+
+            if (!isset($user_details['fname'])) {
+                $user_details['fname'] = isset($user_details['first_name']) ? $user_details['first_name'] : '';
+            }
+
+            if (!isset($user_details['lname'])) {
+                $user_details['lname'] = isset($user_details['last_name']) ? $user_details['last_name'] : '';
+            }
         $full_name = $user_details['fname'] . " " . $user_details['lname'];
         $clickReport = 0;
         if(isset($user_details['clickreport'])) $clickReport=1;
@@ -602,10 +610,10 @@ class user extends custom_field
         if (!isset($user_details["tax_reg_number"])) {
             $user_details["tax_reg_number"] = '';
         }
-            $confirmed_paypal_email = 0;
-            if (isset($_POST["confirmed_paypal_email"])) {
-                $confirmed_paypal_email = $_POST["confirmed_paypal_email"] ? 1 : 0;
-            }
+        $confirmed_paypal_email = 0;
+        if (isset($_POST["confirmed_paypal_email"])) {
+            $confirmed_paypal_email = $_POST["confirmed_paypal_email"] ? 1 : 0;
+        }
 
         $sql_update_query = "UPDATE bl2_users SET
             first_name =  '{$user_details['fname']}',

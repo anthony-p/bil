@@ -81,6 +81,8 @@ define ('AMSG_CATEGORIES', 'Categories');
 define ('AMSG_EDIT_CATEGORIES', 'Edit Categories');
 define ('AMSG_CATEGORIES_MANAGEMENT', 'Categories Management');
 define ('AMSG_NAME', 'Name');
+define ('AMSG_FIRST_NAME', 'First Name');
+define ('AMSG_LAST_NAME', 'Last Name');
 define ('AMSG_INDIVIDUAL_FEES', 'Individual Fees');
 define ('AMSG_HIDDEN', 'Hidden');
 define ('AMSG_ADD_CATEGORY', 'Add New Categories');
