@@ -31,7 +31,7 @@ if ($show_msg==true)
 $globalads="1";
 if ($globalads=="1")## featured ads
  { ?>
-<div id="featuredPartners" class="bigBlock blueBlock">
+<div id="featuredPartners" class="bigBlock blueBlock" style="display:none;">
 	<div class='blockTitle'><?=MSG_FEATURED_AFFILIATES;?></div>
  	 <div class="featuredRetailers clearfix">
 	<?
