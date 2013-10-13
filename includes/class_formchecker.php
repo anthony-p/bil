@@ -451,7 +451,8 @@ class formchecker extends database
 		if(preg_match($pattern, $value))
 		{
 			if ($paypal) {
-                include_once('check_paypal_account.php');
+                file_exists('check_paypal_account.php') ?
+                    include_once('check_paypal_account.php') : include_once('../check_paypal_account.php');
                 $response = checkPaypalAccount($value);
                 if ($response == "Success") {
                     return true;

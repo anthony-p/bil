@@ -63,28 +63,23 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     <input type="hidden" name="operation" value="submit">
     <input type="hidden" name="do" value="<? if(isset($do)) echo $do;?>">
     <input type="hidden" name="user_id" value="<? if (isset($user_details['id'])) echo $user_details['id'];?>">
-    <input type="hidden" name="phone" value="<? if (isset($user_details['phone'])) echo $user_details['phone'];?>">
-    <input type="hidden" name="city" value="<? if (isset($user_details['city'])) echo $user_details['city'];?>">
-    <input type="hidden" name="state" value="<? if (isset($user_details['state'])) echo $user_details['state'];?>">
-    <input type="hidden" name="country" value="<? if (isset($user_details['country'])) echo $user_details['country'];?>">
-    <input type="hidden" name="postal_code" value="<? if (isset($user_details['postal_code'])) echo $user_details['postal_code'];?>">
-    <input type="hidden" name="address" value="<? if (isset($user_details['address'])) echo $user_details['address'];?>">
-    <input type="hidden" name="confirmed_paypal_email" value="<? if (isset($user_details['confirmed_paypal_email'])) echo $user_details['confirmed_paypal_email'];?>">
+<!--    <input type="hidden" name="phone" value="--><?// if (isset($user_details['phone'])) echo $user_details['phone'];?><!--">-->
+<!--    <input type="hidden" name="city" value="--><?// if (isset($user_details['city'])) echo $user_details['city'];?><!--">-->
+<!--    <input type="hidden" name="state" value="--><?// if (isset($user_details['state'])) echo $user_details['state'];?><!--">-->
+<!--    <input type="hidden" name="country" value="--><?// if (isset($user_details['country'])) echo $user_details['country'];?><!--">-->
+<!--    <input type="hidden" name="postal_code" value="--><?// if (isset($user_details['postal_code'])) echo $user_details['postal_code'];?><!--">-->
+<!--    <input type="hidden" name="address" value="--><?// if (isset($user_details['address'])) echo $user_details['address'];?><!--">-->
+<!--    <input type="hidden" name="confirmed_paypal_email" value="--><?// if (isset($user_details['confirmed_paypal_email'])) echo $user_details['confirmed_paypal_email'];?><!--">-->
     <input type="hidden" name="payment_mode" value="<? if (isset($user_details['payment_mode'])) echo $user_details['payment_mode'];?>">
-    <input type="hidden" name="address" value="<? if (isset($user_details['phone'])) echo $user_details['phone'];?>">
-    <input type="hidden" name="address" value="<? if (isset($user_details['phone'])) echo $user_details['phone'];?>">
-    <input type="hidden" name="address" value="<? if (isset($user_details['phone'])) echo $user_details['phone'];?>">
-    <input type="hidden" name="address" value="<? if (isset($user_details['phone'])) echo $user_details['phone'];?>">
-    <input type="hidden" name="address" value="<? if (isset($user_details['phone'])) echo $user_details['phone'];?>">
     <input type="hidden" name="birthdate" value="<? if (isset($user_details['birthdate'])) echo $user_details['birthdate'];?>">
     <input type="hidden" name="birthdate_year" value="<? if (isset($user_details['birthdate_year'])) echo $user_details['birthdate_year'];?>">
-    <input type="hidden" name="tax_account_type" value="<? if (isset($user_details['tax_account_type'])) echo $user_details['tax_account_type'];?>">
-    <input type="hidden" name="tax_company_name" value="<? if (isset($user_details['tax_company_name'])) echo $user_details['tax_company_name'];?>">
-    <input type="hidden" name="tax_reg_number" value="<? if (isset($user_details['tax_reg_number'])) echo $user_details['tax_reg_number'];?>">
-    <input type="hidden" name="extended_registration" value="<? if (isset($user_details['extended_registration'])) echo $user_details['extended_registration'];?>">
-    <input type="hidden" name="pg_paypal_first_name" value="<? if (isset($user_details['pg_paypal_first_name'])) echo $user_details['pg_paypal_first_name'];?>">
-    <input type="hidden" name="pg_paypal_last_name" value="<? if (isset($user_details['pg_paypal_last_name'])) echo $user_details['pg_paypal_last_name'];?>">
-    <input type="hidden" name="pg_paypal_email" value="<? if (isset($user_details['pg_paypal_email'])) echo $user_details['pg_paypal_email'];?>">
+<!--    <input type="hidden" name="tax_account_type" value="--><?// if (isset($user_details['tax_account_type'])) echo $user_details['tax_account_type'];?><!--">-->
+<!--    <input type="hidden" name="tax_company_name" value="--><?// if (isset($user_details['tax_company_name'])) echo $user_details['tax_company_name'];?><!--">-->
+<!--    <input type="hidden" name="tax_reg_number" value="--><?// if (isset($user_details['tax_reg_number'])) echo $user_details['tax_reg_number'];?><!--">-->
+<!--    <input type="hidden" name="extended_registration" value="--><?// if (isset($user_details['extended_registration'])) echo $user_details['extended_registration'];?><!--">-->
+<!--    <input type="hidden" name="pg_paypal_first_name" value="--><?// if (isset($user_details['pg_paypal_first_name'])) echo $user_details['pg_paypal_first_name'];?><!--">-->
+<!--    <input type="hidden" name="pg_paypal_last_name" value="--><?// if (isset($user_details['pg_paypal_last_name'])) echo $user_details['pg_paypal_last_name'];?><!--">-->
+<!--    <input type="hidden" name="pg_paypal_email" value="--><?// if (isset($user_details['pg_paypal_email'])) echo $user_details['pg_paypal_email'];?><!--">-->
     <input type="hidden" name="edit_refresh" value="0">
     <!--
     <input type="hidden" name="generated_pin" value="<? if (isset($generated_pin)) echo $generated_pin;?>">   -->
@@ -121,11 +116,57 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <!--           <span> --><?//=MSG_EMAIL_EXPLANATION;?><!--</span>-->
         </div>
 
-<!--        <div class="form-row">-->
-<!--            <label>--><?//=MSG_PHONE;?><!--*</label>-->
-<!--            <input name="phone" type="text" class="contentfont text" id="phone"-->
-<!--                   value="--><?// if (isset($user_details['phone'])) echo $user_details['phone'];?><!--" size="40" maxlength="120" />-->
-<!--        </div>-->
+        <div class="form-row">
+            <label><?=MSG_PHONE;?>*</label>
+            <input name="phone" type="text" class="contentfont text" id="phone"
+                   value="<? if (isset($user_details['phone'])) echo $user_details['phone'];?>" size="40" maxlength="120" />
+        </div>
+
+        <div class="form-row">
+            <label><?=MSG_ADDRESS;?>*</label>
+            <input name="address" type="text" class="contentfont text" id="address"
+                   value="<? if (isset($user_details['address'])) echo $user_details['address'];?>" />
+        </div>
+
+        <div class="form-row">
+            <label><?=MSG_CITY;?>*</label>
+            <input name="city" type="text" class="contentfont text" id="city"
+                   value="<? if (isset($user_details['city'])) echo $user_details['city'];?>" size="40" maxlength="120" />
+        </div>
+
+        <div class="form-row">
+            <label><?=MSG_COUNTRY;?>*</label>
+            <? echo (isset($country_dropdown)) ? $country_dropdown : '';?>
+        </div>
+
+        <div class="form-row">
+            <label><?=MSG_STATE;?>*</label>
+            <? echo (isset($state_box)) ? $state_box : '';?>
+        </div>
+
+        <div class="form-row">
+            <label><?=MSG_POSTALE_CODE;?>*</label>
+            <input name="postal_code" type="text" class="contentfont text" id="postal_code"
+                   value="<? if (isset($user_details['postal_code'])) echo $user_details['postal_code'];?>" size="40" maxlength="120" />
+        </div>
+
+        <div class="form-row">
+            <label><?=AMSG_PAYPAL_EMAIL_ADDRESS;?>*</label>
+            <input name="pg_paypal_email" type="text" class="contentfont text" id="pg_paypal_email"
+                   value="<? if (isset($user_details['pg_paypal_email'])) echo $user_details['pg_paypal_email'];?>" size="40" maxlength="120" />
+        </div>
+
+        <div class="form-row">
+            <label><?=AMSG_PAYPAL_FIRST_NAME;?>*</label>
+            <input name="pg_paypal_first_name" type="text" class="contentfont text" id="pg_paypal_first_name"
+                   value="<? if (isset($user_details['pg_paypal_first_name'])) echo $user_details['pg_paypal_first_name'];?>" size="40" maxlength="120" />
+        </div>
+
+        <div class="form-row">
+            <label><?=AMSG_PAYPAL_LAST_NAME;?>*</label>
+            <input name="pg_paypal_last_name" type="text" class="contentfont text" id="pg_paypal_last_name"
+                   value="<? if (isset($user_details['pg_paypal_last_name'])) echo $user_details['pg_paypal_last_name'];?>" size="40" maxlength="120" />
+        </div>
 
         <div class="form-row">
            <label> <?=MSG_PASSWORD;?>*</label>
