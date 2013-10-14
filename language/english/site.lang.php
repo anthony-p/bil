@@ -277,6 +277,7 @@ define ('MSG_WEBSITE_ADDRESS', 'Dress up your new campaign');
 define ('MSG_UPLOAD_IMAGE_INFORMATION', 'For best results upload an image that is not more than 600x400 pixels wide');
 define ('MSG_UPDATES', 'UPDATES');
 define ('MSG_POST_AN_UPDATE_TO_CAMPAIGN', 'Post an update to your campaign');
+define ('MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP', 'Keep your community informed of any changes or developments. Updates go live immediately and automatically send email notifications to your supporters.');
 define ('MSG_YOUR_UPDATES', 'Your updates');
 define ('MSG_REWARDS', 'REWARDS');
 define ('MSG_REWARDS_HERE', 'rewards will go here');
