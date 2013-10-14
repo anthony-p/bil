@@ -137,8 +137,8 @@ class projectRewards extends custom_field {
 				</div>
 			</div>
             <div class="clear"> </div>
-            <input type="button" class="post-reward" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
-			<script>
+        <input type="button" class="post-reward" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
+            <script>
 				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker({ 
 					dateFormat: "mm/dd/yy", 
 					changeMonth: true,
@@ -172,7 +172,9 @@ class projectRewards extends custom_field {
 				});
 			</script>
 		</div>
-	<?php
+
+
+        <?php
 		$form = ob_get_contents();
 		ob_end_clean();
 		
