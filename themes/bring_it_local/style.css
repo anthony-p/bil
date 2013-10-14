@@ -3438,7 +3438,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #contribution_details .top-description .right{width:500px; float:left; margin-left: 20px;}
 #contribution_details .top-description .right h2{font-size: 18px;line-height: 20px;}
 #contribution_details .top-description .right p{font:12px/15px "OpenSans";}
-.community_donate, .paypal_donate { margin-bottom: 1em; width: 80%;padding:1em}
+.community_donate, .paypal_donate { margin-bottom: 1em; width: 80%;padding:1em;text-align:center}
+.paypal_donate span{margin-bottom:0.5em;display: block;}
 .community_donate {
     background:#CCE0F0;
 }

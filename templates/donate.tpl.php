@@ -2,7 +2,6 @@
     die("Access Denied");
 }
 ?>
-<!--<button id="paypal">PayPal</button>-->
 <script type="text/javascript" src='/scripts/jquery/jquery-1.9.1.js'></script>
 <script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
 <script type="text/javascript" src="/scripts/jquery/additional-methods.min.js"></script>
@@ -14,15 +13,11 @@
 <script src="/scripts/jquery/jquery-ui.js"></script>
 
 <style>
-    #payment_details {
-        /*display: none;*/
-    }
 
     #contribution_details {
         display: block;
     }
 </style>
-<!--<script src="paypal-button.min.js?merchant=WPGBEPBR4TR5Y" data-button="donate" data-name="product" data-callback="http://devlive.bringitlocal.com/donate.php" data-env="sandbox"></script>-->
 <script>
     $(document).ready(function () {
         var contribution_form = $("#contribution_form");
@@ -136,7 +131,7 @@
                 <div class="paypal_donate">
                     <input type="hidden" name="np_user_id" id="np_user_id"
                            value="<?php echo isset($np_user_id) ? $np_user_id : ''; ?>"/>
-
+                    <span><?= MSG_DONATE_PAYPAL_LABEL; ?></span>
                     <input id="submit" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
                            name="submit" alt="PayPal - The safer, easier way to pay online!">
                 </div>
