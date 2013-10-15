@@ -320,6 +320,7 @@ define ('MSG_RAISED_TOWARD_THE_GOAL', 'raised toward our goal of');
 define ('MSG_MANY_WAYS_TO_GIVE', 'There are many ways to give');
 define ('MSG_DONATE_NOW', 'Donate Now');
 define ('MSG_DONATE_PAYPAL_LABEL', 'Donate using PayPal');
+define ('MSG_DONATE_FUND_TOOLTIP', 'A common fund that gets disbursed each month based on site user votes.');
 define ('MSG_MAKE_DONATION', 'make a donation');
 define ('MSG_MAKE_HAPPEN', 'Help make it happen! Support ');
 define ('MSG_SHOP_ONLINE', 'Shop Online');

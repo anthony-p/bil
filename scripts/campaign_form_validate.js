@@ -34,11 +34,8 @@ function validateCampaignForm(form, messages) {
                 minlength: 6
             },
             pg_paypal_email: {
-                required:true,
                 email:true
             },
-            pg_paypal_first_name: "required",
-            pg_paypal_last_name: "required",
             username: {
                 required:true,
                 nowhitespace:true,
