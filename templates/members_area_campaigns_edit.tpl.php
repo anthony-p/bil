@@ -111,6 +111,7 @@ if (!defined('INCLUDED')) {
                 <li id="p_projectEdit">
                     <a href="#"><?= MSG_CMN_ENHANCEMENTS ?></a>
                 </li>
+                
                 <li id="p_projectUpdates">
                     <a href="#"><?= MSG_CMN_UPDATES ?></a>
                 </li>
@@ -273,7 +274,7 @@ if (!defined('INCLUDED')) {
                                 <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name" value="<?= $campaign['pg_paypal_last_name']; ?>" size="40"/>
                                 <span><?= MSG_PG_PAYPAL_LAST_NAME_EXPL; ?></span>
                             </div>
-                        </div>
+                        </div>   
                         <div class="next">
                             <input name="form_register_proceed_step1" type="submit"
                                    value="<?= MSG_SAVE_CHANGES ?>" class="save_btn"/>
@@ -312,6 +313,7 @@ if (!defined('INCLUDED')) {
                                 <?php endforeach ?>
                             </select>
                         </div>
+                        <h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>
                         <div class="account-row">
                             <label><?= MSG_CREATE_PROJECT_CAMPAIGN_BASIC; ?> *</label>
                             <textarea rows="5" cols="60" class="campaign_basic" name="campaign_basic"
@@ -362,6 +364,7 @@ if (!defined('INCLUDED')) {
                                      value="<?php echo (isset($campaign["certain_date"]) && $campaign["certain_date"]) ? date('m/d/Y', $campaign["end_date"]) : ''; ?>"
                             </span>
                         </div>
+                        
                         <div class="next">
                             <input name="form_register_proceed" type="submit" id="form_register_proceed"
                                    value="<?= MSG_SAVE_CHANGES ?>" class="save_btn"/>
@@ -376,6 +379,8 @@ if (!defined('INCLUDED')) {
                 </div>
             </fieldset>
 
+            <!--Enhancement Tab-->
+           <!--2013/10/15 Edit Start (Anthony)-->
             <fieldset class="step">
                 <div class="tabs">
                     <h4><?= MSG_WEBSITE_ADDRESS; ?></h4>
@@ -411,7 +416,7 @@ if (!defined('INCLUDED')) {
                                 <span><?= MSG_UPLOAD_LOGO_INFORMATION ?></span>
                             </div>
                         </div>
-                        <h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>
+                        <!--<h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>-->
                         <div class="account-row">
                             <?php if (isset($campaign["banner"]) && strstr($campaign["banner"], '/images/partner_logos/') !== false): ?>
                                 <img src="<?php echo $campaign['banner'] . "?" . time() ?>">
@@ -475,7 +480,10 @@ if (!defined('INCLUDED')) {
                     </div>
                 </div>
             </fieldset>
-
+           
+            <!--2013/10/15 Edit End (Anthony)-->
+            
+            <!--Updates Tab-->
             <fieldset class="step">
                 <div class="tabs">
                     <h4><?= MSG_UPDATES ?></h4>
