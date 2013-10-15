@@ -578,7 +578,8 @@ if (!defined('INCLUDED')) {
                     <div class="account-tab">
                         <aside>
                             <div class="inner">
-                                <h3><?= MSG_POST_AN_UPDATE_TO_CAMPAIGN ?></h3>
+                                <h3><?= MSG_POST_AN_UPDATE_TO_CAMPAIGN ?> <img src="/images/question_help.png" height="16" alt="help"
+                                                                               title="<?= MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP ?>" style="margin-left: 10px;"></h3>
                                 <div class="add_post">
                                     <textarea name="comment_text" class="project_update_textarea"
                                               id="project_update_textarea"></textarea>

@@ -7,6 +7,10 @@
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 #################################################################
 
+
+define ('AMSG_PAYPAL_FIRST_NAME', 'PayPal Account First Name');
+define ('AMSG_PAYPAL_LAST_NAME', 'PayPal Account Last Name');
+
 define ('AMSG_SITE_SETUP', 'Site Setup');
 define ('AMSG_LOGIN_ADMIN_AREA', 'PLEASE LOGIN TO THE ADMIN AREA');
 define ('AMSG_USERNAME', 'Username');
@@ -81,6 +85,8 @@ define ('AMSG_CATEGORIES', 'Categories');
 define ('AMSG_EDIT_CATEGORIES', 'Edit Categories');
 define ('AMSG_CATEGORIES_MANAGEMENT', 'Categories Management');
 define ('AMSG_NAME', 'Name');
+define ('AMSG_FIRST_NAME', 'First Name');
+define ('AMSG_LAST_NAME', 'Last Name');
 define ('AMSG_INDIVIDUAL_FEES', 'Individual Fees');
 define ('AMSG_HIDDEN', 'Hidden');
 define ('AMSG_ADD_CATEGORY', 'Add New Categories');

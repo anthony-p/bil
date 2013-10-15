@@ -118,7 +118,7 @@ else
 			$frmchk_details = $_POST;
 
 
-			include ('../includes/procedure_frmchk_user.php'); /* Formchecker for user creation/edit */
+			include ('../includes/admin_procedure_frmchk_user.php'); /* Formchecker for user creation/edit */
 
 			if ($fv->is_error())
 			{
@@ -130,16 +130,18 @@ else
 
 				$template->set('msg_changes_saved', $msg_changes_saved);
 
-				$insert_user_id = $user->insert($_POST);
+//                var_dump($_POST);
+
+//				$insert_user_id = $user->insert($_POST);
 
 				/* For PPA & PPB Integration */
-				pps_insert_user($insert_user_id, 'ppb'); 
+//				pps_insert_user($insert_user_id, 'ppb');
 				
 				/**
 				 * since admin creates the user, the user will be automatically activated no matter the site settings.
 				 */
-				$sql_update_user = $db->query("UPDATE " . DB_PREFIX . "users SET
-				active=1, approved=1, payment_status='confirmed', mail_activated=1 WHERE user_id=" . $insert_user_id);
+//				$sql_update_user = $db->query("UPDATE " . DB_PREFIX . "users SET
+//				active=1, approved=1, payment_status='confirmed', mail_activated=1 WHERE user_id=" . $insert_user_id);
 			}
 		}
 
@@ -187,7 +189,16 @@ else
 		if (isset($_POST['edit_refresh']) && $_POST['edit_refresh'] == 1)
 		{
 			$row_user = $_POST;
-			$row_user['username'] = $username;
+
+            if (!isset($row_user['first_name'])) {
+                $row_user['first_name'] = isset($user_details['fname']) ? $user_details['fname'] : '';
+            }
+
+            if (!isset($row_user['last_name'])) {
+                $row_user['lname'] = isset($user_details['lname']) ? $user_details['lname'] : '';
+            }
+
+			$row_user['last_name'] = $username;
 		}
 
 		if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit')
@@ -200,7 +211,7 @@ else
 			$row_user = $_POST;
 			$row_user['username'] = $username; /* the readonly field will not be altered */
 
-			include ('../includes/procedure_frmchk_user.php'); /* Formchecker for user creation/edit */
+			include ('../includes/admin_procedure_frmchk_user.php'); /* Formchecker for user creation/edit */
 
 			if ($fv->is_error())
 			{
@@ -210,10 +221,13 @@ else
 			{
 				$form_submitted = true;
 
+//                var_dump(1); exit;
+
 				$template->set('msg_changes_saved', $msg_changes_saved);
 
 				$new_password = ($_POST['password'] == $_POST['password2'] && !empty($_POST['password'])) ? $_POST['password'] : null;
-				$user->update($_POST['user_id'], $_POST, $new_password, $page_handle, true);
+//				$user->update($_POST['user_id'], $_POST, $new_password, $page_handle, true);
+				$user->update($_POST['user_id'], $_POST, $new_password, $page_handle);
 			}
 		}
 
@@ -257,8 +271,8 @@ else
 
 			$template->set('display_direct_payment_methods', $user->direct_payment_methods_edit($row_user));			
 			
-			$template->change_path('../templates/');
-			$management_box = $template->process('register.tpl.php');
+			$template->change_path('templates/');
+			$management_box = $template->process('edit_user.tpl.php');
 			$template->change_path('templates/');
 		}
 	}
@@ -444,11 +458,17 @@ else
 
 	(string) $search_filter = null;
 
-	if (isset($_REQUEST['keywords_name']) && $_REQUEST['keywords_name'])
+	if (isset($_REQUEST['keywords_first_name']) && $_REQUEST['keywords_first_name'])
 	{
 		//$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " MATCH(u.username) AGAINST ('".$_REQUEST['keywords_name']."' WITH QUERY EXPANSION)";
-		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.username LIKE '%".$_REQUEST['keywords_name']."%'";
-		$template->set('keywords_name', $_REQUEST['keywords_name']);
+		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.first_name LIKE '%".$_REQUEST['keywords_first_name']."%'";
+		$template->set('keywords_first_name', $_REQUEST['keywords_first_name']);
+	}
+	if (isset($_REQUEST['keywords_last_name']) && $_REQUEST['keywords_last_name'])
+	{
+		//$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " MATCH(u.username) AGAINST ('".$_REQUEST['keywords_name']."' WITH QUERY EXPANSION)";
+		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.last_name LIKE '%".$_REQUEST['keywords_last_name']."%'";
+		$template->set('keywords_last_name', $_REQUEST['keywords_last_name']);
 	}
 	if (isset($_REQUEST['keywords_email']) && $_REQUEST['keywords_email'])
 	{
@@ -456,75 +476,80 @@ else
 		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.email LIKE '%".$_REQUEST['keywords_email']."%'"; /* slow query - will need a workaround */
 		$template->set('keywords_email', $_REQUEST['keywords_email']);
 	}
-	if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'active')
-	{
-		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.active=1 AND u.approved=1";
-	}
-	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'suspended')
-	{
-		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " (u.active=0 OR u.approved=0)";
-	}
-	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'individual')
-	{
-		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.tax_account_type=0";
-	}
-	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'business')
-	{
-		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.tax_account_type=1";
-	}
-	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'tax_apply_exempt')
-	{
-		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.tax_apply_exempt=1 AND u.tax_exempted=0";
-	}
-	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'tax_exempted')
-	{
-		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.tax_exempted=1";
-	}
-	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'accounting_overdue')
-	{
-		if ($setts['account_mode'] == 2 || $setts['account_mode_personal'] == 1)
-		{
-			$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.balance>0";	
-			
-			if ($setts['account_mode_personal'] == 1)	
-			{
-				$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.payment_mode=2";				
-			}		
-		}
-		else 
-		{
-			$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.user_id=0";	
-		}
-	}
-	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'accounting_overdue_v2')
-	{
-		if ($setts['account_mode'] == 2 || $setts['account_mode_personal'] == 1)
-		{
-			$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.balance>=" . $balance_v2;	
-			
-			if ($setts['account_mode_personal'] == 1)	
-			{
-				$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.payment_mode=2";				
-			}		
-		}
-		else 
-		{
-			$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.user_id=0";	
-		}
-	}
-	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'mail_activated')
-	{
-		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.mail_activated=0";
-	}
-	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'verify_pending')
-	{
-		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.seller_verified_pending=1";
-	}
+
+
+
+//	if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'active')
+//	{
+//		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.active=1 AND u.approved=1";
+//	}
+//	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'suspended')
+//	{
+//		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " (u.active=0 OR u.approved=0)";
+//	}
+//	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'individual')
+//	{
+//		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.tax_account_type=0";
+//	}
+//	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'business')
+//	{
+//		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.tax_account_type=1";
+//	}
+//	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'tax_apply_exempt')
+//	{
+//		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.tax_apply_exempt=1 AND u.tax_exempted=0";
+//	}
+//	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'tax_exempted')
+//	{
+//		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.tax_exempted=1";
+//	}
+//	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'accounting_overdue')
+//	{
+//		if ($setts['account_mode'] == 2 || $setts['account_mode_personal'] == 1)
+//		{
+//			$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.balance>0";
+//
+//			if ($setts['account_mode_personal'] == 1)
+//			{
+//				$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.payment_mode=2";
+//			}
+//		}
+//		else
+//		{
+//			$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.user_id=0";
+//		}
+//	}
+//	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'accounting_overdue_v2')
+//	{
+//		if ($setts['account_mode'] == 2 || $setts['account_mode_personal'] == 1)
+//		{
+//			$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.balance>=" . $balance_v2;
+//
+//			if ($setts['account_mode_personal'] == 1)
+//			{
+//				$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.payment_mode=2";
+//			}
+//		}
+//		else
+//		{
+//			$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.user_id=0";
+//		}
+//	}
+//	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'mail_activated')
+//	{
+//		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.mail_activated=0";
+//	}
+//	else if (isset($_REQUEST['show']) && $_REQUEST['show'] == 'verify_pending')
+//	{
+//		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.seller_verified_pending=1";
+//	}
 
 
 
 
-	$nb_users = $db->count_rows('users u', $search_filter);
+//	$nb_users = $db->count_rows('users u', $search_filter);
+	$nb_users = $db->get_sql_row('SELECT COUNT(id) FROM bl2_users');
+    $nb_users = $nb_users['COUNT(id)'];
 
     if (!isset($start)) {
         $start = 1;
