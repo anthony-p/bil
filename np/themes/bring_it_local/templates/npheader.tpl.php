@@ -254,6 +254,9 @@ global $coupon_url;
                         </li>
                     </ul>
                 </div>
+                
+                <!-- 2013/10/15 Edit Start (Anthony)  -->
+                <!-- 
                 <div class="level-buttons last">
                     <span>ways to give</span>
                     <ul>
@@ -268,7 +271,24 @@ global $coupon_url;
                            </a>
                         </li>
                     </ul>
-                </div>
+                </div>-->
+                
+                <div class="level-buttons last">
+                <span><?=MSG_PARTICIPATE;?></span>
+                <ul>
+                    <li>
+                        <a href="<?=$cfc_url;?>">
+                            <span ><?=MSG_COMMUNITY_FOUND;?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/search.php?order_by=votes&order_type=DESC">
+                            <span><?=MSG_VOTE;?></span>
+                        </a>
+                    </li>
+                  </ul>
+                  </div>
+            	  <!-- 2013/10/15 Edit End (Anthony)-->
                   <div class="nav-links">
                     <span><a href="">Click here to subscribe to updates</a></span>
                     <span><a href="">Go to the Community fund </a><a href="" class="what">What's that?</a></span>
