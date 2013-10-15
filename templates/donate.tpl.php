@@ -20,6 +20,9 @@
 </style>
 <script>
     $(document).ready(function () {
+        $('#contribution_qty').tooltip({
+            track: true
+        });
         var contribution_form = $("#contribution_form");
         contribution_form.validate({
 
@@ -118,8 +121,8 @@
                     <div class="community_donate clearfix">
 
                         <label class="inline-block">Would you like to add <strong>$5</strong> toward the
-                            Community Fund?  <img src="/images/question_help.png" height="16" alt="help"
-                                                  title="<?= MSG_DONATE_FUND_TOOLTIP; ?>" style="margin-left: 10px;"></label>
+                            <a href="/bringitlocal" target="_blank">Community Fund</a>?  <img src="/images/question_help.png" height="16" alt="help"
+                                                  title="<?= MSG_DONATE_FUND_TOOLTIP; ?>" ></label>
                         <input type="checkbox" name="community" id="community" class="inline-block"/>
                         <div class="inline-block">
                             <input type="text" name="community_amount" id="community_amount" disabled="disabled" value="5"/>
