@@ -108,9 +108,12 @@ if (!defined('INCLUDED')) {
                 <li id="p_projectDetail">
                     <a href="#"><?= MSG_CMN_DETAILS ?></a>
                 </li>
-                <li id="p_projectEdit">
+                <!--2013/10/15 Edit Start (Anthony)-->
+                <!--<li id="p_projectEdit">
                     <a href="#"><?= MSG_CMN_ENHANCEMENTS ?></a>
-                </li>
+                </li>-->
+                <!--2013/10/15 Edit End (Anthony)-->
+                
                 <li id="p_projectUpdates">
                     <a href="#"><?= MSG_CMN_UPDATES ?></a>
                 </li>
@@ -273,7 +276,7 @@ if (!defined('INCLUDED')) {
                                 <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name" value="<?= $campaign['pg_paypal_last_name']; ?>" size="40"/>
                                 <span><?= MSG_PG_PAYPAL_LAST_NAME_EXPL; ?></span>
                             </div>
-                        </div>
+                        </div>   
                         <div class="next">
                             <input name="form_register_proceed_step1" type="submit"
                                    value="<?= MSG_SAVE_CHANGES ?>" class="save_btn"/>
@@ -362,6 +365,93 @@ if (!defined('INCLUDED')) {
                                      value="<?php echo (isset($campaign["certain_date"]) && $campaign["certain_date"]) ? date('m/d/Y', $campaign["end_date"]) : ''; ?>"
                             </span>
                         </div>
+                        
+                        <!--2013/10/15 Edit Start (Anthony)-->
+                        <div class="account-row">
+                            <label><?= MSG_WEBSITE_ADDRESS_INSTRUCTIONS; ?></label>
+                            <input name="url" type="text" class="contentfont" id="url" value="<?= urldecode($campaign['url']); ?>"
+                                   size="40"/>
+                            <span><?= MSG_WEBSITE_ADDRESS_INSTRUCTIONS2; ?></span>
+                        </div>
+                        <div class="account-row">
+                            <label><?= MSG_FACEBOOK_PAGE_INSTRUCTIONS; ?></label>
+                            <input name="facebook_url" type="text" class="contentfont" id="facebook_url"
+                                   value="<?= urldecode($campaign['facebook_url']); ?>" size="40"/>
+                        </div>
+                        <div class="account-row">
+                            <label><?= MSG_TWITTER_PAGE_INSTRUCTIONS; ?></label>
+                            <input name="twitter_url" type="text" class="contentfont" id="twitter_url"
+                                   value="<?= urldecode($campaign['twitter_url']); ?>" size="40"/>
+                        </div>
+                        <h5><?= MSG_LOGO_DESC; ?></h5>
+
+                        <div class="account-row">
+                            <?php if (isset($campaign["logo"]) && $campaign["logo"]): ?>
+                                <img src="<?php echo $campaign["logo"] . "?" . time(); ?>">
+                            <?php endif; ?>
+                            <div id="MultiPowUpload_holder">
+                                <input class="file" name="logo" id="logo" accept="image/*" type='file' multiple title="logo file"/>
+                                <span class="clear-file-input"><?= MSG_CLEAR ?></span>
+                            </div>
+                            <div id="serverresponse">
+                                <div id="prev_logo"></div>
+                                <span><?= MSG_UPLOAD_LOGO_INFORMATION ?></span>
+                            </div>
+                        </div>
+                        <h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>
+                        <div class="account-row">
+                            <?php if (isset($campaign["banner"]) && strstr($campaign["banner"], '/images/partner_logos/') !== false): ?>
+                                <img src="<?php echo $campaign['banner'] . "?" . time() ?>">
+                            <?php endif; ?>
+                            <div class="upload">
+                                <div class="radio">
+                                    <input id="bannerUpload" type="radio" class="banner_type" onclick="bannerTypeSelect('0')"
+                                           name="banner_type"
+                                           value="0"  <?php if (!strstr($campaign["banner"], "http://")) {
+                                        echo "checked";
+                                    } ?> ><label><?= MSG_BANNER_IMAGE ?></label>
+                                    <div>
+                                        <input class="file" name="banner" id="banner" accept="image/*" type='file' multiple
+                                               title="banner file" <?php if (strstr($campaign["banner"], "http://")) {
+                                            echo "style='display:none'";
+                                        } ?>/>
+                                        <span class="clear-file-input"><?= MSG_CLEAR ?></span>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="radio">
+                                    <input id="bannerURL" type="radio" class="banner_type" onclick="bannerTypeSelect('1')"
+                                           name="banner_type"
+                                           value="1" <?php if (strstr($campaign["banner"], "http://")) {
+                                        echo "checked";
+                                    } ?> ><label><?= MSG_VIDEO_YOUTUBE ?></label>
+                                    <div>
+
+                                        <div id="vide_select_block" <?php if (!strstr($campaign["banner"], "http://")) {
+                                            echo "style='display:none'";
+                                        } ?>>
+                                            <div class="float:right;">
+                                                <input type="text" name="video_url" id="video_url"
+                                                       value="<?php if (strstr($campaign["banner"], "http://")) {
+                                                           echo $campaign["banner"];
+                                                       } ?>">
+
+                                                <input type="button" id="loadVideo" onclick="loadBannerVideo()" value="Get">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="banners_list">
+                                <span><?= MSG_UPLOAD_IMAGE_INFORMATION ?></span>
+                                <div id="prev_banner"></div>
+                            </div>
+                        </div>
+                        <!--2013/10/15 Edit End (Anthony)-->
+                        
                         <div class="next">
                             <input name="form_register_proceed" type="submit" id="form_register_proceed"
                                    value="<?= MSG_SAVE_CHANGES ?>" class="save_btn"/>
@@ -376,6 +466,9 @@ if (!defined('INCLUDED')) {
                 </div>
             </fieldset>
 
+            <!--Enhancement Tab-->
+           <!--2013/10/15 Edit Start (Anthony)-->
+           <!--
             <fieldset class="step">
                 <div class="tabs">
                     <h4><?= MSG_WEBSITE_ADDRESS; ?></h4>
@@ -475,7 +568,10 @@ if (!defined('INCLUDED')) {
                     </div>
                 </div>
             </fieldset>
-
+            -->
+            <!--2013/10/15 Edit End (Anthony)-->
+            
+            <!--Updates Tab-->
             <fieldset class="step">
                 <div class="tabs">
                     <h4><?= MSG_UPDATES ?></h4>
