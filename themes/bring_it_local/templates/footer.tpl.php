@@ -122,7 +122,7 @@ global $coupon_url;
 			<a href="<?=process_link('content_pages', array('page' => 'about_us'));?>"><?=MSG_BTN_ABOUT_US;?></a>
 			<? } ?>
 			<? if ($layout['is_contact']) { ?>
-			<a href="<?=process_link('content_pages', array('page' => 'contact_us'));?>"><?=MSG_BTN_CONTACT_US;?></a>
+		<a href="/mission.php" class="link"><?= MSG_FOOTER_MISSION; ?></a>
 			
 			<? } ?>
 		</div>
