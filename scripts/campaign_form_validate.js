@@ -273,13 +273,14 @@ function projectUpdateComment() {
 
     /* If empty do nothing */
     if (!comment) {return false;} else {
-        var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + wisiwyg.getContent();
-
-        $("#confirm_dialog_box").dialog({
+        var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + wisiwyg.getContent(),
+            dialog = $("#confirm_dialog_box");
+            dialog.html(window.messages.post_update_text);
+        dialog.dialog({
             resizable: false,
-            title:window.messages.delete_update_title,
+            title:window.messages.post_update_title,
             height: 200,
-            width: 400,
+            width: 500,
             modal: true,
             buttons: [
                 {
@@ -295,17 +296,19 @@ function projectUpdateComment() {
                                 if (commentObj.response == true) {
                                     addProjectUpdateComment(commentObj.id);
                                 }
+
                             },
                             error: function () {
                                 console.log("failure");
                             }
                         });
+                        $(this).dialog("close");
                     }
                 },
                 {
                     text:window.messages.cancel_project_update_button,
                     click: function() {
-                        this.close();
+                        $(this).dialog("close");
                     }
                 }
         ]

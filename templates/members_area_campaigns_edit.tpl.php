@@ -41,7 +41,11 @@ if (!defined('INCLUDED')) {
         confirm_delete_update_button: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_OK; ?>',
         confirm_cancel_update_button: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_CANCEL; ?>',
         delete_update_title: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_TITLE; ?>',
-        delete_update_text: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_MSG; ?>'
+        delete_update_text: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_MSG; ?>',
+        post_update_title:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE; ?>',
+        post_update_text:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG; ?>',
+        confirm_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK; ?>',
+        cancel_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL; ?>'
     };
 
 
