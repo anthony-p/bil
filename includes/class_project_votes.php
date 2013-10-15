@@ -49,10 +49,10 @@ class projectVotes extends custom_field
      */
     function checkVoted()
     {
+        $compare_date = time() - (3600 * 24 * 30);
         if ($this->user_id && $this->campaign_id) {
             $voted = $this->getField("SELECT count(*) FROM project_votes WHERE user_id=" .
                 $this->user_id . " AND MONTH(FROM_UNIXTIME(date)) = MONTH(NOW()) AND YEAR(FROM_UNIXTIME(date)) = YEAR(NOW())");
-            var_dump($voted);
             if ($voted) {
                 return true;
             }
@@ -112,10 +112,8 @@ class projectVotes extends custom_field
     {
         if ($this->campaign_id && !$this->checkCfc()) {
             if ($this->user_id && $this->checkDonated() && !$this->checkVoted()) {
-                var_dump(1);
 				$days=round(($end_date-time())/86400);
-				if($days>0 && $campaign_owner != $this->user_id ) {
-                    var_dump(2);
+				if($days>0 && $campaign_owner != $this->user_id ){
 					$this->votes_element = '<button id="vote_us">' . MSG_VOTE_US . '</button>';
 				}
 			}
