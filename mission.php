@@ -68,7 +68,7 @@ We accept donations and have a donation button. It is familiar and recognizable 
 <h4>Buy and sell from each other</h4>
 More importantly, we also provide a way for people to buy and sell things directly to one another. We provide a way to bring local brick and mortar merchants into the picture to encourage local commerce. And, finally, if people can\'t find what they need on the site and they absolutely must go to shop at the big box stores, we capture a percentage which will go back to whatever project that user has chosen to support.
 <br><br><h4>Our experiment in democracy: the Community Fund</h4>
-In addition, we have our <a href="<?=$cfc_url;?>"><?=MSG_COMMUNITY_FOUND;?></a>. Site users are encouraged to contribute and we vote together to decide how to use the funds which  goes to one of the campaigns on our site.
+In addition, we have our <a href="/bringitlocal">Community Fund</a>. Site users are encouraged to contribute and we vote together to decide how to use the funds which  goes to one of the campaigns on our site.
 <br>
 <h4>Bring It Local: Corporate ownership and a new economy</h4>
 And last but central to the concept comes ownership of our company itself. To put our money where our mouth is we\'ll open up the ownership of Bring It Local to the people who use it. At that point the money comes literally full circle and all spending on the site becomes a form of reinvestment in the community.
