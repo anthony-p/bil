@@ -298,6 +298,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 <?php endforeach; ?>
             </select>
         </div>
+        <!-- 2013/10/15 Edit Start (Anthony) -->
+        <h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>
+        <!-- 2013/10/15 Edit End (Anthony) -->
         <div class="account-row">
             <label><?=MSG_CREATE_PROJECT_CAMPAIGN_BASIC;?> *</label>
             <textarea rows="5" cols="60" class="campaign_basic" name="campaign_basic" id="campaign_basic"><?php echo isset($user_details['campaign_basic']) ? $user_details['campaign_basic'] : '' ?></textarea>
@@ -439,7 +442,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 <span>For best results upload an image that is not more than 160 pixels wide.</span>
             </div>
         </div>
-        <h5>Your Story (<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>
+        <!-- 2013/10/15 Edit Start (Anthony) -->
+        <!--<h5>Your Story (<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>-->
+        <!-- 2013/10/15 Edit End (Anthony) -->
 
         <div class="account-row">
             <div class="upload">
