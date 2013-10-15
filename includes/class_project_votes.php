@@ -110,7 +110,6 @@ class projectVotes extends custom_field
      */
     function getVotesElement($end_date="", $campaign_owner="")
     {
-        return 'aaaaaaa';
         if ($this->campaign_id && !$this->checkCfc()) {
             if ($this->user_id && $this->checkDonated() && !$this->checkVoted()) {
 				$days=round(($end_date-time())/86400);
