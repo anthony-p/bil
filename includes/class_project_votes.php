@@ -112,8 +112,10 @@ class projectVotes extends custom_field
     {
         if ($this->campaign_id && !$this->checkCfc()) {
             if ($this->user_id && $this->checkDonated() && !$this->checkVoted()) {
+                var_dump(1);
 				$days=round(($end_date-time())/86400);
-				if($days>0 && $campaign_owner != $this->user_id ){
+				if($days>0 && $campaign_owner != $this->user_id ) {
+                    var_dump(2);
 					$this->votes_element = '<button id="vote_us">' . MSG_VOTE_US . '</button>';
 				}
 			}
