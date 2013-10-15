@@ -150,10 +150,10 @@ class projectRewards extends custom_field {
                     selector: '#reward_description_<?= $reward_id; ?>',
                     plugins: [
                         "autolink autosave link image lists preview spellchecker",
-                        "wordcount insertdatetime media nonbreaking ",
+                        "wordcount insertdatetime media nonbreaking code",
                         "moxiemanager"
                     ],
-                    toolbar1: "styleselect | bold italic underline | alignleft | bullist numlist | link unlink insertfile image media | removeformat | preview",
+                    toolbar1: "styleselect | bold italic underline | alignleft | bullist numlist | link unlink insertfile image media | code removeformat | preview",
 
                     menubar: false,
                     image_advtab: true,
