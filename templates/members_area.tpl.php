@@ -9,23 +9,9 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 
-<!--<script language="javascript" src="/scripts/jquery/tiny.editor.js" type="text/javascript"></script>-->
-<!--<link href="/scripts/style/tinyeditor.css" rel="stylesheet" type="text/css">-->
-<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/tiny_mce_src.js" js="text/javascript"></script>-->
-<!--<script language="JavaScript" src="/scripts/jquery/tiny_mce/jquery.tinymce.js" js="text/javascript"></script>-->
-
-
-<!--<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>-->
 
 <script type="text/javascript">
-<!--
-//myPopup = '';
-//
-//function openPopup(url) {
-//	myPopup = window.open(url,'popupWindow','width=350,height=250,status=yes');
-//   if (!myPopup.opener) myPopup.opener = self;
-//}
-//-->
+
 (function($) {
     $.cookie = function(key, value, options) {
 

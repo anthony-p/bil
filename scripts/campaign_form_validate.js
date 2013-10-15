@@ -274,21 +274,43 @@ function projectUpdateComment() {
     /* If empty do nothing */
     if (!comment) {return false;} else {
         var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + wisiwyg.getContent();
-        $.ajax({
-            url: "/np_compaign_project.php",
-            type: "POST",
-            data: data,
-            success: function (response) {
 
-                var commentObj = $.parseJSON(response);
-                if (commentObj.response == true) {
-                    addProjectUpdateComment(commentObj.id);
+        $("#confirm_dialog_box").dialog({
+            resizable: false,
+            title:window.messages.delete_update_title,
+            height: 200,
+            width: 400,
+            modal: true,
+            buttons: [
+                {
+                    text: window.messages.confirm_project_update_button,
+                    click: function () {
+                        $.ajax({
+                            url: "/np_compaign_project.php",
+                            type: "POST",
+                            data: data,
+                            success: function (response) {
+
+                                var commentObj = $.parseJSON(response);
+                                if (commentObj.response == true) {
+                                    addProjectUpdateComment(commentObj.id);
+                                }
+                            },
+                            error: function () {
+                                console.log("failure");
+                            }
+                        });
+                    }
+                },
+                {
+                    text:window.messages.cancel_project_update_button,
+                    click: function() {
+                        this.close();
+                    }
                 }
-            },
-            error: function () {
-                console.log("failure");
-            }
+        ]
         });
+
     }
 }
 
