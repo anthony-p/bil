@@ -515,6 +515,7 @@ function validateProjectReward(id) {
     $("#reward_name_" + id).removeClass("error");
     $("#reward_short_description_" + id).removeClass("error");
     $("#reward_available_number_" + id).removeClass("error");
+    $("#reward_estimated_delivery_date_" + id).removeClass("error");
 
 
     if ($("#reward_amount_" + id).val() == "") {
@@ -550,6 +551,18 @@ function validateProjectReward(id) {
     if ($("#reward_available_number_" + id).val() != '' && !$.isNumeric($("#reward_available_number_" + id).val())) {
         v_err_msg += "<li><?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?></li>";
         $("#reward_available_number_" + id).addClass("error");
+        v_err = true;
+    }
+
+    if ($("#reward_available_number_" + id).val() <0 ) {
+        v_err_msg += "<li><?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_POSITIVE_NUMBER ?></li>";
+        $("#reward_available_number_" + id).addClass("error");
+        v_err = true;
+    }
+
+    if ( new Date($("#reward_estimated_delivery_date_" + id).val()) < new Date() ) {
+        v_err_msg += "<li><?= MSG_REWARD_ESTIMATED_DELIVERY_DATE_INVALID ?></li>";
+        $("#reward_estimated_delivery_date_" + id).addClass("error");
         v_err = true;
     }
 
