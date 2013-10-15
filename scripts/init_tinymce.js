@@ -14,7 +14,7 @@ function init_tinymce(selector) {
             "wordcount insertdatetime media nonbreaking ",
             "moxiemanager"
         ],
-        toolbar1: "styleselect | bold italic underline | alignleft | bullist numlist | link unlink image media | removeformat | preview",
+        toolbar1: "styleselect | bold italic underline | alignleft | bullist numlist | link unlink insertfile image media | removeformat | preview",
 
         menubar: false,
         image_advtab: true,
