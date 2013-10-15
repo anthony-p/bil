@@ -56,10 +56,10 @@ define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_TITLE', 'Comment Confirm');
 define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_MSG', 'Choosing POST will make your comment instantly public');
 
 // member area - edit campaign - post update
-define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK', 'Yes, POST my comment now');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK', 'Yes, POST my update now');
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL', 'Nevermind, cancel');
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE', 'POST Confirm');
-define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG', 'Choosing POST will make your comment instantly public');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG', 'This update will immediately be visible on your campaign page and an email notification will be sent automatically to all of your supporters. Are you sure you are ready to POST?');
 
 // campaign edit - edit campaign -delete update
 define('MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_OK', 'Delete');
