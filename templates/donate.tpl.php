@@ -117,8 +117,9 @@
                 <?php if (!$campaign['cfc']): ?>
                     <div class="community_donate clearfix">
 
-                        <label class="inline-block">Would you like to add <strong>$5</strong> toward the
-                            Community Fund? </label>
+                        <label class="inline-block">
+                        <?=MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND?>
+                         </label>
                         <input type="checkbox" name="community" id="community" class="inline-block"/>
                         <div class="inline-block">
                             <input type="text" name="community_amount" id="community_amount" disabled="disabled" value="5"/>
