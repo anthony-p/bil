@@ -4,7 +4,7 @@
     $isVideo = 0;
     $htmlOut = '';
         if (file_exists(getcwd()."/".$compaignData["banner"])) {
-            echo "<img src ='".$compaignData["banner"]."'/>";
+            echo "<img class='img_respons' src ='".$compaignData["banner"]."'/>";
         } else {
             $baner = $compaignData["banner"];
             if (strpos($baner,"youtube")) {
@@ -23,7 +23,7 @@
                 $htmlOut = '<iframe  src="'.$baner.'"frameborder="0" allowfullscreen width="560" height="315"></iframe>';
                 $isVideo = 1;
             } else {
-                $htmlOut = "<img src ='".$baner."'/>";
+                $htmlOut = "<img class='img_respons' src ='".$baner."'/>";
             }
         }
         ?>
