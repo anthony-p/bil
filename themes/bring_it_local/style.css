@@ -1400,27 +1400,6 @@ span.hlbolditem a:hover{ font-size: 11px; font-weight: bold; color: #FFFFFF; tex
 /* SYSTEM classes - error & alert message */
 .errormessage { margin-bottom: 16px;  font: 14px "OpenSans-Semibold";    text-transform: uppercase;}
 
-/* V5 & system classes &  - main colors */
-/*.c3 {background-color: #4475c6; color: #FFFFFF; font-weight: bold; text-decoration: none;} *//* blue */
-/*
-.c3 a {color: #FFFFFF; font-weight: bold;}
-.c3 a:hover {color: #FFFFFF; font-weight: bold;}
-.c2 {background-color: #F8F8F8;}
-*//* lightgray light */
-/*.c1 {background-color: #F0F0F0;} *//* lightgray middle*/
-/*.c4 {background-color: #E1E2E4;} *//* lightgray dark */
-/*
-.c5 {background-color: #a6a6a6;}
-.c6 {background-color: #EEF2F9; color: #003399;}
-.c7 {background-color: #E3E4EB;}
-*//* bluegray admin area */
-/*
-.c8 { background-color: #0C6CBB; color: white; font-weight: bold; }
-.c9 { background-color: #acc7ef; }
-.whiteback { background-color: white; }
-*/
-
-
 /* SYSTEM classes - register.php */
 .creg2 {background-color: #F8F8F8;} /* lightgray light */
 .creg3 {background-color: #F0F0F0;} /* lightgray middle*/
@@ -1440,22 +1419,6 @@ a.hidelayer:visited {font-size: 11px; color: #333333; font-weight: bold; text-de
 /* V5 classes - main nav menu colors */
 
 .user { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; color: #666666; }
-
-/* V5 classes - other */
-/*
-.search {font-size: 11px; font-weight: bold; color: #222222; text-decoration: none;}
-.search a {font-size: 11px; font-weight: bold; color: #222222; text-decoration: none;}
-.search a:hover { font-size: 11px; font-weight: bold; color: #222222; text-decoration: underline; }
-
-.welcome { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; color: #003399; }
-
-.categories { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; text-decoration: none;}
-.categories a { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; text-decoration: none;}
-.categories a:hover { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; text-decoration: underline;}
-
-.maintext { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; font-size: 11px; }
-.title { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; font-size: 12px; }
-*/
 
 /* V5 classes - footer.php */
 .footerfont { font-size: 12px; color: #0033cc; text-decoration: none; }
@@ -3621,7 +3584,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .about_me_content{float: left;margin:0 0 20px 20px; padding: 15px; background: #fff;  border-radius: 13px;box-shadow: 0 0 10px rgba(34, 31, 31,0.2);}
 .about_me_content #about_me_content{width: 600px;}
 .about_me_content p,.about_me_content div{font:14px/16px "OpenSans"; color:#333; }
-.about_me_content div a{font-family:Opensans-Semibold;  text-decoration: underline; color: #333;}
+.about_me_content div a{ font-family:"Opensans-Semibold", sans-serif;  text-decoration: underline; color: #333;}
 /*.about_me_content .content h2{margin: 0 0 20px 0 ; padding: 20px 0px 0; font: 16px/29px "OpenSans-SemiBold"; text-transform: uppercase;*/
     /*color: #7eb041;  border-bottom: 1.5px solid #dedede;  text-align: left;}*/
 #about_me_content label {width:28px; text-transform:capitalize; display: block;  float: left;    height: 28px;    background: url("img/website-icon.png") 0 0 no-repeat;    margin-left: 12px;  font: 13px/27px OpenSans;   margin-left: 6px;  color: #aaaab5;}

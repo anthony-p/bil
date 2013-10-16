@@ -11,7 +11,6 @@
                 $res = explode("?v=", $baner);
                 $idYoutubeVideo = substr($res[1], 0, 11); // standart lenght youtube Id;
                 $embedUrl = "http://www.youtube.com/embed/" . $idYoutubeVideo;
-                //$baner = str_replace("watch?v=","embed/",$baner);
                 $htmlOut = '<iframe  src="'.$embedUrl.'"frameborder="0" allowfullscreen width="560" height="315" ></iframe>';
                 $isVideo = 1;
             } else if (strpos($baner,"youtu.be")) {
@@ -57,7 +56,6 @@
                             echo '#';
                         }
                         ?>">Facebook</a>
-                        <!--            <label></label>-->
                     </li>
                 <?php endif; ?>
                 <?php if (isset($compaignData['twitter_url']) && $compaignData['twitter_url']): ?>
@@ -74,19 +72,9 @@
                     }
                     ?>">Twitter</a>
                     <?php endif; ?>
-                    <!--            <label></label>-->
                 </li>
                 <li>
-                    <!--            <a href="<?
-//            if (!file_exists(getcwd()."/".$compaignData["banner"])) {
-//                echo "<img src ='".$compaignData["banner"]."'/>";
-//            } else {
-//                echo '<iframe  src="'.$compaignData["banner"].'"frameborder="0" allowfullscreen></iframe>';
-//            }
-            ?>
-            ">Youtube</a>
-<!--            <label></label>-->
-                    <!--        </li>-->
+
                     <?php if (isset($compaignData['url']) && $compaignData['url']): ?>
                 <li>
                 <?php
@@ -97,7 +85,6 @@
                 }
                 ?>
                     <a target="_blank" href="<? echo urldecode($website_url); ?>" target="_blank">Website</a>
-                    <!--            <label></label>-->
                 </li>
             <?php endif; ?>
 

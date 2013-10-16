@@ -8,17 +8,8 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-<script type="text/javascript" src='/scripts/jquery/jquery-1.9.1.js'></script>
 <script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
 <script type="text/javascript" src="/scripts/jquery/additional-methods.min.js"></script>
-
-<style>
-    .error{
-        color: #ff0000;
-        float: right;
-        clear: both;
-    }
-</style>
 
 <script type="text/javascript">
     $(document).ready(function(){

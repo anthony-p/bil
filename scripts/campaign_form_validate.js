@@ -112,13 +112,6 @@ function validateCampaignForm(form, messages) {
 
         },
         focusInvalid:false,
-
-        showErrors: function(errorMap, errorList) {
-            $("#validation_errors").html("Your form contains "
-                + this.numberOfInvalids()
-                + " errors, see details below.");
-            this.defaultShowErrors();
-        },
         invalidHandler: function(form, validator) {
 
             if (!validator.numberOfInvalids())

@@ -26,7 +26,6 @@ global $coupon_url;
     <link href="/themes/<?=$setts['default_theme'];?>/responsive.css" rel="stylesheet" type="text/css">
 
     <link href="/css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css">
-<!--    <script language=JavaScript src='/scripts/jquery/jquery-1.3.2.js'></script>-->
     <script type="text/javascript" src="/scripts/swfupload/swfupload.js"></script>
     <script type="text/javascript" src='/scripts/jquery/jquery-1.9.1.js'></script>
     <script type="text/javascript" src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
@@ -38,16 +37,12 @@ global $coupon_url;
     <script type="text/javascript" src='/scripts/jquery/pagination.js'></script>
     <script type="text/javascript" src='/scripts/jquery/sort.js'></script>
 
-<!--    <script language=JavaScript src='/ckeditor/ckeditor.js'></script>-->
-
 <!--[if IE]>
     <script type="text/javascript" src="/scripts/jquery/placeholder.js"></script>
 <![endif]-->
 
     <script type="text/javascript" src="themes/<?= $setts['default_theme']; ?>/main.js" type="text/javascript"></script>
     <script type="text/javascript" src='/scripts/vendor.js'></script>
-
-
 
     <style type="text/css">
         <!--
@@ -108,12 +103,7 @@ global $coupon_url;
             $(".announcement > .post:first-child").addClass("first");
             $(".member-menu > li:last-child").addClass("last")
         });
-        /*$(function() {
-            if ($("div.holder"))
-            $("div.holder").jPages({
-                containerID: "pagination"
-            });
-        });*/
+
         var countOfPitch = 0;
         function addPitch(){
             var pitches = parseInt($("#pitches_number").val());
@@ -137,11 +127,6 @@ global $coupon_url;
         }
     </script>
 
-
-    <!--    <script language=JavaScript src='/scripts/jquery/transit.js'></script>-->
-
-
-    <!--    <script language=JavaScript src='scripts/innovaeditor.js'></script>-->
     <script type="text/javascript">
         var currenttime = '<?=$current_time_display;?>';
         var serverdate=new Date(currenttime);
@@ -158,9 +143,6 @@ global $coupon_url;
             // setInterval("displaytime()", 1000);
         }
     </script>
-<!--    <script src="/scripts/jquery/jquery.polyglot.language.switcher.js" type="text/javascript"></script>-->
-
-
 
     <script type="text/javascript">
         function popupAlert(shop_url)
@@ -376,8 +358,6 @@ global $coupon_url;
             </ul>
         </nav>
         <div class="topNav">
-            <!-- <a onclick="alert('Drag me to the bookmarks bar'); return false;" href="http://www.bringitlocal.com?npuser=1" > BringitLocal Bookmarklet</a>-->
-            <?php //<a onclick="alert('Drag me to the bookmarks bar'); return false;" href="javascript:q=(document.location.href);void(open('http://www.bringitlocal.com?npuser=1','_self','resizable,location,menubar,toolbar,scrollbars,status'));" > BringitLocal Bookmarklet</a> ?>
 
             <?php global $session;
 
@@ -392,19 +372,7 @@ global $coupon_url;
                 <a href="<?=$login_link;?>"><?=$login_btn_msg;?></a>
                 <a href="<?=$register_link;?>"><?=$register_btn_msg;?></a>
 
-                <?php
-
-//                if($session->value('user_id')):?>
-<!--                    <a href="--><?php //global $coupon_url; echo $coupon_url."/customer/account/";?><!--">--><?//=MSG_MY_DEALS?><!--</a>-->
-<!--                --><?php //endif;?>
-                <!--                    <a href="--><?//=process_link('content_pages', array('page' => 'contact_us'));?><!--">--><?//=MSG_BTN_CONTACT_US;?><!--</a>-->
-                <!--
-		<? if ($setts['enable_stores']) { ?>
-													   <a href="shopping_cart.php"><?=GMSG_SHOPPING_CART;?></a>
-		<? } ?>
-
-		 |    <a href="searchnp.php">Quick Select</a>
-		 --> </div>
+             </div>
             <form action="search.php">
                 <input type="text" value="" placeholder="<?= MSG_HEADER_SEARCHBOX_SEARCH; ?>" name="search" >
                 <button type="submit"></button>
@@ -432,40 +400,7 @@ global $coupon_url;
                 </ul>
             </li>
         <?php endforeach; ?>
-        <!--                <li>-->
-        <!--                    <span>creative</span>-->
-        <!--                    <ul>-->
-        <!--                        <li><a href="">Art</a></li>-->
-        <!--                        <li><a href=""> Comic</a></li>-->
-        <!--                        <li><a href="">Dance</a></li>-->
-        <!--                        <li><a href="">Design</a></li>-->
-        <!--                        <li><a href="">Fashion</a></li>-->
-        <!--                        <li><a href="">Film</a></li>-->
-        <!--                        <li><a href="">Gaming</a></li>-->
-        <!--                    </ul>-->
-        <!--                </li>-->
-        <!--                <li>-->
-        <!--                    <span>Cause</span>-->
-        <!--                    <ul>-->
-        <!--                        <li><a href="">Animals</a></li>-->
-        <!--                        <li><a href="">Community</a></li>-->
-        <!--                        <li><a href="">Education</a></li>-->
-        <!--                        <li><a href="">Environment</a></li>-->
-        <!--                        <li><a href="">Health</a></li>-->
-        <!--                        <li><a href="">Politics</a></li>-->
-        <!--                        <li><a href="">Religion</a></li>-->
-        <!--                    </ul>-->
-        <!--                </li>-->
-        <!--                <li>-->
-        <!--                    <span>entrepreneurial</span>-->
-        <!--                <ul>-->
-        <!--                    <li><a href="">Food</a></li>-->
-        <!--                    <li><a href="">Small Business</a></li>-->
-        <!--                    <li><a href="">Sports</a></li>-->
-        <!--                    <li><a href="">Technology</a></li>-->
-        <!--                </ul>-->
-        <!---->
-        <!--                </li>-->
+
         <li class="nav-buttons">
             <div class="level-buttons">
                 <span><?=MSG_BROWSE_CAMPAIGNS;?></span>
