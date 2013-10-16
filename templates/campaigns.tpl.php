@@ -146,9 +146,10 @@ include_once('includes/grab_video_thumbnail.php');
                     <div class="clear"></div>
                     <?php
 
-//                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
-                    $completed =$row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
+                    $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
+//                    $completed =$row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
                     echo  $completed."%";
+//                    var_dump($completed)
                     ?>
                     <?php if ($current_time > $end_time): ?>
                         <div class="project-unsuccessful"><?=MSG_CLOSED?></div>
