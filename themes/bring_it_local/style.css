@@ -2779,6 +2779,7 @@ aside.suport .viewall .slide{overflow: hidden; }
 aside.suport .viewall ul li{width:700px; float:left; background:#e4e4e4; height:4px; margin-top: 16px;}
 aside.suport .viewall a{float:right; margin-top:7px; font: 16px/19px OpenSans;  color: #000;  padding-right: 10px; background: url("img/arrow-nav.png") right 5px no-repeat;}
 aside.suport .rows-list{float:left; clear:both; width:100%; margin-bottom: 30px;}
+
 aside.suport .rows-list li{float:left; width:125px; margin-right: 20px;}
 aside.suport .rows-list li.last{margin: 0;}
 aside.suport .rows-list li .img{width:100%; height: 125px; margin-bottom:10px;}
