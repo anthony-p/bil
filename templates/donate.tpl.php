@@ -104,7 +104,7 @@
             </div>
             <div id="contribution_qty">
                 <div class="top-description">
-                    <div class="left" style="width: 160px;"><img src="<? echo $campaign['logo']; ?>"/></div>
+                    <div class="left"><img src="<? echo $campaign['logo']; ?>"/></div>
                     <div class="right">
                         <h2 class="clearfix"><? echo $campaign['project_title']; ?></h2>
 

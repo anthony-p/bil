@@ -3393,18 +3393,18 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #contribution_form{ float: left;    clear: both;    width: 100%;    background: #fff;    padding-bottom: 30px;    box-shadow: 0 0 6px rgba(5, 5, 5, 0.5);    border-radius: 8px;    margin: 20px 0 40px;}
 #contribution_form h2 { float:none;margin-bottom:1em;}
 #contribution_form p { margin-bottom: 1em;}
-#contribution_details{width:80%; margin: 20px auto;}
+#contribution_details{width:94%; margin: 20px auto;}
 #contribution_details h3{font: 14px/29px "OpenSans-SemiBold";    text-transform: uppercase;    color: #7eb041;    border-bottom: 1.5px solid #dedede;    padding: 5px 0;}
 #contribution_qty{float:left;}
 #contribution_qty a {color:#444;text-decoration:underline;}
 #contribution_qty #submit {margin:auto; display: block}
 #contribution_qty input[type="text"]{height: 25px; line-height:25px;vertical-align: middle; width: 250px;    border: 1px solid #ddd;    border-radius: 3px;    outline: none;  padding: 0 10px;}
-#contribution_details .top-description .left{height:135px; width:200px; border:4px solid rgb(199, 198, 198); border-radius:4px;}
+#contribution_details .top-description .left{/*height:135px;*/ width:17.2%; border:4px solid rgb(199, 198, 198); border-radius:4px;}
 #contribution_details .top-description .left img{width:100%; height: 100%;}
-#contribution_details .top-description .right{width:500px; float:left; margin-left: 20px;}
+#contribution_details .top-description .right{width:62%; float:left; margin-left: 20px;}
 #contribution_details .top-description .right h2{font-size: 18px;line-height: 20px;}
 #contribution_details .top-description .right p{font:12px/15px "OpenSans";}
-.community_donate, .paypal_donate { margin-bottom: 1em; width: 80%;padding:1em;text-align:center}
+.community_donate, .paypal_donate { margin-bottom: 1em; width:94%;padding:2%;text-align:center}
 .paypal_donate span{margin-bottom:0.5em;display: block;}
 .community_donate {
     background:#CCE0F0;
