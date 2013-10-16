@@ -545,7 +545,7 @@ function validateProjectReward(id) {
         v_err = true;
     }
 
-    if (parseInt($("#reward_amount_" + id).val()) <= 0) {
+    if (parseInt($("#reward_amount_" + id).val()) < 0) {
         v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO ?></li>";
         $("#reward_amount_" + id).addClass("error");
         v_err = true;
