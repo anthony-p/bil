@@ -121,7 +121,7 @@
                     <div class="community_donate clearfix">
                         <label class="inline-block">
                         	<?=MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_PREFIX?>
-                        	<a href="<?=$cfc_url;?>">
+                        	<a href="<?=$cfc_url;?>" target="_blank">
                             	<?=MSG_COMMUNITY_FOUND?>
                         	</a>?
                          	<img src="/images/question_help.png" height="16" alt="help"
