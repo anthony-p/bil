@@ -52,7 +52,7 @@ class projectVotes extends custom_field
         $compare_date = time() - (3600 * 24 * 30);
         if ($this->user_id && $this->campaign_id) {
             $voted = $this->getField("SELECT count(*) FROM project_votes WHERE user_id=" .
-                $this->user_id . " AND date>" . $compare_date);
+                $this->user_id . " AND MONTH(FROM_UNIXTIME(date)) = MONTH(NOW()) AND YEAR(FROM_UNIXTIME(date)) = YEAR(NOW())");
             if ($voted) {
                 return true;
             }

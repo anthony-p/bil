@@ -41,7 +41,11 @@ if (!defined('INCLUDED')) {
         confirm_delete_update_button: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_OK; ?>',
         confirm_cancel_update_button: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_CANCEL; ?>',
         delete_update_title: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_TITLE; ?>',
-        delete_update_text: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_MSG; ?>'
+        delete_update_text: '<?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_MSG; ?>',
+        post_update_title:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE; ?>',
+        post_update_text:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG; ?>',
+        confirm_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK; ?>',
+        cancel_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL; ?>'
     };
 
 
@@ -488,19 +492,17 @@ if (!defined('INCLUDED')) {
                 <div class="tabs">
                     <h4><?= MSG_UPDATES ?></h4>
                     <div class="account-tab">
-                        <aside>
-                            <div class="inner">
-                                <h3><?= MSG_POST_AN_UPDATE_TO_CAMPAIGN ?> <img src="/images/question_help.png" height="16" alt="help"
-                                                                               title="<?= MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP ?>" style="margin-left: 10px;"></h3>
-                                <div class="add_post">
-                                    <textarea name="comment_text" class="project_update_textarea"
-                                              id="project_update_textarea"></textarea>
+                        <div class="inner">
+                            <h3><?= MSG_POST_AN_UPDATE_TO_CAMPAIGN ?> <img src="/images/question_help.png" height="16" alt="help"
+                                                                           title="<?= MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP ?>" style="margin-left: 10px;"></h3>
+                            <div class="add_post">
+                                <textarea name="comment_text" class="project_update_textarea"
+                                          id="project_update_textarea"></textarea>
 
-                                    <div class="clear"></div>
-                                    <input type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
-                                </div>
+                                <div class="clear"></div>
+                                <input type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
                             </div>
-                        </aside>
+                        </div>
                         <div class="clear"></div>
                         <h3><?= MSG_YOUR_UPDATES ?></h3>
                         <ul class="posted_comments" id="project_update_post_comments">

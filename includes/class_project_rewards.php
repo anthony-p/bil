@@ -146,30 +146,25 @@ class projectRewards extends custom_field {
 					minDate: new Date(),
 					defaultDate: "<?= isset($reward['estimated_delivery_date']) ? $reward['estimated_delivery_date'] : ''?>"
 				});
-				tinymce.init({
-					selector:'#reward_description_<?= $reward_id; ?>',
-					plugins: [
-						"advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-								"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-								"table contextmenu directionality emoticons template textcolor paste fullpage textcolor moxiemanager"
-					],
-					toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-						toolbar2: "cut copy paste pastetext | searchreplace | bullist numlist | outdent indent blockquote | undo redo | insertfile link unlink anchor image media code | forecolor backcolor",
-						toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking template pagebreak restoredraft preview",
+                tinymce.init({
+                    selector: '#reward_description_<?= $reward_id; ?>',
+                    plugins: [
+                        "autolink autosave link image lists preview spellchecker",
+                        "wordcount insertdatetime media nonbreaking code",
+                        "moxiemanager"
+                    ],
+                    toolbar1: "styleselect | bold italic underline | alignleft | bullist numlist | link unlink insertfile image media | code removeformat | preview",
 
-						menubar: false,
-						toolbar_items_size: 'small',
+                    menubar: false,
+                    image_advtab: true,
+                    toolbar_items_size: 'small',
+                    style_formats: [
+                        {title: 'Paragraph', block: 'p'},
+                        {title: 'Header 1', block: 'span', styles: {color: '#444', font: "1.5em OpenSans, sans-serif", margin: '0 0 1em 0'}},
+                        {title: 'Header 2', block: 'span', styles: {color: '#444', font: "bold 1.3em OpenSans, sans-serif", margin: '0 0 1em 0'}}
 
-						style_formats: [
-							{title: 'Bold text', inline: 'b'},
-							{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-							{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-							{title: 'Example 1', inline: 'span', classes: 'example1'},
-							{title: 'Example 2', inline: 'span', classes: 'example2'},
-							{title: 'Table styles'},
-							{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-						]
-				});
+                    ]
+                });
 			</script>
 		</div>
 

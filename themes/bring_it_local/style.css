@@ -3431,6 +3431,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #contribution_details{width:800px; margin: 20px auto;}
 #contribution_details h3{font: 14px/29px "OpenSans-SemiBold";    text-transform: uppercase;    color: #7eb041;    border-bottom: 1.5px solid #dedede;    padding: 5px 0;}
 #contribution_qty{float:left;}
+#contribution_qty a {color:#444;text-decoration:underline;}
 #contribution_qty #submit {margin:auto; display: block}
 #contribution_qty input[type="text"]{height: 25px; line-height:25px;vertical-align: middle; width: 250px;    border: 1px solid #ddd;    border-radius: 3px;    outline: none;  padding: 0 10px;}
 #contribution_details .top-description .left{height:135px; width:200px; border:4px solid rgb(199, 198, 198); border-radius:4px;}
@@ -3509,8 +3510,8 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 
 
 /* Rewards page */
-.reward_block {border: 1px solid #000; width: 100%; margin-bottom: 1em;}
-.reward_block .reward_title {border-bottom: 1px solid #000; font-weight: bold; font-size: 15px; height: 35px; background: #EEE;}
+.reward_block {border: 1px solid #ccc; width: 100%; margin-bottom: 1em;}
+.reward_block .reward_title {border-bottom: 1px solid #ccc; font-weight: bold; font-size: 15px; height: 35px; background: #EEE;}
 .reward_block .reward_title .reward_title_label {display: inline-block; margin: 7px;}
 .reward_block .reward_content {padding: 10px; width: 95%; float: left;}
 .reward_block input[type="submit"] {float:right; margin: 20px;white-space: nowrap; background: #272727; color: #fff;border: 0; border-radius: 4px; font: 15px/29px "OpenSans-SemiBold"; padding: 0 20px; text-transform: uppercase;cursor: pointer;}

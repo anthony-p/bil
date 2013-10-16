@@ -289,6 +289,7 @@ global $coupon_url;
                   </ul>
                   </div>
             	  <!-- 2013/10/15 Edit End (Anthony)-->
+
                   <div class="nav-links">
                     <span><a href="">Click here to subscribe to updates</a></span>
                     <span><a href="">Go to the Community fund </a><a href="" class="what">What's that?</a></span>

@@ -35,7 +35,7 @@ else
 
 	$voucher = new item();
 	$voucher->setts = &$setts;
-	
+
 	include_once ('npglobal_header.php');
 
     // TinyMCE MoxieManager Override the rootpath for images

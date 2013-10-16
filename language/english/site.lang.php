@@ -5,6 +5,7 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+define('MSG_FOOTER_MISSION', 'Mission');
 
 //click through shopping
 define('MSG_FEATURED_AFFILIATES', 'Featured vendors');
@@ -45,7 +46,7 @@ define('MSG_REGISTER_CAMPAIGN_ERR_STATE','The State field was not completed corr
 
 // campaign edit - delete rewards confirmation
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE', 'Delete Reward Confirm');
-define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG', 'MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG');
+define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG', 'This will permanently delete this reward.');
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK', 'Delete');
 define('MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_CANCEL', 'Cancel');
 
@@ -56,10 +57,10 @@ define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_TITLE', 'Comment Confirm');
 define('MSG_CAMPAIGN_DIALOG_POST_COMMENT_MSG', 'Choosing POST will make your comment instantly public');
 
 // member area - edit campaign - post update
-define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK', 'Yes, POST my comment now');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK', 'Yes, POST my update now');
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL', 'Nevermind, cancel');
 define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE', 'POST Confirm');
-define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG', 'Choosing POST will make your comment instantly public');
+define('MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG', 'This update will immediately be visible on your campaign page and an email notification will be sent automatically to all of your supporters. Are you sure you are ready to POST?');
 
 // campaign edit - edit campaign -delete update
 define('MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_OK', 'Delete');
@@ -320,6 +321,7 @@ define ('MSG_RAISED_TOWARD_THE_GOAL', 'raised toward our goal of');
 define ('MSG_MANY_WAYS_TO_GIVE', 'There are many ways to give');
 define ('MSG_DONATE_NOW', 'Donate Now');
 define ('MSG_DONATE_PAYPAL_LABEL', 'Donate using PayPal');
+define ('MSG_DONATE_FUND_TOOLTIP', 'A common fund that gets disbursed each month based on site user votes.');
 define ('MSG_MAKE_DONATION', 'make a donation');
 define ('MSG_MAKE_HAPPEN', 'Help make it happen! Support ');
 define ('MSG_SHOP_ONLINE', 'Shop Online');
