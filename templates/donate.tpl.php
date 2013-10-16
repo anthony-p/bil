@@ -120,15 +120,13 @@
                 <?php if (!$campaign['cfc']): ?>
                     <div class="community_donate clearfix">
 
-<<<<<<< HEAD
+
                         <label class="inline-block">
                         <?=MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND?>
+                         <img src="/images/question_help.png" height="16" alt="help"
+                                                  title="<?= MSG_DONATE_FUND_TOOLTIP; ?>" >
                          </label>
-=======
-                        <label class="inline-block">Would you like to add <strong>$5</strong> toward the
-                            <a href="/bringitlocal" target="_blank">Community Fund</a>?  <img src="/images/question_help.png" height="16" alt="help"
-                                                  title="<?= MSG_DONATE_FUND_TOOLTIP; ?>" ></label>
->>>>>>> 04dc03171f4dac4d373988118982cdcff10aef1c
+
                         <input type="checkbox" name="community" id="community" class="inline-block"/>
                         <div class="inline-block">
                             <input type="text" name="community_amount" id="community_amount" disabled="disabled" value="5"/>
