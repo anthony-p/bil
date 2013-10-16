@@ -119,20 +119,19 @@
 
                 <?php if (!$campaign['cfc']): ?>
                     <div class="community_donate clearfix">
-
-
                         <label class="inline-block">
-                        <?=MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND?>
-                         <img src="/images/question_help.png" height="16" alt="help"
+                        	<?=MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_PREFIX?>
+                        	<a href="<?=$cfc_url;?>">
+                            	<?=MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_POSTFIX?>
+                        	</a>?
+                         	<img src="/images/question_help.png" height="16" alt="help"
                                                   title="<?= MSG_DONATE_FUND_TOOLTIP; ?>" >
                          </label>
-
                         <input type="checkbox" name="community" id="community" class="inline-block"/>
                         <div class="inline-block">
                             <input type="text" name="community_amount" id="community_amount" disabled="disabled" value="5"/>
                             <strong>(USD)</strong>
                         </div>
-
                     </div>
 
                 <?php endif; ?>
