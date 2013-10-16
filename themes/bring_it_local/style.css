@@ -2555,6 +2555,7 @@ header .innerContainer  {width: 940px;margin: 0 auto; position: relative;}
 header .innerContainer .inner{position:relative; z-index:3;padding:15px 0 13px; float:left; width: 100%;}
 header .innerContainer .sun{height:73px;width:527px; position:absolute; top:0; left:0; z-index:1; background: url("img/sun.png") 0 0;}
 header .innerContainer .logo{float:left; width: 250px;}
+header .innerContainer .logo img{height:100%; width:100%;}
 header .innerContainer nav{float:left; margin:10px 0 0 15px;}
 header .innerContainer nav ul{display:inline-block;}
 header .innerContainer nav ul li{float:left;margin-right:25px; }
@@ -2777,7 +2778,7 @@ aside.suport .viewall h5{float:left; font:22px "OpenSans-SemiBold"; color: #222;
 aside.suport .viewall .slide{overflow: hidden; }
 aside.suport .viewall ul li{width:700px; float:left; background:#e4e4e4; height:4px; margin-top: 16px;}
 aside.suport .viewall a{float:right; margin-top:7px; font: 16px/19px OpenSans;  color: #000;  padding-right: 10px; background: url("img/arrow-nav.png") right 5px no-repeat;}
-aside.suport .rows-list{float:left; clear:both; width:100%;}
+aside.suport .rows-list{float:left; clear:both; width:100%; margin-bottom: 30px;}
 aside.suport .rows-list li{float:left; width:125px; margin-right: 20px;}
 aside.suport .rows-list li.last{margin: 0;}
 aside.suport .rows-list li .img{width:100%; height: 125px; margin-bottom:10px;}
