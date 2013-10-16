@@ -614,7 +614,6 @@ define ('MSG_REWARD_CLAIMING_CONTRIBUTION_IS_LESS_THAN_WHAT_IS_REQUIRED', 'The a
 define ('MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION', 'You can still donate this amount but you will not receive the reward.');
 define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND', 'Would you like to add <strong>$5</strong> toward the Community Fund?');
 define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_PREFIX', 'Would you like to add <strong>$5</strong> toward the');
-define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_POSTFIX', 'Community Fund');
 
 define ('MSG_EXTENDS_DATE_EXISTING_CAMPAIGN', 'Extend the date of the existing campaign for ');
 define ('MSG_CLONE_CAMPAIGN', 'Clone campaign');
