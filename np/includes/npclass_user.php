@@ -163,17 +163,24 @@ class npuser extends npcustom_field
                 $ordering = " ORDER BY reg_date " . $order;
             }
             $search = mysql_real_escape_string($_GET["keyword"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
-                NPDB_PREFIX . "users.end_date, bl2_users.id, bl2_users.first_name, " .
+            $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
+                NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
+                NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
                 NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.payment, " .
-                " bl2_users.last_name, bl2_users.organization, bl2_users.email " .
+                " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" . $time .
-                "  AND name LIKE '%" .
-                $search . "%' " . $ordering;
+                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
+                " AND np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
+                " AND (name LIKE '%" .
+                $search . "%' OR description LIKE '%" .
+                $search . "%' OR project_title LIKE '%" .
+                $search . "%' OR campaign_basic LIKE '%" .
+                $search . "%' OR orgtype LIKE '%" .
+                $search . "%' OR np_users.tax_company_name LIKE '%" .
+                $search . "%' OR pitch_text LIKE '%" .
+                $search . "%') " . $ordering;
         } elseif (isset($_GET["category"]) && $_GET["category"]) {
             $search = mysql_real_escape_string($_GET["category"]);
             $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
