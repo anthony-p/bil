@@ -122,7 +122,7 @@
                         <label class="inline-block">
                         	<?=MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_PREFIX?>
                         	<a href="<?=$cfc_url;?>">
-                            	<?=MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_POSTFIX?>
+                            	<?=MSG_COMMUNITY_FOUND?>
                         	</a>?
                          	<img src="/images/question_help.png" height="16" alt="help"
                                                   title="<?= MSG_DONATE_FUND_TOOLTIP; ?>" >
