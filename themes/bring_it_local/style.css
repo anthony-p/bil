@@ -2768,7 +2768,7 @@ aside.user-post .post{margin-top: 13px;}
 background: #7eb041; text-shadow: 0px 0px 1px #9ec471; margin: 0;}
 .resp-tab-content aside.rewards .a-view{width:90px; margin: 0 auto;}
 .resp-tab-content aside.rewards a.viewall span{ background:none; font: 13px/29px "OpenSans-Light"; display: block; color: #fff; text-transform:uppercase; padding: 0 17px;}
-
+.resp-tab-content .img_respons{width: 100%;}
 /**/
 aside.suport{margin:0;  padding-bottom: 25px;}
 aside.suport .row{width:562px;margin:0 auto ; }
