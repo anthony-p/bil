@@ -612,8 +612,8 @@ define ('MSG_REWARD_CLAIMING_ALL_SHIPPING_FIELD_ARE_REQUIRED', 'All shipping inf
 define ('MSG_REWARD_CLAIMING_CONTRIBUTION_AMOUNT_MUST_VALID', 'The contribution amount must be a number greater than 1');
 define ('MSG_REWARD_CLAIMING_CONTRIBUTION_IS_LESS_THAN_WHAT_IS_REQUIRED', 'The amount you have chosen is less than what is required for this reward which is');
 define ('MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION', 'You can still donate this amount but you will not receive the reward.');
-define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND', 'Would you like to add <strong>$5</strong> toward the <a href="<?=$cfc_url;?>">Community Fund</a>?');
-define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_PREFIX', 'Would you like to add <strong>$5</strong> toward the?');
+define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND', 'Would you like to add <strong>$5</strong> toward the Community Fund?');
+define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_PREFIX', 'Would you like to add <strong>$5</strong> toward the');
 define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_POSTFIX', 'Community Fund');
 
 define ('MSG_EXTENDS_DATE_EXISTING_CAMPAIGN', 'Extend the date of the existing campaign for ');
