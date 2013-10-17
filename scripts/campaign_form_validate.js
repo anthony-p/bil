@@ -569,7 +569,7 @@ function validateProjectReward(id) {
         v_err = true;
     }
 
-    if ($("#reward_available_number_" + id).val() <0 ) {
+    if (($("#reward_available_number_" + id).val()) <=0 || ($("#reward_available_number_" + id).val() == '') ) {
         v_err_msg += "<li><?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_POSITIVE_NUMBER ?></li>";
         $("#reward_available_number_" + id).addClass("error");
         v_err = true;
