@@ -259,7 +259,10 @@ if (!defined('INCLUDED')) {
                         </div>
 
                         <div class="paypal_block">
-                            <h3>PayPal</h3>
+                            <h3>
+                            PayPal
+                            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN ?>" style="margin-left: 10px;">
+                            </h3>
                             <?php if (isset($campaign['confirmed_paypal_email']) && $campaign['confirmed_paypal_email']): ?>
                                  <span class="checked"></span>
                             <?php endif; ?>
@@ -494,8 +497,8 @@ if (!defined('INCLUDED')) {
                     <h4><?= MSG_UPDATES ?></h4>
                     <div class="account-tab">
                         <div class="inner">
-                            <h3><?= MSG_POST_AN_UPDATE_TO_CAMPAIGN ?> <img src="/images/question_help.png" height="16" alt="help"
-                                                                           title="<?= MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP ?>" style="margin-left: 10px;"></h3>
+                            <h3><?= MSG_POST_AN_UPDATE_TO_CAMPAIGN ?> 
+                            <img src="/images/question_help.png" height="16" alt="help"  title="<?= MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP ?>" style="margin-left: 10px;"></h3>
                             <div class="add_post">
                                 <textarea name="comment_text" class="project_update_textarea"
                                           id="project_update_textarea"></textarea>
@@ -509,6 +512,7 @@ if (!defined('INCLUDED')) {
                         <ul class="posted_comments" id="project_update_post_comments">
                             <?php foreach ($project_updates as $_update) : ?>
                                 <li id="<?= 'project_update_comment_row' . $_update['id']; ?>">
+                                    
                                     <p><?= html_entity_decode($_update['comment']) ?></p>
 
                                     <div class="delete_btn">
