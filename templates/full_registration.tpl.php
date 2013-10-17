@@ -57,7 +57,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 state:"required",
                 postal_code:"required",
                 phone:"required",
-                old_password:"required",
                 password:{
                     equalTo:'#password2'
                 },
