@@ -271,7 +271,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP; ?></li>';
                 err_status = true;
             }
-            if ($("#old_password").val() == '') {
+            if ($("#old_password").val() == '' && $("#password").val() != '') {
                 $("#old_password").addClass("error");
                 err_msg += '<li><?= MSG_PASSWORD_REQUIRED; ?></li>';
                 err_status = true;
@@ -675,7 +675,7 @@ function fetchstate($statecode){
             <img src="<?=(isset($path_relative))?$path_relative:'';?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="pass_img" align="absmiddle" style="display:none;" /></td>
     </tr>
     <tr>
-        <td  class="contentfont"><?=MSG_OLD_PASS;?> *
+        <td  class="contentfont"><?=MSG_OLD_PASS;?>
         </td>
         <td class="contentfont">
             <input name="old_password" type="password" class="contentfont" autocomplete="off"
