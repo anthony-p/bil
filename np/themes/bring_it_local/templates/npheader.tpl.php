@@ -159,7 +159,8 @@ global $coupon_url;
         <div class="innerContainer">
             <div class="sun"></div>
             <div class="inner">
-                <div class="logo"><a href="<?=$index_link;?>"><img src="/images/logo_bringItLocal.png?<?=rand(2,9999);?>" alt="Bring It Local" border="0"></a></div>
+                <div class="logo"><a href="<?=$index_link;?>"><img src="../images/logo_bringItLocal.png?<?=rand(2,9999);?>" alt="Bring It Local" border="0"></a></div>
+                <!--<div class="logo"><a href="<?=$index_link;?>"><img src="/images/logo_bringItLocal.png?<?=rand(2,9999);?>" alt="Bring It Local" border="0"></a></div>-->
                 <nav>
                     <ul>
                         <li class="level"><a href="#" id="menu">Browse</a></li>
