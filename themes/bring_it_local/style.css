@@ -2455,8 +2455,8 @@ display: block;}
 }
 
 #sell_item .title {
-    text-transform: uppercase;
-padding: 0 0 10px 0;
+    text-transform: uppercase;     
+    padding: 0 0 10px 0;
 margin-bottom: 20px;
 border-bottom: 3px solid #dedede;
 font: 18px/29px "OpenSans-SemiBold";
@@ -2555,7 +2555,7 @@ header .innerContainer  {width: 940px;margin: 0 auto; position: relative;}
 header .innerContainer .inner{position:relative; z-index:3;padding:15px 0 13px; float:left; width: 100%;}
 header .innerContainer .sun{height:73px;width:527px; position:absolute; top:0; left:0; z-index:1; background: url("img/sun.png") 0 0;}
 header .innerContainer .logo{float:left; width: 250px;}
-header .innerContainer .logo img{height:100%; width:100%;}
+header .innerContainer .logo img{width:100%;}
 header .innerContainer nav{float:left; margin:10px 0 0 15px;}
 header .innerContainer nav ul{display:inline-block;}
 header .innerContainer nav ul li{float:left;margin-right:25px; }
