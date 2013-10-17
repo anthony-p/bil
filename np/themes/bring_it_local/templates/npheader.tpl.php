@@ -22,18 +22,18 @@ global $coupon_url;
     <link href="/themes/responsive.css" rel="stylesheet" type="text/css">
 
     <script type="text/javascript" src="/scripts/swfupload/swfupload.js"></script>
-    <script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
-    <script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
+    <script type="text/javascript" src='/scripts/jquery/jquery-1.9.1.js'></script>
+    <script type="text/javascript" src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 
     <script type="text/javascript" src="/scripts/jquery/jquery.polyglot.language.switcher.js" ></script>
     <script type="text/javascript" src='/scripts/jquery/transit.js'></script>
     <script type="text/javascript" src="/themes/<?= $setts['default_theme']; ?>/main.js" type="text/javascript"></script>
     <script type="text/javascript" src='/scripts/innovaeditor.js'></script>
-    <script language=JavaScript src='/scripts/jquery/sliding.form.js'></script>
-    <script language=JavaScript src='/scripts/jquery/jquery.preimage.js'></script>
+    <script type="text/javascript" src='/scripts/jquery/sliding.form.js'></script>
+    <script type="text/javascript" src='/scripts/jquery/jquery.preimage.js'></script>
     <script language="JavaScript" src="/scripts/jquery/tinymce/tinymce.min.js" js="text/javascript"></script>
     <script language="JavaScript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" js="text/javascript"></script>
-    <script language=JavaScript src='/scripts/jquery/jquery.maskedinput.min.js'></script>
+    <script type="text/javascript" src='/scripts/jquery/jquery.maskedinput.min.js'></script>
 
 
     <style type="text/css">

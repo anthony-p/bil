@@ -112,13 +112,6 @@ function validateCampaignForm(form, messages) {
 
         },
         focusInvalid:false,
-
-        showErrors: function(errorMap, errorList) {
-            $("#validation_errors").html("Your form contains "
-                + this.numberOfInvalids()
-                + " errors, see details below.");
-            this.defaultShowErrors();
-        },
         invalidHandler: function(form, validator) {
 
             if (!validator.numberOfInvalids())
@@ -552,7 +545,7 @@ function validateProjectReward(id) {
         v_err = true;
     }
 
-    if (parseInt($("#reward_amount_" + id).val()) <= 0) {
+    if (parseInt($("#reward_amount_" + id).val()) < 0) {
         v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO ?></li>";
         $("#reward_amount_" + id).addClass("error");
         v_err = true;

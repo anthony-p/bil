@@ -1400,27 +1400,6 @@ span.hlbolditem a:hover{ font-size: 11px; font-weight: bold; color: #FFFFFF; tex
 /* SYSTEM classes - error & alert message */
 .errormessage { margin-bottom: 16px;  font: 14px "OpenSans-Semibold";    text-transform: uppercase;}
 
-/* V5 & system classes &  - main colors */
-/*.c3 {background-color: #4475c6; color: #FFFFFF; font-weight: bold; text-decoration: none;} *//* blue */
-/*
-.c3 a {color: #FFFFFF; font-weight: bold;}
-.c3 a:hover {color: #FFFFFF; font-weight: bold;}
-.c2 {background-color: #F8F8F8;}
-*//* lightgray light */
-/*.c1 {background-color: #F0F0F0;} *//* lightgray middle*/
-/*.c4 {background-color: #E1E2E4;} *//* lightgray dark */
-/*
-.c5 {background-color: #a6a6a6;}
-.c6 {background-color: #EEF2F9; color: #003399;}
-.c7 {background-color: #E3E4EB;}
-*//* bluegray admin area */
-/*
-.c8 { background-color: #0C6CBB; color: white; font-weight: bold; }
-.c9 { background-color: #acc7ef; }
-.whiteback { background-color: white; }
-*/
-
-
 /* SYSTEM classes - register.php */
 .creg2 {background-color: #F8F8F8;} /* lightgray light */
 .creg3 {background-color: #F0F0F0;} /* lightgray middle*/
@@ -1440,22 +1419,6 @@ a.hidelayer:visited {font-size: 11px; color: #333333; font-weight: bold; text-de
 /* V5 classes - main nav menu colors */
 
 .user { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; color: #666666; }
-
-/* V5 classes - other */
-/*
-.search {font-size: 11px; font-weight: bold; color: #222222; text-decoration: none;}
-.search a {font-size: 11px; font-weight: bold; color: #222222; text-decoration: none;}
-.search a:hover { font-size: 11px; font-weight: bold; color: #222222; text-decoration: underline; }
-
-.welcome { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; color: #003399; }
-
-.categories { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; text-decoration: none;}
-.categories a { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; text-decoration: none;}
-.categories a:hover { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; color: #666666; font-size: 11px; text-decoration: underline;}
-
-.maintext { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; font-size: 11px; }
-.title { font-family: CallunaSans-Regular, Arial, Helvetica, sans-serif; font-size: 12px; }
-*/
 
 /* V5 classes - footer.php */
 .footerfont { font-size: 12px; color: #0033cc; text-decoration: none; }
@@ -2592,6 +2555,7 @@ header .innerContainer  {width: 940px;margin: 0 auto; position: relative;}
 header .innerContainer .inner{position:relative; z-index:3;padding:15px 0 13px; float:left; width: 100%;}
 header .innerContainer .sun{height:73px;width:527px; position:absolute; top:0; left:0; z-index:1; background: url("img/sun.png") 0 0;}
 header .innerContainer .logo{float:left; width: 250px;}
+header .innerContainer .logo img{height:100%; width:100%;}
 header .innerContainer nav{float:left; margin:10px 0 0 15px;}
 header .innerContainer nav ul{display:inline-block;}
 header .innerContainer nav ul li{float:left;margin-right:25px; }
@@ -2804,7 +2768,7 @@ aside.user-post .post{margin-top: 13px;}
 background: #7eb041; text-shadow: 0px 0px 1px #9ec471; margin: 0;}
 .resp-tab-content aside.rewards .a-view{width:90px; margin: 0 auto;}
 .resp-tab-content aside.rewards a.viewall span{ background:none; font: 13px/29px "OpenSans-Light"; display: block; color: #fff; text-transform:uppercase; padding: 0 17px;}
-
+.resp-tab-content .img_respons{width: 100%;}
 /**/
 aside.suport{margin:0;  padding-bottom: 25px;}
 aside.suport .row{width:562px;margin:0 auto ; }
@@ -2814,7 +2778,8 @@ aside.suport .viewall h5{float:left; font:22px "OpenSans-SemiBold"; color: #222;
 aside.suport .viewall .slide{overflow: hidden; }
 aside.suport .viewall ul li{width:700px; float:left; background:#e4e4e4; height:4px; margin-top: 16px;}
 aside.suport .viewall a{float:right; margin-top:7px; font: 16px/19px OpenSans;  color: #000;  padding-right: 10px; background: url("img/arrow-nav.png") right 5px no-repeat;}
-aside.suport .rows-list{float:left; clear:both; width:100%;}
+aside.suport .rows-list{float:left; clear:both; width:100%; margin-bottom: 30px;}
+
 aside.suport .rows-list li{float:left; width:125px; margin-right: 20px;}
 aside.suport .rows-list li.last{margin: 0;}
 aside.suport .rows-list li .img{width:100%; height: 125px; margin-bottom:10px;}
@@ -3428,18 +3393,18 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #contribution_form{ float: left;    clear: both;    width: 100%;    background: #fff;    padding-bottom: 30px;    box-shadow: 0 0 6px rgba(5, 5, 5, 0.5);    border-radius: 8px;    margin: 20px 0 40px;}
 #contribution_form h2 { float:none;margin-bottom:1em;}
 #contribution_form p { margin-bottom: 1em;}
-#contribution_details{width:800px; margin: 20px auto;}
+#contribution_details{width:94%; margin: 20px auto;}
 #contribution_details h3{font: 14px/29px "OpenSans-SemiBold";    text-transform: uppercase;    color: #7eb041;    border-bottom: 1.5px solid #dedede;    padding: 5px 0;}
 #contribution_qty{float:left;}
 #contribution_qty a {color:#444;text-decoration:underline;}
 #contribution_qty #submit {margin:auto; display: block}
 #contribution_qty input[type="text"]{height: 25px; line-height:25px;vertical-align: middle; width: 250px;    border: 1px solid #ddd;    border-radius: 3px;    outline: none;  padding: 0 10px;}
-#contribution_details .top-description .left{height:135px; width:200px; border:4px solid rgb(199, 198, 198); border-radius:4px;}
+#contribution_details .top-description .left{/*height:135px;*/ width:17.2%; border:4px solid rgb(199, 198, 198); border-radius:4px;}
 #contribution_details .top-description .left img{width:100%; height: 100%;}
-#contribution_details .top-description .right{width:500px; float:left; margin-left: 20px;}
+#contribution_details .top-description .right{width:62%; float:left; margin-left: 20px;}
 #contribution_details .top-description .right h2{font-size: 18px;line-height: 20px;}
 #contribution_details .top-description .right p{font:12px/15px "OpenSans";}
-.community_donate, .paypal_donate { margin-bottom: 1em; width: 80%;padding:1em;text-align:center}
+.community_donate, .paypal_donate { margin-bottom: 1em; width:94%;padding:2%;text-align:center}
 .paypal_donate span{margin-bottom:0.5em;display: block;}
 .community_donate {
     background:#CCE0F0;
@@ -3621,7 +3586,7 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .about_me_content{float: left;margin:0 0 20px 20px; padding: 15px; background: #fff;  border-radius: 13px;box-shadow: 0 0 10px rgba(34, 31, 31,0.2);}
 .about_me_content #about_me_content{width: 600px;}
 .about_me_content p,.about_me_content div{font:14px/16px "OpenSans"; color:#333; }
-.about_me_content div a{font-family:Opensans-Semibold;  text-decoration: underline; color: #333;}
+.about_me_content div a{ font-family:"Opensans-Semibold", sans-serif;  text-decoration: underline; color: #333;}
 /*.about_me_content .content h2{margin: 0 0 20px 0 ; padding: 20px 0px 0; font: 16px/29px "OpenSans-SemiBold"; text-transform: uppercase;*/
     /*color: #7eb041;  border-bottom: 1.5px solid #dedede;  text-align: left;}*/
 #about_me_content label {width:28px; text-transform:capitalize; display: block;  float: left;    height: 28px;    background: url("img/website-icon.png") 0 0 no-repeat;    margin-left: 12px;  font: 13px/27px OpenSans;   margin-left: 6px;  color: #aaaab5;}

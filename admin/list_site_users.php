@@ -548,11 +548,12 @@ else
 
 
 //	$nb_users = $db->count_rows('users u', $search_filter);
-	$nb_users = $db->get_sql_row('SELECT COUNT(id) FROM bl2_users');
-    $nb_users = $nb_users['COUNT(id)'];
+//    var_dump('SELECT COUNT(u.id) FROM bl2_users u ' . $search_filter);
+	$nb_users = $db->get_sql_row('SELECT COUNT(u.id) FROM bl2_users u ' . $search_filter);
+    $nb_users = $nb_users['COUNT(u.id)'];
 
     if (!isset($start)) {
-        $start = 1;
+        $start = 0;
     }
 	$template->set('query_results_message', display_pagination_results($start, $limit, $nb_users));
 
@@ -574,6 +575,9 @@ else
 		LEFT JOIN " . DB_PREFIX . "countries s ON u.state=s.id
 		" . $search_filter . "
 		ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit;
+
+//    var_dump($search_filter);
+//    var_dump($new_select_users_query);
 
 	$sql_select_users = $db->query($new_select_users_query);
 

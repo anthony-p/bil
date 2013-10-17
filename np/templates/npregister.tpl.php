@@ -51,12 +51,12 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 e.preventDefault();
                 var formElem = $('#formElem');
                 validateCampaignForm(formElem, error_messages);
-                $("#pin_value" ).rules( "add", {
+         /*       $("#pin_value" ).rules( "add", {
                     required: true,
                     messages: {
                         required: "<?= MSG_REGISTER_CAMPAIGN_ERR_PIN; ?>"
                     }
-                });
+                });*/
                 $('input[name="agree_terms"]').rules( "add", {
                     required: true,
                     messages: {

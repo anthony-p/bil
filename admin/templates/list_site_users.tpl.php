@@ -37,38 +37,38 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,lo
    </tr>
 </table>
 <table width="100%" border="0" cellpadding="3" cellspacing="3" class="fside">
-<!--   <tr>-->
-<!--      <td colspan="5" align="center" style="padding: 10px;">-->
-<!--          <table border="0" cellpadding="3" cellspacing="3" class="border" align="center">-->
-<!--            <form action="list_site_users.php" method="post">-->
-<!--               <tr class="c3">-->
-<!--                  <td colspan="3">--><?//=GMSG_USER_SEARCH;?><!--</td>-->
-<!--               </tr>-->
-<!--               <tr class="c2">-->
-<!--                  <td>--><?//=AMSG_FIRST_NAME;?>
-<!--                     :</td>-->
-<!--                  <td colspan="2"><input name="keywords_first_name" type="text" id="keywords_first_name"-->
-<!--                                         value="--><?//=isset($keywords_last_name) ? $keywords_last_name : '';?><!--" /></td>-->
-<!--               </tr>-->
-<!--               <tr class="c1">-->
-<!--                  <td>--><?//=AMSG_LAST_NAME;?>
-<!--                     :</td>-->
-<!--                  <td colspan="2"><input name="keywords_last_name" type="text" id="keywords_last_name"-->
-<!--                                         value="--><?//=isset($keywords_last_name) ? $keywords_last_name : '';?><!--" /></td>-->
-<!--               </tr>-->
-<!--               <tr class="c2">-->
-<!--                  <td>--><?//=AMSG_EMAIL_ADDR;?>
-<!--                     :</td>-->
-<!--                  <td><input name="keywords_email" type="text" id="keywords_email" value="--><?//=isset($keywords_email) ? $keywords_email : '';?><!--" /></td>-->
-<!--               </tr>-->
-<!--               <tr class="c2">-->
-<!--                  <td></td>-->
-<!--                  <td><input name="form_user_search" type="submit" id="form_user_search" value="--><?//=GMSG_SEARCH;?><!--" /></td>-->
-<!--               </tr>-->
-<!--            </form>-->
-<!--         </table>-->
-<!--      </td>-->
-<!--   </tr>-->
+   <tr>
+      <td colspan="5" align="center" style="padding: 10px;">
+          <table border="0" cellpadding="3" cellspacing="3" class="border" align="center">
+            <form action="list_site_users.php" method="post">
+               <tr class="c3">
+                  <td colspan="3"><?=GMSG_USER_SEARCH;?></td>
+               </tr>
+               <tr class="c2">
+                  <td><?=AMSG_FIRST_NAME;?>
+                     :</td>
+                  <td colspan="2"><input name="keywords_first_name" type="text" id="keywords_first_name"
+                                         value="<?=isset($keywords_first_name) ? $keywords_first_name : '';?>" /></td>
+               </tr>
+               <tr class="c1">
+                  <td><?=AMSG_LAST_NAME;?>
+                     :</td>
+                  <td colspan="2"><input name="keywords_last_name" type="text" id="keywords_last_name"
+                                         value="<?=isset($keywords_last_name) ? $keywords_last_name : '';?>" /></td>
+               </tr>
+               <tr class="c2">
+                  <td><?=AMSG_EMAIL_ADDR;?>
+                     :</td>
+                  <td><input name="keywords_email" type="text" id="keywords_email" value="<?=isset($keywords_email) ? $keywords_email : '';?>" /></td>
+               </tr>
+               <tr class="c2">
+                  <td></td>
+                  <td><input name="form_user_search" type="submit" id="form_user_search" value="<?=GMSG_SEARCH;?>" /></td>
+               </tr>
+            </form>
+         </table>
+      </td>
+   </tr>
    <tr>
       <td colspan="5" align="center"><?=$query_results_message;?></td>
    </tr>

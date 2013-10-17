@@ -48,7 +48,6 @@
           <div class="posted-mess">
               <p>
                   <a href="<?=$link_user?>"><?=$name ?></a> <?=MSG_POSTED_A_COMMENT?> <?=$day?>
-                  <?php /*<?=$name ?> posted an announcement <?=$day?> */ ?>
                   <?=$comment["comment"]?>
               </p>
           </div>
