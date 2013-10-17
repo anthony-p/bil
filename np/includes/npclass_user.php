@@ -360,7 +360,7 @@ class npuser extends npcustom_field
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title+' (copy)', campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active,
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, 0,
                     cfc, clone_campaign, 0, disabled, parrent_id
                 FROM ".NPDB_PREFIX."users WHERE user_id={$campaign_id}";
 

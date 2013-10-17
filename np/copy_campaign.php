@@ -17,8 +17,6 @@ $campaign_id = (isset($_SESSION['campaign_id']) && $_SESSION['campaign_id']) ?
 
 $copied_campaign_id = $user->copy_campaign($campaign_id);
 
-var_dump($copied_campaign_id);
-
 if (!$copied_campaign_id) {
     header_redirect('login.php');
 }
