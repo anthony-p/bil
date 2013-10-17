@@ -23,4 +23,5 @@ if (!$copied_campaign_id) {
     header_redirect('login.php');
 }
 
-header("location: /view_campaign.php?campaign_id=" . $copied_campaign_id);
+//header("location: /view_campaign.php?campaign_id=" . $copied_campaign_id);
+header("location: /campaigns,page,edit,section," . $copied_campaign_id . ",campaign_id,members_area");

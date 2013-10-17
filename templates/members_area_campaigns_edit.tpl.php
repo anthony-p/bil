@@ -306,7 +306,7 @@ if (!defined('INCLUDED')) {
                     <div class="account-tab">
                         <div class="account-row">
                             <label> <?= MSG_CREATE_PROJECT_URL; ?> *</label>
-                            <input type="hidden" value="<?= $campaign[active]; ?>">                            
+                            <input type="hidden" value="<?= $campaign['active']; ?>">
                             <input name="username" type="text" id="username" value="<?php echo isset($campaign["username"]) ? $campaign["username"] : ''; ?>"
                                 <?php if (isset($campaign["username"]) && $campaign["username"] && $campaign['active'] != '0') echo "readonly" ?>/>
                             <span><?= MSG_PROJECTURL_EXPLANATION; ?></span>
