@@ -1,7 +1,6 @@
 <?php global $session; ?>
 <script src="../../../scripts/jquery/jquery-1.9.1.js"></script>
 <script src="../../../scripts/jquery/jquery-ui.js"></script>
-<link rel="stylesheet" href="../../../css/jquery-ui.css" />
 <script>
     $(document).ready(function(){
         $('.campaign_donation').click(function(e){
@@ -64,7 +63,6 @@ $featured_columns = 14;
 <script src="../../../scripts/jquery/jquery-1.9.1.js"></script>
 
 <script type="text/javascript" src='/scripts/jquery/jquery-ui.js'></script>
-<link type="text/css" rel="stylesheet" href="/css/jquery-ui.css">
 
 <script>
     $(document).ready(function(){
