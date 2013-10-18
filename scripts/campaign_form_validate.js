@@ -671,13 +671,14 @@ $(document).on('ready', function () {
 
     $('.next_btn').each(function () {
         $(this).on('click', function (e) {
-            //e.preventDefault();
+            alert('I am here');
+            e.preventDefault();
             navigation.find('li.selected').next().find('a').click();
         });
     });
     $('.prev_btn').each(function () {
         $(this).on('click', function (e) {
-            //e.preventDefault();
+            e.preventDefault();
             navigation.find('li.selected').prev().find('a').click();
         });
     });
