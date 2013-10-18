@@ -250,7 +250,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <div class="account-row">
             <label>
             <? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> 
-            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN ?>" style="margin-left: 10px;">
+            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN ?>" style="margin-left: 10px;">
             </label>
             <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?=(isset($user_details['pg_paypal_email']))?$user_details['pg_paypal_email']:'';?>" size="40"/>
             
