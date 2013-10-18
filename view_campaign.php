@@ -588,7 +588,12 @@ if (isset($compaignData["probid_user_id"]) && $compaignData["probid_user_id"] ==
 
     }
 
-    require_once (__DIR__ . '/../includes/class_project_rewards.php');
+    if (file_exists(__DIR__ . '/includes/class_project_rewards.php')) {
+        require_once (__DIR__ . '/includes/class_project_rewards.php');
+    } elseif (file_exists(__DIR__ . '/../includes/class_project_rewards.php')) {
+        require_once (__DIR__ . '/../includes/class_project_rewards.php');
+    }
+
 	$projectRewards   = new projectRewards();
 	$project_rewards = $projectRewards->getAllRewards($compaignId, 'amount');
 

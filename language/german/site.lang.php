@@ -148,6 +148,7 @@ define ('MSG_CREATE_AT', 'Createdgggggg');
 define ('MSG_CLOSED_ON', 'Closedgggggg');
 define ('MSG_COLLECTED_MONEY', 'Raisedgggggg');
 define ('MSG_VIEW_CAMPAIGN', 'View Campaigngggggg');
+define ('MSG_COPY_CAMPAIGN', 'Copy Campaigngggggg');
 define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account informationgggggg');
 define ('MSG_ALSO_FIND_ME', ' Also Find Me ongggggg');
 define ('MSG_POSTED_A_COMMENT', 'posted a commentgggggg');

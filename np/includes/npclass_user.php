@@ -283,7 +283,8 @@ class npuser extends npcustom_field
                     reg_date, payment_mode, balance, max_credit,
                     salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
                     name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
-                    pg_paypal_email, pg_worldpay_id, pg_checkout_id, pg_nochex_email,
+                    pg_paypal_email, pg_paypal_first_name, pg_paypal_last_name, confirmed_paypal_email,
+                    pg_worldpay_id, pg_checkout_id, pg_nochex_email,
                     pg_ikobo_username, pg_ikobo_password, pg_protx_username, pg_protx_password,
                     pg_authnet_username, pg_authnet_password, pg_mb_email, pg_paymate_merchant_id,
                     pg_gc_merchant_id, pg_gc_merchant_key, pg_amazon_access_key, pg_amazon_secret_key,
@@ -291,36 +292,83 @@ class npuser extends npcustom_field
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
                     deadline_type_value, time_period, certain_date, probid_user_id, end_date, active,
-                    cfc, clone_campaign, votes)
-                SELECT username, password, email, end_date+'1', payment_mode, balance, max_credit,
+                    cfc, clone_campaign, votes, disabled, parrent_id)
+                SELECT username, password, email, end_date+'1', payment_mode, 0, max_credit,
                     salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
                     name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
-                    pg_paypal_email, pg_worldpay_id, pg_checkout_id, pg_nochex_email,
+                    pg_paypal_email, pg_paypal_first_name, pg_paypal_last_name, confirmed_paypal_email,
+                    pg_worldpay_id, pg_checkout_id, pg_nochex_email,
                     pg_ikobo_username, pg_ikobo_password, pg_protx_username, pg_protx_password,
                     pg_authnet_username, pg_authnet_password, pg_mb_email, pg_paymate_merchant_id,
                     pg_gc_merchant_id, pg_gc_merchant_key, pg_amazon_access_key, pg_amazon_secret_key,
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date+'2592000', 0,
-                    cfc, clone_campaign, votes
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date+'2592000', active,
+                    cfc, clone_campaign, 0, disabled, user_id
                 FROM ".NPDB_PREFIX."users WHERE user_id={$_campaign_id}";
 
                 $this->query($sql_clone_record_query);
 
-                $campaign_old = $this->get_sql_row("SELECT username, probid_user_id FROM " . NPDB_PREFIX . "users WHERE user_id=" . $_campaign_id);
+                $campaign_old = $this->get_sql_row("SELECT user_id, username, probid_user_id FROM " .
+                NPDB_PREFIX . "users WHERE user_id=" . $_campaign_id);
 
-                $old_campaign_title = $campaign_old['username'].'_old';
-                $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX . "users SET active=0, clone_campaign=0, username ='{$old_campaign_title}' WHERE user_id={$_campaign_id}";
+                $old_campaign_title = $campaign_old['username'] . $campaign_old['user_id'] . '_old';
+                $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX .
+                    "users SET active=0, clone_campaign=0, username ='{$old_campaign_title}' WHERE user_id={$_campaign_id}";
                 $this->query($sql_update_campaign_query);
 
-                $sql_update_clone_campaign_query = "UPDATE " . NPDB_PREFIX . "users
-                SET parrent_id ='{$_campaign_id}' WHERE username='{$campaign_old['username']}'
-                AND probid_user_id={$campaign_old['probid_user_id']}
-                AND user_id <>{$_campaign_id}";
-                $this->query($sql_update_clone_campaign_query);
+//                $sql_update_clone_campaign_query = "UPDATE " . NPDB_PREFIX . "users
+//                SET parrent_id ='{$_campaign_id}' WHERE username='{$campaign_old['username']}'
+//                AND probid_user_id={$campaign_old['probid_user_id']}
+//                AND user_id <>{$_campaign_id}";
+//                $this->query($sql_update_clone_campaign_query);
             }
         }
+    }
+
+    /**
+     * @param int $campaign_id
+     * @return int
+     */
+    function copy_campaign($campaign_id = 0)
+    {
+        $generated_id = 0;
+        if ($campaign_id && is_numeric($campaign_id)) {
+            $sql_copy_query = "INSERT INTO " . NPDB_PREFIX . "users(username, password, email,
+                    reg_date, payment_mode, balance, max_credit,
+                    salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
+                    name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
+                    pg_paypal_email, pg_paypal_first_name, pg_paypal_last_name, confirmed_paypal_email,
+                    pg_worldpay_id, pg_checkout_id, pg_nochex_email,
+                    pg_ikobo_username, pg_ikobo_password, pg_protx_username, pg_protx_password,
+                    pg_authnet_username, pg_authnet_password, pg_mb_email, pg_paymate_merchant_id,
+                    pg_gc_merchant_id, pg_gc_merchant_key, pg_amazon_access_key, pg_amazon_secret_key,
+                    pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
+                    user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
+                    project_title, campaign_basic, description, founddrasing_goal, funding_type,
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active,
+                    cfc, clone_campaign, votes, disabled, parrent_id)
+                SELECT '', password, email, reg_date, payment_mode, 0, max_credit,
+                    salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
+                    name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
+                    pg_paypal_email, pg_paypal_first_name, pg_paypal_last_name, confirmed_paypal_email,
+                    pg_worldpay_id, pg_checkout_id, pg_nochex_email,
+                    pg_ikobo_username, pg_ikobo_password, pg_protx_username, pg_protx_password,
+                    pg_authnet_username, pg_authnet_password, pg_mb_email, pg_paymate_merchant_id,
+                    pg_gc_merchant_id, pg_gc_merchant_key, pg_amazon_access_key, pg_amazon_secret_key,
+                    pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
+                    user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
+                    project_title+' (copy)', campaign_basic, description, founddrasing_goal, funding_type,
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, 0,
+                    cfc, clone_campaign, 0, disabled, parrent_id
+                FROM ".NPDB_PREFIX."users WHERE user_id={$campaign_id}";
+
+            $this->query($sql_copy_query);
+
+            $generated_id = mysql_insert_id();
+        }
+        return $generated_id;
     }
 
     /**

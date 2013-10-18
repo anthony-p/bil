@@ -250,7 +250,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <div class="account-row">
             <label>
             <? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> 
-            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN ?>" style="margin-left: 10px;">
+            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN ?>" style="margin-left: 10px;">
             </label>
             <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?=(isset($user_details['pg_paypal_email']))?$user_details['pg_paypal_email']:'';?>" size="40"/>
             
@@ -447,7 +447,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <!-- 2013/10/15 Edit Start (Anthony) -->
         <!--<h5>Your Story (<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>-->
         <!-- 2013/10/15 Edit End (Anthony) -->
-
+        <h5><?= MSG_YOUR_STORY3 ?></h5>
         <div class="account-row">
             <div class="upload">
                 <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label><?=MSG_BANNER_IMAGE?></label>

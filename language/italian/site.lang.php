@@ -131,6 +131,7 @@ define ('MSG_CREATE_AT', 'Creata');
 define ('MSG_CLOSED_ON', 'Chiuso');
 define ('MSG_COLLECTED_MONEY', 'Raccolti');
 define ('MSG_VIEW_CAMPAIGN', 'Visualizza campagna');
+define ('MSG_COPY_CAMPAIGN', 'Copy campagna');
 define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Informazioni account social');
 define ('MSG_ALSO_FIND_ME', 'Trovami anche su');
 define ('MSG_POSTED_A_COMMENT', 'ha pubblicato un commento');

@@ -180,8 +180,9 @@ global $coupon_url;
                     <div class="links-nav">
 <!--                        --><?//=$login_btn_msg;?>
 <!--                        --><?//=$register_btn_msg;?>
-                        <a href="<?=$login_link;?>">logout</a>
-                        <a href="<?=$register_link;?>">member area</a>
+                <a href="<?=$login_link;?>"><?=$login_btn_msg;?></a>
+                <a href="<?=$register_link;?>"><?=$register_btn_msg;?></a>
+                
                         <?php
 
 //                        if($session->value('user_id')):?>

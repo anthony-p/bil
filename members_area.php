@@ -5278,6 +5278,8 @@ else
                 $campaign_id = mysql_real_escape_string($_GET["campaign_id"]);
             }
 
+            $_SESSION['campaign_id'] = $campaign_id;
+
             if (empty($_POST['last_selected_tab'])) {
                 $last_selected_tab = '';
             } else {

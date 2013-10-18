@@ -179,6 +179,7 @@ define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
 
 // tooltips
 define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your PayPal account. A green check indicates that your PayPal information has been successfully verified.');
+define('TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN', 'You can enter this information anytime before making your campaign live. You will need to have a verified PayPal account.');
 
 //additions
 define ('MSG_MY_EARNINGS_SUMMARY', 'Summary Report');
@@ -309,6 +310,7 @@ define ('MSG_CREATE_AT', 'Created');
 define ('MSG_CLOSED_ON', 'Closed');
 define ('MSG_COLLECTED_MONEY', 'Raised');
 define ('MSG_VIEW_CAMPAIGN', 'View Campaign');
+define ('MSG_COPY_CAMPAIGN', 'Copy Campaign');
 define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account information');
 define ('MSG_ALSO_FIND_ME', ' Also Find Me on');
 define ('MSG_POSTED_A_COMMENT', 'posted a comment');
@@ -338,6 +340,7 @@ define ('MSG_DATE', 'date');
 define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 160 pixels wide.');
 define ('MSG_YOUR_STORY', 'Your story');
 define ('MSG_YOUR_STORY2', 'tell potential supporters about your campaign');
+define ('MSG_YOUR_STORY3', 'Add a large banner image or video at the top of your compaign page');
 define ('MSG_CLEAR', 'clear');
 define ('MSG_DAYS', 'days');
 define ('MSG_DAYS_LEFT', ' days left');
