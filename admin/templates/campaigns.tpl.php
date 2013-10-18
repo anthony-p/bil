@@ -1,6 +1,5 @@
 <script src="../../scripts/jquery/jquery-1.9.1.js"></script>
 <script src="../../scripts/jquery/jquery-ui.js"></script>
-<link rel="stylesheet" href="../../css/jquery-ui.css" />
 <?
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }

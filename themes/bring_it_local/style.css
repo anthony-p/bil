@@ -2958,7 +2958,7 @@ position: relative; display: table;  }
 #members_area .about_me_table label.facebook{background: url("img/face-icon.png") 0 0 no-repeat;}
 #members_area .upload_logo{width:200px; height: 100px;border:1px solid #dedede; float: left; overflow: hidden; display:table;}
 #members_area .upload_logo img{text-align: center;}
-#members_area .about_me_table input[type="file"]{float:left;padding: 5px; margin: 69px 0 0 52px;  border: 1px solid #dedede;border-radius: 4px;}
+#members_area .about_me_table input[type="file"]{float:left;padding: 5px; margin: 69px 0 0 52px;  border: 1px solid #dedede;border-radius: 4px;max-width: 265px;}
 #members_area .about_me_table input[type="submit"]{float:right;}
 
 /*about*/.view_about_page{width:100%; margin: 0 auto;}

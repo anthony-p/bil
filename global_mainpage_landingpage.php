@@ -525,6 +525,8 @@ $template->set('np_banner', $np_row['banner']);
 
 $compaignData =  $db->get_sql_row("SELECT * FROM np_users WHERE username = '$npusername' ");
 
+if ($compaignData['active'] == 0)	
+	header_redirect('/404');
 
 // == == == == == == == == == == == == == == == == == == == == == == == ==
 

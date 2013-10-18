@@ -102,7 +102,12 @@ if (!defined('INCLUDED')) {
     <h2><?= MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN; ?></h2>
 
     <div id="wrapper">
-        <a href="/view_campaign.php?campaign_id=<?= $campaign['user_id'] ?>" class="view_campaign_btn" target="_blank"><span><?= MSG_VIEW_CAMPAIGN ?></span></a>
+        <a href="/view_campaign.php?campaign_id=<?= $campaign['user_id'] ?>" class="view_campaign_btn" target="_blank">
+            <span><?= MSG_VIEW_CAMPAIGN ?></span>
+        </a>
+        <a href="/np/copy_campaign.php" class="copy_campaign_btn" target="_blank">
+            <span><?= MSG_COPY_CAMPAIGN ?></span>
+        </a>
 
         <!-- Tabs navigation -->
         <div id="navigation">
@@ -301,7 +306,7 @@ if (!defined('INCLUDED')) {
                     <div class="account-tab">
                         <div class="account-row">
                             <label> <?= MSG_CREATE_PROJECT_URL; ?> *</label>
-                            <input type="hidden" value="<?= $campaign[active]; ?>">                            
+                            <input type="hidden" value="<?= $campaign['active']; ?>">
                             <input name="username" type="text" id="username" value="<?php echo isset($campaign["username"]) ? $campaign["username"] : ''; ?>"
                                 <?php if (isset($campaign["username"]) && $campaign["username"] && $campaign['active'] != '0') echo "readonly" ?>/>
                             <span><?= MSG_PROJECTURL_EXPLANATION; ?></span>

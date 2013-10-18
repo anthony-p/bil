@@ -1,16 +1,50 @@
+<script type="text/javascript">
+    $(document).on('ready', function() {
+        $('#leave-comment').on('click', function(e) {
+            e.preventDefault();
+                if ($('textarea[name="comment_text"]').val().trim() != '') {
+                var dialog = $("#confirm_comment_dialog_box");
+                dialog.html("<?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_MSG;?>");
+                dialog.dialog({
+                    resizable: false,
+                    title:"<?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_TITLE;?>",
+                    height: 200,
+                    width: 500,
+                    modal: true,
+                    buttons: [
+                        {
+                            text: "<?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_OK;?>",
+                            click: function () {
+                                $('#add-comment').submit();
+                                $(this).dialog("close");
+                            }
+                        },
+                        {
+                            text: "<?= MSG_CAMPAIGN_DIALOG_POST_COMMENT_BTN_CANCEL;?>",
+                            click: function() {
+                                $(this).dialog("close");
+                            }
+                        }
+                    ]
+                });
+            }
+        })
+    })
+</script>
+
 <aside class="announcement user-post">
   <div class="inner">
       <h3><?=MSG_POST_A_COMMENT?></h3>
       <div class="write_post clrfix">
           <div class="user-photo"><img src="themes/bring_it_local/img/incognito.png" /></div>
-          <form name="add_comment" method="post" action="/campaign/comments.php">
+          <form name="add_comment" id="add-comment" method="post" action="/campaign/comments.php">
               <input name="compaign" type="hidden" value="<?=$compaignId?>" />
               <textarea name="comment_text"></textarea>
               <div class="check">
                   <input name="keep_private" type="checkbox">
                   <label><?=MSG_KEEP_PRIVATE?></label>
               </div>
-              <input type="submit" value="<?=MSG_SEND?>"/>
+              <input type="submit" value="<?=MSG_SEND?>" id="leave-comment" />
           </form>
       </div>
       <?php foreach($comments as $comment): ?>
@@ -54,4 +88,5 @@
       </div>
       <?php endforeach; ?>
   </div>
+    <div id="confirm_comment_dialog_box" style="display:none;"></div>
 </aside>
