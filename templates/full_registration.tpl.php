@@ -51,7 +51,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             rules: {
                 fname:"required",
                 lname:"required",
-                organization:"required",
                 address:"required",
                 city:"required",
                 state:"required",
