@@ -73,7 +73,7 @@ if (!defined('INCLUDED')) {
                         data: formElem.serialize() + "&ajaxsubmit=true",
                         success: function (response) {
                            response = $.parseJSON( response);
-                           if (response.success == "success") {
+                           if (response.status == "success") {
                                loading_msg.remove();
                                if (button.parent('div').hasClass('right')) {
                                    button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
@@ -81,8 +81,7 @@ if (!defined('INCLUDED')) {
                                var saved_msg = $('#saved-msg');
                                saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
                            } else {
-                                var dialog = $('#confirm_dialog_box');
-
+                               var dialog = $('#confirm_dialog_box');
                                loading_msg.remove();
                                dialog.html(response.errors);
                                dialog.dialog({
