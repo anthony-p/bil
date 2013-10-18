@@ -677,6 +677,7 @@ $(document).on('ready', function () {
     });
     $('.prev_btn').each(function () {
         $(this).on('click', function (e) {
+            alert('here it is');
             e.preventDefault();
             navigation.find('li.selected').prev().find('a').click();
         });
