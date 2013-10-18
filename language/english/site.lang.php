@@ -179,6 +179,7 @@ define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
 
 // tooltips
 define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your PayPal account. A green check indicates that your PayPal information has been successfully verified.');
+define('TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN', 'You can enter this information anytime before making your campaign live. You will need to have a verified PayPal account.');
 
 //additions
 define ('MSG_MY_EARNINGS_SUMMARY', 'Summary Report');
