@@ -59,9 +59,52 @@ if (!defined('INCLUDED')) {
         $('input[type="submit"]').each(function() {
             $(this).on('click', function(e){
                 e.preventDefault();
-                var formElem = $('#formElem');
+                var formElem = $('#formElem'),
+                    button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
-                if (formElem.valid()) {formElem.submit();}
+                console.log(button.parent('div'));
+                if (button.parent('div').hasClass('right')) {
+                    button.before('<span id="loading-msg" style="float:left;">Saving...</span>');
+                } else button.after('<span id="loading-msg">Saving...</span>');
+                var loading_msg = $('#loading-msg');
+
+                if (formElem.valid()) {
+                    $.ajax({
+                        url:formElem.attr('action'),
+                        type: "POST",
+                        data: formElem.serialize() + "&ajaxsubmit=true",
+                        success: function (response) {
+                           if (response.success = "success") {
+                               loading_msg.remove();
+                               if (button.parent('div').hasClass('right')) {
+                                   button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
+                               } else button.after('<span id="saved-msg">Saved!</span>');
+                               var saved_msg = $('#saved-msg');
+                               saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
+                           } else {
+                              var dialog = $('#confirm_dialog_box');
+                               dialog.html(response.errors);
+                               dialog.dialog({
+                                   resizable: false,
+                                   title: "Validation error",
+                                   height: 200,
+                                   width: 500,
+                                   modal: true,
+                                   buttons: [
+                                       {
+                                           text: "Ok",
+                                           click: function () {
+                                               $(this).dialog("close");
+                                           }
+                                       }
+                                   ]
+                               });
+                           }
+
+
+                        }
+                    });
+                }
             })
         });
         <?php if (isset($video_url) && $video_url): ?>
@@ -136,7 +179,7 @@ if (!defined('INCLUDED')) {
 
         <div id="steps">
 
-            <!-- Form for creating campaign -->
+            <!-- Form for editing campaign -->
             <form action="/campaigns,page,edit,section,<?= $campaign['user_id']; ?>,campaign_id,members_area" method="post"
                   name="registration_form" enctype="multipart/form-data" id="formElem">
             <input type="hidden" id="last_selected_tab" name="last_selected_tab" value="<?= $last_selected_tab ?>"/>
@@ -510,7 +553,7 @@ if (!defined('INCLUDED')) {
                                           id="project_update_textarea"></textarea>
 
                                 <div class="clear"></div>
-                                <input type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
+                                <input type="button" disabled="disabled" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
                             </div>
                         </div>
                         <div class="clear"></div>

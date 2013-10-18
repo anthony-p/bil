@@ -5272,9 +5272,9 @@ else
 
             $tax = new tax();
 
-            if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') {
-                $campaign_id = mysql_real_escape_string($_POST["user_id"]);
-            } else {
+          if ((isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') || ($_POST['ajaxsubmit'] == true)){
+               $campaign_id = mysql_real_escape_string($_POST["user_id"]);
+           } else {
                 $campaign_id = mysql_real_escape_string($_GET["campaign_id"]);
             }
 
@@ -5332,7 +5332,7 @@ else
 
             $form_submitted = FALSE;
 
-            if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') {
+          if ((isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') || ($_POST['ajaxsubmit'] == true)) {
 
                 $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
 				c.parent_id=0 ORDER BY c.country_order ASC, c.name ASC LIMIT 1", 'id');
@@ -5395,12 +5395,14 @@ else
                 $_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;
                 $pEmail = isset($_POST['email'])?$_POST['email']:'';
                 $banned_output = check_banned($pEmail, 2);
+
                 if ($banned_output['result'])
                 {
                     $template->set('banned_email_output', $banned_output['display']);
                 }
                 else if ($fv->is_error())
                 {
+                    $form_submit_msg = array("status" => "failed", "errors" => $fv->display_errors());
                     $template->set('display_formcheck_errors', $fv->display_errors());
                     $template->set('campaign', $campaign);
                     $template->set('categories', $categories);
@@ -5414,6 +5416,7 @@ else
                 }
                 else
                 {
+                    $form_submit_msg = array("status" => "success");
                     $form_submitted = TRUE;## PHP Pro Bid v6.00 atm we wont create any emails either until we decide how many ways of registration we have.
                     (string) $register_success_message = null;
                     $_POST["end_date"] = 0;
@@ -5469,18 +5472,6 @@ else
                     if (isset($_POST["username"]) && $_POST["username"]) {
                         $mysql_update_query .= ", username='" . $_POST["username"] . "'";
                     }
-
-
-/*
-                    if (!file_exists(__DIR__ . '/uplimg/partner_logos/')) {
-                        mkdir(__DIR__ . '/uplimg/partner_logos/', 0777, true);
-                    }
-
-                    if (!file_exists(__DIR__ . '/uplimg/partner_logos/temp/')) {
-                        mkdir(__DIR__ . '/uplimg/partner_logos/temp/', 0777, true);
-                    }
-*/
-
 
                     if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
                         $ext = pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION);
@@ -5837,6 +5828,9 @@ else
 
 	include_once ('global_footer.php');
 
-	echo $template_output;
+    if (isset($_POST['ajaxsubmit'])) {
+        echo json_encode($form_submit_msg);
+    } else echo $template_output;
 }
+
 ?>
