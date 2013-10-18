@@ -340,6 +340,7 @@ define ('MSG_DATE', 'date');
 define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 160 pixels wide.');
 define ('MSG_YOUR_STORY', 'Your story');
 define ('MSG_YOUR_STORY2', 'tell potential supporters about your campaign');
+define ('MSG_YOUR_STORY3', 'Add a large banner image or video at the top of your compaign page');
 define ('MSG_CLEAR', 'clear');
 define ('MSG_DAYS', 'days');
 define ('MSG_DAYS_LEFT', ' days left');
