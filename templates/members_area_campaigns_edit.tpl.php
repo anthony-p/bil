@@ -62,19 +62,18 @@ if (!defined('INCLUDED')) {
                 var formElem = $('#formElem'),
                     button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
-                console.log(button.parent('div'));
                 if (button.parent('div').hasClass('right')) {
                     button.before('<span id="loading-msg" style="float:left;">Saving...</span>');
                 } else button.after('<span id="loading-msg">Saving...</span>');
                 var loading_msg = $('#loading-msg');
-
                 if (formElem.valid()) {
                     $.ajax({
                         url:formElem.attr('action'),
                         type: "POST",
                         data: formElem.serialize() + "&ajaxsubmit=true",
                         success: function (response) {
-                           if (response.success = "success") {
+                            console.log(response);
+                           if (response.success == "success") {
                                loading_msg.remove();
                                if (button.parent('div').hasClass('right')) {
                                    button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
@@ -83,11 +82,13 @@ if (!defined('INCLUDED')) {
                                saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
                            } else {
                               var dialog = $('#confirm_dialog_box');
+                               response = $.parseJSON( response);
+                               loading_msg.remove();
                                dialog.html(response.errors);
                                dialog.dialog({
                                    resizable: false,
                                    title: "Validation error",
-                                   height: 200,
+                                   height: 250,
                                    width: 500,
                                    modal: true,
                                    buttons: [
