@@ -671,7 +671,6 @@ $(document).on('ready', function () {
 
     $('.next_btn').each(function () {
         $(this).on('click', function (e) {
-            alert('I am here');
             e.preventDefault();
             navigation.find('li.selected').next().find('a').click();
         });
