@@ -447,7 +447,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <!-- 2013/10/15 Edit Start (Anthony) -->
         <!--<h5>Your Story (<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>-->
         <!-- 2013/10/15 Edit End (Anthony) -->
-
+        <h5><?= MSG_YOUR_STORY3 ?></h5>
         <div class="account-row">
             <div class="upload">
                 <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label><?=MSG_BANNER_IMAGE?></label>
