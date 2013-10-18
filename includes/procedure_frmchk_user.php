@@ -101,7 +101,6 @@ $fv->check_box($frmchk_details['email'], MSG_EMAIL_ADDRESS, array('is_email_addr
 if (!$frmchk_user_edit || !empty($frmchk_details['password']) || !empty($frmchk_details['password2']))
 {
     $fv->check_box($frmchk_details['password'], MSG_CREATE_PASS, array('within_length', 'pass_confirm'), $_POST['password2'], MSG_VERIFY_PASS);
-    $fv->check_box($frmchk_details['old_password'], MSG_OLD_PASS, array('check_password'));
 }
 
 $confirmed_paypal_email = false;
