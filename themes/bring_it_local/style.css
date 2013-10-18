@@ -3351,6 +3351,9 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .view_campaign_btn{position: absolute; top:0px; right: 0;background:#f21b43; text-shadow: 0px 0px 1px #ffdfc9;border-radius: 5px;box-shadow: inset 0px 0px 5px rgba(199, 199, 199, 0.5);}
 .view_campaign_btn span{display:block;color:#fff;text-transform:uppercase;font: 11px/29px "OpenSans-Light";padding: 0 15px;    }
 .view_campaign_btn:hover{background:#e2193f;}
+.copy_campaign_btn{position: absolute; top:0px; right:125px;background:#ffa800; text-shadow: 0px 0px 1px #ffdfc9;border-radius: 5px;box-shadow: inset 0px 0px 5px rgba(199, 199, 199, 0.5);}
+.copy_campaign_btn span{display:block;color:#fff;text-transform:uppercase;font: 11px/29px "OpenSans-Light";padding: 0 15px;    }
+.copy_campaign_btn:hover{background:#f39f00;}
 .myCampaigs h2{display:block; text-transform: uppercase; padding: 0 0 10px 0; margin-bottom:20px; border-bottom: 3px solid #dedede;font: 18px/29px "OpenSans-SemiBold"; color: #7eb041;}
 .myCampaigs form{float:right; margin:10px 0; display:inline-block;}
 .myCampaigs form .selectME{float:right; width:235px !important;}
