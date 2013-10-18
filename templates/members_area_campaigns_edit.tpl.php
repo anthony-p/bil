@@ -430,6 +430,7 @@ if (!defined('INCLUDED')) {
                             </div>
                         </div>
                         <!--<h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>-->
+                        <h5><?= MSG_YOUR_STORY3 ?></h5>
                         <div class="account-row">
                             <?php if (isset($campaign["banner"]) && strstr($campaign["banner"], '/images/partner_logos/') !== false): ?>
                                 <img src="<?php echo $campaign['banner'] . "?" . time() ?>">
