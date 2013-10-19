@@ -24,7 +24,7 @@ $clone_campaign = array();
 $i = 0;
 $z = 0;
 foreach ($closed_campaigns as $closed_campaign) {
-    if ($closed_campaign['clone_campaign'] == 1) {
+    if ($closed_campaign['clone_campaign'] == 3) {
         $clone_campaign[$z] = $closed_campaign["user_id"];
         $z++;
     } elseif ($closed_campaign['clone_campaign'] == 2) {
@@ -66,7 +66,8 @@ foreach ($closed_campaigns as $closed_campaign) {
 //echo '</pre>';
 $user->renew_campaigns($renew_campaign_data);
 
-$user->clone_campaign($clone_campaign);
+//$user->clone_campaign($clone_campaign);
+$user->renew_cloned_campaigns($clone_campaign);
 
 
 

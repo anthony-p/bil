@@ -12,10 +12,18 @@ include_once ('includes/npclass_user.php');
 
 $user = new npuser();
 
-$campaign_id = (isset($_SESSION['campaign_id']) && $_SESSION['campaign_id']) ?
-    $_SESSION['campaign_id'] : 0;
+//$campaign_id = (isset($_SESSION['campaign_id']) && $_SESSION['campaign_id']) ?
+//    $_SESSION['campaign_id'] : 0;
 
-$copied_campaign_id = $user->copy_campaign($campaign_id);
+$campaign_id = (isset($_GET['campaign_id']) && $_GET['campaign_id']) ?
+    $_GET['campaign_id'] : 0;
+//var_dump($campaign_id); exit;
+$copied_campaign_id = 0;
+if (isset($_GET['action']) && $_GET['action'] == 'clone') {
+    $copied_campaign_id = $user->clone_campaign($campaign_id);
+} else {
+    $copied_campaign_id = $user->copy_campaign($campaign_id);
+}
 
 if (!$copied_campaign_id) {
     header_redirect('login.php');
