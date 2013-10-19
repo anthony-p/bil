@@ -148,7 +148,7 @@
             }
         }
 
-        function open() {
+        function open() {;
             if(!isOpen){
                 triggerEvent({name:'beforeOpen', element:rootElement, instance:ls});
                 aElement.addClass("active");
@@ -243,7 +243,8 @@
 
         function init() {
             var selectedItem;
-            var options = $("#" + rootElementId + " > form > select > option");
+            var options = $("#" + rootElementId).find('option') ;
+
             if (isStaticWebSite) {
                 var selectedId;
                 var url = window.location.href;
@@ -261,7 +262,7 @@
                     selected = selectedId === id;
                 }else{
                     selected = $(this).attr("selected")
-                }
+                };
                 var liElement = toLiElement($(this));
                 if (selected) {
                     selectedItem = liElement;
@@ -315,7 +316,7 @@
                 if (href.indexOf('?') > 0) {
                     href = href.substring(0, href.indexOf('?'));
                 }
-                console.log(href);
+                //console.log(href);
                 href += toQueryString(params);
                 href = href.replace('#', '');
 //                if (href.indexOf("?") > 0)
