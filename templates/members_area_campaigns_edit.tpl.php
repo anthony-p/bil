@@ -148,7 +148,7 @@ if (!defined('INCLUDED')) {
         <a href="/view_campaign.php?campaign_id=<?= $campaign['user_id'] ?>" class="view_campaign_btn" target="_blank">
             <span><?= MSG_VIEW_CAMPAIGN ?></span>
         </a>
-        <a href="/np/copy_campaign.php" class="copy_campaign_btn" target="_blank">
+        <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>" class="copy_campaign_btn" target="_blank">
             <span><?= MSG_COPY_CAMPAIGN ?></span>
         </a>
 
@@ -657,7 +657,10 @@ if (!defined('INCLUDED')) {
                 </div>
                 <div class="next">
                     <input type="button" value="<?= MSG_PREV ?>" class="prev_btn"/>
-                    <input class="clone_btn" type="button" value="<?= MSG_CLONE_CAMPAIGN ?>"/><img src="/images/question_help.png"height="16" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
+                    <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>&action=clone" target="_blank">
+                        <input class="clone_btn" type="button" value="<?= MSG_CLONE_CAMPAIGN ?>"/><img src="/images/question_help.png"height="16" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
+                    </a>
+<!--                    <input class="clone_btn" type="button" value="--><?//= MSG_CLONE_CAMPAIGN ?><!--"/><img src="/images/question_help.png"height="16" alt="help" title="--><?//= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?><!--">-->
                     <div class="right">
                         <input name="form_register_proceed" type="submit" id="form_register_proceed"
                                value="<?= MSG_SAVE_CHANGES ?>"

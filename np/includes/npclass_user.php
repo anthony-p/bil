@@ -275,7 +275,7 @@ class npuser extends npcustom_field
     /**
      * @param $campagns
      */
-    function clone_campaign($campagns)
+    function clone_campaigns($campagns)
     {
         if (count($campagns)) {
             foreach ($campagns as $_campaign_id) {
@@ -325,6 +325,88 @@ class npuser extends npcustom_field
 //                $this->query($sql_update_clone_campaign_query);
             }
         }
+    }
+
+    /**
+     * @param $campaigns
+     */
+    function renew_cloned_campaigns($campaigns)
+    {
+        if (count($campaigns)) {
+            foreach ($campaigns as $_campaign_id) {
+                $username = $this->get_sql_field("SELECT username FROM np_users WHERE user_id={$_campaign_id}", "username");
+                $sql_update_cloned_campaign_query = "UPDATE " . NPDB_PREFIX . "users
+                SET username='{$username}',
+                    clone_campaign=0 WHERE parrent_id={$_campaign_id} AND clone_campaign=4";
+
+                $this->query($sql_update_cloned_campaign_query);
+
+                $campaign_old = $this->get_sql_row("SELECT user_id, username, probid_user_id FROM " .
+                NPDB_PREFIX . "users WHERE user_id=" . $_campaign_id);
+
+                $old_campaign_title = $campaign_old['username'] . '_old_' . $campaign_old['user_id'];
+                $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX .
+                    "users SET active=2, clone_campaign=0, username ='{$old_campaign_title}' WHERE user_id={$_campaign_id}";
+                $this->query($sql_update_campaign_query);
+            }
+        }
+    }
+
+    /**
+     * @param $campagns
+     */
+    function clone_campaign($campaign_id)
+    {
+        $generated_id = 0;
+        if ($campaign_id) {
+            $cloned = mysql_fetch_assoc($this->query("SELECT clone_campaign FROM " . NPDB_PREFIX . "users WHERE user_id=" . $campaign_id));
+            if ($cloned['clone_campaign'] == 3) {
+                $cloned = mysql_fetch_assoc($this->query("SELECT user_id FROM " . NPDB_PREFIX . "users WHERE parrent_id=" . $campaign_id));
+                if ($cloned) {
+                    header("location: /campaigns,page,edit,section," . $cloned['user_id'] . ",campaign_id,members_area");
+                    exit;
+                }
+            }
+            $sql_clone_record_query = "INSERT INTO " . NPDB_PREFIX . "users(username, password, email,
+                    reg_date, payment_mode, balance, max_credit,
+                    salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
+                    name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
+                    pg_paypal_email, pg_paypal_first_name, pg_paypal_last_name, confirmed_paypal_email,
+                    pg_worldpay_id, pg_checkout_id, pg_nochex_email,
+                    pg_ikobo_username, pg_ikobo_password, pg_protx_username, pg_protx_password,
+                    pg_authnet_username, pg_authnet_password, pg_mb_email, pg_paymate_merchant_id,
+                    pg_gc_merchant_id, pg_gc_merchant_key, pg_amazon_access_key, pg_amazon_secret_key,
+                    pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
+                    user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
+                    project_title, campaign_basic, description, founddrasing_goal, funding_type,
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, active,
+                    cfc, clone_campaign, votes, disabled, parrent_id)
+                SELECT CONCAT(username, '_cloned_', '{$campaign_id}'), password, email, end_date+'1', payment_mode, 0, max_credit,
+                    salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
+                    name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
+                    pg_paypal_email, pg_paypal_first_name, pg_paypal_last_name, confirmed_paypal_email,
+                    pg_worldpay_id, pg_checkout_id, pg_nochex_email,
+                    pg_ikobo_username, pg_ikobo_password, pg_protx_username, pg_protx_password,
+                    pg_authnet_username, pg_authnet_password, pg_mb_email, pg_paymate_merchant_id,
+                    pg_gc_merchant_id, pg_gc_merchant_key, pg_amazon_access_key, pg_amazon_secret_key,
+                    pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
+                    user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
+                    project_title, campaign_basic, description, founddrasing_goal, funding_type,
+                    deadline_type_value, time_period, certain_date, probid_user_id, end_date+'2592000', active,
+                    cfc, 4, 0, disabled, user_id
+                FROM ".NPDB_PREFIX."users WHERE user_id={$campaign_id}";
+
+//            var_dump($sql_clone_record_query); exit;
+
+            $this->query($sql_clone_record_query);
+
+            $generated_id = mysql_insert_id();
+
+            $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX .
+                "users SET clone_campaign=3 WHERE user_id={$campaign_id}";
+            $this->query($sql_update_campaign_query);
+        }
+        return $generated_id;
     }
 
     /**
