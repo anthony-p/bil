@@ -311,10 +311,12 @@ function getOneTag($xml)
             $bil_share = 0;
             $pct = 0;
             if($commision > 0 && $sales > 0){
-                $np_share = round($commision/2,2);
-                $bil_share = round($commision/2,2);
+                //$np_share = round($commision/2,2);
+				$np_share = $commision;
+                //$bil_share = round($commision/2,2);
                 $pct = (round(($commision/$sales)*100,2))."%";
-                $pct_giveback = round($pct/2,2)."%";
+                //$pct_giveback = round($pct/2,2)."%";
+				$pct_giveback = $pct;
             }
             
             // Check if TrackID is Free or bussy
@@ -430,10 +432,12 @@ function getOneTag($xml)
                     $fields = array();
                     $sales = (float)$sales+(float)$tag_exist["sales"];
                     if($commision > 0 && $sales > 0){
-                        $np_share = round($commision/2,2);
-                        $bil_share = round($commision/2,2);
+                        //$np_share = round($commision/2,2);
+						$np_share = $commision;
+                        //$bil_share = round($commision/2,2);
                         $pct = (round(($commision/$sales)*100,2))."%";
-                        $pct_giveback = round($pct/2,2)."%";
+                        //$pct_giveback = round($pct/2,2)."%";
+						$pct_giveback = $pct;
                     }
                     $fields[]="$id";//unique id
                     $fields[]="$tracking_id";//tracking link
@@ -514,7 +518,8 @@ function sendNotificationEmail($user_arr)
     foreach($user_arr as $mail_input_id => $values)
     {
         $gross = $values['sales'];
-        $points = $values['commision'] / 2.0;
+        //$points = $values['commision'] / 2.0;
+		$points = $values['commision'];
 
         if($values['sales'] > 0 AND $values['commision'] > 0){
             include ('giveback_invoice_email.php');
