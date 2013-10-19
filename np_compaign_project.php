@@ -35,7 +35,7 @@ if (!$session->value('user_id')) {
     if ($_POST['add_project_updates'] == true) {
 
         $data['project_id'] = $_POST['project_id'];
-        $data['comment']    = $_POST['comment'];
+        $data['comment']    = mysql_real_escape_string($_POST['comment']);
         $data['user_id']    = $session->value('user_id');
         /*
 

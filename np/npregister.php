@@ -122,7 +122,7 @@ else
 
 			include ('includes/npprocedure_frmchk_user.php'); /* Formchecker for user creation/edit */
             $_POST["confirmed_paypal_email"] = $confirmed_paypal_email;
-
+            
 			$banned_output = isset($_POST['email']) ?
                 check_banned($_POST['email'], 2) : array("result" => 0);
 

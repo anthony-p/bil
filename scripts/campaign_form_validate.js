@@ -266,9 +266,9 @@ function projectUpdateComment() {
         var data = 'add_project_updates=true' + '&project_id=' + $("#user_id_val").val() + '&comment=' + wisiwyg.getContent(),
             dialog = $("#confirm_dialog_box");
             dialog.html(window.messages.post_update_text);
-        dialog.dialog({
+            dialog.dialog({
             resizable: false,
-            title:window.messages.post_update_title,
+            title: window.messages.post_update_title,
             height: 200,
             width: 500,
             modal: true,
@@ -296,12 +296,12 @@ function projectUpdateComment() {
                     }
                 },
                 {
-                    text:window.messages.cancel_project_update_button,
-                    click: function() {
+                    text: window.messages.cancel_project_update_button,
+                    click: function () {
                         $(this).dialog("close");
                     }
                 }
-        ]
+            ]
         });
 
     }
@@ -569,7 +569,7 @@ function validateProjectReward(id) {
         v_err = true;
     }
 
-    if ($("#reward_available_number_" + id).val() <0 ) {
+    if (($("#reward_available_number_" + id).val()) <=0 || ($("#reward_available_number_" + id).val() == '') ) {
         v_err_msg += "<li><?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_POSITIVE_NUMBER ?></li>";
         $("#reward_available_number_" + id).addClass("error");
         v_err = true;
@@ -580,27 +580,6 @@ function validateProjectReward(id) {
         $("#reward_estimated_delivery_date_" + id).addClass("error");
         v_err = true;
     }
-
-    if (v_err) {
-
-        $('#validation_errors').empty();
-        $('#validation_errors').append('<ul>' + v_err_msg + '</ul>');
-
-        $("#validation_errors").dialog({
-            resizable: false,
-            height: 200,
-            width: 400,
-            title: "Validation Errors",
-            modal: true,
-            buttons: {
-                OK: function () {
-                    $(this).dialog("close");
-                }
-            }
-        });
-        return false;
-    }
-
 
     return true;
 }
@@ -671,13 +650,13 @@ $(document).on('ready', function () {
 
     $('.next_btn').each(function () {
         $(this).on('click', function (e) {
-            e.preventDefault();
+            //e.preventDefault();
             navigation.find('li.selected').next().find('a').click();
         });
     });
     $('.prev_btn').each(function () {
         $(this).on('click', function (e) {
-            e.preventDefault();
+            //e.preventDefault();
             navigation.find('li.selected').prev().find('a').click();
         });
     });

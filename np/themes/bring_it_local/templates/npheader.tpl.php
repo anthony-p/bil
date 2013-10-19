@@ -159,7 +159,8 @@ global $coupon_url;
         <div class="innerContainer">
             <div class="sun"></div>
             <div class="inner">
-                <div class="logo"><a href="<?=$index_link;?>"><img src="/images/logo_bringItLocal.png?<?=rand(2,9999);?>" alt="Bring It Local" border="0"></a></div>
+                <div class="logo"><a href="<?=$index_link;?>"><img src="../images/logo_bringItLocal.png?<?=rand(2,9999);?>" alt="Bring It Local" border="0"></a></div>
+                <!--<div class="logo"><a href="<?=$index_link;?>"><img src="/images/logo_bringItLocal.png?<?=rand(2,9999);?>" alt="Bring It Local" border="0"></a></div>-->
                 <nav>
                     <ul>
                         <li class="level"><a href="#" id="menu">Browse</a></li>
@@ -179,8 +180,9 @@ global $coupon_url;
                     <div class="links-nav">
 <!--                        --><?//=$login_btn_msg;?>
 <!--                        --><?//=$register_btn_msg;?>
-                        <a href="<?=$login_link;?>">logout</a>
-                        <a href="<?=$register_link;?>">member area</a>
+                <a href="<?=$login_link;?>"><?=$login_btn_msg;?></a>
+                <a href="<?=$register_link;?>"><?=$register_btn_msg;?></a>
+                
                         <?php
 
 //                        if($session->value('user_id')):?>

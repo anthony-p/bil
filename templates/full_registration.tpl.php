@@ -9,61 +9,12 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
-<!-- TODO: check JS scripts and remove conflicts -->
-<!--<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>-->
-<!--<script language=JavaScript src='/scripts/jquery/jquery-ui-1.10.3.custom.min.js'></script>-->
-<style>
-    .error {
-        border: 1px solid #ff0000;
-        background-color: #ff0000;
-    }
-</style>
-
+<script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
+<script type="text/javascript" src="/scripts/jquery/additional-methods.min.js"></script>
 <script language="javascript">
 
 
-    function muteErrFieldsOnChange() {
-        $('.error').change(function () {
-            $(this).removeClass("error");
-        });
-    }
 
-    function showValidationErr() {
-
-        $('#validation_errors').empty();
-        $('#validation_errors').append('<ul>' + err_msg + '</ul>');
-
-        $("#validation_errors").dialog({
-            resizable: false,
-            draggable:false,
-            height: 200,
-            width: 400,
-            title: "Validation Errors",
-            modal: true,
-            buttons: {
-                OK: function () {
-                    $(this).dialog("close");
-                }
-            }
-        });
-    }
-
-
-    function checkEmail() {
-        if (document.registration_form.email_check.value==document.registration_form.email.value) document.registration_form.email_img.style.display="inline";
-        else document.registration_form.email_img.style.display="none";
-    }
-
-    function checkPass() {
-        if (document.registration_form.password.value==document.registration_form.password2.value) document.registration_form.pass_img.style.display="inline";
-        else document.registration_form.pass_img.style.display="none";
-    }
-
-    function form_submit() {
-//        document.registration_form.operation.value = '';
-//        document.registration_form.edit_refresh.value = '1';
-//        document.registration_form.submit();
-    }
 
     function copy_email_value() {
         document.registration_form.email_check.value = document.registration_form.email.value;
@@ -73,254 +24,80 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         document.registration_form.password2.value = document.registration_form.password.value;
     }
 
-    function check_username(username)
-    {
-        var xmlHttp;
-
-        if (window.XMLHttpRequest)
-        {
-            var xmlHttp = new XMLHttpRequest();
-
-            if (XMLHttpRequest.overrideMimeType)
-            {
-                xmlHttp.overrideMimeType('text/xml');
-            }
-        }
-        else if (window.ActiveXObject)
-        {
-            try
-            {
-                var xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-            }
-            catch(e)
-            {
-                try
-                {
-                    var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                catch(e) {}
-            }
-        }
-        else
-        {
-            alert('Your browser does not support XMLHTTP!');
-            return false;
-        }
-
-        var uname	 = username.value;
-        var url	 = 'check_username.php';
-        var action	 = url + '?username=' + uname;
-
-        if (uname != '')
-        {
-            xmlHttp.onreadystatechange = function() { showResult(xmlHttp, uname); };
-            xmlHttp.open("GET", action, true);
-            xmlHttp.send(null);
-        }
-    }
-
-    function showResult(xmlHttp, id)
-    {
-        if (xmlHttp.readyState == 4)
-        {
-            var response = xmlHttp.responseText;
-
-            usernameResult.innerHTML = unescape(response);
-        }
-    }
-
-
-
-
-    function showUser(str)
-    {
-        if (str=="")
-        {
-            document.getElementById("txtHint").innerHTML="";
-            return;
-        }
-        if (window.XMLHttpRequest)
-        {// code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-        }
-        else
-        {// code for IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange=function()
-        {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            {
-                document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-            }
-        }
-        xmlhttp.open("GET","getchoice.php?q="+str,true);
-        xmlhttp.send();
-    }
-
-
-
-
-
-
-    function doHttpRequest() {  // This function does the AJAX request
-        http.open("GET", "/ajaxb.html", true);
-        http.onreadystatechange = getHttpRes;
-        http.send(null);
-    }
-
-    function doHttpRequest2() {  // This function does the AJAX request
-
-
-        http.open("GET", "/ajaxprocessor.php?q="+(document.getElementById('zip_code').value)+"&address="+(document.getElementById('address').value)+"&search_name="+(document.getElementById('search_name').value)+"&city="+(document.getElementById('city').value)+"&distancefrom="+(document.getElementById('distancefrom').value)+"&limitresults="+(document.getElementById('limitresults').value), true);
-
-
-
-        http.onreadystatechange = getHttpRes;
-        http.send(null);
-    }
-
-    function getHttpRes() {
-        if (http.readyState == 4) {
-            res = http.responseText;  // These following lines get the response and update the page
-            document.getElementById('div1').innerHTML = res;
-        }
-    }
-
-    function getXHTTP() {
-        var xhttp;
-        try {	// The following "try" blocks get the XMLHTTP object for various browsers�
-            xhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e2) {
-                // This block handles Mozilla/Firefox browsers...
-                try {
-                    xhttp = new XMLHttpRequest();
-                } catch (e3) {
-                    xhttp = false;
-                }
-            }
-        }
-        return xhttp; // Return the XMLHTTP object
-    }
-
-    var http = getXHTTP(); // This executes when the page first loads.
-
 
 </script>
 
 <script type="text/javascript">
+    window.error_messages = {
+        fname: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME; ?>",
+        lname: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME; ?>",
+        organization: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION; ?>",
+        address: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS; ?>",
+        city: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY; ?>",
+        state: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE; ?>",
+        postal_code: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP; ?>",
+        phone: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PHONE; ?>",
 
-    var regNotEmptyAlpha = /^([\w]+)$/i;
-    var regNotEmptyNumbers = /^([\d]+)$/i;
-    var regNotEmptyAlphaWS = /^([\w\s]+)$/i;
-    var regNotEmptyAlphaNumeric = /^([\w\d]+)$/i;
-    var regNotEmptyAlphaNumericWS = /^([\w\d\s]+)$/i;
-    var regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars = /^([\w\d\sáíóúăşţäößàâçéèêëîïôûùüÿñæœ .-_&]+)$/i;
-    var regZipCode = /^\d{5}(?:[-\s]\d{4})?$/i;
-    var regUrl = /^(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?\/?([a-zA-Z0-9\-\._\?\,\'\/\\\+&amp;%\$#\=~])*$/i;
-    var regEmail = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i;
-    var err_status = false;
-    var err_msg = '';
+        password2: "<?= MSG_VERIFY_PASSWORD_REQUIRED; ?>",
+        old_password: "<?= MSG_PASSWORD_REQUIRED; ?>",
+        email: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EMAIL; ?>",
+        email_check: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL; ?>",
+        email_check_notequal: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL; ?>",
+        pin_value: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN; ?>"
 
-    $(document).ready(function () {
-
-
-        $("#registration_form").submit(function(){
-
-            err_status = false;
-            err_msg = '';
-            $(".error").each(function () {
-                $(this).removeClass("error");
-            });
-
-            if ($("#fname").val() == '' || !$("#fname").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
-                $("#fname").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME; ?></li>';
-                err_status = true;
+    };
+    function validateAccountForm(form) {
+        form.validate({
+            rules: {
+                fname:"required",
+                lname:"required",
+                address:"required",
+                city:"required",
+                state:"required",
+                postal_code:"required",
+                phone:"required",
+                password:{
+                    equalTo:'#password2'
+                },
+                password2: {
+                    required:{
+                        depends:function(elem) {
+                            return $('#password').val();
+                        }
+                    }
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                email_check: {
+                    required: true,
+                    email: true,
+                    equalTo: "#email"
+                },
+                pin_value:"required"
+            },
+            messages: {
+                fname:  window.error_messages.fname,
+                lname: window.error_messages.lname,
+                organization: window.error_messages.organization,
+                address: window.error_messages.address,
+                city: window.error_messages.city,
+                state: window.error_messages.state,
+                postal_code: window.error_messages.postal_code,
+                phone: window.error_messages.phone,
+                password2: window.error_messages.password2,
+                old_password: window.error_messages.old_password,
+                email: window.error_messages.email,
+                email_check: {
+                    required:window.error_messages.email_check,
+                    equalTo:window.error_messages.email_check_notequal
+                },
+                pin_value: window.error_messages.pin_value
             }
-            if ($("#lname").val() == '' || !$("#lname").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
-                $("#lname").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME; ?></li>';
-                err_status = true;
-            }
-            if ($("#organization").val() !== '' && !$("#organization").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
-                $("#organization").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ORGANIZATION; ?></li>';
-                err_status = true;
-            }
-            if ($("#address").val() == '') {
-                $("#address").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ADDRESS; ?></li>';
-                err_status = true;
-            }
-            if ($("#city").val() == '' || !$("#city").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
-                $("#city").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CITY; ?></li>';
-                err_status = true;
-            }
-            if ($("#state").val() == '' || !$("#state").val().match(regNotEmptyAlphaNumericWithSpacesAndSpecialLanguagesChars)) {
-                $("#state").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_STATE; ?></li>';
-                err_status = true;
-            }
-            if ($("#postal_code").val() == '') {
-                $("#postal_code").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_ZIP; ?></li>';
-                err_status = true;
-            }
-            if ($("#old_password").val() == '') {
-                $("#old_password").addClass("error");
-                err_msg += '<li><?= MSG_PASSWORD_REQUIRED; ?></li>';
-                err_status = true;
-            }
-            if ($("#password").val() != '' && $("#password2").val() == '') {
-                $("#password2").addClass("error");
-                err_msg += '<li><?= MSG_VERIFY_PASSWORD_REQUIRED; ?></li>';
-                err_status = true;
-            }
-            if ($("#phone").val() == '') {
-                $("#phone").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PHONE; ?></li>';
-                err_status = true;
-            }
-
-            if ($("#email").val() == '' || !$("#email").val().match(regEmail)) {
-                $("#email").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EMAIL; ?></li>';
-                err_status = true;
-            }
-            if ($("#email_check").val() == '' || !$("#email_check").val().match(regEmail)) {
-                $("#email_check").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_CEMAIL; ?></li>';
-                err_status = true;
-            }
-            if ($("#email").val() !== $("#email_check").val()) {
-                $("#email").addClass("error");
-                $("#email_check").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_EQ_EMAIL; ?></li>';
-                err_status = true;
-            }
-            if ($("#pin_value").val() == '') {
-                $("#pin_value").addClass("error");
-                err_msg += '<li><?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN; ?></li>';
-                err_status = true;
-            }
-
-            if (err_status) {
-                showValidationErr();
-                muteErrFieldsOnChange();
-                return false;
-            } else {
-                // all ok
-                return true;
-            }
-
-//            return false;
         });
-
+    }
+    $(document).ready(function () {
         // load state list
         $("#country").change(function () {
             $.ajax({
@@ -330,13 +107,18 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 dataType: 'json',
                 data: {do: 'stateList', country_id: $("#country").val()}
             })
-                    .done(function (result) {
-                        $("#states_box").empty();
-                        $("#states_box").append(result.data);
-                    });
+                .done(function (result) {
+                    $("#states_box").empty();
+                    $("#states_box").append(result.data);
+                });
 
         });
-
+        $('input[type="submit"]').on('click', function(e){
+                e.preventDefault();
+                var form = $("#registration_form");
+                validateAccountForm(form);
+                if (form.valid()) {form.submit();}
+        });
 
         $('.form_tooltip').tooltip({
             track: true
@@ -370,24 +152,11 @@ function fetchstate($statecode){
 <input type="hidden" name="edit_refresh" value="0">
 <input type="hidden" name="generated_pin" value="<? if(isset($generated_pin)) echo $generated_pin;?>">
 <!-- main details -->
-<table border="0" cellpadding="0" cellspacing="0" class="tbl">
+<table class="tbl">
     <tr>
         <th colspan="2"><?=MSG_MAIN_DETAILS;?></th>
     </tr>
-<?php /*
-    <tr>
-        <td class="leftCol"><?=MSG_REGISTER_AS;?></td>
-        <td class="contentfont">
-            <input name="tax_account_type" type="radio" value="0" onclick="form_submit();" checked />
-            <?=GMSG_INDIVIDUAL;?>
-            <input name="tax_account_type" type="radio" value="1" onclick="form_submit();" <? echo ($user_details['tax_account_type']) ? 'checked' : ''; ?> />
-            <?=GMSG_BUSINESS;?></td>
-    </tr>
- */?>
-    <!--tr class="reguser">
-			<td>&nbsp;</td>
-			<td><?=MSG_REGISTER_AS_DESC;?></td>
-		</tr-->
+
     <?php
     if(isset($user_details['name'])){
         list($user_details['first_name'],$user_details['last_name']) = preg_split('/\s+(?=[^\s]+$)/', $user_details['name'], 2);
@@ -403,10 +172,7 @@ function fetchstate($statecode){
 
         </td>
     </tr>
-    <!--tr class="reguser">
-		  <td>&nbsp;</td>
-		  <td><?=MSG_FIRST_NAME_EXPL;?></td>
-		</tr-->
+
     <tr>
         <td class="leftCol"><?=MSG_LAST_NAME;?> *</td>
         <td class="contentfont"><input name="lname" type="text" id="lname" value="<?=$user_details['last_name'];?>" size="40" /></td>
@@ -418,56 +184,36 @@ function fetchstate($statecode){
                    value="<?=$user_details['organization'];?>" size="40" />
         </td>
     </tr>
-    <!--tr class="reguser">
-			<td>&nbsp;</td>
-			<td><?=MSG_LAST_NAME_EXPL;?></td>
-		</tr-->
+
     <? if (isset($user_details['tax_account_type']) && $user_details['tax_account_type']) { ?>
     <tr>
         <td  class="contentfont"><?=MSG_COMPANY_NAME;?> *</td>
         <td class="contentfont"><input name="tax_company_name" type="text" class="contentfont" id="tax_company_name" value="<?=$user_details['tax_company_name'];?>" size="40" /></td>
     </tr>
-    <!--tr class="reguser">
-			<td  class="contentfont">&nbsp;</td>
-			<td><?=MSG_COMPANY_NAME_DESC;?></td>
-		</tr-->
+
     <? } ?>
     <tr>
         <td class="leftCol"><?=MSG_ADDRESS;?> *</td>
         <td class="contentfont"><input name="address" type="text" id="address" value="<?=$user_details['address'];?>" size="40" /></td>
     </tr>
-    <!--tr class="reguser">
-			<td>&nbsp;</td>
-			<td><?=MSG_ADDRESS_EXPL;?></td>
-		</tr-->
+
     <tr>
         <td class="leftCol"><?=MSG_CITY;?> *</td>
         <td class="contentfont"><input name="city" type="text" id="city" value="<?=$user_details['city'];?>" size="25" /></td>
     </tr>
 
-<!--    <tr>-->
-<!--        <td class="leftCol">--><?//=MSG_COUNTRY;?><!-- *</td>-->
-<!--        <td class="contentfont"><input name="country" type="text" id="country" value="--><?//=(isset($user_details['country']))?$user_details['country']:'';?><!--" size="25" /></td>-->
-<!--    </tr>-->
 
     <tr>
         <td class="leftCol"><?=MSG_COUNTRY;?> *</td>
         <td class="contentfont">
             <?=$country_dropdown;?>
-<!--            <input name="country" type="text" id="country" value="--><?//=(isset($user_details['country']))?$user_details['country']:'';?><!--" size="25" />-->
         </td>
     </tr>
-
-<!--    <tr>-->
-<!--        <td class="leftCol">--><?//=MSG_STATE;?><!-- *</td>-->
-<!--        <td class="contentfont"><input name="state" type="text" id="state" value="--><?//=(isset($user_details['state']))?$user_details['state']:'';?><!--" size="25" /></td>-->
-<!--    </tr>-->
 
     <tr>
         <td class="leftCol"><?=MSG_STATE;?> *</td>
         <td class="contentfont">
             <div id="states_box"><?= $state_box; ?></div>
-<!--            <input name="state" type="text" id="state" value="--><?//=(isset($user_details['state']))?$user_details['state']:'';?><!--" size="25" />-->
         </td>
     </tr>
 
@@ -483,130 +229,10 @@ function fetchstate($statecode){
             </td>
     </tr>
 
-    <!--tr class="reguser">
-			<td>&nbsp;</td>
-			<td><?=MSG_CITY_EXPL;?></td>
-		</tr-->
 </table>
-<?php /*
-<table border="0" cellpadding="0" cellspacing="0" class="tbl">
-    <tr>
-        <th colspan="2">Choose a Non-profit</th>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <strong>Link your account with a local non profit!</strong><br />That's what this site is all about. Connect your account with a non profit and give back to your community!
-        </td>
-    </tr>
-    <tr>
-        <td class="leftCol"><?=MSG_COUNTRY;?> *</td>
-        <td><?=$country_dropdown;?></td>
-    </tr>
-    <tr>
-        <td class="leftCol"><?=MSG_STATE;?> *</td>
-        <td><?=$state_box;?></td>
-    </tr>
-    <tr>
-        <td class="leftCol"><?=MSG_ZIP_CODE;?> *</td>
-        <td><input name="zip_code" type="text" id="zip_code" value="<?=$user_details['zip_code'];?>" size="15" onchange="doHttpRequest2()"/></td>
-    </tr>
-    <tr>
-        <td class="leftCol"></td>
-        <td id="div1">
-            <!--strong>Click here to see what non profits have signed up in your area:</strong-->
-            <?
-            #is the user coming from a np landing page. if they are we default their np choice to that of the landing page
-            if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"])) && (empty($user_details["npname"])) ){
-                if (isset($_COOKIE["np_userid"]))
-                    $mynp_userid=$_COOKIE["np_userid"];
-                else
-                    $mynp_userid = npuser_id;
-                $mynp = $db->get_sql_field("SELECT tax_company_name  FROM np_users WHERE user_id ='" . $mynp_userid . "'", tax_company_name);
-                $mynpaddress = $db->get_sql_field("SELECT address  FROM np_users WHERE user_id ='" . $mynp_userid . "'", address);
-                $mynpcity = $db->get_sql_field("SELECT city  FROM np_users WHERE user_id ='" . $mynp_userid . "'", city);
-                $mynpstate = $db->get_sql_field("SELECT state  FROM np_users WHERE user_id ='" . $mynp_userid . "'", state);
-                $mynpzip = $db->get_sql_field("SELECT zip_code  FROM np_users WHERE user_id ='" . $mynp_userid . "'", zip_code);
-                #set a new cookie or replace the cookie set by the landing page
-                SetCookieLive("np_userid", $mynp_userid,time()+3600*24*90, '/', 'bringitlocal.com');
-                #change state code to state name
-                $statename=fetchstate($mynpstate);
-                $mynpstate=$statename;
-                $user_details["npname"] = $mynp;
-                $user_details["npuser_id"] = $mynp_userid;
-                $_POST["npaddress"] = $mynpaddress;
-                $_POST["npcity"] = $mynpcity;
-                $_POST["npstate"] = $mynpstate;
-                $_POST["npzipcode"] = $mynpzip;
-                $_POST["orgname"] = $user_details["npuser_id"];
-            }
-            ?>
-            <input type="button" value="Search" onClick="doHttpRequest2();">
-            <input type="hidden" name="orgname" value="<? echo $_POST["orgname"]; ?>" size="50"/>
-            <input type="hidden" name="npname"  value="<? echo $_POST["npname"]; ?>" size="50"/>
-            <input name="distancefrom" type="hidden" id="distancefrom" value="25">
-            <input name="limitresults" type="hidden" id="limitresults" value="5">
-            <input name="search_name" type="hidden" id="search_name" value="">
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" id="txtHint">
-            <b>You've selected:</b>
-            <!--<input type="text" name="orgname"  value="<? echo $user_details['npuser_id']; ?>" size="50" readonly/><br>-->
-            <input type="hidden" name="orgname"  value="<? echo $_POST["orgname"]; ?>" size="50"/>
-            <input type="text" name="npname"  value="<? echo $user_details["npname"]; ?>" size="50" readonly/>
-            <!--
-                    <input type="text" name="npaddress"  value="<? echo $_POST["npaddress"]; ?>" size="50" readonly/><br>
-                    <input type="text" name="npcity"  value="<? echo $_POST["npcity"]; ?>" size="50" readonly/><br>
-                    <input type="text" name="npstate"  value="<? echo $_POST["npstate"]; ?>" size="50" readonly/><br>
-                    <input type="text" name="npzipcode"  value="<? echo $_POST["npzipcode"]; ?>" size="50" readonly/>
-                    -->
-            <?
-            #debug start
-            $mynp_userid = $user_details["npuser_id"];
-            ?>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <strong>Don't see your favorite non profit? </strong><br>
-            If you represent and want to register your organization <a href="/np/npregister.php" target="_blank">go here to enroll</a>. <br>
-            If you want to add an organization that you support <a href="/np/npregister_supporter.php" target="_blank">add them here</a>. <br>
-            Then return here to continue your registration.</strong>
-        </td>
-    </tr>
-</table>
-*/ ?>
-<!-- personal info -->
-
-<?php /*
-<table border="0" cellpadding="0" cellspacing="0" class="tbl">
-    <tr>
-        <th colspan="2">Personal Information</th>
-    </tr>
-    <tr>
-        <td class="leftCol"><?=MSG_PHONE;?> *</td>
-        <td class="contentfont">
-            <? if (isset($edit_user) && $edit_user == 1)	{ ?>
-            <input name="phone" type="text" id="phone" value="<?=(isset($user_details['phone']))?$user_details['phone']:'';?>" size="25" />
-            <? } else { ?>
-            ( <input name="phone_a" type="text" id="phone_a" value="<?=(isset($user_details['phone_a']))?$user_details['phone_a']:'';?>" size="5" /> )
-            <input name="phone_b" type="text" id="phone_b" value="<?=(isset($user_details['phone_b']))?$user_details['phone_b']:'';?>" size="25" />
-            <? } ?></td>
-    </tr>
-    <!--tr class="reguser">
-			<td>&nbsp;</td>
-			<td><?=MSG_PHONE_EXPL;?></td>
-		</tr-->
-    <tr class="birthday">
-        <td colspan="2"><?=(isset($birthdate_box))?$birthdate_box:'';?></td>
-    </tr>
-</table>
-
- */
-?>
 
 <!-- User Account Details -->
-<table border="0" cellpadding="0" cellspacing="0" class="tbl">
+<table class="tbl">
     <tr>
         <th colspan="2"><?=MSG_USER_ACCOUNT_DETAILS; ?></th>
     </tr>
@@ -615,15 +241,9 @@ function fetchstate($statecode){
         </td>
         <td class="contentfont"><input name="email" type="text" class="contentfont" id="email" value="<?=(isset($user_details['email']))?$user_details['email']:'';?>" size="40" maxlength="120" <? echo (defined('IN_ADMIN') && IN_ADMIN == 1) ? 'onchange="copy_email_value();"' : ''; ?> /></td>
     </tr>
-    <?php /* if(!isset($user_details['id']) || !$user_details['id']): ?>
-        <tr class="reguser">
-            <td>&nbsp;</td>
-            <td><?=MSG_EMAIL_EXPLANATION;?></td>
-        </tr>
-    <?php endif; */?>
     <tr>
         <td class="contentfont"><?=MSG_RETYPE_EMAIL;?> *</td>
-        <td class="contentfont"><input name="email_check" type="text" class="contentfont" id="email_check" value="<?=$email_check_value;?>" size="40" maxlength="120" onkeyup="checkEmail();">
+        <td class="contentfont"><input name="email_check" type="text" class="contentfont" id="email_check" value="<?=$email_check_value;?>" size="40" maxlength="120" >
             <img src="<?=(isset($path_relative))?$path_relative:'';?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="email_img" align="absmiddle" style="display:none;" /></td>
     </tr>
     <tr>
@@ -639,43 +259,19 @@ function fetchstate($statecode){
 
         </td>
 
-
-
-
-
     </tr>
-<?php /*
-    <tr>
-        <td class="leftCol"><?=MSG_CREATE_USERNAME;?> *</td>
-        <td class="contentfont"><table cellpadding="0" cellspacing="0" border="0">
-            <tr>
-                <td><input name="username" type="text" id="username" value="<?=$user_details['username'];?>" size="40" maxlength="30" <?=$edit_disabled;?> onchange="check_username(this);"/></td>
-                <td>&nbsp; &nbsp;</td>
-                <td id="usernameResult"><?=MSG_ENTER_USERNAME;?></td>
-            </tr>
-        </table></td>
-    </tr>
-    <tr class="reguser">
-        <td>&nbsp;</td>
-        <td><?=MSG_USERNAME_EXPLANATION;?></td>
-    </tr>
- */ ?>
     <tr>
         <td  class="contentfont"><?=MSG_CREATE_PASS;?>
         </td>
         <td class="contentfont"><input name="password" type="password" class="contentfont" autocomplete="off" id="password" size="40" maxlength="20" <? echo ((defined('IN_ADMIN')) && IN_ADMIN == 1) ? 'onchange="copy_password_value();"' : ''; ?> /></td>
     </tr>
-    <!--tr class="reguser">
-			<td>&nbsp;</td>
-			<td><?=MSG_PASSWORD_EXPLANATION;?></td>
-		</tr-->
     <tr>
         <td  class="contentfont"><?=MSG_VERIFY_PASS;?></td>
-        <td class="contentfont"><input name="password2" type="password" autocomplete="off" id="password2" size="40" maxlength="20" onkeyup="checkPass();" />
+        <td class="contentfont"><input name="password2" type="password" autocomplete="off" id="password2" size="40" maxlength="20" />
             <img src="<?=(isset($path_relative))?$path_relative:'';?>themes/<?=$setts['default_theme'];?>/img/system/check_img.gif" id="pass_img" align="absmiddle" style="display:none;" /></td>
     </tr>
     <tr>
-        <td  class="contentfont"><?=MSG_OLD_PASS;?> *
+        <td  class="contentfont"><?=MSG_OLD_PASS;?>
         </td>
         <td class="contentfont">
             <input name="old_password" type="password" class="contentfont" autocomplete="off"
@@ -685,7 +281,7 @@ function fetchstate($statecode){
 </table>
 <?=$custom_sections_table;?>
 <? if (defined('IN_ADMIN') && IN_ADMIN == 1) { ?>
-<table border="0" cellpadding="0" cellspacing="0" class="tbl">
+<table class="tbl">
     <tr>
         <td colspan="2"><?=AMSG_PAYMENT_SETTINGS;?></td>
     </tr>
@@ -763,7 +359,7 @@ function fetchstate($statecode){
 </table>
     <? } ?>
 <!-- submit -->
-<table border="0" cellpadding="0" cellspacing="0" class="tbl">
+<table class="tbl">
     <tr>
         <td class="leftCol"></td>
         <td>

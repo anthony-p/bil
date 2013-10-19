@@ -294,7 +294,7 @@ if (!$frmchk_user_edit && IN_ADMIN != 1)
 
 {
 
-	$fv->check_box($frmchk_details['pin_value'], MSG_CONF_PIN, array('field_equal'), $frmchk_details['generated_pin'], MSG_REG_PIN);
+	#$fv->check_box($frmchk_details['pin_value'], MSG_CONF_PIN, array('field_equal'), $frmchk_details['generated_pin'], MSG_REG_PIN);
 
 	if ($layout['enable_reg_terms'])
 

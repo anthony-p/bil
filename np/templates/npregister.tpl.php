@@ -246,24 +246,26 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <div class="clear"></div>
         <?=isset($birthdate_box)?$birthdate_box:'';?>
     </div>
-    <div class="account-row">
-        <label><?=MSG_PG_PAYPAL_EMAIL_ADDRESS;?></label>
-        <input name="pg_paypal_email" type="text" id="pg_paypal_email"
-               value="<?=(isset($user_details['pg_paypal_email']))?$user_details['pg_paypal_email']:'';?>" size="40" />
-        <span><?=MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL;?></span>
-    </div>
-    <div class="account-row">
-        <label><?=MSG_PG_PAYPAL_FIRST_NAME;?></label>
-        <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name"
-               value="<?=(isset($user_details['pg_paypal_first_name']))?$user_details['pg_paypal_first_name']:'';?>" size="40" />
-        <span><?=MSG_PG_PAYPAL_FIRST_NAME_EXPL;?></span>
-    </div>
-    <div class="account-row">
-        <label><?=MSG_PG_PAYPAL_LAST_NAME;?></label>
-        <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name"
-               value="<?=(isset($user_details['pg_paypal_last_name']))?$user_details['pg_paypal_last_name']:'';?>" size="40" />
-        <span><?=MSG_PG_PAYPAL_LAST_NAME_EXPL;?></span>
-    </div>
+    
+        <div class="account-row">
+            <label>
+            <? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> 
+            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN ?>" style="margin-left: 10px;">
+            </label>
+            <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?=(isset($user_details['pg_paypal_email']))?$user_details['pg_paypal_email']:'';?>" size="40"/>
+            
+            <span><?= MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL; ?></span>
+        </div>
+        <div class="account-row">
+            <label><?= MSG_PG_PAYPAL_FIRST_NAME; ?> </label>
+            <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name" value="<?=(isset($user_details['pg_paypal_first_name']))?$user_details['pg_paypal_first_name']:'';?>" size="40"/>
+            <span><?= MSG_PG_PAYPAL_FIRST_NAME_EXPL; ?></span>
+        </div>
+        <div class="account-row">
+            <label><?= MSG_PG_PAYPAL_LAST_NAME; ?> </label>
+            <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name" value="<?=(isset($user_details['pg_paypal_last_name']))?$user_details['pg_paypal_last_name']:'';?>" size="40"/>
+            <span><?= MSG_PG_PAYPAL_LAST_NAME_EXPL; ?></span>
+        </div>
     <div class="next">
         <input name="form_register_proceed" type="submit" id="form_register_proceed_account"
                value="<?=MSG_SAVE_CAMPAIGN?>" class="save_btn partial_save"/>
@@ -445,7 +447,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <!-- 2013/10/15 Edit Start (Anthony) -->
         <!--<h5>Your Story (<span style="font-size: 8px">Tell potential contributors more about your campaign.)</span></h5>-->
         <!-- 2013/10/15 Edit End (Anthony) -->
-
+        <h5><?= MSG_YOUR_STORY3 ?></h5>
         <div class="account-row">
             <div class="upload">
                 <input type="radio" class="banner_type" id="banner_type_image" name="banner_type" value="0" checked="checked" ><label><?=MSG_BANNER_IMAGE?></label>

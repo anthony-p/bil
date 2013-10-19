@@ -2455,8 +2455,8 @@ display: block;}
 }
 
 #sell_item .title {
-    text-transform: uppercase;
-padding: 0 0 10px 0;
+    text-transform: uppercase;     
+    padding: 0 0 10px 0;
 margin-bottom: 20px;
 border-bottom: 3px solid #dedede;
 font: 18px/29px "OpenSans-SemiBold";
@@ -2555,6 +2555,7 @@ header .innerContainer  {width: 940px;margin: 0 auto; position: relative;}
 header .innerContainer .inner{position:relative; z-index:3;padding:15px 0 13px; float:left; width: 100%;}
 header .innerContainer .sun{height:73px;width:527px; position:absolute; top:0; left:0; z-index:1; background: url("img/sun.png") 0 0;}
 header .innerContainer .logo{float:left; width: 250px;}
+header .innerContainer .logo img{width:100%;}
 header .innerContainer nav{float:left; margin:10px 0 0 15px;}
 header .innerContainer nav ul{display:inline-block;}
 header .innerContainer nav ul li{float:left;margin-right:25px; }
@@ -2767,7 +2768,7 @@ aside.user-post .post{margin-top: 13px;}
 background: #7eb041; text-shadow: 0px 0px 1px #9ec471; margin: 0;}
 .resp-tab-content aside.rewards .a-view{width:90px; margin: 0 auto;}
 .resp-tab-content aside.rewards a.viewall span{ background:none; font: 13px/29px "OpenSans-Light"; display: block; color: #fff; text-transform:uppercase; padding: 0 17px;}
-
+.resp-tab-content .img_respons{width: 100%;}
 /**/
 aside.suport{margin:0;  padding-bottom: 25px;}
 aside.suport .row{width:562px;margin:0 auto ; }
@@ -2777,7 +2778,8 @@ aside.suport .viewall h5{float:left; font:22px "OpenSans-SemiBold"; color: #222;
 aside.suport .viewall .slide{overflow: hidden; }
 aside.suport .viewall ul li{width:700px; float:left; background:#e4e4e4; height:4px; margin-top: 16px;}
 aside.suport .viewall a{float:right; margin-top:7px; font: 16px/19px OpenSans;  color: #000;  padding-right: 10px; background: url("img/arrow-nav.png") right 5px no-repeat;}
-aside.suport .rows-list{float:left; clear:both; width:100%;}
+aside.suport .rows-list{float:left; clear:both; width:100%; margin-bottom: 30px;}
+
 aside.suport .rows-list li{float:left; width:125px; margin-right: 20px;}
 aside.suport .rows-list li.last{margin: 0;}
 aside.suport .rows-list li .img{width:100%; height: 125px; margin-bottom:10px;}
@@ -2956,7 +2958,7 @@ position: relative; display: table;  }
 #members_area .about_me_table label.facebook{background: url("img/face-icon.png") 0 0 no-repeat;}
 #members_area .upload_logo{width:200px; height: 100px;border:1px solid #dedede; float: left; overflow: hidden; display:table;}
 #members_area .upload_logo img{text-align: center;}
-#members_area .about_me_table input[type="file"]{float:left;padding: 5px; margin: 69px 0 0 52px;  border: 1px solid #dedede;border-radius: 4px;}
+#members_area .about_me_table input[type="file"]{float:left;padding: 5px; margin: 69px 0 0 52px;  border: 1px solid #dedede;border-radius: 4px;max-width: 265px;}
 #members_area .about_me_table input[type="submit"]{float:right;}
 
 /*about*/.view_about_page{width:100%; margin: 0 auto;}
@@ -3349,6 +3351,9 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 .view_campaign_btn{position: absolute; top:0px; right: 0;background:#f21b43; text-shadow: 0px 0px 1px #ffdfc9;border-radius: 5px;box-shadow: inset 0px 0px 5px rgba(199, 199, 199, 0.5);}
 .view_campaign_btn span{display:block;color:#fff;text-transform:uppercase;font: 11px/29px "OpenSans-Light";padding: 0 15px;    }
 .view_campaign_btn:hover{background:#e2193f;}
+.copy_campaign_btn{position: absolute; top:0px; right:125px;background:#ffa800; text-shadow: 0px 0px 1px #ffdfc9;border-radius: 5px;box-shadow: inset 0px 0px 5px rgba(199, 199, 199, 0.5);}
+.copy_campaign_btn span{display:block;color:#fff;text-transform:uppercase;font: 11px/29px "OpenSans-Light";padding: 0 15px;    }
+.copy_campaign_btn:hover{background:#f39f00;}
 .myCampaigs h2{display:block; text-transform: uppercase; padding: 0 0 10px 0; margin-bottom:20px; border-bottom: 3px solid #dedede;font: 18px/29px "OpenSans-SemiBold"; color: #7eb041;}
 .myCampaigs form{float:right; margin:10px 0; display:inline-block;}
 .myCampaigs form .selectME{float:right; width:235px !important;}
@@ -3391,18 +3396,18 @@ a.jp-current:hover {color:#fff; background: #7eb041; border-radius:4px; padding:
 #contribution_form{ float: left;    clear: both;    width: 100%;    background: #fff;    padding-bottom: 30px;    box-shadow: 0 0 6px rgba(5, 5, 5, 0.5);    border-radius: 8px;    margin: 20px 0 40px;}
 #contribution_form h2 { float:none;margin-bottom:1em;}
 #contribution_form p { margin-bottom: 1em;}
-#contribution_details{width:800px; margin: 20px auto;}
+#contribution_details{width:94%; margin: 20px auto;}
 #contribution_details h3{font: 14px/29px "OpenSans-SemiBold";    text-transform: uppercase;    color: #7eb041;    border-bottom: 1.5px solid #dedede;    padding: 5px 0;}
 #contribution_qty{float:left;}
 #contribution_qty a {color:#444;text-decoration:underline;}
 #contribution_qty #submit {margin:auto; display: block}
 #contribution_qty input[type="text"]{height: 25px; line-height:25px;vertical-align: middle; width: 250px;    border: 1px solid #ddd;    border-radius: 3px;    outline: none;  padding: 0 10px;}
-#contribution_details .top-description .left{height:135px; width:200px; border:4px solid rgb(199, 198, 198); border-radius:4px;}
+#contribution_details .top-description .left{/*height:135px;*/ width:17.2%; border:4px solid rgb(199, 198, 198); border-radius:4px;}
 #contribution_details .top-description .left img{width:100%; height: 100%;}
-#contribution_details .top-description .right{width:500px; float:left; margin-left: 20px;}
+#contribution_details .top-description .right{width:62%; float:left; margin-left: 20px;}
 #contribution_details .top-description .right h2{font-size: 18px;line-height: 20px;}
 #contribution_details .top-description .right p{font:12px/15px "OpenSans";}
-.community_donate, .paypal_donate { margin-bottom: 1em; width: 80%;padding:1em;text-align:center}
+.community_donate, .paypal_donate { margin-bottom: 1em; width:94%;padding:2%;text-align:center}
 .paypal_donate span{margin-bottom:0.5em;display: block;}
 .community_donate {
     background:#CCE0F0;

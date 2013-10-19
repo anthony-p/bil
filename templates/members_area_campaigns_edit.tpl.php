@@ -59,9 +59,52 @@ if (!defined('INCLUDED')) {
         $('input[type="submit"]').each(function() {
             $(this).on('click', function(e){
                 e.preventDefault();
-                var formElem = $('#formElem');
+                var formElem = $('#formElem'),
+                    button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
-                if (formElem.valid()) {formElem.submit();}
+                if (button.parent('div').hasClass('right')) {
+                    button.before('<span id="loading-msg" style="float:left;">Saving...</span>');
+                } else button.after('<span id="loading-msg">Saving...</span>');
+                var loading_msg = $('#loading-msg');
+                if (formElem.valid()) {
+                    $.ajax({
+                        url:formElem.attr('action'),
+                        type: "POST",
+                        data: formElem.serialize() + "&ajaxsubmit=true",
+                        success: function (response) {
+                           response = $.parseJSON( response);
+                           if (response.status == "success") {
+                               loading_msg.remove();
+                               if (button.parent('div').hasClass('right')) {
+                                   button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
+                               } else button.after('<span id="saved-msg">Saved!</span>');
+                               var saved_msg = $('#saved-msg');
+                               saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
+                           } else {
+                               var dialog = $('#confirm_dialog_box');
+                               loading_msg.remove();
+                               dialog.html(response.errors);
+                               dialog.dialog({
+                                   resizable: false,
+                                   title: "Validation error",
+                                   height: 250,
+                                   width: 500,
+                                   modal: true,
+                                   buttons: [
+                                       {
+                                           text: "Ok",
+                                           click: function () {
+                                               $(this).dialog("close");
+                                           }
+                                       }
+                                   ]
+                               });
+                           }
+
+
+                        }
+                    });
+                }
             })
         });
         <?php if (isset($video_url) && $video_url): ?>
@@ -102,7 +145,12 @@ if (!defined('INCLUDED')) {
     <h2><?= MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN; ?></h2>
 
     <div id="wrapper">
-        <a href="/view_campaign.php?campaign_id=<?= $campaign['user_id'] ?>" class="view_campaign_btn" target="_blank"><span><?= MSG_VIEW_CAMPAIGN ?></span></a>
+        <a href="/view_campaign.php?campaign_id=<?= $campaign['user_id'] ?>" class="view_campaign_btn" target="_blank">
+            <span><?= MSG_VIEW_CAMPAIGN ?></span>
+        </a>
+        <a href="/np/copy_campaign.php" class="copy_campaign_btn" target="_blank">
+            <span><?= MSG_COPY_CAMPAIGN ?></span>
+        </a>
 
         <!-- Tabs navigation -->
         <div id="navigation">
@@ -131,7 +179,7 @@ if (!defined('INCLUDED')) {
 
         <div id="steps">
 
-            <!-- Form for creating campaign -->
+            <!-- Form for editing campaign -->
             <form action="/campaigns,page,edit,section,<?= $campaign['user_id']; ?>,campaign_id,members_area" method="post"
                   name="registration_form" enctype="multipart/form-data" id="formElem">
             <input type="hidden" id="last_selected_tab" name="last_selected_tab" value="<?= $last_selected_tab ?>"/>
@@ -259,7 +307,10 @@ if (!defined('INCLUDED')) {
                         </div>
 
                         <div class="paypal_block">
-                            <h3>PayPal</h3>
+                            <h3>
+                            PayPal
+                            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN ?>" style="margin-left: 10px;">
+                            </h3>
                             <?php if (isset($campaign['confirmed_paypal_email']) && $campaign['confirmed_paypal_email']): ?>
                                  <span class="checked"></span>
                             <?php endif; ?>
@@ -298,7 +349,7 @@ if (!defined('INCLUDED')) {
                     <div class="account-tab">
                         <div class="account-row">
                             <label> <?= MSG_CREATE_PROJECT_URL; ?> *</label>
-                            <input type="hidden" value="<?= $campaign[active]; ?>">                            
+                            <input type="hidden" value="<?= $campaign['active']; ?>">
                             <input name="username" type="text" id="username" value="<?php echo isset($campaign["username"]) ? $campaign["username"] : ''; ?>"
                                 <?php if (isset($campaign["username"]) && $campaign["username"] && $campaign['active'] != '0') echo "readonly" ?>/>
                             <span><?= MSG_PROJECTURL_EXPLANATION; ?></span>
@@ -422,6 +473,7 @@ if (!defined('INCLUDED')) {
                             </div>
                         </div>
                         <!--<h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>-->
+                        <h5><?= MSG_YOUR_STORY3 ?></h5>
                         <div class="account-row">
                             <?php if (isset($campaign["banner"]) && strstr($campaign["banner"], '/images/partner_logos/') !== false): ?>
                                 <img src="<?php echo $campaign['banner'] . "?" . time() ?>">
@@ -494,14 +546,14 @@ if (!defined('INCLUDED')) {
                     <h4><?= MSG_UPDATES ?></h4>
                     <div class="account-tab">
                         <div class="inner">
-                            <h3><?= MSG_POST_AN_UPDATE_TO_CAMPAIGN ?> <img src="/images/question_help.png" height="16" alt="help"
-                                                                           title="<?= MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP ?>" style="margin-left: 10px;"></h3>
+                            <h3><?= MSG_POST_AN_UPDATE_TO_CAMPAIGN ?> 
+                            <img src="/images/question_help.png" height="16" alt="help"  title="<?= MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP ?>" style="margin-left: 10px;"></h3>
                             <div class="add_post">
                                 <textarea name="comment_text" class="project_update_textarea"
                                           id="project_update_textarea"></textarea>
 
                                 <div class="clear"></div>
-                                <input type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
+                                <input type="button" disabled="disabled" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -509,6 +561,7 @@ if (!defined('INCLUDED')) {
                         <ul class="posted_comments" id="project_update_post_comments">
                             <?php foreach ($project_updates as $_update) : ?>
                                 <li id="<?= 'project_update_comment_row' . $_update['id']; ?>">
+                                    
                                     <p><?= html_entity_decode($_update['comment']) ?></p>
 
                                     <div class="delete_btn">
