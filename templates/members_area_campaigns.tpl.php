@@ -134,7 +134,8 @@ function select(order, obj)
             <div class="clear"></div>
             <fieldset>
                 <div class="campaignsButtons">
-                    <a href="/<?php echo $row['username']; ?>" target="_blank"class="view">view</a>
+                    <a href="/view_campaign.php?campaign_id=<?= $row['user_id'] ?>" class="view">view</a>
+                    <!--<a href="/<?php echo $row['username']; ?>" target="_blank" class="view">view</a>-->
                     <a href="/campaigns,page,edit,section,<?php echo $row["user_id"]?>,campaign_id,members_area" class="edit"><?=MSG_MM_EDIT?></a>
                     <a href="/np/npdelete.php?np_userid=<?php echo $row["user_id"]?>" id="<?php echo $row["user_id"]?>" class="delete"><?=MSG_DELETE?></a>
                 </div>
