@@ -574,6 +574,7 @@ else
 
 			if ( isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit')
 			{
+				$disablePinForTesting = 1;
 				$user->save_vars($_POST);
 				define ('FRMCHK_USER', 1);
 				(bool) $frmchk_user_edit = 1;
@@ -588,6 +589,7 @@ else
                 $row_user["confirmed_paypal_email"] = $_POST["confirmed_paypal_email"] = $confirmed_paypal_email;
 				if ($fv->is_error())
 				{
+
 //                    if (isset($user_in_database) && $user_in_database && is_array($user_in_database)) {
 //                        $row_user = $user_in_database;
 //                    }

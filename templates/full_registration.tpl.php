@@ -75,7 +75,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                     email: true,
                     equalTo: "#email"
                 },
-                pin_value:"required"
+                // pin_value:"required"
             },
             messages: {
                 fname:  window.error_messages.fname,
