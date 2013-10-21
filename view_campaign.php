@@ -63,7 +63,7 @@ if (isset($compaignData["probid_user_id"]) && $compaignData["probid_user_id"] ==
     } elseif (file_exists(__DIR__ . '/../includes/class_project_rewards.php')) {
         require_once (__DIR__ . '/../includes/class_project_rewards.php');
     }else{
-        echo "aaaaa";
+        echo "File Not Found : ".__DIR__ . '/includes/class_project_rewards.php';
     }
 
 	$projectRewards   = new projectRewards();
