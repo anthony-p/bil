@@ -9,7 +9,6 @@
 require_once("class_custom_field.php");
 require_once(__DIR__ . '/../language/english/site.lang.php');
 
-// here
 class projectRewards extends custom_field {
 
 	//--------------------------------------------------------------------------------------------------------------------------
