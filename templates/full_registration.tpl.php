@@ -241,9 +241,8 @@ function fetchstate($statecode){
             <?=GMSG_LIVE;?></td>
     </tr>
     <? if ($user_details['payment_mode'] == 2) { ?>
-    <tr class="reguser">
-        <td>&nbsp;</td>
-        <td><?=AMSG_PAYMENT_MODE_EXPL;?></td>
+    <tr>
+        <td colspan="2"><span class="reguser"><?=AMSG_PAYMENT_MODE_EXPL;?></span></td>
     </tr>
     <tr>
         <td  class="contentfont"><?=AMSG_ACCOUNT_BALANCE;?>
@@ -255,16 +254,14 @@ function fetchstate($statecode){
             </select> &nbsp; <?=AMSG_BALANCE_ADJ_REASON;?>: <input type="text" name="adjustment_reason" size="20"> (<?=AMSG_OPTIONAL_FIELD;?>)</td>
     </tr>
     <tr class="reguser">
-        <td>&nbsp;</td>
-        <td><?=AMSG_ACCOUNT_BALANCE_EXPL;?></td>
+        <td colspan="2"><span class="reguser"><?=AMSG_ACCOUNT_BALANCE_EXPL;?></span></td>
     </tr>
     <tr>
         <td  class="contentfont"><?=GMSG_MAX_DEBIT;?></td>
         <td class="contentfont"><?=$setts['currency']; ?> <input name="max_credit" value="<?=abs($user_details['max_credit']); ?>" size="8"></td>
     </tr>
-    <tr class="reguser">
-        <td>&nbsp;</td>
-        <td><?=AMSG_MAX_DEBIT_EXPL;?></td>
+    <tr >
+        <td colspan="2"><span class="reguser"><?=AMSG_MAX_DEBIT_EXPL;?></span></td>
     </tr>
     <? } ?>
 </table>
@@ -297,8 +294,7 @@ function fetchstate($statecode){
         <td><?=(isset($pin_image_output))?$pin_image_output:'';?></td>
     </tr>
     <tr class="reguser">
-        <td  class="contentfont">&nbsp;</td>
-        <td><?=MSG_REG_PIN_EXPL;?></td>
+        <td colspan="2"><span class="reguser"><?=MSG_REG_PIN_EXPL;?></span></td>
     </tr>
     <tr>
         <td class="leftCol"><?=MSG_CONF_PIN;?> *</td>

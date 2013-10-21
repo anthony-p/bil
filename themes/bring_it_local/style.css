@@ -5252,6 +5252,11 @@ aside.suport .merchants li .info span{
     padding:10px;
     }
 
+#members_area .tbl .leftCol{
+    width:250px
+    }
+
+
 #members_area #middleColumn table.tbl .border td{
     padding:0;
     }
