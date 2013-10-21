@@ -94,6 +94,7 @@
     .content .content-buttons a span{font-size:11px; }
     #footer .bottomLinks .column,footer .copyright,
     #footer .bottomLinks .column{display: none;}
+    #footer .bottomLinks .column.col3{display: block;}
     .content .campaigns ul li{margin:3% auto; float: none; }
     .content .campaigns ul li.last{margin:3% auto; }
     header .innerContainer nav{clear: both; margin: 0;}
