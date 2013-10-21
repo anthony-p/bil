@@ -98,7 +98,7 @@
     .content .campaigns ul li{margin:3% auto; float: none; }
     .content .campaigns ul li.last{margin:3% auto; }
     header .innerContainer nav{clear: both; margin: 0;}
-    #footer .bottomLinks .col4{display: block;display: block;width: 62%; margin: 0 auto;float: none; }
+    #footer .bottomLinks .col4{display: block;width:auto; margin: 0 auto;float:left; }
     #footer .bottomLinks .col4 .none{display: none;}
     header {position: relative; height: 100px;}
     header .innerContainer nav { display: inline-block; float: left;clear: both;width: 100%;position: absolute; top:70px; left:0px;}
