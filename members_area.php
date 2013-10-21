@@ -11,7 +11,7 @@ session_start();
 
 define ('IN_SITE', 1);
 $GLOBALS['body_id'] = "members_area";
-error_reporting(E_ERROR);
+//error_reporting(null);
 include_once ('includes/global.php');
 include_once ('includes/class_formchecker.php');
 include_once ('includes/class_custom_field.php');

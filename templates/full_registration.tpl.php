@@ -9,12 +9,11 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
+<link rel="stylesheet" href="/themes/bring_it_local/tabs-style.css" />
 <script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
 <script type="text/javascript" src="/scripts/jquery/additional-methods.min.js"></script>
+<script type="text/javascript" src="/scripts/account_form_validate.js"></script>
 <script language="javascript">
-
-
-
 
     function copy_email_value() {
         document.registration_form.email_check.value = document.registration_form.email.value;
@@ -24,10 +23,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         document.registration_form.password2.value = document.registration_form.password.value;
     }
 
-
-</script>
-
-<script type="text/javascript">
     window.error_messages = {
         fname: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME; ?>",
         lname: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME; ?>",
@@ -46,101 +41,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         pin_value: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN; ?>"
 
     };
-    function validateAccountForm(form) {
-        form.validate({
-            rules: {
-                fname:"required",
-                lname:"required",
-                address:"required",
-                city:"required",
-                state:"required",
-                postal_code:"required",
-                phone:"required",
-                password:{
-                    equalTo:'#password2'
-                },
-                password2: {
-                    required:{
-                        depends:function(elem) {
-                            return $('#password').val();
-                        }
-                    }
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                email_check: {
-                    required: true,
-                    email: true,
-                    equalTo: "#email"
-                }
-                // ,
-                // TODO: uncomment pin before LIVE
-                // pin_value:"required"
-            },
-            messages: {
-                fname:  window.error_messages.fname,
-                lname: window.error_messages.lname,
-                organization: window.error_messages.organization,
-                address: window.error_messages.address,
-                city: window.error_messages.city,
-                state: window.error_messages.state,
-                postal_code: window.error_messages.postal_code,
-                phone: window.error_messages.phone,
-                password2: window.error_messages.password2,
-                old_password: window.error_messages.old_password,
-                email: window.error_messages.email,
-                email_check: {
-                    required:window.error_messages.email_check,
-                    equalTo:window.error_messages.email_check_notequal
-                },
-                pin_value: window.error_messages.pin_value
-            }
-        });
-    }
 
-    function ajaxFormSave(button, form) {
-        if (button.parent('div').hasClass('right')) {
-            button.before('<span id="loading-msg" style="float:left;">Saving...</span>');
-        } else button.after('<span id="loading-msg">Saving...</span>');
-        var loading_msg = $('#loading-msg');
-        $.ajax({
-            url:form.attr('action'),
-            type: "POST",
-            data: form.serialize() + "&ajaxsubmit=true",
-            success: function (response) {
-                response = $.parseJSON( response);
-                if (response.status == "success") {
-                    loading_msg.remove();
-                    if (button.parent('div').hasClass('right')) {
-                        button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
-                    } else button.after('<span id="saved-msg">Saved!</span>');
-                    var saved_msg = $('#saved-msg');
-                    saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
-                } else {
-                    var dialog = $('#validation_errors');
-                    loading_msg.remove();
-                    dialog.html(response.errors);
-                    dialog.dialog({
-                        resizable: false,
-                        title: "Validation error",
-                        height: 250,
-                        width: 500,
-                        modal: true,
-                        buttons: [
-                            {
-                                text: "Ok",
-                                click: function () {
-                                    $(this).dialog("close");
-                                }
-                            }
-                        ]
-                    });
-                }
-            }
-        });
-    }
 
     $(document).ready(function () {
         // load state list
@@ -408,9 +309,11 @@ function fetchstate($statecode){
 <!-- submit -->
 <table class="tbl">
     <tr>
-        <td class="leftCol"></td>
-        <td>
-            <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=$proceed_button;?>" /></td>
+        <td colspan="2">
+            <div class="next">
+                <input class="save_btn" name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=$proceed_button;?>" />
+           </div>
+        </td>
     </tr>
 </table>
 </form>
