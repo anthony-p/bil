@@ -40,7 +40,7 @@ class projectVotes extends custom_field
 //        return true;
         if ($this->user_id) {
             return $this->getField("SELECT count(*) FROM funders WHERE user_id=".$this->user_id .
-            " and MONTH(FROM_UNIXTIME(created_at)) = MONTH(NOW()) and YEAR(FROM_UNIXTIME(created_at)) = YEAR(NOW()) AND DAY(FROM_UNIXTIME(date)) = DAY(NOW())");
+            " and MONTH(FROM_UNIXTIME(created_at)) = MONTH(NOW()) and YEAR(FROM_UNIXTIME(created_at)) = YEAR(NOW()) AND DAY(FROM_UNIXTIME(created_at)) = DAY(NOW())");
         }
         return false;
     }
