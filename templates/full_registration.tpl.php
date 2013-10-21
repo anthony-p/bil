@@ -74,7 +74,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                     required: true,
                     email: true,
                     equalTo: "#email"
-                },
+                }
+                // ,
+                // TODO: uncomment pin before LIVE
                 // pin_value:"required"
             },
             messages: {
@@ -97,6 +99,49 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             }
         });
     }
+
+    function ajaxFormSave(button, form) {
+        if (button.parent('div').hasClass('right')) {
+            button.before('<span id="loading-msg" style="float:left;">Saving...</span>');
+        } else button.after('<span id="loading-msg">Saving...</span>');
+        var loading_msg = $('#loading-msg');
+        $.ajax({
+            url:form.attr('action'),
+            type: "POST",
+            data: form.serialize() + "&ajaxsubmit=true",
+            success: function (response) {
+                response = $.parseJSON( response);
+                if (response.status == "success") {
+                    loading_msg.remove();
+                    if (button.parent('div').hasClass('right')) {
+                        button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
+                    } else button.after('<span id="saved-msg">Saved!</span>');
+                    var saved_msg = $('#saved-msg');
+                    saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
+                } else {
+                    var dialog = $('#validation_errors');
+                    loading_msg.remove();
+                    dialog.html(response.errors);
+                    dialog.dialog({
+                        resizable: false,
+                        title: "Validation error",
+                        height: 250,
+                        width: 500,
+                        modal: true,
+                        buttons: [
+                            {
+                                text: "Ok",
+                                click: function () {
+                                    $(this).dialog("close");
+                                }
+                            }
+                        ]
+                    });
+                }
+            }
+        });
+    }
+
     $(document).ready(function () {
         // load state list
         $("#country").change(function () {
@@ -108,16 +153,18 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 data: {do: 'stateList', country_id: $("#country").val()}
             })
                 .done(function (result) {
-                    $("#states_box").empty();
-                    $("#states_box").append(result.data);
+                    var statesbox = $("#states_box");
+                    statesbox.empty();
+                    statesbox.append(result.data);
                 });
 
         });
         $('input[type="submit"]').on('click', function(e){
                 e.preventDefault();
-                var form = $("#registration_form");
+                var form = $("#registration_form"),
+                    button = $(this);
                 validateAccountForm(form);
-                if (form.valid()) {form.submit();}
+                if (form.valid()) { ajaxFormSave(button, form)}
         });
 
         $('.form_tooltip').tooltip({
@@ -363,7 +410,6 @@ function fetchstate($statecode){
     <tr>
         <td class="leftCol"></td>
         <td>
-
             <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=$proceed_button;?>" /></td>
     </tr>
 </table>
