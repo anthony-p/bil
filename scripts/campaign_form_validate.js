@@ -24,7 +24,7 @@ function validateCampaignForm(form, messages) {
             city: "required",
             zip_code:  {
                 required: true,
-                digits: true,
+                //digits: true,
                 minlength: 5
             },
             country: "required",
