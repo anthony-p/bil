@@ -6748,12 +6748,14 @@ a.jp-current:hover{
     }
 
 #about_me_content p{
-    clear:both;
-    display:block;
+    clear: both;
+    display: block;
+    line-height: normal;
+    padding: 5px 0;
     }
 
 #about_me_content p span{
-    float:left;
+    /*float:left;*/
     margin-right:10px;
     }
 

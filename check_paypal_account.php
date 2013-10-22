@@ -155,8 +155,8 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
             list($qKey, $qVal) = explode ("=", $rVal);
             $kArray[$qKey] = $qVal;
         }
-
-        return $kArray["responseEnvelope.ack"];
+        
+        return $kArray["accountStatus"];
 
 
 

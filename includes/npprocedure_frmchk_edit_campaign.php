@@ -4,7 +4,7 @@ include_once(__DIR__ . '/../language/english/site.lang.php');
 
 if ( !defined('FRMCHK_USER') ) { die("Access Denied"); }
 
-$fv = new npformchecker;
+$fv = new npformchecker($frmchk_details["active"]);
 
 if (isset($frmchk_details['tax_account_type']) && $frmchk_details['tax_account_type'] == 1)
 {

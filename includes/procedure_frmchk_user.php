@@ -8,7 +8,7 @@
 
 if ( !defined('FRMCHK_USER') ) { die("Access Denied"); }
 
-$fv = new formchecker;
+$fv = new formchecker($ignorePaypalCheck);
 $fv->setUserId($session->value('user_id'));
 /*
 if ($frmchk_details['tax_account_type'] == 1)

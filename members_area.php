@@ -573,6 +573,7 @@ else
 			if (( isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') || ($_POST['ajaxsubmit'] == true))
 			{
 				$disablePinForTesting = 1;
+				$ignorePaypalCheck = 1;
 				$user->save_vars($_POST);
 				define ('FRMCHK_USER', 1);
 				(bool) $frmchk_user_edit = 1;
@@ -583,7 +584,11 @@ else
 
 
 				include ('includes/procedure_frmchk_user.php'); /* Formchecker for user creation/edit */
-                $row_user["confirmed_paypal_email"] = $_POST["confirmed_paypal_email"] = $confirmed_paypal_email;
+				if ($fv->checkFlag) {
+                	$row_user["confirmed_paypal_email"] = $_POST["confirmed_paypal_email"] = $confirmed_paypal_email;					
+				} else {
+					$row_user["confirmed_paypal_email"] = null;
+				}
 				if ($fv->is_error())
 				{
 
@@ -5367,7 +5372,11 @@ else
 
 
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
-                $_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;
+                if ($fv->checkFlag == 1) {
+                	$_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;				
+				} else {
+					$_POST["confirmed_paypal_email"] = null;
+				}
                 $pEmail = isset($_POST['email'])?$_POST['email']:'';
                 $banned_output = check_banned($pEmail, 2);
 

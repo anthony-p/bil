@@ -11,6 +11,9 @@ include_once ('npclass_database.php');
 class npformchecker extends npdatabase
 {
 
+	private $status;
+	public $checkFlag = 1;
+
 	var $error_list;
 
 	var $methods = array(
@@ -20,8 +23,9 @@ class npformchecker extends npdatabase
 		'field_amount', 'field_smaller', 'field_greater', 'field_equal'
 	);
 
-	function formchecker()
+	function npformchecker($status)
 	{
+		$this->status = $status;
 		$this->reset_error_list();
 	}
 
@@ -510,9 +514,14 @@ class npformchecker extends npdatabase
                     include_once('../check_paypal_account.php');
                 }
                 $response = checkPaypalAccount($value);
-                if ($response == "Success") {
+                if ($response == "VERIFIED") {
+                	$this->checkFlag = 1;
                     return true;
+                } elseif($this->status != 1) {
+                	$this->checkFlag = 2;
+                	return true;
                 } else {
+                	$this->checkFlag = 0;
                     $this->error_list[] = array("value" => $value, "msg" => $msg);
                     return false;
                 }
