@@ -403,6 +403,9 @@ function getOneTag($xml)
                     //@TODO UnComment
                     mysql_query($sql);
 
+					$sql = "update np_users set payment=payment+".$np_share." where user_id='".$npuser_id."'";
+					mysql_query($sql);
+					
                     $activity_sql="SELECT points_awarded FROM probid_user_activities WHERE activity_id = 8";
                     $activity_result = mysql_query($activity_sql);
                     $activity_row = mysql_fetch_array($activity_result);
