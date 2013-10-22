@@ -514,7 +514,7 @@ if (!defined('INCLUDED')) {
                                           id="project_update_textarea"></textarea>
 
                                 <div class="clear"></div>
-                                <input type="button" disabled="disabled" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
+                                <input type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -633,18 +633,11 @@ if (!defined('INCLUDED')) {
                     <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>&action=clone" target="_blank">
                         <input class="clone_btn" type="button" value="<?= MSG_CLONE_CAMPAIGN ?>"/><img src="/images/question_help.png"height="16" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
                     </a>
-<!--                    <input class="clone_btn" type="button" value="--><?//= MSG_CLONE_CAMPAIGN ?><!--"/><img src="/images/question_help.png"height="16" alt="help" title="--><?//= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?><!--">-->
                     <div class="right">
                         <input name="form_register_proceed" type="submit" id="form_register_proceed"
                                value="<?= MSG_SAVE_CHANGES ?>"
                                class="save_btn"/>
                     </div>
-                </div>
-            </div>
-            <div class="next">
-                <input type="button" onclick="prevStepShow('p_projectStatus')" value="<?=MSG_PREV?>" class="next_btn" />
-                <div class="right">
-                    <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=MSG_SAVE_CHANGES?>" class="save_btn"/>
                 </div>
             </div>
         </div>
