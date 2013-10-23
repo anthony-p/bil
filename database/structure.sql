@@ -3697,3 +3697,13 @@ alter table `project_rewards` drop column `create_at`, drop column `parrent_id`;
 alter table `project_rewards` change `amount` `amount` int(11) NOT NULL;
 
 ALTER TABLE `np_users` ADD COLUMN `votes` INT NULL DEFAULT 0  AFTER `parrent_id` ;
+
+
+alter table `np_users` add column `include_clickthrough` tinyint(1) DEFAULT '1' NOT NULL after `cron_company`;
+
+ALTER TABLE `np_users`
+  ADD COLUMN `copied_times` INT NULL DEFAULT 0  AFTER `votes` ,
+  ADD COLUMN `cloned_times` INT NULL DEFAULT 0  AFTER `copied_times` ,
+  ADD COLUMN `inheritance_type` VARCHAR(45) NULL  AFTER `cloned_times` ;
+
+

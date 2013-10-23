@@ -62,48 +62,9 @@ if (!defined('INCLUDED')) {
                 var formElem = $('#formElem'),
                     button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
-                if (button.parent('div').hasClass('right')) {
-                    button.before('<span id="loading-msg" style="float:left;">Saving...</span>');
-                } else button.after('<span id="loading-msg">Saving...</span>');
-                var loading_msg = $('#loading-msg');
+
                 if (formElem.valid()) {
-                    $.ajax({
-                        url:formElem.attr('action'),
-                        type: "POST",
-                        data: formElem.serialize() + "&ajaxsubmit=true",
-                        success: function (response) {
-                           response = $.parseJSON( response);
-                           if (response.status == "success") {
-                               loading_msg.remove();
-                               if (button.parent('div').hasClass('right')) {
-                                   button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
-                               } else button.after('<span id="saved-msg">Saved!</span>');
-                               var saved_msg = $('#saved-msg');
-                               saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
-                           } else {
-                               var dialog = $('#confirm_dialog_box');
-                               loading_msg.remove();
-                               dialog.html(response.errors);
-                               dialog.dialog({
-                                   resizable: false,
-                                   title: "Validation error",
-                                   height: 250,
-                                   width: 500,
-                                   modal: true,
-                                   buttons: [
-                                       {
-                                           text: "Ok",
-                                           click: function () {
-                                               $(this).dialog("close");
-                                           }
-                                       }
-                                   ]
-                               });
-                           }
-
-
-                        }
-                    });
+                    ajaxFormSave(button, formElem);
                 }
             })
         });
@@ -553,7 +514,7 @@ if (!defined('INCLUDED')) {
                                           id="project_update_textarea"></textarea>
 
                                 <div class="clear"></div>
-                                <input type="button" disabled="disabled" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
+                                <input type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -630,6 +591,18 @@ if (!defined('INCLUDED')) {
                             <label><?= MSG_ACTIVITY_STATUS_CLOSED ?></label>
                         </div>
                     </div>
+					<div class="line-sep"></div>
+					<div class="account-row">
+						<label><strong><?=MSG_INCLUDE_CLICKTHROUGH_STATUS;?></strong></label>
+						<div class="radio">
+							<input type="radio" name="include_clickthrough" value="0" <?php echo (isset($campaign["include_clickthrough"]) && ($campaign["include_clickthrough"] == 0)) ? "checked" : ''; ?>>
+							<label><?=MSG_INCLUDE_CLICKTHROUGH_STATUS_NO?></label>
+						</div>
+						<div class="radio">
+							<input type="radio" name="include_clickthrough" value="1" <?php echo (isset($campaign["include_clickthrough"]) && ($campaign["include_clickthrough"] == 1)) ? "checked" : ''; ?>>
+							<label><?=MSG_INCLUDE_CLICKTHROUGH_STATUS_YES?></label>
+						</div>
+					</div>
                     <div class="line-sep"></div>
                     <div class="account-row campaign-cron">
                         <label><?= MSG_CRON_CONFIG ?></label>
@@ -660,7 +633,6 @@ if (!defined('INCLUDED')) {
                     <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>&action=clone" target="_blank">
                         <input class="clone_btn" type="button" value="<?= MSG_CLONE_CAMPAIGN ?>"/><img src="/images/question_help.png"height="16" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
                     </a>
-<!--                    <input class="clone_btn" type="button" value="--><?//= MSG_CLONE_CAMPAIGN ?><!--"/><img src="/images/question_help.png"height="16" alt="help" title="--><?//= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?><!--">-->
                     <div class="right">
                         <input name="form_register_proceed" type="submit" id="form_register_proceed"
                                value="<?= MSG_SAVE_CHANGES ?>"

@@ -631,8 +631,9 @@ if($compaignData['cfc'] == 1){
 	$template->set("cVoteReport",$menuTemplate->process("vote_report.tpl.php"));
 	$template->set("cHistoryReport",$menuTemplate->process("history_report.tpl.php"));
 }
-
-$template->set("cSupport",$menuTemplate->process("support.tpl.php"));
+if($compaignData['include_clickthrough'] == 1){
+	$template->set("cSupport",$menuTemplate->process("support.tpl.php"));
+}
 
 $template->set("cUpdates",$menuTemplate->process("updates.tpl.php"));
 

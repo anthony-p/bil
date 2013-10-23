@@ -839,15 +839,15 @@ class user extends custom_field
 			{
 				case 'PayPal':
 					$display_output .= '<tr class="' . $background . '"> '.
-		      		'	<td>' . GMSG_PAYPAL_FIRST_NAME . '</td> '.
+		      		'	<td class="leftCol">' . GMSG_PAYPAL_FIRST_NAME . '</td> '.
 						'	<td><input name="pg_paypal_first_name" type="text" value="' . $user_details['pg_paypal_first_name'] . '" size="50"></td> '.
 						'</tr> ';
 					$display_output .= '<tr class="' . $background . '"> '.
-		      		'	<td>' . GMSG_PAYPAL_LAST_NAME . '</td> '.
-						'	<td><input name="pg_paypal_last_name" type="text" value="' . $user_details['pg_paypal_last_name'] . '" size="50"></td> '.
+		      		'	<td class="leftCol">' . GMSG_PAYPAL_LAST_NAME . '</td> '.
+						'	<td ><input name="pg_paypal_last_name" type="text" value="' . $user_details['pg_paypal_last_name'] . '" size="50"></td> '.
 						'</tr> ';
 					$display_output .= '<tr class="' . $background . '"> '.
-		      		'	<td>' . GMSG_PAYPAL_EMAIL . '</td> '.
+		      		'	<td class="leftCol">' . GMSG_PAYPAL_EMAIL . '</td> '.
 						'	<td><input name="pg_paypal_email" type="text" value="' . $user_details['pg_paypal_email'] . '" size="50"></td> '.
 						'</tr> ';
 

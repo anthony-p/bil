@@ -9,12 +9,11 @@
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
+<link rel="stylesheet" href="/themes/bring_it_local/tabs-style.css" />
 <script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
 <script type="text/javascript" src="/scripts/jquery/additional-methods.min.js"></script>
+<script type="text/javascript" src="/scripts/account_form_validate.js"></script>
 <script language="javascript">
-
-
-
 
     function copy_email_value() {
         document.registration_form.email_check.value = document.registration_form.email.value;
@@ -24,10 +23,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         document.registration_form.password2.value = document.registration_form.password.value;
     }
 
-
-</script>
-
-<script type="text/javascript">
     window.error_messages = {
         fname: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_FNAME; ?>",
         lname: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_LNAME; ?>",
@@ -46,57 +41,8 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         pin_value: "<?= MSG_MEMBER_ACCOUNT_VALIDATION_ERR_PIN; ?>"
 
     };
-    function validateAccountForm(form) {
-        form.validate({
-            rules: {
-                fname:"required",
-                lname:"required",
-                address:"required",
-                city:"required",
-                state:"required",
-                postal_code:"required",
-                phone:"required",
-                password:{
-                    equalTo:'#password2'
-                },
-                password2: {
-                    required:{
-                        depends:function(elem) {
-                            return $('#password').val();
-                        }
-                    }
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                email_check: {
-                    required: true,
-                    email: true,
-                    equalTo: "#email"
-                },
-                pin_value:"required"
-            },
-            messages: {
-                fname:  window.error_messages.fname,
-                lname: window.error_messages.lname,
-                organization: window.error_messages.organization,
-                address: window.error_messages.address,
-                city: window.error_messages.city,
-                state: window.error_messages.state,
-                postal_code: window.error_messages.postal_code,
-                phone: window.error_messages.phone,
-                password2: window.error_messages.password2,
-                old_password: window.error_messages.old_password,
-                email: window.error_messages.email,
-                email_check: {
-                    required:window.error_messages.email_check,
-                    equalTo:window.error_messages.email_check_notequal
-                },
-                pin_value: window.error_messages.pin_value
-            }
-        });
-    }
+
+
     $(document).ready(function () {
         // load state list
         $("#country").change(function () {
@@ -108,16 +54,18 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 data: {do: 'stateList', country_id: $("#country").val()}
             })
                 .done(function (result) {
-                    $("#states_box").empty();
-                    $("#states_box").append(result.data);
+                    var statesbox = $("#states_box");
+                    statesbox.empty();
+                    statesbox.append(result.data);
                 });
 
         });
         $('input[type="submit"]').on('click', function(e){
                 e.preventDefault();
-                var form = $("#registration_form");
+                var form = $("#registration_form"),
+                    button = $(this);
                 validateAccountForm(form);
-                if (form.valid()) {form.submit();}
+                if (form.valid()) { ajaxFormSave(button, form)}
         });
 
         $('.form_tooltip').tooltip({
@@ -293,9 +241,8 @@ function fetchstate($statecode){
             <?=GMSG_LIVE;?></td>
     </tr>
     <? if ($user_details['payment_mode'] == 2) { ?>
-    <tr class="reguser">
-        <td>&nbsp;</td>
-        <td><?=AMSG_PAYMENT_MODE_EXPL;?></td>
+    <tr>
+        <td colspan="2"><span class="reguser"><?=AMSG_PAYMENT_MODE_EXPL;?></span></td>
     </tr>
     <tr>
         <td  class="contentfont"><?=AMSG_ACCOUNT_BALANCE;?>
@@ -307,16 +254,14 @@ function fetchstate($statecode){
             </select> &nbsp; <?=AMSG_BALANCE_ADJ_REASON;?>: <input type="text" name="adjustment_reason" size="20"> (<?=AMSG_OPTIONAL_FIELD;?>)</td>
     </tr>
     <tr class="reguser">
-        <td>&nbsp;</td>
-        <td><?=AMSG_ACCOUNT_BALANCE_EXPL;?></td>
+        <td colspan="2"><span class="reguser"><?=AMSG_ACCOUNT_BALANCE_EXPL;?></span></td>
     </tr>
     <tr>
         <td  class="contentfont"><?=GMSG_MAX_DEBIT;?></td>
         <td class="contentfont"><?=$setts['currency']; ?> <input name="max_credit" value="<?=abs($user_details['max_credit']); ?>" size="8"></td>
     </tr>
-    <tr class="reguser">
-        <td>&nbsp;</td>
-        <td><?=AMSG_MAX_DEBIT_EXPL;?></td>
+    <tr >
+        <td colspan="2"><span class="reguser"><?=AMSG_MAX_DEBIT_EXPL;?></span></td>
     </tr>
     <? } ?>
 </table>
@@ -349,8 +294,7 @@ function fetchstate($statecode){
         <td><?=(isset($pin_image_output))?$pin_image_output:'';?></td>
     </tr>
     <tr class="reguser">
-        <td  class="contentfont">&nbsp;</td>
-        <td><?=MSG_REG_PIN_EXPL;?></td>
+        <td colspan="2"><span class="reguser"><?=MSG_REG_PIN_EXPL;?></span></td>
     </tr>
     <tr>
         <td class="leftCol"><?=MSG_CONF_PIN;?> *</td>
@@ -361,10 +305,11 @@ function fetchstate($statecode){
 <!-- submit -->
 <table class="tbl">
     <tr>
-        <td class="leftCol"></td>
-        <td>
-
-            <input name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=$proceed_button;?>" /></td>
+        <td colspan="2">
+            <div class="next">
+                <input class="save_btn" name="form_register_proceed" type="submit" id="form_register_proceed" value="<?=$proceed_button;?>" />
+           </div>
+        </td>
     </tr>
 </table>
 </form>

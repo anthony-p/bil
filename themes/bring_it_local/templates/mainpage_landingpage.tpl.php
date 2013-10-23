@@ -169,6 +169,7 @@ $featured_columns = 14;
                     <span><?=MSG_MAKE_DONATION?></span>
                 </a>
             <?php endif; ?>
+			<?php if($compaigns['include_clickthrough'] == 1): ?>
             <a href="/global_partners.php<?php /*
             if (isset($compaigns['url']) && $compaigns['url']) {
                 if (strpos($compaigns['url'], 'http') === 0) {
@@ -183,6 +184,7 @@ $featured_columns = 14;
                 <span class="uper"><?=MSG_SHOP_ONLINE?></span>
                 <span><?=MSG_SHOP_ONLINE_INFORMATION_ABOUT_ONLINE_RETAILERS?></span>
             </a>
+			<?php endif; ?>
             <?php
             /*
             <a href="/categories.php" class="auctions">
@@ -211,7 +213,9 @@ $featured_columns = 14;
                 <li><?=MSG_COMMENTS?></li>
                 <li><?=MSG_FUNDERS?></li>
                 <li><?=MSG_REWARDS?></li>
+				<?php if($compaigns['include_clickthrough'] == 1): ?>
                 <li<?= $compaigns['cfc'] == 0 ? ' class="last"': ''?>><?=MSG_WAYS_TO_SUPPORT?></li>
+				<?php endif; ?>
 				<?php if($compaigns['cfc'] == 1): ?>
 				<li><?=MSG_COMMUNITY_FUND_VOTE_REPORT?></li>
 				<li class="last"><?=MSG_COMMUNITY_FUND_HISTORY?></li>
@@ -233,9 +237,11 @@ $featured_columns = 14;
                 <div class="tab-step">
                     <?php echo $cRewards; ?>
                 </div>
+				<?php if($compaigns['include_clickthrough'] == 1): ?>
                 <div class="tab-step">
                     <?php echo $cSupport; ?>
                 </div>
+				<?php endif; ?>
 				<?php if($compaigns['cfc'] == 1): ?>
 				<div class="tab-step">
                     <?php echo $cVoteReport; ?>

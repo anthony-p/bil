@@ -11,7 +11,7 @@ session_start();
 
 define ('IN_SITE', 1);
 $GLOBALS['body_id'] = "members_area";
-error_reporting(E_ERROR);
+//error_reporting(null);
 include_once ('includes/global.php');
 include_once ('includes/class_formchecker.php');
 include_once ('includes/class_custom_field.php');
@@ -544,8 +544,6 @@ else
             $template->set('pin_image_output', $pin_image_output);
             $template->set('generated_pin', $generated_pin);
 
-//			$row_user = $db->get_sql_row("SELECT * FROM
-//				" . DB_PREFIX . "users WHERE user_id=" . $session->value('user_id'));
             $row_user = $db->get_sql_row("SELECT * FROM  `bl2_users` where id=" . $session->value('user_id'));
 
             $user_in_database = $row_user;
@@ -572,8 +570,10 @@ else
 			$tax = new tax();
 			$tax->setts = &$setts;
 
-			if ( isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit')
+			if (( isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') || ($_POST['ajaxsubmit'] == true))
 			{
+				$disablePinForTesting = 1;
+				$ignorePaypalCheck = 1;
 				$user->save_vars($_POST);
 				define ('FRMCHK_USER', 1);
 				(bool) $frmchk_user_edit = 1;
@@ -584,21 +584,21 @@ else
 
 
 				include ('includes/procedure_frmchk_user.php'); /* Formchecker for user creation/edit */
-//                var_dump($confirmed_paypal_email);exit;
-                $row_user["confirmed_paypal_email"] = $_POST["confirmed_paypal_email"] = $confirmed_paypal_email;
+				if ($fv->checkFlag) {
+                	$row_user["confirmed_paypal_email"] = $_POST["confirmed_paypal_email"] = $confirmed_paypal_email;					
+				} else {
+					$row_user["confirmed_paypal_email"] = null;
+				}
 				if ($fv->is_error())
 				{
-//                    if (isset($user_in_database) && $user_in_database && is_array($user_in_database)) {
-//                        $row_user = $user_in_database;
-//                    }
+
                     $row_user = $_POST;
                     $row_user['username'] = $username;
-
+                    $form_submit_msg = array("status" => "failed", "errors" => $fv->display_errors());
 					$template->set('display_formcheck_errors', $fv->display_errors());
 				}
 				else
 				{
-//                    $_POST['phone'] = "(" . $_POST['phone_a'] . ")" . $_POST['phone_b'];
 					$form_submitted = true;
 
                     // ---- MailChimp Subscription ------------------------------------
@@ -655,6 +655,7 @@ else
                             $_POST['password'] : null;
 
 					$user->update($session->value('user_id'), $_POST, $new_password);
+                    $form_submit_msg = array("status" => "success");
 				}
 			}
 
@@ -665,7 +666,6 @@ else
 					$user->save_edit_vars($session->value('user_id'), $page_handle);
 				}
 
-//				$template->set('edit_user', 1);
 				$template->set('edit_disabled', 'disabled'); /* some fields in the registration will be disabled for editing */
 
                 if (isset($row_user['email']))
@@ -682,20 +682,6 @@ else
 
                 if (isset($_POST['newsletter'])) $row_user['is_subscribe_news'] = $_POST['newsletter'];
 
-//                $phone_a = $phone_b = '';
-//                if (isset($row_user["phone"])) {
-//                    $phone_array = explode(")", $row_user["phone"]);
-//                    $phone_a = trim(str_replace("(", "", $phone_array[0]));
-//                    if (isset($phone_array[1])) {
-//                        $phone_b = trim($phone_array[1]);
-//                    }
-//                }
-//
-//                if (isset($_POST['phone_a']) && trim($_POST['phone_a'])!="") $row_user['phone_a'] = $_POST['phone_a'];
-//                else $row_user["phone_a"] = $phone_a;
-//                if (isset($_POST['phone_b']) && trim($_POST['phone_b']) != "") $row_user['phone_b'] = $_POST['phone_b'];
-//                else $row_user["phone_b"] = $phone_b;
-
                 if (!isset($row_user['first_name'])) {
                     $row_user['first_name'] = isset($_POST['fname']) ? $_POST['fname'] : '';
                 }
@@ -703,9 +689,6 @@ else
                     $row_user['last_name'] = isset($_POST['lname']) ? $_POST['lname'] : '';
                 }
 
-//                echo '<pre>';
-//                var_dump($row_user);
-//                echo '</pre>';
 
 				$template->set('user_details', $row_user);
                 if (isset($_REQUEST['do']))
@@ -713,9 +696,6 @@ else
                 else
                     $do = "";
 				$template->set('do', $do);
-
-	      	//$header_registration_message = headercat('<b>' . MSG_MM_MY_ACCOUNT . ' - ' . MSG_MM_PERSONAL_INFO . '</b>');
-				//$template->set('header_registration_message', $header_registration_message);
 
 				$template->set('proceed_button', GMSG_UPDATE_BTN);
 
@@ -5392,7 +5372,11 @@ else
 
 
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
-                $_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;
+                if ($fv->checkFlag == 1) {
+                	$_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;				
+				} else {
+					$_POST["confirmed_paypal_email"] = null;
+				}
                 $pEmail = isset($_POST['email'])?$_POST['email']:'';
                 $banned_output = check_banned($pEmail, 2);
 
@@ -5467,7 +5451,8 @@ else
                     confirmed_paypal_email='" . $_POST["confirmed_paypal_email"] . "',
                     keep_alive='" . $keep_alive . "',
                     keep_alive_days='" . $keep_alive_days . "',
-                    pitch_text='" . $pitch_text . "'";
+                    pitch_text='" . $pitch_text . "',
+					include_clickthrough='" . $_POST["include_clickthrough"]."'";
 
                     if (isset($_POST["username"]) && $_POST["username"]) {
                         $mysql_update_query .= ", username='" . $_POST["username"] . "'";

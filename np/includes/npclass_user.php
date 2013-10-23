@@ -380,7 +380,7 @@ class npuser extends npcustom_field
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
                     deadline_type_value, time_period, certain_date, probid_user_id, end_date, active,
-                    cfc, clone_campaign, votes, disabled, parrent_id)
+                    cfc, clone_campaign, votes, disabled, parrent_id, inheritance_type)
                 SELECT CONCAT(username, '_cloned_', '{$campaign_id}'), password, email, end_date+'1', payment_mode, 0, max_credit,
                     salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
                     name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
@@ -393,7 +393,7 @@ class npuser extends npcustom_field
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
                     deadline_type_value, time_period, certain_date, probid_user_id, end_date+'2592000', active,
-                    cfc, 4, 0, disabled, user_id
+                    cfc, 4, 0, disabled, user_id, 'clone'
                 FROM ".NPDB_PREFIX."users WHERE user_id={$campaign_id}";
 
 //            var_dump($sql_clone_record_query); exit;
@@ -403,7 +403,7 @@ class npuser extends npcustom_field
             $generated_id = mysql_insert_id();
 
             $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX .
-                "users SET clone_campaign=3 WHERE user_id={$campaign_id}";
+                "users SET clone_campaign=3, cloned_times=IFNULL(cloned_times, 0)+1 WHERE user_id={$campaign_id}";
             $this->query($sql_update_campaign_query);
         }
         return $generated_id;
@@ -417,6 +417,10 @@ class npuser extends npcustom_field
     {
         $generated_id = 0;
         if ($campaign_id && is_numeric($campaign_id)) {
+            $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX .
+                "users SET copied_times=IFNULL(copied_times, 0)+1 WHERE user_id={$campaign_id}";
+            $this->query($sql_update_campaign_query);
+
             $sql_copy_query = "INSERT INTO " . NPDB_PREFIX . "users(username, password, email,
                     reg_date, payment_mode, balance, max_credit,
                     salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
@@ -430,7 +434,7 @@ class npuser extends npcustom_field
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     project_title, campaign_basic, description, founddrasing_goal, funding_type,
                     deadline_type_value, time_period, certain_date, probid_user_id, end_date, active,
-                    cfc, clone_campaign, votes, disabled, parrent_id)
+                    cfc, clone_campaign, votes, disabled, parrent_id, inheritance_type)
                 SELECT '', password, email, reg_date, payment_mode, 0, max_credit,
                     salt,  tax_account_type, tax_company_name, tax_reg_number, tax_apply_exempt,
                     name, address, city, country, state, zip_code, phone, birthdate, birthdate_year, newsletter,
@@ -441,9 +445,9 @@ class npuser extends npcustom_field
                     pg_gc_merchant_id, pg_gc_merchant_key, pg_amazon_access_key, pg_amazon_secret_key,
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
-                    project_title+' (copy)', campaign_basic, description, founddrasing_goal, funding_type,
+                    CONCAT(project_title, ' (copy ', copied_times, ')'), campaign_basic, description, founddrasing_goal, funding_type,
                     deadline_type_value, time_period, certain_date, probid_user_id, end_date, 0,
-                    cfc, clone_campaign, 0, disabled, parrent_id
+                    cfc, clone_campaign, 0, disabled, parrent_id, 'copy'
                 FROM ".NPDB_PREFIX."users WHERE user_id={$campaign_id}";
 
             $this->query($sql_copy_query);

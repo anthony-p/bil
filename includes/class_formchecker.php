@@ -10,6 +10,8 @@ class formchecker extends database
 {
 
     private $user_id = 0;
+    private $ignore  = 0;
+    public $checkFlag;
 
 	var $error_list;
 
@@ -28,8 +30,9 @@ class formchecker extends database
         $this->user_id = $user_id;
     }
 
-	function formchecker()
+	function formchecker($ignorePaypalCheck = 0)
 	{
+		$this->ignore = $ignorePaypalCheck;
 		$this->reset_error_list();
 	}
 
@@ -454,9 +457,14 @@ class formchecker extends database
                 file_exists('check_paypal_account.php') ?
                     include_once('check_paypal_account.php') : include_once('../check_paypal_account.php');
                 $response = checkPaypalAccount($value);
-                if ($response == "Success") {
+                if ($response == "VERIFIED") {
+                	$this->checkFlag = 1;
                     return true;
+                } elseif ($this->ignore) {
+                	$this->checkFlag = 0;
+                	return true;
                 } else {
+                	$this->checkFlag = 0;
                     $this->error_list[] = array("value" => $value, "msg" => $msg);
                     return false;
                 }

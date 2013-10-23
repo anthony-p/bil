@@ -611,6 +611,47 @@ function resetFormElement(e) {
     e.unwrap();
 }
 
+function ajaxFormSave(button, form) {
+    if (button.parent('div').hasClass('right')) {
+        button.before('<span id="loading-msg" style="float:left;">Saving...</span>');
+    } else button.after('<span id="loading-msg">Saving...</span>');
+    var loading_msg = $('#loading-msg');
+    $.ajax({
+        url:form.attr('action'),
+        type: "POST",
+        data: form.serialize() + "&ajaxsubmit=true",
+        success: function (response) {
+            response = $.parseJSON( response);
+            if (response.status == "success") {
+                loading_msg.remove();
+                if (button.parent('div').hasClass('right')) {
+                    button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
+                } else button.after('<span id="saved-msg">Saved!</span>');
+                var saved_msg = $('#saved-msg');
+                saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
+            } else {
+                var dialog = $('#confirm_dialog_box');
+                loading_msg.remove();
+                dialog.html(response.errors);
+                dialog.dialog({
+                    resizable: false,
+                    title: "Validation error",
+                    height: 250,
+                    width: 500,
+                    modal: true,
+                    buttons: [
+                        {
+                            text: "Ok",
+                            click: function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    ]
+                });
+            }
+        }
+    });
+}
 
 $(document).on('ready', function () {
     // load state list
