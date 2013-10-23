@@ -2,141 +2,86 @@
 #################################################################
 ## PHP Pro Bid v6.07															##
 ##-------------------------------------------------------------##
-## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
 session_start();
 
 define ('IN_SITE', 1);
-$GLOBALS['body_id'] = "site_fees";
+$GLOBALS['body_id'] = "content_pages";
 
 include_once ('includes/global.php');
-include_once ('includes/class_fees.php');
-include_once ('includes/class_shop.php');
+include_once ('includes/class_formchecker.php');
+
+include_once ('includes/functions_login.php');
+include_once ('includes/functions_item.php');
 
 include_once ('global_header.php');
 
-$template->set('site_fees_header_message', header5(MSG_BTN_SITE_FEES));
-if (eregi('reverse', $_REQUEST['category_id']))
-{
-	list($fee_type, $category_id) = @explode('|', $_REQUEST['category_id']);
-}
-else
-{
-	$fee_type = $_REQUEST['fee_type'];
-	$category_id = $_REQUEST['category_id'];
-}
-$category_id = intval($category_id);
-$category_id = ($fee_type == 'reverse' && $category_id > 0) ? (-1) * $category_id : $category_id;
-$template->set('category_id', $category_id);
-$template->set('fee_type', $fee_type);
+(string) $message_content = null;
 
-$fee_row = $db->get_sql_row("SELECT * FROM " . DB_PREFIX . "fees WHERE category_id = '" . $category_id . "'");
-$template->set('fee_row', $fee_row);
-      
-$template->set('reverse_fees', unserialize($fee_row['reverse_fees']));
 
-$show_categories_box = categories_list($category_id, 0, true, true, false);
-$template->set('show_categories_box', $show_categories_box);
 
-if ($show_categories_box)
-{
-	$template->set('fees_categories_box', categories_list($category_id, 0, true, true));
-}
 
-$sql_select_setup_fees = $db->query("SELECT * FROM " . DB_PREFIX . "fees_tiers WHERE 
-	fee_type='setup' AND category_id='" . $category_id . "' ORDER BY fee_from ASC");
 
-$is_setup_fee = $db->num_rows($sql_select_setup_fees);
-$template->set('is_setup_fee', $is_setup_fee);
 
-(string) $listing_fees_table = null;
-while ($tier_details = $db->fetch_array($sql_select_setup_fees)) 
-{
-	$background = ($counter++%2) ? 'c1' : 'c2';
-	
-	$listing_fees_table .= '<tr class="' . $background . '"> '.
-		'	<td width="100%">' . MSG_FROM . ' <b>' . $fees->display_amount($tier_details['fee_from']) . '</b> ' . MSG_TO . ' <b>' . $fees->display_amount($tier_details['fee_to']) . '</b></td> '.
-		'	<td nowrap>' . (($tier_details['calc_type'] == 'flat') ? $fees->display_amount($tier_details['fee_amount']) : $tier_details['fee_amount'] . '%') . '</td> '.
-		'</tr> ';
-}
+$message_content = '
 
-$template->set('listing_fees_table', $listing_fees_table);
-            
-$sql_select_stores = mysql_query("SELECT * FROM " . DB_PREFIX . "fees_tiers WHERE 
-	fee_type='store' ORDER BY fee_amount ASC"); 
+<div class="topic_content unu" id="topic_content_0" style="display: ;">
 
-$is_stores = $db->num_rows($sql_select_stores);
-$template->set('is_stores', $is_stores);
 
-(string) $store_subscriptions_table = null;
+<h3>What does it cost to use Bring It Local</h3>
+<blockquote>
+If you use Bring It Local for your fundraising the site will deduct a 5% fee from the total amount of funds you raise.
+<br><br>
 
-$shop = new shop();
-$shop->setts = &$setts;
-$shop->user_id = 0;
+<strong>Donations:</strong> Supporters send their donations directly to you via PayPal. At the same moment that you receive your donation the site will also automatically charge you 5% of the amount you receive.
+<br><br>
 
-while ($store_details = $db->fetch_array($sql_select_stores)) 
-{
-	$background = ($counter++%2) ? 'c1' : 'c2';
+If you don\'t raise any money Bring It Local will never cost you anything. 
+<br><br>
+<strong>Click through shopping:</strong> When users click through and make purchases from the online vendors we list on the site, you will receive a percentage of each transaction. This amount varies and is shown on the vendors page for each vendor.
+On average this is around 6% of the purchase amount. <br><br>So, here is a sample transaction:
+<br>
+-a supporter of your campaign clicks and makes a purchase for $100 from Amazon.<br>
+-you will receive 6% of that transaction or $6.00.<br>
+-Bring It Local will deduct a 5% fee on the total of the money you raise. So in this case it would amount to 5% of the $6.00 or $.30 (30 cents).
 
-	$store_subscriptions_table .= '<tr class="' . $background . '"> '.
-		'	<td class="contentfont"><strong>' . $store_details['store_name'] . '</strong></td> '.
-		'	<td class="contentfont">' . $shop->shop_description($store_details, false) . '</td> '.
-   	'</tr> ';
-}
 
-$template->set('store_subscriptions_table', $store_subscriptions_table);
 
-$sql_select_sale_fees = $db->query("SELECT * FROM " . DB_PREFIX . "fees_tiers WHERE 
-	fee_type='endauction' AND category_id='" . $category_id . "' ORDER BY fee_from ASC");
+<br><br>
+<strong>Garage sales:</strong> this is an upcoming feature of Bring It Local where we enable campaigns to set up and maintain ongoing garage sales where people buy and sell items from each other. We\'ll add more information here
+as this feature becomes available.
 
-$is_sale_fee = $db->num_rows($sql_select_sale_fees);
-$template->set('is_sale_fee', $is_sale_fee);
+</blockquote>
 
-(string) $sale_fees_table = null;
-while ($tier_details = $db->fetch_array($sql_select_sale_fees)) 
-{
-	$background = ($counter++%2) ? 'c1' : 'c2';
-	
-	$sale_fees_table .= '<tr class="' . $background . '"> '.
-		'	<td width="100%">' . MSG_FROM . ' <b>' . $fees->display_amount($tier_details['fee_from']) . '</b> ' . MSG_TO . ' <b>' . $fees->display_amount($tier_details['fee_to']) . '</b></td> '.
-		'	<td nowrap>' . (($tier_details['calc_type'] == 'flat') ? $fees->display_amount($tier_details['fee_amount']) : $tier_details['fee_amount'] . '%') . '</td> '.
-		'</tr> ';
-}
 
-$template->set('sale_fees_table', $sale_fees_table);
+</div>
 
-$sql_select_reverse_sale_fees = $db->query("SELECT * FROM " . DB_PREFIX . "fees_tiers WHERE 
-	fee_type='reverse_endauction' AND category_id='" . $category_id . "' ORDER BY fee_from ASC");
+'.
+'<script language="javascript">
+	var ie4 = false;
+	if(document.all) { ie4 = true; }
 
-$is_reverse_sale_fee = $db->num_rows($sql_select_reverse_sale_fees);
-$template->set('is_reverse_sale_fee', $is_reverse_sale_fee);
+	function getObject(id) { if (ie4) { return document.all[id]; } else { return document.getElementById(id); } }
+	function toggle(link, divId) {
+		var d = getObject(divId);
+		if (d.style.display == \'\') { d.style.display = \'none\'; }
+		else { d.style.display = \'\'; }
+	}
+</script>';
 
-(string) $reverse_sale_fees_table = null;
-while ($tier_details = $db->fetch_array($sql_select_reverse_sale_fees)) 
-{
-	$background = ($counter++%2) ? 'c1' : 'c2';
-	
-	$reverse_sale_fees_table .= '<tr class="' . $background . '"> '.
-		'	<td width="100%">' . MSG_FROM . ' <b>' . $fees->display_amount($tier_details['fee_from']) . '</b> ' . MSG_TO . ' <b>' . $fees->display_amount($tier_details['fee_to']) . '</b></td> '.
-		'	<td nowrap>' . (($tier_details['calc_type'] == 'flat') ? $fees->display_amount($tier_details['fee_amount']) : $tier_details['fee_amount'] . '%') . '</td> '.
-		'</tr> ';
-}
 
-$template->set('reverse_sale_fees_table', $reverse_sale_fees_table);
 
-if ($setts['enable_tax'])
-{
-	$tax = new tax();
-	$tax_settings = $db->get_sql_row("SELECT * FROM " . DB_PREFIX . "tax_settings WHERE site_tax = 1");
-	
-	$tax_message = $tax_settings['amount'] . '% ' . $tax_settings['tax_name'] . ' ' . MSG_WILL_BE_APPLIED_TO_USERS_FROM . ' ' . $tax->display_countries($tax_settings['countries_id']);
-	$template->set('tax_message', $tax_message);
-	$template->set('tax_amount', $tax_settings['amount']);
-}
+$topic_id = intval($_REQUEST['topic_id']);
 
-$template_output .= $template->process('site_fees.tpl.php');
+$message_header = 'Site Fees';
+
+$template->set('message_header', header5($message_header));
+$template->set('message_content', $message_content);
+
+$template_output .= $template->process('single_message.tpl.php');
 
 include_once ('global_footer.php');
 

@@ -11,8 +11,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <? echo (defined("IS_SHOP") && IS_SHOP == 1) ? $shop_header : $header_browse_auctions . ((IS_CATEGORIES != 1) ? '<br>' : '');?>
 <? echo (IS_CATEGORIES == 1) ? $categories_header : '';?>
 
-<div class="msg"><?= MSG_PARTNER_SUBSCR_INFORMATION; ?></div>
-
 <div class="alphabetically">
     <a href="/global_partners.php"><?= MSG_PARTNER_PAGINATION_ALL; ?></a>
     <?php foreach($alphabetically as $key=>$value): ?>
@@ -37,7 +35,10 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 	  --> 
 	  </th> 
       <th class="link"><span><?=MSG_PARTNER_NAME;?></span><?=$page_order_itemname;?></th>
-      <th class="percent"><?= MSG_PARTNER_PERCENT_GIVEBACK; ?></th>
+      <th class="percent">
+        <?= MSG_PARTNER_PERCENT_GIVEBACK; ?>
+        <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_PERCENT_GIVEBACK ?>" style="margin-left: 10px;">
+      </th>
       <th class="go"></th>
       <!--
       <td align="center"><?=MSG_START_BID;?><br><?=$page_order_start_price;?></td>
