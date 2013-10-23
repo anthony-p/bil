@@ -183,6 +183,7 @@ define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
 // tooltips
 define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your PayPal account. A green check indicates that your PayPal information has been successfully verified.');
 define('TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN', 'You can enter this information anytime before making your campaign live. You will need to have a verified PayPal account.');
+define('TOOLTIP_PERCENT_GIVEBACK', 'This is the approximate percent each vendor gives back. The actual amount can vary depending on the item and the overall volume of Bring It Local sourced purchases. The entire amount we collect goes to the campaign you support. Your individual contributions will show up in your Members Area under the My Contributions tab and on the campaign page you support under their Funders tab. There is usually a delay of several days before we get the information back from the vendor.');
 
 //additions
 define ('MSG_MY_EARNINGS_SUMMARY', 'Summary Report');
