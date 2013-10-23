@@ -55,7 +55,7 @@
     .resp-tab-content-active{width:100%; float:left; margin: 0 0 10px 0; padding:0 0 10px 0; border-bottom: 1px solid #c1c1c1;}
     .resp-tab-content aside.announcement .posted-mess{width:528px;}
 
-    .top-description .right p{display:none;}
+    .top-description .right p.responsive-hide{display:none;}
     .tabulation,.resp-tabs-container{width:100%;}
     .tabulation{margin-top: 25px;}
     .resp-tab-content-active{display: none;}

@@ -108,7 +108,7 @@
                     <div class="right">
                         <h2 class="clearfix"><? echo $campaign['project_title']; ?></h2>
 
-                        <p><? echo $campaign['description']; ?></p>
+                        <p class="responsive-hide"><? echo $campaign['description']; ?></p>
 
                         <p>
                             <input type="text" name="amount" id="amount"/> <strong>(USD)</strong>
