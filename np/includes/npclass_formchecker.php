@@ -23,7 +23,7 @@ class npformchecker extends npdatabase
 		'field_amount', 'field_smaller', 'field_greater', 'field_equal'
 	);
 
-	function npformchecker($status)
+	function npformchecker($status = 0)
 	{
 		$this->status = $status;
 		$this->reset_error_list();
