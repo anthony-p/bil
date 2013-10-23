@@ -145,6 +145,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
                 NPDB_PREFIX . "users.project_title, " .
+                NPDB_PREFIX . "users.votes, " .
                 " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
                 "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
@@ -169,6 +170,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
                 NPDB_PREFIX . "users.founddrasing_goal, " .
                 NPDB_PREFIX . "users.project_title, " .
+                NPDB_PREFIX . "users.votes, " .
                 " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
                 "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
@@ -189,6 +191,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.founddrasing_goal, " .
                 NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
+                NPDB_PREFIX . "users.votes, " .
                 " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
                 "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND " . NPDB_PREFIX .
@@ -202,6 +205,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.founddrasing_goal, " .
                 NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
+                NPDB_PREFIX . "users.votes, " .
                 " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
                 " FROM " . NPDB_PREFIX . "users, bl2_users " .
                 "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND " . NPDB_PREFIX .
@@ -219,6 +223,7 @@ class npuser extends npcustom_field
                 NPDB_PREFIX . "users.founddrasing_goal, " .
                 NPDB_PREFIX . "users.project_title, " .
                 NPDB_PREFIX . "users.payment, " .
+                NPDB_PREFIX . "users.votes, " .
                 " bl2_users.first_name, bl2_users.organization, bl2_users.id, bl2_users.last_name, bl2_users.email FROM " .
                 NPDB_PREFIX . "users, bl2_users WHERE " . NPDB_PREFIX .
                 "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" .
@@ -493,7 +498,7 @@ class npuser extends npcustom_field
         if (!isset($user_details['password'])) {
             $user_details['password'] = "password";
         }
-        $password_hashed = password_hash($user_details['password'], $salt);
+        $password_hash_biled = password_hash_bil($user_details['password'], $salt);
 
         $payment_mode = ($this->setts['account_mode_personal'] == 1) ? $this->setts['init_acc_type'] : $this->setts['account_mode'];
         $balance = ($payment_mode == 2) ? ((-1) * $this->setts['init_credit']) : 0;
@@ -664,7 +669,7 @@ class npuser extends npcustom_field
 			user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
 			project_title, campaign_basic, description, founddrasing_goal, funding_type,
 			deadline_type_value, time_period, certain_date, probid_user_id, end_date, active) VALUES
-			('" . $user_details['username'] . "', '" . $password_hashed . "',	'" . $user_details['email'] . "',
+			('" . $user_details['username'] . "', '" . $password_hash_biled . "',	'" . $user_details['email'] . "',
 			" . CURRENT_TIME . ", " . $payment_mode . ",	'" . $balance . "', '" . $max_credit . "',
 			'" . $salt . "', '" . $user_details['tax_account_type'] . "', '" . $user_details['tax_company_name'] . "',
 			'" . $user_details['tax_reg_number'] . "', '" . $tax_apply_exempt . "', '" . $user_details['name'] . "',
@@ -830,8 +835,8 @@ class npuser extends npcustom_field
         if ($new_password)
         {
             $salt = $this->create_salt();
-            $password_hashed = password_hash($new_password, $salt);
-            $sql_update_query .= ", password='" . $password_hashed . "', salt='" . $salt . "'";
+            $password_hash_biled = password_hash_bil($new_password, $salt);
+            $sql_update_query .= ", password='" . $password_hash_biled . "', salt='" . $salt . "'";
         }
 
         $sql_update_query .= " WHERE user_id=" . $user_id;
