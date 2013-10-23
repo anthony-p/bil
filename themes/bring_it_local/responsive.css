@@ -38,7 +38,7 @@
     .content .nav-content .viewall { width: 100%; float: left; border-bottom: 2px solid #dedede; padding-bottom: 3px; }
     .content .nav-content .border,
     .content .nav-content span{display: none;}
-    .content .nav-content ul.list li .campaign-details span{display: block;}
+    .content .nav-content ul.list li .campaign-details span{display: inline-block;}
     footer .copyright .innerContainer .copiright-info{display: none;}
     #footer .bottomLinks .column{width:145px; margin: 0;}
     #footer .bottomLinks .follow, #footer .bottomLinks .share, #footer .bottomLinks .language{float:none; margin: 1% auto;}
