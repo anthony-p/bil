@@ -13,7 +13,7 @@ $yesterdey = date("Y-m-j", time() - 60 * 60 * 24);
 $start_date = $yesterdey;//"2012-09-1";//$yesterdey;//"2012-06-30";
 $end_date = $yesterdey;//"2012-10-14";//$yesterdey;//"012-09-16";
 //Cookies dir
-$dir = '/tmp/';
+$dir = '/tmp/bil/amazon/';
 //$dir = dirname(__FILE__)."/";
 
 //Reports dir
@@ -145,16 +145,17 @@ try{
     //-------------------------------------------------------------------------
     //------------------- Amazon Last Update Time -----------------------------
 
-    $options[CURLOPT_URL] = $url."/gp/associates/network/reports/report.html?".$arg;
-    $options[CURLOPT_FOLLOWLOCATION] = true;
-    $options[CURLOPT_RETURNTRANSFER] = true;
-    curl_setopt_array($ch, $options);
-    $result = curl_exec($ch);    
-    $err = curl_errno($ch);
-    $errmsg = curl_error($ch);
-    $info = curl_getinfo($ch);
-    $content = curl_multi_getcontent($ch);
+    // $options[CURLOPT_URL] = $url."/gp/associates/network/reports/report.html?".$arg;
+    // $options[CURLOPT_FOLLOWLOCATION] = true;
+    // $options[CURLOPT_RETURNTRANSFER] = true;
+    // curl_setopt_array($ch, $options);
+    // $result = curl_exec($ch);    
+    // $err = curl_errno($ch);
+    // $errmsg = curl_error($ch);
+    // $info = curl_getinfo($ch);
+    // $content = curl_multi_getcontent($ch);
 
+	$content = file_get_contents($dir.'report.txt');
 //    $content = file_get_contents("report.txt");
     $periodTime = $content;
     $periodTime = trim(substr($periodTime,0,strpos($periodTime,"\n")));
@@ -206,20 +207,22 @@ try{
         unset($params['submit.download_CSV']);
     //-------------------------------------------------------------------------
 
-    $params['submit.download_XML'] = 'Download report (XML)';
-    $arg = getPostFields($params);
-    $options[CURLOPT_URL] = $url."/gp/associates/network/reports/report.html?".$arg;
-    $options[CURLOPT_FOLLOWLOCATION] = true;
-    $options[CURLOPT_RETURNTRANSFER] = true;
-    curl_setopt_array($ch, $options);
-    $result = curl_exec($ch);
-    $err = curl_errno($ch);
-    $errmsg = curl_error($ch);
-    $info = curl_getinfo($ch);
-    $content = curl_multi_getcontent($ch);
+    // $params['submit.download_XML'] = 'Download report (XML)';
+    // $arg = getPostFields($params);
+    // $options[CURLOPT_URL] = $url."/gp/associates/network/reports/report.html?".$arg;
+    // $options[CURLOPT_FOLLOWLOCATION] = true;
+    // $options[CURLOPT_RETURNTRANSFER] = true;
+    // curl_setopt_array($ch, $options);
+    // $result = curl_exec($ch);
+    // $err = curl_errno($ch);
+    // $errmsg = curl_error($ch);
+    // $info = curl_getinfo($ch);
+    // $content = curl_multi_getcontent($ch);
 
-    //Close curl session
-    curl_close($ch);
+    // Close curl session
+    // curl_close($ch);
+	
+	$content = file_get_contents($dir.'report.xml');
     //-------------------------------------------------------------------------
 
     $start_date = date('Y-m-d 00:00:00', strtotime(implode('-', $start_date)));
@@ -261,7 +264,7 @@ if(count($user_arr)){
 echo "Done import to Database XML report ...<br>";
 
 if(!is_array($start_date) && !is_array($end_date)){
-    $csvFileNewName =  "/tmp/".str_replace("-","",substr($start_date,0,10))."-".str_replace("-","",substr($end_date,0,10)).".csv";
+    $csvFileNewName =  $dir.str_replace("-","",substr($start_date,0,10))."-".str_replace("-","",substr($end_date,0,10)).".csv";
     if($csvFileNewName != $csvFile)
         rename($csvFile,$csvFileNewName);
 }
@@ -334,7 +337,6 @@ function getOneTag($xml)
             
             ##get any tracks that happen before consolidated date and  within a week.
             $s1 = "select id, click_date from shop_tracking_links where (click_date >= '".$start_date."' and click_date < '".$end_date."') and target_url like '%amazon%' and tracking_id='".$tracking_id."' order by click_date desc  limit 0,1";
-
             unset($sql_select);
             unset($row);
             $sql_select= mysql_query($s1);
@@ -342,7 +344,7 @@ function getOneTag($xml)
             {
                 $id = $row["id"];
             }
-
+			
             if($id){                
 //                $s2 = "select * from shop_tracking_links where id=". $id;
                 $s2 = "select shop_tracking_links.*, probid_users.name as user_name, np_users.tax_company_name as npuser_name from shop_tracking_links LEFT JOIN probid_users ON shop_tracking_links.user_id  = probid_users.user_id LEFT JOIN np_users ON shop_tracking_links.np_userid=np_users.user_id where id=". $id;
@@ -369,11 +371,10 @@ function getOneTag($xml)
                     else
                         $user_name = "guest shopper";
                     $npuser_name = $row["npuser_name"];
-                }                
-
-                $tag_exist = TagExist($tracking_id, $user_id, $click_date);
-
-                if(!$tag_exist){
+                }
+				
+                // $tag_exist = TagExist($tracking_id, $user_id, $click_date);
+                // if(!$tag_exist){
                     $fields = array();
                     $fields[]="$id";//unique id
                     $fields[]="$tracking_id";//tracking link
@@ -433,55 +434,55 @@ function getOneTag($xml)
                     if($orderedUnit == 0 || $orderedUnit == $shippedUnits)               
                         markFree($tracking_id);
                     
-                }elseif($track_timestamp != 0){
+                // }elseif($track_timestamp != 0){
 
-                    $fields = array();
-                    $sales = (float)$sales+(float)$tag_exist["sales"];
-                    if($commision > 0 && $sales > 0){
-                        //$np_share = round($commision/2,2);
-						$np_share = $commision;
-                        //$bil_share = round($commision/2,2);
-                        $pct = (round(($commision/$sales)*100,2))."%";
-                        //$pct_giveback = round($pct/2,2)."%";
-						$pct_giveback = $pct;
-                    }
-                    $fields[]="$id";//unique id
-                    $fields[]="$tracking_id";//tracking link
-                    $fields[]="$user_id";//site user
-                    $fields[]="$user_name";//user name
-                    $fields[]="$click_date";//click date
-                    $fields[]="$target_url";//vendor
-                    $fields[]="$npuser_id";//np-id
-                    $fields[]="$npuser_name";//np-name
-                    $fields[]="$sales";//Sales
-                    $fields[]="$commision";//Commission
-                    $fields[]=$pct;//pct
-                    $fields[]=$pct_giveback;//pct giveback
-                    $fields[]=$np_share;//np-share
-                    $fields[]=$bil_share;//bil-share                    
+                    // $fields = array();
+                    // $sales = (float)$sales+(float)$tag_exist["sales"];
+                    // if($commision > 0 && $sales > 0){
+                        // $np_share = round($commision/2,2);
+						// $np_share = $commision;
+                        // $bil_share = round($commision/2,2);
+                        // $pct = (round(($commision/$sales)*100,2))."%";
+                        // $pct_giveback = round($pct/2,2)."%";
+						// $pct_giveback = $pct;
+                    // }
+                    // $fields[]="$id";//unique id
+                    // $fields[]="$tracking_id";//tracking link
+                    // $fields[]="$user_id";//site user
+                    // $fields[]="$user_name";//user name
+                    // $fields[]="$click_date";//click date
+                    // $fields[]="$target_url";//vendor
+                    // $fields[]="$npuser_id";//np-id
+                    // $fields[]="$npuser_name";//np-name
+                    // $fields[]="$sales";//Sales
+                    // $fields[]="$commision";//Commission
+                    // $fields[]=$pct;//pct
+                    // $fields[]=$pct_giveback;//pct giveback
+                    // $fields[]=$np_share;//np-share
+                    // $fields[]=$bil_share;//bil-share                    
 
-                    $fp = fopen($csvFile, 'a+');
-                    fputcsv($fp,$fields);
+                    // $fp = fopen($csvFile, 'a+');
+                    // fputcsv($fp,$fields);
 
-                    $date = substr($click_date, 0, 10);
-//                    $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'" AND  `click date`  = "'.$date.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
-                    $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
+                    // $date = substr($click_date, 0, 10);
+                   // $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'" AND  `click date`  = "'.$date.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
+                    // $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
 
-                    $sql_select= mysql_query($sql);
-                    $id = null;
-                    if($sql_select){
-                        while ($row = mysql_fetch_assoc($sql_select))
-                        {
-                            $id = $row["ID"];
-                        }
-                    }
-//                    $sql = "UPDATE  `vendor_click_reports` SET  `user name` =  'guest shoppers', `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' WHERE  `unique id` =  '$id' LIMIT 1";
-                    $today = date("Y-m-j", time() - 86400);
-                    $sql = "UPDATE  `vendor_click_reports` SET  `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' , `last_update` = '$today' WHERE  `unique id` =  '$id' LIMIT 1";
-                    mysql_query($sql);
-                    if($orderedUnit == 0 || $orderedUnit == $shippedUnits)               
-                        markFree($tracking_id);
-                }
+                    // $sql_select= mysql_query($sql);
+                    // $id = null;
+                    // if($sql_select){
+                        // while ($row = mysql_fetch_assoc($sql_select))
+                        // {
+                            // $id = $row["ID"];
+                        // }
+                    // }
+                   // $sql = "UPDATE  `vendor_click_reports` SET  `user name` =  'guest shoppers', `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' WHERE  `unique id` =  '$id' LIMIT 1";
+                    // $today = date("Y-m-j", time() - 86400);
+                    // $sql = "UPDATE  `vendor_click_reports` SET  `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' , `last_update` = '$today' WHERE  `unique id` =  '$id' LIMIT 1";
+                    // mysql_query($sql);
+                    // if($orderedUnit == 0 || $orderedUnit == $shippedUnits)               
+                        // markFree($tracking_id);
+                // }
             }
         }
     }
