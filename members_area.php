@@ -5113,7 +5113,7 @@ else
                 $userCampaigns[] = $query_result;
             }
 
-            $template->set("page_selected",$page_selected);
+            $template->set("page_selected",$page_nr);
             $template->set("total_pages",$total_pages);
             $template->set("info_contribution_campaigns",$userCampaigns);
             $members_area_page_content = $template->process('members_area_contributions.tpl.php');
@@ -5171,49 +5171,6 @@ else
             $template->set('members_area_page_content', $members_area_page_content);
 		}
     }
-    /*end earning page*/
-
-
-    /**
-     * this tab is removed because is specificated in task
-     */
-    /*if ($page == 'clone_campaigns')
-    {
-        if ($section == 'main')
-        {
-            $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users WHERE np_users.parrent_id<>0 AND np_users.probid_user_id=" . $session->value('user_id')."");
-
-            $nrElement = mysql_num_rows($campaigns_result);
-
-            $per_page = 10;
-            $total_pages = ceil(($nrElement-1)/$per_page);
-
-            if (isset($_GET['page_selected'])) {
-                $page_nr = $_GET['page_selected'];
-            } else {
-                $page_nr = 1;
-            }
-            $start = ($page_nr - 1)*$per_page;
-
-            $campaigns_query_result = $db->query("SELECT bl2_users.first_name, np_users.probid_user_id, bl2_users.last_name, np_users.project_title
-                FROM np_users LEFT JOIN bl2_users ON bl2_users.id = np_users.probid_user_id
-                WHERE np_users.probid_user_id=" . $session->value('user_id')."
-                AND np_users.parrent_id<>0 limit $start, $per_page");
-
-            $userCampaigns = array();
-            while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
-                $userCampaigns[] = $query_result;
-            }
-            var_dump($userCampaigns);
-
-            $template->set("page_selected",$page_selected);
-            $template->set("total_pages",$total_pages);
-            $template->set("info_clone_campaigns",$userCampaigns);
-            $members_area_page_content = $template->process('members_area_clone_campaigns.tpl.php');
-            $template->set('members_area_page_content', $members_area_page_content);
-
-        }
-    }*/
 
     if ($page == 'campaigns') /* BEGIN -> CAMPAIGNS PAGE */
     {
@@ -5248,8 +5205,6 @@ else
         }
 
         if ($section == 'edit') {
-            //include('includes/class_npuser.php');
-
             include_once ('includes/global.php');
             include_once ('np/includes/npclass_formchecker.php');
             include_once('includes/generate_image_thumbnail.php');
@@ -5807,14 +5762,11 @@ else
 
 	$template->set('cell_width', $cell_width);
 	
-	//if ($page != 'summary')
-	//{
 		$template->change_path('themes/' . $setts['default_theme'] . '/templates/');
 		$members_area_header_menu = $template->process('members_area_header_menu.tpl.php');
 		$template->change_path('templates/');
 		
 		$template->set('members_area_header_menu', $members_area_header_menu);## PHP Pro Bid v6.00 end - header members area
-	//}
 
 	$template_output .= $template->process('members_area.tpl.php');
 
