@@ -127,7 +127,7 @@ class projectVotes extends custom_field
     function vote()
     {
         $success = false;
-        $sql_insert_project_votes = $sql_update_votes_number_query = $insert_result = $update_result = false;
+//        $sql_insert_project_votes = $sql_update_votes_number_query = $insert_result = $update_result = false;
         if ($this->user_id && $this->campaign_id) {
             $voted = $this->checkVoted();
             if (!$voted) {
@@ -145,16 +145,16 @@ class projectVotes extends custom_field
         return array(
             "success" => $success,
             "vote_us" => $this->votes_element,
-            "queries" => array(
-                "insert" => array(
-                    "query" => $sql_insert_project_votes,
-                    "result" =>$insert_result,
-                ),
-                "update" => array(
-                    "query" => $sql_update_votes_number_query,
-                    "result" => $update_result,
-                ),
-            ),
+//            "queries" => array(
+//                "insert" => array(
+//                    "query" => $sql_insert_project_votes,
+//                    "result" =>$insert_result,
+//                ),
+//                "update" => array(
+//                    "query" => $sql_update_votes_number_query,
+//                    "result" => $update_result,
+//                ),
+//            ),
         );
     }
 	
