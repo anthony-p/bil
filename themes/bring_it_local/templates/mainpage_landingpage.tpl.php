@@ -169,7 +169,7 @@ $featured_columns = 14;
                     <span><?=MSG_MAKE_DONATION?></span>
                 </a>
             <?php endif; ?>
-			<?php if($compaigns['include_clickthrough'] == 1): ?>
+			<?php if(isset($compaigns['include_clickthrough']) && $compaigns['include_clickthrough'] == 1): ?>
             <a href="/global_partners.php<?php /*
             if (isset($compaigns['url']) && $compaigns['url']) {
                 if (strpos($compaigns['url'], 'http') === 0) {
@@ -213,7 +213,7 @@ $featured_columns = 14;
                 <li><?=MSG_COMMENTS?></li>
                 <li><?=MSG_FUNDERS?></li>
                 <li><?=MSG_REWARDS?></li>
-				<?php if($compaigns['include_clickthrough'] == 1): ?>
+				<?php if(isset($compaigns['include_clickthrough']) && $compaigns['include_clickthrough'] == 1): ?>
                 <li<?= $compaigns['cfc'] == 0 ? ' class="last"': ''?>><?=MSG_WAYS_TO_SUPPORT?></li>
 				<?php endif; ?>
 				<?php if($compaigns['cfc'] == 1): ?>
@@ -237,7 +237,7 @@ $featured_columns = 14;
                 <div class="tab-step">
                     <?php echo $cRewards; ?>
                 </div>
-				<?php if($compaigns['include_clickthrough'] == 1): ?>
+				<?php if(isset($compaigns['include_clickthrough']) && $compaigns['include_clickthrough'] == 1): ?>
                 <div class="tab-step">
                     <?php echo $cSupport; ?>
                 </div>

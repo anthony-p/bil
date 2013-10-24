@@ -153,6 +153,7 @@ class projectVotes extends custom_field
 		$sql = "SELECT COUNT(v.id) AS campaign_votes_number, c.project_title AS campaign_title, c.username AS campaign_url, MONTH(FROM_UNIXTIME(v.date)) AS month, YEAR(FROM_UNIXTIME(v.date)) AS year FROM project_votes v JOIN np_users c ON c.user_id = v.campaign_id GROUP BY v.campaign_id, month, year HAVING month='".$month."' AND year='".$year."' ORDER BY campaign_votes_number DESC LIMIT ".$start.", ".$end;
 		$project_votes_query_result = $this->query($sql);
 
+        $project_votes = array();
 		while ($query_result =  mysql_fetch_array($project_votes_query_result)) {
 			$project_votes[] = $query_result;
 		}
