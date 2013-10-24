@@ -134,7 +134,7 @@ class projectVotes extends custom_field
                 $sql_insert_project_votes = "INSERT INTO project_votes(user_id, campaign_id, date) VALUES(" .
                     $this->user_id . ", " . $this->campaign_id . ", " . time() . ")";
                 $insert_result = $this->query($sql_insert_project_votes);
-                $sql_update_votes_number_query = "UPDATE " . NPDB_PREFIX . "users SET votes=votes + 1
+                $sql_update_votes_number_query = "UPDATE " . NPDB_PREFIX . "users SET votes=IFNULL(votes, 0) + 1
                 WHERE user_id={$this->campaign_id}";
 
                 $update_result = $this->query($sql_update_votes_number_query);
