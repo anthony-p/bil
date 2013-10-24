@@ -3706,4 +3706,4 @@ ALTER TABLE `np_users`
   ADD COLUMN `cloned_times` INT NULL DEFAULT 0  AFTER `copied_times` ,
   ADD COLUMN `inheritance_type` VARCHAR(45) NULL  AFTER `cloned_times` ;
 
-
+alter table `funders` add column `source` enum('donation','click through','auction') DEFAULT 'donation' NOT NULL after `amount`;
