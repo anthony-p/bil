@@ -274,12 +274,7 @@ if (!defined('INCLUDED')) {
                             </h3>
                             <?php if (isset($campaign['confirmed_paypal_email']) && $campaign['confirmed_paypal_email']): ?>
                                  <span class="checked"></span>
-                            <?php endif; ?>
-                            <div class="account-row">
-                                <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> *</label>
-                                <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?= $campaign['pg_paypal_email']; ?>" size="40"/>
-                                <span><?= MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL; ?></span>
-                            </div>
+                            <?php endif; ?>                            
                             <div class="account-row">
                                 <label><?= MSG_PG_PAYPAL_FIRST_NAME; ?> *</label>
                                 <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name" value="<?= $campaign['pg_paypal_first_name']; ?>" size="40"/>
@@ -289,6 +284,11 @@ if (!defined('INCLUDED')) {
                                 <label><?= MSG_PG_PAYPAL_LAST_NAME; ?> *</label>
                                 <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name" value="<?= $campaign['pg_paypal_last_name']; ?>" size="40"/>
                                 <span><?= MSG_PG_PAYPAL_LAST_NAME_EXPL; ?></span>
+                            </div>
+                            <div class="account-row">
+                                <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> *</label>
+                                <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?= $campaign['pg_paypal_email']; ?>" size="40"/>
+                                <span><?= MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL; ?></span>
                             </div>
                         </div>   
                         <div class="next">
