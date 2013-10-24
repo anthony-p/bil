@@ -5424,7 +5424,7 @@ else
                     }
                     $mysql_update_query = "UPDATE np_users SET
                     project_category='" . $_POST["project_category"] . "',
-                    campaign_basic='" . $_POST["campaign_basic"] . "',
+                    campaign_basic='" . html_entity_decode($_POST["campaign_basic"]) . "',
                     project_title='" . $_POST["project_title"] . "',
                     description='" . $_POST["project_short_description"] . "',
                     founddrasing_goal='" . $_POST["founddrasing_goal"] . "',

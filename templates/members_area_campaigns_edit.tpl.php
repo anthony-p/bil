@@ -59,6 +59,7 @@ if (!defined('INCLUDED')) {
         $('input[type="submit"]').each(function() {
             $(this).on('click', function(e){
                 e.preventDefault();
+                $("#campaign_basic").val(tinymce.get('campaign_basic').getContent());
                 var formElem = $('#formElem'),
                     button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
