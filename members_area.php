@@ -5098,7 +5098,6 @@ else
             $query = $query." ORDER BY funders.created_at DESC limit $start, $per_page";
             
             $campaigns_query_result = $db->query($query);
-            
             /*
             $campaigns_query_result = $db->query(
                 "SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at,
