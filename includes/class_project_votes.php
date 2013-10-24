@@ -37,7 +37,7 @@ class projectVotes extends custom_field
 
     function checkDonated()
     {
-//        return true;
+        return true;
         if ($this->user_id) {
             return $this->getField("SELECT count(*) FROM funders WHERE user_id=".$this->user_id .
             " and MONTH(FROM_UNIXTIME(created_at)) = MONTH(NOW()) and YEAR(FROM_UNIXTIME(created_at)) = YEAR(NOW()) AND DAY(FROM_UNIXTIME(created_at)) = DAY(NOW())");
@@ -127,15 +127,17 @@ class projectVotes extends custom_field
     function vote()
     {
         $success = false;
+        $sql_insert_project_votes = $sql_update_votes_number_query = $insert_result = $update_result = false;
         if ($this->user_id && $this->campaign_id) {
             $voted = $this->checkVoted();
             if (!$voted) {
-                $this->query("INSERT INTO project_votes(user_id, campaign_id, date) VALUES(" .
-                    $this->user_id . ", " . $this->campaign_id . ", " . time() . ")");
+                $sql_insert_project_votes = "INSERT INTO project_votes(user_id, campaign_id, date) VALUES(" .
+                    $this->user_id . ", " . $this->campaign_id . ", " . time() . ")";
+                $insert_result = $this->query($sql_insert_project_votes);
                 $sql_update_votes_number_query = "UPDATE " . NPDB_PREFIX . "users SET votes=votes + 1
                 WHERE user_id={$this->campaign_id}";
 
-                $this->query($sql_update_votes_number_query);
+                $update_result = $this->query($sql_update_votes_number_query);
                 $this->votes_element = '<h5>' . $this->getVotesByCampaign() . ' ' . MSG_VOTES_NUMBER . '</h5>';
                 $success = true;
             }
@@ -143,6 +145,16 @@ class projectVotes extends custom_field
         return array(
             "success" => $success,
             "vote_us" => $this->votes_element,
+            "queries" => array(
+                "insert" => array(
+                    "query" => $sql_insert_project_votes,
+                    "result" =>$insert_result,
+                ),
+                "update" => array(
+                    "query" => $sql_update_votes_number_query,
+                    "result" => $update_result,
+                ),
+            ),
         );
     }
 	
