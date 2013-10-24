@@ -1,6 +1,5 @@
 <div class="contributions_page">
     <h2><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_CONTRIBUTION; ?></h2>
-
     <table>
         <tr class="table_header">
             <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_DATE; ?></h4></td>
