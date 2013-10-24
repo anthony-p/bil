@@ -608,17 +608,16 @@ if (!defined('INCLUDED')) {
                     <div class="account-row campaign-cron">
                         <label><?= MSG_CRON_CONFIG ?></label>
 
-                        <div class="radio extend-params">
+                        <div class="radio extend-params">          
                             <input type="radio" name="clone_campaign" value="2" />
                             <label><?= MSG_EXTENDS_DATE_EXISTING_CAMPAIGN ?>&nbsp;</label>
-
                             <input type="text" name="keep_alive_days" id="keep_alive_days" />
                             <label><?= MSG_DAYS ?></label>
                             <img src="/images/question_help.png" height="16" alt="help"
                                  title="<?= MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP ?>"
                                  style="margin-left: 10px;">
-                        </div>
-                        <div class="radio">
+                        </div>                                                                                                             
+                        <div class="radio">                                                                                                
                             <input type="radio" name="clone_campaign" value="0" checked="checked" />
                             <label><?= MSG_LET_CAMPAIGN_CLOSE ?></label>
                             <img src="/images/question_help.png" height="16" alt="help" title="<?= MSG_LET_CAMPAIGN_CLOSE ?>"

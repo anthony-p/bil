@@ -50,7 +50,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <input type="file" name="avatar" id="avatar" accept="image/*" multiple title="avatar file" />
             <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
             <input type="hidden" name="curr_avatar" value="<?=$user_details['avatar']?>" />
-			<input type="submit" name="form_aboutme_save" value="<?=MSG_SAVE_CHANGES;?>" style="float: none; margin: 72px 0 0 25px;" />
+			<input type="submit" name="form_aboutme_save" value="<?=MSG_UPLOAD_FILE;?>" style="float: none; margin: 72px 0 0 25px;" />
         </td>
     </tr>
     <tr class="info_tittle">
