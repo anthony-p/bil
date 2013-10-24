@@ -5100,7 +5100,7 @@ else
             $campaigns_query_result = $db->query($query);
             /*
             $campaigns_query_result = $db->query(
-                "SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at,
+                "SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.source, funders.created_at,
                                     funders.user_id, np_users.project_title, np_users.confirmed_paypal_email
                                     FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id
                                     LEFT JOIN bl2_users ON bl2_users.id = funders.user_id

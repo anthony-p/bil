@@ -7,6 +7,7 @@
             <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_AMOUNT; ?></h4></td>
             <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_VISIBILITY; ?></h4></td>
             <!--<td><h4><? //MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS; ?></h4></td>-->
+			<td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_SOURCE; ?></h4></td>
         </tr>
         <?php foreach ($info_contribution_campaigns as $_campaign) : ?>
             <tr>
@@ -33,6 +34,9 @@
                     <?php //endif; ?>
                 </td>
 				-->
+				<td style="text-transform: capitalize;">
+                    <?=$_campaign['source']?>
+                </td>
             </tr>
         <?php endforeach;?>
     </table>
