@@ -130,7 +130,7 @@ include_once('includes/grab_video_thumbnail.php');
             </div>
             <div class="campaign-details">
                 <span class="price">$<?php echo isset ($campaign["payment"]) ? $campaign["payment"] : '0' ?></span>
-                <span class="votes">Votes:<?php if(!empty($row['votes']))  {echo $row['votes'];} else {echo '0';}?></span>
+                <span class="votes">Votes:<?php if(!empty($campaign['votes']))  {echo $campaign['votes'];} else {echo '0';}?></span>
                 <span class="day"><?php echo isset ($campaign["days_left"]) ? $campaign["days_left"] : '0' ?><span><?=MSG_DAYS_LEFT?></span></span>
                 <div class="clear"></div>
                 <?php

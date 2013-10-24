@@ -59,6 +59,7 @@ if (!defined('INCLUDED')) {
         $('input[type="submit"]').each(function() {
             $(this).on('click', function(e){
                 e.preventDefault();
+                $("#campaign_basic").val(tinymce.get('campaign_basic').getContent());
                 var formElem = $('#formElem'),
                     button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
@@ -274,12 +275,7 @@ if (!defined('INCLUDED')) {
                             </h3>
                             <?php if (isset($campaign['confirmed_paypal_email']) && $campaign['confirmed_paypal_email']): ?>
                                  <span class="checked"></span>
-                            <?php endif; ?>
-                            <div class="account-row">
-                                <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> *</label>
-                                <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?= $campaign['pg_paypal_email']; ?>" size="40"/>
-                                <span><?= MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL; ?></span>
-                            </div>
+                            <?php endif; ?>                            
                             <div class="account-row">
                                 <label><?= MSG_PG_PAYPAL_FIRST_NAME; ?> *</label>
                                 <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name" value="<?= $campaign['pg_paypal_first_name']; ?>" size="40"/>
@@ -289,6 +285,11 @@ if (!defined('INCLUDED')) {
                                 <label><?= MSG_PG_PAYPAL_LAST_NAME; ?> *</label>
                                 <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name" value="<?= $campaign['pg_paypal_last_name']; ?>" size="40"/>
                                 <span><?= MSG_PG_PAYPAL_LAST_NAME_EXPL; ?></span>
+                            </div>
+                            <div class="account-row">
+                                <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> *</label>
+                                <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?= $campaign['pg_paypal_email']; ?>" size="40"/>
+                                <span><?= MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL; ?></span>
                             </div>
                         </div>   
                         <div class="next">
@@ -608,20 +609,17 @@ if (!defined('INCLUDED')) {
                         <label><?= MSG_CRON_CONFIG ?></label>
 
                         <div class="radio extend-params">
-                            <input type="radio" name="clone_campaign" value="2"
-                                <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 2)) ? "checked" : ''; ?>>
+                            <input type="radio" name="clone_campaign" value="2" />
                             <label><?= MSG_EXTENDS_DATE_EXISTING_CAMPAIGN ?>&nbsp;</label>
 
-                            <input type="text" name="keep_alive_days" id="keep_alive_days"
-                                   value="<?php echo (isset($campaign["keep_alive_days"]) && $campaign["keep_alive_days"]) ? $campaign["keep_alive_days"] : '30'; ?>"/>
+                            <input type="text" name="keep_alive_days" id="keep_alive_days" />
                             <label><?= MSG_DAYS ?></label>
                             <img src="/images/question_help.png" height="16" alt="help"
                                  title="<?= MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP ?>"
                                  style="margin-left: 10px;">
                         </div>
                         <div class="radio">
-                            <input type="radio" name="clone_campaign" value="0"
-                                <?php echo (isset($campaign["clone_campaign"]) && ($campaign["clone_campaign"] == 0)) ? "checked" : ''; ?>>
+                            <input type="radio" name="clone_campaign" value="0" checked="checked" />
                             <label><?= MSG_LET_CAMPAIGN_CLOSE ?></label>
                             <img src="/images/question_help.png" height="16" alt="help" title="<?= MSG_LET_CAMPAIGN_CLOSE ?>"
                                  style="margin-left: 10px;">

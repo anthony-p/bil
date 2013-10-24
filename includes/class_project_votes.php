@@ -127,15 +127,17 @@ class projectVotes extends custom_field
     function vote()
     {
         $success = false;
+//        $sql_insert_project_votes = $sql_update_votes_number_query = $insert_result = $update_result = false;
         if ($this->user_id && $this->campaign_id) {
             $voted = $this->checkVoted();
             if (!$voted) {
-                $this->query("INSERT INTO project_votes(user_id, campaign_id, date) VALUES(" .
-                    $this->user_id . ", " . $this->campaign_id . ", " . time() . ")");
-                $sql_update_votes_number_query = "UPDATE " . NPDB_PREFIX . "users SET votes=votes + 1
+                $sql_insert_project_votes = "INSERT INTO project_votes(user_id, campaign_id, date) VALUES(" .
+                    $this->user_id . ", " . $this->campaign_id . ", " . time() . ")";
+                $insert_result = $this->query($sql_insert_project_votes);
+                $sql_update_votes_number_query = "UPDATE " . NPDB_PREFIX . "users SET votes=IFNULL(votes, 0) + 1
                 WHERE user_id={$this->campaign_id}";
 
-                $this->query($sql_update_votes_number_query);
+                $update_result = $this->query($sql_update_votes_number_query);
                 $this->votes_element = '<h5>' . $this->getVotesByCampaign() . ' ' . MSG_VOTES_NUMBER . '</h5>';
                 $success = true;
             }
@@ -143,6 +145,16 @@ class projectVotes extends custom_field
         return array(
             "success" => $success,
             "vote_us" => $this->votes_element,
+//            "queries" => array(
+//                "insert" => array(
+//                    "query" => $sql_insert_project_votes,
+//                    "result" =>$insert_result,
+//                ),
+//                "update" => array(
+//                    "query" => $sql_update_votes_number_query,
+//                    "result" => $update_result,
+//                ),
+//            ),
         );
     }
 	
@@ -153,6 +165,7 @@ class projectVotes extends custom_field
 		$sql = "SELECT COUNT(v.id) AS campaign_votes_number, c.project_title AS campaign_title, c.username AS campaign_url, MONTH(FROM_UNIXTIME(v.date)) AS month, YEAR(FROM_UNIXTIME(v.date)) AS year FROM project_votes v JOIN np_users c ON c.user_id = v.campaign_id GROUP BY v.campaign_id, month, year HAVING month='".$month."' AND year='".$year."' ORDER BY campaign_votes_number DESC LIMIT ".$start.", ".$end;
 		$project_votes_query_result = $this->query($sql);
 
+        $project_votes = array();
 		while ($query_result =  mysql_fetch_array($project_votes_query_result)) {
 			$project_votes[] = $query_result;
 		}

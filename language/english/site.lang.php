@@ -181,7 +181,7 @@ define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_VISIBILITY', 'Visibility');
 define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
 
 // tooltips
-define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your PayPal account. A green check indicates that your PayPal information has been successfully verified.');
+define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. To collect funds, all 3 must be entered and they must match your verified PayPal account. A green check indicates that your PayPal information has been successfully verified.');
 define('TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN', 'You can enter this information anytime before making your campaign live. You will need to have a verified PayPal account.');
 define('TOOLTIP_PERCENT_GIVEBACK', 'This is the approximate percent each vendor gives back. The actual amount can vary depending on the item and the overall volume of Bring It Local sourced purchases. The entire amount we collect goes to the campaign you support. Your individual contributions will show up in your Members Area under the My Contributions tab and on the campaign page you support under their Funders tab. There is usually a delay of several days before we get the information back from the vendor.');
 
@@ -222,8 +222,8 @@ define ('MSG_PAYPAL_SETTINGS', 'Paypal Settings');
 define ('MSG_WHATS_THAT', 'What\'s that?');
 define ('MSG_GOTO_FUND', 'Go to the Community fund');
 define ('MSG_CLICK_SUBSCRIBE', 'Click here to subscribe to updates');
-define ('MSG_VOTE', 'VOTE');
-define ('MSG_PARTICIPATE', 'ways to participate');
+define ('MSG_VOTE', 'See the votes');
+define ('MSG_PARTICIPATE', 'democracy');
 define ('MSG_ENDING_SOON', 'Ending soon');
 define ('MSG_BROWSE_CAMPAIGNS', 'browse campaigns');
 define ('MSG_NEWCAMPAIGNS', 'New campaigns');
@@ -258,7 +258,7 @@ define ('MSG_FIND_THIS_CAMPAIGN', 'Also find this Campaign On');
 define ('MSG_PG_PAYPAL_EMAIL_ADDRESS', 'PayPal Email Address');
 define ('MSG_PG_PAYPAL_FIRST_NAME', 'PayPal Account First Name');
 define ('MSG_PG_PAYPAL_LAST_NAME', 'PayPal Account Last Name');
-define ('MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL', 'Enter a valid paypal email to which the funds collected will be sent.');
+define ('MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL', 'Enter a verified paypal email to which the funds collected will be sent.');
 define ('MSG_PG_PAYPAL_FIRST_NAME_EXPL', 'Enter first name used in the paypal account to which the email address belongs.');
 define ('MSG_PG_PAYPAL_LAST_NAME_EXPL', 'Enter last name used in the paypal account to which the email address belongs.');
 define ('MSG_PROJECTURL_EXPLANATION', 'Example: <strong>CentralHighSchool</strong> (Don\'t use your email address) <br /><strong>NOTE: </strong>Your Campaign URL will form the url (web address) to your campaign page. Make sure it is simple and easy to remember. <br /><strong>IMPORTANT: </strong>Make sure it is one word with no spaces or special characters');
@@ -298,7 +298,7 @@ define ('MSG_MY_DEALS', 'My Deals');
 define ('MSG_MY_PROFILE', 'My Profile');
 define ('MSG_CAMPAIGNS', 'Campaigns');
 define ('MSG_MY_CAPMAIGNS', 'My Campaigns');
-define ('MSG_NEW_CAPMAIGN', 'Start a new one');
+define ('MSG_NEW_CAPMAIGN', 'Create');
 define ('MSG_DRAFTS_CAPMAIGNS', 'Drafts');
 define ('MSG_LIVE_CAPMAIGNS', 'Live');
 define ('MSG_CLOSED_CAPMAIGNS', 'Closed');
@@ -460,7 +460,7 @@ define ('MSG_USERNAME_EMAILED', 'Your username has been sent to the E-Mail addre
 define ('MSG_USER_ACCOUNT_CONFIRMATION', 'User Account Confirmation');
 define ('MSG_ACC_ACTIVATE_SUCCESS', 'Your account was successfully activated. <br>You can now login using your username and password.');
 define ('MSG_ACC_ACTIVATE_FAILURE', 'Error: Account activation is not possible using this feature or the activation details you have submitted are invalid.');
-define ('MSG_DIRECT_PAYMENT_SETTINGS', 'Valid PayPal account information');
+define ('MSG_DIRECT_PAYMENT_SETTINGS', 'Verified PayPal account information');
 define ('MSG_ACCOUNT_DETAILS', 'Account Details');
 define ('MSG_ACCOUNT_TYPE', 'Account Type');
 define ('MSG_CLEAR_ACC_BALANCE', 'Clear Account Balance');

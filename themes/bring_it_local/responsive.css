@@ -38,6 +38,7 @@
     .content .nav-content .viewall { width: 100%; float: left; border-bottom: 2px solid #dedede; padding-bottom: 3px; }
     .content .nav-content .border,
     .content .nav-content span{display: none;}
+    .content .nav-content ul.list li .campaign-details span{display: inline-block;}
     footer .copyright .innerContainer .copiright-info{display: none;}
     #footer .bottomLinks .column{width:145px; margin: 0;}
     #footer .bottomLinks .follow, #footer .bottomLinks .share, #footer .bottomLinks .language{float:none; margin: 1% auto;}
@@ -55,7 +56,7 @@
     .resp-tab-content-active{width:100%; float:left; margin: 0 0 10px 0; padding:0 0 10px 0; border-bottom: 1px solid #c1c1c1;}
     .resp-tab-content aside.announcement .posted-mess{width:528px;}
 
-    .top-description .right p{display:none;}
+    .top-description .right p.responsive-hide{display:none;}
     .tabulation,.resp-tabs-container{width:100%;}
     .tabulation{margin-top: 25px;}
     .resp-tab-content-active{display: none;}

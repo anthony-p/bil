@@ -5424,11 +5424,13 @@ else
                     $keep_alive = (isset($_POST["keep_alive"]) && $_POST["keep_alive"]) ? 1 : 0;
                     $keep_alive_days = (isset($_POST["keep_alive_days"]) && $_POST["keep_alive_days"]) ?
                         $_POST["keep_alive_days"] : 0;
-//                    var_dump($_POST["url"]); exit;
 
+                    if (isset($_POST['clone_campaign']) && $_POST['clone_campaign'] == 2 && $keep_alive_days > 0) {
+                    	$_POST["end_date"] += $keep_alive_days * 86400;
+                    }
                     $mysql_update_query = "UPDATE np_users SET
                     project_category='" . $_POST["project_category"] . "',
-                    campaign_basic='" . $_POST["campaign_basic"] . "',
+                    campaign_basic='" . html_entity_decode($_POST["campaign_basic"]) . "',
                     project_title='" . $_POST["project_title"] . "',
                     description='" . $_POST["project_short_description"] . "',
                     founddrasing_goal='" . $_POST["founddrasing_goal"] . "',
