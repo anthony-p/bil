@@ -132,6 +132,19 @@ class npuser extends npcustom_field
     {
         $time = time();
         $ordering = "  ORDER BY reg_date DESC";
+        $group = " GROUP BY np_users.user_id ";
+        $fields = NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+            NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
+            NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
+            NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
+            NPDB_PREFIX . "users.founddrasing_goal, " .
+            NPDB_PREFIX . "users.project_title, " .
+            NPDB_PREFIX . "users.votes, " .
+            " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id,
+            COUNT(project_votes.id) AS votes ";
+        $join = " FROM " . NPDB_PREFIX . "users INNER JOIN bl2_users " .
+            " ON " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id LEFT JOIN project_votes ON " .
+            NPDB_PREFIX . "users.user_id=project_votes.campaign_id ";
         if (isset($_GET["order_by"]) && $_GET["order_by"] &&
             isset($_GET["order_type"]) && $_GET["order_type"] &&
             in_array($_GET["order_type"], array("ASC", "DESC"))) {
@@ -139,17 +152,9 @@ class npuser extends npcustom_field
         }
         if (isset($_GET["search"]) && $_GET["search"]) {
             $search = mysql_real_escape_string($_GET["search"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
-                NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id " .
-                " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
-                " AND np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
+            $sql_select_query = "SELECT " . $fields .
+                $join .
+                " WHERE np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
                 " AND (name LIKE '%" .
                 $search . "%' OR description LIKE '%" .
                 $search . "%' OR project_title LIKE '%" .
@@ -157,24 +162,16 @@ class npuser extends npcustom_field
                 $search . "%' OR orgtype LIKE '%" .
                 $search . "%' OR np_users.tax_company_name LIKE '%" .
                 $search . "%' OR pitch_text LIKE '%" .
-                $search . "%') " . $ordering;
+                $search . "%') " . $group . $ordering;
         } elseif (isset($_GET["keyword"]) && $_GET["keyword"]) {
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
                 $ordering = " ORDER BY reg_date " . $order;
             }
             $search = mysql_real_escape_string($_GET["keyword"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
-                NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id " .
-                " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
-                " AND np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
+            $sql_select_query = "SELECT " . $fields .
+                $join .
+                " WHERE np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
                 " AND (name LIKE '%" .
                 $search . "%' OR description LIKE '%" .
                 $search . "%' OR project_title LIKE '%" .
@@ -182,52 +179,30 @@ class npuser extends npcustom_field
                 $search . "%' OR orgtype LIKE '%" .
                 $search . "%' OR np_users.tax_company_name LIKE '%" .
                 $search . "%' OR pitch_text LIKE '%" .
-                $search . "%') " . $ordering;
+                $search . "%') " . $group . $ordering;
         } elseif (isset($_GET["category"]) && $_GET["category"]) {
             $search = mysql_real_escape_string($_GET["category"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
-                NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
-                " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND " . NPDB_PREFIX .
+            $sql_select_query = "SELECT " . $fields .
+                $join .
+                " WHERE np_users.disabled=0  AND " . NPDB_PREFIX .
                 "users.project_category=" . $search . " AND np_users.active=1 AND np_users.end_date>" .
-                $time . $ordering;
+                $time . $group . $ordering;
         } elseif (isset($_GET["city"]) && $_GET["city"]) {
             $search = mysql_real_escape_string($_GET["city"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
-                NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
-                " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND " . NPDB_PREFIX .
+            $sql_select_query = "SELECT " . $fields .
+                $join .
+                " WHERE np_users.disabled=0  AND " . NPDB_PREFIX .
                 "users.city='" . $search . "' AND (np_users.active=1 OR np_users.end_date>" .
-                $time .') '. $ordering;
+                $time .') '. $group . $ordering;
         }
         else {
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
                 $ordering = " ORDER BY reg_date " . $order;
             }
-            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
-                NPDB_PREFIX . "users.end_date, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.first_name, bl2_users.organization, bl2_users.id, bl2_users.last_name, bl2_users.email FROM " .
-                NPDB_PREFIX . "users, bl2_users WHERE " . NPDB_PREFIX .
-                "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" .
-                $time . $ordering;
+            $sql_select_query = "SELECT " . $fields . $join .
+                " WHERE np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" .
+                $time . $group . $ordering;
         }
 
         $sql_select_result = $this->query($sql_select_query);
