@@ -5,6 +5,7 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_TYPE', 'Type');
 define('MSG_MEMBERS_AREA_CONTRIBUTIONS_SOURCE', 'Source');
 
 define('MSG_FOOTER_MISSION', 'Mission');

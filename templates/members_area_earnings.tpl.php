@@ -6,6 +6,7 @@
             <td><h4><?= MSG_MEMBERS_AREA_EARNINGS_TBL_DATE; ?></h4></td>
             <td><h4><?= MSG_MEMBERS_AREA_EARNINGS_TBL_CAMPAIGN; ?></h4></td>
             <td><h4><?= MSG_MEMBERS_AREA_EARNINGS_TBL_AMOUNT; ?></h4></td>
+			<td><h4><?= MSG_MEMBERS_AREA_EARNINGS_TBL_TYPE; ?></h4></td>
         </tr>
         <?php foreach ($info_earning_campaigns as $_campaign) : ?>
             <tr>
@@ -17,6 +18,9 @@
                 </td>
                 <td>
                     <?=$_campaign['amount']?>
+                </td>
+				<td style="text-transform: capitalize;">
+                    <?=$_campaign['source']?>
                 </td>
             </tr>
         <?php endforeach;?>

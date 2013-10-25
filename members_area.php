@@ -5140,7 +5140,7 @@ else
             }
             $start = ($page_nr - 1)*$per_page;
 
-            $campaigns_query_result = $db->query("SELECT funders.amount, funders.created_at, funders.user_id, np_users.project_title, np_users.username as url 
+            $campaigns_query_result = $db->query("SELECT funders.amount, funders.source, funders.created_at, funders.user_id, np_users.project_title, np_users.username as url 
                 FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id 
                 WHERE np_users.probid_user_id=" . $session->value('user_id')."
                 ORDER BY funders.created_at DESC limit $start, $per_page");
