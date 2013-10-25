@@ -34,6 +34,12 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         });
         init_tinymce('#aboutme_page_content');
     });
+    function removeFile(){
+        $('#avatar_img').attr("src", "");
+        $('#avatar').val("");
+        $('#curr_avatar').val("");
+        $('input[name="form_aboutme_log_remove"]').hide();
+    }
 </script>
 
 <br>
@@ -46,12 +52,29 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </tr>
     <tr>
         <td>
-            <div class="upload_logo"><img src="<?=$user_details['avatar']?>"/></div>
-            <input type="file" name="avatar" id="avatar" accept="image/*" multiple title="avatar file" />
-            <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
-            <input type="hidden" name="curr_avatar" value="<?=$user_details['avatar']?>" />
-			<input type="submit" name="form_aboutme_save" value="<?=MSG_UPLOAD_FILE;?>" style="float: none; margin: 72px 0 0 25px;" />
-        </td>
+        <div>
+            <div style="float:left">
+            <?php if(!empty($user_details['avatar'])) :?>
+                <div class="upload_logo">
+                    <img id="avatar_img" src="<?=$user_details['avatar']?>"/>
+                </div>
+            <?php endif;?>
+            </div>            
+            <div style="float:right">
+                <input type="file" name="avatar" id="avatar" accept="image/*" multiple title="avatar file" />
+                <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
+                <input type="hidden" name="curr_avatar" id="curr_avatar" value="<?=$user_details['avatar']?>" />
+			    <input type="submit" name="form_aboutme_save" value="<?=MSG_UPLOAD_FILE;?>" style="float: none; margin: 72px 0 0 25px;" />                                       
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <?php if(!empty($user_details['avatar'])) :?>
+        <div class="remove_logo">
+            <input type="button" name="form_aboutme_log_remove" class="remove"    
+            value="<?=MSG_REMOVE_FILE;?>" onclick="javascritp:removeFile();"/>
+        </div>
+        <?php endif;?>
+    </td>
     </tr>
     <tr class="info_tittle">
         <td><h5><?=MSG_SOCIAL_ACCOUNT_INFORMATION?></h5></td>
