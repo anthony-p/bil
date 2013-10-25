@@ -5332,6 +5332,7 @@ else
 
 
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
+                
                 if ($fv->checkFlag == 1) {
                 	$_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;				
 				} else {
