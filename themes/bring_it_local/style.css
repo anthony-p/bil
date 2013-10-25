@@ -5199,6 +5199,17 @@ aside.suport .merchants li .info span{
     text-transform:uppercase;
     cursor:pointer;
     }
+    
+.border input[type="button"].remove{
+    border:0;
+    width:auto;
+    padding:5px 18px;
+    background:#7eb041;
+    text-shadow:0 0 1px #9ec471;
+    color:#fff;
+    text-transform:uppercase;
+    cursor:pointer;
+    }
 
 .border a{
     font:12px "OpenSans-SemiBold";
@@ -5380,9 +5391,14 @@ aside.suport .merchants li .info span{
     border:1px solid #dedede;
     float:left;
     overflow:hidden;
-    display:table;
+    display:table;  
     }
 
+#members_area .remove_logo{
+    margin:-27px 0 0 250px;
+    }
+    
+    
 #members_area .upload_logo img{
     text-align:center;
     }
@@ -5390,7 +5406,7 @@ aside.suport .merchants li .info span{
 #members_area .about_me_table input[type="file"]{
     float:left;
     padding:5px;
-    margin:69px 0 0 52px;
+    margin:69px 0 0 0;
     border:1px solid #dedede;
     border-radius:4px;
     max-width:265px;
