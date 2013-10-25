@@ -13,7 +13,7 @@
                     <?=date("m-d-Y H:m" , $_campaign["created_at"])?>
                 </td>
                 <td>
-                    <?=$_campaign['project_title']?>
+                    <a href="/<?=$_campaign['url']?>"><?=$_campaign['project_title']?></a>
                 </td>
                 <td>
                     <?=$_campaign['amount']?>

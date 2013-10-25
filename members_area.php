@@ -5090,7 +5090,7 @@ else
             $start = ($page_nr - 1)*$per_page;
 
             $query = "SELECT funders.source, funders.amount, funders.created_at, ";
-            $query .= " funders.user_id, np_users.project_title, np_users.confirmed_paypal_email ";
+            $query .= " funders.user_id, np_users.project_title, np_users.username as url ";
             $query .= " FROM funders ";
             $query .= " INNER JOIN np_users ON funders.campaign_id = np_users.user_id ";
             $query .= " WHERE funders.user_id = ".$session->value('user_id');
