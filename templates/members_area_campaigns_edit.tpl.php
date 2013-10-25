@@ -65,20 +65,22 @@ if (!defined('INCLUDED')) {
 <script type="text/javascript" src="/scripts/init_tinymce.js"></script>
 <script type="text/javascript" src="/scripts/campaign_form_validate.js"></script>
 <script type="text/javascript">
+    function validate_and_save () {
+        $("#campaign_basic").val(tinymce.get('campaign_basic').getContent());
+        var formElem = $('#formElem'),
+            button = $(this);
+        validateCampaignForm(formElem, window.error_messages);
 
+        if (formElem.valid()) {
+            ajaxFormSave(button, formElem);
+        }
+    }
     $(document).on('ready', function () {
         /* Form validated before submit */
         $('input[type="submit"]').each(function() {
             $(this).on('click', function(e){
                 e.preventDefault();
-                $("#campaign_basic").val(tinymce.get('campaign_basic').getContent());
-                var formElem = $('#formElem'),
-                    button = $(this);
-                validateCampaignForm(formElem, window.error_messages);
-
-                if (formElem.valid()) {
-                    ajaxFormSave(button, formElem);
-                }
+                validate_and_save();
             })
         });
         /* Go Live button if exists */
@@ -87,6 +89,7 @@ if (!defined('INCLUDED')) {
             go_live_btn.on('click', function(e) {
                 e.preventDefault();
                 $('#status-active').attr('checked', true);
+                validate_and_save();
             })
         }
         <?php if (isset($video_url) && $video_url): ?>
