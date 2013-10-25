@@ -16,16 +16,16 @@ if ($frmchk_details['tax_account_type'] == 1)
     $fv->check_box($frmchk_details['tax_company_name'], MSG_COMPANY_NAME, array('field_empty', 'field_html'));
 } */
 //$fv->check_box($frmchk_details['name'], MSG_FULL_NAME, array('field_empty', 'field_html'));
-$fv->check_box($frmchk_details['first_name'], MSG_FIRST_NAME, array('field_empty', 'field_html'));
-$fv->check_box($frmchk_details['last_name'], MSG_LAST_NAME, array('field_empty', 'field_html'));
-if (isset($frmchk_details['organization']) && $frmchk_details['organization']) {
-    $fv->check_box($frmchk_details['organization'], MSG_LAST_NAME, array('field_html'));
-}
-$fv->check_box($frmchk_details['address'], MSG_ADDRESS, array('field_empty', 'field_html'));
-$fv->check_box($frmchk_details['city'], MSG_CITY, array('field_empty', 'field_html'));
-$fv->check_box($frmchk_details['country'], MSG_COUNTRY, array('field_empty'));
-$fv->check_box($frmchk_details['state'], MSG_STATE, array('field_empty', 'field_html'));
-$fv->check_box($frmchk_details['postal_code'], MSG_ZIP_CODE, array('field_empty', 'field_html'));
+//$fv->check_box($frmchk_details['first_name'], MSG_FIRST_NAME, array('field_empty', 'field_html'));
+//$fv->check_box($frmchk_details['last_name'], MSG_LAST_NAME, array('field_empty', 'field_html'));
+//if (isset($frmchk_details['organization']) && $frmchk_details['organization']) {
+//    $fv->check_box($frmchk_details['organization'], MSG_LAST_NAME, array('field_html'));
+//}
+//$fv->check_box($frmchk_details['address'], MSG_ADDRESS, array('field_empty', 'field_html'));
+//$fv->check_box($frmchk_details['city'], MSG_CITY, array('field_empty', 'field_html'));
+//$fv->check_box($frmchk_details['country'], MSG_COUNTRY, array('field_empty'));
+//$fv->check_box($frmchk_details['state'], MSG_STATE, array('field_empty', 'field_html'));
+//$fv->check_box($frmchk_details['postal_code'], MSG_ZIP_CODE, array('field_empty', 'field_html'));
 
 //$fv->check_box($frmchk_details['phone_a'], MSG_PHONE_A, array('field_empty', 'field_html', 'is_phone'));
 //$fv->check_box($frmchk_details['phone_b'], MSG_PHONE_B, array('field_empty', 'field_html', 'is_phone'));
@@ -71,17 +71,17 @@ if (!$frmchk_user_edit && IN_ADMIN != 1)
 }
 */
 ## check for blocked domains
-$email_split = explode('@', $frmchk_details['email']);
-if (isset($email_split[1]))
-    $email_domain = $email_split[1];
-else
-    $email_domain = '';
-$is_blocked_domain = $db->count_rows('blocked_domains', "WHERE domain='" . $email_domain . "'");
-
-if ($is_blocked_domain)
-{
-    $fv->error_list[] = array('value' => $email_domain, 'msg' => MSG_FRMCHK_EMAIL_DOMAIN_BLOCKED . ' (<b>' . $email_domain . '</b>)');
-}
+//$email_split = explode('@', $frmchk_details['email']);
+//if (isset($email_split[1]))
+//    $email_domain = $email_split[1];
+//else
+//    $email_domain = '';
+//$is_blocked_domain = $db->count_rows('blocked_domains', "WHERE domain='" . $email_domain . "'");
+//
+//if ($is_blocked_domain)
+//{
+//    $fv->error_list[] = array('value' => $email_domain, 'msg' => MSG_FRMCHK_EMAIL_DOMAIN_BLOCKED . ' (<b>' . $email_domain . '</b>)');
+//}
 
 //if (!$frmchk_user_edit)
 //{
@@ -92,7 +92,7 @@ if ($is_blocked_domain)
 //    $fv->field_duplicate_fulltext('users', 'email', $frmchk_details['email'], MSG_FRMCHK_DUPLICATE_EMAIL, 'id', $session->value('user_id'));
 //}
 
-$fv->field_duplicate_fulltext('users', 'email', $frmchk_details['email'], MSG_FRMCHK_DUPLICATE_EMAIL, 'id', $frmchk_details['user_id']);
+//$fv->field_duplicate_fulltext('users', 'email', $frmchk_details['email'], MSG_FRMCHK_DUPLICATE_EMAIL, 'id', $frmchk_details['user_id']);
 //$fv->check_box($frmchk_details['email'], MSG_EMAIL_ADDRESS, array('is_email_address', 'pass_confirm'), $_POST['email_check'], MSG_RETYPE_EMAIL);
 
 ## first the standard boxes error checking
@@ -107,6 +107,7 @@ if (!empty($frmchk_details['password']) || !empty($frmchk_details['password2']))
 {
     $fv->check_box($frmchk_details['password'], MSG_CREATE_PASS, array('within_length', 'pass_confirm'), $_POST['password2'], MSG_VERIFY_PASS);
 }
+
 //if (!$frmchk_user_edit || !empty($frmchk_details['password']) || !empty($frmchk_details['password2']))
 //{
 //    $fv->check_box($frmchk_details['password'], MSG_CREATE_PASS, array('within_length', 'pass_confirm'), $_POST['password2'], MSG_VERIFY_PASS);
@@ -115,26 +116,26 @@ if (!empty($frmchk_details['password']) || !empty($frmchk_details['password2']))
 //    $fv->check_box($frmchk_details['old_password'], MSG_OLD_PASS, array('check_password'));
 //}
 
-$confirmed_paypal_email = false;
-if ((isset($frmchk_details['pg_paypal_email']) && $frmchk_details['pg_paypal_email']) ||
-    (isset($frmchk_details['pg_paypal_first_name']) && $frmchk_details['pg_paypal_first_name']) ||
-    (isset($frmchk_details['pg_paypal_last_name']) && $frmchk_details['pg_paypal_last_name'])) {
-    $confirmed_paypal_email = $fv->check_box($frmchk_details['pg_paypal_email'], MSG_PAYPAL_EMAIL_ADDRESS, array('is_paypal_email_address'));
-    $fv->check_box($frmchk_details['pg_paypal_first_name'], MSG_PAYPAL_EMAIL_FIRST_NAME, array('field_empty'));
-    $fv->check_box($frmchk_details['pg_paypal_last_name'], MSG_PAYPAL_EMAIL_LAST_NAME, array('field_empty'));
-}
+//$confirmed_paypal_email = false;
+//if ((isset($frmchk_details['pg_paypal_email']) && $frmchk_details['pg_paypal_email']) ||
+//    (isset($frmchk_details['pg_paypal_first_name']) && $frmchk_details['pg_paypal_first_name']) ||
+//    (isset($frmchk_details['pg_paypal_last_name']) && $frmchk_details['pg_paypal_last_name'])) {
+//    $confirmed_paypal_email = $fv->check_box($frmchk_details['pg_paypal_email'], MSG_PAYPAL_EMAIL_ADDRESS, array('is_paypal_email_address'));
+//    $fv->check_box($frmchk_details['pg_paypal_first_name'], MSG_PAYPAL_EMAIL_FIRST_NAME, array('field_empty'));
+//    $fv->check_box($frmchk_details['pg_paypal_last_name'], MSG_PAYPAL_EMAIL_LAST_NAME, array('field_empty'));
+//}
 
 /*
 ## now check the custom boxes
 $fv->check_custom_fields($frmchk_details);
 */
-if ($frmchk_user_edit && IN_ADMIN != 1)
-{
-	$fv->check_box($frmchk_details['pin_value'], MSG_CONF_PIN, array('field_equal'), $frmchk_details['generated_pin'], MSG_REG_PIN);
+//if ($frmchk_user_edit && IN_ADMIN != 1)
+//{
+//	$fv->check_box($frmchk_details['pin_value'], MSG_CONF_PIN, array('field_equal'), $frmchk_details['generated_pin'], MSG_REG_PIN);
 //	if ($layout['enable_reg_terms'])
 //	{
 //		$fv->field_checked($frmchk_details['agree_terms'], GMSG_AGREE_TO_REG_TERMS);
 //	}
-}
+//}
 
 ?>
