@@ -320,6 +320,7 @@ define ('MSG_COLLECTED_MONEY', 'Raised');
 define ('MSG_VIEW_CAMPAIGN', 'View Campaign');
 define ('MSG_COPY_CAMPAIGN', 'Copy Campaign');
 define ('MSG_SET_LIVE_CAMPAIGN', 'Go LIVE');
+define ('MSG_SET_LIVE_CAMPAIGN_SUCCESS', 'Congratulations, our Campaign is LIVE now');
 define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account information');
 define ('MSG_ALSO_FIND_ME', ' Also Find Me on');
 define ('MSG_POSTED_A_COMMENT', 'posted a comment');

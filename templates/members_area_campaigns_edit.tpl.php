@@ -57,7 +57,8 @@ if (!defined('INCLUDED')) {
         post_update_text:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG; ?>',
         confirm_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK; ?>',
         cancel_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL; ?>',
-        reward_saved:"<?= MSG_REWARD_SAVED; ?>"
+        reward_saved:"<?= MSG_REWARD_SAVED; ?>",
+        campaign_live:"<?= MSG_SET_LIVE_CAMPAIGN_SUCCESS ?>"
     };
 
 
@@ -76,7 +77,7 @@ if (!defined('INCLUDED')) {
                     button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
                 if (formElem.valid()) {
-                    ajaxFormSave(button, formElem);
+                    ajaxFormSave(button, formElem, true);
                 }
             })
         });
@@ -91,7 +92,7 @@ if (!defined('INCLUDED')) {
                     button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
                 if (formElem.valid()) {
-                    ajaxFormSave(button, formElem);
+                    ajaxFormSave(button, formElem, false);
                 }
             })
         }

@@ -588,11 +588,13 @@ function resetFormElement(e) {
     e.unwrap();
 }
 
-function ajaxFormSave(button, form) {
-    if (button.parent('div').hasClass('right')) {
-        button.before('<span id="loading-msg" style="float:left;">Saving...</span>');
-    } else button.after('<span id="loading-msg">Saving...</span>');
-    var loading_msg = $('#loading-msg');
+function ajaxFormSave(button, form, showMessage) {
+    if (showMessage) {
+        if (button.parent('div').hasClass('right')) {
+            button.before('<span id="loading-msg" style="float:left;">Saving...</span>');
+        } else button.after('<span id="loading-msg">Saving...</span>');
+        var loading_msg = $('#loading-msg');
+    }
     $.ajax({
         url:form.attr('action'),
         type: "POST",
@@ -600,15 +602,35 @@ function ajaxFormSave(button, form) {
         success: function (response) {
             response = $.parseJSON( response);
             if (response.status == "success") {
-                loading_msg.remove();
-                if (button.parent('div').hasClass('right')) {
-                    button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
-                } else button.after('<span id="saved-msg">Saved!</span>');
-                var saved_msg = $('#saved-msg');
-                saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
+                if (showMessage) {
+                    loading_msg.remove();
+                    if (button.parent('div').hasClass('right')) {
+                        button.before('<span id="saved-msg" style="float:left;">Saved!</span>');
+                    } else button.after('<span id="saved-msg">Saved!</span>');
+                    var saved_msg = $('#saved-msg');
+                    saved_msg.fadeOut(2000, function() { saved_msg.remove(); });
+                } else {
+                    var dialog = $('#confirm_dialog_box');
+                    dialog.html(window.messages.campaign_live);
+                    dialog.dialog({
+                        resizable: false,
+                        title: "Success",
+                        height: 250,
+                        width: 500,
+                        modal: true,
+                        buttons: [
+                            {
+                                text: "Ok",
+                                click: function () {
+                                    $(this).dialog("close");
+                                }
+                            }
+                        ]
+                    });
+                }
             } else {
-                var dialog = $('#confirm_dialog_box');
-                loading_msg.remove();
+                dialog = $('#confirm_dialog_box');
+                if (showMessage) { loading_msg.remove();}
                 dialog.html(response.errors);
                 dialog.dialog({
                     resizable: false,
