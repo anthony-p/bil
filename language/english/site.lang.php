@@ -247,6 +247,7 @@ define ('MSG_SELLER_SEARCH', 'Seller Search');
 define ('MSG_BUYER_SEARCH', 'Buyer Search');
 // misc campaign tags
 define ('MSG_UPLOAD_FILE', 'Upload');
+define ('MSG_REMOVE_FILE', 'Remove');
 define ('MSG_SAVE_CHANGES', 'Save Changes');
 define ('MSG_SAVE', 'Save');
 define ('MSG_DELETE', 'Delete');
