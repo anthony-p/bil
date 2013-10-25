@@ -437,6 +437,9 @@ else
     if (isset($_REQUEST['keywords_email'])) {
         $additional_vars .= '&keywords_email=' . $_REQUEST['keywords_email'];
     }
+    if (isset($_REQUEST['keywords_organization'])) {
+        $additional_vars .= '&keywords_organization=' . $_REQUEST['keywords_organization'];
+    }
     $order_link = '';
     if (isset($order_field)) {
         $order_link .= '&order_field=' . $order_field;
@@ -469,6 +472,11 @@ else
 		//$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " MATCH(u.username) AGAINST ('".$_REQUEST['keywords_name']."' WITH QUERY EXPANSION)";
 		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.last_name LIKE '%".$_REQUEST['keywords_last_name']."%'";
 		$template->set('keywords_last_name', $_REQUEST['keywords_last_name']);
+	}
+	if (isset($_REQUEST['keywords_organization']) && $_REQUEST['keywords_organization'])
+	{
+		$search_filter .= (($search_filter) ? ' AND' : ' WHERE') . " u.organization LIKE '%".$_REQUEST['keywords_organization']."%'"; /* slow query - will need a workaround */
+		$template->set('keywords_organization', $_REQUEST['keywords_organization']);
 	}
 	if (isset($_REQUEST['keywords_email']) && $_REQUEST['keywords_email'])
 	{
@@ -567,7 +575,7 @@ else
 		" . $search_filter . "
 		ORDER BY " . $order_field . " " . $order_type . " LIMIT " . $start . ", " . $limit;
 
-    $new_select_users_query = "SELECT u.id, u.first_name, u.last_name, u.email, u.active,
+    $new_select_users_query = "SELECT u.id, u.first_name, u.last_name, u.organization, u.email, u.active,
 		u.tax_account_type, u.tax_reg_number,
 		u.tax_company_name, c.name AS country_name, s.name AS state_name FROM
 		bl2_users u
@@ -597,6 +605,7 @@ else
 
 		$site_users_content .= '<tr class="' . $background . '"> '.
       	'	<td valign="top">' . $user_details['first_name'] . ' ' . $user_details['last_name'] . '</td>' .
+            '<td valign="top">' . $user_details['organization'] . '</td>' .
             '<td valign="top">' . $user_details['email'] . '</td>' .
             '<td valign="top">' . $user_details['country_name'] . '</td>' .
             '<td valign="top">' . $user_details['state_name'] . '</td>' .
