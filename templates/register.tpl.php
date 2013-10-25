@@ -17,8 +17,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
         $("#form_registration").validate({
 
-            errorElement: 'em',
-
             rules: {
 
                 fname: "required",

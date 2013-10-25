@@ -64,8 +64,9 @@ $(function() {
 				validateSteps();
 			else
 				validateStep(prev);
-			$('#formElem').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();	
+			$('#formElem').children(':nth-child('+ parseInt(current) +')').find(':input:first').focus();
 		});
+        $('body').animate({ scrollTop: 120 }, 500);
         e.preventDefault();
     });
 	

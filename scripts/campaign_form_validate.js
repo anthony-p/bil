@@ -22,17 +22,10 @@ function validateCampaignForm(form, messages) {
             name: "required",
             address: "required",
             city: "required",
-            zip_code:  {
-                required: true,
-                //digits: true,
-                minlength: 5
-            },
+            zip_code: "required",
             country: "required",
             state: "required",
-            phone: {
-                required: true,
-                minlength: 6
-            },
+            phone: "required",
             pg_paypal_email: {
                 email:true
             },
@@ -111,7 +104,7 @@ function validateCampaignForm(form, messages) {
             }
 
         },
-        focusInvalid:false,
+        focusInvalid:true,
         invalidHandler: function(form, validator) {
 
             if (!validator.numberOfInvalids())
@@ -361,9 +354,11 @@ function addProjectRewardComment(id) {
 
 
 function projectUpdateDelete(id) {
-    var data = 'delete_project_updates=true' + '&updates_id=' + id;
-    $('#confirm_dialog_box').html(window.messages.delete_update_text);
-    $("#confirm_dialog_box").dialog({
+    var data = 'delete_project_updates=true' + '&updates_id=' + id,
+        confirm_dialog_box = $('#confirm_dialog_box');
+
+    confirm_dialog_box.html(window.messages.delete_update_text);
+    confirm_dialog_box.dialog({
         resizable: false,
         title:window.messages.delete_update_title,
         height: 200,
@@ -522,66 +517,48 @@ function updateProjectReward(id) {
     }
 }
 function validateProjectReward(id) {
-
-    var v_err_msg = "";
-    var v_err = false;
-    // TODO: jquery validate for this part too. Requires changes in reward's form html generator
-    $("#reward_amount_" + id).removeClass("error");
-    $("#reward_name_" + id).removeClass("error");
-    $("#reward_short_description_" + id).removeClass("error");
-    $("#reward_available_number_" + id).removeClass("error");
-    $("#reward_estimated_delivery_date_" + id).removeClass("error");
-
-
-    if ($("#reward_amount_" + id).val() == "") {
-        v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_SPECIFIED ?></li>";
-        $("#reward_amount_" + id).addClass("error");
-        v_err = true;
+    var form = $('#formElem');
+    form.validate();
+    $('#reward_amount_' + id).rules("add",{
+        required:true,
+        digits:true,
+        min:1,
+        messages: {
+        required: window.error_messages.rewards.amount,
+        digits:window.error_messages.rewards.amount_num
     }
+    });
+    $('#reward_name_' + id).rules("add",{
+        required:true,
+        messages: {
+            required: window.error_messages.rewards.name
+        }
+    });
+    $('#reward_short_description_' + id).rules("add",{
+        required:true,
+        messages: {
+            required: window.error_messages.rewards.short_desc
+        }
+    });
+    $('#reward_available_number_' + id).rules("add",{
+        required:true,
+        digits:true,
+        min:1,
+        messages: {
+            required:window.error_messages.rewards.available_number,
+            digits:window.error_messages.rewards.available_number_num,
+            min:window.error_messages.rewards.available_number_positive
+        }
+    });
 
-    if (!$.isNumeric($("#reward_amount_" + id).val())) {
-        v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_A_NUMBER ?></li>";
-        $("#reward_amount_" + id).addClass("error");
-        v_err = true;
-    }
+    $('#reward_estimated_delivery_date_' + id).rules("add",{
+        date:true,
+        messages: {
+            date:window.error_messages.rewards.delivery_date
+        }
+    });
 
-    if (parseInt($("#reward_amount_" + id).val()) < 0) {
-        v_err_msg += "<li><?= MSG_REWARD_AMOUNT_MUST_BE_ABOVE_ZERO ?></li>";
-        $("#reward_amount_" + id).addClass("error");
-        v_err = true;
-    }
-
-    if ($("#reward_name_" + id).val() == "") {
-        v_err_msg += "<li><?= MSG_REWARD_NAME_MUST_BE_SPECIFIED ?></li>";
-        $("#reward_name_" + id).addClass("error");
-        v_err = true;
-    }
-
-    if ($("#reward_short_description_" + id).val() == "") {
-        v_err_msg += "<li><?= MSG_REWARD_SHORT_DESCRIPTION_MUST_BE_SPECIFIED ?></li>";
-        $("#reward_short_description_" + id).addClass("error");
-        v_err = true;
-    }
-
-    if ($("#reward_available_number_" + id).val() != '' && !$.isNumeric($("#reward_available_number_" + id).val())) {
-        v_err_msg += "<li><?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?></li>";
-        $("#reward_available_number_" + id).addClass("error");
-        v_err = true;
-    }
-
-    if (($("#reward_available_number_" + id).val()) <=0 || ($("#reward_available_number_" + id).val() == '') ) {
-        v_err_msg += "<li><?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_POSITIVE_NUMBER ?></li>";
-        $("#reward_available_number_" + id).addClass("error");
-        v_err = true;
-    }
-
-    if ( new Date($("#reward_estimated_delivery_date_" + id).val()) < new Date() ) {
-        v_err_msg += "<li><?= MSG_REWARD_ESTIMATED_DELIVERY_DATE_INVALID ?></li>";
-        $("#reward_estimated_delivery_date_" + id).addClass("error");
-        v_err = true;
-    }
-
-    return true;
+    return form.valid();
 }
 function saveProjectReward(id, campaign_id) {
     if (validateProjectReward(id)) {
@@ -595,7 +572,7 @@ function saveProjectReward(id, campaign_id) {
                     has_new_reward_form = false;
                     $('.reward_block').last().remove();
                     $("#rewards-section").append(response);
-                    alert("<?= MSG_REWARD_SAVED; ?>");
+                    alert(window.messages.reward_saved);
                 } else {
                     alert(response);
                 }
@@ -678,6 +655,7 @@ $(document).on('ready', function () {
 
     init_tinymce('.project_update_textarea');
     init_tinymce('.campaign_basic');
+
 
     /* Navigation functionality*/
 

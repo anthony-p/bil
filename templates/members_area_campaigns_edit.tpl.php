@@ -32,7 +32,18 @@ if (!defined('INCLUDED')) {
         twitter_url:"<?= MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL; ?>;",
         logo: "<?= MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE; ?>",
         date_format:"<?= MSG_DEADLINE_CERTAIN_DATE; ?>",
-        days_format:"<?= MSG_DEADLINE_TIME_PERIOD; ?>"
+        days_format:"<?= MSG_DEADLINE_TIME_PERIOD; ?>",
+        rewards: {
+            name:'<?= MSG_REWARD_NAME_MUST_BE_SPECIFIED ?>',
+            amount: '<?=MSG_REWARD_AMOUNT_MUST_BE_SPECIFIED ?>',
+            amount_num: '<?=MSG_REWARD_AMOUNT_MUST_BE_A_NUMBER ?>',
+            short_desc: '<?= MSG_REWARD_SHORT_DESCRIPTION_MUST_BE_SPECIFIED ?>',
+            available_number:'<?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?>',
+            available_number_num:'<?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?>',
+            available_number_positive:'<?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_POSITIVE_NUMBER ?>',
+            delivery_date: '<?= MSG_REWARD_ESTIMATED_DELIVERY_DATE_INVALID ?>'
+        }
+
     };
     window.messages = {
         confirm_delete_reward_button: '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK; ?>',
@@ -45,7 +56,8 @@ if (!defined('INCLUDED')) {
         post_update_title:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE; ?>',
         post_update_text:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG; ?>',
         confirm_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK; ?>',
-        cancel_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL; ?>'
+        cancel_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL; ?>',
+        reward_saved:"<?= MSG_REWARD_SAVED; ?>"
     };
 
 
@@ -69,6 +81,14 @@ if (!defined('INCLUDED')) {
                 }
             })
         });
+        /* Go Live button if exists */
+        var go_live_btn = $('.set_live_campaign_btn');
+        if (go_live_btn) {
+            go_live_btn.on('click', function(e) {
+                e.preventDefault();
+                $('#status-active').attr('checked', true);
+            })
+        }
         <?php if (isset($video_url) && $video_url): ?>
             $("#vide_select_block").css("display", "inline");
             var banner = $("#banner");
@@ -107,10 +127,15 @@ if (!defined('INCLUDED')) {
     <h2><?= MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN; ?></h2>
 
     <div id="wrapper">
-        <a href="/view_campaign.php?campaign_id=<?= $campaign['user_id'] ?>" class="view_campaign_btn" target="_blank">
+        <?php if (isset($campaign["active"]) && ($campaign["active"] == 0)): ?>
+            <a href="#" class="campaign-top-btn set_live_campaign_btn" >
+                <span><?= MSG_SET_LIVE_CAMPAIGN ?></span>
+            </a>
+        <?php endif; ?>
+        <a href="/view_campaign.php?campaign_id=<?= $campaign['user_id'] ?>" class="campaign-top-btn view_campaign_btn" target="_blank">
             <span><?= MSG_VIEW_CAMPAIGN ?></span>
         </a>
-        <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>" class="copy_campaign_btn" target="_blank">
+        <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>" class="campaign-top-btn copy_campaign_btn" target="_blank">
             <span><?= MSG_COPY_CAMPAIGN ?></span>
         </a>
 
@@ -515,7 +540,7 @@ if (!defined('INCLUDED')) {
                                           id="project_update_textarea"></textarea>
 
                                 <div class="clear"></div>
-                                <input type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
+                                <input class="disabled project_update_textarea_submit_btn" type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -582,7 +607,7 @@ if (!defined('INCLUDED')) {
                                  title="<?= MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP ?>" style="margin-left: 10px;">
                         </div>
                         <div class="radio">
-                            <input type="radio" name="active"
+                            <input type="radio" name="active" id="status-active"
                                    value="1" <?php echo (isset($campaign["active"]) && ($campaign["active"] == 1)) ? "checked" : ''; ?>>
                             <label><?= MSG_ACTIVITY_STATUS_LIVE ?></label>
                         </div>
