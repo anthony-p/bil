@@ -128,7 +128,7 @@ class projectVotes extends custom_field
     {
         $success = false;
 //        $sql_insert_project_votes = $sql_update_votes_number_query = $insert_result = $update_result = false;
-        if ($this->user_id && $this->campaign_id) {
+        if ($this->user_id && $this->campaign_id && !$this->checkCfc()) {
             $voted = $this->checkVoted();
             if (!$voted) {
                 $sql_insert_project_votes = "INSERT INTO project_votes(user_id, campaign_id, date) VALUES(" .
