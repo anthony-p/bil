@@ -198,8 +198,10 @@ try{
     $sql = "SELECT * FROM amazon_report_time WHERE time = '$periodTime'";
     $sql_select = mysql_query($sql);
     $count = mysql_num_rows($sql_select);
-    if(mysql_num_rows($sql_select) > 0)
+    if(mysql_num_rows($sql_select) > 0){
+		unlink($csvFile);
         die(date("F j, Y",$periodTime)." was updated ");
+	}
     $sql = "INSERT INTO `amazon_report_time` (`time`) VALUES ($periodTime)";
     if(!mysql_query($sql))
         die("Can\'t add to DB last update!");
@@ -263,11 +265,13 @@ if(count($user_arr)){
 
 echo "Done import to Database XML report ...<br>";
 
-if(!is_array($start_date) && !is_array($end_date)){
-    $csvFileNewName =  $dir.str_replace("-","",substr($start_date,0,10))."-".str_replace("-","",substr($end_date,0,10)).".csv";
-    if($csvFileNewName != $csvFile)
-        rename($csvFile,$csvFileNewName);
-}
+// if(!is_array($start_date) && !is_array($end_date)){
+    // $csvFileNewName =  $dir.str_replace("-","",substr($start_date,0,10))."-".str_replace("-","",substr($end_date,0,10)).".csv";
+    // if($csvFileNewName != $csvFile)
+        // rename($csvFile,$csvFileNewName);
+// }
+unlink($csvFile);
+
 // Send Report to mail at support
 sendReportToSupport($start_date, $end_date, $csvFile);
 
