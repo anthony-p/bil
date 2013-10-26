@@ -112,7 +112,9 @@ function select(order, obj)
             <option value="DESC" <?php if ($order == "DESC") echo 'selected';?> class="order"><?=MSG_DATE_DESC?></option>
         </select>
         <div class="search-input">
+            
             <input type="text" value="<?php if(!empty($keyword)) echo $keyword;?>" placeholder="<?= MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME; ?>" name="keyword" id="name">
+            
             <button type="submit"></button>
         </div>
     </form>
