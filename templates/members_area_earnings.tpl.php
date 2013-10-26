@@ -25,7 +25,7 @@
                 </td>
 				<td>
                     <?php if  ($_campaign["user_id"] != 0) : ?>
-                        <?php echo $_campaign["first_name"] . " " . $_campaign["last_name"]; ?>
+                        <a href="/about_me.php?user_id=<?= $_campaign["user_id"] ?>"><?= $_campaign["first_name"]." ".$_campaign["last_name"]; ?></a>
                     <?php else:?>
                         <?php  echo "Anonymous"; ?>
                     <?php endif;?>
