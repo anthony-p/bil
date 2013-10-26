@@ -74,7 +74,7 @@ include_once('includes/grab_video_thumbnail.php');
     </select>
     <!--    </div'>-->
     <div class="search-input">
-        <input type="text" value="<?php if(!empty($keyword)) echo $keyword;?>" placeholder="Find by name" name="keyword">
+        <input type="text" value="<?php if(!empty($keyword)) echo $keyword;?>" placeholder="<?= MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME_OR_KEYWORD;?>" name="keyword">
         <button type="submit"></button>
     </div>
 </form>
