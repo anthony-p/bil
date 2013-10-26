@@ -95,6 +95,16 @@ $featured_columns = 14;
       <!--  <a href="" class="location"><?/* echo $compaigns["city"];*/?></a>-->
         <div class="clear"></div>
         <p><? echo $compaigns["description"];?></p>
+        <div class="clear"></div>
+        <p>by
+            <a style="color: #7eb041" href="/about_me.php?user_id=<?php echo isset($compaigns['probid_user_id']) ? $compaigns['probid_user_id'] : ''; ?>">
+                <?php if (isset($compaigns['organization']) && $compaigns['organization']): ?>
+                <?php echo $compaigns['organization'];?>
+                <?php else: ?>
+                <?php echo $compaigns['first_name']."  ".$compaigns['last_name'];?>
+                <?php endif; ?>
+            </a>
+        </p>
     </div>
     <?php else: ?>
     <div class="right" style="float: left">

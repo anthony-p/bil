@@ -5,6 +5,8 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_TYPE', 'Type');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_SOURCE', 'Source');
 define('MSG_MEMBERS_AREA_CONTRIBUTIONS_SOURCE', 'Source');
 
 define('MSG_FOOTER_MISSION', 'Mission');
@@ -234,7 +236,7 @@ define ('MSG_SUBSCRIBE', 'SUBSCRIBE');
 define ('MSG_BLOG', 'Go to our BLOG');
 define ('MSG_EMAIL', 'enter your email');
 define ('MSG_MM_ABOUT_ME', 'Public Profile');
-define ('MSG_MM_VIEW', 'View');
+define ('MSG_MM_VIEW', 'Preview');
 define ('MSG_FEATURED_LOCALAUCTIONS', 'Buy Local - Featured Auctions by Local Supporters'); 
 define ('MSG_BAR_FEATURED_AUCTIONS', 'Buy Local - Featured Auctions');
 define ('MSG_COMMENTS', 'Comments');
@@ -318,8 +320,10 @@ define ('MSG_CAMPAIGN_NAME', 'Campaign Name');
 define ('MSG_CREATE_AT', 'Created');
 define ('MSG_CLOSED_ON', 'Closed');
 define ('MSG_COLLECTED_MONEY', 'Raised');
-define ('MSG_VIEW_CAMPAIGN', 'View Campaign');
-define ('MSG_COPY_CAMPAIGN', 'Copy Campaign');
+define ('MSG_VIEW_CAMPAIGN', 'Preview');
+define ('MSG_COPY_CAMPAIGN', 'Make a Copy');
+define ('MSG_SET_LIVE_CAMPAIGN', 'Go LIVE');
+define ('MSG_SET_LIVE_CAMPAIGN_SUCCESS', 'Congratulations, our Campaign is LIVE now');
 define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account information');
 define ('MSG_ALSO_FIND_ME', ' Also Find Me on');
 define ('MSG_POSTED_A_COMMENT', 'posted a comment');

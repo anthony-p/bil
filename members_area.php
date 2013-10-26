@@ -5089,13 +5089,12 @@ else
             }
             $start = ($page_nr - 1)*$per_page;
 
-            $query = "SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at, ";
-            $query = $query." funders.user_id, np_users.project_title, np_users.confirmed_paypal_email ";
-            $query = $query." FROM np_users ";
-            $query = $query." INNER JOIN funders ON funders.user_id = np_users.probid_user_id ";
-            $query = $query." LEFT JOIN bl2_users ON bl2_users.id = funders.user_id ";
-            $query = $query." WHERE np_users.probid_user_id = ".$session->value('user_id');
-            $query = $query." ORDER BY funders.created_at DESC limit $start, $per_page";
+            $query = "SELECT funders.source, funders.amount, funders.created_at, ";
+            $query .= " funders.user_id, np_users.project_title, np_users.username as url ";
+            $query .= " FROM funders ";
+            $query .= " INNER JOIN np_users ON funders.campaign_id = np_users.user_id ";
+            $query .= " WHERE funders.user_id = ".$session->value('user_id');
+            $query .= " ORDER BY funders.created_at DESC limit $start, $per_page";
             
             $campaigns_query_result = $db->query($query);
             /*
@@ -5141,12 +5140,12 @@ else
             }
             $start = ($page_nr - 1)*$per_page;
 
-            $campaigns_query_result = $db->query("SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at, funders.user_id, np_users.project_title
-                FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id
-                LEFT JOIN bl2_users ON bl2_users.id = np_users.probid_user_id
+            $campaigns_query_result = $db->query("SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.source, funders.created_at, funders.user_id, np_users.project_title, np_users.username as url 
+                FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id 
+				LEFT JOIN bl2_users ON bl2_users.id = funders.user_id 
                 WHERE np_users.probid_user_id=" . $session->value('user_id')."
                 ORDER BY funders.created_at DESC limit $start, $per_page");
-
+				
             $userCampaigns = array();
             while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
                 $userCampaigns[] = $query_result;

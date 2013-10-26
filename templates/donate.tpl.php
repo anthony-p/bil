@@ -26,8 +26,6 @@
         var contribution_form = $("#contribution_form");
         contribution_form.validate({
 
-            errorElement: 'em',
-
             rules: {
 
                 amount: {

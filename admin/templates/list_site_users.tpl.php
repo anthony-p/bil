@@ -57,6 +57,14 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,lo
                                          value="<?=isset($keywords_last_name) ? $keywords_last_name : '';?>" /></td>
                </tr>
                <tr class="c2">
+                  <td><?=AMSG_ORGANIZATION;?>
+                     :</td>
+                  <td>
+                      <input name="keywords_organization" type="text" id="keywords_organization"
+                             value="<?=isset($keywords_organization) ? $keywords_organization : '';?>" />
+                  </td>
+               </tr>
+               <tr class="c2">
                   <td><?=AMSG_EMAIL_ADDR;?>
                      :</td>
                   <td><input name="keywords_email" type="text" id="keywords_email" value="<?=isset($keywords_email) ? $keywords_email : '';?>" /></td>
@@ -90,13 +98,24 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=2,lo
    </tr>
    <? } ?>
    <tr class="c4">
-      <td width="130"><?=AMSG_NAME;?>
-         &nbsp;
-         <?=$page_order_username;?></td>
-      <td width="240"><?=AMSG_EMAIL_ADDR;?>
-         &nbsp;
-         <?=$page_order_reg_date;?></td>
-      <td align="center"><?=AMSG_COUNTRY;?></td>
+      <td width="130">
+          <?=AMSG_NAME;?>
+<!--         &nbsp;-->
+<!--         --><?//=$page_order_username;?>
+      </td>
+      <td width="130">
+          <?=AMSG_ORGANIZATION;?>
+<!--         &nbsp;-->
+<!--         --><?//=$page_order_username;?>
+      </td>
+      <td width="240">
+          <?=AMSG_EMAIL_ADDR;?>
+<!--         &nbsp;-->
+<!--         --><?//=$page_order_reg_date;?>
+      </td>
+      <td align="center">
+          <?=AMSG_COUNTRY;?>
+      </td>
       <? if ($setts['enable_tax']) { ?>
       <td width="210" align="center"><?=AMSG_STATE;?></td>
       <? } ?>

@@ -24,6 +24,21 @@ function init_tinymce(selector) {
             {title: 'Header 1', block: 'span', styles: {color: '#444', font: "1.5em OpenSans, sans-serif", margin: '0 0 1em 0'}},
             {title: 'Header 2', block: 'span', styles: {color: '#444', font: "bold 1.3em OpenSans, sans-serif", margin: '0 0 1em 0'}}
 
-        ]
+        ],
+        setup: function (ed) {
+            ed.on("init", function (ed) {
+                var submit = $(selector + '_submit_btn');
+                if (submit.length) {
+                    this.on('blur', function (e) {
+
+                        if (this.getContent() == "") {
+                            submit.addClass('disabled');
+                        } else submit.removeClass('disabled');
+
+
+                    });
+                }
+            });
+        }
     });
 }
