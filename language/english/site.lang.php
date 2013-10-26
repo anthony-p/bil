@@ -155,6 +155,7 @@ define('MSG_MAINPAGE_BTN_START', '<span class="uper">Start </span><span>giving t
 
  // members area - campaign
 define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME', 'Find by name');
+define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME_OR_KEYWORD', 'Find by name or keyword');
 define('MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN', 'Edit Campaign');
 
  // global partners
