@@ -7,7 +7,7 @@
 
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_TYPE', 'Type');
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_SOURCE', 'Source');
-define('MSG_MEMBERS_AREA_CONTRIBUTIONS_SOURCE', 'Source');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_SOURCE', 'Type');
 
 define('MSG_FOOTER_MISSION', 'Mission');
 
@@ -227,7 +227,7 @@ define ('MSG_PAYPAL_SETTINGS', 'Paypal Settings');
 define ('MSG_WHATS_THAT', 'What\'s that?');
 define ('MSG_GOTO_FUND', 'Go to the Community fund');
 define ('MSG_CLICK_SUBSCRIBE', 'Click here to subscribe to updates');
-define ('MSG_VOTE', 'See the votes');
+define ('MSG_VOTE', 'Browse by votes');
 define ('MSG_PARTICIPATE', 'democracy');
 define ('MSG_ENDING_SOON', 'Ending soon');
 define ('MSG_BROWSE_CAMPAIGNS', 'browse campaigns');
