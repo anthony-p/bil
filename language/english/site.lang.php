@@ -228,7 +228,7 @@ define ('MSG_WHATS_THAT', 'What\'s that?');
 define ('MSG_GOTO_FUND', 'Go to the Community fund');
 define ('MSG_CLICK_SUBSCRIBE', 'Click here to subscribe to updates');
 define ('MSG_VOTE', 'Browse by votes');
-define ('MSG_PARTICIPATE', 'democracy');
+define ('MSG_PARTICIPATE', 'our democracy');
 define ('MSG_ENDING_SOON', 'Ending soon');
 define ('MSG_BROWSE_CAMPAIGNS', 'browse campaigns');
 define ('MSG_NEWCAMPAIGNS', 'New campaigns');
