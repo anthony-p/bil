@@ -30,4 +30,14 @@ if (!$copied_campaign_id) {
 }
 
 //header("location: /view_campaign.php?campaign_id=" . $copied_campaign_id);
-header("location: /campaigns,page,edit,section," . $copied_campaign_id . ",campaign_id,members_area");
+//header("location: /campaigns,page,edit,section," . $copied_campaign_id . ",campaign_id,members_area");
+if (!headers_sent())
+    header('Location: /campaigns,page,drafts,section,members_area');
+else {
+    echo '<script type="text/javascript">';
+    echo 'window.location.href="/campaigns,page,drafts,section,members_area";';
+    echo '</script>';
+    echo '<noscript>';
+    echo '<meta http-equiv="refresh" content="0;url=/campaigns,page,drafts,section,members_area" />';
+    echo '</noscript>';
+}
