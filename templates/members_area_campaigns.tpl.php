@@ -151,5 +151,5 @@ function select(order, obj)
 
 <div id="dialog-confirm" title="<?= MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_TITLE; ?>" style="display: none;">
     <br>
-    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><p id="dialog-confirm-msg"></p></p>
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><p id="dialog-confirm-msg"></p>
 </div>
