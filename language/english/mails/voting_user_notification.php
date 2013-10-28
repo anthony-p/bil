@@ -14,4 +14,6 @@ $html_message_user = str_replace('+', '', $html_message_user);
 $headers = 'From: Bring It Local <support@bringitlocal.com>' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-mail($user_voted_email, $subject, $html_message_user, $headers) ;
+//mail($user_voted_email, $subject, $html_message_user, $headers) ;
+send_mail($user_voted_email, $subject, $html_message_user, 
+    $setts['admin_email'], $html_message_user, null, true);
