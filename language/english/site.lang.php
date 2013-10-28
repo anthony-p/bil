@@ -53,6 +53,7 @@ define ('MSG_REVIEW', 'Review');
 define ('MSG_DETAILS', 'Details');
 define ('MSG_TYPE', 'Type');
 define ('MSG_MM_LEAVE_COMMENTS', 'Leave Comments');
+define ('MSG_MM_MY_REPUTATION', 'My Reputation');
 
 //auctions - buying
 define ('MSG_BID_AMOUNT', 'Bid Amount');
@@ -63,7 +64,8 @@ define ('MSG_KEYWORD', 'Keyword');
 define ('MSG_MM_KEYWORDS_WATCH', 'Keywords Watch');
 define ('MSG_KEYWORDS', 'keywords');
 define ('MSG_ADD_KEYWORD', 'Add Keyword(s)');
-
+define ('MSG_MM_CURRENT_BIDS', 'Current Bids');
+define ('MSG_TIME_LEFT', 'Time Left');
 //messages
 define ('MSG_MM_RECEIVED_MESSAGES', 'Received Messages');
 define ('MSG_MESSAGES', 'messages');
