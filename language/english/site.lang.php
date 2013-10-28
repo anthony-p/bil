@@ -27,6 +27,21 @@ define ('MSG_CONTACT_INFO', 'Contact Information');
 define ('MSG_PURCHASE_DATE', 'Purchase Date');
 define ('MSG_STATUS', 'Status');
 define ('MSG_SELECT_PERIOD', 'Select Period');
+define ('MSG_WINNING_BID', 'Winning Bid');
+define ('MSG_START_BID', 'Start Bid');
+define ('MSG_AUTO_RELIST', 'Auto Relist');
+define ('MSG_SELECT_MAIN_CAT', 'Select a main category for your item');
+define ('MSG_MAIN_CATEGORY', 'Main Category');
+define ('MSG_ADDL_CATEGORY', 'Additional Category');
+define ('MSG_ITEM_DETAILS', 'Item Details');
+define ('MSG_ITEM_SETTINGS', 'Settings');
+define ('MSG_SHIPPING_PAYMENT', 'Shipping & Payment');
+define ('MSG_PREVIEW', 'Preview');
+define ('MSG_FINISH', 'Finish');
+define ('MSG_SELECT_ADDL_CAT', 'Select an additional category for your item');
+define ('MSG_SKIP_THIS_STEP', 'Skip this Step');
+define ('MSG_SUBMIT_ITEM_MAIN_CAT', 'Choose a main category for your item.');
+
 
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_TYPE', 'Type');
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_SOURCE', 'Source');
