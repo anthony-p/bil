@@ -511,9 +511,6 @@ if (!defined('INCLUDED')) {
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <div class="banners_list">
                                 <span><?= MSG_UPLOAD_IMAGE_INFORMATION ?></span>
                                 <div id="prev_banner"></div>
