@@ -41,6 +41,10 @@ define ('MSG_FINISH', 'Finish');
 define ('MSG_SELECT_ADDL_CAT', 'Select an additional category for your item');
 define ('MSG_SKIP_THIS_STEP', 'Skip this Step');
 define ('MSG_SUBMIT_ITEM_MAIN_CAT', 'Choose a main category for your item.');
+define ('MSG_MM_SOLD_ITEMS', 'Sold Items');
+define ('MSG_REQUESTED', 'Requested');
+define ('MSG_OFFERED', 'Offered');
+define ('MSG_PAY_ENDAUCTION_FEE', 'Pay End of Auction Fee');
 
 
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_TYPE', 'Type');
