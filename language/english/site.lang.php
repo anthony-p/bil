@@ -46,6 +46,50 @@ define ('MSG_REQUESTED', 'Requested');
 define ('MSG_OFFERED', 'Offered');
 define ('MSG_PAY_ENDAUCTION_FEE', 'Pay End of Auction Fee');
 
+//reputation
+define ('MSG_FROM', 'From');
+define ('MSG_RATE', 'Rate');
+define ('MSG_REVIEW', 'Review');
+define ('MSG_DETAILS', 'Details');
+define ('MSG_TYPE', 'Type');
+define ('MSG_MM_LEAVE_COMMENTS', 'Leave Comments');
+
+//auctions - buying
+define ('MSG_BID_AMOUNT', 'Bid Amount');
+define ('MSG_PROXY_BID', 'Proxy Bid');
+define ('MSG_MM_WON_ITEMS', 'Won Items');
+define ('MSG_MM_WATCHED_ITEMS', 'Watched Items');
+define ('MSG_KEYWORD', 'Keyword');
+define ('MSG_MM_KEYWORDS_WATCH', 'Keywords Watch');
+define ('MSG_KEYWORDS', 'keywords');
+define ('MSG_ADD_KEYWORD', 'Add Keyword(s)');
+
+//messages
+define ('MSG_MM_RECEIVED_MESSAGES', 'Received Messages');
+define ('MSG_MESSAGES', 'messages');
+define ('MSG_SUBJECT', 'Subject');
+define ('MSG_TO', 'To');
+define ('MSG_MM_SENT_MESSAGES', 'Sent Messages');
+
+//message preferences
+define ('MSG_SENT_MSG_NOTIF', 'Sent Message Notification');
+define ('MSG_SENT_MSG_NOTIF_EXPL', 'Receive an email notification when you send a message through the site\'s messaging system.');
+define ('MSG_RECEIVED_MSG_NOTIF', 'Received Message Notification');
+define ('MSG_RECEIVED_MSG_NOTIF_EXPL', 'Receive an email notification when you receive a message through the site\'s messaging system.');
+define ('MSG_ITEM_SOLD_NOTIF', 'Item Sold Notification');
+define ('MSG_ITEM_SOLD_NOTIF_EXPL', 'Receive an email notification when you have successfully sold an item.');
+define ('MSG_ITEM_WON_NOTIF', 'Item Won Notification');
+define ('MSG_ITEM_WON_NOTIF_EXPL', 'Receive an email notification when you have purchased an item.');
+define ('MSG_BID_PLACED_NOTIF', 'New Bid Notification');
+define ('MSG_BID_PLACED_NOTIF_EXPL', 'Receive an email notification when a new bid is placed on one of your items.');
+define ('MSG_OUTBID_NOTIF', 'Outbid Notification');
+define ('MSG_OUTBID_NOTIF_EXPL', 'Receive an email notification when you are outbid on an auction where you were the high bidder.');
+define ('MSG_CONFIRM_TO_SELLER_NOTIF', 'New Item Notification');
+define ('MSG_CONFIRM_TO_SELLER_NOTIF_EXPL', 'Receive an email notification when you have listed a new item.');
+define ('MSG_ITEM_CLOSED_NOTIF', 'Item Closed Notification');
+define ('MSG_ITEM_CLOSED_NOTIF_EXPL', 'Receive an email notification when one of your items has been closed.');
+
+
 
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_TYPE', 'Type');
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_SOURCE', 'Source');
