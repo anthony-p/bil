@@ -57,7 +57,7 @@
     .resp-tab-content aside.announcement .posted-mess{width:528px;}
 
     .top-description .right p.responsive-hide{display:none;}
-    .top-description .right p input {width:150px;}
+    .top-description .right p input {width:150px !important;}
     .tabulation,.resp-tabs-container{width:100%;}
     .tabulation{margin-top: 25px;}
     .resp-tab-content-active{display: none;}
