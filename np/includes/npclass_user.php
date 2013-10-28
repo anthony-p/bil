@@ -396,6 +396,7 @@ class npuser extends npcustom_field
     function copy_campaign($campaign_id = 0)
     {
         $generated_id = 0;
+        $time_plus_30_days = time() + (3600*24*30);
         if ($campaign_id && is_numeric($campaign_id)) {
             $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX .
                 "users SET copied_times=IFNULL(copied_times, 0)+1 WHERE user_id={$campaign_id}";
@@ -426,7 +427,7 @@ class npuser extends npcustom_field
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     CONCAT(project_title, ' (copy ', copied_times, ')'), campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, 0,
+                    deadline_type_value, time_period, certain_date, probid_user_id, {$time_plus_30_days}, 0,
                     cfc, clone_campaign, 0, disabled, parrent_id, 'copy'
                 FROM ".NPDB_PREFIX."users WHERE user_id={$campaign_id}";
 
