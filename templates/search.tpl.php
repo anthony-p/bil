@@ -146,7 +146,7 @@ include_once('includes/grab_video_thumbnail.php');
                 ?>
                 <?php if ($campaign['end_date'] > $current_time): ?>
                     <div class="progress">
-                        <div style="width: <?php echo $completed < 100 ? $completed : 100; ?>%" class="bar">
+                        <div class="bar" style="width: <? echo $completed < 100 ? $completed : 100; ?>%">
                         </div>
                     </div>
                 <?php elseif ($campaign["payment"]): ?>
