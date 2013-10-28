@@ -5,6 +5,29 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+
+//auctions - selling
+
+define ('MSG_AUCTION_ID', 'Auction ID');
+define ('MSG_ITEM_TITLE', 'Item Title');
+define ('MSG_NR_BIDS', '# Bids');
+define ('MSG_MAX_BID', 'Max. Bid');
+define ('MSG_RELIST', 'Relist');
+define ('MSG_UNPAID_EOAFEES_A', 'You have unpaid end of auction fees.<br>Please review your');
+define ('MSG_UNPAID_EOAFEES_B', 'and proceed with the payment(s)');
+define ('MSG_SOLD_ITEMS_PAGE', 'sold items page');
+define ('MSG_EXACT_MATCHES_ONLY', 'exact matches only');
+define ('MSG_PICTURE', 'Picture');
+define ('MSG_ITEMS', 'items');
+define ('MSG_MM_OPEN_AUCTIONS', 'Open Auctions');
+define ('MSG_MM_SCHEDULED_AUCTIONS', 'Scheduled Auctions');
+define ('MSG_MM_CLOSED_AUCTIONS', 'Closed Auctions');
+define ('MSG_SEARCH_TRANSACTIONS', 'Search Transactions');
+define ('MSG_CONTACT_INFO', 'Contact Information');
+define ('MSG_PURCHASE_DATE', 'Purchase Date');
+define ('MSG_STATUS', 'Status');
+define ('MSG_SELECT_PERIOD', 'Select Period');
+
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_TYPE', 'Type');
 define('MSG_MEMBERS_AREA_EARNINGS_TBL_SOURCE', 'Source');
 define('MSG_MEMBERS_AREA_CONTRIBUTIONS_SOURCE', 'Type');
