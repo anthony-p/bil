@@ -630,6 +630,9 @@ if (!defined('INCLUDED')) {
 						<div class="radio">
 							<input type="radio" name="include_clickthrough" value="0" <?php echo (isset($campaign["include_clickthrough"]) && ($campaign["include_clickthrough"] == 0)) ? "checked" : ''; ?>>
 							<label><?=MSG_INCLUDE_CLICKTHROUGH_STATUS_NO?></label>
+                            <img src="/images/question_help.png" height="16" alt="help"
+                                 title="<?= MSG_INCLUDE_CLICKTHROUGH_STATUS_TOOLTIP ?>"
+                                 style="margin-left: 10px;">
 						</div>
 						<div class="radio">
 							<input type="radio" name="include_clickthrough" value="1" <?php echo (isset($campaign["include_clickthrough"]) && ($campaign["include_clickthrough"] == 1)) ? "checked" : ''; ?>>
