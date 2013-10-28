@@ -6,6 +6,10 @@
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
 
+
+define ('MSG_INCLUDE_CLICKTHROUGH_STATUS_TOOLTIP', 'Select \'no\' to remove the click through vendors entirely from your campaign page. You can change this setting at any time');
+
+
 //auctions - selling
 
 define ('MSG_AUCTION_ID', 'Auction ID');
@@ -15,7 +19,6 @@ define ('MSG_MAX_BID', 'Max. Bid');
 define ('MSG_RELIST', 'Relist');
 define ('MSG_UNPAID_EOAFEES_A', 'You have unpaid end of auction fees.<br>Please review your');
 define ('MSG_UNPAID_EOAFEES_B', 'and proceed with the payment(s)');
-define ('MSG_INCLUDE_CLICKTHROUGH_STATUS_TOOLTIP', 'If you wish, you can remove the click through vendors entirely from your campaign page by selecting no. You can change this setting at any time');
 define ('MSG_SOLD_ITEMS_PAGE', 'sold items page');
 define ('MSG_EXACT_MATCHES_ONLY', 'exact matches only');
 define ('MSG_PICTURE', 'Picture');
