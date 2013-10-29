@@ -3707,3 +3707,8 @@ ALTER TABLE `np_users`
   ADD COLUMN `inheritance_type` VARCHAR(45) NULL  AFTER `cloned_times` ;
 
 alter table `funders` add column `source` enum('donation','click through','auction') DEFAULT 'donation' NOT NULL after `amount`;
+
+alter table `np_users` add column `autorenew` tinyint(1) DEFAULT '0' NOT NULL after `include_clickthrough`;
+alter table `np_users` add column `keep_comments` tinyint(1) DEFAULT '0' NOT NULL after `autorenew`;
+alter table `np_users` add column `keep_updates` tinyint(1) DEFAULT '0' NOT NULL after `keep_comments`;
+alter table `np_users` add column `keep_rewards` tinyint(1) DEFAULT '0' NOT NULL after `keep_updates`;

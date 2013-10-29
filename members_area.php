@@ -5271,6 +5271,17 @@ else
 
             $form_submitted = FALSE;
 
+            if ($_REQUEST['operation'] == 'save_renew') {
+        		$mysql_update_query  = "UPDATE np_users SET autorenew = " .$_REQUEST['times'];
+        		$mysql_update_query .= ($_REQUEST['keep_comments'] == 1) ? ", keep_comments = 1" : ", keep_comments = 0";
+        		$mysql_update_query .= ($_REQUEST['keep_updates'] == 1) ? ", keep_updates = 1" : ", keep_updates = 0";
+        		$mysql_update_query .= ($_REQUEST['keep_rewards'] == 1) ? ", keep_rewards = 1" : ", keep_rewards = 0";
+        		$mysql_update_query .= " WHERE user_id = " . $_REQUEST['campaign_id'];
+        		$db->query($mysql_update_query);
+        		echo json_encode(array("status" => "success"));
+        		die();
+        	}
+
           if ((isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') || ($_POST['ajaxsubmit'] == true)) {
 
                 $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE

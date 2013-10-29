@@ -724,4 +724,35 @@ $(document).on('ready', function () {
     $('.tabs').tooltip({
         track: true
     });
+    $("#submit_renew").on('click', function(e) {
+        e.preventDefault();
+        var save_info = new Array();
+        var times, url, user_id, data = '';
+        times = $("#renew_times").val();
+        if (times < 1) {
+            alert("Set number of renews");
+            $("#renew_times").val('');
+            $("#renew_times").focus();
+        } else {
+            user_id = $("#user_id_val").val();
+            url = '/campaigns,page,edit,section,' + user_id + ',campaign_id,members_area';
+            data = 'operation=save_renew&times=' + times + '&campaign_id=' + user_id;
+            $("input:checkbox[name=keep_info]:checked").each(function(){        
+                data = data + '&' + $(this).val() + '=1';
+            });
+            $.ajax({
+                url:url,
+                type: "POST",
+                data: data,
+                success: function (response) {
+                    response = $.parseJSON(response);
+                    if (response.status == 'success') {
+                        alert('Saved!');
+                    } else {
+                        alert("Unknown error!");
+                    }
+                }
+            });
+        }
+    });
 });

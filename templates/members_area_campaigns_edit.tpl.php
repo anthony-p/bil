@@ -654,13 +654,36 @@ if (!defined('INCLUDED')) {
                             <label><?= MSG_LET_CAMPAIGN_CLOSE ?></label>
                             <img src="/images/question_help.png" height="16" alt="help" title="<?= MSG_LET_CAMPAIGN_CLOSE ?>"
                                  style="margin-left: 10px;">
+                        </div>                        
+                    </div>
+                    <div class="line-sep"></div>
+                    <div class="account-row">
+                        <label><?= MSG_CLONE_CONFIG ?></label>
+                         <div class="radio extend-params">
+                            <label><?= MSG_CLONE_CONFIG_TIMES ?>&nbsp;</label>
+                            <input type="text" name="renew_times" id="renew_times" value="<?= ($campaign["autorenew"] > 0) ? $campaign["autorenew"] : 0; ?>" />
+                            <label><?= MSG_TIMES ?></label>                            
+                        </div>
+                        <div class="radio">
+                            <div class="renew-checkbox">
+                                <input type="checkbox" id="keep_comments" name="keep_info" value="keep_comments" <?= ($campaign["keep_comments"] == 1) ? "checked" : ''; ?> />
+                                <label for="keep_comments"><?= MSG_KEEP_COMMENT ?></label>
+                            </div>
+                            <div class="renew-checkbox">
+                                <input type="checkbox" id="keep_updates" name="keep_info" value="keep_updates" <?= ($campaign["keep_updates"] == 1) ? "checked" : ''; ?> />
+                                <label for="keep_updates"><?= MSG_KEEP_UPDATES ?></label>
+                            </div>
+                            <div class="renew-checkbox">
+                                <input type="checkbox" id="keep_rewards" name="keep_info" value="keep_rewards" <?= ($campaign["keep_rewards"] == 1) ? "checked" : ''; ?> />
+                                <label for="keep_rewards"><?= MSG_KEEP_REWARDS ?></label>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="next">
                     <input type="button" value="<?= MSG_PREV ?>" class="prev_btn"/>
-                    <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>&action=clone" target="_blank">
-                        <input class="clone_btn" type="button" value="<?= MSG_CLONE_CAMPAIGN ?>"/><img src="/images/question_help.png"height="16" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
+                    <a href="/np/renew_campaigns.php" id="submit_renew">
+                        <input class="clone_btn" type="button" value="<?= MSG_RENEW_CAMPAIGN ?>"/><img src="/images/question_help.png"height="16" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
                     </a>
                     <div class="right">
                         <input name="form_register_proceed" type="submit" id="form_register_proceed"

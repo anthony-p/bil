@@ -12,6 +12,8 @@ include_once ('includes/npclass_user.php');
 $user = new npuser();
 $current_time = time();
 
+$user->new_renew_campaigns();
+
 $closed_campaigns = $user->get_closed_campaigns();
 
 echo '<pre>';

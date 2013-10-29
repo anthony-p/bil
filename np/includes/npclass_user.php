@@ -252,6 +252,110 @@ class npuser extends npcustom_field
         return $closed_campaigns;
     }
 
+    function new_renew_campaigns() {
+        $current_time = time() + 24*60*60;
+        $autorenew_result = $this->query("SELECT * FROM " . NPDB_PREFIX . "users WHERE autorenew > 0 AND active = 1 AND end_date <= $current_time");
+
+        while ($query_result =  mysql_fetch_assoc($autorenew_result)) {
+
+            $old_campaigns[] = $query_result;
+
+        }
+        $cfc_flag = 0;
+        foreach ($old_campaigns as $old_campaign) {
+            $new_campaign = $old_campaign;
+
+            $old_campaign['active'] = 2;
+            $old_id = $old_campaign['user_id'];
+            unset($old_campaign['user_id']);
+
+            $new_campaign['active'] = 1;
+            $new_campaign['end_date'] += 60*60*24;
+            $new_campaign['payment'] = 0;
+            $new_campaign['autorenew'] = 0;
+            $new_campaign['keep_comments'] = 0;
+            $new_campaign['keep_updates'] = 0;
+            $new_campaign['keep_rewards'] = 0;
+            unset($new_campaign['user_id']);
+
+            $url = explode('_renew_', $old_campaign['username']);            
+            if (isset($url[1])) {
+                $old_campaign['username'] = $url[0] . '_renew_' . ++$url[1];
+                $new_campaign['username'] = $url[0] . '_renew_' . ++$url[1];
+            }
+            else {
+                $old_campaign['username'] = $url[0] . '_renew_0';
+                $new_campaign['username'] = $url[0] . '_renew_1';
+            }
+            if ($old_campaign['cfc'] && !$cfc_flag) {
+                $old_campaign['cfc'] = 0;
+                $new_campaign['cfc'] = 1;
+                $cfc_flag = 1;
+            }
+
+            $update_query = "UPDATE " . NPDB_PREFIX . "users SET";
+            foreach ($old_campaign as $key => $value) {
+                $keys[] = $key;
+                $values[] = $value;
+                $keys_old = implode(', ', $keys);
+                $values_old = implode(', ', $values);
+                $update_query .= " " . $key . "='" . $value . "',";
+            }
+            $update_query = substr($update_query, 0, -1);
+            $update_query .= " WHERE user_id=$old_id";            
+
+            $this->query($update_query);
+
+            unset($keys);
+            unset($values);  
+
+            foreach ($new_campaign as $key => $value) {
+                $keys[] = $key;
+                $values[] = "'" . $value . "'";
+            }
+
+            $keys_new = implode(', ', $keys);
+            $values_new = implode(', ', $values);
+
+            $this->query("INSERT INTO " . NPDB_PREFIX . "users ($keys_new) VALUES ($values_new)");
+            $new_id = mysql_insert_id();
+
+            if ($old_campaign['keep_rewards'] == 1) {
+                
+                $this->query("
+                    INSERT INTO project_rewards (`project_id`, `amount`, `name`, `short_description`, `description`, `estimated_delivery_date`, `shipping_address_required`, `available_number`, `given_number`)
+                    SELECT $new_id, `amount`, `name`, `short_description`, `description`, `estimated_delivery_date`, `shipping_address_required`, `available_number`, `given_number` 
+                    FROM project_rewards 
+                    WHERE `project_id`=$old_id
+                ");
+
+            }
+
+            if ($old_campaign['keep_comments'] == 1) {
+                
+                $this->query("
+                    INSERT INTO project_comment (`user_id`, `project_id`, `parrent_id`, `comment`, `create_at`)
+                    SELECT `user_id`, $new_id, `parrent_id`, `comment`, `create_at` 
+                    FROM project_comment 
+                    WHERE `project_id`=$old_id
+                ");
+
+            }
+
+            if ($old_campaign['keep_updates'] == 1) {
+                
+                $this->query("
+                    INSERT INTO project_updates (`user_id`, `project_id`, `parrent_id`, `comment`, `create_at`)
+                    SELECT `user_id`, $new_id, `parrent_id`, `comment`, `create_at` 
+                    FROM project_updates 
+                    WHERE `project_id`=$old_id
+                ");
+
+            }
+
+        }
+    }
+
     /**
      * @param $campagns
      */
