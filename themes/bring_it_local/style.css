@@ -6952,7 +6952,7 @@ a.jp-current:hover{
     margin-top:4px;
     }
 
-#steps form input:not([type=radio]).post-reward{
+#steps form input:not([type=radio]).post-reward, #steps form button.delete-reward{
     float:right;
     margin:0 1em 1em 0;
     background:#272727;
@@ -6964,6 +6964,8 @@ a.jp-current:hover{
     text-transform:uppercase;
     cursor:pointer;
     }
+#steps form button.delete-reward{ float:left;margin-left:10px;}
+#steps form button.delete-reward:hover{ background:#272727; color:#fff;text-shadow:none;}
 #steps form input:not([type=radio]).disabled {
     background:#eee;
     cursor:default;
@@ -6986,7 +6988,7 @@ a.jp-current:hover{
     background:#4797ed;
     }
 
-#steps form button.delete-reward, #steps form button.delete-reward:hover, #steps form button.validate-reward, #steps form button.validate-reward:hover{
+ #steps form button.validate-reward, #steps form button.validate-reward:hover{
     border:none;
     outline:none;
     width:24px;
@@ -6997,9 +6999,7 @@ a.jp-current:hover{
     display:inline-block;
     }
 
-#steps form button.delete-reward, #steps form button.delete-reward:hover{
-    background:url('img/trash.png');
-    }
+
 
 #steps form button.validate-reward, #steps form button.validate-reward:hover{
     background:url('img/validate.png');

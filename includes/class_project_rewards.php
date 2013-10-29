@@ -97,9 +97,7 @@ class projectRewards extends custom_field {
 		?><div class="reward_block clrfix" id="reward_block_<?= $reward_id; ?>">
 			<div class="reward_title">
 				<div class="reward_title_label"><?=MSG_REWARD;?></div>
-				<div class="rewards-actions">
-					<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
-				</div>
+
 			</div>
 			<div class="reward_content">
 				<input type="hidden" id="is_new_<?= $reward_id; ?>" value="<?= isset($reward['id']) ? '0' : '1'; ?>">
@@ -136,7 +134,8 @@ class projectRewards extends custom_field {
 				</div>
 			</div>
             <div class="clear"> </div>
-        <input type="button" id="reward_submit_<?= $reward_id; ?>" class="post-reward disabled" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
+            <button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward" id="delete_reward_<?= $reward_id; ?>"><?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_OK; ?></button>
+            <input type="button" id="reward_submit_<?= $reward_id; ?>" class="post-reward disabled" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
             <script>
 				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker({ 
 					dateFormat: "mm/dd/yy", 
