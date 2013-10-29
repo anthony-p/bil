@@ -131,9 +131,7 @@ if (!defined('INCLUDED')) {
 </script>
 
 <div class="editCampaigns">
-    <h2><?= MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN; ?></h2>
-
-    <div id="wrapper">
+    <h2>
         <?php if (isset($campaign["active"]) && ($campaign["active"] == 0)): ?>
             <a href="#" class="campaign-top-btn set_live_campaign_btn" >
                 <span><?= MSG_SET_LIVE_CAMPAIGN ?></span>
@@ -145,6 +143,11 @@ if (!defined('INCLUDED')) {
         <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>" class="campaign-top-btn copy_campaign_btn" target="_blank">
             <span><?= MSG_COPY_CAMPAIGN ?></span>
         </a>
+        <?= MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN; ?>
+    </h2>
+
+    <div id="wrapper">
+
 
         <!-- Tabs navigation -->
         <div id="navigation">
