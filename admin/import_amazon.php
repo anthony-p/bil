@@ -380,8 +380,8 @@ function getOneTag($xml)
                     $npuser_name = $row["npuser_name"];
                 }
 				
-                // $tag_exist = TagExist($tracking_id, $user_id, $click_date);
-                // if(!$tag_exist){
+                $tag_exist = TagExist($tracking_id, $user_id, $click_date);
+                if(!$tag_exist){
                     $fields = array();
                     $fields[]="$id";//unique id
                     $fields[]="$tracking_id";//tracking link
@@ -441,7 +441,8 @@ function getOneTag($xml)
                     if($orderedUnit == 0 || $orderedUnit == $shippedUnits)               
                         markFree($tracking_id);
                     
-                // }elseif($track_timestamp != 0){
+                }
+				//elseif($track_timestamp != 0){
 
                     // $fields = array();
                     // $sales = (float)$sales+(float)$tag_exist["sales"];
