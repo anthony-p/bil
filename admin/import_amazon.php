@@ -314,12 +314,16 @@ function getOneTag($xml)
             $bil_share = 0;
             $pct = 0;
             if($commision > 0 && $sales > 0){
-                //$np_share = round($commision/2,2);
-				$np_share = $commision;
-                //$bil_share = round($commision/2,2);
+				$sql_query = "SELECT rate_of_pay FROM `payment_option_details` WHERE id=1";
+				$sql_select= mysql_query($sql_query);
+				while ($row = mysql_fetch_assoc($sql_select)) {
+					$rate_of_pay = (int)$row["rate_of_pay"];
+					$rate_of_pay2 = 100 - $rate_of_pay;
+				}
+                $np_share = round($commision*$rate_of_pay2/100,2);
+                $bil_share = round($commision*$rate_of_pay/100,2);
                 $pct = (round(($commision/$sales)*100,2))."%";
-                //$pct_giveback = round($pct/2,2)."%";
-				$pct_giveback = $pct;
+                $pct_giveback = round($pct*$rate_of_pay/100,2)."%";
             }
             
             // Check if TrackID is Free or bussy
@@ -345,9 +349,12 @@ function getOneTag($xml)
                 $id = $row["id"];
             }
 			
-            if($id){                
-//                $s2 = "select * from shop_tracking_links where id=". $id;
-                $s2 = "select shop_tracking_links.*, probid_users.name as user_name, np_users.tax_company_name as npuser_name from shop_tracking_links LEFT JOIN probid_users ON shop_tracking_links.user_id  = probid_users.user_id LEFT JOIN np_users ON shop_tracking_links.np_userid=np_users.user_id where id=". $id;
+            if($id){
+                $s2 = "SELECT shop_tracking_links. * , bl2_users.first_name, bl2_users.last_name, np_users.tax_company_name AS npuser_name 
+						FROM shop_tracking_links 
+						LEFT JOIN bl2_users ON shop_tracking_links.user_id = bl2_users.id 
+						LEFT JOIN np_users ON shop_tracking_links.np_userid = np_users.user_id 
+						WHERE shop_tracking_links.id=". $id;
                 $sql_select= mysql_query($s2);
 
                 while ($row = mysql_fetch_assoc($sql_select))
@@ -364,8 +371,8 @@ function getOneTag($xml)
                     if($tmpDate == $nowDate)
                         $click_date = date("Y-m-j", time() - 60 * 60 * 24);
 
-                    if($row["user_name"] != null)
-                        $user_name = $row["user_name"];
+                    if($row["first_name"] != null && $row["last_name"] != null)
+                        $user_name = $row["first_name"].' '.$row["last_name"];
                     elseif($user_id == "widget")
                         $user_name = "widget";
                     else

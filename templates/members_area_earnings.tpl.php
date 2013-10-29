@@ -1,7 +1,8 @@
+
 <div class="contributions_page">
     <h2><?= MSG_MEMBERS_AREA_EARNINGS_EARNINGS; ?></h2>
 
-    <table>
+    <table >
         <tr class="table_header">
             <td><h4><?= MSG_MEMBERS_AREA_EARNINGS_TBL_DATE; ?></h4></td>
             <td><h4><?= MSG_MEMBERS_AREA_EARNINGS_TBL_CAMPAIGN; ?></h4></td>
@@ -33,13 +34,26 @@
             </tr>
         <?php endforeach;?>
     </table>
-    <div>
-        <ul>
-            <?php for($i = 1; $i <= $total_pages; $i++) : ?>
-                <li <?php if ($i == $page_selected) echo 'pagination_selected_page'?> >
-                    <a href="/earnings,page,main,section,<?=$i?>,page_selected,members_area"><?=$i?></a>
-                </li>
-            <?php endfor;?>
-        </ul>
+    <div class="holder">
+
+        <?php
+        if (empty($page_selected)) {
+            $page_selected = 1;
+
+        }
+        if ($total_pages > 1)  {
+            if ($page_selected > 1) $disabledclass = ""; else $disabledclass = "jp-disabled";?>
+            <a class="jp-previous <?=$disabledclass?>"><?= MSG_PREV ?></a>
+        <?php
+        for($i = 1; $i <= $total_pages; $i++) : ?>
+            <a href="/earnings,page,main,section,<?=$i?>,page_selected,members_area" class="<?php if ($i == $page_selected) echo 'jp-current'?>"><?=$i?></a>
+
+        <?php endfor;?>
+
+            if ($page_selected < $total_pages)  $disabledclass = ""; else $disabledclass = "jp-disabled";?>
+            <a class="jp-next <?=$disabledclass?>"><?= MSG_NEXT ?></a>
+        <? } ?>
+
     </div>
+
 </div>

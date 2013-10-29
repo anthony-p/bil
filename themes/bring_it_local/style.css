@@ -3735,8 +3735,7 @@ ul.list li .img img{
     }
 
 ul.list li .campaigns-info{
-    float:left;
-    width:93%;
+
     padding:16px 0 14px 16px;
     background:#fff;
     }
@@ -3827,19 +3826,19 @@ ul.list li .campaign-details .price{
     }
 
 ul.list li .campaign-details .votes{
-    font:16px/16px "OpenSans-SemiBold";
+    font:1.2em/1.2em "OpenSans-SemiBold";
     color:#222;
     margin-left:10px;
     }
 
 ul.list li .campaign-details .day{
     float:right;
-    font:16px/16px "OpenSans-SemiBold";
+    font:1.2em/1.2em "OpenSans-SemiBold";
     color:#222;
     }
 
 ul.list li .campaign-details .day span{
-    font:12px/16px OpenSans;
+    font:1em/1.2em OpenSans;
     float:none;
     margin-left:6px;
     }
@@ -5840,7 +5839,13 @@ div.select{
     margin:20px 0 60px;
     border:0;
     }
-
+.holder {
+    height: 2em;
+    line-height: 2em;
+    padding-top: 10px;
+    text-align: center;
+    clear: both
+    }
 .holder a{
     cursor:pointer;
     margin:0 5px;
@@ -5855,13 +5860,14 @@ div.select{
     color:#069;
     }
 
-.holder a.jp-previous{
-    margin-right:15px;
-    }
 
-.holder a.jp-next{
+
+.holder a.jp-next, .holder a.jp-previous{
     margin-left:15px;
     color:#7eb041;
+    }
+.holder a.jp-previous{
+    margin-right:15px;
     }
 
 .holder a.jp-current,
@@ -7367,29 +7373,7 @@ a.jp-current:hover{
     display:block;
     }
 
-#members_area .contributions_page table ul li span{
-    font:10px "OpenSans";
-    }
 
-#members_area .contributions_page div ul{
-    float:right;
-    margin-top:20px;
-    }
-
-#members_area .contributions_page div ul li{
-    background:#92c150;
-    float:left;
-    width:20px;
-    height:20px;
-    text-align:center;
-    margin-left:5px;
-    border-radius:50%;
-    }
-
-#members_area .contributions_page div ul li a{
-    font:11px/20px "OpenSans-Bold";
-    color:#fff;
-    }
 
 .subscribe_form{
     float:left;
