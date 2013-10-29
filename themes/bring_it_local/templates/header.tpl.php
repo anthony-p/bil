@@ -10,12 +10,13 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 global $coupon_url;
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
     <?php if(!isset($page_specific_title)) $page_specific_title =''; ?>
-    <title><?=$page_title. $page_specific_title;?></title>
+    <title><?=$page_title. $page_specific_title;?> aaa</title>
     <meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
     <meta http-equiv=”X-UA-Compatible” content=”IE=9″ />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
