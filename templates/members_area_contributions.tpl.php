@@ -1,6 +1,29 @@
+<script>
+    $(document).ready(function () {
+
+        var pagination_wrapper = $(".holder");
+        if (pagination_wrapper) {
+            if ($.fn.jPages) {
+                pagination_wrapper.jPages({
+                    containerID: "itemContainer"
+                });
+            } else {
+                $.getScript("/scripts/jquery/pagination.js", function (data, textStatus, jqxhr) {
+                    pagination_wrapper.jPages({
+                        containerID: "itemContainer"
+                    });
+                });
+            }
+        }
+
+
+    });
+
+
+</script>
 <div class="contributions_page">
     <h2><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_CONTRIBUTION; ?></h2>
-    <table>
+    <table id="itemContainer">
         <tr class="table_header">
             <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_DATE; ?></h4></td>
             <td><h4><?= MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_CAMPAIGN; ?></h4></td>
@@ -24,6 +47,7 @@
             </tr>
         <?php endforeach;?>
     </table>
+    <div class="holder"></div>
     <div>
         <ul>
             <?php for($i = 1; $i <= $total_pages; $i++) : ?>
