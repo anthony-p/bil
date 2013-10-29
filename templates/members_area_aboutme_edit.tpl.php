@@ -56,7 +56,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <div style="float:left">
             <?php if(!empty($user_details['avatar'])) :?>
                 <div class="upload_logo">
-                    <img id="avatar_img" src="<?=$user_details['avatar']?>"/>
+                    <img id="avatar_img" src="<?$dt = New DateTime(); echo $user_details['avatar']."?".$dt->format('Y-m-d H:i:s'); ?>"/>
                 </div>
             <?php endif;?>
             </div>            
