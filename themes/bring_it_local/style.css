@@ -146,7 +146,7 @@ html[xmlns] .clearfix{
     }
 
 .project-unsuccessful{
-    float:left;
+
     height:20px;
     margin-top:9px;
     border-radius:10px;
@@ -3814,8 +3814,7 @@ ul.list li .campaigns-info .more_description.more a{
     }
 
 ul.list li .campaign-details{
-    float:left;
-    width:88%;
+
     background:#f3f3f3;
     padding:10px 13px;
     }
@@ -3829,6 +3828,7 @@ ul.list li .campaign-details .votes{
     font:1.2em/1.2em "OpenSans-SemiBold";
     color:#222;
     margin-left:10px;
+    float:right;
     }
 
 ul.list li .campaign-details .day{

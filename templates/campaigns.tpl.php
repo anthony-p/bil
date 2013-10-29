@@ -128,18 +128,14 @@ include_once('includes/grab_video_thumbnail.php');
                         <a href="/search.php?city=<?= urlencode($row['city']) ?>"
                            class="location"><?php echo $row['city']; ?></a>
                     </div>
-                    <div class="campaign-details">
+                    <div class="campaign-details clrfix">
                         <?php
 
                         $end_time = $row['end_date'];
                         $current_time = time();
                         ?>
                         <span class="price">$<?php echo floor($row['payment']); ?></span>
-                        <span class="votes">Votes:<?php if (!empty($row['votes'])) {
-                                echo $row['votes'];
-                            } else {
-                                echo '0';
-                            } ?></span>
+
                         <?php if ($current_time > $end_time): ?>
                             <span class="day">0</span>
                         <?php else: ?>
@@ -153,6 +149,11 @@ include_once('includes/grab_video_thumbnail.php');
                         $completed = $row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
                         echo $completed . "%";
                         ?>
+                        <span class="votes">Votes:<?php if (!empty($row['votes'])) {
+                                echo $row['votes'];
+                            } else {
+                                echo '0';
+                            } ?></span>
                         <?php if ($current_time > $end_time): ?>
                             <div class="project-unsuccessful"><?= MSG_CLOSED ?></div>
                         <?php else: ?>
