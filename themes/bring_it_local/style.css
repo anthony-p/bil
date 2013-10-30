@@ -1787,6 +1787,16 @@ span.hlbolditem a:hover{
     text-transform:uppercase;
     }
 
+.errormessage_email{
+    background-color: #FFFFE1; 
+    border: 1px dashed #CFCFCF; 
+    margin-top: 8px; 
+    margin-bottom: 16px; 
+    padding: 6px; line-height: 18px;
+    font:14px "OpenSans-Semibold";
+    color:red;
+    }
+
 /* SYSTEM classes - register.php */
 .creg2{
     background-color:#f8f8f8;
