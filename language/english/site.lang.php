@@ -490,8 +490,8 @@ define ('MSG_USERNAME_EXPLANATION', 'Example: rose789 (Don\'t use your email add
 define ('MSG_PASSWORD_EXPLANATION', '6 characters minimum <br />Enter a password that\'s easy for you to remember, but hard for others to guess.');
 define ('MSG_EMAIL_EXPLANATION', 'To complete registration, enter a valid email address that   you can check immediately.');
 define ('MSG_REGISTRATION_CONFIRMATION', 'Registration Confirmation');
-define ('MSG_REGISTER_SUCCESS_TYPE0', 'We\'re glad to have your with us! Your account has been successfully created.<br>You can now login with the username and password you have created.');
-define ('MSG_REGISTER_SUCCESS_TYPE1', 'We\'re glad to have your with us! Your account has been successfully created.<br>An email has been sent to the address you have submitted with details on how to activate your account.');
+define ('MSG_REGISTER_SUCCESS_TYPE0', 'We\'re glad to have you with us! Your account has been successfully created.<br>You can now login with the username and password you have created.');
+define ('MSG_REGISTER_SUCCESS_TYPE1', 'We\'re glad to have you with us! Your account has been successfully created.<br>An email has been sent to the address you have submitted with details on how to activate your account.');
 define ('MSG_REGISTER_SUCCESS_TYPE2', 'The registration is complete.<br>The administrator will review your account and approve it manually.<br>You will be notified by email when your account will be activated.<br>An email has been sent to the address you have submitted with details on how to verify your email address.');
 define ('MSG_LOGIN_TO_MEMBERS_AREA', 'Login to Members Area');
 define ('MSG_INVALID_LOGIN', 'The login details you have submitted are invalid<br>Please try again');
