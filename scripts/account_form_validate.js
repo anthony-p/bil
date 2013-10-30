@@ -66,7 +66,7 @@ function ajaxFormSave(button, form) {
         type: "POST",
         data: form.serialize() + "&ajaxsubmit=true",
         success: function (response) {
-            response = $.parseJSON( response);
+            response = $.parseJSON(response);
             if (response.status == "success") {
                 loading_msg.remove();
                 if (button.parent('div').hasClass('right')) {
