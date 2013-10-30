@@ -5427,6 +5427,10 @@ else
                     pitch_text='" . $pitch_text . "',
 					include_clickthrough='" . $_POST["include_clickthrough"]."'";
 
+					if ($_POST['active'] == 1 && ($_POST['active'] != $campaign['active'])) {
+                    	$mysql_update_query .= ", start_date='" . time() . "'";
+                    }
+
                     if (isset($_POST["username"]) && $_POST["username"]) {
                         $mysql_update_query .= ", username='" . $_POST["username"] . "'";
                     }
