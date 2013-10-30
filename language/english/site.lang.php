@@ -614,6 +614,27 @@ define ('MSG_MM_POST_AUCTION', 'Post an Auction');
 define ('MSG_BTN_HELP', 'Help');
 define ('MSG_BTN_FAQ', 'FAQ');
 define ('MSG_BTN_SITE_FEES', 'Site Fees');
+define ('MSG_WHAT_DOSE_IT_COST', 'What does it cost to use Bring It Local');
+define ('MSG_SITE_FEES_DESC', 'If you use Bring It Local for your fundraising the site will deduct a 5% fee from the total amount of funds you raise.
+<br><br>
+
+<strong>Donations:</strong> Supporters send their donations directly to you via PayPal. At the same moment that you receive your donation the site will also automatically charge you 5% of the amount you receive.
+<br><br>
+
+If you don\'t raise any money Bring It Local will never cost you anything. 
+<br><br>
+<strong>Click through shopping:</strong> When users click through and make purchases from the online vendors we list on the site, you will receive a percentage of each transaction. This amount varies and is shown on the vendors page for each vendor.
+On average this is around 6% of the purchase amount. <br><br>So, here is a sample transaction:
+<br>
+-a supporter of your campaign clicks and makes a purchase for $100 from Amazon.<br>
+-you will receive 6% of that transaction or $6.00.<br>
+-Bring It Local will deduct a 5% fee on the total of the money you raise. So in this case it would amount to 5% of the $6.00 or $.30 (30 cents).
+
+
+
+<br><br>
+<strong>Garage sales:</strong> this is an upcoming feature of Bring It Local where we enable campaigns to set up and maintain ongoing garage sales where people buy and sell items from each other. We\'ll add more information here
+as this feature becomes available.');
 define ('MSG_BTN_ABOUT_US', 'About Us');
 define ('MSG_BTN_CONTACT_US', 'Contact Us');
 define ('MSG_BTN_TERMS', 'TERMS & CONDITIONS');
