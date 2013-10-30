@@ -77,8 +77,7 @@ if (!defined('INCLUDED')) {
                     button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
                 if (formElem.valid()) {
-                    //ajaxFormSave(button, formElem, true);
-                    formElem.submit();
+                    ajaxFormSave(button, formElem, true);
                 }
             })
         });
