@@ -66,7 +66,7 @@ if (!defined('INCLUDED')) {
 <script type="text/javascript" src="/scripts/init_tinymce.js"></script>
 <script type="text/javascript" src="/scripts/campaign_form_validate.js"></script>
 <script type="text/javascript">
-
+      
     $(document).on('ready', function () {
         /* Form validated before submit */
         $('input[type="submit"]').each(function() {
@@ -77,7 +77,8 @@ if (!defined('INCLUDED')) {
                     button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
                 if (formElem.valid()) {
-                    ajaxFormSave(button, formElem, true);
+                    formElem.submit();
+                    //ajaxFormSave2(button, formElem, true);
                 }
             })
         });
@@ -472,7 +473,8 @@ if (!defined('INCLUDED')) {
                         <!--<h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>-->
                         <h5><?= MSG_YOUR_STORY3 ?></h5>
                         <div class="account-row">
-                            <?php if (isset($campaign["banner"]) && strstr($campaign["banner"], '/images/partner_logos/') !== false): ?>
+                            <?php //if (isset($campaign["banner"]) && strstr($campaign["banner"], '/images/partner_logos/') !== false): ?>
+                            <?php if (isset($campaign["banner"])): ?>
                                 <img src="<?php echo $campaign['banner'] . "?" . time() ?>">
                             <?php endif; ?>
                             <div class="upload">
