@@ -442,7 +442,7 @@ define ('MSG_WAYS_TO_SUPPORT', 'Shop Online');
 define ('MSG_DEADLINE', 'Duration *');
 define ('MSG_TIMEPERIOD', '# of days');
 define ('MSG_DATE', 'date');
-define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 160 pixels wide.');
+define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 100 pixels wide.');
 define ('MSG_YOUR_STORY', 'Your story');
 define ('MSG_YOUR_STORY2', 'tell potential supporters about your campaign');
 define ('MSG_YOUR_STORY3', 'Add a large banner image or video at the top of your compaign page');
@@ -764,6 +764,7 @@ define ('MSG_KEEP_REWARDS', ' keep rewards');
 // Vote Us Section
 define ('MSG_VOTE_US', 'Vote Us!');
 define ('MSG_VOTES_NUMBER', 'Votes');
+define ('MSG_CAMPAIGNS_VOTES_NUMBER', 'votes');
 
 
 // Mail Section

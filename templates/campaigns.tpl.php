@@ -149,11 +149,11 @@ include_once('includes/grab_video_thumbnail.php');
                         $completed = $row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
                         echo $completed . "%";
                         ?>
-                        <span class="votes">Votes:<?php if (!empty($row['votes'])) {
+                        <span class="votes"><?php if (!empty($row['votes'])) {
                                 echo $row['votes'];
                             } else {
                                 echo '0';
-                            } ?></span>
+                            } ?> <?= MSG_CAMPAIGNS_VOTES_NUMBER ?></span>
                         <?php if ($current_time > $end_time): ?>
                             <div class="project-unsuccessful"><?= MSG_CLOSED ?></div>
                         <?php else: ?>
