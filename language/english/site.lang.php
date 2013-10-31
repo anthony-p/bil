@@ -763,6 +763,7 @@ define ('MSG_KEEP_REWARDS', ' keep rewards');
 // Vote Us Section
 define ('MSG_VOTE_US', 'Vote Us!');
 define ('MSG_VOTES_NUMBER', 'Votes');
+define ('MSG_CAMPAIGNS_VOTES_NUMBER', 'votes');
 
 
 // Mail Section
