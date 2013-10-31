@@ -6724,8 +6724,10 @@ a.jp-current:hover{
 .summary-block {
    margin-bottom:1em;
     }
-.summary-block {
+.summary-block{
     position:relative;
+    padding-bottom:55px;
+    height:126px;
     }
 .summary-block .info {
     margin-left:255px;
@@ -6740,6 +6742,9 @@ a.jp-current:hover{
 .summary-block .social-block .label{
     display: block;
     margin-bottom: 4px;
+    }
+.summary-block .social-block a{
+    text-decoration:none;
     }
 #avatar_about_me{
     float:left;

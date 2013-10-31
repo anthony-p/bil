@@ -119,26 +119,32 @@ include_once('includes/grab_video_thumbnail.php');
                         </div>
                         <div class="campaign-details">
                             <span class="price">$<?php echo $row['payment'];?></span>
-                            <span class="votes">Votes:<?php if(!empty($row['votes']))  {echo $row['votes'];} else {echo '0';}?></span>
-                            <span class="day">
+                           <span class="day">
 							<?php $days=round(($row['end_date']-time())/86400); 
 							    if($days>0){echo $days."<span>".MSG_DAYS_LEFT."</span>"; }
 							    else{echo "<span>closed</span>";}
 							?>	
-				            </span>				
+				            </span>
                             <div class="clear"></div>
-							<?php 
-								if(($row['end_date']-time())>0){
-                                    $completed =$row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
-	                            	echo "<div class='progress'><div style='width:". $completed."%' class='bar'></div></div>";
-	                            }
-                                else{
-                                    if ($row["payment"])
-                                        echo "<div class='project-successful'>Successful</div>";
-                                    else
-                                        echo "<div class='project-unsuccessful'>Closed</div>";
-		                          }    
-							?>
+                            <?php
+
+                            $completed = $row["founddrasing_goal"] ? round(($row["payment"] / $row["founddrasing_goal"]) * 100) : "100";
+                            echo $completed . "%";
+                            ?>
+                            <span class="votes"><?php if (!empty($row['votes'])) {
+                                    echo $row['votes'];
+                                } else {
+                                    echo '0';
+                                } ?> <?= MSG_CAMPAIGNS_VOTES_NUMBER ?></span>
+                            <?php if ($current_time > $end_time): ?>
+                                <div class="project-unsuccessful"><?= MSG_CLOSED ?></div>
+                            <?php else: ?>
+                                <div class="progress">
+                                    <div style="width: <?php echo $completed . "%"; ?>" class="bar">
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
                         </div>
 				    
                     </li>

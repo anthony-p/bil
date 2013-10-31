@@ -15,12 +15,12 @@ if (!defined('INCLUDED')) {
 <div class="about-me_block">
     <div class="summary-block clrfix">
         <div id="avatar_about_me">
-            <div class="upload_logo_about">
-            <?php if (!empty($user_details['avatar'])) : ?>
-                <img src="<?= $user_details['avatar'] ?>"/>
-            <?php else: ?>
-                <img src="/themes/bring_it_local/img/bring-it-local-no-user-photo.jpg"/>
-            <?php endif; ?>
+            <div class="upload_logo">
+                <?php if (!empty($user_details['avatar'])) : ?>
+                    <img src="<?= $user_details['avatar'] ?>"/>
+                <?php else: ?>
+                    <img src="/themes/bring_it_local/img/bring-it-local-no-user-photo.jpg"/>
+                <?php endif; ?>
             </div>
         </div>
         <div class="info">
@@ -36,7 +36,9 @@ if (!defined('INCLUDED')) {
             </p>
 
             <div class="social-block">
-                <span class="label"><?= MSG_ALSO_FIND_ME ?></span>
+                <?php if ((!empty($user_details['facebook_link'])) || (!empty($user_details['twitter_link'])) || (!empty($user_details['google_link']))) : ?>
+                    <span class="label"><?= MSG_ALSO_FIND_ME ?></span>
+                <?php endif; ?>
                 <?php if (!empty($user_details['facebook_link'])) : ?>
                     <a href="<?= $user_details['facebook_link'] ?>" target="_blank">
                         <span class="social-icon inline-block facebook"></span>
@@ -55,7 +57,6 @@ if (!defined('INCLUDED')) {
             </div>
         </div>
     </div>
-
 
 
     <div class="clear"></div>
