@@ -32,7 +32,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             return !err_status;
 
         });
-        init_tinymce('#aboutme_page_content');
+//        init_tinymce('#aboutme_page_content');
     });
     function removeFile(){
         $('#avatar_img').attr("src", "");
