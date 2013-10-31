@@ -450,6 +450,7 @@ define ('MSG_CLEAR', 'clear');
 define ('MSG_DAYS', 'days');
 define ('MSG_DAYS_LEFT', ' days left');
 define ('MSG_CLOSED', ' closed');
+define ('MSG_LESS_THEN_DAY', ' less then 1 day');
 define ('MSG_SUCCESS', 'successful');
 // Campaign Tab Message
 define ('MSG_CMN_ACCOUNT', 'Account');

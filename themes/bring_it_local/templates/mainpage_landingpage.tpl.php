@@ -138,10 +138,12 @@ $featured_columns = 14;
             <span class="price">$<? echo $compaigns['payment'];?><span> usd</span></span>
             <span class="day">
                 <?php
-				$days=round(($compaigns['end_date']-time())/86400);
-                if($days>0){
+				$days=(($compaigns['end_date']-time())/86400);
+                if($days>=1){
 					echo $days."<span> ".MSG_DAYS_LEFT."</span>";
-				} elseif($compaigns['payment'] == 0){
+				} elseif ($days>0) {
+                    echo "<span>".MSG_LESS_THEN_DAY."</span>";
+                } elseif($compaigns['payment'] == 0){
                     echo "<span>".MSG_CLOSED."</span>";
                 } else {
                     echo "<span>".MSG_SUCCESS."</span>";

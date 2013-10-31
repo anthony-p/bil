@@ -293,15 +293,15 @@ class npuser extends npcustom_field
                     $old_campaign['username'] = $url[0] . '_renew_0';
                     $new_campaign['username'] = $url[0] . '_renew_1';
                 }
-                if ($old_campaign['cfc'] && !$cfc_flag) {
+                if ($old_campaign['cfc'] == 1 && !$cfc_flag) {
                     $old_campaign['cfc'] = 0;
                     $new_campaign['cfc'] = 1;
                     $new_campaign['active'] = 0;
                     $cfc_flag = 1;
-                    // if (date('d F Y', time()) != date('d F Y', strtotime('last day of this month'))) {
-                        
-                    // }
-                    $new_campaign['start_date'] = strtotime('tomorrow');
+                    if (date('d F Y', time()) != date('d F Y', strtotime('last day of this month')))
+                        $new_campaign['start_date'] = strtotime('tomorrow');
+                    else 
+                        $new_campaign['start_date'] = strtotime('first day of next month');
                     $new_campaign['end_date'] = strtotime('last day of next month');
                 }
 
@@ -364,8 +364,11 @@ class npuser extends npcustom_field
                     ");
 
                 }
+
+                $list[] = $old_campaign;
             }
         }
+        return $list;
     }
 
     /**
