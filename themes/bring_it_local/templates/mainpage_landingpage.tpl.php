@@ -140,7 +140,7 @@ $featured_columns = 14;
                 <?php
 				$days=(($compaigns['end_date']-time())/86400);
                 if($days>=1){
-					echo ceil($days)."<span> ".MSG_DAYS_LEFT."</span>";
+					echo round($days)."<span> ".MSG_DAYS_LEFT."</span>";
 				} elseif ($days>0) {
                     echo "<span>".MSG_LESS_THEN_DAY."</span>";
                 } elseif($compaigns['payment'] == 0){

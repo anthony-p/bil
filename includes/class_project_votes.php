@@ -118,7 +118,7 @@ class projectVotes extends custom_field
 				}
 			}
 			if(empty($this->votes_element)) {
-				$this->votes_element = '<h5>'.$this->getVotesByCampaign().' '.MSG_VOTES_NUMBER . '</h5>';
+				$this->votes_element = '<span class="votes-amount">'.$this->getVotesByCampaign().' '.MSG_VOTES_NUMBER . '</span>';
 			}
         }
         return $this->votes_element;
@@ -138,7 +138,7 @@ class projectVotes extends custom_field
                 WHERE user_id={$this->campaign_id}";
 
                 $update_result = $this->query($sql_update_votes_number_query);
-                $this->votes_element = '<h5>' . $this->getVotesByCampaign() . ' ' . MSG_VOTES_NUMBER . '</h5>';
+                $this->votes_element = '<span class="votes-amount">' . $this->getVotesByCampaign() . ' ' . MSG_VOTES_NUMBER . '</span>';
                 $success = true;
             }
         }

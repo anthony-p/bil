@@ -7533,3 +7533,10 @@ a.jp-current:hover{
 #vote_us_block #vote_us:hover{
     background:#ccebeb;
     }
+
+.votes-amount {
+    font-size: 1.1em;
+    display: block;
+    font-family: "OpenSans-SemiBold", sans-serif;
+    font-weight: 500;
+    }
