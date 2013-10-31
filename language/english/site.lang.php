@@ -227,7 +227,7 @@ define('MSG_GHEADER_FOUNDERSLETTER', 'Founder\'s Letter | Bring It Local');
 define('MSG_GHEADER_LOALTYPROG', 'Community Loyalty Program | Bring It Local');
 
 
-define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
+define('MSG_ABOUT_ME_PAGE_CONTENT', 'About me');
 
 // footer
 define('MSG_FOOTER_PARTICIPATE', 'Participate');
