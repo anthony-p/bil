@@ -261,7 +261,7 @@ class npuser extends npcustom_field
             $old_campaigns[] = $query_result;
 
         }
-        
+
         if (!$old_campaigns) {
             return "No campaigns effected.";
         }
@@ -283,7 +283,7 @@ class npuser extends npcustom_field
                 $new_campaign['active'] = 1;
                 $new_campaign['start_date'] = time();
                 $new_campaign['payment'] = 0;
-                $new_campaign['autorenew'] = $old_campaign['autorenew'] - 1;
+                $new_campaign['autorenew'] = ($old_campaign['autorenew'] >= 1) ? $old_campaign['autorenew'] - 1 : 0;
                 $new_campaign['keep_comments'] = $old_campaign['keep_comments'];
                 $new_campaign['keep_updates'] = $old_campaign['keep_updates'];
                 $new_campaign['keep_rewards'] = $old_campaign['keep_rewards'];
