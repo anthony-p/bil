@@ -12,5 +12,5 @@ online_users.txt
 .htaccess
 np/uplimg/
 includes/config.php
-
+slider/data1/*
 /.idea
