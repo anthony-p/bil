@@ -261,6 +261,11 @@ class npuser extends npcustom_field
             $old_campaigns[] = $query_result;
 
         }
+        
+        if (!$old_campaigns) {
+            return "No campaigns effected.";
+        }
+
         $cfc_flag = 0;
         foreach ($old_campaigns as $old_campaign) {
             if (date('d F Y', $old_campaign['end_date']) == date('d F Y', strtotime('today'))) {
