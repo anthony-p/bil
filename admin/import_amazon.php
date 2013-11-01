@@ -328,7 +328,9 @@ function getOneTag($xml)
                 $bil_share = round($commision*$rate_of_pay/100,2);
                 $pct = (round(($commision/$sales)*100,2))."%";
                 $pct_giveback = round($pct*$rate_of_pay/100,2)."%";
-            }
+            } else {
+				continue;
+			}
             
             // Check if TrackID is Free or bussy
             $atl_sql = "SELECT * FROM  `amazon_tracking_links` WHERE (name = '$tracking_id' AND isfree=0) OR (name = '$tracking_id' AND timestamp+86400 >".time()." )";
@@ -445,19 +447,24 @@ function getOneTag($xml)
                     if($orderedUnit == 0 || $orderedUnit == $shippedUnits)               
                         markFree($tracking_id);
                     
-                }
-				//elseif($track_timestamp != 0){
+                } 
+				// elseif($track_timestamp != 0){
 
                     // $fields = array();
-                    // $sales = (float)$sales+(float)$tag_exist["sales"];
-                    // if($commision > 0 && $sales > 0){
-                        // $np_share = round($commision/2,2);
-						// $np_share = $commision;
-                        // $bil_share = round($commision/2,2);
-                        // $pct = (round(($commision/$sales)*100,2))."%";
-                        // $pct_giveback = round($pct/2,2)."%";
-						// $pct_giveback = $pct;
-                    // }
+                    // $sales = (float)$sales+(float)$tag_exist["sales"];				
+					// if($commision > 0 && $sales > 0){
+						// $sql_query = "SELECT rate_of_pay FROM `payment_option_details` WHERE id=1";
+						// $sql_select= mysql_query($sql_query);
+						// while ($row = mysql_fetch_assoc($sql_select)) {
+							// $rate_of_pay = (int)$row["rate_of_pay"];
+							// $rate_of_pay2 = 100 - $rate_of_pay;
+						// }
+						// $np_share = round($commision*$rate_of_pay2/100,2);
+						// $bil_share = round($commision*$rate_of_pay/100,2);
+						// $pct = (round(($commision/$sales)*100,2))."%";
+						// $pct_giveback = round($pct*$rate_of_pay/100,2)."%";
+					// }
+			
                     // $fields[]="$id";//unique id
                     // $fields[]="$tracking_id";//tracking link
                     // $fields[]="$user_id";//site user
@@ -471,13 +478,13 @@ function getOneTag($xml)
                     // $fields[]=$pct;//pct
                     // $fields[]=$pct_giveback;//pct giveback
                     // $fields[]=$np_share;//np-share
-                    // $fields[]=$bil_share;//bil-share                    
+                    // $fields[]=$bil_share;//bil-share				
 
                     // $fp = fopen($csvFile, 'a+');
                     // fputcsv($fp,$fields);
 
                     // $date = substr($click_date, 0, 10);
-                   // $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'" AND  `click date`  = "'.$date.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
+//                   $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'" AND  `click date`  = "'.$date.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
                     // $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
 
                     // $sql_select= mysql_query($sql);
@@ -488,7 +495,7 @@ function getOneTag($xml)
                             // $id = $row["ID"];
                         // }
                     // }
-                   // $sql = "UPDATE  `vendor_click_reports` SET  `user name` =  'guest shoppers', `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' WHERE  `unique id` =  '$id' LIMIT 1";
+//                   $sql = "UPDATE  `vendor_click_reports` SET  `user name` =  'guest shoppers', `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' WHERE  `unique id` =  '$id' LIMIT 1";
                     // $today = date("Y-m-j", time() - 86400);
                     // $sql = "UPDATE  `vendor_click_reports` SET  `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' , `last_update` = '$today' WHERE  `unique id` =  '$id' LIMIT 1";
                     // mysql_query($sql);
