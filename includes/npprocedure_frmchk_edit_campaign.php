@@ -257,5 +257,15 @@ if ($campaign['cfc'] == 1 && $_POST['active'] == 1) {
     }
 }
 
+if ($_POST['username'] != '') {
+    $query_result = $db->query("SELECT username FROM np_users WHERE user_id <> " . $campaign['user_id']);
+    while ($url = mysql_fetch_assoc($query_result)) {
+        $reserved_urls[] = $url['username'];
+    }
+    if (in_array($_POST['username'], $reserved_urls)) {
+        $fv->error_list[] = array('value' => $_POST['username'], 'msg' => "Selected URL is already in use.");
+    }
+}
+
 ?>
 

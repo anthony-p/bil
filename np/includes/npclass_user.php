@@ -238,18 +238,36 @@ class npuser extends npcustom_field
      */
     function get_closed_campaigns()
     {
-        $current_time = time();
+        $current_time = strtotime('today');
         $closed_campaigns = array();
         $select_query_result = $this->query(
             "SELECT user_id, reg_date, clone_campaign, deadline_type_value, time_period, certain_date, end_date, keep_alive_days
-            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND clone_campaign<>0"
+            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND active = 1"
         );
 
-        while ($query_result =  mysql_fetch_array($select_query_result)) {
+        while ($query_result =  mysql_fetch_assoc($select_query_result)) {
             $closed_campaigns[] = $query_result;
         }
 
         return $closed_campaigns;
+    }
+
+    function close_campaigns($closed_campaigns) {
+
+        if (is_array($closed_campaigns)) {
+
+            print_r("Closed campaigns id's:");
+
+            foreach ($closed_campaigns as $closed_campaign) {
+                
+                $this->query(
+                    "UPDATE np_users SET active = 2 WHERE user_id = " . $closed_campaign['user_id']
+                );
+                print_r($closed_campaign['user_id'] . ', ');
+
+            }
+
+        }
     }
 
     function new_renew_campaigns() {
