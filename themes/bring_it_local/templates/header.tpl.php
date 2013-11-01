@@ -16,7 +16,7 @@ global $coupon_url;
 <html>
 <head>
     <?php if(!isset($page_specific_title)) $page_specific_title =''; ?>
-    <title><?=$page_title. $page_specific_title;?> aaa</title>
+    <title><?=$page_title. $page_specific_title;?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=<?=LANG_CODEPAGE;?>">
     <meta http-equiv=”X-UA-Compatible” content=”IE=9″ />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
