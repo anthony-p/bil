@@ -408,7 +408,7 @@ function confirmDeleteRewards(id) {
         modal: true,
         buttons: [
             {
-                text: window.messages.confirm_delete_button,
+                text: window.messages.confirm_delete_reward_button,
                 click: function () {
 
                     is_new = $("#is_new_" + id).val();
@@ -440,7 +440,7 @@ function confirmDeleteRewards(id) {
                 }
             },
             {
-                text: window.messages.confirm_cancel_button,
+                text: window.messages.confirm_cancel_reward_button,
                 click: function () {
                     $(this).dialog("close");
                 }

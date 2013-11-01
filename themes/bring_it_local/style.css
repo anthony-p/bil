@@ -3365,7 +3365,7 @@ header .innerContainer .logo img{
 
 header .innerContainer nav{
     float:left;
-    margin:10px 0 0 15px;
+    margin:10px 0 0 30px;
     }
 
 header .innerContainer nav ul{
@@ -3732,7 +3732,6 @@ ul.list li.last{
     }
 
 ul.list li .img{
-    float:left;
     width:100%;
     height:165px;
     background:#fff;
@@ -6721,7 +6720,32 @@ a.jp-current:hover{
     width:900px;
     margin:0 auto;
     }
-
+.about-me_block p,
+.summary-block {
+   margin-bottom:1em;
+    }
+.summary-block{
+    position:relative;
+    padding-bottom:55px;
+    height:126px;
+    }
+.summary-block .info {
+    margin-left:255px;
+    }
+.summary-block .name {
+    font-size:1.5em;
+    }
+.summary-block .social-block {
+    position:absolute;
+    bottom:2px;
+    }
+.summary-block .social-block .label{
+    display: block;
+    margin-bottom: 4px;
+    }
+.summary-block .social-block a{
+    text-decoration:none;
+    }
 #avatar_about_me{
     float:left;
     width:240px;
@@ -6738,31 +6762,6 @@ a.jp-current:hover{
 #avatar_about_me .upload_logo img{
     height:100%;
     width:100%;
-    }
-
-#about_me_content{
-    width:640px;
-    float:right;
-    }
-
-#about_me_content p{
-    clear:both;
-    display:block;
-    line-height:normal;
-    padding:5px 0;
-    }
-
-#about_me_content p span{
-    /*float:left;*/
-    margin-right:10px;
-    }
-
-#about_me_content label{
-    float:left;
-    }
-
-.about-me_block .content_about{
-    clear:both;
     }
 
 /*main_campaigns_page*/
@@ -7492,26 +7491,22 @@ a.jp-current:hover{
     color:#333;
     }
 
-/*.about_me_content .content h2{margin: 0 0 20px 0 ; padding: 20px  0 0; font: 16px/29px "OpenSans-SemiBold"; text-transform: uppercase;*/
-/*color: #7eb041;  border-bottom: 1.5px solid #dedede;  text-align: left;}*/
-#about_me_content label{
+.social-icon{
     width:28px;
     text-transform:capitalize;
-    display:block;
-    float:left;
     height:28px;
     background:url("img/website-icon.png") 0 0 no-repeat;
-    margin-left:12px;
     font:13px/27px OpenSans;
-    margin-left:6px;
+    margin-right:6px;
     color:#aaaab5;
+
     }
 
-#about_me_content label.twitter{
+.twitter{
     background:url("img/twitter-icon.png") 0 0 no-repeat;
     }
 
-#about_me_content label.facebook{
+.facebook{
     background:url("img/face-icon.png") 0 0 no-repeat;
     }
 
@@ -7542,4 +7537,11 @@ a.jp-current:hover{
 
 #vote_us_block #vote_us:hover{
     background:#ccebeb;
+    }
+
+.votes-amount {
+    font-size: 1.1em;
+    display: block;
+    font-family: "OpenSans-SemiBold", sans-serif;
+    font-weight: 500;
     }

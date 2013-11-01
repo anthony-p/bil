@@ -150,13 +150,13 @@
 	font-size: 25px;
 	text-shadow: 1px 1px 1px #000000;
 }#wowslider-container1 .ws_images ul{
-	animation: wsBasic 22.2s infinite;
-	-moz-animation: wsBasic 22.2s infinite;
-	-webkit-animation: wsBasic 22.2s infinite;
+	animation: wsBasic 27.5s infinite;
+	-moz-animation: wsBasic 27.5s infinite;
+	-webkit-animation: wsBasic 27.5s infinite;
 }
-@keyframes wsBasic{0%{left:-0%} 9.91%{left:-0%} 16.67%{left:-100%} 26.58%{left:-100%} 33.33%{left:-200%} 43.24%{left:-200%} 50%{left:-300%} 59.91%{left:-300%} 66.67%{left:-400%} 76.58%{left:-400%} 83.33%{left:-500%} 93.24%{left:-500%} }
-@-moz-keyframes wsBasic{0%{left:-0%} 9.91%{left:-0%} 16.67%{left:-100%} 26.58%{left:-100%} 33.33%{left:-200%} 43.24%{left:-200%} 50%{left:-300%} 59.91%{left:-300%} 66.67%{left:-400%} 76.58%{left:-400%} 83.33%{left:-500%} 93.24%{left:-500%} }
-@-webkit-keyframes wsBasic{0%{left:-0%} 9.91%{left:-0%} 16.67%{left:-100%} 26.58%{left:-100%} 33.33%{left:-200%} 43.24%{left:-200%} 50%{left:-300%} 59.91%{left:-300%} 66.67%{left:-400%} 76.58%{left:-400%} 83.33%{left:-500%} 93.24%{left:-500%} }
+@keyframes wsBasic{0%{left:-0%} 15.64%{left:-0%} 20%{left:-100%} 35.64%{left:-100%} 40%{left:-200%} 55.64%{left:-200%} 60%{left:-300%} 75.64%{left:-300%} 80%{left:-400%} 95.64%{left:-400%} }
+@-moz-keyframes wsBasic{0%{left:-0%} 15.64%{left:-0%} 20%{left:-100%} 35.64%{left:-100%} 40%{left:-200%} 55.64%{left:-200%} 60%{left:-300%} 75.64%{left:-300%} 80%{left:-400%} 95.64%{left:-400%} }
+@-webkit-keyframes wsBasic{0%{left:-0%} 15.64%{left:-0%} 20%{left:-100%} 35.64%{left:-100%} 40%{left:-200%} 55.64%{left:-200%} 60%{left:-300%} 75.64%{left:-300%} 80%{left:-400%} 95.64%{left:-400%} }
 
 #wowslider-container1 .ws_bullets  a img{
 	text-indent:0;

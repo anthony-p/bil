@@ -227,7 +227,7 @@ define('MSG_GHEADER_FOUNDERSLETTER', 'Founder\'s Letter | Bring It Local');
 define('MSG_GHEADER_LOALTYPROG', 'Community Loyalty Program | Bring It Local');
 
 
-define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
+define('MSG_ABOUT_ME_PAGE_CONTENT', 'About me');
 
 // footer
 define('MSG_FOOTER_PARTICIPATE', 'Participate');
@@ -442,7 +442,7 @@ define ('MSG_WAYS_TO_SUPPORT', 'Shop Online');
 define ('MSG_DEADLINE', 'Duration *');
 define ('MSG_TIMEPERIOD', '# of days');
 define ('MSG_DATE', 'date');
-define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 160 pixels wide.');
+define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 100 pixels wide.');
 define ('MSG_YOUR_STORY', 'Your story');
 define ('MSG_YOUR_STORY2', 'tell potential supporters about your campaign');
 define ('MSG_YOUR_STORY3', 'Add a large banner image or video at the top of your compaign page');
@@ -450,6 +450,7 @@ define ('MSG_CLEAR', 'clear');
 define ('MSG_DAYS', 'days');
 define ('MSG_DAYS_LEFT', ' days left');
 define ('MSG_CLOSED', ' closed');
+define ('MSG_LESS_THEN_DAY', ' less then 1 day');
 define ('MSG_SUCCESS', 'successful');
 // Campaign Tab Message
 define ('MSG_CMN_ACCOUNT', 'Account');
@@ -490,8 +491,8 @@ define ('MSG_USERNAME_EXPLANATION', 'Example: rose789 (Don\'t use your email add
 define ('MSG_PASSWORD_EXPLANATION', '6 characters minimum <br />Enter a password that\'s easy for you to remember, but hard for others to guess.');
 define ('MSG_EMAIL_EXPLANATION', 'To complete registration, enter a valid email address that   you can check immediately.');
 define ('MSG_REGISTRATION_CONFIRMATION', 'Registration Confirmation');
-define ('MSG_REGISTER_SUCCESS_TYPE0', 'We\'re glad to have your with us! Your account has been successfully created.<br>You can now login with the username and password you have created.');
-define ('MSG_REGISTER_SUCCESS_TYPE1', 'We\'re glad to have your with us! Your account has been successfully created.<br>An email has been sent to the address you have submitted with details on how to activate your account.');
+define ('MSG_REGISTER_SUCCESS_TYPE0', 'We\'re glad to have you with us! Your account has been successfully created.<br>You can now login with the username and password you have created.');
+define ('MSG_REGISTER_SUCCESS_TYPE1', 'We\'re glad to have you with us! Your account has been successfully created.<br>An email has been sent to the address you have submitted with details on how to activate your account.');
 define ('MSG_REGISTER_SUCCESS_TYPE2', 'The registration is complete.<br>The administrator will review your account and approve it manually.<br>You will be notified by email when your account will be activated.<br>An email has been sent to the address you have submitted with details on how to verify your email address.');
 define ('MSG_LOGIN_TO_MEMBERS_AREA', 'Login to Members Area');
 define ('MSG_INVALID_LOGIN', 'The login details you have submitted are invalid<br>Please try again');
@@ -763,6 +764,7 @@ define ('MSG_KEEP_REWARDS', ' keep rewards');
 // Vote Us Section
 define ('MSG_VOTE_US', 'Vote Us!');
 define ('MSG_VOTES_NUMBER', 'Votes');
+define ('MSG_CAMPAIGNS_VOTES_NUMBER', 'votes');
 
 
 // Mail Section

@@ -4,7 +4,7 @@ session_start();
 include_once ('../includes/global.php');
 
 $today     = strtotime('today');
-$campaigns = $db->query("SELECT * FROM np_user WHERE autorenew > 0 AND active = 0 AND cfc = 1 AND start_date = $today");
+$campaigns = $db->query("SELECT * FROM np_user WHERE active = 0 AND cfc = 1 AND start_date = $today");
 
 while ($query_result = mysql_fetch_assoc($campaigns)) {
 

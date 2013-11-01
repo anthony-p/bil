@@ -261,6 +261,11 @@ class npuser extends npcustom_field
             $old_campaigns[] = $query_result;
 
         }
+
+        if (!$old_campaigns) {
+            return "No campaigns effected.";
+        }
+
         $cfc_flag = 0;
         foreach ($old_campaigns as $old_campaign) {
             if (date('d F Y', $old_campaign['end_date']) == date('d F Y', strtotime('today'))) {
@@ -278,7 +283,7 @@ class npuser extends npcustom_field
                 $new_campaign['active'] = 1;
                 $new_campaign['start_date'] = time();
                 $new_campaign['payment'] = 0;
-                $new_campaign['autorenew'] = $old_campaign['autorenew'] - 1;
+                $new_campaign['autorenew'] = ($old_campaign['autorenew'] >= 1) ? $old_campaign['autorenew'] - 1 : 0;
                 $new_campaign['keep_comments'] = $old_campaign['keep_comments'];
                 $new_campaign['keep_updates'] = $old_campaign['keep_updates'];
                 $new_campaign['keep_rewards'] = $old_campaign['keep_rewards'];
@@ -293,15 +298,15 @@ class npuser extends npcustom_field
                     $old_campaign['username'] = $url[0] . '_renew_0';
                     $new_campaign['username'] = $url[0] . '_renew_1';
                 }
-                if ($old_campaign['cfc'] && !$cfc_flag) {
+                if ($old_campaign['cfc'] == 1 && !$cfc_flag) {
                     $old_campaign['cfc'] = 0;
                     $new_campaign['cfc'] = 1;
                     $new_campaign['active'] = 0;
                     $cfc_flag = 1;
-                    // if (date('d F Y', time()) != date('d F Y', strtotime('last day of this month'))) {
-                        
-                    // }
-                    $new_campaign['start_date'] = strtotime('tomorrow');
+                    if (date('d F Y', time()) != date('d F Y', strtotime('last day of this month')))
+                        $new_campaign['start_date'] = strtotime('tomorrow');
+                    else 
+                        $new_campaign['start_date'] = strtotime('first day of next month');
                     $new_campaign['end_date'] = strtotime('last day of next month');
                 }
 
@@ -364,8 +369,11 @@ class npuser extends npcustom_field
                     ");
 
                 }
+
+                $list[] = $old_campaign;
             }
         }
+        return $list;
     }
 
     /**
