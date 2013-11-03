@@ -98,10 +98,13 @@ if (!empty($keyword)) {
         NPDB_PREFIX . "users.founddrasing_goal, " .
         NPDB_PREFIX . "users.project_title, " .
         " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id,
-        COUNT(project_votes.id) AS votes  " .
+        (SELECT COUNT(*)
+            FROM project_votes
+            WHERE project_votes.campaign_id = np_users.user_id
+            AND MONTH(FROM_UNIXTIME(project_votes.date)) = MONTH(NOW())
+            ) AS votes   " .
         " FROM " . NPDB_PREFIX . "users INNER JOIN bl2_users " .
-        " ON " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id LEFT JOIN project_votes ON " .
-        NPDB_PREFIX . "users.user_id=project_votes.campaign_id  " .
+        " ON " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
         " WHERE np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
         " AND (name LIKE '%" .
         $keyword . "%' OR description LIKE '%" .
@@ -122,9 +125,12 @@ if (!empty($keyword)) {
         NPDB_PREFIX . "users.founddrasing_goal, " .
         NPDB_PREFIX . "users.project_title, " .
         " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id,
-        COUNT(project_votes.id) AS votes   FROM " . NPDB_PREFIX . "users INNER JOIN bl2_users " .
-        " ON " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id LEFT JOIN project_votes ON " .
-        NPDB_PREFIX . "users.user_id=project_votes.campaign_id  WHERE np_users.active <> 0";
+        (SELECT COUNT(*)
+            FROM project_votes
+            WHERE project_votes.campaign_id = np_users.user_id
+            AND MONTH(FROM_UNIXTIME(project_votes.date)) = MONTH(NOW())
+            ) AS votes    FROM " . NPDB_PREFIX . "users INNER JOIN bl2_users " .
+        " ON " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id  WHERE np_users.active <> 0";
     if (!empty($order)) {
         $order_query = " ORDER BY np_users.reg_date {$order}";
         $q = $query1.$order_query . $group;
