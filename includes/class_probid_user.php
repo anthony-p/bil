@@ -73,8 +73,10 @@ class class_probid_user extends database  {
      * @param null $id
      */
     public function __construct( $id = null ) {
-        $this->user_id = $id;
-        $this->load();
+        if( $id ) {
+            $this->user_id = $id;
+            $this->load();
+        }
     }
 
 
