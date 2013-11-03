@@ -3713,3 +3713,7 @@ alter table `np_users` add column `keep_comments` tinyint(1) DEFAULT '0' NOT NUL
 alter table `np_users` add column `keep_updates` tinyint(1) DEFAULT '0' NOT NULL after `keep_comments`;
 alter table `np_users` add column `keep_rewards` tinyint(1) DEFAULT '0' NOT NULL after `keep_updates`;
 alter table `np_users` add column `start_date` int(11) after `certain_date`;
+
+ALTER TABLE `probid_users`
+ADD COLUMN `bl2_user_id` INT NULL AFTER `clickreport`,
+ADD UNIQUE INDEX `bl2_user_id_UNIQUE` (`bl2_user_id` ASC);
