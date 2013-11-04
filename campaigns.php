@@ -115,7 +115,7 @@ if (!empty($keyword)) {
         $keyword . "%' OR pitch_text LIKE '%" .$keyword . "%') ";
 
     $order_query = (!empty($order)) ? " ORDER BY reg_date {$order}" : '';
-    $sql_query   = $db->query($query1.$order_query . $group);
+    $sql_query   = $db->query($query1.$group.$order_query);
 
 } else {
     $query1 = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
@@ -133,7 +133,7 @@ if (!empty($keyword)) {
         " ON " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id  WHERE np_users.active <> 0";
     if (!empty($order)) {
         $order_query = " ORDER BY np_users.reg_date {$order}";
-        $q = $query1.$order_query . $group;
+        $q = $query1.$group.$order_query;
         $sql_query = $db->query($q);
     } else {
         $sql_query = $db->query($query1 . $group);
