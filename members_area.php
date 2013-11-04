@@ -5791,7 +5791,7 @@ else
 		
 		$template->set('members_area_header_menu', $members_area_header_menu);## PHP Pro Bid v6.00 end - header members area
 
-	$template_output .= $template->process('members_area.tpl.php');
+	$template_output = $template->process('members_area.tpl.php');
 
 	include_once ('global_footer.php');
 
