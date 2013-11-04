@@ -58,9 +58,9 @@ if ($section == 'drafts'){
     );
     $rows = array();
     while ($row = mysql_fetch_array($sql_query)) {
-        if($row["end_date"]>time() || $row["end_date"] == $row["reg_date"] || !$row["end_date"]) {
+        // if($row["end_date"]>time() || $row["end_date"] == $row["reg_date"] || !$row["end_date"]) {
         $rows[] = $row;
-        }
+        // }
     }
    $template->set('campaigns_list', $rows);
    $template->set('campaign_title', $title);
@@ -88,7 +88,7 @@ if ($section == 'drafts'){
     $sql_query = $db->query(
         "SELECT * FROM bl2_users Join np_users
         on id = probid_user_id
-        WHERE (np_users.active='2' OR end_date<" . time() . ")
+        WHERE np_users.active='2'
         AND np_users.probid_user_id=" . $session->value('user_id') . $tail_query_part
     );
     $rows = array();
