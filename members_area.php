@@ -714,6 +714,9 @@ else
 				$template->set('custom_sections_table', $custom_sections_table);
 
 				$template->set('display_direct_payment_methods', $user->direct_payment_methods_edit($row_user));
+                
+                $register_post_url = "/account,page,main,section,members_area";
+                $template->set('register_post_url',  $register_post_url);
 				
 				$members_area_page_content = $template->process('full_registration.tpl.php');
 				$template->set('members_area_page_content', $members_area_page_content);
