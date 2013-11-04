@@ -604,47 +604,47 @@ else
                     // ---- MailChimp Subscription ------------------------------------
                     // check if user subscribed & add to MailChimp list
                     $mailChimp = new Mailchimp($mailChimpConfig['apiKey']);
-
-                    if (isset($_POST['newsletter']) && intval($_POST['newsletter'])) {
-
-
-                        try {
-                            $mailChimp->lists->subscribe($mailChimpConfig['listId'],
-                                array(
-                                    'email' => $_POST['email']
-                                ),
-                                array(
-                                    'EMAIL' => $_POST['email'],
-                                    'FNAME' => $_POST['fname'],
-                                    'LNAME' => $_POST['lname']
-                                )
-                            );
-                        } catch (Mailchimp_Error $e) {
-
-                            // TODO: MailChimp error processing
-
-                            if ($e->getMessage()) {
-//                                echo '<br>' . $e->getMessage() . '<br>';
-                            } else {
-                                // unrecognized error
-                            }
-                        }
-
-                    } else {
-
-                        // unsubscribe member from list
-
-                        try {
-
-                            $mailChimp->lists->unsubscribe($mailChimpConfig['listId'], array('email' => $_POST['email']));
-
-                        } catch (Mailchimp_Error $e) {
-                            // TODO: MailChimp error processing
-
-                        }
-
-
-                    }
+//
+//                    if (isset($_POST['newsletter']) && intval($_POST['newsletter'])) {
+//
+//
+//                        try {
+//                            $mailChimp->lists->subscribe($mailChimpConfig['listId'],
+//                                array(
+//                                    'email' => $_POST['email']
+//                                ),
+//                                array(
+//                                    'EMAIL' => $_POST['email'],
+//                                    'FNAME' => $_POST['fname'],
+//                                    'LNAME' => $_POST['lname']
+//                                )
+//                            );
+//                        } catch (Mailchimp_Error $e) {
+//
+//                            // TODO: MailChimp error processing
+//
+//                            if ($e->getMessage()) {
+////                                echo '<br>' . $e->getMessage() . '<br>';
+//                            } else {
+//                                // unrecognized error
+//                            }
+//                        }
+//
+//                    } else {
+//
+//                        // unsubscribe member from list
+//
+//                        try {
+//
+//                            $mailChimp->lists->unsubscribe($mailChimpConfig['listId'], array('email' => $_POST['email']));
+//
+//                        } catch (Mailchimp_Error $e) {
+//                            // TODO: MailChimp error processing
+//
+//                        }
+//
+//
+//                    }
                     // ---- end MailChimp subscription ---------------------------------
 
 
