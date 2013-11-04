@@ -458,7 +458,7 @@ if (!defined('INCLUDED')) {
                         <h5><?= MSG_LOGO_DESC; ?></h5>
 
                         <div class="account-row">
-                            <?php if (isset($campaign["logo"]) && $campaign["logo"]): ?>
+                            <?php if (isset($campaign["logo"]) && $campaign["logo"] && file_exists($campaign["logo"])): ?>
                                 <img src="<?php echo $campaign["logo"] . "?" . time(); ?>">
                             <?php endif; ?>
                             <div id="MultiPowUpload_holder">
@@ -474,8 +474,10 @@ if (!defined('INCLUDED')) {
                         <h5><?= MSG_YOUR_STORY3 ?></h5>
                         <div class="account-row">
                             <?php //if (isset($campaign["banner"]) && strstr($campaign["banner"], '/images/partner_logos/') !== false): ?>
-                            <?php if (isset($campaign["banner"])): ?>
-                                <img src="<?php echo $campaign['banner'] . "?" . time() ?>">
+                            <?php if (isset($campaign["banner"]) && $campaign["banner"] && file_exists($campaign["banner"])): ?>
+                                
+                                    <img src="<?php echo $campaign['banner'] . "?" . time() ?>">
+                                
                             <?php endif; ?>
                             <div class="upload">
                                 <div class="radio">
