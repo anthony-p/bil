@@ -5791,7 +5791,7 @@ else
 	include_once ('global_footer.php');
 
     if (isset($_POST['ajaxsubmit'])) {
-        if ($form_submit_msg == null) $form_submit_msg =  array("status" => "fail");
+        if (($form_submit_msg == null) ||($form_submit_msg == '')) $form_submit_msg =  array("status" => "fail");
         echo json_encode($form_submit_msg);
     } else echo $template_output;
 }
