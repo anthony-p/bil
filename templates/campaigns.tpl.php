@@ -48,7 +48,6 @@ include_once('includes/grab_video_thumbnail.php');
     function select(order, obj) {
 
         var orderSelected = $(obj).attr('rel');
-        console.log(orderSelected);
         $element = $('#order_result');
         $options = $element.find('option');
         $wanted_element = $options.filter(function () {
@@ -122,8 +121,7 @@ include_once('includes/grab_video_thumbnail.php');
                             <p class="description">
                                 <?php echo $row['description']; ?>
                             </p>
-                            <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>">..more</a>
-                        </div>
+                          </div>
 
                         <a href="/search.php?city=<?= urlencode($row['city']) ?>"
                            class="location"><?php echo $row['city']; ?></a>

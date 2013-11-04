@@ -31,9 +31,9 @@ function validateAccountForm(form) {
                 email: true,
                 equalTo: "#email"
             }
-             ,
+//             ,
             // TODO: uncomment pin before LIVE
-            pin_value:"required"
+//           pin_value:"required"
         },
         messages: {
             fname:  window.error_messages.fname,

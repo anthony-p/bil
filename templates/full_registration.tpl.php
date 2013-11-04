@@ -66,8 +66,8 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                     button = $(this);
                 validateAccountForm(form);
                 if (form.valid()) { 
-                    ajaxFormSave(button, form)
-                    form.submit()
+                    ajaxFormSave(button, form);
+
                 }
         });
 
