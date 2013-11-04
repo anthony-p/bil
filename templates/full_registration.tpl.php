@@ -65,7 +65,10 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 var form = $("#registration_form"),
                     button = $(this);
                 validateAccountForm(form);
-                if (form.valid()) { ajaxFormSave(button, form)}
+                if (form.valid()) { 
+                    ajaxFormSave(button, form)
+                    form.submit()
+                }
         });
 
         $('.form_tooltip').tooltip({
@@ -287,7 +290,7 @@ function fetchstate($statecode){
 <!-- PIN -->
 <table border="0" cellpadding="0" cellspacing="0" class="tbl">
     <tr>
-        <th colspan="2">Confirm PIN</th>
+        <th colspan="2"><?=MSG_CONF_PIN;?></th>
     </tr>
     <tr>
         <td class="leftCol"><?=MSG_REG_PIN;?></td>
