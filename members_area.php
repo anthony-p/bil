@@ -536,7 +536,6 @@ else
 	{
 		if ($section == 'editinfo') /* BEGIN -> PERSONAL INFORMATION PAGE */
 		{
-            $template_output =  'error hapens after this line';
 			$page_handle = 'full_register'; /* this page is related to users, so the page handle for custom fields is "register" */
 
             $session->set('pin_value', md5(rand(2, 99999999)));
@@ -5791,7 +5790,7 @@ else
 		
 		$template->set('members_area_header_menu', $members_area_header_menu);## PHP Pro Bid v6.00 end - header members area
 
-	$template_output = $template->process('members_area.tpl.php');
+	$template_output .= $template->process('members_area.tpl.php');
 
 	include_once ('global_footer.php');
 
