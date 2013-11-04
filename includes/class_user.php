@@ -6,6 +6,8 @@
 ##-------------------------------------------------------------##
 #################################################################
 
+include_once('class_probid_user.php');
+
 class user extends custom_field
 {
 	var $item;
@@ -144,8 +146,7 @@ class user extends custom_field
         $password_hashed = password_hash($user_details['password'], $salt);
 
         $newsletter = isset($user_details['newsletter']) ? $user_details['newsletter'] : 0;
-      
-                        			
+
                    $this->query("INSERT INTO " . $this->db_name . ".bl2_users
         (`id`, `first_name`, `last_name`, `organization`, `email`, `password`,
         `salt`, `active`, `create_date`, `last_login`, `is_subscribe_news`)
@@ -154,6 +155,11 @@ class user extends custom_field
          '$salt', '0', '".time()."', '".time()."', '{$newsletter}');");
 
         $user_id = $this->insert_id();
+
+        // Create new Probid User/
+        $pUser = new class_probid_user();
+        $user_details["user_id"] = $user_id;
+        $pUser->addUser($user_details);
 
         /* NewsLetter subscribe constant contact code removed*/
 
@@ -455,6 +461,12 @@ class user extends custom_field
                 include('language/' . $this->setts['site_lang'] . '/mails/tax_apply_exempt_notification.php');
             }
             //echo $sql_update_query; die;
+
+            var_dump($user_id);
+            var_dump($page_handle);
+            var_dump($user_details);
+            die;
+
             $this->update_page_data($user_id, $page_handle, $user_details);
         } catch (Exception $e) {
             file_put_contents('user.log', $e->getMessage());
@@ -729,6 +741,12 @@ class user extends custom_field
 		}
 
 		$this->update_page_data($user_id, $page_handle, $user_details);
+
+            $pUser = new class_probid_user($user_id);
+            $pUser->update($user_details);
+            die;
+
+
         } catch (Exception $e) {
             file_put_contents('user.log', $e->getMessage());
         }

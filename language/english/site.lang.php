@@ -755,7 +755,7 @@ define ('MSG_CLONE_CONFIG_TIMES', 'AutoRenew this campaign ');
 define ('MSG_CLONE_CONFIG_DAYS', 'Renew this campaign for');
 define ('MSG_RENEW_CAMPAIGN', 'AutoRenew');
 define ('MSG_TIMES', ' times');
-define ('MSG_DAYS', ' days');
+//define ('MSG_DAYS', ' days');
 define ('MSG_KEEP_COMMENT', ' keep comments');
 define ('MSG_KEEP_UPDATES', ' keep updates');
 define ('MSG_KEEP_REWARDS', ' keep rewards');
