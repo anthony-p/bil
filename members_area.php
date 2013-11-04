@@ -536,6 +536,7 @@ else
 	{
 		if ($section == 'editinfo') /* BEGIN -> PERSONAL INFORMATION PAGE */
 		{
+            $template_output =  'error hapens after this line';
 			$page_handle = 'full_register'; /* this page is related to users, so the page handle for custom fields is "register" */
 
             $session->set('pin_value', md5(rand(2, 99999999)));
@@ -604,47 +605,51 @@ else
                     // ---- MailChimp Subscription ------------------------------------
                     // check if user subscribed & add to MailChimp list
                     $mailChimp = new Mailchimp($mailChimpConfig['apiKey']);
-//
-//                    if (isset($_POST['newsletter']) && intval($_POST['newsletter'])) {
-//
-//
-//                        try {
-//                            $mailChimp->lists->subscribe($mailChimpConfig['listId'],
-//                                array(
-//                                    'email' => $_POST['email']
-//                                ),
-//                                array(
-//                                    'EMAIL' => $_POST['email'],
-//                                    'FNAME' => $_POST['fname'],
-//                                    'LNAME' => $_POST['lname']
-//                                )
-//                            );
-//                        } catch (Mailchimp_Error $e) {
-//
-//                            // TODO: MailChimp error processing
-//
-//                            if ($e->getMessage()) {
-////                                echo '<br>' . $e->getMessage() . '<br>';
-//                            } else {
-//                                // unrecognized error
-//                            }
-//                        }
-//
-//                    } else {
-//
-//                        // unsubscribe member from list
-//
-//                        try {
-//
-//                            $mailChimp->lists->unsubscribe($mailChimpConfig['listId'], array('email' => $_POST['email']));
-//
-//                        } catch (Mailchimp_Error $e) {
-//                            // TODO: MailChimp error processing
-//
-//                        }
-//
-//
-//                    }
+
+                    if (isset($_POST['newsletter']) && intval($_POST['newsletter'])) {
+
+
+                        try {
+                            $mailChimp->lists->subscribe($mailChimpConfig['listId'],
+                                array(
+                                    'email' => $_POST['email']
+                                ),
+                                array(
+                                    'EMAIL' => $_POST['email'],
+                                    'FNAME' => $_POST['fname'],
+                                    'LNAME' => $_POST['lname']
+                                )
+                            );
+                        } catch (Mailchimp_Error $e) {
+
+                            // TODO: MailChimp error processing
+
+                            if ($e->getMessage()) {
+                                $form_submit_msg = array("status" => "failed", "errors" => $e->getMessage());
+                            } else {
+                                $form_submit_msg = array("status" => "failed", "errors" => "unrecognized error");
+                            }
+                        }
+
+                    } else {
+
+                        // unsubscribe member from list
+
+                        try {
+
+                            $mailChimp->lists->unsubscribe($mailChimpConfig['listId'], array('email' => $_POST['email']));
+
+                        } catch (Mailchimp_Error $e) {
+                            if ($e->getMessage()) {
+                                $form_submit_msg = array("status" => "failed", "errors" => $e->getMessage());
+                            } else {
+                                $form_submit_msg = array("status" => "failed", "errors" => "unrecognized error");
+                            }
+
+                        }
+
+
+                    }
                     // ---- end MailChimp subscription ---------------------------------
 
 
