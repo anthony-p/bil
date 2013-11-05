@@ -64,12 +64,12 @@ include_once('includes/grab_video_thumbnail.php');
     <h2> <?= MSG_ALL_CAMPAIGNS ?></h2>
 
     <form id="search_by_name" action="campaigns.php">
-
+<!--
         <select id="order_result" name="names" class="changeMe">
             <option value="0" class="order">Sort by</option>
-            <option value="ASC" <?php if ($order == "ASC") echo 'selected'; ?> class="order">Date asc</option>
-            <option value="DESC" <?php if ($order == "DESC") echo 'selected'; ?> class="order">Date desc</option>
-        </select>
+            <option value="ASC" <?php /*if ($order == "ASC") echo 'selected'; */?> class="order">Date asc</option>
+            <option value="DESC" <?php /*if ($order == "DESC") echo 'selected'; */?> class="order">Date desc</option>
+        </select>-->
 
         <div class="search-input">
             <input type="text" value="<?php if (!empty($keyword)) echo $keyword; ?>"
