@@ -6,36 +6,10 @@
 ##-------------------------------------------------------------##
 #################################################################
 
-//if ( !defined('INCLUDED') ) { die("Access Denied"); }
-
-//var_dump($campaigns); exit;
 include_once('includes/grab_video_thumbnail.php');
 ?>
-<!--<script src="../scripts/jquery/jquery-1.6.3.min"></script>-->
-<!--<script>-->
-<!--    $(document).ready(function(){-->
-<!--//        $("#order_result").click(function(){-->
-<!--//            alert(1)-->
-<!--//            alert(this.val())-->
-<!--//            if (this.val() == "ASC" || this.val() == "DESC") {-->
-<!--//                alert(this.val());-->
-<!--//            }-->
-<!--//        });-->
-<!--        $(".order").click(function(){-->
-<!--            alert(1)-->
-<!--            var value = $("#order_result").val();-->
-<!--            alert(value)-->
-<!--            if (value == "ASC" || value == "DESC") {-->
-<!--                var input = "<input type='hidden' name='order' value='" + value + "'>";-->
-<!--                alert(input);-->
-<!--                $("#search_by_name").add(input);-->
-<!--            }-->
-<!--        });-->
-<!--//        alert(1)-->
-<!--    });-->
-<!--</script>-->
 <? echo (!empty($no_results_message)) ? $no_results_message : '<br>';?>
-<script language=JavaScript src='/scripts/jquery/jquery-1.9.1.js'></script>
+
 <script>
 
     function select(order, obj)
@@ -73,11 +47,11 @@ include_once('includes/grab_video_thumbnail.php');
 <div class="searchBox">
 <h2> Search Result </h2>
 <form id="search_by_name" accept="#">
-        <select id="order_result" name="names" class="changeMe">
+     <!--   <select id="order_result" name="names" class="changeMe">
             <option value="0" selected="selected" class="order">Sort by</option>
-            <option value="ASC" <?php if ($order == "ASC") echo 'selected';?> class="order">Date asc</option>
-            <option value="DESC" <?php if ($order == "DESC") echo 'selected';?> class="order">Date desc</option>
-        </select>
+            <option value="ASC" <?php /*if ($order == "ASC") echo 'selected';*/?> class="order">Date asc</option>
+            <option value="DESC" <?php /*if ($order == "DESC") echo 'selected';*/?> class="order">Date desc</option>
+        </select>-->
   <div class="search-input">
       <input type="text" value="<?php if(!empty($keyword)) echo $keyword;?>" placeholder="Find by name" name="keyword">
       <button type="submit"></button>
@@ -130,20 +104,18 @@ include_once('includes/grab_video_thumbnail.php');
             </div>
             <div class="campaign-details">
                 <span class="price">$<?php echo isset ($campaign["payment"]) ? $campaign["payment"] : '0' ?></span>
-                <span class="votes">Votes:<?php if(!empty($campaign['votes']))  {echo $campaign['votes'];} else {echo '0';}?></span>
                 <span class="day"><?php echo isset ($campaign["days_left"]) ? $campaign["days_left"] : '0' ?><span><?=MSG_DAYS_LEFT?></span></span>
                 <div class="clear"></div>
                 <?php
-//                $end_time=isset($campaign['end_date']) ? $campaign['end_date'] : 0;
-//                $create_time= isset($campaign['reg_date']) ? $campaign['reg_date'] : 0;
                 $current_time=time();
-//                $total_time = $end_time- $create_time;
-//                if ($total_time)
-//                    $completed =round((($current_time - $create_time) / ($total_time)) * 100);
-//                else
-//                    $completed = 100;
                 $completed = $campaign["founddrasing_goal"] ? round(($campaign["payment"] / $campaign["founddrasing_goal"]) * 100) : 100;
+                echo $completed . "%";
                 ?>
+                <span class="votes"><?php if (!empty($campaign['votes'])) {
+                        echo $campaign['votes'];
+                    } else {
+                        echo '0';
+                    } ?> <?= MSG_CAMPAIGNS_VOTES_NUMBER ?></span>
                 <?php if ($campaign['end_date'] > $current_time): ?>
                     <div class="progress">
                         <div class="bar" style="width: <? echo $completed < 100 ? $completed : 100; ?>%">
