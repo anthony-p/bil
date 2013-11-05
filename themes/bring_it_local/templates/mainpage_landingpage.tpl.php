@@ -14,7 +14,7 @@
                 } else {
                     $("#dialog-confirm").dialog({
                         resizable: false,
-                        width: 350,
+                        width: 316,
                         modal: true,
 
                         buttons: [
@@ -305,6 +305,6 @@ $featured_columns = 14;
 <?php global $session; ?>
 <?php if (!$session->value('user_id')): ?>
     <div id="dialog-confirm" title="<?= MSG_DONATION_LOGIN_INVITATION_POPUP_TITLE ?>">
-        <p style="margin: 20px"><?= MSG_DONATION_LOGIN_INVITATION ?></p>
+        <p style="margin: 10px"><?= MSG_DONATION_LOGIN_INVITATION ?></p>
     </div>
 <?php endif; ?>
