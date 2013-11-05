@@ -151,6 +151,7 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
 
         $keyArray = explode("&", $response);
 var_dump($keyArray);
+var_dump($API_UserName);
 die();
         foreach ($keyArray as $rVal){
             list($qKey, $qVal) = explode ("=", $rVal);
