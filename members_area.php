@@ -23,7 +23,7 @@ include_once ('includes/functions_item.php');
 include_once ('includes/functions_login.php');
 include_once ('includes/class_messaging.php');
 include_once ('includes/class_reputation.php');
-phpinfo();
+
    
 if (!$session->value('user_id'))
 {
