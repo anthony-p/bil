@@ -5797,7 +5797,7 @@ else
     if (isset($_POST['ajaxsubmit'])) {
         if (($form_submit_msg == null) ||($form_submit_msg == '')) $form_submit_msg =  array("status" => "fail");
         echo json_encode($form_submit_msg);
-    } else echo $template_output;
+    } else if (($template_output == '') || ($template_output  == null)) {$template_output  .= "error"; } else echo $template_output;
 }
 
 ?>
