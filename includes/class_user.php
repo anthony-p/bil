@@ -744,7 +744,7 @@ class user extends custom_field
 
             $pUser = new class_probid_user($user_id);
             $pUser->update($user_details);
-            die;
+//            die;
 
 
         } catch (Exception $e) {
