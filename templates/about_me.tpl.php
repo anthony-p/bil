@@ -14,9 +14,13 @@ if (!defined('INCLUDED')) {
 <br>
 <div class="about-me_block">
     <div id="avatar_about_me">
-        <?php if (!empty($user_details['avatar'])) : ?>
-            <div class="upload_logo"><img src="<?= $user_details['avatar'] ?>"/></div>
-        <?php endif; ?>
+        <div class="upload_logo">
+            <?php if (!empty($user_details['avatar'])) : ?>
+                <img src="<?= $user_details['avatar'] ?>"/>
+            <?php else: ?>
+                <img src="/themes/bring_it_local/img/bring-it-local-no-user-photo.jpg"/>
+            <?php endif; ?>
+        </div>
     </div>
     <div class="about_me_content">
         <div class="summary-block">
