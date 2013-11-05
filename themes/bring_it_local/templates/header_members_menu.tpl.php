@@ -54,7 +54,7 @@ if ($is_sales <> '0' ) {
 #SetCookie("sales", $salesno, 0, '/', 'bringitlocal.com'); 
 
 $inThreeMonths = 60 * 60 * 24 * 90 + time(); 
-SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
+//SetCookie("sales", $salesno, $inThreeMonths, '/', 'bringitlocal.com');
 $first_name = $db->get_sql_field("SELECT first_name FROM bl2_users WHERE email ='" . $member_username . "'", 'first_name');
 
 ?>
