@@ -334,7 +334,7 @@ class class_probid_user extends database  {
 
     public function load ()
     {
-        $row = $this->get_sql_row("SELECT * FROM probid_users WHERE bl2_user_id=".$this->user_id);
+        $row = $this->get_sql_row("SELECT * FROM probid_users WHERE user_id=".$this->user_id);
         $this->fillObject($row);
     }
 
