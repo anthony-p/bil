@@ -660,6 +660,8 @@ else
 
 					$user->update($session->value('user_id'), $_POST, $new_password);
                     $form_submit_msg = array("status" => "success");
+					$members_area_page_content = $template->process('members_area_account_main.tpl.php');
+					$template->set('members_area_page_content', $members_area_page_content);
 				}
 			}
 
