@@ -52,7 +52,7 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
 
 //set APAPI URL
 //$url = trim('https://svcs.sandbox.paypal.com/AdaptiveAccounts/GetVerifiedStatus');
-
+// API_UserName=support_api1.bringitlocal.com_&_API_Password=GH92ZGH3RWYLH725_&_API_Signature=AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj_&_API_AppID=APP-7YF493902L373612H
 
 //PayPal API Credentials
 //$API_UserName = "sbapi_1287090601_biz_api1.paypal.com"; //TODO
@@ -157,6 +157,12 @@ $API_AppID = "APP-7YF493902L373612H";
         $keyArray = explode("&", $response);
 var_dump($keyArray);
 var_dump($body_data);
+var_dump($API_UserName);
+var_dump($API_Password);
+var_dump($API_Signature);
+var_dump($API_AppID);
+var_dump($API_RequestFormat);
+var_dump($API_ResponseFormat);
 die();
         foreach ($keyArray as $rVal){
             list($qKey, $qVal) = explode ("=", $rVal);
