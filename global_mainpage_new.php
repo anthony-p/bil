@@ -154,10 +154,13 @@
             NPDB_PREFIX . "users.project_title, " .
             NPDB_PREFIX . "users.votes, " .
             " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id,
-            COUNT(project_votes.id) AS votes ";
+            (SELECT COUNT(*)
+                FROM project_votes
+                WHERE project_votes.campaign_id = np_users.user_id
+                AND MONTH(FROM_UNIXTIME(project_votes.date)) = MONTH(NOW())
+            ) AS votes ";
         $join = " FROM " . NPDB_PREFIX . "users INNER JOIN bl2_users " .
-            " ON " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id LEFT JOIN project_votes ON " .
-            NPDB_PREFIX . "users.user_id=project_votes.campaign_id ";
+            " ON " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id ";
         $sql_query = $db->query(
             "SELECT " . $fields . $join . " WHERE np_users.active=1
             AND np_users.homepage_featured=1

@@ -5,7 +5,7 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
-
+$current_time = time();
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 global $coupon_url;
 include_once('includes/grab_video_thumbnail.php');
@@ -136,7 +136,7 @@ include_once('includes/grab_video_thumbnail.php');
                                 } else {
                                     echo '0';
                                 } ?> <?= MSG_CAMPAIGNS_VOTES_NUMBER ?></span>
-                            <?php if ($current_time > $end_time): ?>
+                            <?php if ($current_time > $row["end_date"]): ?>
                                 <div class="project-unsuccessful"><?= MSG_CLOSED ?></div>
                             <?php else: ?>
                                 <div class="progress">
