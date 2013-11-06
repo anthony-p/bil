@@ -42,7 +42,7 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
     }
     else
     {
-        $url = "https://svcs.paypal.com/AdaptivePayments/GetVerifiedStatus";
+        $url = "https://svcs.paypal.com/AdaptiveAccounts/GetVerifiedStatus";
     }
 
 //    var_dump($Env); echo '<br />';
@@ -60,6 +60,11 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
 //$API_Signature = "ANFgtzcGWolmjcm5vfrf07xVQ6B9AsoDvVryVxEQqezY85hChCfdBMvY"; //TODO
 //$API_SANDBOX_EMAIL_ADDRESS = "rishaque@paypal.com"; //TODO
 //$API_DEVICE_IPADDRESS = "127.0.0.1"; //TODO
+
+$API_UserName = "support_api1.bringitlocal.com"; //TODO
+$API_Password = "GH92ZGH3RWYLH725"; //TODO
+$API_Signature = "AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj"; //TODO
+$API_AppID = "APP-7YF493902L373612H";
 
 //Default App ID for Sandbox
 //$API_AppID = "APP-80W284485P519543T";
@@ -88,7 +93,7 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
     }
 
     $body_data  =  array(
-        "emailAddress" => $paypal_email,//TODO
+        "accountIdentifier.emailAddress" => $paypal_email,//TODO
         "requestEnvelope.errorLanguage" => "en_US",//TODO
         "matchCriteria" => "NAME",//TODO
         "firstName" => $first_name,//TODO
@@ -150,7 +155,9 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
 //        return $response;
 
         $keyArray = explode("&", $response);
-
+var_dump($keyArray);
+var_dump($body_data);
+die();
         foreach ($keyArray as $rVal){
             list($qKey, $qVal) = explode ("=", $rVal);
             $kArray[$qKey] = $qVal;
