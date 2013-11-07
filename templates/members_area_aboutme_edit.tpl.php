@@ -34,12 +34,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         });
 //        init_tinymce('#aboutme_page_content');
     });
-    function removeFile(){
-        $('#avatar_img').attr("src", "");
-        $('#avatar').val("");
-        $('#curr_avatar').val("");
-        $('input[name="form_aboutme_log_remove"]').hide();
-    }
 </script>
 
 <br>
@@ -70,8 +64,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         </div>
         <?php if(!empty($user_details['avatar'])) :?>
         <div class="remove_logo">
-            <input type="button" name="form_aboutme_log_remove" class="remove"    
-            value="<?=MSG_REMOVE_FILE;?>" onclick="javascritp:removeFile();"/>
+            <input type="submit" name="form_aboutme_logo_remove" class="remove" value="<?=MSG_REMOVE_FILE;?>"/>
         </div>
         <?php endif;?>
     </td>
