@@ -746,10 +746,10 @@ define ('MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION', 'You can still do
 define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND', 'Would you like to add <strong>$5</strong> toward the Community Fund?');
 define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_PREFIX', 'Would you like to add <strong>$5</strong> toward the');
 
-define ('MSG_EXTENDS_DATE_EXISTING_CAMPAIGN', 'Extend the date of the existing campaign for ');
+define ('MSG_EXTENDS_DATE_EXISTING_CAMPAIGN', 'Extend the date of this campaign for ');
 define ('MSG_CLONE_CAMPAIGN', 'Clone campaign');
 define ('MSG_LET_CAMPAIGN_CLOSE', 'Let this campaign close on schedule');
-define ('MSG_CRON_CONFIG', '<strong>Set the future status:</strong>');
+define ('MSG_CRON_CONFIG', '<strong>When should this campaign end:</strong>');
 define ('MSG_CLONE_CONFIG', '<strong>AutoRenew settings</strong>');
 define ('MSG_CLONE_CONFIG_TIMES', 'AutoRenew this campaign ');
 define ('MSG_CLONE_CONFIG_DAYS', 'Renew this campaign for');
