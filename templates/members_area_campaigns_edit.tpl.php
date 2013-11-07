@@ -10,13 +10,12 @@ if (!defined('INCLUDED')) {
 
 <?= (isset($header_selling_page)) ? $header_selling_page : ''; ?>
 <?= (isset($display_formcheck_errors)) ? $display_formcheck_errors : ''; ?>
-
 <script type="text/javascript" src="/scripts/jquery/tinymce/tinymce.min.js" ></script>
 <script type="text/javascript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" ></script>
 <script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
 <script type="text/javascript" src='/scripts/jquery/additional-methods.min.js'></script>
 <script type="text/javascript">
-
+	
     window.error_messages = {
         name: "<?= MSG_REGISTER_CAMPAIGN_ERR_NAME; ?>",
         tax_company_name: "<?= MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME; ?>",
@@ -68,6 +67,11 @@ if (!defined('INCLUDED')) {
 <script type="text/javascript">
       
     $(document).on('ready', function () {
+    	$('input[type="file"]').each(function() {
+        	$(this).on('change', function(e){
+        		$('.editCampaigns').focus();	
+        	})	
+        }); 
         /* Form validated before submit */
         $('input[type="submit"]').each(function() {
             $(this).on('click', function(e){
@@ -81,6 +85,7 @@ if (!defined('INCLUDED')) {
                 }
             })
         });
+        
         /* Go Live button if exists */
         var go_live_btn = $('.set_live_campaign_btn');
         if (go_live_btn) {
@@ -711,4 +716,3 @@ if (!defined('INCLUDED')) {
 <div id="confirm_dialog_box" title="<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE; ?>" style="display: none;">
     <p><?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG; ?></p>
 </div>
-
