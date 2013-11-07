@@ -450,14 +450,15 @@ class formchecker extends database
     // if paypal parameter is set to tru then check if the email is a valid paypal address
 	function is_email_address($value, $msg, $paypal = false)
 	{
+		return true;
 		$pattern = "/^([a-zA-Z0-9])+([\.a-zA-Z0-9_-])*@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)+/";
 		if(preg_match($pattern, $value))
 		{
 			if ($paypal) {
-                //file_exists('check_paypal_account.php') ?
-                //  include_once('check_paypal_account.php') : include_once('../check_paypal_account.php');
-                //$response = checkPaypalAccount($value);
-				$response = "VERIFIED";
+                file_exists('check_paypal_account.php') ?
+                  include_once('check_paypal_account.php') : include_once('../check_paypal_account.php');
+                $response = checkPaypalAccount($value);
+				
                 if ($response == "VERIFIED") {
                 	$this->checkFlag = 1;
                     return true;
