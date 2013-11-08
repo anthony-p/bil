@@ -7,7 +7,7 @@
  */
 if (!defined('INCLUDED')) { die("Access Denied");
 }
-mail("anthony.puggioni2@gmail.com", "subject2", "message2") ;
+
 $send = true;
 // always sent;
 
@@ -24,6 +24,6 @@ $subject = "Thanks for voting";
 
 //$headers = 'From: Bring It Local <support@bringitlocal.com>' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 //mail($user_voted_email, $subject, $html_message_user, $headers) ;
-send_mail($user_voted_email, $subject, $text_message_user, $setts['admin_email'], $html_message_user, null, true);
-mail("anthony.puggioni2@gmail.com", "subject3", "message3") ;
+send_mail("anthony.puggioni2@gmail.com", $subject, $text_message_user, $setts['admin_email'], $html_message_user, null, true);
+//mail("anthony.puggioni2@gmail.com", "subject3", "message3") ;
 ?>
