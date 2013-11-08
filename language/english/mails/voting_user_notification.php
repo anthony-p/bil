@@ -24,10 +24,10 @@ You will be able to vote again if you participate in the site next month.
 Read more about the Community Fund and Bring It Local\'s experiment in democracy here: <a href="http://dev2.bringitlocal.com/bringitlocal">Community Fund</a>';
 
 $html_message_user = 'Thank you for voting for %1$s a Bring It Local crowdfunding campaign!
-
+<br> <br>
 <strong>How does this work?</strong><br>
 Anyone who makes some form of contribution on the site to any campaign gains the right to vote for their favorite campaign. <br>
-Then, at the end of each month the Community Fund will be disbursed to the campaign that has received the most votes. <br> <br>
+<br> <br>Then, at the end of each month the Community Fund will be disbursed to the campaign that has received the most votes. <br> <br>
 
 You will be able to vote again if you participate in the site next month. 
 <br> <br>
