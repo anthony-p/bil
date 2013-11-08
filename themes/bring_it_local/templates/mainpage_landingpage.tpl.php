@@ -80,6 +80,7 @@ $featured_columns = 14;
                 var campaign_id = <?php echo (isset($compaigns["user_id"]) && $compaigns["user_id"]) ? $compaigns["user_id"] : '0'; ?>;
                 var campaign_title = ' + <?php echo (isset($compaigns["project_title"]) && $compaigns["project_title"]) ? $compaigns["project_title"] : ''; ?> + ';
                 if (campaign_id) {
+                	
                     $.ajax({
                         url: "/vote_us.php",
                         data: {campaign_id: campaign_id, campaign_title: campaign_title},
@@ -142,11 +143,12 @@ $featured_columns = 14;
                 }, 1000);
             </script>
             
-            <!--test purpose start-->
+            <!--
             <div class="campaign-details" id="vote_us_block">
                <button id="vote_us"><?=MSG_VOTE_US?></button>
             </div>
-            <!--test purpose end-->
+            -->
+            
             <?php if (isset($vote_us) && $vote_us) : ?>
                 <div class="campaign-details" id="vote_us_block">
                     <?= $vote_us ?>
