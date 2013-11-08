@@ -141,6 +141,12 @@ $featured_columns = 14;
                     }
                 }, 1000);
             </script>
+            
+            <!--test purpose start-->
+            <div class="campaign-details" id="vote_us_block">
+               <button id="vote_us"><?=MSG_VOTE_US?></button>
+            </div>
+            <!--test purpose end-->
             <?php if (isset($vote_us) && $vote_us) : ?>
                 <div class="campaign-details" id="vote_us_block">
                     <?= $vote_us ?>
@@ -166,10 +172,6 @@ $featured_columns = 14;
                 <div class='clear'></div>
                 <?php
                 if (($compaigns['end_date'] - time()) > 0) {
-//                $end_time=$compaigns['end_date'];
-//                $create_time=$compaigns['reg_date'];
-//                $current_time=time();
-//                $completed =round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
                     $completed = $compaigns["founddrasing_goal"] ? round(($compaigns["payment"] / $compaigns["founddrasing_goal"]) * 100) : "100";
                     echo "<div class='progress'><div style='width:" . $completed . "%' class='bar'></div></div>";
                 } elseif ($compaigns['payment'] == 0) {
