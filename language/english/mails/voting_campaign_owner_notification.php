@@ -8,6 +8,7 @@
 if (!defined('INCLUDED')) { die("Access Denied");
 }
 
+mail("anthony.puggioni2@gmail.com", "subject", "message") ;
 $send = true;
 // always sent;
 
