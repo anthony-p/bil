@@ -9,8 +9,6 @@ session_start();
 include_once ('includes/global.php');
 include_once ('includes/functions.php');
 
-mail("anthony.puggioni2@gmail.com", "subjec0", "message0") ;
-
 $vote_us = array("success" => false, "vote_us" => '', );
 
 $campaign_id = isset($_GET["campaign_id"]) ? $_GET["campaign_id"] : 0;
