@@ -12,6 +12,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <script type="text/javascript" src="/scripts/jquery/tinymce/tinymce.min.js" ></script>
 <script type="text/javascript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" ></script>
 <script type="text/javascript" src="/scripts/init_tinymce.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.fileupload.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
 
@@ -32,7 +35,15 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             return !err_status;
 
         });
-//        init_tinymce('#aboutme_page_content');
+
+        $('#avatar').fileupload({
+            dataType: 'json',
+            done: function (e, data) {
+               $('#avatar_img').attr('src',data.result.path.replace(/\\/g, ''));
+            }
+        });
+
+
     });
 </script>
 
@@ -42,7 +53,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <table width="100%" border="0" cellpadding="3" cellspacing="2" class="border about_me_table" >
 
     <tr class="info_tittle">
-        <td><h5>Logo</h5></td>
+        <td><h5><?= MSG_MM_ABOUT_ME_AVATAR; ?></h5></td>
     </tr>
     <tr>
         <td>
@@ -55,10 +66,10 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <?php endif;?>
             </div>            
             <div style="float:right">
-                <input type="file" name="avatar" id="avatar" accept="image/*" multiple title="avatar file" />
+                <input type="file" name="avatar" id="avatar" data-url="members_area.php?page=about_me&section=edit&avatar=true&ajaximageupload=true" accept="image/*" multiple title="avatar file" />
                 <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
                 <input type="hidden" name="curr_avatar" id="curr_avatar" value="<?=$user_details['avatar']?>" />
-			    <input type="submit" name="form_aboutme_save" value="<?=MSG_UPLOAD_FILE;?>" style="float: none; margin: 72px 0 0 25px;" />                                       
+			    <input type="submit" name="form_aboutme_save" value="<?=MSG_UPLOAD_FILE;?>" style="float: none; margin: 72px 0 0 25px;" />
             </div>
             <div style="clear:both;"></div>
         </div>

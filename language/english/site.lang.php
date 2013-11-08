@@ -328,6 +328,7 @@ define ('MSG_SUBSCRIBE', 'SUBSCRIBE');
 define ('MSG_BLOG', 'Go to our BLOG');
 define ('MSG_EMAIL', 'enter your email');
 define ('MSG_MM_ABOUT_ME', 'Public Profile');
+define ('MSG_MM_ABOUT_ME_AVATAR', 'Avatar');
 define ('MSG_MM_VIEW', 'Preview');
 define ('MSG_FEATURED_LOCALAUCTIONS', 'Buy Local - Featured Auctions by Local Supporters'); 
 define ('MSG_BAR_FEATURED_AUCTIONS', 'Buy Local - Featured Auctions');

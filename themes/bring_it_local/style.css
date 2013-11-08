@@ -6418,7 +6418,6 @@ a.jp-current:hover{
 .myCampaigs form input{
     float:left;
     height:24px;
-    border:0;
     width:150px;
     text-transform:capitalize;
     margin-left:16px;
@@ -6450,6 +6449,7 @@ a.jp-current:hover{
     clear:both;
     margin:20px 0 0;
     border:0;
+
     }
 
 .myCampaigs ul.list{
@@ -6458,9 +6458,12 @@ a.jp-current:hover{
 
 .myCampaigs ul.list li{
     width:438px;
-    border:1px solid rgb(131, 124, 124);
+    border:1px solid #ccc;
     box-shadow:none;
     margin:20px 20px 0 0;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     }
 
 .myCampaigs ul.list li.odd{
@@ -6469,29 +6472,31 @@ a.jp-current:hover{
 
 .myCampaigs .list li dl{
     width:420px;
-    margin:15px auto;
+    padding: 15px 20px;
     }
 
 .myCampaigs .list li dl dt{
     float:left;
     width:150px;
-    font:12px/15px "OpenSans-Bold";
+    font:1em/1.4em "OpenSans";
     color:#333;
-    text-transform:uppercase;
     margin:5px 0;
     }
 
 .myCampaigs .list li dl dd{
     float:left;
     width:270px;
-    font:12px/15px "OpenSans";
+    font:1.1em/1.4em "OpenSans-SemiBold";
     margin:5px 0;
     }
 
 .myCampaigs .campaignsButtons{
     margin-top:10px;
-    padding:10px 0;
+    padding:15px 0;
     background:#f3f3f3;
+    -moz-border-radius: 0 0 8px 8px;
+    -webkit-border-radius: 0 0 8px 8px;
+    border-radius: 0 0 8px 8px;
     }
 
 .myCampaigs .campaignsButtons a{

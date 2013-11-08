@@ -14,6 +14,9 @@ if (!defined('INCLUDED')) {
 <script type="text/javascript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" ></script>
 <script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
 <script type="text/javascript" src='/scripts/jquery/additional-methods.min.js'></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.fileupload.js"></script>
 <script type="text/javascript">
 	
     window.error_messages = {
@@ -67,6 +70,7 @@ if (!defined('INCLUDED')) {
 <script type="text/javascript">
       
     $(document).on('ready', function () {
+        var formElem = $('#formElem');
     	$('input[type="file"]').each(function() {
         	$(this).on('change', function(e){
         		$('.editCampaigns').focus();	
@@ -77,15 +81,38 @@ if (!defined('INCLUDED')) {
             $(this).on('click', function(e){
                 e.preventDefault();
                 $("#campaign_basic").val(tinymce.get('campaign_basic').getContent());
-                var formElem = $('#formElem'),
-                    button = $(this);
+                var button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
                 if (formElem.valid()) {
                     ajaxFormSave(button, formElem, true);
                 }
             })
         });
-        
+        $('#logo').fileupload({
+//            url:formElem.attr('action')+'?logoupload=true',
+
+            dataType: 'json',
+            done: function (e, data) {
+                var img = $('#logo_img');
+                if (img.length > 0)  img.attr('src',data.result.path.replace(/\\/g, ''));
+                else
+                {
+                    $('#MultiPowUpload_holder').before('<img src="'+ data.result.path.replace(/\\/g, '')+'" id="logo_img">')
+                }
+            }
+        });
+        $('#banner').fileupload({
+            url:formElem.attr('action')+'?bannerupload=true',
+            dataType: 'json',
+            done: function (e, data) {
+                var img = $('#banner_img');
+                if (img.length > 0)  img.attr('src',data.result.path.replace(/\\/g, ''));
+                else
+                {
+                    $('.upload"').before('<img src="'+ data.result.path.replace(/\\/g, '')+'" id="banner_img">')
+                }
+            }
+        });
         /* Go Live button if exists */
         var go_live_btn = $('.set_live_campaign_btn');
         if (go_live_btn) {
@@ -438,7 +465,7 @@ if (!defined('INCLUDED')) {
             </fieldset>
 
             <!--Enhancement Tab-->
-           <!--2013/10/15 Edit Start (Anthony)-->
+
             <fieldset class="step">
                 <div class="tabs">
                     <h4><?= MSG_WEBSITE_ADDRESS; ?></h4>
@@ -462,11 +489,13 @@ if (!defined('INCLUDED')) {
                         <h5><?= MSG_LOGO_DESC; ?></h5>
 
                         <div class="account-row">
-                            <?php if (isset($campaign["logo"]) && $campaign["logo"] && file_exists($campaign["logo"])): ?>
-                                <img src="<?php echo $campaign["logo"] . "?" . time(); ?>">
+                            <?php if (isset($campaign["logo"]) && $campaign["logo"] ): ?>
+                                <img id="logo_img" src="<?php echo $campaign["logo"] . "?" . time(); ?>">
                             <?php endif; ?>
                             <div id="MultiPowUpload_holder">
-                                <input class="file" name="logo" id="logo" accept="image/*" type='file' multiple title="logo file"/>
+                                <input class="file" name="logo" id="logo" accept="image/*"
+                                       page=about_me&section=edit&avatar=true&ajaxsubmit=true
+                                       data-url="members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&ajaximageupload=true" type='file' title="logo file"/>
                                 <span class="clear-file-input"><?= MSG_CLEAR ?></span>
                             </div>
                             <div id="serverresponse">
@@ -474,13 +503,11 @@ if (!defined('INCLUDED')) {
                                 <span><?= MSG_UPLOAD_LOGO_INFORMATION ?></span>
                             </div>
                         </div>
-                        <!--<h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>-->
                         <h5><?= MSG_YOUR_STORY3 ?></h5>
                         <div class="account-row">
-                            <?php //if (isset($campaign["banner"]) && strstr($campaign["banner"], '/images/partner_logos/') !== false): ?>
-                            <?php if (isset($campaign["banner"]) && $campaign["banner"] && file_exists($campaign["banner"])): ?>
+                            <?php if (isset($campaign["banner"]) && $campaign["banner"]): ?>
                                 
-                                    <img src="<?php echo $campaign['banner'] . "?" . time() ?>">
+                                    <img id='banner_img' src="<?php echo $campaign['banner'] . "?" . time() ?>">
                                 
                             <?php endif; ?>
                             <div class="upload">
@@ -491,7 +518,8 @@ if (!defined('INCLUDED')) {
                                         echo "checked";
                                     } ?> ><label><?= MSG_BANNER_IMAGE ?></label>
                                     <div>
-                                        <input class="file" name="banner" id="banner" accept="image/*" type='file' multiple
+                                        <input class="file" name="banner" id="banner"  accept="image/*" type='file'
+                                               data-url="members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&ajaximageupload=true"
                                                title="banner file" <?php if (strstr($campaign["banner"], "http://")) {
                                             echo "style='display:none'";
                                         } ?>/>

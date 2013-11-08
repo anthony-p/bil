@@ -34,7 +34,7 @@
         ?>
     </div>
 <?php endif; ?>
-<aside class="nav-social clfix">
+<aside class="nav-social clrfix">
     <?php
     if ((isset($compaignData['facebook_url']) && $compaignData['facebook_url']) ||
         (isset($compaignData['twitter_url']) && $compaignData['twitter_url']) ||
@@ -113,7 +113,7 @@
   </div>
 </aside>
 <aside class="social">
-    <div class="inner">
+    <div class="inner clrfix">
         <h5>Share</h5>
         <ul>
             <li>

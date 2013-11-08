@@ -85,7 +85,6 @@ $featured_columns = 14;
                         url: "/vote_us.php",
                         data: {campaign_id: campaign_id, campaign_title: campaign_title},
                         success: function (result) {
-//                        console.log(result);
                             result = jQuery.parseJSON(result);
                             if (result.success) {
                                 $("#vote_us_block").html(result.vote_us);
@@ -101,32 +100,23 @@ $featured_columns = 14;
     <div class="top-description">
         <?php if (isset($compaigns["logo"]) && $compaigns["logo"]): ?>
             <div class="left"><img src="<? echo $compaigns["logo"]; ?>"/></div>
-            <div class="right">
+            <div style="margin-left:120px">
+            <?php endif; ?>
                 <h2><? echo $compaigns["project_title"]; ?></h2>
-                <!--  <a href="" class="location"><?/* echo $compaigns["city"];*/?></a>-->
-                <div class="clear"></div>
                 <p><? echo $compaigns["description"]; ?></p>
 
-                <div class="clear"></div>
                 <p>by
                     <a style="color: #7eb041"
                        href="/about_me.php?user_id=<?php echo isset($compaigns['probid_user_id']) ? $compaigns['probid_user_id'] : ''; ?>">
-                        <?php if (isset($compaigns['organization']) && $compaigns['organization']): ?>
-                            <?php echo $compaigns['organization']; ?>
+                        <?php if (isset($compaigns['tax_company_name']) && $compaigns['tax_company_name']): ?>
+                            <?php echo $compaigns['tax_company_name']; ?>
                         <?php else: ?>
                             <?php echo $compaigns['first_name'] . "  " . $compaigns['last_name']; ?>
                         <?php endif; ?>
+
                     </a>
                 </p>
-            </div>
-        <?php else: ?>
-            <div class="right" style="float: left">
-                <h2><? echo $compaigns["project_title"]; ?></h2>
-                <!--   <a href="" class="location"><?/* echo $compaigns["city"];*/?></a>-->
-                <div class="clear"></div>
-                <p><? echo $compaigns["description"]; ?></p>
-            </div>
-        <?php endif; ?>
+<?php if (isset($compaigns["logo"]) && $compaigns["logo"]): ?> </div><?php endif; ?>
     </div>
     <div class="campaign-content">
         <div class="nav-right">
@@ -142,13 +132,7 @@ $featured_columns = 14;
                     }
                 }, 1000);
             </script>
-            
-            <!--
-            <div class="campaign-details" id="vote_us_block">
-               <button id="vote_us"><?=MSG_VOTE_US?></button>
-            </div>
-            -->
-            
+
             <?php if (isset($vote_us) && $vote_us) : ?>
                 <div class="campaign-details" id="vote_us_block">
                     <?= $vote_us ?>
