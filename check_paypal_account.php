@@ -55,19 +55,19 @@ $Env = "sandbox";
 // API_UserName=support_api1.bringitlocal.com_&_API_Password=GH92ZGH3RWYLH725_&_API_Signature=AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj_&_API_AppID=APP-7YF493902L373612H
 
 //PayPal API Credentials
-$API_UserName = "sbapi_1287090601_biz_api1.paypal.com"; //TODO
-$API_Password = "1287090610"; //TODO
-$API_Signature = "ANFgtzcGWolmjcm5vfrf07xVQ6B9AsoDvVryVxEQqezY85hChCfdBMvY"; //TODO
+// $API_UserName = "sbapi_1287090601_biz_api1.paypal.com"; //TODO
+// $API_Password = "1287090610"; //TODO
+// $API_Signature = "ANFgtzcGWolmjcm5vfrf07xVQ6B9AsoDvVryVxEQqezY85hChCfdBMvY"; //TODO
 //$API_SANDBOX_EMAIL_ADDRESS = "rishaque@paypal.com"; //TODO
 //$API_DEVICE_IPADDRESS = "127.0.0.1"; //TODO
 
-// $API_UserName = "support_api1.bringitlocal.com"; //TODO
-// $API_Password = "GH92ZGH3RWYLH725"; //TODO
-// $API_Signature = "AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj"; //TODO
-// $API_AppID = "APP-7YF493902L373612H";
+$API_UserName = "support_api1.bringitlocal.com"; //TODO
+$API_Password = "GH92ZGH3RWYLH725"; //TODO
+$API_Signature = "AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj"; //TODO
+$API_AppID = "APP-7YF493902L373612H";
 
 //Default App ID for Sandbox
-$API_AppID = "APP-80W284485P519543T";
+// $API_AppID = "APP-80W284485P519543T";
 
     $API_RequestFormat = "NV";//TODO
     $API_ResponseFormat = "NV";//TODO
