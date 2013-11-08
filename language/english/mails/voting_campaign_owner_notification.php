@@ -35,6 +35,6 @@ $subject = "Your campaign received a vote!";
 //$headers = 'From: Bring It Local <support@bringitlocal.com>' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
 //mail($campaign_owner_email, $subject, $html_message_owner, $headers) ;
-//send_mail("anthony.puggioni2@gmail.com", $subject, $text_message_owner, $this -> setts['admin_email'], $html_message_owner, null, true);
+send_mail("anthony.puggioni2@gmail.com", $subject, $text_message_owner, $setts['admin_email'], $html_message_owner, null, true);
 //mail("anthony.puggioni2@gmail.com", "subject4", "message4") ;
 ?>
