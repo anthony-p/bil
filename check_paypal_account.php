@@ -156,6 +156,7 @@ $API_AppID = "APP-7YF493902L373612H";
 
         $keyArray = explode("&", $response);
 var_dump($keyArray);
+var_dump($params);
 die();
         foreach ($keyArray as $rVal){
             list($qKey, $qVal) = explode ("=", $rVal);
