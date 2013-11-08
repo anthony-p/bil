@@ -150,13 +150,13 @@
 	font-size: 25px;
 	text-shadow: 1px 1px 1px #000000;
 }#wowslider-container1 .ws_images ul{
-	animation: wsBasic 33s infinite;
-	-moz-animation: wsBasic 33s infinite;
-	-webkit-animation: wsBasic 33s infinite;
+	animation: wsBasic 44s infinite;
+	-moz-animation: wsBasic 44s infinite;
+	-webkit-animation: wsBasic 44s infinite;
 }
-@keyframes wsBasic{0%{left:-0%} 13.03%{left:-0%} 16.67%{left:-100%} 29.7%{left:-100%} 33.33%{left:-200%} 46.36%{left:-200%} 50%{left:-300%} 63.03%{left:-300%} 66.67%{left:-400%} 79.7%{left:-400%} 83.33%{left:-500%} 96.36%{left:-500%} }
-@-moz-keyframes wsBasic{0%{left:-0%} 13.03%{left:-0%} 16.67%{left:-100%} 29.7%{left:-100%} 33.33%{left:-200%} 46.36%{left:-200%} 50%{left:-300%} 63.03%{left:-300%} 66.67%{left:-400%} 79.7%{left:-400%} 83.33%{left:-500%} 96.36%{left:-500%} }
-@-webkit-keyframes wsBasic{0%{left:-0%} 13.03%{left:-0%} 16.67%{left:-100%} 29.7%{left:-100%} 33.33%{left:-200%} 46.36%{left:-200%} 50%{left:-300%} 63.03%{left:-300%} 66.67%{left:-400%} 79.7%{left:-400%} 83.33%{left:-500%} 96.36%{left:-500%} }
+@keyframes wsBasic{0%{left:-0%} 9.77%{left:-0%} 12.5%{left:-100%} 22.27%{left:-100%} 25%{left:-200%} 34.77%{left:-200%} 37.5%{left:-300%} 47.27%{left:-300%} 50%{left:-400%} 59.77%{left:-400%} 62.5%{left:-500%} 72.27%{left:-500%} 75%{left:-600%} 84.77%{left:-600%} 87.5%{left:-700%} 97.27%{left:-700%} }
+@-moz-keyframes wsBasic{0%{left:-0%} 9.77%{left:-0%} 12.5%{left:-100%} 22.27%{left:-100%} 25%{left:-200%} 34.77%{left:-200%} 37.5%{left:-300%} 47.27%{left:-300%} 50%{left:-400%} 59.77%{left:-400%} 62.5%{left:-500%} 72.27%{left:-500%} 75%{left:-600%} 84.77%{left:-600%} 87.5%{left:-700%} 97.27%{left:-700%} }
+@-webkit-keyframes wsBasic{0%{left:-0%} 9.77%{left:-0%} 12.5%{left:-100%} 22.27%{left:-100%} 25%{left:-200%} 34.77%{left:-200%} 37.5%{left:-300%} 47.27%{left:-300%} 50%{left:-400%} 59.77%{left:-400%} 62.5%{left:-500%} 72.27%{left:-500%} 75%{left:-600%} 84.77%{left:-600%} 87.5%{left:-700%} 97.27%{left:-700%} }
 
 #wowslider-container1 .ws_bullets  a img{
 	text-indent:0;
