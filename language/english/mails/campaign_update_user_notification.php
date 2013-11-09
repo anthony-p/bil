@@ -35,13 +35,13 @@ if ($funders_users && count($funders_users) ) {
         $m_html_body.= "The Bring It Local community crowdfunding campaign that you support, " . $u_campaign['project_title'] . " has posted an update to their campaign page.<br>\r\n\r\n";
         $m_html_body.= $html_msg;
         $m_html_body.= "<br>\r\n\r\n";
-        $m_html_body.= "See what they said on the campaign page here - <a href='".SITE_PATH.$u_campaign['project_title'] ."'>".$u_campaign['project_title'] ."</a>";
+        $m_html_body.= "See what they said on the campaign page here - <a href='".SITE_PATH.$u_campaign['project_url'] ."'>".$u_campaign['project_title'] ."</a>";
 
         $m_text_body = 'Hello ' . $fuser['first_name'] . " " . $fuser['last_name'] . ",\r\n\r\n";
         $m_text_body .= "The Bring It Local community crowdfunding campaign that you support - " . $u_campaign['project_title'] . "has posted an update to their campaign page. \r\n\r\n";
         $m_text_body .= strip_tags($html_msg);
         $m_text_body .= "\r\n\r\n";
-        $m_text_body .= "See what they said on the campaign page here - " . $u_campaign['project_title'] . "\r\n";
+        $m_text_body .= "See what they said on the campaign page here - " . $u_campaign['project_url'] . "\r\n";
         $m_text_body .= "See the profile page of the owner of this campaign here - " . SITE_PATH . "about_me.php?user_id=" . $u_user['id'];
 
 
