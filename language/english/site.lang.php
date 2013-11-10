@@ -521,7 +521,7 @@ define ('MSG_PAYMENT_FAILED', 'Payment Failure');
 define ('MSG_PAYMENT_FAILED_DESC', 'Your payment hasn\'t been registered, or was invalid.<br> <br> Sorry for the inconvenience.');
 define ('MSG_REGISTER_AS', 'Register As');
 define ('MSG_REGISTERD_AS', 'Register As');
-define ('MSG_FRMCHK_DUPLICATE_USERNAME', 'The Username you have chosen already exists in our database.');
+define ('MSG_FRMCHK_DUPLICATE_USERNAME', 'The campaign url you have chosen already exists in our database.');
 define ('MSG_FRMCHK_DUPLICATE_EMAIL', 'The Email Address you have submitted already exists in our database');
 define ('MSG_TAX_SETTINGS', 'Tax Settings');
 define ('MSG_REGISTER_AS_DESC', 'Choose if you want to register as a business or as an individual ');
