@@ -550,6 +550,7 @@ function sendNotificationEmail($user_arr)
 
         if($values['sales'] > 0 AND $values['commision'] > 0){
             include ('language/' . $setts['site_lang'] . '/mails/giveback_invoice_email.php');
+			include ('language/' . $setts['site_lang'] . '/mails/giveback_invoice_email_last.php');
         }
     }
     return true;

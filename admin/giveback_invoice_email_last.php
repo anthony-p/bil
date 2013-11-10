@@ -99,7 +99,7 @@ $subject = 'Your recent shopping from %1$s has benefited %2$s - always use Bring
 $subject = sprintf($subject, $vendor, $nonprofit);
 
 ##for testing the notifications use the line below - emails will all go to the specified address not the site users Then comment out when good to go live 
-$row_details['email'] = "support@bringitlocal.com";
+//$row_details['email'] = "support@bringitlocal.com";
 
 if ($row_details['globalpartner_email']==null or  $row_details['globalpartner_email']!=0)
 {    
