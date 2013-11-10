@@ -5,7 +5,7 @@ global $csvFile;
 
 if($start_date && $end_date){
 
-    $sql = "select giveback_amazon_invoices.*, probid_users.name, probid_users.email, np_users.name as np_name, np_users.tax_company_name from giveback_amazon_invoices LEFT JOIN probid_users ON probid_users.user_id = giveback_amazon_invoices.user_id LEFT JOIN  np_users ON np_users.user_id = giveback_amazon_invoices.np_user_id where (date_time > '".$start_date."' and date_time < '".$end_date."')  ";
+    $sql = "select giveback_amazon_invoices.*, bl2_users.first_name, bl2_users.last_name, bl2_users.email, np_users.name as np_name, np_users.tax_company_name from giveback_amazon_invoices LEFT JOIN bl2_users ON bl2_users.id = giveback_amazon_invoices.user_id LEFT JOIN  np_users ON np_users.user_id = giveback_amazon_invoices.np_user_id where (date_time > '".$start_date."' and date_time < '".$end_date."')  ";
     $sql_select= mysql_query($sql);
 
     $data = array();
@@ -16,7 +16,7 @@ if($start_date && $end_date){
     {
         if($row["email"]){
             $sent_mail[]="Sent email to ".$row["name"]." ({$row["email"]})";
-            $updated[] = "[{$row["date_time"]}] updated giveback_invoices for click through...from \"{$row["tax_company_name"]}\" by user {$row["name"]} ({$row["email"]})";
+            $updated[] = "[{$row["date_time"]}] updated giveback_invoices for click through...from \"{$row["tax_company_name"]}\" by user {$row["first_name"]} {$row["last_name"]} ({$row["email"]})";
         }else
             $updated[] = "[{$row["date_time"]}] updated giveback_invoices for click through...from \"{$row["tax_company_name"]}\" by Guest";
     }
