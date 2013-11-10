@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 date_default_timezone_set("America/Los_Angeles");
 
 include_once ('../includes/config.php');
+require_once ('../includes/global.php');
 
 $user = "thesite@bringitlocal.com";
 $password = "21primus4412";
@@ -548,7 +549,7 @@ function sendNotificationEmail($user_arr)
 		$points = $values['commision'];
 
         if($values['sales'] > 0 AND $values['commision'] > 0){
-            include ('giveback_invoice_email.php');
+            include ('language/' . $setts['site_lang'] . '/mails/giveback_invoice_email.php');
         }
     }
     return true;
