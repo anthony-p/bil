@@ -265,15 +265,15 @@ if(count($user_arr)){
 
 echo "Done import to Database XML report ...<br>";
 
+// Send Report to mail at support
+sendReportToSupport();
+
 // if(!is_array($start_date) && !is_array($end_date)){
     // $csvFileNewName =  $dir.str_replace("-","",substr($start_date,0,10))."-".str_replace("-","",substr($end_date,0,10)).".csv";
     // if($csvFileNewName != $csvFile)
         // rename($csvFile,$csvFileNewName);
 // }
 unlink($csvFile);
-
-// Send Report to mail at support
-sendReportToSupport($start_date, $end_date, $csvFile);
 
 function getPostFields(array $data) {
 
@@ -554,10 +554,8 @@ function sendNotificationEmail($user_arr)
     return true;
 }
 
-function sendReportToSupport($start_date, $end_date, $csvFile=null){
-
+function sendReportToSupport(){
     include("giveback_invoice_support_email.php");
-
 }
 
 function markFree($track_link){
