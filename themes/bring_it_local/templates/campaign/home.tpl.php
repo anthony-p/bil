@@ -95,7 +95,7 @@
 
 <aside class="info">
     <div class="inner">
-        <p><?=($compaignData["campaign_basic"])?></p>
+        <p><?=html_entity_decode($compaignData["campaign_basic"])?></p>
     </div>
 </aside>
 
