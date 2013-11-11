@@ -22,9 +22,10 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     <?php endforeach; ?>
 
 </div>
+
+<table border="0" cellpadding="3" cellspacing="0" id="retailerList">
    <form action="compare_items.php" method="POST">
    <input type="hidden" name="redirect" value="<?=$redirect;?>">
-<table border="0" cellpadding="3" cellspacing="0" id="retailerList">
 	<tr valign="top">
   <!--     <td align="center"></td> --> 
  
@@ -69,8 +70,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
       <td colspan="3" align="center" class="pagination"><?=$pagination;?></td>
    </tr>
 	<? } ?>
+	</form>
 </table>
-    </form>
+
 <? echo (defined("IS_SHOP") && IS_SHOP == 1) ? $shop_footer : '';?>
 <? echo (IS_CATEGORIES == 1) ? $categories_footer : '';?>
 

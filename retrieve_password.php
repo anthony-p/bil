@@ -35,10 +35,12 @@ else
 	$post_details = $db->rem_special_chars_array($_POST);
 	if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'retrieve_password')
 	{
-		$result = $db->query("SELECT id FROM bl2_users WHERE email='" . $post_details['email'] . "'");
-		if (mysql_num_rows($result) <= 0)
+//		$is_user = $db->count_rows('users', "WHERE username='" . $post_details['username'] . "' AND email='" . $post_details['email'] . "'");
+		$is_user = $db->query("SELECT COUNT(id) FROM bl2_users WHERE email='" . $post_details['email'] . "'");
+
+		if (!$is_user)
 		{
-			$template->set('retrieve_password_msg', '<div align="center" class="errormessage_email">' . MSG_RETRIEVE_USER_ERROR . '</div>');
+			$template->set('retrieve_password_msg', '<div align="center" class="errormessage">' . MSG_RETRIEVE_USER_ERROR . '</div>');
 		}
 		else 
 		{
@@ -52,6 +54,33 @@ else
 			$db->query("UPDATE bl2_users SET password='" . $password_hashed . "', salt='" . $salt . "' WHERE
 				email='" . $post_details['email'] . "'");
 
+//			$db->query("UPDATE " . DB_PREFIX . "users SET password='" . $password_hashed . "', salt='" . $salt . "' WHERE
+//				username='" . $post_details['username'] . "'");
+
+/* commenting out magneto code
+            global $coupon_http_username;
+            global $coupon_http_password;
+            global $coupon_url;
+            global $coupon_soap_username;
+            global $coupon_soap_password;
+            $woptions['soap_version'] = SOAP_1_2;
+            $woptions['login'] = $coupon_http_username;
+            $woptions['password'] = $coupon_http_password;
+
+            $proxy = new SoapClient($coupon_url."/index.php/api/soap/?wsdl",$woptions);
+            $sessionId = $proxy->login($coupon_soap_username, $coupon_soap_password);
+
+            $list = $proxy->call($sessionId, 'customer.list', array(array('username' => $user_info['username'])));
+            if(count($list))
+            {
+                $magento_customer_id = $list[0]['customer_id'];
+
+                $updateCustomer = array(
+                    'password_hash' => md5($new_password)
+                );
+                $resut = $proxy->call($sessionId, 'customer.update', array($magento_customer_id, $updateCustomer));
+            }
+*/            
             $template->set('submitted', 1);
 			$template->set('retrieve_password_msg', '<div align="center" class="errormessage">' . MSG_NEW_PASSWORD_EMAILED . '</div>');
 			
@@ -59,6 +88,23 @@ else
 			include('language/' . $setts['site_lang'] . '/mails/retrieve_password.php');
 		}
 	}
+//	else if (isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'retrieve_username')
+//	{
+//		$is_user = $db->count_rows('users', "WHERE email='" . $post_details['email_address'] . "'");
+//        echo "ret:".$is_user.$post_details['email_address'];
+//		if (!$is_user)
+//		{
+//			$template->set('retrieve_username_msg', '<div class="errormessage">' . MSG_RETRIEVE_USER_ERROR . '</div>');
+//		}
+//		else
+//		{
+//			$template->set('submitted', 1);
+//			$template->set('retrieve_username_msg', '<div class="errormessage">' . MSG_USERNAME_EMAILED . '</div>');
+//
+//			$mail_input_id = $post_details['email_address'];
+//			include('language/' . $setts['site_lang'] . '/mails/retrieve_username.php');
+//		}
+//	}
 	$template->set('post_details', $post_details);
 
 	$template_output .= $template->process('retrieve_password.tpl.php');

@@ -245,7 +245,17 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <span><?=MSG_PHONE_EXPL;?></span>
         <div class="clear"></div>
         <?=isset($birthdate_box)?$birthdate_box:'';?>
-    </div>    
+    </div>
+    
+        <div class="account-row">
+            <label>
+            <? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> 
+            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN ?>" style="margin-left: 10px;">
+            </label>
+            <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?=(isset($user_details['pg_paypal_email']))?$user_details['pg_paypal_email']:'';?>" size="40"/>
+            
+            <span><?= MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL; ?></span>
+        </div>
         <div class="account-row">
             <label><?= MSG_PG_PAYPAL_FIRST_NAME; ?> </label>
             <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name" value="<?=(isset($user_details['pg_paypal_first_name']))?$user_details['pg_paypal_first_name']:'';?>" size="40"/>
@@ -255,14 +265,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <label><?= MSG_PG_PAYPAL_LAST_NAME; ?> </label>
             <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name" value="<?=(isset($user_details['pg_paypal_last_name']))?$user_details['pg_paypal_last_name']:'';?>" size="40"/>
             <span><?= MSG_PG_PAYPAL_LAST_NAME_EXPL; ?></span>
-        </div>
-        <div class="account-row">
-            <label>
-            <? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> 
-            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN ?>" style="margin-left: 10px;">
-            </label>
-            <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?=(isset($user_details['pg_paypal_email']))?$user_details['pg_paypal_email']:'';?>" size="40"/>            
-            <span><?= MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL; ?></span>
         </div>
     <div class="next">
         <input name="form_register_proceed" type="submit" id="form_register_proceed_account"

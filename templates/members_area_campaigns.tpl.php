@@ -112,9 +112,7 @@ function select(order, obj)
             <option value="DESC" <?php if ($order == "DESC") echo 'selected';?> class="order"><?=MSG_DATE_DESC?></option>
         </select>
         <div class="search-input">
-            
             <input type="text" value="<?php if(!empty($keyword)) echo $keyword;?>" placeholder="<?= MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME; ?>" name="keyword" id="name">
-            
             <button type="submit"></button>
         </div>
     </form>
@@ -136,7 +134,7 @@ function select(order, obj)
             <div class="clear"></div>
             <fieldset>
                 <div class="campaignsButtons">
-                    <a href="/view_campaign.php?campaign_id=<?= $row['user_id'] ?>" class="view"><?= MSG_PREVIEW ?></a>
+                    <a href="/view_campaign.php?campaign_id=<?= $row['user_id'] ?>" class="view">view</a>
                     <!--<a href="/<?php echo $row['username']; ?>" target="_blank" class="view">view</a>-->
                     <a href="/campaigns,page,edit,section,<?php echo $row["user_id"]?>,campaign_id,members_area" class="edit"><?=MSG_MM_EDIT?></a>
                     <a href="/np/npdelete.php?np_userid=<?php echo $row["user_id"]?>" id="<?php echo $row["user_id"]?>" class="delete"><?=MSG_DELETE?></a>
@@ -151,5 +149,5 @@ function select(order, obj)
 
 <div id="dialog-confirm" title="<?= MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_TITLE; ?>" style="display: none;">
     <br>
-    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><p id="dialog-confirm-msg"></p>
+    <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span><p id="dialog-confirm-msg"></p></p>
 </div>

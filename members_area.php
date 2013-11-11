@@ -624,9 +624,9 @@ else
                             // TODO: MailChimp error processing
 
                             if ($e->getMessage()) {
-                                $form_submit_msg = array("status" => "failed", "errors" => $e->getMessage());
+//                                echo '<br>' . $e->getMessage() . '<br>';
                             } else {
-                                $form_submit_msg = array("status" => "failed", "errors" => "unrecognized error");
+                                // unrecognized error
                             }
                         }
 
@@ -639,11 +639,7 @@ else
                             $mailChimp->lists->unsubscribe($mailChimpConfig['listId'], array('email' => $_POST['email']));
 
                         } catch (Mailchimp_Error $e) {
-                            if ($e->getMessage()) {
-                                $form_submit_msg = array("status" => "failed", "errors" => $e->getMessage());
-                            } else {
-                                $form_submit_msg = array("status" => "failed", "errors" => "unrecognized error");
-                            }
+                            // TODO: MailChimp error processing
 
                         }
 
@@ -660,8 +656,6 @@ else
 
 					$user->update($session->value('user_id'), $_POST, $new_password);
                     $form_submit_msg = array("status" => "success");
-					$members_area_page_content = $template->process('members_area_account_main.tpl.php');
-					$template->set('members_area_page_content', $members_area_page_content);
 				}
 			}
 
@@ -720,10 +714,7 @@ else
 				$template->set('custom_sections_table', $custom_sections_table);
 
 				$template->set('display_direct_payment_methods', $user->direct_payment_methods_edit($row_user));
-
-//                $register_post_url = "/account,page,main,section,members_area";
-//                $template->set('register_post_url',  $register_post_url);
-
+				
 				$members_area_page_content = $template->process('full_registration.tpl.php');
 				$template->set('members_area_page_content', $members_area_page_content);
 			}
@@ -5098,30 +5089,26 @@ else
             }
             $start = ($page_nr - 1)*$per_page;
 
-            $query = "SELECT funders.source, funders.amount, funders.created_at, ";
-            $query .= " funders.user_id, np_users.project_title, np_users.username as url ";
-            $query .= " FROM funders ";
-            $query .= " INNER JOIN np_users ON funders.campaign_id = np_users.user_id ";
-            $query .= " WHERE funders.user_id = ".$session->value('user_id');
-            $query .= " ORDER BY funders.created_at DESC limit $start, $per_page";
-            
-            $campaigns_query_result = $db->query($query);
-            /*
             $campaigns_query_result = $db->query(
-                "SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.source, funders.created_at,
+                "SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at,
                                     funders.user_id, np_users.project_title, np_users.confirmed_paypal_email
                                     FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id
                                     LEFT JOIN bl2_users ON bl2_users.id = funders.user_id
                                     WHERE funders.user_id=" . $session->value('user_id')."
                                      ORDER BY funders.created_at DESC limit $start, $per_page"
-            );*/
+            );
+
 
             $userCampaigns = array();
             while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
                 $userCampaigns[] = $query_result;
             }
 
-            $template->set("page_selected",$page_nr);
+//            echo '<pre>';
+//            var_dump($userCampaigns);
+//            echo '</pre>';
+
+            $template->set("page_selected",$page_selected);
             $template->set("total_pages",$total_pages);
             $template->set("info_contribution_campaigns",$userCampaigns);
             $members_area_page_content = $template->process('members_area_contributions.tpl.php');
@@ -5149,12 +5136,12 @@ else
             }
             $start = ($page_nr - 1)*$per_page;
 
-            $campaigns_query_result = $db->query("SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.source, funders.created_at, funders.user_id, np_users.project_title, np_users.username as url 
-                FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id 
-				LEFT JOIN bl2_users ON bl2_users.id = funders.user_id 
+            $campaigns_query_result = $db->query("SELECT bl2_users.first_name, bl2_users.last_name, funders.amount, funders.created_at, funders.user_id, np_users.project_title
+                FROM np_users INNER JOIN funders ON funders.campaign_id = np_users.user_id
+                LEFT JOIN bl2_users ON bl2_users.id = np_users.probid_user_id
                 WHERE np_users.probid_user_id=" . $session->value('user_id')."
                 ORDER BY funders.created_at DESC limit $start, $per_page");
-				
+
             $userCampaigns = array();
             while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
                 $userCampaigns[] = $query_result;
@@ -5179,6 +5166,49 @@ else
             $template->set('members_area_page_content', $members_area_page_content);
 		}
     }
+    /*end earning page*/
+
+
+    /**
+     * this tab is removed because is specificated in task
+     */
+    /*if ($page == 'clone_campaigns')
+    {
+        if ($section == 'main')
+        {
+            $campaigns_result = $db->query("SELECT np_users.project_title FROM np_users WHERE np_users.parrent_id<>0 AND np_users.probid_user_id=" . $session->value('user_id')."");
+
+            $nrElement = mysql_num_rows($campaigns_result);
+
+            $per_page = 10;
+            $total_pages = ceil(($nrElement-1)/$per_page);
+
+            if (isset($_GET['page_selected'])) {
+                $page_nr = $_GET['page_selected'];
+            } else {
+                $page_nr = 1;
+            }
+            $start = ($page_nr - 1)*$per_page;
+
+            $campaigns_query_result = $db->query("SELECT bl2_users.first_name, np_users.probid_user_id, bl2_users.last_name, np_users.project_title
+                FROM np_users LEFT JOIN bl2_users ON bl2_users.id = np_users.probid_user_id
+                WHERE np_users.probid_user_id=" . $session->value('user_id')."
+                AND np_users.parrent_id<>0 limit $start, $per_page");
+
+            $userCampaigns = array();
+            while ($query_result =  mysql_fetch_array($campaigns_query_result)) {
+                $userCampaigns[] = $query_result;
+            }
+            var_dump($userCampaigns);
+
+            $template->set("page_selected",$page_selected);
+            $template->set("total_pages",$total_pages);
+            $template->set("info_clone_campaigns",$userCampaigns);
+            $members_area_page_content = $template->process('members_area_clone_campaigns.tpl.php');
+            $template->set('members_area_page_content', $members_area_page_content);
+
+        }
+    }*/
 
     if ($page == 'campaigns') /* BEGIN -> CAMPAIGNS PAGE */
     {
@@ -5213,6 +5243,8 @@ else
         }
 
         if ($section == 'edit') {
+            //include('includes/class_npuser.php');
+
             include_once ('includes/global.php');
             include_once ('np/includes/npclass_formchecker.php');
             include_once('includes/generate_image_thumbnail.php');
@@ -5280,17 +5312,6 @@ else
 
             $form_submitted = FALSE;
 
-            if ($_REQUEST['operation'] == 'save_renew') {
-        		$mysql_update_query  = "UPDATE np_users SET autorenew = " .$_REQUEST['times'];
-        		$mysql_update_query .= ($_REQUEST['keep_comments'] == 1) ? ", keep_comments = 1" : ", keep_comments = 0";
-        		$mysql_update_query .= ($_REQUEST['keep_updates'] == 1) ? ", keep_updates = 1" : ", keep_updates = 0";
-        		$mysql_update_query .= ($_REQUEST['keep_rewards'] == 1) ? ", keep_rewards = 1" : ", keep_rewards = 0";
-        		$mysql_update_query .= " WHERE user_id = " . $_REQUEST['campaign_id'];
-        		$db->query($mysql_update_query);
-        		echo json_encode(array("status" => "success"));
-        		die();
-        	}
-
           if ((isset($_REQUEST['operation']) && $_REQUEST['operation'] == 'submit') || ($_POST['ajaxsubmit'] == true)) {
 
                 $post_country = ($_POST['country']) ? $_POST['country'] : $db->get_sql_field("SELECT c.id FROM " . DB_PREFIX . "countries c WHERE
@@ -5351,7 +5372,6 @@ else
 
 
                 include ('includes/npprocedure_frmchk_edit_campaign.php');
-                
                 if ($fv->checkFlag == 1) {
                 	$_POST["confirmed_paypal_email"] = $confirmed_campaign_paypal_email;				
 				} else {
@@ -5404,7 +5424,7 @@ else
                     }
                     $mysql_update_query = "UPDATE np_users SET
                     project_category='" . $_POST["project_category"] . "',
-                    campaign_basic='" . html_entity_decode($_POST["campaign_basic"]) . "',
+                    campaign_basic='" . $_POST["campaign_basic"] . "',
                     project_title='" . $_POST["project_title"] . "',
                     description='" . $_POST["project_short_description"] . "',
                     founddrasing_goal='" . $_POST["founddrasing_goal"] . "',
@@ -5435,10 +5455,6 @@ else
                     keep_alive_days='" . $keep_alive_days . "',
                     pitch_text='" . $pitch_text . "',
 					include_clickthrough='" . $_POST["include_clickthrough"]."'";
-
-					if ($_POST['active'] == 1 && ($_POST['active'] != $campaign['active'])) {
-                    	$mysql_update_query .= ", start_date='" . time() . "'";
-                    }
 
                     if (isset($_POST["username"]) && $_POST["username"]) {
                         $mysql_update_query .= ", username='" . $_POST["username"] . "'";
@@ -5786,20 +5802,22 @@ else
 
 	$template->set('cell_width', $cell_width);
 	
+	//if ($page != 'summary')
+	//{
 		$template->change_path('themes/' . $setts['default_theme'] . '/templates/');
 		$members_area_header_menu = $template->process('members_area_header_menu.tpl.php');
 		$template->change_path('templates/');
 		
 		$template->set('members_area_header_menu', $members_area_header_menu);## PHP Pro Bid v6.00 end - header members area
+	//}
 
 	$template_output .= $template->process('members_area.tpl.php');
 
 	include_once ('global_footer.php');
 
     if (isset($_POST['ajaxsubmit'])) {
-        if (($form_submit_msg == null) ||($form_submit_msg == '')) $form_submit_msg =  array("status" => "fail");
         echo json_encode($form_submit_msg);
-    } else if (($template_output == '') || ($template_output  == null)) {$template_output  .= "error"; } else echo $template_output;
+    } else echo $template_output;
 }
 
 ?>

@@ -63,6 +63,20 @@ if (np_userid_update!=null && np_userid_update!="" && np_username_update!=null &
 }
 
 </SCRIPT>
+<?//=$members_area_header;?>
+<?// echo ($setts['default_theme'] == 'ultra') ? $menu_box_content : '';?>
+<!---->
+<?//=$members_area_header_menu;?>
+<!--<br>-->
+<?//=$msg_store_cats_modified;?>
+<!--<table cellpadding="0" cellspacing="0" width="100%" border="0">-->
+<!--	<tr>-->
+<!--		<td valign="top">--><?//=$members_area_stats;?><!--</td>-->
+<!--		<td align="right" valign="top">--><?//=$seller_verified_status_box;?><!--</td>-->
+<!--	</tr>-->
+<!--</table>-->
+<!---->
+<!--<a href="/np/npregister.php">Create project</a>-->
 <?=$msg_member_tips;?>
 <?=$msg_pending_gc_transactions;?>
 <?=$msg_unpaid_endauction_fees;?>

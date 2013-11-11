@@ -244,29 +244,7 @@ $fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_
 
 //}
 
-if ($campaign['cfc'] == 1 && $_POST['active'] == 1) {
-    $cfc = mysql_fetch_assoc($db->query("SELECT user_id FROM np_users WHERE cfc = 1 AND active = 1"));
-    if (isset($cfc['user_id']) && ($cfc['user_id'] != $campaign['user_id']))
-        $fv->error_list[] = array('value' => 1, 'msg' => "CFC campaign already exists.");
-    if (strtotime('today') != strtotime('first day of' . date('F Y', time()))) 
-        $fv->error_list[] = array('value' => strtotime('today'), 'msg' => "The CFC campaign must be started on the 1st of the month only");
-    if (isset($_POST['time_period']) && (strtotime('today + ' . $_POST['time_period'] . ' days') != strtotime('last day of' . date('F Y', time())))) {
-        $fv->error_list[] = array('value' => strtotime('today'), 'msg' => "Your CFC campaign ends not on the last day of the month");
-    }
-    if (isset($_POST['certain_date']) && (strtotime($_POST['certain_date']) != strtotime('last day of' . date('F Y', time())))) {
-        $fv->error_list[] = array('value' => strtotime('today'), 'msg' => "Your CFC campaign ends not on the last day of the month");
-    }
-}
 
-if ($_POST['username'] != '') {
-    $query_result = $db->query("SELECT username FROM np_users WHERE user_id <> " . $campaign['user_id']);
-    while ($url = mysql_fetch_assoc($query_result)) {
-        $reserved_urls[] = $url['username'];
-    }
-    if (in_array($_POST['username'], $reserved_urls)) {
-        $fv->error_list[] = array('value' => $_POST['username'], 'msg' => "Selected URL is already in use.");
-    }
-}
 
 ?>
 

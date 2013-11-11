@@ -2,14 +2,20 @@
 #################################################################
 ## PHP Pro Bid v6.06															##
 ##-------------------------------------------------------------##
-## Copyright ï¿½2007 PHP Pro Software LTD. All rights reserved.	##
+## Copyright ©2007 PHP Pro Software LTD. All rights reserved.	##
 ##-------------------------------------------------------------##
 #################################################################
 
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 ?>
 		<div class="searchBox">
-
+			<!--form action="auction_search.php" method="post">
+			<input type="hidden" name="option" value="basic_search">
+				<div class="input"><input type="text" size="25" name="basic_search" value="Type in a description" onfocus="this.value=''"></div>
+				<div class="btn"><input name="form_basic_search" type="image" src="themes/bring_it_local/img/bg_search_btn.gif" value="<?=GMSG_SEARCH;?>"></div>
+				<div class="link"><a href="<?=process_link('search');?>"><?=strtoupper(MSG_ADVANCED_SEARCH);?></a></div>
+			</form-->
+			
 			<?include("searchbycat.php"); ?>			
 		</div>
 		<? if ($layout['hpfeat_nb']) { ?>
@@ -31,7 +37,11 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 						$auction_link = process_link('auction_details', array('name' => $item_details[$counter]['name'], 'auction_id' => $item_details[$counter]['auction_id']));?>
 					<a href="<?=$auction_link;?>" class="image"><img src="<? echo ((!empty($main_image)) ? 'thumbnail.php?pic=' . $main_image . '&w=' . $layout['hpfeat_width'] . '&sq=Y' : 'themes/' . $setts['default_theme'] . '/img/system/noimg.gif');?>" border="0" alt="<?=$item_details[$counter]['name'];?>"></a>
 					<a href="<?=$auction_link;?>" class="link"><?=title_resize($item_details[$counter]['name']);?></a>
-
+<!-- 
+					<b><?=MSG_START_BID;?>:</b> <? echo $feat_fees->display_amount($item_details[$counter]['start_price'], $item_details[$counter]['currency']);?> <br>
+					<b><?=MSG_CURRENT_BID;?>:</b> <? echo $feat_fees->display_amount($item_details[$counter]['max_bid'], $item_details[$counter]['currency']);?> <br>
+					<b><?=MSG_ENDS;?>:</b> <? echo show_date($item_details[$counter]['end_time']); ?>
+ -->
 					<? $counter++;
 					} ?></div>
 				<? } ?>
@@ -80,7 +90,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 		<?=$recent_auctions_header;?>
 		<table border="0" cellpadding="0" cellspacing="0" id="recentAuctions" class="mainTable">
 			<tr>
-				<th class="itemTitle"><b><?=MSG_ITEM_TITLE;?></b></th>
+				<th class="itemTitle"><b><?=MSG_ITEM_TITLE;?><b></td>
 				<th nowrap="nowrap" class="time"><b><?=GMSG_START_TIME;?></b></th>
 				<th nowrap="nowrap" class="bid"><b><?=MSG_START_BID;?></b></th>
 				<th>&nbsp;</th>

@@ -24,37 +24,22 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     $(document).ready(function(){
 
 
-//        $("#form_registration").validate({
-//
-//            errorElement: 'em',
-//
-//            rules: {
-//
-//                first_name: "required",
-//                last_name: "required",
-//
-//                email: {
-//                    required: true,
-//                    email: true
-//                },
-//                email_check: {
-//                    equalTo: "#email"
-//                },
-//                password: {
-//                    minlength: 6
-//                },
-//                password2: {
-//                    equalTo: "#password"
-//                }
-//            }
-//        });
-
-
         $("#form_registration").validate({
 
             errorElement: 'em',
 
             rules: {
+
+                first_name: "required",
+                last_name: "required",
+
+                email: {
+                    required: true,
+                    email: true
+                },
+                email_check: {
+                    equalTo: "#email"
+                },
                 password: {
                     minlength: 6
                 },

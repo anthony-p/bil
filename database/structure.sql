@@ -3706,14 +3706,4 @@ ALTER TABLE `np_users`
   ADD COLUMN `cloned_times` INT NULL DEFAULT 0  AFTER `copied_times` ,
   ADD COLUMN `inheritance_type` VARCHAR(45) NULL  AFTER `cloned_times` ;
 
-alter table `funders` add column `source` enum('donation','click through','auction') DEFAULT 'donation' NOT NULL after `amount`;
 
-alter table `np_users` add column `autorenew` tinyint(1) DEFAULT '0' NOT NULL after `include_clickthrough`;
-alter table `np_users` add column `keep_comments` tinyint(1) DEFAULT '0' NOT NULL after `autorenew`;
-alter table `np_users` add column `keep_updates` tinyint(1) DEFAULT '0' NOT NULL after `keep_comments`;
-alter table `np_users` add column `keep_rewards` tinyint(1) DEFAULT '0' NOT NULL after `keep_updates`;
-alter table `np_users` add column `start_date` int(11) after `certain_date`;
-
-ALTER TABLE `probid_users`
-ADD COLUMN `bl2_user_id` INT NULL AFTER `clickreport`,
-ADD UNIQUE INDEX `bl2_user_id_UNIQUE` (`bl2_user_id` ASC);

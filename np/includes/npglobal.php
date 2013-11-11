@@ -199,7 +199,7 @@ if (!empty($username_cookie) && !$session->value('user_id'))
 	include_once ($fileExtension.'includes/npclass_fees.php');
 	include_once ($fileExtension.'includes/npfunctions_login.php');
 	
-	$signup_fee = new npfees(); //!!!NB!!! changed fees to npfees due error Fatal error: Class 'fees' not found in LOCALPATH/np/includes/npglobal.php on line 202
+	$signup_fee = new fees();
 	$signup_fee->setts = &$setts;
 	
 	$login_output = login_user($session->cookie_value('username_cookie'), '', '', true);

@@ -12,10 +12,19 @@ global $coupon_url;
 	</div><!-- end middleColumn -->
 	<div id="rightColumn">
 		<!-- landing page -->
-
+		<?
+        /*
+		if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
+		$mynp_userid=$_COOKIE["np_userid"];
+		$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", username);
+		?>
+		<?
+		include ('themes/'.$setts['default_theme'].'/templates/landingpage.tpl.php');
+		} */
+		?>
 		<!-- how it works image -->
 		<?
-
+//		if (  (landingpage == '1') ||  (isset($_COOKIE["np_userid"]))  ){
 		if (  false == true ){
 		$mynp_userid=$_COOKIE["np_userid"];
 		$npusername = $db->get_sql_field("SELECT username  FROM np_users WHERE user_id ='" . $mynp_userid . "'", username);
@@ -32,7 +41,21 @@ global $coupon_url;
 		}
 		?>
 		<!-- site news -->
+		<? /* if ($is_news && $layout['d_news_box']) { ?>
+		<div class="siteNewsBlock rightBlock">
+			<?=$news_box_header;?>
+			<?=$news_box_content;?>
+		</div>
+		<!-- live code -->
+		<div id="liveBanner">
+		
+		
+		</div>
+		<!-- facebook -->
+		<div class="facebook"><iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fbringitlocal&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true&amp;height=288" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:288px;" allowTransparency="false"></iframe></div>
 
+
+		<? } */ ?>
 		<? if ($setts['enable_header_counter']) { ?>
 		<?=$header_site_status;?>
 		<table width='100%' border='0' cellpadding='2' cellspacing='1' class='border'>
@@ -59,7 +82,11 @@ global $coupon_url;
 	</div><!-- end rightColumn -->
 	<div class="clear"></div>
 </div></div><!-- end main -->
-
+<!-- 
+<div align="center">
+   <?=(isset($banner_header_content))?$banner_header_content:'';?>
+</div>
+ -->
 <footer>
 <div id="footer">
 
@@ -74,7 +101,10 @@ global $coupon_url;
         <div class="innerContainer clearfix">
 		<div class="column col1">
 			<h5 class="header"><?= MSG_FOOTER_PARTICIPATE; ?></h5>
-
+			<!--<a href="/searchnp.php">Select a non-profit</a> 	
+			<? if (!$setts['enable_private_site'] || $is_seller) { ?>
+			<a href="<?=$place_ad_link;?>"><?=MSG_MM_POST_AUCTION;?></a>
+			<? } ?>-->
 			<a href="<?=$cfc_url;?>"><?=MSG_COMMUNITY_FOUND;?></a> 
 			<a href="<?=$register_link;?>"><?=$register_btn_msg;?></a> 
 			<a href="<?=$login_link;?>"><?=$login_btn_msg;?></a>
@@ -109,7 +139,12 @@ global $coupon_url;
 
             </div>
             <div class="column col5">
-
+               <!-- <h5 class="header">Participate</h5>
+                <?php //echo $custom_pages_links;?>
+                <a href="/loyalty-program">Loyalty Program</a>
+                <a href="/mobileapps.php">Mobile Apps</a>
+                <a href="/np/npregister_supporter.php">Suggest a Non-Profit</a>
+                <a href="http://www.facebook.com/bringitlocal">Facebook</a>-->
             </div>
 		<div class="column col4">
             <div class="language clearfix">
@@ -128,6 +163,7 @@ global $coupon_url;
                            <option id="it" value="it" <?=($selectedLanguage == 'it')? "selected":'' ?> >Italiano</option>
                            <option id="sp" value="sp" <?=($selectedLanguage == 'sp')? "selected":'' ?> >Espagnol</option> 
                             
+<!--                            <option id="it" value="it" <?=($selectedLanguage == 'it')? "selected":'' ?> >Italiano</option>-->
                         </select>
                     </form>
             </div>
@@ -140,6 +176,9 @@ global $coupon_url;
 				
 			</div>
 			<div class="share clearfix">
+				<!--  <span class="none">Share</span>-->
+				<!--<span><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fbringitlocal&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe></span>-->
+				<!--<span class="google"><g:plusone size="medium"></g:plusone></span>-->
 				<script type="text/javascript">
 				  (function() {
 					 var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -157,6 +196,11 @@ global $coupon_url;
             <div class="leftLinks">
             </div>
             <div class="rightLinks">
+
+                <!--
+                <a href="np/npregister.php">NON-PROFIT ENROLL</a>
+                <a href="np/nplogin.php">NON-PROFIT SIGN-IN</a>
+                -->
 
                 <? if ($layout['is_terms']) { ?>
                     <a href="<?=process_link('content_pages', array('page' => 'terms'));?>"><?=MSG_BTN_TERMS;?></a>
