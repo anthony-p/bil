@@ -4633,6 +4633,9 @@ if (!$session->value('user_id')) {
             $mysql_select_query = "SELECT * FROM np_users WHERE user_id=" . $campaign_id;
             $campaign = $db->get_sql_row($mysql_select_query);
 
+            // Keep data for next operations.
+            $campaignData = $campaign;
+
 
             $categories_query_result = $db->query("SELECT * FROM np_orgtype ORDER BY name ASC");
             $categories = array();
@@ -4726,15 +4729,23 @@ if (!$session->value('user_id')) {
                         );
                     }
                 }
+
+                $campaignBanner = $campaignData['banner'];
+                $campagnLogo = $campaignData['logo'];
+
                 $mysql_update_query = "UPDATE np_users SET";
                 if (isset ($_FILES["logo"]) && is_uploaded_file($_FILES["logo"]["tmp_name"])) {
                     $ext = pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION);
-                    $logo_file_name = '/uplimg/partner_logos/' . md5($_POST["name"] . 'logo') . '.' . $ext;
+                    $hashName = md5($_POST["name"] . 'logo'. time(). rand(0,99999));
+                    $logo_file_name = '/uplimg/partner_logos/' . $hashName . '.' . $ext;
 
-                    array_map(
-                        'unlink',
-                        glob('uplimg/partner_logos/' . md5($_POST["name"] . 'logo') . '*')
-                    );
+                    if ($campagnLogo && $campagnLogo!='') {
+                        array_map(
+                            'unlink',
+                            glob($campagnLogo)
+                        );
+                        @unlink(__DIR__ . $campagnLogo);
+                    }
                     $upload_logo = generate_image_thumbnail(
                         $_FILES["logo"]["tmp_name"], trim($logo_file_name, '/'), 160, 160
                     );
@@ -4745,11 +4756,15 @@ if (!$session->value('user_id')) {
 
                 if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
                     $ext = pathinfo($_FILES['banner']['name'], PATHINFO_EXTENSION);
-                    $banner_file_name = '/uplimg/partner_logos/' . md5($_POST["name"] . 'banner') . '.' . $ext;
-                    array_map(
-                        'unlink',
-                        glob('uplimg/partner_logos/' . md5($_POST["name"] . 'banner') . '*')
-                    );
+                    $hashName = md5($_POST["name"] . 'logo'. time(). rand(0,99999));
+                    $banner_file_name = '/uplimg/partner_logos/' . $hashName . '.' . $ext;
+                    if ($campaignBanner && $campaignBanner != '') {
+                        array_map(
+                            'unlink',
+                            glob($campaignBanner)
+                        );
+                        @unlink(__DIR__ . $campaignBanner);
+                    }
                     $upload_logo = generate_image_thumbnail(
                         $_FILES["banner"]["tmp_name"], trim($banner_file_name, '/'), 600, 400
                     );
