@@ -3824,6 +3824,7 @@ ul.list li .campaign-details{
 ul.list li .campaign-details .price{
     font:16px/16px "OpenSans-SemiBold";
     color:#222;
+    float:left;
     }
 
 ul.list li .campaign-details .votes{
@@ -3837,6 +3838,8 @@ ul.list li .campaign-details .day{
     float:left;
     font:16px/16px "OpenSans-SemiBold";
     color:#222;
+    margin-top: 5px;
+    clear: both;
     }
 
 ul.list li .campaign-details .day span{
