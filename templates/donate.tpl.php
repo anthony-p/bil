@@ -24,7 +24,7 @@
             track: true
         });
         var contribution_form = $("#contribution_form");
-        contribution_form.validate({
+        /*contribution_form.validate({
 
             rules: {
 
@@ -44,7 +44,7 @@
 
 
             }
-        });
+        });*/
 
         contribution_form.submit(function (e) {
 //            e.preventDefault();
