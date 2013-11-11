@@ -48,6 +48,8 @@
 
         contribution_form.submit(function (e) {
 //            e.preventDefault();
+            $("#contribution_form").submit();
+            return;
             var amount = $("#amount").val();
             var community_amount = $("#community_amount").val();
             if (amount && $.isNumeric(amount)) {
