@@ -207,13 +207,13 @@ include_once('includes/grab_video_thumbnail.php');
                         </div>
                         <div class="campaign-details">
                             <span class="price">$<?php echo $row['payment'];?></span>
-                            <span class="votes">Votes:<?php if(!empty($row['votes']))  {echo $row['votes'];} else {echo '0';}?></span>
+<!--                            <span class="votes">Votes:--><?php //if(!empty($row['votes']))  {echo $row['votes'];} else {echo '0';}?><!--</span>-->
                             <span class="day">
-							<?php $days=round(($row['end_date']-time())/86400); 
+							<?php $days=round(($row['end_date']-time())/86400);
 							    if($days>0){echo $days."<span>".MSG_DAYS_LEFT."</span>"; }
 							    else{echo "<span>closed</span>";}
-							?>	
-				            </span>				
+							?>
+				            </span>
                             <div class="clear"></div>
 							<?php 
 								if(($row['end_date']-time())>0){
