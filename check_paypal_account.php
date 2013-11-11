@@ -35,7 +35,7 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
     include_once ('paypalplatform.php');
 //    var_dump(2); exit;
 //    var_dump($Env);
-$Env = "live";
+// $Env = "live";
     if ($Env == "sandbox")
     {
         $url = trim('https://svcs.sandbox.paypal.com/AdaptiveAccounts/GetVerifiedStatus');
@@ -63,10 +63,10 @@ $Env = "live";
 //$API_SANDBOX_EMAIL_ADDRESS = "rishaque@paypal.com"; //TODO
 //$API_DEVICE_IPADDRESS = "127.0.0.1"; //TODO
 
-$API_UserName = "support_api1.bringitlocal.com"; //TODO
-$API_Password = "GH92ZGH3RWYLH725"; //TODO
-$API_Signature = "AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj"; //TODO
-$API_AppID = "APP-7YF493902L373612H";
+// $API_UserName = "support_api1.bringitlocal.com"; //TODO
+// $API_Password = "GH92ZGH3RWYLH725"; //TODO
+// $API_Signature = "AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj"; //TODO
+// $API_AppID = "APP-7YF493902L373612H";
 $API_RequestFormat = "NV";//TODO
 $API_ResponseFormat = "NV";//TODO
 
@@ -155,8 +155,9 @@ $API_ResponseFormat = "NV";//TODO
 //        return $response;
 
         $keyArray = explode("&", $response);
-//var_dump($keyArray);
-//die();
+// var_dump($keyArray);
+// var_dump($url);
+// die();
         foreach ($keyArray as $rVal){
             list($qKey, $qVal) = explode ("=", $rVal);
             $kArray[$qKey] = $qVal;
