@@ -155,7 +155,8 @@ $API_ResponseFormat = "NV";//TODO
 //        return $response;
 
         $keyArray = explode("&", $response);
-
+var_dump($keyArray);
+die();
         foreach ($keyArray as $rVal){
             list($qKey, $qVal) = explode ("=", $rVal);
             $kArray[$qKey] = $qVal;
