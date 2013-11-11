@@ -22,7 +22,7 @@
                                 text: "<?= MSG_LOGIN_BUTTON ?>",
                                 click: function () {
                                     $(this).dialog("close");
-                                    window.location = "/login.php";
+                                    window.location = "/login.php?donate=<?php echo $_COOKIE['np_userid']; ?>";
                                 }
                             }
                             ,

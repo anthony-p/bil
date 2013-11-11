@@ -44,9 +44,16 @@ else if ($setts['is_ssl'] && $_SERVER['HTTPS'] != 'on' && $_REQUEST['operation']
 }
 else
 {
-    $redirect = $_SERVER['HTTP_REFERER'];
-    if ($redirect && strpos($redirect,'login.php') == false){
-        setcookie("referrer_url",$redirect,time()+120,'/');
+    if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
+        $query = $_SERVER['QUERY_STRING'];
+        $query = explode("=",$query);
+        setcookie("referrer_url",'donate.php?np_userid='.$query[1],time()+120,'/');
+    } else {
+        $redirect = $_SERVER['HTTP_REFERER'];
+
+        if ($redirect && strpos($redirect,'login.php') == false){
+            setcookie("referrer_url",$redirect,time()+120,'/');
+        }
     }
 	require ('global_header.php');
 	
