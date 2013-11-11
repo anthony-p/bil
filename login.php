@@ -18,6 +18,7 @@ include_once ('includes/global.php');
 include_once ('includes/class_fees.php');
 include_once ('includes/functions_login.php');
 
+
 $sc_id  = 0;
 if (isset ($_REQUEST['sc_id']))
     $sc_id = intval($_REQUEST['sc_id']);
@@ -28,9 +29,11 @@ if ($isLogin=='Active')
 	if (!empty($_REQUEST['redirect']))
 	{
 		$redirect = @ereg_replace('_AND_', '&', $_REQUEST['redirect']);		
-	}
+	}elseif(isset($_COOKIE['redirect']) && !empty($_COOKIE['redirect'])) {
+    }
 	else 
 	{
+        $redirect = $_SERVER['HTTP_REFERER'];
 		$redirect = 'index.php';
 	}
 	header_redirect($redirect);
@@ -41,6 +44,10 @@ else if ($setts['is_ssl'] && $_SERVER['HTTPS'] != 'on' && $_REQUEST['operation']
 }
 else
 {
+    $redirect = $_SERVER['HTTP_REFERER'];
+    if ($redirect && strpos($redirect,'login.php') == false){
+        setcookie("referrer_url",$redirect,time()+120,'/');
+    }
 	require ('global_header.php');
 	
 	$banned_output = check_banned($_SERVER['REMOTE_ADDR'], 1);
