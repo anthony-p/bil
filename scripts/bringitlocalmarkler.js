@@ -1,0 +1,2 @@
+alert("OK!!!!!");
+alert("AAAA");
