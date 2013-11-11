@@ -6,7 +6,7 @@
 // that you may need to provide a value or take action
 // before executing this code
 //-------------------------------------------------
-
+$t = time();
 include_once ('includes/global.php');
 if (!isset($_SESSION)) session_start();
 
@@ -157,6 +157,7 @@ $preapprovalKey					= "";		// TODO - If you are executing the Pay call against a
 $reverseAllParallelPaymentsOnError	= "";	// TODO - Do not specify for chained payment
 $trackingId						= generateTrackingID();	// generateTrackingID function is found in paypalplatform.php
 
+var_dump(time()  - $t);
 //-------------------------------------------------
 // Make the Pay API call
 //
@@ -169,6 +170,7 @@ $resArray = CallPay ($actionType, $cancelUrl, $returnUrl, $currencyCode, $receiv
     $reverseAllParallelPaymentsOnError, $senderEmail, $trackingId
 );
 
+var_dump(time() - $t); die;
 $ack = strtoupper($resArray["responseEnvelope.ack"]);
 if($ack=="SUCCESS")
 {
