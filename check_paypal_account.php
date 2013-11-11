@@ -35,7 +35,7 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
     include_once ('paypalplatform.php');
 //    var_dump(2); exit;
 //    var_dump($Env);
-$Env = "live";
+// $Env = "live";
     if ($Env == "sandbox")
     {
         $url = trim('https://svcs.sandbox.paypal.com/AdaptiveAccounts/GetVerifiedStatus');
