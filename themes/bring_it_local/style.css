@@ -3830,10 +3830,11 @@ ul.list li .campaign-details .votes{
     font:16px/16px "OpenSans-SemiBold";
     color:#222;
     margin-left:10px;
+    float:right
     }
 
 ul.list li .campaign-details .day{
-    float:right;
+    float:left;
     font:16px/16px "OpenSans-SemiBold";
     color:#222;
     }
