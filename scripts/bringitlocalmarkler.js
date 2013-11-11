@@ -1,2 +1,0 @@
-alert("OK!!!!!");
-alert("AAAA");
