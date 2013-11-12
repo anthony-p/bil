@@ -4752,6 +4752,9 @@ if (!$session->value('user_id')) {
                     $mysql_update_query .= " logo='" . $logo_file_name . "' ";
                     $form_submit_msg = array("status" => "success", 'path' => $logo_file_name);
 
+                }elseif(isset($_POST['remove_logo'])){
+                	$mysql_update_query .= ", logo=''";
+					$form_submit_msg = array("status" => "success", 'path' => '');
                 }
 
                 if (isset ($_FILES["banner"]) && is_uploaded_file($_FILES["banner"]["tmp_name"])) {
@@ -4773,6 +4776,9 @@ if (!$session->value('user_id')) {
 
                 } elseif (isset ($_POST["video_url"]) && !empty($_POST["video_url"])) {
                     $mysql_update_query .= " banner='" . $_POST["video_url"] . "'";
+                } elseif(isset($_POST['remove_banner'])){
+                	$mysql_update_query .= ", banner=''";
+					$form_submit_msg = array("status" => "success", 'path' => '');
                 }
 
                 $mysql_update_query .= " WHERE user_id = " . $_REQUEST['campaign_id'];
