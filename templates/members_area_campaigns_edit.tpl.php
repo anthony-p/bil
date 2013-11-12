@@ -76,6 +76,24 @@ if (!defined('INCLUDED')) {
         		$('.editCampaigns').focus();	
         	})	
         }); 
+        $('#remove_logo').on('click',function(e){
+        	$.ajax({
+        		url:"members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&remove_logo=true"        			
+        	}).done(function(data){
+        		var img = $('#logo_img');
+                img.hide();
+        	});
+        	
+        });
+        $('#remove_banner').on('click',function(e){
+        	$.ajax({
+        		url:"members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&remove_banner=true"        			
+        	}).done(function(data){
+        		var img = $('#banner_img');
+                img.hide();
+        	});
+        	
+        });
         /* Form validated before submit */
         $('input[type="submit"]').each(function() {
             $(this).on('click', function(e){
@@ -89,11 +107,10 @@ if (!defined('INCLUDED')) {
             })
         });
         $('#logo').fileupload({
-//            url:formElem.attr('action')+'?logoupload=true',
-
             dataType: 'json',
             done: function (e, data) {
                 var img = $('#logo_img');
+                img.show();
                 if (img.length > 0)  img.attr('src',data.result.path.replace(/\\/g, ''));
                 else
                 {
@@ -106,6 +123,7 @@ if (!defined('INCLUDED')) {
             dataType: 'json',
             done: function (e, data) {
                 var img = $('#banner_img');
+                img.show();
                 if (img.length > 0)  img.attr('src',data.result.path.replace(/\\/g, ''));
                 else
                 {
@@ -491,13 +509,11 @@ if (!defined('INCLUDED')) {
                         <div class="account-row">
                             <?php if (isset($campaign["logo"]) && $campaign["logo"] ): ?>
                                 <img id="logo_img" src="<?php echo $campaign["logo"] . "?" . time(); ?>">
-                                <input type="submit" name="remove_logo" value="<?= MSG_REMOVE_FILE?>"/>
                             <?php endif; ?>
                             <div id="MultiPowUpload_holder">
                                 <input class="file" name="logo" id="logo" accept="image/*"
-                                       page=about_me&section=edit&avatar=true&ajaxsubmit=true
                                        data-url="members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&ajaximageupload=true" type='file' title="logo file"/>
-                                <span class="clear-file-input"><?= MSG_CLEAR ?></span>
+                                <span id="remove_logo" class="clear-file-input"><?= MSG_CLEAR ?></span>
                             </div>
                             <div id="serverresponse">
                                 <div id="prev_logo"></div>
@@ -508,7 +524,6 @@ if (!defined('INCLUDED')) {
                         <div class="account-row">
                             <?php if (isset($campaign["banner"]) && $campaign["banner"]): ?>
                                 <img id='banner_img' src="<?php echo $campaign['banner'] . "?" . time() ?>">
-                                <input type="submit" name="remove_banner" value="<?= MSG_REMOVE_FILE?>"/>
                             <?php endif; ?>
                             <div class="upload">
                                 <div class="radio">
@@ -523,7 +538,7 @@ if (!defined('INCLUDED')) {
                                                title="banner file" <?php if (strstr($campaign["banner"], "http://")) {
                                             echo "style='display:none'";
                                         } ?>/>
-                                        <span class="clear-file-input"><?= MSG_CLEAR ?></span>
+                                        <span id="remove_banner" class="clear-file-input"><?= MSG_CLEAR ?></span>
                                     </div>
                                 </div>
                                 <div class="clear"></div>
