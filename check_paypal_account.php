@@ -1,15 +1,4 @@
 <?php
-//session_start();
-//
-//define ('IN_SITE', 1);
-//
-////var_dump(32); exit;
-//echo json_encode(
-//    array(
-//        "result" => checkPaypalAccount($_POST["pg_paypal_email"])
-//    )
-//);
-
 
 /**
  * @param $email
@@ -31,11 +20,9 @@
 
 function checkPaypalAccount($email = '', $fname = '', $lname = '')
 {
-//    var_dump(1);exit;
+
     include_once ('paypalplatform.php');
-//    var_dump(2); exit;
-//    var_dump($Env);
-// $Env = "live";
+
     if ($Env == "sandbox")
     {
         $url = trim('https://svcs.sandbox.paypal.com/AdaptiveAccounts/GetVerifiedStatus');
@@ -45,37 +32,10 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
         $url = "https://svcs.paypal.com/AdaptiveAccounts/GetVerifiedStatus";
     }
 
-//    var_dump($Env); echo '<br />';
+    $API_RequestFormat = "NV";//TODO
+    $API_ResponseFormat = "NV";//TODO
 
-//turn php errors on
-//ini_set('track_errors', true);
-
-//set APAPI URL
-//$url = trim('https://svcs.sandbox.paypal.com/AdaptiveAccounts/GetVerifiedStatus');
-// API_UserName=support_api1.bringitlocal.com_&_API_Password=GH92ZGH3RWYLH725_&_API_Signature=AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj_&_API_AppID=APP-7YF493902L373612H
-
-//PayPal API Credentials
-// $API_UserName = "sbapi_1287090601_biz_api1.paypal.com"; //TODO
-// $API_Password = "1287090610"; //TODO
-// $API_Signature = "ANFgtzcGWolmjcm5vfrf07xVQ6B9AsoDvVryVxEQqezY85hChCfdBMvY"; //TODO
-    //Default App ID for Sandbox
-// $API_AppID = "APP-80W284485P519543T";
-//$API_SANDBOX_EMAIL_ADDRESS = "rishaque@paypal.com"; //TODO
-//$API_DEVICE_IPADDRESS = "127.0.0.1"; //TODO
-
-// $API_UserName = "support_api1.bringitlocal.com"; //TODO
-// $API_Password = "GH92ZGH3RWYLH725"; //TODO
-// $API_Signature = "AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj"; //TODO
-// $API_AppID = "APP-7YF493902L373612H";
-$API_RequestFormat = "NV";//TODO
-$API_ResponseFormat = "NV";//TODO
-
-
-
-
-//Create request body content
-//    var_dump($_POST);
-
+    //Create request body content
     $paypal_email = $email;
     $first_name = $fname;
     $last_name = $lname;
@@ -101,11 +61,7 @@ $API_ResponseFormat = "NV";//TODO
 
     );
 
-//    var_dump($body_data); echo '<br />';
-
-
-
-//URL encode the request body content array
+    //URL encode the request body content array
     $body_data = urldecode(http_build_query($body_data, '', chr(38)));
 
     try
@@ -123,16 +79,10 @@ $API_ResponseFormat = "NV";//TODO
                 'X-PAYPAL-APPLICATION-ID: ' . $API_AppID . "\r\n" //.
 //            'X-PAYPAL-SANDBOX-EMAIL-ADDRESS: ' . $API_SANDBOX_EMAIL_ADDRESS . "\r\n" .
 //            'X-PAYPAL-DEVICE-IPADDRESS: ' . $API_DEVICE_IPADDRESS . "\r\n"
-
         ));
-
-//        var_dump($params);
-
 
         //create stream context
         $ctx = stream_context_create($params);
-
-//        var_dump($url);
 
         //open the stream and send request
         $fp = @fopen($url, 'r', false, $ctx);
@@ -140,36 +90,17 @@ $API_ResponseFormat = "NV";//TODO
         //get response
         $response = stream_get_contents($fp);
 
-//        echo '<pre>';
-//        var_dump($response);
-//        echo '</pre>';
-
-        //check to see if stream is open
-//        if ($response === false) {
-//            throw new Exception("php error message = " . "$php_errormsg");
-//        }
-//        echo $response;
         //close the stream
         fclose($fp);
 
-//        return $response;
-
         $keyArray = explode("&", $response);
-var_dump($keyArray);
-var_dump($url);
-var_dump($params);
-die();
+
         foreach ($keyArray as $rVal){
             list($qKey, $qVal) = explode ("=", $rVal);
             $kArray[$qKey] = $qVal;
         }
         
         return $kArray["accountStatus"];
-
-
-
-
-
 
     }
     catch(Exception $e)
