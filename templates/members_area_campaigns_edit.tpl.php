@@ -491,6 +491,7 @@ if (!defined('INCLUDED')) {
                         <div class="account-row">
                             <?php if (isset($campaign["logo"]) && $campaign["logo"] ): ?>
                                 <img id="logo_img" src="<?php echo $campaign["logo"] . "?" . time(); ?>">
+                                <input type="submit" name="remove_logo" value=<?= MSG_REMOVE_FILE?>/>
                             <?php endif; ?>
                             <div id="MultiPowUpload_holder">
                                 <input class="file" name="logo" id="logo" accept="image/*"
@@ -506,9 +507,8 @@ if (!defined('INCLUDED')) {
                         <h5><?= MSG_YOUR_STORY3 ?></h5>
                         <div class="account-row">
                             <?php if (isset($campaign["banner"]) && $campaign["banner"]): ?>
-                                
-                                    <img id='banner_img' src="<?php echo $campaign['banner'] . "?" . time() ?>">
-                                
+                                <img id='banner_img' src="<?php echo $campaign['banner'] . "?" . time() ?>">
+                                <input type="submit" name="remove_banner" value=<?= MSG_REMOVE_FILE?>/>
                             <?php endif; ?>
                             <div class="upload">
                                 <div class="radio">
