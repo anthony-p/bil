@@ -29,7 +29,6 @@
         <?php
         if (empty($page_selected)) {
             $page_selected = 1;
-
         }
         if ($total_pages > 1) {
             if ($page_selected > 1) $disabledclass = ""; else $disabledclass = "jp-disabled";?>
