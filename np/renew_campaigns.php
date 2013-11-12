@@ -14,7 +14,7 @@ $current_time = time();
 
 $renewed_campaigns = $user->new_renew_campaigns();
 
-print_r($renewed_campaigns);
+print_r($renewed_campaigns['project_title']);
 
 $closed_campaigns = $user->get_closed_campaigns();
 $user->close_campaigns($closed_campaigns);

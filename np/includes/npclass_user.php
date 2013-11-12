@@ -274,7 +274,7 @@ class npuser extends npcustom_field
     }
 
     function new_renew_campaigns() {
-        $current_time = time() + 24*60*60;
+
         $autorenew_result = $this->query("SELECT * FROM " . NPDB_PREFIX . "users WHERE autorenew > 0 AND active = 1");
 
         while ($query_result =  mysql_fetch_assoc($autorenew_result)) {
@@ -290,6 +290,7 @@ class npuser extends npcustom_field
         $cfc_flag = 0;
         foreach ($old_campaigns as $old_campaign) {
             if (date('d F Y', $old_campaign['end_date']) == date('d F Y', strtotime('today'))) {
+
                 $new_campaign = $old_campaign;
 
                 $old_campaign['active'] = 2;
@@ -310,15 +311,11 @@ class npuser extends npcustom_field
                 $new_campaign['keep_rewards'] = $old_campaign['keep_rewards'];
                 unset($new_campaign['user_id']);
 
-                $url = explode('_renew_', $old_campaign['username']);            
-                if (isset($url[1])) {
-                    $old_campaign['username'] = $url[0] . '_renew_' . ++$url[1];
-                    $new_campaign['username'] = $url[0] . '_renew_' . ++$url[1];
-                }
-                else {
-                    $old_campaign['username'] = $url[0] . '_renew_0';
-                    $new_campaign['username'] = $url[0] . '_renew_1';
-                }
+                $suffix = $this->query("SELECT COUNT(*) FROM  `np_users` WHERE  `username` REGEXP '{$old_campaign['username']}'");
+                $suffix = mysql_fetch_row($suffix);
+                $new_campaign['username'] = $old_campaign['username'];
+                $old_campaign['username'] = $old_campaign['username'] . '_' . $suffix[0];
+
                 if ($old_campaign['cfc'] == 1 && !$cfc_flag) {
                     $old_campaign['cfc'] = 0;
                     $new_campaign['cfc'] = 1;
