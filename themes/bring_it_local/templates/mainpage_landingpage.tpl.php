@@ -111,7 +111,7 @@ $featured_columns = 14;
                         <?php if (isset($compaigns['tax_company_name']) && $compaigns['tax_company_name']): ?>
                             <?php echo $compaigns['tax_company_name']; ?>
                         <?php else: ?>
-                            <?php echo $compaigns['first_name'] . "  " . $compaigns['last_name']; ?>
+                            <?php echo $compaigns['name'];?>
                         <?php endif; ?>
 
                     </a>
