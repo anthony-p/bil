@@ -127,7 +127,7 @@ if (!defined('INCLUDED')) {
                 if (img.length > 0)  img.attr('src',data.result.path.replace(/\\/g, ''));
                 else
                 {
-                    $('.upload"').before('<img src="'+ data.result.path.replace(/\\/g, '')+'" id="banner_img">')
+                    $('.upload').before('<img src="'+ data.result.path.replace(/\\/g, '')+'" id="banner_img">')
                 }
             }
         });
