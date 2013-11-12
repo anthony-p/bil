@@ -52,12 +52,10 @@ if (isset($_REQUEST['user_id']) )
 // ---
 $meta_tags_details = meta_tags($_SERVER['PHP_SELF'], intval($parentId), intval($auctionId), intval($wantedAdId), intval($userId));
 
-
-
 $page_specific_title= MSG_GHEADER_MAINPAGE;
-if (!isset($_GET['page']))
-    $_GET['page'] = '';
-
+if (!isset($_GET['page'])){
+	$_GET['page'] = '';
+}
 if ($_GET['page'] == 'about_us'){
 $page_specific_title= MSG_GHEADER_ABOUTUS;
 }
@@ -95,8 +93,9 @@ $page_specific_title= MSG_GHEADER_REGISTER;
 }
 
 if ($huh == '/landingpage.php'){
-    if (isset($_SESSION['page_specific_title']) && $_SESSION['page_specific_title'] !== "") $page_specific_title = $_SESSION['page_specific_title'];
-        else $page_specific_title= MSG_GHEADER_LANDINGPAGE;
+    if (isset($_SESSION['page_specific_title']) && $_SESSION['page_specific_title'] !== "") 
+    	$page_specific_title = $_SESSION['page_specific_title'].MSG_GHEADER_POSTFIX;
+    else $page_specific_title= MSG_GHEADER_LANDINGPAGE;
 }
 if ($huh == '/searchnp.php'){
 $page_specific_title= MSG_GHEADER_SEARCH;
@@ -118,9 +117,6 @@ if ($huh == '/loyalty-program.php'){
 $page_specific_title= MSG_GHEADER_LOALTYPROG;
 }
 
-#echo $_SERVER['SCRIPT_NAME'];
-#$template->set('page_title', $meta_tags_details['title']);
-#$template->set('page_title', $page_specific_title . $meta_tags_details['title']);
 $template->set('page_title', $page_specific_title);
 
 ## we will add lightbox to the variable below to be applied automatically to all skins
