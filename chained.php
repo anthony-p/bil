@@ -169,6 +169,8 @@ $resArray = CallPay ($actionType, $cancelUrl, $returnUrl, $currencyCode, $receiv
 );
 
 $ack = strtoupper($resArray["responseEnvelope.ack"]);
+var_dump($resArray);
+die();
 if($ack=="SUCCESS")
 {
     if ("" == $preapprovalKey)
