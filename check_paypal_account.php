@@ -35,14 +35,14 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
     include_once ('paypalplatform.php');
 //    var_dump(2); exit;
 //    var_dump($Env);
-
+// $Env = "live";
     if ($Env == "sandbox")
     {
         $url = trim('https://svcs.sandbox.paypal.com/AdaptiveAccounts/GetVerifiedStatus');
     }
     else
     {
-        $url = "https://svcs.paypal.com/AdaptivePayments/GetVerifiedStatus";
+        $url = "https://svcs.paypal.com/AdaptiveAccounts/GetVerifiedStatus";
     }
 
 //    var_dump($Env); echo '<br />';
@@ -52,20 +52,25 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
 
 //set APAPI URL
 //$url = trim('https://svcs.sandbox.paypal.com/AdaptiveAccounts/GetVerifiedStatus');
-
+// API_UserName=support_api1.bringitlocal.com_&_API_Password=GH92ZGH3RWYLH725_&_API_Signature=AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj_&_API_AppID=APP-7YF493902L373612H
 
 //PayPal API Credentials
-//$API_UserName = "sbapi_1287090601_biz_api1.paypal.com"; //TODO
-//$API_Password = "1287090610"; //TODO
-//$API_Signature = "ANFgtzcGWolmjcm5vfrf07xVQ6B9AsoDvVryVxEQqezY85hChCfdBMvY"; //TODO
+// $API_UserName = "sbapi_1287090601_biz_api1.paypal.com"; //TODO
+// $API_Password = "1287090610"; //TODO
+// $API_Signature = "ANFgtzcGWolmjcm5vfrf07xVQ6B9AsoDvVryVxEQqezY85hChCfdBMvY"; //TODO
+    //Default App ID for Sandbox
+// $API_AppID = "APP-80W284485P519543T";
 //$API_SANDBOX_EMAIL_ADDRESS = "rishaque@paypal.com"; //TODO
 //$API_DEVICE_IPADDRESS = "127.0.0.1"; //TODO
 
-//Default App ID for Sandbox
-//$API_AppID = "APP-80W284485P519543T";
+// $API_UserName = "support_api1.bringitlocal.com"; //TODO
+// $API_Password = "GH92ZGH3RWYLH725"; //TODO
+// $API_Signature = "AiPC9BjkCyDFQXbSkoZcgqH3hpacANnjmVMIEtNqJK4qh5vMWIe33mZj"; //TODO
+// $API_AppID = "APP-7YF493902L373612H";
+$API_RequestFormat = "NV";//TODO
+$API_ResponseFormat = "NV";//TODO
 
-    $API_RequestFormat = "NV";//TODO
-    $API_ResponseFormat = "NV";//TODO
+
 
 
 //Create request body content
@@ -88,7 +93,7 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
     }
 
     $body_data  =  array(
-        "emailAddress" => $paypal_email,//TODO
+        "accountIdentifier.emailAddress" => $paypal_email,//TODO
         "requestEnvelope.errorLanguage" => "en_US",//TODO
         "matchCriteria" => "NAME",//TODO
         "firstName" => $first_name,//TODO
@@ -150,7 +155,9 @@ function checkPaypalAccount($email = '', $fname = '', $lname = '')
 //        return $response;
 
         $keyArray = explode("&", $response);
-
+// var_dump($keyArray);
+// var_dump($url);
+// die();
         foreach ($keyArray as $rVal){
             list($qKey, $qVal) = explode ("=", $rVal);
             $kArray[$qKey] = $qVal;

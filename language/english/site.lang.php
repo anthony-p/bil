@@ -5,6 +5,102 @@
 ## Copyright �2007 PHP Pro Software LTD. All rights reserved.	##
 ## PHP Pro Bid & PHP Pro Ads Integration v1.00						##
 
+
+
+define ('MSG_INCLUDE_CLICKTHROUGH_STATUS_TOOLTIP', 'Select \'no\' to remove the click through vendors entirely from your campaign page. You can change this setting at any time');
+
+
+//auctions - selling
+
+define ('MSG_AUCTION_ID', 'Auction ID');
+define ('MSG_ITEM_TITLE', 'Item Title');
+define ('MSG_NR_BIDS', '# Bids');
+define ('MSG_MAX_BID', 'Max. Bid');
+define ('MSG_RELIST', 'Relist');
+define ('MSG_UNPAID_EOAFEES_A', 'You have unpaid end of auction fees.<br>Please review your');
+define ('MSG_UNPAID_EOAFEES_B', 'and proceed with the payment(s)');
+define ('MSG_SOLD_ITEMS_PAGE', 'sold items page');
+define ('MSG_EXACT_MATCHES_ONLY', 'exact matches only');
+define ('MSG_PICTURE', 'Picture');
+define ('MSG_ITEMS', 'items');
+define ('MSG_MM_OPEN_AUCTIONS', 'Open Auctions');
+define ('MSG_MM_SCHEDULED_AUCTIONS', 'Scheduled Auctions');
+define ('MSG_MM_CLOSED_AUCTIONS', 'Closed Auctions');
+define ('MSG_SEARCH_TRANSACTIONS', 'Search Transactions');
+define ('MSG_CONTACT_INFO', 'Contact Information');
+define ('MSG_PURCHASE_DATE', 'Purchase Date');
+define ('MSG_STATUS', 'Status');
+define ('MSG_SELECT_PERIOD', 'Select Period');
+define ('MSG_WINNING_BID', 'Winning Bid');
+define ('MSG_START_BID', 'Start Bid');
+define ('MSG_AUTO_RELIST', 'Auto Relist');
+define ('MSG_SELECT_MAIN_CAT', 'Select a main category for your item');
+define ('MSG_MAIN_CATEGORY', 'Main Category');
+define ('MSG_ADDL_CATEGORY', 'Additional Category');
+define ('MSG_ITEM_DETAILS', 'Item Details');
+define ('MSG_ITEM_SETTINGS', 'Settings');
+define ('MSG_SHIPPING_PAYMENT', 'Shipping & Payment');
+define ('MSG_PREVIEW', 'Preview');
+define ('MSG_FINISH', 'Finish');
+define ('MSG_SELECT_ADDL_CAT', 'Select an additional category for your item');
+define ('MSG_SKIP_THIS_STEP', 'Skip this Step');
+define ('MSG_SUBMIT_ITEM_MAIN_CAT', 'Choose a main category for your item.');
+define ('MSG_MM_SOLD_ITEMS', 'Sold Items');
+define ('MSG_REQUESTED', 'Requested');
+define ('MSG_OFFERED', 'Offered');
+define ('MSG_PAY_ENDAUCTION_FEE', 'Pay End of Auction Fee');
+
+//reputation
+define ('MSG_FROM', 'From');
+define ('MSG_RATE', 'Rate');
+define ('MSG_REVIEW', 'Review');
+define ('MSG_DETAILS', 'Details');
+define ('MSG_TYPE', 'Type');
+define ('MSG_MM_LEAVE_COMMENTS', 'Leave Comments');
+define ('MSG_MM_MY_REPUTATION', 'My Reputation');
+
+//auctions - buying
+define ('MSG_BID_AMOUNT', 'Bid Amount');
+define ('MSG_PROXY_BID', 'Proxy Bid');
+define ('MSG_MM_WON_ITEMS', 'Won Items');
+define ('MSG_MM_WATCHED_ITEMS', 'Watched Items');
+define ('MSG_KEYWORD', 'Keyword');
+define ('MSG_MM_KEYWORDS_WATCH', 'Keywords Watch');
+define ('MSG_KEYWORDS', 'keywords');
+define ('MSG_ADD_KEYWORD', 'Add Keyword(s)');
+define ('MSG_MM_CURRENT_BIDS', 'Current Bids');
+define ('MSG_TIME_LEFT', 'Time Left');
+//messages
+define ('MSG_MM_RECEIVED_MESSAGES', 'Received Messages');
+define ('MSG_MESSAGES', 'messages');
+define ('MSG_SUBJECT', 'Subject');
+define ('MSG_TO', 'To');
+define ('MSG_MM_SENT_MESSAGES', 'Sent Messages');
+
+//message preferences
+define ('MSG_SENT_MSG_NOTIF', 'Sent Message Notification');
+define ('MSG_SENT_MSG_NOTIF_EXPL', 'Receive an email notification when you send a message through the site\'s messaging system.');
+define ('MSG_RECEIVED_MSG_NOTIF', 'Received Message Notification');
+define ('MSG_RECEIVED_MSG_NOTIF_EXPL', 'Receive an email notification when you receive a message through the site\'s messaging system.');
+define ('MSG_ITEM_SOLD_NOTIF', 'Item Sold Notification');
+define ('MSG_ITEM_SOLD_NOTIF_EXPL', 'Receive an email notification when you have successfully sold an item.');
+define ('MSG_ITEM_WON_NOTIF', 'Item Won Notification');
+define ('MSG_ITEM_WON_NOTIF_EXPL', 'Receive an email notification when you have purchased an item.');
+define ('MSG_BID_PLACED_NOTIF', 'New Bid Notification');
+define ('MSG_BID_PLACED_NOTIF_EXPL', 'Receive an email notification when a new bid is placed on one of your items.');
+define ('MSG_OUTBID_NOTIF', 'Outbid Notification');
+define ('MSG_OUTBID_NOTIF_EXPL', 'Receive an email notification when you are outbid on an auction where you were the high bidder.');
+define ('MSG_CONFIRM_TO_SELLER_NOTIF', 'New Item Notification');
+define ('MSG_CONFIRM_TO_SELLER_NOTIF_EXPL', 'Receive an email notification when you have listed a new item.');
+define ('MSG_ITEM_CLOSED_NOTIF', 'Item Closed Notification');
+define ('MSG_ITEM_CLOSED_NOTIF_EXPL', 'Receive an email notification when one of your items has been closed.');
+
+
+
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_TYPE', 'Type');
+define('MSG_MEMBERS_AREA_EARNINGS_TBL_SOURCE', 'Source');
+define('MSG_MEMBERS_AREA_CONTRIBUTIONS_SOURCE', 'Type');
+
 define('MSG_FOOTER_MISSION', 'Mission');
 
 //click through shopping
@@ -131,7 +227,7 @@ define('MSG_GHEADER_FOUNDERSLETTER', 'Founder\'s Letter | Bring It Local');
 define('MSG_GHEADER_LOALTYPROG', 'Community Loyalty Program | Bring It Local');
 
 
-define('MSG_ABOUT_ME_PAGE_CONTENT', 'MSG_ABOUT_ME_PAGE_CONTENT');
+define('MSG_ABOUT_ME_PAGE_CONTENT', 'About me');
 
 // footer
 define('MSG_FOOTER_PARTICIPATE', 'Participate');
@@ -153,6 +249,7 @@ define('MSG_MAINPAGE_BTN_START', '<span class="uper">Start </span><span>giving t
 
  // members area - campaign
 define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME', 'Find by name');
+define('MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME_OR_KEYWORD', 'Find by name or keyword');
 define('MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN', 'Edit Campaign');
 
  // global partners
@@ -181,7 +278,7 @@ define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_VISIBILITY', 'Visibility');
 define('MSG_MEMBERS_AREA_CONTRIBUTIONS_TBL_PP_STATUS', 'paypal Status');
 
 // tooltips
-define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. All 3 must be entered and they must match your PayPal account. A green check indicates that your PayPal information has been successfully verified.');
+define('TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN', 'You can fill these in at any time. To collect funds, all 3 must be entered and they must match your verified PayPal account. A green check indicates that your PayPal information has been successfully verified.');
 define('TOOLTIP_REGISTRATION_PAYPALL_EXPLAIN', 'You can enter this information anytime before making your campaign live. You will need to have a verified PayPal account.');
 define('TOOLTIP_PERCENT_GIVEBACK', 'This is the approximate percent each vendor gives back. The actual amount can vary depending on the item and the overall volume of Bring It Local sourced purchases. The entire amount we collect goes to the campaign you support. Your individual contributions will show up in your Members Area under the My Contributions tab and on the campaign page you support under their Funders tab. There is usually a delay of several days before we get the information back from the vendor.');
 
@@ -222,8 +319,8 @@ define ('MSG_PAYPAL_SETTINGS', 'Paypal Settings');
 define ('MSG_WHATS_THAT', 'What\'s that?');
 define ('MSG_GOTO_FUND', 'Go to the Community fund');
 define ('MSG_CLICK_SUBSCRIBE', 'Click here to subscribe to updates');
-define ('MSG_VOTE', 'VOTE');
-define ('MSG_PARTICIPATE', 'ways to participate');
+define ('MSG_VOTE', 'Browse by votes');
+define ('MSG_PARTICIPATE', 'our democracy');
 define ('MSG_ENDING_SOON', 'Ending soon');
 define ('MSG_BROWSE_CAMPAIGNS', 'browse campaigns');
 define ('MSG_NEWCAMPAIGNS', 'New campaigns');
@@ -231,7 +328,8 @@ define ('MSG_SUBSCRIBE', 'SUBSCRIBE');
 define ('MSG_BLOG', 'Go to our BLOG');
 define ('MSG_EMAIL', 'enter your email');
 define ('MSG_MM_ABOUT_ME', 'Public Profile');
-define ('MSG_MM_VIEW', 'View');
+define ('MSG_MM_ABOUT_ME_AVATAR', 'Avatar');
+define ('MSG_MM_VIEW', 'Preview');
 define ('MSG_FEATURED_LOCALAUCTIONS', 'Buy Local - Featured Auctions by Local Supporters'); 
 define ('MSG_BAR_FEATURED_AUCTIONS', 'Buy Local - Featured Auctions');
 define ('MSG_COMMENTS', 'Comments');
@@ -246,6 +344,8 @@ define ('MSG_AUCTION_SEARCH', 'Auction Search');
 define ('MSG_SELLER_SEARCH', 'Seller Search');
 define ('MSG_BUYER_SEARCH', 'Buyer Search');
 // misc campaign tags
+define ('MSG_UPLOAD_FILE', 'Upload');
+define ('MSG_REMOVE_FILE', 'Remove');
 define ('MSG_SAVE_CHANGES', 'Save Changes');
 define ('MSG_SAVE', 'Save');
 define ('MSG_DELETE', 'Delete');
@@ -258,7 +358,7 @@ define ('MSG_FIND_THIS_CAMPAIGN', 'Also find this Campaign On');
 define ('MSG_PG_PAYPAL_EMAIL_ADDRESS', 'PayPal Email Address');
 define ('MSG_PG_PAYPAL_FIRST_NAME', 'PayPal Account First Name');
 define ('MSG_PG_PAYPAL_LAST_NAME', 'PayPal Account Last Name');
-define ('MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL', 'Enter a valid paypal email to which the funds collected will be sent.');
+define ('MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL', 'Enter a verified paypal email to which the funds collected will be sent.');
 define ('MSG_PG_PAYPAL_FIRST_NAME_EXPL', 'Enter first name used in the paypal account to which the email address belongs.');
 define ('MSG_PG_PAYPAL_LAST_NAME_EXPL', 'Enter last name used in the paypal account to which the email address belongs.');
 define ('MSG_PROJECTURL_EXPLANATION', 'Example: <strong>CentralHighSchool</strong> (Don\'t use your email address) <br /><strong>NOTE: </strong>Your Campaign URL will form the url (web address) to your campaign page. Make sure it is simple and easy to remember. <br /><strong>IMPORTANT: </strong>Make sure it is one word with no spaces or special characters');
@@ -298,7 +398,7 @@ define ('MSG_MY_DEALS', 'My Deals');
 define ('MSG_MY_PROFILE', 'My Profile');
 define ('MSG_CAMPAIGNS', 'Campaigns');
 define ('MSG_MY_CAPMAIGNS', 'My Campaigns');
-define ('MSG_NEW_CAPMAIGN', 'Start a new one');
+define ('MSG_NEW_CAPMAIGN', 'Create');
 define ('MSG_DRAFTS_CAPMAIGNS', 'Drafts');
 define ('MSG_LIVE_CAPMAIGNS', 'Live');
 define ('MSG_CLOSED_CAPMAIGNS', 'Closed');
@@ -313,8 +413,10 @@ define ('MSG_CAMPAIGN_NAME', 'Campaign Name');
 define ('MSG_CREATE_AT', 'Created');
 define ('MSG_CLOSED_ON', 'Closed');
 define ('MSG_COLLECTED_MONEY', 'Raised');
-define ('MSG_VIEW_CAMPAIGN', 'View Campaign');
-define ('MSG_COPY_CAMPAIGN', 'Copy Campaign');
+define ('MSG_VIEW_CAMPAIGN', 'Preview');
+define ('MSG_COPY_CAMPAIGN', 'Make a Copy');
+define ('MSG_SET_LIVE_CAMPAIGN', 'Go LIVE');
+define ('MSG_SET_LIVE_CAMPAIGN_SUCCESS', 'Congratulations, our Campaign is LIVE now');
 define ('MSG_SOCIAL_ACCOUNT_INFORMATION', 'Social Account information');
 define ('MSG_ALSO_FIND_ME', ' Also Find Me on');
 define ('MSG_POSTED_A_COMMENT', 'posted a comment');
@@ -341,7 +443,7 @@ define ('MSG_WAYS_TO_SUPPORT', 'Shop Online');
 define ('MSG_DEADLINE', 'Duration *');
 define ('MSG_TIMEPERIOD', '# of days');
 define ('MSG_DATE', 'date');
-define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 160 pixels wide.');
+define ('MSG_UPLOAD_LOGO_INFORMATION', 'For best results upload an image that is not more than 100 pixels wide.');
 define ('MSG_YOUR_STORY', 'Your story');
 define ('MSG_YOUR_STORY2', 'tell potential supporters about your campaign');
 define ('MSG_YOUR_STORY3', 'Add a large banner image or video at the top of your compaign page');
@@ -349,6 +451,7 @@ define ('MSG_CLEAR', 'clear');
 define ('MSG_DAYS', 'days');
 define ('MSG_DAYS_LEFT', ' days left');
 define ('MSG_CLOSED', ' closed');
+define ('MSG_LESS_THEN_DAY', ' less than 1 day');
 define ('MSG_SUCCESS', 'successful');
 // Campaign Tab Message
 define ('MSG_CMN_ACCOUNT', 'Account');
@@ -389,8 +492,8 @@ define ('MSG_USERNAME_EXPLANATION', 'Example: rose789 (Don\'t use your email add
 define ('MSG_PASSWORD_EXPLANATION', '6 characters minimum <br />Enter a password that\'s easy for you to remember, but hard for others to guess.');
 define ('MSG_EMAIL_EXPLANATION', 'To complete registration, enter a valid email address that   you can check immediately.');
 define ('MSG_REGISTRATION_CONFIRMATION', 'Registration Confirmation');
-define ('MSG_REGISTER_SUCCESS_TYPE0', 'We\'re glad to have your with us! Your account has been successfully created.<br>You can now login with the username and password you have created.');
-define ('MSG_REGISTER_SUCCESS_TYPE1', 'We\'re glad to have your with us! Your account has been successfully created.<br>An email has been sent to the address you have submitted with details on how to activate your account.');
+define ('MSG_REGISTER_SUCCESS_TYPE0', 'We\'re glad to have you with us! Your account has been successfully created.<br>You can now login with the username and password you have created.');
+define ('MSG_REGISTER_SUCCESS_TYPE1', 'We\'re glad to have you with us! Your account has been successfully created.<br>An email has been sent to the address you have submitted with details on how to activate your account.');
 define ('MSG_REGISTER_SUCCESS_TYPE2', 'The registration is complete.<br>The administrator will review your account and approve it manually.<br>You will be notified by email when your account will be activated.<br>An email has been sent to the address you have submitted with details on how to verify your email address.');
 define ('MSG_LOGIN_TO_MEMBERS_AREA', 'Login to Members Area');
 define ('MSG_INVALID_LOGIN', 'The login details you have submitted are invalid<br>Please try again');
@@ -418,7 +521,7 @@ define ('MSG_PAYMENT_FAILED', 'Payment Failure');
 define ('MSG_PAYMENT_FAILED_DESC', 'Your payment hasn\'t been registered, or was invalid.<br> <br> Sorry for the inconvenience.');
 define ('MSG_REGISTER_AS', 'Register As');
 define ('MSG_REGISTERD_AS', 'Register As');
-define ('MSG_FRMCHK_DUPLICATE_USERNAME', 'The Username you have chosen already exists in our database.');
+define ('MSG_FRMCHK_DUPLICATE_USERNAME', 'The campaign url you have chosen already exists in our database.');
 define ('MSG_FRMCHK_DUPLICATE_EMAIL', 'The Email Address you have submitted already exists in our database');
 define ('MSG_TAX_SETTINGS', 'Tax Settings');
 define ('MSG_REGISTER_AS_DESC', 'Choose if you want to register as a business or as an individual ');
@@ -454,13 +557,14 @@ define ('MSG_ENTER_YOUR_EMAIL', 'Enter your Email Address');
 define ('MSG_ENTER_YOUR_USERNAME', 'Enter your Username');
 define ('MSG_REMEMBER_PASS_FORGOT_USERNAME', 'Remember your password, but forgot your username? ');
 define ('MSG_RETRIEVE_YOUR_USERNAME', 'Retrieve your Username');
-define ('MSG_RETRIEVE_USER_ERROR', 'Error: There is no user in the database matching the details you have submitted.');
+//define ('MSG_RETRIEVE_USER_ERROR', 'Error: There is no user in the database matching the details you have submitted.');
+  define ('MSG_RETRIEVE_USER_ERROR', 'Error: This email was not found in our database. If this is an error, please contact us: support@bringitlocal.com.');
 define ('MSG_NEW_PASSWORD_EMAILED', 'Your new Password has been sent to the E-Mail address on file for your account.<br><br>Check your inbox AND your Junk inbox for the notice.<br><br>The email has been sent instantly, but you may experience a delay in receiving it as some providers only update their mail records every 15 minutes. If you continue to have problems or you have not received your notice in a reasonable amount of time, do not hesitate to <a href="content_pages.php?page=contact_us">contact us</a> for assistance.');
 define ('MSG_USERNAME_EMAILED', 'Your username has been sent to the E-Mail address on file for your account.<br><br>Check your inbox AND your Junk inbox for the notice.<br><br>The email has been sent instantly, but you may experience a delay in receiving it as some providers only update their mail records every 15 minutes. If you continue to have problems or you have not received your notice in a reasonable amount of time, do not hesitate to <a href="content_pages.php?page=contact_us">contact us</a> for assistance.');
 define ('MSG_USER_ACCOUNT_CONFIRMATION', 'User Account Confirmation');
 define ('MSG_ACC_ACTIVATE_SUCCESS', 'Your account was successfully activated. <br>You can now login using your username and password.');
 define ('MSG_ACC_ACTIVATE_FAILURE', 'Error: Account activation is not possible using this feature or the activation details you have submitted are invalid.');
-define ('MSG_DIRECT_PAYMENT_SETTINGS', 'Valid PayPal account information');
+define ('MSG_DIRECT_PAYMENT_SETTINGS', 'Verified PayPal account information');
 define ('MSG_ACCOUNT_DETAILS', 'Account Details');
 define ('MSG_ACCOUNT_TYPE', 'Account Type');
 define ('MSG_CLEAR_ACC_BALANCE', 'Clear Account Balance');
@@ -512,6 +616,27 @@ define ('MSG_MM_POST_AUCTION', 'Post an Auction');
 define ('MSG_BTN_HELP', 'Help');
 define ('MSG_BTN_FAQ', 'FAQ');
 define ('MSG_BTN_SITE_FEES', 'Site Fees');
+define ('MSG_WHAT_DOSE_IT_COST', 'What does it cost to use Bring It Local');
+define ('MSG_SITE_FEES_DESC', 'If you use Bring It Local for your fundraising the site will deduct a 5% fee from the total amount of funds you raise.
+<br><br>
+
+<strong>Donations:</strong> Supporters send their donations directly to you via PayPal. At the same moment that you receive your donation the site will also automatically charge you 5% of the amount you receive.
+<br><br>
+
+If you don\'t raise any money Bring It Local will never cost you anything. 
+<br><br>
+<strong>Click through shopping:</strong> When users click through and make purchases from the online vendors we list on the site, you will receive a percentage of each transaction. This amount varies and is shown on the vendors page for each vendor.
+On average this is around 6% of the purchase amount. <br><br>So, here is a sample transaction:
+<br>
+-a supporter of your campaign clicks and makes a purchase for $100 from Amazon.<br>
+-you will receive 6% of that transaction or $6.00.<br>
+-Bring It Local will deduct a 5% fee on the total of the money you raise. So in this case it would amount to 5% of the $6.00 or $.30 (30 cents).
+
+
+
+<br><br>
+<strong>Garage sales:</strong> this is an upcoming feature of Bring It Local where we enable campaigns to set up and maintain ongoing garage sales where people buy and sell items from each other. We\'ll add more information here
+as this feature becomes available.');
 define ('MSG_BTN_ABOUT_US', 'About Us');
 define ('MSG_BTN_CONTACT_US', 'Contact Us');
 define ('MSG_BTN_TERMS', 'TERMS & CONDITIONS');
@@ -622,20 +747,30 @@ define ('MSG_REWARD_CLAIMING_YOU_CAN_STILL_MAKE_THE_DONATION', 'You can still do
 define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND', 'Would you like to add <strong>$5</strong> toward the Community Fund?');
 define ('MSG_REWARD_ADD_5_DOLLARS_TO_COMMUNNITY_FUND_PREFIX', 'Would you like to add <strong>$5</strong> toward the');
 
-define ('MSG_EXTENDS_DATE_EXISTING_CAMPAIGN', 'Extend the date of the existing campaign for ');
+define ('MSG_EXTENDS_DATE_EXISTING_CAMPAIGN', 'Extend the date of this campaign for ');
 define ('MSG_CLONE_CAMPAIGN', 'Clone campaign');
 define ('MSG_LET_CAMPAIGN_CLOSE', 'Let this campaign close on schedule');
-define ('MSG_CRON_CONFIG', '<strong>Set the future status:</strong>');
+define ('MSG_CRON_CONFIG', '<strong>When should this campaign end:</strong>');
+define ('MSG_CLONE_CONFIG', '<strong>AutoRenew settings</strong>');
+define ('MSG_CLONE_CONFIG_TIMES', 'AutoRenew this campaign ');
+define ('MSG_CLONE_CONFIG_DAYS', 'Renew this campaign for');
+define ('MSG_RENEW_CAMPAIGN', 'AutoRenew');
+define ('MSG_TIMES', ' times');
+//define ('MSG_DAYS', ' days');
+define ('MSG_KEEP_COMMENT', ' keep comments');
+define ('MSG_KEEP_UPDATES', ' keep updates');
+define ('MSG_KEEP_REWARDS', ' keep rewards');
 
 
 // Vote Us Section
 define ('MSG_VOTE_US', 'Vote Us!');
 define ('MSG_VOTES_NUMBER', 'Votes');
+define ('MSG_CAMPAIGNS_VOTES_NUMBER', 'votes');
 
 
 // Mail Section
-define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_SUBJECT', 'you received a comment on your Bring It Local campaign');
-define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_BODY', 'Your campaign received a comment. Go here to see what someone said about your campaign:');
+define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_SUBJECT', 'you received a comment on your Bring It Local crowdfunding campaign');
+define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_BODY', 'Someone has left you a comment on your community crowdfunding campaign page Bring It Local. Go here to see what they said about your campaign:');
 
 define ('MSG_PASSWORD_REQUIRED', 'Password Required');
 define ('MSG_VERIFY_PASSWORD_REQUIRED', 'Verify Password Required');

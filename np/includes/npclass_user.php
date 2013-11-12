@@ -132,6 +132,22 @@ class npuser extends npcustom_field
     {
         $time = time();
         $ordering = "  ORDER BY reg_date DESC";
+        $group = " GROUP BY np_users.user_id ";
+        $fields = NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
+            NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
+            NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
+            NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
+            NPDB_PREFIX . "users.founddrasing_goal, " .
+            NPDB_PREFIX . "users.project_title, " .
+            NPDB_PREFIX . "users.votes, " .
+            " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id,
+            (SELECT COUNT(*)
+            FROM project_votes
+            WHERE project_votes.campaign_id = np_users.user_id
+            AND MONTH(FROM_UNIXTIME(project_votes.date)) = MONTH(NOW())
+            ) AS votes ";
+        $join = " FROM " . NPDB_PREFIX . "users INNER JOIN bl2_users " .
+            " ON " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id";
         if (isset($_GET["order_by"]) && $_GET["order_by"] &&
             isset($_GET["order_type"]) && $_GET["order_type"] &&
             in_array($_GET["order_type"], array("ASC", "DESC"))) {
@@ -139,17 +155,9 @@ class npuser extends npcustom_field
         }
         if (isset($_GET["search"]) && $_GET["search"]) {
             $search = mysql_real_escape_string($_GET["search"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
-                NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id " .
-                " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
-                " AND np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
+            $sql_select_query = "SELECT " . $fields .
+                $join .
+                " WHERE np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
                 " AND (name LIKE '%" .
                 $search . "%' OR description LIKE '%" .
                 $search . "%' OR project_title LIKE '%" .
@@ -157,24 +165,16 @@ class npuser extends npcustom_field
                 $search . "%' OR orgtype LIKE '%" .
                 $search . "%' OR np_users.tax_company_name LIKE '%" .
                 $search . "%' OR pitch_text LIKE '%" .
-                $search . "%') " . $ordering;
+                $search . "%') " . $group . $ordering;
         } elseif (isset($_GET["keyword"]) && $_GET["keyword"]) {
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
                 $ordering = " ORDER BY reg_date " . $order;
             }
             $search = mysql_real_escape_string($_GET["keyword"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
-                NPDB_PREFIX . "users.username, " . NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.price, " . NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.last_name, bl2_users.organization, bl2_users.email, bl2_users.id " .
-                " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id " .
-                " AND np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
+            $sql_select_query = "SELECT " . $fields .
+                $join .
+                " WHERE np_users.active=1 AND np_users.disabled=0 AND np_users.end_date>" . $time .
                 " AND (name LIKE '%" .
                 $search . "%' OR description LIKE '%" .
                 $search . "%' OR project_title LIKE '%" .
@@ -182,52 +182,30 @@ class npuser extends npcustom_field
                 $search . "%' OR orgtype LIKE '%" .
                 $search . "%' OR np_users.tax_company_name LIKE '%" .
                 $search . "%' OR pitch_text LIKE '%" .
-                $search . "%') " . $ordering;
+                $search . "%') " . $group . $ordering;
         } elseif (isset($_GET["category"]) && $_GET["category"]) {
             $search = mysql_real_escape_string($_GET["category"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
-                NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
-                " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND " . NPDB_PREFIX .
+            $sql_select_query = "SELECT " . $fields .
+                $join .
+                " WHERE np_users.disabled=0  AND " . NPDB_PREFIX .
                 "users.project_category=" . $search . " AND np_users.active=1 AND np_users.end_date>" .
-                $time . $ordering;
+                $time . $group . $ordering;
         } elseif (isset($_GET["city"]) && $_GET["city"]) {
             $search = mysql_real_escape_string($_GET["city"]);
-            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
-                NPDB_PREFIX . "users.end_date, bl2_users.first_name, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.last_name, bl2_users.id, bl2_users.organization, bl2_users.email " .
-                " FROM " . NPDB_PREFIX . "users, bl2_users " .
-                "WHERE " . NPDB_PREFIX . "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND " . NPDB_PREFIX .
+            $sql_select_query = "SELECT " . $fields .
+                $join .
+                " WHERE np_users.disabled=0  AND " . NPDB_PREFIX .
                 "users.city='" . $search . "' AND (np_users.active=1 OR np_users.end_date>" .
-                $time .') '. $ordering;
+                $time .') '. $group . $ordering;
         }
         else {
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
                 $ordering = " ORDER BY reg_date " . $order;
             }
-            $sql_select_query = "SELECT " . NPDB_PREFIX. "users.username," . NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
-                NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " . NPDB_PREFIX . "users.price, " .
-                NPDB_PREFIX . "users.end_date, " .
-                NPDB_PREFIX . "users.founddrasing_goal, " .
-                NPDB_PREFIX . "users.project_title, " .
-                NPDB_PREFIX . "users.payment, " .
-                NPDB_PREFIX . "users.votes, " .
-                " bl2_users.first_name, bl2_users.organization, bl2_users.id, bl2_users.last_name, bl2_users.email FROM " .
-                NPDB_PREFIX . "users, bl2_users WHERE " . NPDB_PREFIX .
-                "users.probid_user_id=bl2_users.id AND np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" .
-                $time . $ordering;
+            $sql_select_query = "SELECT " . $fields . $join .
+                " WHERE np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" .
+                $time . $group . $ordering;
         }
 
         $sql_select_result = $this->query($sql_select_query);
@@ -263,18 +241,160 @@ class npuser extends npcustom_field
      */
     function get_closed_campaigns()
     {
-        $current_time = time();
+        $current_time = strtotime('today');
         $closed_campaigns = array();
         $select_query_result = $this->query(
             "SELECT user_id, reg_date, clone_campaign, deadline_type_value, time_period, certain_date, end_date, keep_alive_days
-            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND clone_campaign<>0"
+            FROM " . NPDB_PREFIX . "users WHERE end_date<=" . $current_time . " AND active = 1"
         );
 
-        while ($query_result =  mysql_fetch_array($select_query_result)) {
+        while ($query_result =  mysql_fetch_assoc($select_query_result)) {
             $closed_campaigns[] = $query_result;
         }
 
         return $closed_campaigns;
+    }
+
+    function close_campaigns($closed_campaigns) {
+
+        if (is_array($closed_campaigns)) {
+
+            print_r("Closed campaigns id's:");
+
+            foreach ($closed_campaigns as $closed_campaign) {
+                
+                $this->query(
+                    "UPDATE np_users SET active = 2 WHERE user_id = " . $closed_campaign['user_id']
+                );
+                print_r($closed_campaign['user_id'] . ', ');
+
+            }
+
+        }
+    }
+
+    function new_renew_campaigns() {
+        $current_time = time() + 24*60*60;
+        $autorenew_result = $this->query("SELECT * FROM " . NPDB_PREFIX . "users WHERE autorenew > 0 AND active = 1");
+
+        while ($query_result =  mysql_fetch_assoc($autorenew_result)) {
+
+            $old_campaigns[] = $query_result;
+
+        }
+
+        if (!$old_campaigns) {
+            return "No campaigns effected.";
+        }
+
+        $cfc_flag = 0;
+        foreach ($old_campaigns as $old_campaign) {
+            if (date('d F Y', $old_campaign['end_date']) == date('d F Y', strtotime('today'))) {
+                $new_campaign = $old_campaign;
+
+                $old_campaign['active'] = 2;
+                $old_id = $old_campaign['user_id'];
+                unset($old_campaign['user_id']);
+
+                if (is_null($old_campaign['start_date'])) {
+                    $new_campaign['end_date'] = time() + (time() - $old_campaign['reg_date']);
+                } else
+                    $new_campaign['end_date'] = time() + ($old_campaign['end_date'] - $old_campaign['start_date']);
+
+                $new_campaign['active'] = 1;
+                $new_campaign['start_date'] = time();
+                $new_campaign['payment'] = 0;
+                $new_campaign['autorenew'] = ($old_campaign['autorenew'] >= 1) ? $old_campaign['autorenew'] - 1 : 0;
+                $new_campaign['keep_comments'] = $old_campaign['keep_comments'];
+                $new_campaign['keep_updates'] = $old_campaign['keep_updates'];
+                $new_campaign['keep_rewards'] = $old_campaign['keep_rewards'];
+                unset($new_campaign['user_id']);
+
+                $url = explode('_renew_', $old_campaign['username']);            
+                if (isset($url[1])) {
+                    $old_campaign['username'] = $url[0] . '_renew_' . ++$url[1];
+                    $new_campaign['username'] = $url[0] . '_renew_' . ++$url[1];
+                }
+                else {
+                    $old_campaign['username'] = $url[0] . '_renew_0';
+                    $new_campaign['username'] = $url[0] . '_renew_1';
+                }
+                if ($old_campaign['cfc'] == 1 && !$cfc_flag) {
+                    $old_campaign['cfc'] = 0;
+                    $new_campaign['cfc'] = 1;
+                    $new_campaign['active'] = 0;
+                    $cfc_flag = 1;
+                    if (date('d F Y', time()) != date('d F Y', strtotime('last day of this month')))
+                        $new_campaign['start_date'] = strtotime('tomorrow');
+                    else 
+                        $new_campaign['start_date'] = strtotime('first day of next month');
+                    $new_campaign['end_date'] = strtotime('last day of next month');
+                }
+
+                $update_query = "UPDATE " . NPDB_PREFIX . "users SET";
+                foreach ($old_campaign as $key => $value) {
+                    $keys[] = $key;
+                    $values[] = $value;
+                    $keys_old = implode(', ', $keys);
+                    $values_old = implode(', ', $values);
+                    $update_query .= " " . $key . "='" . $value . "',";
+                }
+                $update_query = substr($update_query, 0, -1);
+                $update_query .= " WHERE user_id=$old_id";            
+
+                $this->query($update_query);
+
+                unset($keys);
+                unset($values);  
+
+                foreach ($new_campaign as $key => $value) {
+                    $keys[] = $key;
+                    $values[] = "'" . $value . "'";
+                }
+
+                $keys_new = implode(', ', $keys);
+                $values_new = implode(', ', $values);
+
+                $this->query("INSERT INTO " . NPDB_PREFIX . "users ($keys_new) VALUES ($values_new)");
+                $new_id = mysql_insert_id();
+
+                if ($old_campaign['keep_rewards'] == 1) {
+                    
+                    $this->query("
+                        INSERT INTO project_rewards (`project_id`, `amount`, `name`, `short_description`, `description`, `estimated_delivery_date`, `shipping_address_required`, `available_number`, `given_number`)
+                        SELECT $new_id, `amount`, `name`, `short_description`, `description`, `estimated_delivery_date`, `shipping_address_required`, `available_number`, `given_number` 
+                        FROM project_rewards 
+                        WHERE `project_id`=$old_id
+                    ");
+
+                }
+
+                if ($old_campaign['keep_comments'] == 1) {
+                    
+                    $this->query("
+                        INSERT INTO project_comment (`user_id`, `project_id`, `parrent_id`, `comment`, `create_at`)
+                        SELECT `user_id`, $new_id, `parrent_id`, `comment`, `create_at` 
+                        FROM project_comment 
+                        WHERE `project_id`=$old_id
+                    ");
+
+                }
+
+                if ($old_campaign['keep_updates'] == 1) {
+                    
+                    $this->query("
+                        INSERT INTO project_updates (`user_id`, `project_id`, `parrent_id`, `comment`, `create_at`)
+                        SELECT `user_id`, $new_id, `parrent_id`, `comment`, `create_at` 
+                        FROM project_updates 
+                        WHERE `project_id`=$old_id
+                    ");
+
+                }
+
+                $list[] = $old_campaign;
+            }
+        }
+        return $list;
     }
 
     /**
@@ -421,6 +541,7 @@ class npuser extends npcustom_field
     function copy_campaign($campaign_id = 0)
     {
         $generated_id = 0;
+        $time_plus_30_days = time() + (3600*24*30);
         if ($campaign_id && is_numeric($campaign_id)) {
             $sql_update_campaign_query = "UPDATE " . NPDB_PREFIX .
                 "users SET copied_times=IFNULL(copied_times, 0)+1 WHERE user_id={$campaign_id}";
@@ -451,7 +572,7 @@ class npuser extends npcustom_field
                     pg_alertpay_id, pg_alertpay_securitycode,orgtype,lat,lng, logo, banner,
                     user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
                     CONCAT(project_title, ' (copy ', copied_times, ')'), campaign_basic, description, founddrasing_goal, funding_type,
-                    deadline_type_value, time_period, certain_date, probid_user_id, end_date, 0,
+                    deadline_type_value, time_period, certain_date, probid_user_id, {$time_plus_30_days}, 0,
                     cfc, clone_campaign, 0, disabled, parrent_id, 'copy'
                 FROM ".NPDB_PREFIX."users WHERE user_id={$campaign_id}";
 
@@ -498,7 +619,7 @@ class npuser extends npcustom_field
         if (!isset($user_details['password'])) {
             $user_details['password'] = "password";
         }
-        $password_hash_biled = password_hash_bil($user_details['password'], $salt);
+        $password_hashed = password_hash($user_details['password'], $salt);
 
         $payment_mode = ($this->setts['account_mode_personal'] == 1) ? $this->setts['init_acc_type'] : $this->setts['account_mode'];
         $balance = ($payment_mode == 2) ? ((-1) * $this->setts['init_credit']) : 0;
@@ -669,7 +790,7 @@ class npuser extends npcustom_field
 			user_submitted, npverified, affiliate, pitch_text, url, facebook_url, twitter_url, project_category,
 			project_title, campaign_basic, description, founddrasing_goal, funding_type,
 			deadline_type_value, time_period, certain_date, probid_user_id, end_date, active) VALUES
-			('" . $user_details['username'] . "', '" . $password_hash_biled . "',	'" . $user_details['email'] . "',
+			('" . $user_details['username'] . "', '" . $password_hashed . "',	'" . $user_details['email'] . "',
 			" . CURRENT_TIME . ", " . $payment_mode . ",	'" . $balance . "', '" . $max_credit . "',
 			'" . $salt . "', '" . $user_details['tax_account_type'] . "', '" . $user_details['tax_company_name'] . "',
 			'" . $user_details['tax_reg_number'] . "', '" . $tax_apply_exempt . "', '" . $user_details['name'] . "',
@@ -835,8 +956,8 @@ class npuser extends npcustom_field
         if ($new_password)
         {
             $salt = $this->create_salt();
-            $password_hash_biled = password_hash_bil($new_password, $salt);
-            $sql_update_query .= ", password='" . $password_hash_biled . "', salt='" . $salt . "'";
+            $password_hashed = password_hash($new_password, $salt);
+            $sql_update_query .= ", password='" . $password_hashed . "', salt='" . $salt . "'";
         }
 
         $sql_update_query .= " WHERE user_id=" . $user_id;

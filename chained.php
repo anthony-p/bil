@@ -6,7 +6,6 @@
 // that you may need to provide a value or take action
 // before executing this code
 //-------------------------------------------------
-
 include_once ('includes/global.php');
 if (!isset($_SESSION)) session_start();
 

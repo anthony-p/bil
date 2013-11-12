@@ -10,13 +10,15 @@ if (!defined('INCLUDED')) {
 
 <?= (isset($header_selling_page)) ? $header_selling_page : ''; ?>
 <?= (isset($display_formcheck_errors)) ? $display_formcheck_errors : ''; ?>
-
 <script type="text/javascript" src="/scripts/jquery/tinymce/tinymce.min.js" ></script>
 <script type="text/javascript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" ></script>
 <script type="text/javascript" src='/scripts/jquery/jquery.validate.min.js'></script>
 <script type="text/javascript" src='/scripts/jquery/additional-methods.min.js'></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.fileupload.js"></script>
 <script type="text/javascript">
-
+	
     window.error_messages = {
         name: "<?= MSG_REGISTER_CAMPAIGN_ERR_NAME; ?>",
         tax_company_name: "<?= MSG_REGISTER_CAMPAIGN_ERR_TAXCMPNAME; ?>",
@@ -32,7 +34,18 @@ if (!defined('INCLUDED')) {
         twitter_url:"<?= MSG_REGISTER_CAMPAIGN_ERR_TWITTERURL; ?>;",
         logo: "<?= MSG_REGISTER_CAMPAIGN_ERR_LOGOFILE; ?>",
         date_format:"<?= MSG_DEADLINE_CERTAIN_DATE; ?>",
-        days_format:"<?= MSG_DEADLINE_TIME_PERIOD; ?>"
+        days_format:"<?= MSG_DEADLINE_TIME_PERIOD; ?>",
+        rewards: {
+            name:'<?= MSG_REWARD_NAME_MUST_BE_SPECIFIED ?>',
+            amount: '<?=MSG_REWARD_AMOUNT_MUST_BE_SPECIFIED ?>',
+            amount_num: '<?=MSG_REWARD_AMOUNT_MUST_BE_A_NUMBER ?>',
+            short_desc: '<?= MSG_REWARD_SHORT_DESCRIPTION_MUST_BE_SPECIFIED ?>',
+            available_number:'<?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?>',
+            available_number_num:'<?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_NUMBER ?>',
+            available_number_positive:'<?= MSG_REWARD_AVAILABLE_NUMBER_MUST_BE_A_POSITIVE_NUMBER ?>',
+            delivery_date: '<?= MSG_REWARD_ESTIMATED_DELIVERY_DATE_INVALID ?>'
+        }
+
     };
     window.messages = {
         confirm_delete_reward_button: '<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_BTN_OK; ?>',
@@ -45,7 +58,9 @@ if (!defined('INCLUDED')) {
         post_update_title:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_TITLE; ?>',
         post_update_text:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_MSG; ?>',
         confirm_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_OK; ?>',
-        cancel_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL; ?>'
+        cancel_project_update_button:'<?= MSG_MEMBER_AREA_DIALOG_POST_UPDATE_CONFIRM_BTN_CANCEL; ?>',
+        reward_saved:"<?= MSG_REWARD_SAVED; ?>",
+        campaign_live:"<?= MSG_SET_LIVE_CAMPAIGN_SUCCESS ?>"
     };
 
 
@@ -53,21 +68,66 @@ if (!defined('INCLUDED')) {
 <script type="text/javascript" src="/scripts/init_tinymce.js"></script>
 <script type="text/javascript" src="/scripts/campaign_form_validate.js"></script>
 <script type="text/javascript">
-
+      
     $(document).on('ready', function () {
+        var formElem = $('#formElem');
+    	$('input[type="file"]').each(function() {
+        	$(this).on('change', function(e){
+        		$('.editCampaigns').focus();	
+        	})	
+        }); 
         /* Form validated before submit */
         $('input[type="submit"]').each(function() {
             $(this).on('click', function(e){
                 e.preventDefault();
-                var formElem = $('#formElem'),
-                    button = $(this);
+                $("#campaign_basic").val(tinymce.get('campaign_basic').getContent());
+                var button = $(this);
                 validateCampaignForm(formElem, window.error_messages);
-
                 if (formElem.valid()) {
-                    ajaxFormSave(button, formElem);
+                    ajaxFormSave(button, formElem, true);
                 }
             })
         });
+        $('#logo').fileupload({
+//            url:formElem.attr('action')+'?logoupload=true',
+
+            dataType: 'json',
+            done: function (e, data) {
+                var img = $('#logo_img');
+                if (img.length > 0)  img.attr('src',data.result.path.replace(/\\/g, ''));
+                else
+                {
+                    $('#MultiPowUpload_holder').before('<img src="'+ data.result.path.replace(/\\/g, '')+'" id="logo_img">')
+                }
+            }
+        });
+        $('#banner').fileupload({
+            url:formElem.attr('action')+'?bannerupload=true',
+            dataType: 'json',
+            done: function (e, data) {
+                var img = $('#banner_img');
+                if (img.length > 0)  img.attr('src',data.result.path.replace(/\\/g, ''));
+                else
+                {
+                    $('.upload"').before('<img src="'+ data.result.path.replace(/\\/g, '')+'" id="banner_img">')
+                }
+            }
+        });
+        /* Go Live button if exists */
+        var go_live_btn = $('.set_live_campaign_btn');
+        if (go_live_btn) {
+            go_live_btn.on('click', function(e) {
+                e.preventDefault();
+                $('#status-active').attr('checked', true);
+                $("#campaign_basic").val(tinymce.get('campaign_basic').getContent());
+                var formElem = $('#formElem'),
+                    button = $(this);
+                validateCampaignForm(formElem, window.error_messages);
+                if (formElem.valid()) {
+                    ajaxFormSave(button, formElem, false);
+                }
+            })
+        }
         <?php if (isset($video_url) && $video_url): ?>
             $("#vide_select_block").css("display", "inline");
             var banner = $("#banner");
@@ -103,15 +163,23 @@ if (!defined('INCLUDED')) {
 </script>
 
 <div class="editCampaigns">
-    <h2><?= MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN; ?></h2>
-
-    <div id="wrapper">
-        <a href="/view_campaign.php?campaign_id=<?= $campaign['user_id'] ?>" class="view_campaign_btn" target="_blank">
+    <h2>
+        <?php if (isset($campaign["active"]) && ($campaign["active"] == 0)): ?>
+            <a href="#" class="campaign-top-btn set_live_campaign_btn" >
+                <span><?= MSG_SET_LIVE_CAMPAIGN ?></span>
+            </a>
+        <?php endif; ?>
+        <a href="/view_campaign.php?campaign_id=<?= $campaign['user_id'] ?>" class="campaign-top-btn view_campaign_btn" target="_blank">
             <span><?= MSG_VIEW_CAMPAIGN ?></span>
         </a>
-        <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>" class="copy_campaign_btn" target="_blank">
+        <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>" class="campaign-top-btn copy_campaign_btn" target="_blank">
             <span><?= MSG_COPY_CAMPAIGN ?></span>
         </a>
+        <?= MSG_MEMBER_AREA_CAMPAIGNS_EDIT_CAMPAIGN; ?>
+    </h2>
+
+    <div id="wrapper">
+
 
         <!-- Tabs navigation -->
         <div id="navigation">
@@ -274,12 +342,7 @@ if (!defined('INCLUDED')) {
                             </h3>
                             <?php if (isset($campaign['confirmed_paypal_email']) && $campaign['confirmed_paypal_email']): ?>
                                  <span class="checked"></span>
-                            <?php endif; ?>
-                            <div class="account-row">
-                                <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> *</label>
-                                <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?= $campaign['pg_paypal_email']; ?>" size="40"/>
-                                <span><?= MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL; ?></span>
-                            </div>
+                            <?php endif; ?>                            
                             <div class="account-row">
                                 <label><?= MSG_PG_PAYPAL_FIRST_NAME; ?> *</label>
                                 <input name="pg_paypal_first_name" type="text" id="pg_paypal_first_name" value="<?= $campaign['pg_paypal_first_name']; ?>" size="40"/>
@@ -289,6 +352,11 @@ if (!defined('INCLUDED')) {
                                 <label><?= MSG_PG_PAYPAL_LAST_NAME; ?> *</label>
                                 <input name="pg_paypal_last_name" type="text" id="pg_paypal_last_name" value="<?= $campaign['pg_paypal_last_name']; ?>" size="40"/>
                                 <span><?= MSG_PG_PAYPAL_LAST_NAME_EXPL; ?></span>
+                            </div>
+                            <div class="account-row">
+                                <label><? echo MSG_PG_PAYPAL_EMAIL_ADDRESS; ?> *</label>
+                                <input name="pg_paypal_email" type="text" id="pg_paypal_email" value="<?= $campaign['pg_paypal_email']; ?>" size="40"/>
+                                <span><?= MSG_PG_PAYPAL_EMAIL_ADDRESS_EXPL; ?></span>
                             </div>
                         </div>   
                         <div class="next">
@@ -397,7 +465,7 @@ if (!defined('INCLUDED')) {
             </fieldset>
 
             <!--Enhancement Tab-->
-           <!--2013/10/15 Edit Start (Anthony)-->
+
             <fieldset class="step">
                 <div class="tabs">
                     <h4><?= MSG_WEBSITE_ADDRESS; ?></h4>
@@ -421,11 +489,13 @@ if (!defined('INCLUDED')) {
                         <h5><?= MSG_LOGO_DESC; ?></h5>
 
                         <div class="account-row">
-                            <?php if (isset($campaign["logo"]) && $campaign["logo"]): ?>
-                                <img src="<?php echo $campaign["logo"] . "?" . time(); ?>">
+                            <?php if (isset($campaign["logo"]) && $campaign["logo"] ): ?>
+                                <img id="logo_img" src="<?php echo $campaign["logo"] . "?" . time(); ?>">
                             <?php endif; ?>
                             <div id="MultiPowUpload_holder">
-                                <input class="file" name="logo" id="logo" accept="image/*" type='file' multiple title="logo file"/>
+                                <input class="file" name="logo" id="logo" accept="image/*"
+                                       page=about_me&section=edit&avatar=true&ajaxsubmit=true
+                                       data-url="members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&ajaximageupload=true" type='file' title="logo file"/>
                                 <span class="clear-file-input"><?= MSG_CLEAR ?></span>
                             </div>
                             <div id="serverresponse">
@@ -433,11 +503,12 @@ if (!defined('INCLUDED')) {
                                 <span><?= MSG_UPLOAD_LOGO_INFORMATION ?></span>
                             </div>
                         </div>
-                        <!--<h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>-->
                         <h5><?= MSG_YOUR_STORY3 ?></h5>
                         <div class="account-row">
-                            <?php if (isset($campaign["banner"]) && strstr($campaign["banner"], '/images/partner_logos/') !== false): ?>
-                                <img src="<?php echo $campaign['banner'] . "?" . time() ?>">
+                            <?php if (isset($campaign["banner"]) && $campaign["banner"]): ?>
+                                
+                                    <img id='banner_img' src="<?php echo $campaign['banner'] . "?" . time() ?>">
+                                
                             <?php endif; ?>
                             <div class="upload">
                                 <div class="radio">
@@ -447,7 +518,8 @@ if (!defined('INCLUDED')) {
                                         echo "checked";
                                     } ?> ><label><?= MSG_BANNER_IMAGE ?></label>
                                     <div>
-                                        <input class="file" name="banner" id="banner" accept="image/*" type='file' multiple
+                                        <input class="file" name="banner" id="banner"  accept="image/*" type='file'
+                                               data-url="members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&ajaximageupload=true"
                                                title="banner file" <?php if (strstr($campaign["banner"], "http://")) {
                                             echo "style='display:none'";
                                         } ?>/>
@@ -478,9 +550,6 @@ if (!defined('INCLUDED')) {
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <div class="banners_list">
                                 <span><?= MSG_UPLOAD_IMAGE_INFORMATION ?></span>
                                 <div id="prev_banner"></div>
@@ -514,7 +583,7 @@ if (!defined('INCLUDED')) {
                                           id="project_update_textarea"></textarea>
 
                                 <div class="clear"></div>
-                                <input type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
+                                <input class="disabled project_update_textarea_submit_btn" type="button" value="<?= MSG_SEND ?>" id="button_project_update_textarea">
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -581,7 +650,7 @@ if (!defined('INCLUDED')) {
                                  title="<?= MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP ?>" style="margin-left: 10px;">
                         </div>
                         <div class="radio">
-                            <input type="radio" name="active"
+                            <input type="radio" name="active" id="status-active"
                                    value="1" <?php echo (isset($campaign["active"]) && ($campaign["active"] == 1)) ? "checked" : ''; ?>>
                             <label><?= MSG_ACTIVITY_STATUS_LIVE ?></label>
                         </div>
@@ -597,6 +666,9 @@ if (!defined('INCLUDED')) {
 						<div class="radio">
 							<input type="radio" name="include_clickthrough" value="0" <?php echo (isset($campaign["include_clickthrough"]) && ($campaign["include_clickthrough"] == 0)) ? "checked" : ''; ?>>
 							<label><?=MSG_INCLUDE_CLICKTHROUGH_STATUS_NO?></label>
+                            <img src="/images/question_help.png" height="16" alt="help"
+                                 title="<?= MSG_INCLUDE_CLICKTHROUGH_STATUS_TOOLTIP ?>"
+                                 style="margin-left: 10px;">
 						</div>
 						<div class="radio">
 							<input type="radio" name="include_clickthrough" value="1" <?php echo (isset($campaign["include_clickthrough"]) && ($campaign["include_clickthrough"] == 1)) ? "checked" : ''; ?>>
@@ -607,28 +679,50 @@ if (!defined('INCLUDED')) {
                     <div class="account-row campaign-cron">
                         <label><?= MSG_CRON_CONFIG ?></label>
 
-                        <div class="radio extend-params">
+                        <div class="radio extend-params">          
                             <input type="radio" name="clone_campaign" value="2" />
                             <label><?= MSG_EXTENDS_DATE_EXISTING_CAMPAIGN ?>&nbsp;</label>
-
                             <input type="text" name="keep_alive_days" id="keep_alive_days" />
                             <label><?= MSG_DAYS ?></label>
                             <img src="/images/question_help.png" height="16" alt="help"
                                  title="<?= MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP ?>"
                                  style="margin-left: 10px;">
-                        </div>
-                        <div class="radio">
+                        </div>                                                                                                             
+                        <div class="radio">                                                                                                
                             <input type="radio" name="clone_campaign" value="0" checked="checked" />
                             <label><?= MSG_LET_CAMPAIGN_CLOSE ?></label>
                             <img src="/images/question_help.png" height="16" alt="help" title="<?= MSG_LET_CAMPAIGN_CLOSE ?>"
                                  style="margin-left: 10px;">
+                        </div>                        
+                    </div>
+                    <div class="line-sep"></div>
+                    <div class="account-row">
+                        <label><?= MSG_CLONE_CONFIG ?></label>
+                         <div class="radio extend-params">
+                            <label><?= MSG_CLONE_CONFIG_TIMES ?>&nbsp;</label>
+                            <input type="text" name="renew_times" id="renew_times" value="<?= ($campaign["autorenew"] > 0) ? $campaign["autorenew"] : 0; ?>" />
+                            <label><?= MSG_TIMES ?></label>                            
+                        </div>
+                        <div class="radio">
+                            <div class="renew-checkbox">
+                                <input type="checkbox" id="keep_comments" name="keep_info" value="keep_comments" <?= ($campaign["keep_comments"] == 1) ? "checked" : ''; ?> />
+                                <label for="keep_comments"><?= MSG_KEEP_COMMENT ?></label>
+                            </div>
+                            <div class="renew-checkbox">
+                                <input type="checkbox" id="keep_updates" name="keep_info" value="keep_updates" <?= ($campaign["keep_updates"] == 1) ? "checked" : ''; ?> />
+                                <label for="keep_updates"><?= MSG_KEEP_UPDATES ?></label>
+                            </div>
+                            <div class="renew-checkbox">
+                                <input type="checkbox" id="keep_rewards" name="keep_info" value="keep_rewards" <?= ($campaign["keep_rewards"] == 1) ? "checked" : ''; ?> />
+                                <label for="keep_rewards"><?= MSG_KEEP_REWARDS ?></label>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="next">
                     <input type="button" value="<?= MSG_PREV ?>" class="prev_btn"/>
-                    <a href="/np/copy_campaign.php?campaign_id=<?php echo (isset($campaign["user_id"]) && $campaign["user_id"]) ? $campaign["user_id"] : '0' ?>&action=clone" target="_blank">
-                        <input class="clone_btn" type="button" value="<?= MSG_CLONE_CAMPAIGN ?>"/><img src="/images/question_help.png"height="16" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
+                    <a href="/np/renew_campaigns.php" id="submit_renew">
+                        <input class="clone_btn" type="button" value="<?= MSG_RENEW_CAMPAIGN ?>"/><img src="/images/question_help.png"height="16" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
                     </a>
                     <div class="right">
                         <input name="form_register_proceed" type="submit" id="form_register_proceed"
@@ -650,4 +744,3 @@ if (!defined('INCLUDED')) {
 <div id="confirm_dialog_box" title="<?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_TITLE; ?>" style="display: none;">
     <p><?= MSG_CAMPAIGN_EDIT_REWARDS_DIALOG_MSG; ?></p>
 </div>
-

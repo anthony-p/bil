@@ -34,7 +34,7 @@
         ?>
     </div>
 <?php endif; ?>
-<aside class="nav-social clfix">
+<aside class="nav-social clrfix">
     <?php
     if ((isset($compaignData['facebook_url']) && $compaignData['facebook_url']) ||
         (isset($compaignData['twitter_url']) && $compaignData['twitter_url']) ||
@@ -95,7 +95,7 @@
 
 <aside class="info">
     <div class="inner">
-        <p><?=html_entity_decode($compaignData["campaign_basic"])?></p>
+        <p><?= $compaignData["campaign_basic"]; ?></p>
     </div>
 </aside>
 
@@ -113,7 +113,7 @@
   </div>
 </aside>
 <aside class="social">
-    <div class="inner">
+    <div class="inner clrfix">
         <h5>Share</h5>
         <ul>
             <li>

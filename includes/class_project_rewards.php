@@ -97,47 +97,45 @@ class projectRewards extends custom_field {
 		?><div class="reward_block clrfix" id="reward_block_<?= $reward_id; ?>">
 			<div class="reward_title">
 				<div class="reward_title_label"><?=MSG_REWARD;?></div>
-				<div class="rewards-actions">
-					<!--<button onclick="<?/*=isset($reward['id']) ? 'update' : 'save';*/?>ProjectReward('<?/*= $reward_id; */?>'); return false;" class="validate-reward"></button>-->
-					<button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward"></button>
-				</div>
+
 			</div>
 			<div class="reward_content">
 				<input type="hidden" id="is_new_<?= $reward_id; ?>" value="<?= isset($reward['id']) ? '0' : '1'; ?>">
 				<div class="account-row">
 					<label> <?=MSG_REWARD_AMOUNT;?> *</label>
-					<input type="text" id="reward_amount_<?= $reward_id; ?>" value="<?= @$reward['amount']?>" size="40" />
+					<input type="text" id="reward_amount_<?= $reward_id; ?>" name="reward_amount_<?= $reward_id; ?>" value="<?= @$reward['amount']?>" size="40" />
 					<span class="reward_currency">$</span>
 				</div>
 				<div class="account-row">
 					<label> <?=MSG_REWARD_NAME;?> *</label>
-					<input type="text" id="reward_name_<?= $reward_id; ?>" value="<?= @$reward['name']?>" size="40" />
+					<input type="text" id="reward_name_<?= $reward_id; ?>"  name="reward_name_<?= $reward_id; ?>" value="<?= @$reward['name']?>" size="40" />
 				</div>
 				<div class="account-row">
 					<label> <?=MSG_REWARD_SHORT_DESCRIPTION;?> *</label>
-					<textarea class="reward_description" id="reward_short_description_<?= $reward_id; ?>"><?= @$reward['short_description']?></textarea>
+					<textarea class="reward_description" id="reward_short_description_<?= $reward_id; ?>" name="reward_short_description_<?= $reward_id; ?>"><?= @$reward['short_description']?></textarea>
 				</div>
 				<div class="account-row">
 					<label> <?=MSG_REWARD_DESCRIPTION;?></label>
 				</div>
 				<div class="account-row">
-					<textarea class="reward_description" id="reward_description_<?= $reward_id; ?>"><?= @$reward['description']?></textarea>
+					<textarea class="reward_description"  id="reward_description_<?= $reward_id; ?>" name="reward_description_<?= $reward_id; ?>"><?= @$reward['description']?></textarea>
 				</div>
 				<div class="account-row">
 					<label> <?=MSG_REWARD_AVAILABLE_NUMBER;?></label>
-					<input type="text" value="<?= @$reward['available_number']?>" id="reward_available_number_<?= $reward_id; ?>"></input>
+					<input type="text" value="<?= @$reward['available_number']?>" id="reward_available_number_<?= $reward_id; ?>" name="reward_available_number_<?= $reward_id; ?>"/>
 				</div>
 				<div class="account-row">
 					<label> <?=MSG_REWARD_ESTIMATED_DELIVERY;?></label>
-					<input type="text" id="reward_estimated_delivery_date_<?= $reward_id; ?>" value="<?= isset($reward['estimated_delivery_date']) ? $reward['estimated_delivery_date'] : ''?>"></input>
+					<input type="text" id="reward_estimated_delivery_date_<?= $reward_id; ?>" name="reward_estimated_delivery_date_<?= $reward_id; ?>" value="<?= isset($reward['estimated_delivery_date']) ? $reward['estimated_delivery_date'] : ''?>"/>
 				</div>
 				<div class="account-row" style="margin-top: 20px; margin-left: 135px;">
-					<input type="checkbox" <?php if(@$reward['shipping_address_required'] == 1){echo 'checked';} ?> id="reward_shipping_address_required_<?= $reward_id; ?>" class="reward_shipping_address_required" value="1"></input>
+					<input type="checkbox" <?php if(@$reward['shipping_address_required'] == 1){echo 'checked';} ?> id="reward_shipping_address_required_<?= $reward_id; ?>" class="reward_shipping_address_required" value="1"/>
 					<?=MSG_REWARD_SHIPPING_ADDRESS_REQUIRED;?>
 				</div>
 			</div>
             <div class="clear"> </div>
-        <input type="button" class="post-reward" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
+            <button onclick="deleteProjectReward('<?= $reward_id; ?>'); return false;" class="delete-reward" id="delete_reward_<?= $reward_id; ?>"><?= MSG_MEMBER_AREA_DIALOG_DELETE_UPDATE_CONFIRM_BTN_OK; ?></button>
+            <input type="button" id="reward_submit_<?= $reward_id; ?>" class="post-reward disabled" value="<?=MSG_SEND?>" onclick="<?=isset($reward['id']) ? 'update' : 'save';?>ProjectReward('<?= $reward_id; ?>'); return false;" />
             <script>
 				$( "#reward_estimated_delivery_date_<?= $reward_id; ?>" ).datepicker({ 
 					dateFormat: "mm/dd/yy", 
@@ -163,7 +161,22 @@ class projectRewards extends custom_field {
                         {title: 'Header 1', block: 'span', styles: {color: '#444', font: "1.5em OpenSans, sans-serif", margin: '0 0 1em 0'}},
                         {title: 'Header 2', block: 'span', styles: {color: '#444', font: "bold 1.3em OpenSans, sans-serif", margin: '0 0 1em 0'}}
 
-                    ]
+                    ],
+                    setup: function (ed) {
+                        ed.on("init", function (ed) {
+                            var submit = $('#reward_submit_<?= $reward_id; ?>');
+                            if (submit.length) {
+                                this.on('blur', function (e) {
+
+                                    if (this.getContent() == "") {
+                                        submit.addClass('disabled');
+                                    } else submit.removeClass('disabled');
+
+
+                                });
+                            }
+                        });
+                    }
                 });
 			</script>
 		</div>

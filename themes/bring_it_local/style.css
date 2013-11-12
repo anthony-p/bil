@@ -146,7 +146,7 @@ html[xmlns] .clearfix{
     }
 
 .project-unsuccessful{
-    float:left;
+
     height:20px;
     margin-top:9px;
     border-radius:10px;
@@ -163,9 +163,9 @@ html[xmlns] .clearfix{
     overflow:hidden;
     background-color:#d9d9d9;
     background-repeat:repeat-x;
-    border-radius:10px;
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+    border-radius:10px;    
     box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d9d9d9', endColorstr='#dadada', GradientType=0);*/
     }
 
 .progress .bar{
@@ -177,7 +177,7 @@ html[xmlns] .clearfix{
     text-align:center;
     text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
     box-shadow:inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    background:url("img/progress.gif") bottom no-repeat;
+    background:url("img/progress.gif") bottom no-repeat;                                                                      
     }
 
 #leftColumn{
@@ -1787,6 +1787,16 @@ span.hlbolditem a:hover{
     text-transform:uppercase;
     }
 
+.errormessage_email{
+    background-color: #FFFFE1; 
+    border: 1px dashed #CFCFCF; 
+    margin-top: 8px; 
+    margin-bottom: 16px; 
+    padding: 6px; line-height: 18px;
+    font:14px "OpenSans-Semibold";
+    color:red;
+    }
+
 /* SYSTEM classes - register.php */
 .creg2{
     background-color:#f8f8f8;
@@ -2269,7 +2279,7 @@ footer .copyright .innerContainer .copiright-info{
 
 #index #middleColumn{
     width:940px;
-    margin:0 auto;;
+    margin:0 auto;
     }
 
 #index #middleColumn .line1{
@@ -3355,7 +3365,7 @@ header .innerContainer .logo img{
 
 header .innerContainer nav{
     float:left;
-    margin:10px 0 0 15px;
+    margin:10px 0 0 30px;
     }
 
 header .innerContainer nav ul{
@@ -3722,7 +3732,6 @@ ul.list li.last{
     }
 
 ul.list li .img{
-    float:left;
     width:100%;
     height:165px;
     background:#fff;
@@ -3735,8 +3744,7 @@ ul.list li .img img{
     }
 
 ul.list li .campaigns-info{
-    float:left;
-    width:93%;
+
     padding:16px 0 14px 16px;
     background:#fff;
     }
@@ -3815,8 +3823,7 @@ ul.list li .campaigns-info .more_description.more a{
     }
 
 ul.list li .campaign-details{
-    float:left;
-    width:88%;
+
     background:#f3f3f3;
     padding:10px 13px;
     }
@@ -3824,26 +3831,23 @@ ul.list li .campaign-details{
 ul.list li .campaign-details .price{
     font:16px/16px "OpenSans-SemiBold";
     color:#222;
-    float:left;
     }
 
 ul.list li .campaign-details .votes{
-    font:16px/16px "OpenSans-SemiBold";
+    font:1.2em/1.2em "OpenSans-SemiBold";
     color:#222;
     margin-left:10px;
-    float:right
+    float:right;
     }
 
 ul.list li .campaign-details .day{
-    float:left;
-    font:16px/16px "OpenSans-SemiBold";
+    float:right;
+    font:1.2em/1.2em "OpenSans-SemiBold";
     color:#222;
-    margin-top: 5px;
-    clear: both;
     }
 
 ul.list li .campaign-details .day span{
-    font:12px/16px OpenSans;
+    font:1em/1.2em OpenSans;
     float:none;
     margin-left:6px;
     }
@@ -4138,7 +4142,7 @@ h2.resp-accordion:first-child{
 
 .resp-tab-content aside div.inner{
     padding:0 30px 0 18px;
-    float:left;
+    /*float:left;*/
     }
 
 .resp-tab-content aside.social div.inner{
@@ -4388,6 +4392,9 @@ aside.announcement .write_post form input[type="submit"]{
     cursor:pointer;
     }
 
+aside.announcement .write_post form input[type="submit"].disabled {
+    background:#ccc; cursor:default
+    }
 aside.announcement .write_post form .check{
     float:left;
     }
@@ -4862,18 +4869,10 @@ aside.suport .merchants li .info span{
     float:right;
     height:25px;
     width:250px;
-    border:1px solid #dedede;
-    border-radius:10px;
     border:1px solid rgb(146, 142, 142);
     padding:0 10px;
     border-radius:10px;
     box-shadow:inset 0 0 3px rgba(197, 197, 197, 0.5);
-    }
-
-#register label{
-    float:left;
-    font:14px/25px "OpenSans";
-    color:#222;
     }
 
 #register input.buttons{
@@ -5260,7 +5259,6 @@ aside.suport .merchants li .info span{
     width:250px
     }
 
-
 #members_area #middleColumn table.tbl .border td{
     padding:0;
     }
@@ -5379,8 +5377,8 @@ aside.suport .merchants li .info span{
     }
 
 #members_area .upload_logo{
-    width:200px;
-    height:100px;
+    width:240px;
+    height:180px;
     border:1px solid #dedede;
     float:left;
     overflow:hidden;
@@ -5394,7 +5392,7 @@ aside.suport .merchants li .info span{
 #members_area .about_me_table input[type="file"]{
     float:left;
     padding:5px;
-    margin:69px 0 0 52px;
+    margin:69px 0 0 0;
     border:1px solid #dedede;
     border-radius:4px;
     max-width:265px;
@@ -5402,7 +5400,24 @@ aside.suport .merchants li .info span{
 
 #members_area .about_me_table input[type="submit"]{
     float:right;
+}
+
+#members_area .remove_logo{
+    margin:-27px 0 0 250px;
+}
+    
+.remove_logo input[type="submit"].remove{
+	float:none !important;
+    border:0;
+    width:auto;
+    padding:5px 18px;
+    background:#7eb041;
+    text-shadow:0 0 1px #9ec471;
+    color:#fff;
+    text-transform:uppercase;
+    cursor:pointer;
     }
+
 
 /*about*/
 .view_about_page{
@@ -5570,7 +5585,7 @@ aside.suport .merchants li .info span{
     }
 
 #content_pages .topic_id:hover a{
-    color:#7eb041;;
+    color:#7eb041;
     }
 
 #content_pages .topic_content.about_us h3{
@@ -5827,7 +5842,13 @@ div.select{
     margin:20px 0 60px;
     border:0;
     }
-
+.holder {
+    height: 2em;
+    line-height: 2em;
+    padding-top: 10px;
+    text-align: center;
+    clear: both
+    }
 .holder a{
     cursor:pointer;
     margin:0 5px;
@@ -5842,13 +5863,14 @@ div.select{
     color:#069;
     }
 
-.holder a.jp-previous{
-    margin-right:15px;
-    }
 
-.holder a.jp-next{
+
+.holder a.jp-next, .holder a.jp-previous{
     margin-left:15px;
     color:#7eb041;
+    }
+.holder a.jp-previous{
+    margin-right:15px;
     }
 
 .holder a.jp-current,
@@ -6358,49 +6380,14 @@ a.jp-current:hover{
     position:relative;
     }
 
-.view_campaign_btn{
-    position:absolute;
-    top:0;
-    right:0;
-    background:#f21b43;
-    text-shadow:0 0 1px #ffdfc9;
-    border-radius:5px;
-    box-shadow:inset 0 0 5px rgba(199, 199, 199, 0.5);
-    }
-
-.view_campaign_btn span{
-    display:block;
-    color:#fff;
-    text-transform:uppercase;
-    font:11px/29px "OpenSans-Light";
-    padding:0 15px;
-    }
-
-.view_campaign_btn:hover{
-    background:#e2193f;
-    }
-
-.copy_campaign_btn{
-    position:absolute;
-    top:0px;
-    right:125px;
-    background:#ffa800;
-    text-shadow:0 0 1px #ffdfc9;
-    border-radius:5px;
-    box-shadow:inset 0 0 5px rgba(199, 199, 199, 0.5);
-    }
-
-.copy_campaign_btn span{
-    display:block;
-    color:#fff;
-    text-transform:uppercase;
-    font:11px/29px "OpenSans-Light";
-    padding:0 15px;
-    }
-
-.copy_campaign_btn:hover{
-    background:#f39f00;
-    }
+.campaign-top-btn{ float:right; margin-left:10px;text-shadow:0 0 1px #ffdfc9; border-radius:5px; box-shadow:inset 0 0 5px rgba(199, 199, 199, 0.5); }
+.campaign-top-btn span{ display:block; color:#fff; text-transform:uppercase; font:11px/29px "OpenSans-Light"; padding:0 15px; }
+.view_campaign_btn{ background:#f21b43; }
+.view_campaign_btn:hover{ background:#e2193f }
+.copy_campaign_btn{  background:#ffa800; }
+.copy_campaign_btn:hover{ background:#f39f00 }
+.set_live_campaign_btn{  background:#0077c0; }
+.set_live_campaign_btn:hover{ background:#0077c0 }
 
 .myCampaigs h2{
     display:block;
@@ -6431,7 +6418,6 @@ a.jp-current:hover{
 .myCampaigs form input{
     float:left;
     height:24px;
-    border:0;
     width:150px;
     text-transform:capitalize;
     margin-left:16px;
@@ -6463,6 +6449,7 @@ a.jp-current:hover{
     clear:both;
     margin:20px 0 0;
     border:0;
+
     }
 
 .myCampaigs ul.list{
@@ -6471,9 +6458,12 @@ a.jp-current:hover{
 
 .myCampaigs ul.list li{
     width:438px;
-    border:1px solid rgb(131, 124, 124);
+    border:1px solid #ccc;
     box-shadow:none;
     margin:20px 20px 0 0;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
     }
 
 .myCampaigs ul.list li.odd{
@@ -6482,29 +6472,31 @@ a.jp-current:hover{
 
 .myCampaigs .list li dl{
     width:420px;
-    margin:15px auto;
+    padding: 15px 20px;
     }
 
 .myCampaigs .list li dl dt{
     float:left;
     width:150px;
-    font:12px/15px "OpenSans-Bold";
+    font:1em/1.4em "OpenSans";
     color:#333;
-    text-transform:uppercase;
     margin:5px 0;
     }
 
 .myCampaigs .list li dl dd{
     float:left;
     width:270px;
-    font:12px/15px "OpenSans";
+    font:1.1em/1.4em "OpenSans-SemiBold";
     margin:5px 0;
     }
 
 .myCampaigs .campaignsButtons{
     margin-top:10px;
-    padding:10px 0;
+    padding:15px 0;
     background:#f3f3f3;
+    -moz-border-radius: 0 0 8px 8px;
+    -webkit-border-radius: 0 0 8px 8px;
+    border-radius: 0 0 8px 8px;
     }
 
 .myCampaigs .campaignsButtons a{
@@ -6727,7 +6719,32 @@ a.jp-current:hover{
     width:900px;
     margin:0 auto;
     }
-
+.about-me_block p,
+.summary-block {
+   margin-bottom:1em;
+    }
+.summary-block{
+    position:relative;
+    padding-bottom:55px;
+    height:126px;
+    }
+.summary-block .info {
+    margin-left:255px;
+    }
+.summary-block .name {
+    font-size:1.5em;
+    }
+.summary-block .social-block {
+    position:absolute;
+    bottom:2px;
+    }
+.summary-block .social-block .label{
+    display: block;
+    margin-bottom: 4px;
+    }
+.summary-block .social-block a{
+    text-decoration:none;
+    }
 #avatar_about_me{
     float:left;
     width:240px;
@@ -6744,31 +6761,6 @@ a.jp-current:hover{
 #avatar_about_me .upload_logo img{
     height:100%;
     width:100%;
-    }
-
-#about_me_content{
-    width:640px;
-    float:right;
-    }
-
-#about_me_content p{
-    clear: both;
-    display: block;
-    line-height: normal;
-    padding: 5px 0;
-    }
-
-#about_me_content p span{
-    /*float:left;*/
-    margin-right:10px;
-    }
-
-#about_me_content label{
-    float:left;
-    }
-
-.about-me_block .content_about{
-    clear:both;
     }
 
 /*main_campaigns_page*/
@@ -6968,7 +6960,7 @@ a.jp-current:hover{
     margin-top:4px;
     }
 
-#steps form input:not([type=radio]).post-reward{
+#steps form input:not([type=radio]).post-reward, #steps form button.delete-reward{
     float:right;
     margin:0 1em 1em 0;
     background:#272727;
@@ -6980,7 +6972,12 @@ a.jp-current:hover{
     text-transform:uppercase;
     cursor:pointer;
     }
-
+#steps form button.delete-reward{ float:left;margin-left:10px;}
+#steps form button.delete-reward:hover{ background:#272727; color:#fff;text-shadow:none;}
+#steps form input:not([type=radio]).disabled {
+    background:#eee;
+    cursor:default;
+    }
 #steps form button#add_new_reward_button{
     border:none;
     outline:none;
@@ -6999,7 +6996,7 @@ a.jp-current:hover{
     background:#4797ed;
     }
 
-#steps form button.delete-reward, #steps form button.delete-reward:hover, #steps form button.validate-reward, #steps form button.validate-reward:hover{
+ #steps form button.validate-reward, #steps form button.validate-reward:hover{
     border:none;
     outline:none;
     width:24px;
@@ -7010,9 +7007,7 @@ a.jp-current:hover{
     display:inline-block;
     }
 
-#steps form button.delete-reward, #steps form button.delete-reward:hover{
-    background:url('img/trash.png');
-    }
+
 
 #steps form button.validate-reward, #steps form button.validate-reward:hover{
     background:url('img/validate.png');
@@ -7386,29 +7381,7 @@ a.jp-current:hover{
     display:block;
     }
 
-#members_area .contributions_page table ul li span{
-    font:10px "OpenSans";
-    }
 
-#members_area .contributions_page div ul{
-    float:right;
-    margin-top:20px;
-    }
-
-#members_area .contributions_page div ul li{
-    background:#92c150;
-    float:left;
-    width:20px;
-    height:20px;
-    text-align:center;
-    margin-left:5px;
-    border-radius:50%;
-    }
-
-#members_area .contributions_page div ul li a{
-    font:11px/20px "OpenSans-Bold";
-    color:#fff;
-    }
 
 .subscribe_form{
     float:left;
@@ -7482,7 +7455,7 @@ a.jp-current:hover{
     width:32px;
     height:32px;
     top:5px;
-    left:2px;;
+    left:2px;
     }
 
 .paypal_checked{
@@ -7517,26 +7490,22 @@ a.jp-current:hover{
     color:#333;
     }
 
-/*.about_me_content .content h2{margin: 0 0 20px 0 ; padding: 20px  0 0; font: 16px/29px "OpenSans-SemiBold"; text-transform: uppercase;*/
-/*color: #7eb041;  border-bottom: 1.5px solid #dedede;  text-align: left;}*/
-#about_me_content label{
+.social-icon{
     width:28px;
     text-transform:capitalize;
-    display:block;
-    float:left;
     height:28px;
     background:url("img/website-icon.png") 0 0 no-repeat;
-    margin-left:12px;
     font:13px/27px OpenSans;
-    margin-left:6px;
+    margin-right:6px;
     color:#aaaab5;
+
     }
 
-#about_me_content label.twitter{
+.twitter{
     background:url("img/twitter-icon.png") 0 0 no-repeat;
     }
 
-#about_me_content label.facebook{
+.facebook{
     background:url("img/face-icon.png") 0 0 no-repeat;
     }
 
@@ -7567,4 +7536,11 @@ a.jp-current:hover{
 
 #vote_us_block #vote_us:hover{
     background:#ccebeb;
+    }
+
+.votes-amount {
+    font-size: 1.1em;
+    display: block;
+    font-family: "OpenSans-SemiBold", sans-serif;
+    font-weight: 500;
     }

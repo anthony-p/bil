@@ -24,9 +24,7 @@
             track: true
         });
         var contribution_form = $("#contribution_form");
-        contribution_form.validate({
-
-            errorElement: 'em',
+        /*contribution_form.validate({
 
             rules: {
 
@@ -46,11 +44,14 @@
 
 
             }
-        });
+        });*/
 
         contribution_form.submit(function (e) {
 //            e.preventDefault();
             var amount = $("#amount").val();
+            if (amount.length == 0 )
+                return false;
+
             var community_amount = $("#community_amount").val();
             if (amount && $.isNumeric(amount)) {
                 if (Math.floor(amount) == amount) {

@@ -1,47 +1,61 @@
 <?
 
-if(session_id() == '')
+if (session_id() == '')
     session_start();
 
-include_once ('global.php');
+include_once('global.php');
 include_once('generate_image_thumbnail.php');
 global $db;
 
 if (!defined('PATHINFO_EXTENSION'))
-    define ('PATHINFO_EXTENSION', 4);
-define ('AVATAR_HEIGHT', 200);
-define ('AVATAR_WIDTH', 240);
+    define('PATHINFO_EXTENSION', 4);
+define('AVATAR_HEIGHT', 200);
+define('AVATAR_WIDTH', 240);
 
 $user_id = $session->value('user_id');
 if (empty($user_id)) {
     header_redirect('login.php');
 }
 
-if (isset($_POST['form_aboutme_save'])) {
-    var_dump(1);
-    if (isset ($_FILES["avatar"]) && is_uploaded_file($_FILES["avatar"]["tmp_name"]) ) {
+if ((isset($_POST['form_aboutme_save'])) || (isset($_REQUEST['ajaximageupload']))) {
+
+    if (isset($_FILES["avatar"]) && is_uploaded_file($_FILES["avatar"]["tmp_name"])) {
+
         $logo_file_name = validateAvatar();
         if (!empty($logo_file_name)) {
             $_POST["avatar"] = $logo_file_name;
         } else {
-            $_POST["avatart"] = $_POST["curr_avatart"];
+            $_POST["avatar"] = $_POST["curr_avatar"];
         }
         insertAboutUserDetails($_POST, $db, $user_id);
         $template->set('msg_changes_saved', $msg_changes_saved);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
+        $form_submit_msg=array("status" => "success", "path" => "$logo_file_name");
+
     } else {
-        var_dump(2);
+
         $_POST["avatar"] = $_POST["curr_avatar"];
         insertAboutUserDetails($_POST, $db, $user_id);
         $template->set('msg_changes_saved', $msg_changes_saved);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
+
     }
-} else {
+} elseif (isset($_POST['form_aboutme_logo_remove'])) {
+    $_POST["avatar"] = "";
+    insertAboutUserDetails($_POST, $db, $user_id);
+    $template->set('msg_changes_saved', $msg_changes_saved);
+    $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
+    $template->set('user_details', $user_details);
+
+
+}  else {
+
     $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
     $template->set('user_details', $user_details);
 }
+
 
 $members_area_page_content = $template->process('members_area_aboutme_edit.tpl.php');
 $template->set('members_area_page_content', $members_area_page_content);
@@ -69,21 +83,12 @@ function insertAboutUserDetails($data, $db, $user_id)
  */
 function validateAvatar()
 {
-    $allowed_image_mime_types = array(
-        'image/gif',
-        'image/jpeg',
-        'image/pjpeg',
-        'image/png',
-        'image/tiff',
-        'image/svg+xml'
-    );
+    $allowed_image_mime_types = array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/tiff', 'image/svg+xml');
 
     if (in_array($_FILES["avatar"]["type"], $allowed_image_mime_types)) {
         $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
         $logo_file_name = 'uplimg/partner_logos/' . md5($_POST["first_name"] . 'logo') . '.' . $ext;
-        $upload_logo = generate_image_thumbnail(
-            $_FILES["avatar"]["tmp_name"], $logo_file_name, AVATAR_WIDTH, AVATAR_HEIGHT
-        );
+        $upload_logo = generate_image_thumbnail($_FILES["avatar"]["tmp_name"], $logo_file_name, AVATAR_WIDTH, AVATAR_HEIGHT);
         exec('chmod 0777 uplimg/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
         exec('rm uplimg/partner_logos/temp/' . md5($_POST["first_name"] . 'logo') . '.*');
         return $logo_file_name;

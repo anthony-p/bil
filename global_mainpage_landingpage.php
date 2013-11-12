@@ -523,7 +523,7 @@ $template->set('np_logo', $np_logo);
 
 $template->set('np_banner', $np_row['banner']);
 
-$compaignData =  $db->get_sql_row("SELECT * FROM np_users WHERE username = '$npusername' ");
+$compaignData =  $db->get_sql_row("SELECT np_users.*, bl2_users.organization, bl2_users.first_name, bl2_users.last_name FROM np_users JOIN bl2_users on bl2_users.id = np_users.probid_user_id WHERE username = '$npusername'");
 
 if ($compaignData['active'] == 0)	
 	header_redirect('/404');
@@ -631,7 +631,7 @@ if($compaignData['cfc'] == 1){
 	$template->set("cVoteReport",$menuTemplate->process("vote_report.tpl.php"));
 	$template->set("cHistoryReport",$menuTemplate->process("history_report.tpl.php"));
 }
-if($compaignData['include_clickthrough'] == 1){
+if(isset($compaignData['include_clickthrough']) && $compaignData['include_clickthrough'] == 1){
 	$template->set("cSupport",$menuTemplate->process("support.tpl.php"));
 }
 

@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 date_default_timezone_set("America/Los_Angeles");
 
 include_once ('../includes/config.php');
+require_once ('../includes/global.php');
 
 $user = "thesite@bringitlocal.com";
 $password = "21primus4412";
@@ -198,8 +199,10 @@ try{
     $sql = "SELECT * FROM amazon_report_time WHERE time = '$periodTime'";
     $sql_select = mysql_query($sql);
     $count = mysql_num_rows($sql_select);
-    if(mysql_num_rows($sql_select) > 0)
+    if(mysql_num_rows($sql_select) > 0){
+		unlink($csvFile);
         die(date("F j, Y",$periodTime)." was updated ");
+	}
     $sql = "INSERT INTO `amazon_report_time` (`time`) VALUES ($periodTime)";
     if(!mysql_query($sql))
         die("Can\'t add to DB last update!");
@@ -263,13 +266,15 @@ if(count($user_arr)){
 
 echo "Done import to Database XML report ...<br>";
 
-if(!is_array($start_date) && !is_array($end_date)){
-    $csvFileNewName =  $dir.str_replace("-","",substr($start_date,0,10))."-".str_replace("-","",substr($end_date,0,10)).".csv";
-    if($csvFileNewName != $csvFile)
-        rename($csvFile,$csvFileNewName);
-}
 // Send Report to mail at support
-sendReportToSupport($start_date, $end_date, $csvFile);
+sendReportToSupport();
+
+// if(!is_array($start_date) && !is_array($end_date)){
+    // $csvFileNewName =  $dir.str_replace("-","",substr($start_date,0,10))."-".str_replace("-","",substr($end_date,0,10)).".csv";
+    // if($csvFileNewName != $csvFile)
+        // rename($csvFile,$csvFileNewName);
+// }
+unlink($csvFile);
 
 function getPostFields(array $data) {
 
@@ -314,13 +319,19 @@ function getOneTag($xml)
             $bil_share = 0;
             $pct = 0;
             if($commision > 0 && $sales > 0){
-                //$np_share = round($commision/2,2);
-				$np_share = $commision;
-                //$bil_share = round($commision/2,2);
+				$sql_query = "SELECT rate_of_pay FROM `payment_option_details` WHERE id=1";
+				$sql_select= mysql_query($sql_query);
+				while ($row = mysql_fetch_assoc($sql_select)) {
+					$rate_of_pay = (int)$row["rate_of_pay"];
+					$rate_of_pay2 = 100 - $rate_of_pay;
+				}
+                $np_share = round($commision*$rate_of_pay2/100,2);
+                $bil_share = round($commision*$rate_of_pay/100,2);
                 $pct = (round(($commision/$sales)*100,2))."%";
-                //$pct_giveback = round($pct/2,2)."%";
-				$pct_giveback = $pct;
-            }
+                $pct_giveback = round($pct*$rate_of_pay/100,2)."%";
+            } else {
+				continue;
+			}
             
             // Check if TrackID is Free or bussy
             $atl_sql = "SELECT * FROM  `amazon_tracking_links` WHERE (name = '$tracking_id' AND isfree=0) OR (name = '$tracking_id' AND timestamp+86400 >".time()." )";
@@ -345,9 +356,12 @@ function getOneTag($xml)
                 $id = $row["id"];
             }
 			
-            if($id){                
-//                $s2 = "select * from shop_tracking_links where id=". $id;
-                $s2 = "select shop_tracking_links.*, probid_users.name as user_name, np_users.tax_company_name as npuser_name from shop_tracking_links LEFT JOIN probid_users ON shop_tracking_links.user_id  = probid_users.user_id LEFT JOIN np_users ON shop_tracking_links.np_userid=np_users.user_id where id=". $id;
+            if($id){
+                $s2 = "SELECT shop_tracking_links. * , bl2_users.first_name, bl2_users.last_name, np_users.tax_company_name AS npuser_name 
+						FROM shop_tracking_links 
+						LEFT JOIN bl2_users ON shop_tracking_links.user_id = bl2_users.id 
+						LEFT JOIN np_users ON shop_tracking_links.np_userid = np_users.user_id 
+						WHERE shop_tracking_links.id=". $id;
                 $sql_select= mysql_query($s2);
 
                 while ($row = mysql_fetch_assoc($sql_select))
@@ -364,8 +378,8 @@ function getOneTag($xml)
                     if($tmpDate == $nowDate)
                         $click_date = date("Y-m-j", time() - 60 * 60 * 24);
 
-                    if($row["user_name"] != null)
-                        $user_name = $row["user_name"];
+                    if($row["first_name"] != null && $row["last_name"] != null)
+                        $user_name = $row["first_name"].' '.$row["last_name"];
                     elseif($user_id == "widget")
                         $user_name = "widget";
                     else
@@ -373,8 +387,8 @@ function getOneTag($xml)
                     $npuser_name = $row["npuser_name"];
                 }
 				
-                // $tag_exist = TagExist($tracking_id, $user_id, $click_date);
-                // if(!$tag_exist){
+                $tag_exist = TagExist($tracking_id, $user_id, $click_date);
+                if(!$tag_exist){
                     $fields = array();
                     $fields[]="$id";//unique id
                     $fields[]="$tracking_id";//tracking link
@@ -407,7 +421,7 @@ function getOneTag($xml)
 					$sql = "update np_users set payment=payment+".$np_share." where user_id='".$npuser_id."'";
 					mysql_query($sql);
 					
-					$sql = "insert into funders(user_id, campaign_id, amount, created_at) values('".$user_id."', '".$npuser_id."', '".$np_share."', '".time()."')";
+					$sql = "insert into funders(user_id, campaign_id, amount, source, created_at) values('".$user_id."', '".$npuser_id."', '".$np_share."', 'click through', '".time()."')";
 					mysql_query($sql);
 					
                     $activity_sql="SELECT points_awarded FROM probid_user_activities WHERE activity_id = 8";
@@ -434,18 +448,24 @@ function getOneTag($xml)
                     if($orderedUnit == 0 || $orderedUnit == $shippedUnits)               
                         markFree($tracking_id);
                     
-                // }elseif($track_timestamp != 0){
+                } 
+				// elseif($track_timestamp != 0){
 
                     // $fields = array();
-                    // $sales = (float)$sales+(float)$tag_exist["sales"];
-                    // if($commision > 0 && $sales > 0){
-                        // $np_share = round($commision/2,2);
-						// $np_share = $commision;
-                        // $bil_share = round($commision/2,2);
-                        // $pct = (round(($commision/$sales)*100,2))."%";
-                        // $pct_giveback = round($pct/2,2)."%";
-						// $pct_giveback = $pct;
-                    // }
+                    // $sales = (float)$sales+(float)$tag_exist["sales"];				
+					// if($commision > 0 && $sales > 0){
+						// $sql_query = "SELECT rate_of_pay FROM `payment_option_details` WHERE id=1";
+						// $sql_select= mysql_query($sql_query);
+						// while ($row = mysql_fetch_assoc($sql_select)) {
+							// $rate_of_pay = (int)$row["rate_of_pay"];
+							// $rate_of_pay2 = 100 - $rate_of_pay;
+						// }
+						// $np_share = round($commision*$rate_of_pay2/100,2);
+						// $bil_share = round($commision*$rate_of_pay/100,2);
+						// $pct = (round(($commision/$sales)*100,2))."%";
+						// $pct_giveback = round($pct*$rate_of_pay/100,2)."%";
+					// }
+			
                     // $fields[]="$id";//unique id
                     // $fields[]="$tracking_id";//tracking link
                     // $fields[]="$user_id";//site user
@@ -459,13 +479,13 @@ function getOneTag($xml)
                     // $fields[]=$pct;//pct
                     // $fields[]=$pct_giveback;//pct giveback
                     // $fields[]=$np_share;//np-share
-                    // $fields[]=$bil_share;//bil-share                    
+                    // $fields[]=$bil_share;//bil-share				
 
                     // $fp = fopen($csvFile, 'a+');
                     // fputcsv($fp,$fields);
 
                     // $date = substr($click_date, 0, 10);
-                   // $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'" AND  `click date`  = "'.$date.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
+//                   $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'" AND  `click date`  = "'.$date.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
                     // $sql = 'SELECT `unique id` as ID FROM  `vendor_click_reports` WHERE `tracking link`= "'.$tracking_id.'"  ORDER BY  `vendor_click_reports`.`unique id` DESC LIMIT 1';
 
                     // $sql_select= mysql_query($sql);
@@ -476,7 +496,7 @@ function getOneTag($xml)
                             // $id = $row["ID"];
                         // }
                     // }
-                   // $sql = "UPDATE  `vendor_click_reports` SET  `user name` =  'guest shoppers', `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' WHERE  `unique id` =  '$id' LIMIT 1";
+//                   $sql = "UPDATE  `vendor_click_reports` SET  `user name` =  'guest shoppers', `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' WHERE  `unique id` =  '$id' LIMIT 1";
                     // $today = date("Y-m-j", time() - 86400);
                     // $sql = "UPDATE  `vendor_click_reports` SET  `Sales` =  '$sales' , `Commission` =  '$commision' ,  `pct` =  '$pct' ,  `pct_giveback` =  '$pct_giveback' , `np-share` =  '$np_share' , `bil-share` =  '$bil_share' , `last_update` = '$today' WHERE  `unique id` =  '$id' LIMIT 1";
                     // mysql_query($sql);
@@ -529,16 +549,15 @@ function sendNotificationEmail($user_arr)
 		$points = $values['commision'];
 
         if($values['sales'] > 0 AND $values['commision'] > 0){
-            include ('giveback_invoice_email.php');
+            include ('language/' . $setts['site_lang'] . '/mails/giveback_invoice_email.php');
+			include ('language/' . $setts['site_lang'] . '/mails/giveback_invoice_email_last.php');
         }
     }
     return true;
 }
 
-function sendReportToSupport($start_date, $end_date, $csvFile=null){
-
+function sendReportToSupport(){
     include("giveback_invoice_support_email.php");
-
 }
 
 function markFree($track_link){

@@ -12,6 +12,9 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <script type="text/javascript" src="/scripts/jquery/tinymce/tinymce.min.js" ></script>
 <script type="text/javascript" src="/scripts/jquery/tinymce/jquery.tinymce.min.js" ></script>
 <script type="text/javascript" src="/scripts/init_tinymce.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.fileupload.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
 
@@ -32,7 +35,15 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             return !err_status;
 
         });
-        init_tinymce('#aboutme_page_content');
+
+        $('#avatar').fileupload({
+            dataType: 'json',
+            done: function (e, data) {
+               $('#avatar_img').attr('src',data.result.path.replace(/\\/g, ''));
+            }
+        });
+
+
     });
 </script>
 
@@ -42,16 +53,32 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <table width="100%" border="0" cellpadding="3" cellspacing="2" class="border about_me_table" >
 
     <tr class="info_tittle">
-        <td><h5>Logo</h5></td>
+        <td><h5><?= MSG_MM_ABOUT_ME_AVATAR; ?></h5></td>
     </tr>
     <tr>
         <td>
-            <div class="upload_logo"><img src="<?=$user_details['avatar']?>"/></div>
-            <input type="file" name="avatar" id="avatar" accept="image/*" multiple title="avatar file" />
-            <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
-            <input type="hidden" name="curr_avatar" value="<?=$user_details['avatar']?>" />
-			<input type="submit" name="form_aboutme_save" value="<?=MSG_SAVE_CHANGES;?>" style="float: none; margin: 72px 0 0 25px;" />
-        </td>
+        <div>
+            <div style="float:left">
+            <?php if(!empty($user_details['avatar'])) :?>
+                <div class="upload_logo">
+                    <img id="avatar_img" src="<?$dt = New DateTime(); echo $user_details['avatar']."?".$dt->format('Y-m-d H:i:s'); ?>"/>
+                </div>
+            <?php endif;?>
+            </div>            
+            <div style="float:right">
+                <input type="file" name="avatar" id="avatar" data-url="members_area.php?page=about_me&section=edit&avatar=true&ajaximageupload=true" accept="image/*" multiple title="avatar file" />
+                <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
+                <input type="hidden" name="curr_avatar" id="curr_avatar" value="<?=$user_details['avatar']?>" />
+			    <input type="submit" name="form_aboutme_save" value="<?=MSG_UPLOAD_FILE;?>" style="float: none; margin: 72px 0 0 25px;" />
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <?php if(!empty($user_details['avatar'])) :?>
+        <div class="remove_logo">
+            <input type="submit" name="form_aboutme_logo_remove" class="remove" value="<?=MSG_REMOVE_FILE;?>"/>
+        </div>
+        <?php endif;?>
+    </td>
     </tr>
     <tr class="info_tittle">
         <td><h5><?=MSG_SOCIAL_ACCOUNT_INFORMATION?></h5></td>
