@@ -811,7 +811,7 @@ class npuser extends npcustom_field
         "', '" . $user_details['pitch_text']	. "', '" . urlencode($user_details['url'])	.
         "', '" . urlencode($user_details['facebook_url'])	. "', '" . urlencode($user_details['twitter_url'])	.
         "', '" . $user_details['project_category'] . "', '". $user_details['project_title'] .
-        "', '" . $user_details['campaign_basic'] . "', '" . $user_details['project_short_description'] .
+        "', '" . html_entity_decode($user_details['campaign_basic']) . "', '" . $user_details['project_short_description'] .
         "', '" . $user_details['founddrasing_goal'] . "', '" . $user_details['funding_type'] .
         "', '" . $user_details['deadline_type_value'] . "', '" . $user_details['time_period'] .
         "', '" . $user_details['certain_date'] . "', '" . $user_details['probid_user_id'] .
