@@ -25,23 +25,24 @@
         <?php endforeach; ?>
     </table>
     <div class="holder">
-
-        <?php
-        if (empty($page_selected)) {
-            $page_selected = 1;
-        }
-        if ($total_pages > 1) {
-            if ($page_selected > 1) $disabledclass = ""; else $disabledclass = "jp-disabled";?>
-            <a class="jp-previous <?= $disabledclass ?>"><?= MSG_PREV ?></a>
-            <?php
+		<?php 
+		if ($total_pages > 1) {
+            if ($page_selected > 1) {?>
+            	<a href="/contributions,page,main,section,<?= $page_selected-1 ?>,page_selected,members_area" class="jp-previous"><?= MSG_PREV ?></a>
+            <? }else{ ?>
+            	<a class="jp-previous jp-disabled"><?= MSG_PREV ?></a>
+            <? }
             for ($i = 1; $i <= $total_pages; $i++) : ?>
                 <a href="/contributions,page,main,section,<?= $i ?>,page_selected,members_area"
                    class="<?php if ($i == $page_selected) echo 'jp-current' ?>"><?= $i ?></a>
 
             <?php endfor;
-            if ($page_selected < $total_pages) $disabledclass = ""; else $disabledclass = "jp-disabled";?>
-            <a class="jp-next <?= $disabledclass ?>"><?= MSG_NEXT ?></a>
-        <? } ?>
+            if ($page_selected < $total_pages){?>
+            	<a href="/contributions,page,main,section,<?= $page_selected+1 ?>,page_selected,members_area" class="jp-next"><?= MSG_NEXT ?></a>
+            <? }else{ ?>
+            	<a class="jp-next jp-disabled"><?= MSG_NEXT ?></a>
+            <? } 
+		} ?>
 
     </div>
 
