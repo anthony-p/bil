@@ -208,6 +208,7 @@ define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CONFIRM', 'Yes, continue');
 define('MSG_MEMBER_AREA_DIALOG_DELETE_CAMPAIGN_BTN_CANCEL', 'Nevermind, cancel');
 
 // global header
+define('MSG_GHEADER_POSTFIX', ' | Bring It Local');
 define('MSG_GHEADER_MAINPAGE', 'Bring It Local | Community Crowdfunding');
 define('MSG_GHEADER_ABOUTUS', 'About Us | Bring It Local');
 define('MSG_GHEADER_FAQ', 'Frequently Asked Questions | Bring It Local');
