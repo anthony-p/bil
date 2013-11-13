@@ -3725,10 +3725,11 @@ ul.list li.last{
 
 ul.list li .img{
     width:100%;
-    height:165px;
+    height:150px;
     background:#fff;
     text-align:center;
     overflow:hidden;
+    padding-top:10px;
     }
 
 ul.list li .img img{

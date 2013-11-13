@@ -101,7 +101,7 @@ include_once('includes/grab_video_thumbnail.php');
                     ?>
                     <div class="img">
                         <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>"><img
-                                src="<?php echo isset($imageBanner) ? "/get_image_thumbnail.php?image=200x165_image_" . $imageBanner : ''; ?>"/></a>
+                                src="<?php echo isset($imageBanner) ? "/get_image_thumbnail.php?image=200x150_image_" . $imageBanner : ''; ?>"/></a>
                     </div>
                     <div class="clear"></div>
                     <div class="campaigns-info">

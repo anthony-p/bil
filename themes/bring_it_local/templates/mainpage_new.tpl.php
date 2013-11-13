@@ -92,7 +92,7 @@ include_once('includes/grab_video_thumbnail.php');
                               }
                             }
                         ?>
-                        <div class="img"><img src="<?php echo isset($imageBanner) ? "/get_image_thumbnail.php?image=200x165_image_" . $imageBanner : '';?>"/></div>
+                        <div class="img"><img src="<?php echo isset($imageBanner) ? "/get_image_thumbnail.php?image=200x150_image_" . $imageBanner : '';?>"/></div>
                         <div class="clear"></div>
 					</a>
                         <div class="campaigns-info">
