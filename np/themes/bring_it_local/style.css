@@ -53,7 +53,7 @@ a:visited {
 	padding-top: 15px;
 }
 
-#leftColumn {
+#menuWrapper {
 	float: left;
 	width:170px;
 	margin-left: 15px;
@@ -161,16 +161,16 @@ li {
 }
 
 
-/* leftColumn*/
+/* menuWrapper*/
 
-#leftColumn .menuBox,
-#leftColumn .categoryBox,
-#leftColumn .banner,
-#leftColumn .rss {
+#menuWrapper .menuBox,
+#menuWrapper .categoryBox,
+#menuWrapper .banner,
+#menuWrapper .rss {
 	margin-bottom: 15px;
 }	
 
-#leftColumn .barTitle {
+#menuWrapper .barTitle {
 	font-weight: bold;
 	text-transform: uppercase;
 }	

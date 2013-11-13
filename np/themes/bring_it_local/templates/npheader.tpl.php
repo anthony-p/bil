@@ -307,7 +307,7 @@ global $coupon_url;
         </div>
     </header><!-- end header -->
     <div id="main"><div class="innerContainer">
-            <div id="leftColumn">
+            <div id="menuWrapper">
                 <script language="javascript">
                     var ie4 = false;
 //                    if(document.all) { ie4 = true; }
@@ -346,5 +346,5 @@ global $coupon_url;
                         </div>
                     </form>
                 <? } ?>
-            </div><!-- end leftColumn -->
+            </div><!-- end menuWrapper -->
             <div id="middleColumn">
