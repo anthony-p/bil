@@ -40,6 +40,11 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             dataType: 'json',
             done: function (e, data) {
                $('#avatar_img').attr('src',data.result.path.replace(/\\/g, ''));
+                var remove_button = $('input[name="form_aboutme_logo_remove"'),
+                    remove_html = '<div class="remove_logo"><input type="submit" name="form_aboutme_logo_remove" class="remove" value="<?=MSG_REMOVE_FILE;?>"/></div>';
+                if (!remove_button.length) {
+                    $('#avatar-wrap').after(remove_html);
+                }
             }
         });
 
@@ -57,14 +62,16 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     </tr>
     <tr>
         <td>
-        <div>
+        <div id ='avatar-wrap'>
             <div style="float:left">
-            <?php if(!empty($user_details['avatar'])) :?>
                 <div class="upload_logo">
-                    <img id="avatar_img" src="<?$dt = New DateTime(); echo $user_details['avatar']."?".$dt->format('Y-m-d H:i:s'); ?>"/>
-                </div>
-            <?php endif;?>
-            </div>            
+                <?php if(!empty($user_details['avatar'])) :?>
+                        <img id="avatar_img" src="<?$dt = New DateTime(); echo $user_details['avatar']."?".$dt->format('Y-m-d H:i:s'); ?>"/>
+                <?php else: ?>
+                    <img id="avatar_img" src="/themes/bring_it_local/img/bring-it-local-no-user-photo.jpg"/>
+                <?php endif;?>
+            </div>
+            </div>
             <div style="float:right">
                 <input type="file" name="avatar" id="avatar" data-url="members_area.php?page=about_me&section=edit&avatar=true&ajaximageupload=true" accept="image/*" multiple title="avatar file" />
                 <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
