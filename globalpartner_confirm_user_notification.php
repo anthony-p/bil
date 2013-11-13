@@ -129,7 +129,7 @@ if ($mail_input_id)
         //Mail for CC
         $aditional_mail = '';
 
-        if ($row_details['email']==null or  $row_details['email']!=0)
+        if ($user_row_details['email']!=null or  $user_row_details['email']!=0)
         {
             send_mail($user_row_details['email']. $aditional_mail, $setts['sitename'] . 'Thanks for supporting your community non-profit - Bring It Local', $text_message,
                 'support@bringitlocal.com', $html_message, null, $send);
