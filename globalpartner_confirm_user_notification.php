@@ -54,25 +54,25 @@ if ($mail_input_id)
 
         ## text message - editable
                 $text_message = '<div class="globalPartnerMsg">Hi %1$s,
-        \r\n
+        \n
         Thanks for using Bring It Local to support  %5$s. We see you just clicked through the banner to %6$s.
         If you did end up making a purchase, please expect to see the fundraising results on your member page report within 2 days.
         If this does not show up or you think there was some error please let us know.
-        \r\n
+        \n
 
         Thanks again for supporting %7$s.
-        \r\n\r\n
+        \n\n
         %7$s
-        \r\n
+        \n
 
         %8$s
 
         If you don\'t want to receive similar notification emails any more, please click the link below to unsubscribe.
-        \r\n
+        \n
         %4$s
-        \r\n
+        \n
         Best regards,
-        \r\n
+        \n
         The Bring It Local staff</div>';
 
 
@@ -129,7 +129,7 @@ if ($mail_input_id)
         //Mail for CC
         $aditional_mail = '';
 
-        if ($row_details['email']==null or  $row_details['email']!=0)
+        if ($user_row_details['email']!=null or  $user_row_details['email']!=0)
         {
             send_mail($user_row_details['email']. $aditional_mail, $setts['sitename'] . 'Thanks for supporting your community non-profit - Bring It Local', $text_message,
                 'support@bringitlocal.com', $html_message, null, $send);
@@ -141,8 +141,7 @@ if ($mail_input_id)
             $summarry .= "NonProfit: $nonprofit \n";
             $summarry .= "Vendor: $vendor \n";
 
-//            $support_mail = "support@bringitlocal.com";
-            $support_mail = "lilian.codreanu@gmail.com";
+            $support_mail = "support@bringitlocal.com";
 
             send_mail($support_mail,'Notification mail, user supported here community non-profit - Bring It Local', $summarry,
                             'support@bringitlocal.com', nl2br($summarry), null, $send);
