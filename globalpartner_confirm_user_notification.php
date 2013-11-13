@@ -141,8 +141,7 @@ if ($mail_input_id)
             $summarry .= "NonProfit: $nonprofit \n";
             $summarry .= "Vendor: $vendor \n";
 
-//            $support_mail = "support@bringitlocal.com";
-            $support_mail = "lilian.codreanu@gmail.com";
+            $support_mail = "support@bringitlocal.com";
 
             send_mail($support_mail,'Notification mail, user supported here community non-profit - Bring It Local', $summarry,
                             'support@bringitlocal.com', nl2br($summarry), null, $send);
