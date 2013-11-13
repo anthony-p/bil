@@ -84,6 +84,9 @@ if ($mail_input_id)
         <br>
 
         Thanks for using Bring It Local to support %5$s. We see you just clicked through the banner to %6$s.
+        <br><br>
+        With that one extra click you cast a vote on where you want your money to end up.<br><br>
+        
         If you did end up making a purchase, please expect to see the fundraising results on your member page report within 2 days.
         If this does not show up or you think there was some error please let us know.
         <br>
@@ -131,7 +134,7 @@ if ($mail_input_id)
 
         if ($user_row_details['email']!=null or  $user_row_details['email']!=0)
         {
-            send_mail($user_row_details['email']. $aditional_mail, $setts['sitename'] . 'Thanks for supporting your community non-profit - Bring It Local', $text_message,
+            send_mail($user_row_details['email']. $aditional_mail, $setts['sitename'] . 'Thank you! Your click was a vote for community crowdfunding', $text_message,
                 'support@bringitlocal.com', $html_message, null, $send);
 
             $summarry = "Name: {$user_row_details['first_name']}  {$user_row_details['last_name']}\n";
