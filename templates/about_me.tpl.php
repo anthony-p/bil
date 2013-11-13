@@ -37,7 +37,9 @@ if (!defined('INCLUDED')) {
                 </p>
 
                 <div class="social-block">
-                    <?php if ((!empty($user_details['facebook_link']) && !empty($user_details['twitter_link'])&& !empty($user_details['google_link'])) &&(($user_details['facebook_link'] != 'http://www.facebook.com/') || ($user_details['twitter_link'] != 'http://www.twitter.com/') || ($user_details['google_link'] != 'https://plus.google.com/'))): ?>
+                    <?php if ((!empty($user_details['facebook_link']) && ($user_details['facebook_link'] != 'http://www.facebook.com/')) ||
+                        (!empty($user_details['twitter_link'])&& ($user_details['twitter_link'] != 'http://www.twitter.com/')) ||
+                        (!empty($user_details['google_link'])) && ($user_details['google_link'] != 'https://plus.google.com/')): ?>
                         <span class="label"><?= MSG_ALSO_FIND_ME ?></span>
                     <?php endif; ?>
                     <?php if (!empty($user_details['facebook_link']) && $user_details['facebook_link'] != 'http://www.facebook.com/') : ?>

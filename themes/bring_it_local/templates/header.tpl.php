@@ -349,7 +349,7 @@ global $coupon_url;
 <header>
 <div class="innerContainer">
     <div class="sun"></div>
-    <div class="inner">
+    <div class="inner clrfix">
         <div class="logo"><a href="<?=$index_link;?>"><img src="images/logo_bringItLocal.png?<?=rand(2,9999);?>" alt="Bring It Local" border="0"></a></div>
         <nav>
             <ul>
@@ -504,3 +504,5 @@ global $coupon_url;
             <? } ?>
         </div><!-- end menuWrapper -->
         <div id="middleColumn">
+            <div class="content-wrapper">
+

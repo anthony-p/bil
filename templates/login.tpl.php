@@ -16,7 +16,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 
 
 
-<div class="login-cont">
+<div class="login-cont clrfix">
 
    <div class="log-form">
        <div class="left">
