@@ -434,7 +434,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             <?php endif; ?>
             <div id="MultiPowUpload_holder">
                 <input class="file" name="logo" id="logo" accept="image/*" type='file' multiple title="logo file"/>
-                <span class="clear-file-input">Clear</span>
+                <span id="remove_logo" class="clear-file-input"><?= MSG_REMOVE_FILE ?></span>
             </div>
 
             <div id="serverresponse">
@@ -462,7 +462,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                 <img src="<?php echo $user_details['banner']; ?>" />
             <?php endif; ?>
             <input class="file" name="banner" id="banner" type='file' multiple title="banner file"/>
-            <span class="clear-file-input" >Clear</span>
+            <span id="remove_banner" class="clear-file-input"><?= MSG_REMOVE_FILE ?></span>
             <div id="vide_select_block" style="display: none">
                 <input type="text" name="video_url" id="video_url" value="">
                 <input type="button" id="loadVideo" value="Get">
