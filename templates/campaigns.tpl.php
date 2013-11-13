@@ -1,3 +1,4 @@
+
 <?
 #################################################################
 ## PHP Pro Bid v6.07															##
@@ -12,7 +13,7 @@ if (!defined('INCLUDED')) {
 
 include_once('includes/grab_video_thumbnail.php');
 ?>
-<? echo (!empty($no_results_message)) ? $no_results_message : '<br>'; ?>
+<? echo (!empty($no_results_message)) ? $no_results_message : ''; ?>
 
 
 <script>
@@ -61,7 +62,7 @@ include_once('includes/grab_video_thumbnail.php');
 </script>
 
 <div class="searchBox">
-    <h2> <?= MSG_ALL_CAMPAIGNS ?></h2>
+    <h2> <?= MSG_ALL_CAMPAIGNS ?>
 
     <form id="search_by_name" action="campaigns.php">
 <!--
@@ -77,7 +78,7 @@ include_once('includes/grab_video_thumbnail.php');
             <button type="submit"></button>
         </div>
     </form>
-
+    </h2>
     <div class="searchBox">
             <div class="holder"></div>
 
@@ -100,7 +101,7 @@ include_once('includes/grab_video_thumbnail.php');
                     ?>
                     <div class="img">
                         <a href="<?php echo isset ($row["username"]) ? '/' . $row["username"] : '' ?>"><img
-                                src="<?php echo isset($imageBanner) ? "/get_image_thumbnail.php?image=200x165_image_" . $imageBanner : ''; ?>"/></a>
+                                src="<?php echo isset($imageBanner) ? "/get_image_thumbnail.php?image=200x150_image_" . $imageBanner : ''; ?>"/></a>
                     </div>
                     <div class="clear"></div>
                     <div class="campaigns-info">

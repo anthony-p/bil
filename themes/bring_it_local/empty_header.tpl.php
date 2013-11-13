@@ -144,7 +144,7 @@ window.onload=function(){
  -->
             
 <div id="main">
-	<div id="leftColumn">
+	<div id="menuWrapper">
          	<script language="javascript">
 			var ie4 = false;
 			if(document.all) { ie4 = true; }
@@ -192,5 +192,5 @@ window.onload=function(){
 			</div>   				
 		</form>
 		<? } ?>
-	</div><!-- end leftColumn -->
+	</div><!-- end menuWrapper -->
 	<div id="xxmiddleColumn">

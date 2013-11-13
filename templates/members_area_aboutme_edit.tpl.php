@@ -55,7 +55,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <br>
 <form action="members_area.php?page=about_me&section=edit" id="member_area_edit_form" method="POST" enctype="multipart/form-data">
  <h6 class="tittle_tp">  <?=MSG_MM_ABOUT_ME_PAGE;?> </h6>
-<table width="100%" border="0" cellpadding="3" cellspacing="2" class="border about_me_table" >
+<table class="border about_me_table" >
 
     <tr class="info_tittle">
         <td><h5><?= MSG_MM_ABOUT_ME_AVATAR; ?></h5></td>
@@ -94,7 +94,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <td>
             <label class="facebook" style="width: 80px;">facebook</label>
             <label class="social-network-url">http://www.facebook.com/</label><input type="text" name="facebook_link" value="<?=str_replace('http://www.facebook.com/', '', $user_details['facebook_link']);?>"/>
-        </td>
+    </td>
     </tr>
     <tr>
         <td>
