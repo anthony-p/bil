@@ -4946,7 +4946,7 @@ aside.suport .merchants li .info span{
     margin:0 auto;
     }
 
-#members_area #middleColumn, .about-me-wrap{
+#members_area .content-wrapper, .about-me-wrap{
     width:100%;
     background:#fff;
     padding-bottom:30px;
