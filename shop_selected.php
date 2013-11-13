@@ -137,7 +137,7 @@ try{
         if($_GET['report'] == true) {
             echo AmazonTrackingURL::printReport($_GET['report_id']);
         }
-        else if($_GET['encode'] == true) {
+        else if(isset($_GET['encode']) && $_GET['encode'] == true) {
             echo AmazonTrackingURL::generateSwitchingUrl('http://www.amazon.com/Kindle-Wireless-Reader-Wifi-Graphite/dp/B002Y27P3M/ref=as_li_wdgt_js_ex?&camp=212361&linkCode=wsw&tag=bringitstore15-20&creative=391881');
         }
         else {
