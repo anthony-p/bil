@@ -54,25 +54,25 @@ if ($mail_input_id)
 
         ## text message - editable
                 $text_message = '<div class="globalPartnerMsg">Hi %1$s,
-        \r\n
+        \n
         Thanks for using Bring It Local to support  %5$s. We see you just clicked through the banner to %6$s.
         If you did end up making a purchase, please expect to see the fundraising results on your member page report within 2 days.
         If this does not show up or you think there was some error please let us know.
-        \r\n
+        \n
 
         Thanks again for supporting %7$s.
-        \r\n\r\n
+        \n\n
         %7$s
-        \r\n
+        \n
 
         %8$s
 
         If you don\'t want to receive similar notification emails any more, please click the link below to unsubscribe.
-        \r\n
+        \n
         %4$s
-        \r\n
+        \n
         Best regards,
-        \r\n
+        \n
         The Bring It Local staff</div>';
 
 
