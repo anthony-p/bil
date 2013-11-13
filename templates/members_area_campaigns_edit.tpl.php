@@ -513,7 +513,7 @@ if (!defined('INCLUDED')) {
                             <div id="MultiPowUpload_holder">
                                 <input class="file" name="logo" id="logo" accept="image/*"
                                        data-url="members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&ajaximageupload=true" type='file' title="logo file"/>
-                                <span id="remove_logo" class="clear-file-input"><?= MSG_CLEAR ?></span>
+                                <span id="remove_logo" class="clear-file-input"><?= MSG_REMOVE_FILE ?></span>
                             </div>
                             <div id="serverresponse">
                                 <div id="prev_logo"></div>
@@ -538,7 +538,7 @@ if (!defined('INCLUDED')) {
                                                title="banner file" <?php if (strstr($campaign["banner"], "http://")) {
                                             echo "style='display:none'";
                                         } ?>/>
-                                        <span id="remove_banner" class="clear-file-input"><?= MSG_CLEAR ?></span>
+                                        <span id="remove_banner" class="clear-file-input"><?= MSG_REMOVE_FILE ?></span>
                                     </div>
                                 </div>
                                 <div class="clear"></div>
