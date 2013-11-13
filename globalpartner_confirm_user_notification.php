@@ -6,9 +6,16 @@ if ($mail_input_id)
 {
     global $db;
 
-    $row_details = $db->get_sql_row("SELECT np.url, u.name, u.globalpartner_email, u.npname, u.user_id, u.npuser_id, u.username, u.email FROM " . DB_PREFIX . "users u  INNER JOIN  np_users np ON u.npuser_id = np.user_id  WHERE u.user_id='" . $mail_input_id . "'");
+    // Get campaign data
+    $npuser_id = $_COOKIE['np_userid'];
+    $sql = "SELECT np.url, np.name, u.organization, u.email, u.id as user_id FROM bl2_users u  INNER JOIN  np_users np ON u.id = np.probid_user_id  WHERE np.user_id = $npuser_id";
+    $row_details = $db->get_sql_row($sql);
 
-    if($row_details){
+    // Get User data...
+    $sql = "SELECT * FROM bl2_users WHERE id=$mail_input_id";
+    $user_row_details = $db->get_sql_row($sql);
+
+    if($row_details && $user_row_details){
         if ($row_details["url"]!='')
         {
             //$site = "Don't forget to visit your non-profit\'s website <a href=\"http:\/\/" . $row_details["url"] . ">here<\/a> to stay current on all their news and events.    <br>        <br>";
@@ -19,7 +26,7 @@ if ($mail_input_id)
             $np_link = "";
         }
 
-        $npuser_id = $row_details["npuser_id"];
+
 
         $partner = $db->get_sql_row("SELECT * FROM " . DB_PREFIX . "partners WHERE advert_url='" . str_replace ('&', '%26', $url) ."'");
 
@@ -108,30 +115,34 @@ if ($mail_input_id)
         $key = "bringitlocal firmhashkey"; // you can change it
         $encrypted_data = md5($input . $key);
 
-        $nonprofit=$row_details["npname"];
+        if ($row_details['organization'] != '')
+            $nonprofit=$row_details['organization'];
+        else
+            $nonprofit=$row_details["name"];
+
         $vendor=$partner["name"];
 
-
         $activation_link = SITE_PATH . 'global_partners.php?key=' . $encrypted_data . '&sid=' . $input;
-        $text_message = sprintf($text_message, $row_details['name'], $setts['sitename'], $row_details['username'], $activation_link, $nonprofit, $vendor, $news, $np_link);
-        $html_message = sprintf($html_message, $row_details['name'], $setts['sitename'], $row_details['username'], $activation_link, $nonprofit, $vendor, $news, $np_link);
+        $text_message = sprintf($text_message, $user_row_details['first_name'].' '.$user_row_details['last_name'], $setts['sitename'], $row_details['username'], $activation_link, $nonprofit, $vendor, $news, $np_link);
+        $html_message = sprintf($html_message, $user_row_details['first_name'].' '.$user_row_details['last_name'], $setts['sitename'], $row_details['username'], $activation_link, $nonprofit, $vendor, $news, $np_link);
 
         //Mail for CC
         $aditional_mail = '';
 
-        if ($row_details['globalpartner_email']==null or  $row_details['globalpartner_email']!=0)
+        if ($row_details['email']==null or  $row_details['email']!=0)
         {
-            send_mail($row_details['email']. $aditional_mail, $setts['sitename'] . 'Thanks for supporting your community non-profit - Bring It Local', $text_message,
+            send_mail($user_row_details['email']. $aditional_mail, $setts['sitename'] . 'Thanks for supporting your community non-profit - Bring It Local', $text_message,
                 'support@bringitlocal.com', $html_message, null, $send);
 
-            $summarry = "Name: {$row_details['name']} \n";
+            $summarry = "Name: {$user_row_details['first_name']}  {$user_row_details['last_name']}\n";
             $summarry .= "Sitename: {$setts['sitename']} \n";
-            $summarry .= "Username: {$row_details['username']} \n";
+            $summarry .= "UserId: {$user_row_details['id']} \n";
             $summarry .= "Action Link: $activation_link \n";
             $summarry .= "NonProfit: $nonprofit \n";
             $summarry .= "Vendor: $vendor \n";
 
-            $support_mail = "support@bringitlocal.com";
+//            $support_mail = "support@bringitlocal.com";
+            $support_mail = "lilian.codreanu@gmail.com";
 
             send_mail($support_mail,'Notification mail, user supported here community non-profit - Bring It Local', $summarry,
                             'support@bringitlocal.com', nl2br($summarry), null, $send);
