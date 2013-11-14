@@ -18,39 +18,20 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $("#member_area_edit_form").submit(function(){
-
-            var err_status = false;
-
-            if ($('#avatar').val() !== '') {
-                var ext = $('#avatar').val().split('.').pop().toLowerCase();
-                if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-                    $("#avatar").addClass("error");
-                    err_status = true;
-                } else {
-                    $("#avatar").removeClass("error");
-                }
-            }
-
-            return !err_status;
-
-        });
-
         $('#avatar').fileupload({
             dataType: 'json',
             done: function (e, data) {
                $('#avatar_img').attr('src',data.result.path.replace(/\\/g, ''));
+               $('#curr_avatar').attr('value',data.result.path.replace(/\\/g, ''));
             }
         });
-
-
     });
 </script>
 
 <br>
 <form action="members_area.php?page=about_me&section=edit" id="member_area_edit_form" method="POST" enctype="multipart/form-data">
  <h6 class="tittle_tp">  <?=MSG_MM_ABOUT_ME_PAGE;?> </h6>
-<table class="border about_me_table" >
+<table width="100%" border="0" cellpadding="3" cellspacing="2" class="border about_me_table" >
 
     <tr class="info_tittle">
         <td><h5><?= MSG_MM_ABOUT_ME_AVATAR; ?></h5></td>
@@ -75,7 +56,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             </div>
             <div style="clear:both;"></div>
         </div>
-        
     </td>
     </tr>
     <tr class="info_tittle">
@@ -85,7 +65,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <td>
             <label class="facebook" style="width: 80px;">facebook</label>
             <label class="social-network-url">http://www.facebook.com/</label><input type="text" name="facebook_link" value="<?=str_replace('http://www.facebook.com/', '', $user_details['facebook_link']);?>"/>
-    </td>
+        </td>
     </tr>
     <tr>
         <td>
