@@ -26,8 +26,13 @@ if (!defined('INCLUDED')) {
             </div>
             <div class="info">
                 <p>
-            <span
-                class="label name"><?php echo isset ($user_details["first_name"]) ? $user_details["first_name"] : '' ?>  <?php echo isset ($user_details["last_name"]) ? $user_details["last_name"] : '' ?></span>
+            <span class="label name">
+            	<?php if (!empty($user_details['organization'])) {?>
+            		<?php echo $user_details["organization"];?>	
+            	<?php }else {?>
+            		<?php echo isset ($user_details["first_name"]) ? $user_details["first_name"] : '' ?>  <?php echo isset ($user_details["last_name"]) ? $user_details["last_name"] : '' ?>
+            	<?php }?>
+            </span>
                 </p>
 
                 <p>
