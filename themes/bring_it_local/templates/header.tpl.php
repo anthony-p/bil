@@ -407,7 +407,7 @@ global $coupon_url;
                 <span><?=MSG_BROWSE_CAMPAIGNS;?></span>
                 <ul>
                     <li>
-                        <a href="/search.php?order_by=reg_date&order_type=DESC">
+                        <a href="/search.php?order_by=start_date&order_type=DESC">
                             <span><?=MSG_NEWCAMPAIGNS;?></span>
                         </a>
                     </li>
