@@ -40,11 +40,6 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
             dataType: 'json',
             done: function (e, data) {
                $('#avatar_img').attr('src',data.result.path.replace(/\\/g, ''));
-                var remove_button = $('input[name="form_aboutme_logo_remove"'),
-                    remove_html = '<div class="remove_logo"><input type="submit" name="form_aboutme_logo_remove" class="remove" value="<?=MSG_REMOVE_FILE;?>"/></div>';
-                if (!remove_button.length) {
-                    $('#avatar-wrap').after(remove_html);
-                }
             }
         });
 
@@ -63,28 +58,24 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
     <tr>
         <td>
         <div id ='avatar-wrap'>
-            <div style="float:left">
+            <div>
                 <div class="upload_logo">
                 <?php if(!empty($user_details['avatar'])) :?>
                         <img id="avatar_img" src="<?$dt = New DateTime(); echo $user_details['avatar']."?".$dt->format('Y-m-d H:i:s'); ?>"/>
                 <?php else: ?>
                     <img id="avatar_img" src="/themes/bring_it_local/img/bring-it-local-no-user-photo.jpg"/>
                 <?php endif;?>
+            	</div>
             </div>
-            </div>
-            <div style="float:right">
+            <div>
                 <input type="file" name="avatar" id="avatar" data-url="members_area.php?page=about_me&section=edit&avatar=true&ajaximageupload=true" accept="image/*" multiple title="avatar file" />
                 <input type="hidden" name="first_name" value="<?=$user_details['first_name']?>" />
                 <input type="hidden" name="curr_avatar" id="curr_avatar" value="<?=$user_details['avatar']?>" />
-			    <input type="submit" name="form_aboutme_save" value="<?=MSG_UPLOAD_FILE;?>" style="float: none; margin: 72px 0 0 25px;" />
+                <input type="submit" name="form_aboutme_logo_remove" class="remove" value="<?=MSG_REMOVE_FILE;?>"/>
             </div>
             <div style="clear:both;"></div>
         </div>
-        <?php if(!empty($user_details['avatar'])) :?>
-        <div class="remove_logo">
-            <input type="submit" name="form_aboutme_logo_remove" class="remove" value="<?=MSG_REMOVE_FILE;?>"/>
-        </div>
-        <?php endif;?>
+        
     </td>
     </tr>
     <tr class="info_tittle">
