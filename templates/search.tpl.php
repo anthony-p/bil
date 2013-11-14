@@ -45,7 +45,7 @@ include_once('includes/grab_video_thumbnail.php');
 
 </script>
 <div class="searchBox">
-<h2> Search Result </h2>
+<h2> Search Result
 <form id="search_by_name" accept="#">
      <!--   <select id="order_result" name="names" class="changeMe">
             <option value="0" selected="selected" class="order">Sort by</option>
@@ -57,6 +57,7 @@ include_once('includes/grab_video_thumbnail.php');
       <button type="submit"></button>
   </div>
 </form>
+</h2>
     <div class="searchBox">
     <div class="clear"></div>
     <ul class="list" id="pagination">
@@ -76,7 +77,7 @@ include_once('includes/grab_video_thumbnail.php');
             <div class="img">
                 <a href="<?php echo isset ($campaign["username"]) ? '/' . $campaign["username"] : '' ?>">
                     <img src="<?php echo isset ($imageBanner) ?
-                        "/get_image_thumbnail.php?image=200x165_image_" . $imageBanner : '' ?>">
+                        "/get_image_thumbnail.php?image=200x150_image_" . $imageBanner : '' ?>">
                 </a>
             </div>
             <div class="clear"></div>

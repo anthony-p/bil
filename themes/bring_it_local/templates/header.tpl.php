@@ -349,7 +349,7 @@ global $coupon_url;
 <header>
 <div class="innerContainer">
     <div class="sun"></div>
-    <div class="inner">
+    <div class="inner clrfix">
         <div class="logo"><a href="<?=$index_link;?>"><img src="images/logo_bringItLocal.png?<?=rand(2,9999);?>" alt="Bring It Local" border="0"></a></div>
         <nav>
             <ul>
@@ -449,7 +449,7 @@ global $coupon_url;
 </header><!-- end header -->
 <!--    <div id="topBanner"><a href="/content_pages.php?page=about_us"><img src="/images/bil_banner3.gif" alt="Shop Main Street not Wall Street" border="0"></a></div>-->
 <div id="main"><div class="innerContainer">
-        <div id="leftColumn">
+        <div id="menuWrapper">
             <script language="javascript">
                 var ie4 = false;
                 if(document.all) { ie4 = true; }
@@ -502,5 +502,7 @@ global $coupon_url;
                     </div>
                 </form>
             <? } ?>
-        </div><!-- end leftColumn -->
+        </div><!-- end menuWrapper -->
         <div id="middleColumn">
+            <div class="content-wrapper">
+

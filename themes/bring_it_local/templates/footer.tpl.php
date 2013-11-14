@@ -9,6 +9,7 @@
 if ( !defined('INCLUDED') ) { die("Access Denied"); }
 global $coupon_url;
 ?>
+	</div><!-- end content-wrapper -->
 	</div><!-- end middleColumn -->
 	<div id="rightColumn">
 		<!-- landing page -->

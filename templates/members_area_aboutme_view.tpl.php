@@ -10,8 +10,7 @@ if (!defined('INCLUDED')) {
     die("Access Denied");
 }
 ?>
-<link href="/css/tinyeditor.css" rel="stylesheet">
-<br>
+
 <div class="about-me_block">
     <div class="summary-block clrfix">
         <div id="avatar_about_me">
@@ -36,20 +35,20 @@ if (!defined('INCLUDED')) {
             </p>
 
             <div class="social-block">
-                <?php if ((!empty($user_details['facebook_link'])) || (!empty($user_details['twitter_link'])) || (!empty($user_details['google_link']))) : ?>
+                <?php if (($user_details['facebook_link'] != 'http://www.facebook.com/') || ($user_details['twitter_link'] != 'http://www.twitter.com/') || ($user_details['google_link'] != 'https://plus.google.com/')) : ?>
                     <span class="label"><?= MSG_ALSO_FIND_ME ?></span>
                 <?php endif; ?>
-                <?php if (!empty($user_details['facebook_link'])) : ?>
+                <?php if ($user_details['facebook_link'] != 'http://www.facebook.com/') : ?>
                     <a href="<?= $user_details['facebook_link'] ?>" target="_blank">
                         <span class="social-icon inline-block facebook"></span>
                     </a>
                 <?php endif; ?>
-                <?php if (!empty($user_details['twitter_link'])) : ?>
+                <?php if ($user_details['twitter_link'] != 'http://www.twitter.com/') : ?>
                     <a href="<?= $user_details['twitter_link'] ?>" target="_blank">
                         <span class="social-icon inline-block twitter"></span>
                     </a>
                 <?php endif; ?>
-                <?php if (!empty($user_details['google_link'])) : ?>
+                <?php if ($user_details['google_link'] != 'https://plus.google.com/') : ?>
                     <a href="<?= $user_details['google_link'] ?>" target="_blank">
                         <span class="social-icon inline-block google"></span>
                     </a>
