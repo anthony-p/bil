@@ -18,7 +18,7 @@ if ($mail_input_id)
     if($row_details && $user_row_details){
         if ($row_details["url"]!='')
         {
-            $np_link = "Please keep clicking through! And don't forget to visit the campaign page for <a href=\"http://" . $_SERVER["SERVER_NAME"] ."/{$row_details["url"]}>{$row_details["project_title"]}</a> to stay current on all their news and updates.";
+            $np_link = "Please keep clicking through! And don't forget to visit the campaign page for <a href=\"http://" . $_SERVER["SERVER_NAME"] ."/{$row_details["url"]}\">{$row_details["project_title"]}</a> to stay current on all their news and updates.";
         }
         else
         {
