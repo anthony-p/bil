@@ -5367,7 +5367,7 @@ aside.suport .merchants li .info span{
     border:1px solid #dedede;
     overflow:hidden;
     display:table;
-    vertical-align: center;
+    vertical-align: middle;
     }
 
 #members_area .upload_logo img{
