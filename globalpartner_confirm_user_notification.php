@@ -55,8 +55,9 @@ if ($mail_input_id)
 
         $t = __DIR__. '/language/english/mails/clickthroughs_template.phtml';
         var_dump($t);
+        $message_template  = file_get_contents('/language/english/mails/clickthroughs_template.phtml');
         die;
-        $message_template  = file_get_contents(__DIR__. '/language/english/mails/clickthroughs_template.phtml');
+        $message_template  = file_get_contents(__DIR__ . '/language/english/mails/clickthroughs_template.phtml');
         ## text message - editable
         $text_message  = $message_template;
         $html_message = nl2br($text_message);
