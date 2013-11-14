@@ -131,7 +131,7 @@ class npuser extends npcustom_field
     function selectAllLive()
     {
         $time = time();
-        $ordering = "  ORDER BY reg_date DESC";
+        $ordering = "  ORDER BY start_date DESC, reg_date DESC";
         $group = " GROUP BY np_users.user_id ";
         $fields = NPDB_PREFIX . "users.banner, " . NPDB_PREFIX . "users.name, " .
             NPDB_PREFIX . "users.description, " . NPDB_PREFIX . "users.city, " .
@@ -152,6 +152,7 @@ class npuser extends npcustom_field
             isset($_GET["order_type"]) && $_GET["order_type"] &&
             in_array($_GET["order_type"], array("ASC", "DESC"))) {
             $ordering = " ORDER BY " . $_GET["order_by"] . " " . $_GET["order_type"];
+			$ordering = $ordering.", reg_date DESC";
         }
         if (isset($_GET["search"]) && $_GET["search"]) {
             $search = mysql_real_escape_string($_GET["search"]);
@@ -169,7 +170,7 @@ class npuser extends npcustom_field
         } elseif (isset($_GET["keyword"]) && $_GET["keyword"]) {
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
-                $ordering = " ORDER BY reg_date " . $order;
+                $ordering = " ORDER BY start_date ".$order.",reg_date " . $order;
             }
             $search = mysql_real_escape_string($_GET["keyword"]);
             $sql_select_query = "SELECT " . $fields .
@@ -201,7 +202,7 @@ class npuser extends npcustom_field
         else {
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
-                $ordering = " ORDER BY reg_date " . $order;
+                $ordering = " ORDER BY start_date ".$order.",reg_date " . $order;
             }
             $sql_select_query = "SELECT " . $fields . $join .
                 " WHERE np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" .
