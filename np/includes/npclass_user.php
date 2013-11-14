@@ -169,7 +169,7 @@ class npuser extends npcustom_field
         } elseif (isset($_GET["keyword"]) && $_GET["keyword"]) {
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
-                $ordering = " ORDER BY start_date " . $order;
+                $ordering = " ORDER BY reg_date " . $order;
             }
             $search = mysql_real_escape_string($_GET["keyword"]);
             $sql_select_query = "SELECT " . $fields .
@@ -201,7 +201,7 @@ class npuser extends npcustom_field
         else {
             if (isset($_GET["names"]) && in_array($_GET["names"], array("ASC", "DESC"))) {
                 $order = $_GET["names"];
-                $ordering = " ORDER BY start_date " . $order;
+                $ordering = " ORDER BY reg_date " . $order;
             }
             $sql_select_query = "SELECT " . $fields . $join .
                 " WHERE np_users.disabled=0  AND np_users.active=1 AND np_users.end_date>" .
@@ -222,8 +222,8 @@ class npuser extends npcustom_field
             }
             $end_time = (isset($result['end_date']) && $result['end_date']) ?
                 $result['end_date'] : 0;
-            $create_time = (isset($result['start_date']) && $result['start_date']) ?
-                $result['start_date'] : 1;
+            $create_time = (isset($result['reg_date']) && $result['reg_date']) ?
+                $result['reg_date'] : 1;
             $current_time = time();
             $completed = round((($current_time - $create_time) / ($end_time- $create_time)) * 100);
             $percent=$completed*100/194;
