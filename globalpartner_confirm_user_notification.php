@@ -8,7 +8,7 @@ if ($mail_input_id)
 
     // Get campaign data
     $npuser_id = $_COOKIE['np_userid'];
-    $sql = "SELECT np.url, np.name, u.organization, u.email, u.id as user_id FROM bl2_users u  INNER JOIN  np_users np ON u.id = np.probid_user_id  WHERE np.user_id = $npuser_id";
+    $sql = "SELECT np.username as url, np.project_title, np.name, u.organization, u.email, u.id as user_id FROM bl2_users u  INNER JOIN  np_users np ON u.id = np.probid_user_id  WHERE np.user_id = $npuser_id";
     $row_details = $db->get_sql_row($sql);
 
     // Get User data...
@@ -19,7 +19,8 @@ if ($mail_input_id)
         if ($row_details["url"]!='')
         {
             //$site = "Don't forget to visit your non-profit\'s website <a href=\"http:\/\/" . $row_details["url"] . ">here<\/a> to stay current on all their news and events.    <br>        <br>";
-            $np_link = "Don't forget to visit your non-profit's website <a href=\"http://" . $row_details["url"] . "\">here</a> to stay current on all their news and events. <br><br>";
+//            $np_link = "Don't forget to visit your non-profit's website <a href=\"http://" . $row_details["url"] . "\">here</a> to stay current on all their news and events. <br><br>";
+            $np_link = "Please keep clicking through! And don't forget to visit the campaign page for <a href=\"http://" . $_SERVER["SERVER_NAME"] ."/{$row_details["url"]}>{$row_details["project_title"]}</a> to stay current on all their news and updates.";
         }
         else
         {
@@ -52,67 +53,11 @@ if ($mail_input_id)
 
         $send = true; // always sent;
 
+        $message_template  = file_get_contents(__DIR__. '/language/english/mails/clickthroughs_template.phtml');
         ## text message - editable
-                $text_message = '<div class="globalPartnerMsg">Hi %1$s,
-        \n
-        Thanks for using Bring It Local to support  %5$s. We see you just clicked through the banner to %6$s.
-        If you did end up making a purchase, please expect to see the fundraising results on your member page report within 2 days.
-        If this does not show up or you think there was some error please let us know.
-        \n
+        $text_message  = $message_template;
+        $html_message = nl2br($text_message);
 
-        Thanks again for supporting %7$s.
-        \n\n
-        %7$s
-        \n
-
-        %8$s
-
-        If you don\'t want to receive similar notification emails any more, please click the link below to unsubscribe.
-        \n
-        %4$s
-        \n
-        Best regards,
-        \n
-        The Bring It Local staff</div>';
-
-
-
-        ## html message - editable
-        $html_message = '<div class="globalPartnerMsg">Hi %1$s,
-
-        <br>
-        <br>
-
-        Thanks for using Bring It Local to support %5$s. We see you just clicked through the banner to %6$s.
-        <br><br>
-        With that one extra click you cast a vote on where you want your money to end up.<br><br>
-        
-        If you did end up making a purchase, please expect to see the fundraising results on your member page report within 2 days.
-        If this does not show up or you think there was some error please let us know.
-        <br>
-        <br>
-
-        Thanks again for supporting %5$s.
-        <br>
-        <br>
-
-         %7$s
-
-        <br>
-        <br>
-         %8$s
-
-        If you don\'t want to receive similar notification emails any more, please click the link below to unsubscribe.
-        <br>
-        <br>
-        <a href ="%4$s">%4$s</a>
-        <br>
-        <br>
-
-        Best regards,
-        <br>
-        <br>
-        The Bring It Local staff</div>';
 
         $input =  $row_details['user_id'];
         $key = "bringitlocal firmhashkey"; // you can change it
