@@ -310,7 +310,7 @@ if (!defined('INCLUDED')) {
                             <label> <?= MSG_COMPANY_NAME; ?></label>
                             <input name="tax_company_name" type="text" id="tax_company_name"
                                    value="<?php echo isset($campaign["tax_company_name"]) ? $campaign["tax_company_name"] : ''; ?>"
-                                   size="40" maxlength="30"/>
+                                   size="40"/>
                             <span><?= MSG_COMPANY_NAME_DESC; ?></span>
                         </div>
                         <div class="account-row">
