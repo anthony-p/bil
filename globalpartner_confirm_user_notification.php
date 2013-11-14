@@ -57,7 +57,7 @@ if ($mail_input_id)
         $t = __DIR__. '/language/english/mails/clickthroughs_template.phtml';
         var_dump($t);
         var_dump(getcwd());
-        $message_template  = file_get_contents($wdir . 'language/english/mails/clickthroughs_template.phtml');
+        $message_template  = file_get_contents($wdir . '/language/english/mails/clickthroughs_template.phtml');
         die;
         $message_template  = file_get_contents(__DIR__ . '/language/english/mails/clickthroughs_template.phtml');
         ## text message - editable
