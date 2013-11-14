@@ -31,7 +31,7 @@ if ((isset($_POST['form_aboutme_save'])) || (isset($_REQUEST['ajaximageupload'])
         $template->set('msg_changes_saved', $msg_changes_saved);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
-        $form_submit_msg=array("status" => "success", "path" => "$logo_file_name");
+        $form_submit_msg=array("status" => "success", "path" => $user_details['avatar']);
 
     } else {
         $_POST["avatar"] = $_POST["curr_avatar"];
@@ -39,6 +39,7 @@ if ((isset($_POST['form_aboutme_save'])) || (isset($_REQUEST['ajaximageupload'])
         $template->set('msg_changes_saved', $msg_changes_saved);
         $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
         $template->set('user_details', $user_details);
+		$form_submit_msg=array("status" => "success", "path" => $user_details['avatar']);
     }
 } elseif (isset($_POST['form_aboutme_logo_remove'])) {
     $_POST["avatar"] = "";
@@ -46,10 +47,7 @@ if ((isset($_POST['form_aboutme_save'])) || (isset($_REQUEST['ajaximageupload'])
     $template->set('msg_changes_saved', $msg_changes_saved);
     $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
     $template->set('user_details', $user_details);
-
-
 }  else {
-
     $user_details = $db->get_sql_row("SELECT * FROM bl2_users WHERE id=" . $user_id);
     $template->set('user_details', $user_details);
 }
