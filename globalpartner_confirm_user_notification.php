@@ -53,6 +53,9 @@ if ($mail_input_id)
 
         $send = true; // always sent;
 
+        $t = __DIR__. '/language/english/mails/clickthroughs_template.phtml';
+        var_dump($t);
+        die;
         $message_template  = file_get_contents(__DIR__. '/language/english/mails/clickthroughs_template.phtml');
         ## text message - editable
         $text_message  = $message_template;
