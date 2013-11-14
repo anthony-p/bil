@@ -67,9 +67,6 @@ if ($section == 'drafts'){
 //    $template_output .= $template->process('members_area_campaigns.tpl.php');
 //    echo $template_output;
 } elseif ($section == 'live') {
-	if (isset($order) && $order) {
-    	$tail_query_part .= "  ORDER BY start_date " . $order;
-	}
     $title="live";
     $sql_query = $db->query(
         "SELECT * FROM bl2_users Join np_users
