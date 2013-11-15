@@ -697,7 +697,7 @@ define ('MSG_LOGO_STOP_UPLOAD', 'Stop upload');
 define ('MSG_REWARDS_NOTE', 'Let folks know what they get in return for supporting you. You can have up to 20 rewards.');
 define ('MSG_ADD_REWARD', '+ ADD A REWARD');
 define ('MSG_REWARD', 'Reward');
-define ('MSG_REWARD_AMOUNT', 'Amount');
+define ('MSG_REWARD_AMOUNT', 'Amount'); 
 define ('MSG_REWARD_NAME', 'Name');
 define ('MSG_REWARD_DESCRIPTION', 'Description');
 define ('MSG_REWARD_SHORT_DESCRIPTION', 'Short Description');
