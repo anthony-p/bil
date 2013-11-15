@@ -59,7 +59,17 @@
                         }
                         ?>
                     </span>
-                    <span>$<?php echo isset($funder["amount"]) ? $funder["amount"] : '0'; ?></span>
+                    <span>$<?php echo isset($funder["amount"]) ? $funder["amount"] : '0'; ?>
+                    	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    	  <?php if ($funder["source"]=="click through"){ ?>
+                    	  	<?=MSG_FUNDERS_CLICKTHROUGH?>
+                    	  <?php }elseif ($funder["source"]=="auction"){?>
+                    	  	<?=MSG_FUNDERS_AUCTION?>
+                    	  <?}else{?>
+                    	  	<?=MSG_FUNDERS_DONATION?>
+                    	  <?php }?>
+                    </span>
+                    
                 </div>
             </div>
         </div>
