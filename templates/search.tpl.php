@@ -57,6 +57,20 @@ include_once('includes/grab_video_thumbnail.php');
       <button type="submit"></button>
   </div>
 </form>
+    <div class="campaigns-filters">
+        <a href="/search.php?order_by=start_date&order_type=DESC">
+            <span><?=MSG_NEWCAMPAIGNS;?></span>
+        </a>
+        <a href="/search.php?order_by=end_date&order_type=ASC">
+            <span><?=MSG_ENDING_SOON;?></span>
+        </a>
+        <a href="<?=$cfc_url;?>">
+            <span ><?=MSG_COMMUNITY_FOUND;?></span>
+        </a>
+        <a href="/search.php?order_by=votes&order_type=DESC">
+            <span><?=MSG_VOTE;?></span>
+        </a>
+    </div>
 </h2>
     <div class="searchBox">
     <div class="clear"></div>
