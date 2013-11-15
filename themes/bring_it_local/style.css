@@ -6763,6 +6763,7 @@ a.jp-current:hover{
 .about-me_block{
     width:900px;
     margin:0 auto;
+    padding-top: 20px;
     }
 .about-me_block p,
 .summary-block{
@@ -6770,8 +6771,8 @@ a.jp-current:hover{
     }
 .summary-block{
     position:relative;
-    padding-bottom:55px;
-    height:126px;
+    /*padding-bottom:55px;*/
+    /*height:126px;*/
     }
 .summary-block .info{
     margin-left:255px;
@@ -6780,8 +6781,8 @@ a.jp-current:hover{
     font-size:1.5em;
     }
 .summary-block .social-block{
-    position:absolute;
-    bottom:2px;
+    /*position:absolute;*/
+    /*bottom:2px;*/
     }
 .summary-block .social-block .label{
     display:block;
