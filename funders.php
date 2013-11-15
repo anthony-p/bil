@@ -23,7 +23,7 @@ $query .= " WHERE funders.campaign_id=" . $np_userid . " ORDER BY funders.create
 $funders_result = $db -> query($query);
 $nrElement = mysql_num_rows($funders_result);
 
-$per_page = 2;
+$per_page = 5;
 $total_pages = ceil(($nrElement) / $per_page);
 if (isset($_GET['page_selected'])) {
 	$page_nr = $_GET['page_selected'];
