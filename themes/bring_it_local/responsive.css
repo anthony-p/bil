@@ -21,6 +21,7 @@
     header .innerContainer .topNav input{margin-left:7px;}
     header .innerContainer .topNav form {clear: both; margin: 3% 0 0 0; }
     header .innerContainer .topNav input{margin-left:7px;}
+    .campaigns-filters { display:none;}
     .content .content-buttons{clear: both; float:left; margin-top:2%;}
     .content{padding:3.5% 0 5.5%;}
     .content .content-buttons{width: 100%}
@@ -89,7 +90,6 @@
     header .innerContainer .topNav{margin-top: -10px;}
     header .innerContainer .topNav input{border-radius:0;}
     header .innerContainer .inner{padding-top: 7px;}
-    .campaigns-filters { display:none;}
     .searchBox form input {width:93px}
     .content .content-buttons{width:46.75%;}
     .content .content-buttons{width: 100%}
