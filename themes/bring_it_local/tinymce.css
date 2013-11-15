@@ -1,0 +1,22 @@
+@font-face{
+    font-family:OpenSans;
+    src:url('font/OpenSans-Regular.eot');
+    src:url('font/OpenSans-Regular.eot?#iefix') format('embedded-opentype'), url('font/OpenSans-Regular.woff') format('woff'), url('font/OpenSans-Regular.ttf') format('truetype')
+    }
+body {
+    color: #444444;
+    font-family: "Century Gothic",Helvetica,sans-serif;
+    font-size: 13px;
+    }
+p {
+    color: #000000;
+    font: 1.1em/1.5em "OpenSans";
+    }
+td, th {
+    font-family: "Century Gothic",Helvetica,sans-serif;
+    font-size: 13px;
+    }
+
+.mce-item-table, .mce-item-table td, .mce-item-table th, .mce-item-table caption {
+    border: none;
+    }

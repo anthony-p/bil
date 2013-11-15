@@ -419,7 +419,7 @@ if (!defined('INCLUDED')) {
                         <h5><?= MSG_YOUR_STORY ?> (<span style="font-size: 8px"><?= MSG_YOUR_STORY2 ?>)</span></h5>
                         <div class="account-row">
                             <label><?= MSG_CREATE_PROJECT_CAMPAIGN_BASIC; ?> *</label>
-                            <textarea rows="5" cols="60" class="campaign_basic" name="campaign_basic"
+                            <textarea rows="25" cols="60" class="campaign_basic" name="campaign_basic"
                                       id="campaign_basic"><?php echo isset($campaign["campaign_basic"]) ? $campaign["campaign_basic"] : ''; ?></textarea>
                             <span><?= MSG_CREATE_PROJECT_CAMPAIGN_BASIC_EXPLANATION; ?></span>
                         </div>
