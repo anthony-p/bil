@@ -4026,6 +4026,17 @@ h2.resp-tab-active{
 .resp-tab-content aside ol li {
     list-style:decimal;
     }
+.resp-tab-content aside h1 {
+    font: 1.5em OpenSans, sans-serif;
+    margin-bottom:1em;
+    }
+.resp-tab-content aside h2 {
+    font:bold 1.3em OpenSans, sans-serif;
+    margin-bottom:1em;
+    }
+.resp-tab-content aside p {
+    margin-bottom:1em;
+    }
 h2.resp-accordion:first-child{
     border-top:1px solid #c1c1c1 !important;
     }

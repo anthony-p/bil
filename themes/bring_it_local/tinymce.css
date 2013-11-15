@@ -8,9 +8,18 @@ body {
     font-family: "Century Gothic",Helvetica,sans-serif;
     font-size: 13px;
     }
+h1 {
+    font: 1.5em OpenSans, sans-serif;
+    margin-bottom:1em;
+    }
+h2 {
+    font:bold 1.3em OpenSans, sans-serif;
+    margin-bottom:1em;
+    }
 p {
     color: #000000;
     font: 1.1em/1.5em "OpenSans";
+    margin-bottom:1em;
     }
 td, th {
     font-family: "Century Gothic",Helvetica,sans-serif;
