@@ -4027,11 +4027,11 @@ h2.resp-tab-active{
     list-style:decimal;
     }
 .resp-tab-content aside h1 {
-    font: 1.5em OpenSans, sans-serif;
+    font: 27px OpenSans, sans-serif;
     margin-bottom:1em;
     }
 .resp-tab-content aside h2 {
-    font:bold 1.3em OpenSans, sans-serif;
+    font:bold 17px OpenSans, sans-serif;
     margin-bottom:1em;
     }
 .resp-tab-content aside p {
