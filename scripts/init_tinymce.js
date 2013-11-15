@@ -21,7 +21,7 @@ function init_tinymce(selector) {
         toolbar_items_size: 'small',
         style_formats: [
             {title: 'Paragraph', block: 'p'},
-            {title: 'Header 1', block: 'span', styles: {color: '#444', font: "27px OpenSans, sans-serif", margin: '0 0 1em 0',display:'block'}},
+            {title: 'Header 1', block: 'span', styles: {color: '#444', font: "22px OpenSans, sans-serif", margin: '0 0 1em 0',display:'block'}},
             {title: 'Header 2', block: 'span', styles: {color: '#444', font: "bold 17px OpenSans, sans-serif", margin: '0 0 1em 0',display:'block'}}
 
         ],
