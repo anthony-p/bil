@@ -71,5 +71,6 @@ if (!defined('INCLUDED')) {
             <?php endif; ?>
         </div>
     </div>
+</div>
 
 

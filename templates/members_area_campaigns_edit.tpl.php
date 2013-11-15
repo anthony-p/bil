@@ -356,7 +356,7 @@ if (!defined('INCLUDED')) {
                         <div class="paypal_block">
                             <h3>
                             PayPal
-                            <img src="/images/question_help.png" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN ?>" style="margin-left: 10px;">
+                            <img src="/images/question_help.png" class="tooltip-trigger" height="16" alt="help"  title="<?= TOOLTIP_REGISTRATION_DIRECT_PAYMENT_EXPLAIN ?>" style="margin-left: 10px;">
                             </h3>
                             <?php if (isset($campaign['confirmed_paypal_email']) && $campaign['confirmed_paypal_email']): ?>
                                  <span class="checked"></span>
@@ -592,7 +592,7 @@ if (!defined('INCLUDED')) {
                     <div class="account-tab">
                         <div class="inner">
                             <h3><?= MSG_POST_AN_UPDATE_TO_CAMPAIGN ?> 
-                            <img src="/images/question_help.png" height="16" alt="help"  title="<?= MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP ?>" style="margin-left: 10px;"></h3>
+                            <img src="/images/question_help.png" height="16" class="tooltip-trigger" alt="help"  title="<?= MSG_POST_AN_UPDATE_TO_CAMPAIGN_TOOLTIP ?>" style="margin-left: 10px;"></h3>
                             <div class="add_post">
                                 <textarea name="comment_text" class="project_update_textarea"
                                           id="project_update_textarea"></textarea>
@@ -661,7 +661,7 @@ if (!defined('INCLUDED')) {
                             <input type="radio" name="active" value="0"
                                 <?php echo (isset($campaign["active"]) && ($campaign["active"] == 0)) ? "checked" : ''; ?>>
                             <label><?= MSG_ACTIVITY_STATUS_DRAFT ?></label>
-                            <img src="/images/question_help.png" height="16" alt="help"
+                            <img src="/images/question_help.png" height="16" alt="help" class="tooltip-trigger"
                                  title="<?= MSG_MEMBER_AREA_LIVE_STATUS_TOOLTIP ?>" style="margin-left: 10px;">
                         </div>
                         <div class="radio">
@@ -681,7 +681,7 @@ if (!defined('INCLUDED')) {
 						<div class="radio">
 							<input type="radio" name="include_clickthrough" value="0" <?php echo (isset($campaign["include_clickthrough"]) && ($campaign["include_clickthrough"] == 0)) ? "checked" : ''; ?>>
 							<label><?=MSG_INCLUDE_CLICKTHROUGH_STATUS_NO?></label>
-                            <img src="/images/question_help.png" height="16" alt="help"
+                            <img src="/images/question_help.png" height="16" alt="help" class="tooltip-trigger"
                                  title="<?= MSG_INCLUDE_CLICKTHROUGH_STATUS_TOOLTIP ?>"
                                  style="margin-left: 10px;">
 						</div>
@@ -699,7 +699,7 @@ if (!defined('INCLUDED')) {
                             <label><?= MSG_EXTENDS_DATE_EXISTING_CAMPAIGN ?>&nbsp;</label>
                             <input type="text" name="keep_alive_days" id="keep_alive_days" />
                             <label><?= MSG_DAYS ?></label>
-                            <img src="/images/question_help.png" height="16" alt="help"
+                            <img src="/images/question_help.png" height="16" alt="help" class="tooltip-trigger"
                                  title="<?= MSG_MEMBER_AREA_EXTENDS_DATE_EXISTING_CAMPAIGN_TOOLTIP ?>"
                                  style="margin-left: 10px;">
                         </div>                                                                                                             
@@ -737,7 +737,7 @@ if (!defined('INCLUDED')) {
                 <div class="next">
                     <input type="button" value="<?= MSG_PREV ?>" class="prev_btn"/>
                     <a href="/np/renew_campaigns.php" id="submit_renew">
-                        <input class="clone_btn" type="button" value="<?= MSG_RENEW_CAMPAIGN ?>"/><img src="/images/question_help.png"height="16" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
+                        <input class="clone_btn" type="button" value="<?= MSG_RENEW_CAMPAIGN ?>"/><img src="/images/question_help.png" height="16" class="tooltip-trigger" alt="help" title="<?= MSG_MEMBER_AREA_CLONE_CAMPAIGN_TOOLTIP ?>">
                     </a>
                     <div class="right">
                         <input name="form_register_proceed" type="submit" id="form_register_proceed"

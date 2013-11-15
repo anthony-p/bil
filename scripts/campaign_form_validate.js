@@ -722,9 +722,7 @@ $(document).on('ready', function () {
     $('#deadline_type_date').on('click', function() {
         changeDeadlineType($(this), 'certain_date' );
     });
-    $('.tabs').tooltip({
-        track: true
-    });
+    $('.tooltip-trigger').tooltip();
     $("#submit_renew").on('click', function(e) {
         e.preventDefault();
         var save_info = new Array();

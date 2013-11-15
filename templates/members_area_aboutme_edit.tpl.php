@@ -25,12 +25,15 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
                $('#curr_avatar').attr('value',data.result.path.replace(/\\/g, ''));
             }
         });
+        $('#member_area_edit_form').tooltip({
+            track: true
+        });
     });
 </script>
 
 <br>
 <form action="members_area.php?page=about_me&section=edit" id="member_area_edit_form" method="POST" enctype="multipart/form-data">
- <h6 class="tittle_tp">  <?=MSG_MM_ABOUT_ME_PAGE;?> </h6>
+<h6 class="tittle_tp">  <?=MSG_MM_ABOUT_ME_PAGE;?> </h6>
 <table width="100%" border="0" cellpadding="3" cellspacing="2" class="border about_me_table" >
 
     <tr class="info_tittle">
@@ -65,18 +68,24 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
         <td>
             <label class="facebook" style="width: 80px;">facebook</label>
             <label class="social-network-url">http://www.facebook.com/</label><input type="text" name="facebook_link" value="<?=str_replace('http://www.facebook.com/', '', $user_details['facebook_link']);?>"/>
+            <img src="/images/question_help.png" height="16" alt="help"  title="<?= MSG_FACEBOOK_EXPLANATION_TOOLTIP ?>" style="margin-left: 10px;"></h3>
+
         </td>
     </tr>
     <tr>
         <td>
             <label class="twitter" style="width: 80px;">twitter</label>
             <label class="social-network-url">http://www.twitter.com/</label><input type="text" name="twitter_link" value="<?=str_replace('http://www.twitter.com/', '', $user_details['twitter_link']);?>" />
+            <img src="/images/question_help.png" height="16" alt="help"  title="<?= MSG_TWITTER_EXPLANATION_TOOLTIP ?>" style="margin-left: 10px;"></h3>
+
         </td>
     </tr>
     <tr>
         <td>
             <label style="width: 80px;">google+</label>
             <label class="social-network-url">https://plus.google.com/</label><input type="text" name="google_link" value="<?=str_replace('https://plus.google.com/', '', $user_details['google_link']);?>" />
+            <img src="/images/question_help.png" height="16" alt="help"  title="<?= MSG_GOOGLEPLUS_EXPLANATION_TOOLTIP ?>" style="margin-left: 10px;"></h3>
+
         </td>
     </tr>
     <tr class="info_tittle">
@@ -85,7 +94,7 @@ if ( !defined('INCLUDED') ) { die("Access Denied"); }
 	<tr class="c1">
 
       <td colspan="1">
-          <textarea class="ckeditor" id="aboutme_page_content" name="about_me" style="width: 400px; height: 200px; overflow: hidden;">
+          <textarea id="aboutme_page_content" name="about_me" style="width: 560px; height: 200px;s">
               <?=$user_details['about_me'];?>
           </textarea>
 

@@ -5224,7 +5224,7 @@ aside.suport .merchants li .info span{
     padding:5px;
     }
 
-.border td input[type="text"]{
+.border td input[type="text"], .border td textarea{
     height:25px;
     width:250px;
     border:1px solid #ddd;
@@ -5232,7 +5232,10 @@ aside.suport .merchants li .info span{
     outline:none;
     padding:0 10px;
     }
-
+.border td textarea {
+    padding:10px;
+    font:12px Open-Sans, sans-serif;
+    }
 .border input[type="submit"]{
     border:0;
     width:auto;

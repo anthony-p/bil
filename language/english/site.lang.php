@@ -300,6 +300,9 @@ define ('MSG_COMMUNITY_FUND_VOTE_AND_DISBURSEMENTS_HISTORY_WINNING_CAMPAIGN', 'W
 define ('MSG_COMMUNITY_FUND_VOTE_AND_DISBURSEMENTS_HISTORY_VOTES_NUMBER', '# votes');
 define ('MSG_COMMUNITY_FUND_VOTE_AND_DISBURSEMENTS_HISTORY_AMOUNT_DISBURSED', 'Amount disbursed');
 define ('MSG_MM_ABOUT_ME_PAGE', 'Personal Profile Page');
+define ('MSG_FACEBOOK_EXPLANATION_TOOLTIP', 'Please enter only username (part after http://www.facebook.com/)');
+define ('MSG_TWITTER_EXPLANATION_TOOLTIP', 'Please enter only username (part after http://www.twitter.com/');
+define ('MSG_GOOGLEPLUS_EXPLANATION_TOOLTIP', 'Please enter only username (part after https://plus.google.com/');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT', 'VOTES REPORT');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT_TITLE', 'Community Fund Vote Report');
 define ('MSG_COMMUNITY_FUND_VOTE_REPORT_CAMPAIGN_TITLE', 'Campaign');
