@@ -3534,7 +3534,7 @@ header .level2 .level2-inner .level-buttons ul li a{
     display:block;
     }
 
-header .level2 .level2-inner .level-buttons ul li a span{
+header .level2 .level2-inner .level-buttons ul li a span, .campaigns-filters a span{
     width:100%;
     display:block;
     letter-spacing:1px;
@@ -3546,6 +3546,21 @@ header .level2 .level2-inner .level-buttons ul li a span{
     background:#80b243;
     border-radius:5px;
     box-shadow:inset 0 0 3px rgba(5, 2, 2, 0.7);
+    }
+.campaigns-filters {
+    float:right;
+    }
+.campaigns-filters a{
+    display: block;
+    float: left;
+    margin-right: 10px;
+    }
+.campaigns-filters a span{
+    box-shadow: none;
+    font-size: 12px;
+    padding: 0 10px;
+    text-shadow: none;
+    width: auto;
     }
 
 header .level2 .level2-inner .nav-buttons .nav-links{
@@ -5728,7 +5743,6 @@ aside.suport .merchants li .info span{
 
 .searchBox .search-input{
     float:left;
-    margin-right:20px;
     }
 
 .selectME ul{

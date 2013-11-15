@@ -63,21 +63,35 @@ include_once('includes/grab_video_thumbnail.php');
 
 <div class="searchBox">
     <h2> <?= MSG_ALL_CAMPAIGNS ?>
-
-    <form id="search_by_name" action="campaigns.php">
-<!--
+        <form id="search_by_name" action="campaigns.php">
+            <!--
         <select id="order_result" name="names" class="changeMe">
             <option value="0" class="order">Sort by</option>
             <option value="ASC" <?php /*if ($order == "ASC") echo 'selected'; */?> class="order">Date asc</option>
             <option value="DESC" <?php /*if ($order == "DESC") echo 'selected'; */?> class="order">Date desc</option>
         </select>-->
 
-        <div class="search-input">
-            <input type="text" value="<?php if (!empty($keyword)) echo $keyword; ?>"
-                   placeholder="<?= MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME_OR_KEYWORD; ?>" name="keyword">
-            <button type="submit"></button>
-        </div>
-    </form>
+            <div class="search-input">
+                <input type="text" value="<?php if (!empty($keyword)) echo $keyword; ?>"
+                       placeholder="<?= MSG_MEMBER_AREA_CAMPAIGNS_FIELD_SEARCH_BY_NAME_OR_KEYWORD; ?>" name="keyword">
+                <button type="submit"></button>
+            </div>
+        </form>
+    <div class="campaigns-filters">
+        <a href="/search.php?order_by=start_date&order_type=DESC">
+            <span><?=MSG_NEWCAMPAIGNS;?></span>
+        </a>
+        <a href="/search.php?order_by=end_date&order_type=ASC">
+            <span><?=MSG_ENDING_SOON;?></span>
+        </a>
+        <a href="<?=$cfc_url;?>">
+            <span ><?=MSG_COMMUNITY_FOUND;?></span>
+        </a>
+        <a href="/search.php?order_by=votes&order_type=DESC">
+            <span><?=MSG_VOTE;?></span>
+        </a>
+    </div>
+
     </h2>
     <div class="searchBox">
             <div class="holder"></div>
