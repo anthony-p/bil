@@ -85,10 +85,12 @@
 
 @media screen and (max-width: 560px) {
     #wowslider-container1 .wsl p{display: none;}
-    header .innerContainer{background: red;}
+    header .innerContainer{}
     header .innerContainer .topNav{margin-top: -10px;}
     header .innerContainer .topNav input{border-radius:0;}
     header .innerContainer .inner{padding-top: 7px;}
+    .campaigns-filters { display:none;}
+    .searchBox form input {width:93px}
     .content .content-buttons{width:46.75%;}
     .content .content-buttons{width: 100%}
     .content .content-buttons a {width:32.05%; padding:3% 0 0 0;margin-right: 1.4%;}
