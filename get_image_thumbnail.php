@@ -8,7 +8,7 @@
 
 include_once("includes/generate_image_thumbnail.php");
 
-$image = "220x165_image_/uplimg/partner_logos/db5e800e773c5a7dc77af8e0c712adf3.jpg";
+$image = "220x150_image_/uplimg/partner_logos/db5e800e773c5a7dc77af8e0c712adf3.jpg";
 $image = isset($_GET["image"]) ? $_GET["image"] : '';
 
 //if (!$image && isset($campaign["banner"])) {
