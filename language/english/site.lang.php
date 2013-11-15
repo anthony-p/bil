@@ -776,5 +776,8 @@ define ('MSG_EMAIL_CAMPAIGN_COMMENT_UPDATE_BODY', 'Someone has left you a commen
 define ('MSG_PASSWORD_REQUIRED', 'Password Required');
 define ('MSG_VERIFY_PASSWORD_REQUIRED', 'Verify Password Required');
 
-//define ('', '');
+//Funders Section
+define ('MSG_FUNDERS_DONATION', 'Donation');
+define ('MSG_FUNDERS_CLICKTHROUGH', 'Click through');
+define ('MSG_FUNDERS_AUCTION', 'Auction');
 ?>
