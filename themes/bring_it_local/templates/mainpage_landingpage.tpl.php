@@ -5,7 +5,6 @@
         $(document).ready(function () {
             $('.campaign_donation').click(function (e) {
                 e.preventDefault();
-
                 var url = $(this).attr('href');
                 var logged_in = <?php echo $session->value('user_id') ? $session->value('user_id') : '0'; ?>;
 
@@ -36,12 +35,16 @@
                         ]
                     });
                 }
-
-
-            })
-            ;
-        })
-        ;
+            });
+            $('.jp-page').click(function(e){
+            	e.preventDefault();
+            	$.ajax({
+        			url:$(this).attr('href')        			
+        		}).done(function(data){
+        			$('#funders').html(data);
+        		});
+            });
+        });
     </script>
 <?
 #################################################################
