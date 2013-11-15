@@ -4301,6 +4301,36 @@ h2.resp-accordion:first-child{
     margin-right:7px;
     }
 
+.resp-tab-content aside.announcement .holder a{
+    cursor: pointer;
+	margin: 0 5px;
+	font: 12px "OpenSans";
+	padding: 0 5px;
+	color: #333;
+	text-transform: capitalize;
+	width: 21px;
+	text-align:center;
+	float:none;
+}
+
+.resp-tab-content aside.announcement .holder a.jp-next, .resp-tab-content aside.announcement .holder a.jp-previous{
+    margin-left: 15px;
+	color: #7eb041;
+}
+
+.resp-tab-content aside.announcement .holder a.jp-disabled, .resp-tab-content aside.announcement .holder a.jp-disabled:hover{
+	cursor: default;
+	color: #333;
+}
+
+.resp-tab-content aside.announcement .holder a.jp-current, a.resp-tab-content aside.announcement .holder .jp-current:hover{
+	color: #fff;
+	background: #7eb041;
+	border-radius: 4px;
+	padding: 3px 7px 3px 7px;
+}
+
+
 .resp-tab-content aside.announcement p{
     font:15px/21px "OpenSans";
     color:#1f1f1f;
@@ -5856,11 +5886,11 @@ div.select{
 
 .holder a.jp-next, .holder a.jp-previous{
     margin-left:15px;
-    color:#7eb041;
+    color: #7eb041;
     }
 .holder a.jp-previous{
     margin-right:15px;
-    }
+}
 
 .holder a.jp-current,
 a.jp-current:hover{

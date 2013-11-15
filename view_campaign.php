@@ -21,16 +21,32 @@ if ($session->value('user_id') && (isset($_GET["campaign_id"]) && $_GET["campaig
     $user_id = $session->value('user_id');
     $np_userid = $user_id;
 
-$funders_result = $db->query( "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) WHERE funders.campaign_id=" . $np_userid . " ORDER BY funders.created_at DESC");
-
-$funders = array();
-
-
-while ($result = $db->fetch_array($funders_result)) {
-
-    $funders[] = $result;
-
-}
+    $query = "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) ";
+    $query.= "WHERE funders.campaign_id=" . $np_userid . " ORDER BY funders.created_at DESC";
+	
+    $funders_result = $db->query($query);
+	$nrElement = mysql_num_rows($funders_result);
+	
+ 	$per_page = 2;
+	$total_pages = ceil(($nrElement - 1) / $per_page);
+	if (isset($_GET['page_selected'])) {
+		$page_nr = $_GET['page_selected'];
+    } else {
+     	$page_nr = 1;
+    }
+    $start = ($page_nr - 1) * $per_page;
+	
+	$query = "SELECT * FROM funders LEFT JOIN bl2_users ON (funders.user_id=bl2_users.id) ";
+    $query.= "WHERE funders.campaign_id=" . $np_userid . " ORDER BY funders.created_at DESC";
+	$query .= " limit $start, $per_page";
+	
+	$funders_result = $db->query($query);
+	$funders = array();
+	while ($result = $db->fetch_array($funders_result)) {
+		$funders[] = $result;
+	}
+	$template->set("page_selected", $page_nr);
+    $template->set("total_pages", $total_pages);
 
 $np_row =  $db->get_sql_row("SELECT logo, banner  FROM np_users WHERE user_id ='" . $np_userid . "'");
 
