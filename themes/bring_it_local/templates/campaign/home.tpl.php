@@ -95,7 +95,7 @@
 
 <aside class="info">
     <div class="inner">
-        <p><?= $compaignData["campaign_basic"]; ?></p>
+        <p><?= str_replace(chr(160), " ", html_entity_decode($compaignData["campaign_basic"])); ?></p>
     </div>
 </aside>
 

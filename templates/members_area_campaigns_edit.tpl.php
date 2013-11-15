@@ -310,7 +310,7 @@ if (!defined('INCLUDED')) {
                             <label> <?= MSG_COMPANY_NAME; ?></label>
                             <input name="tax_company_name" type="text" id="tax_company_name"
                                    value="<?php echo isset($campaign["tax_company_name"]) ? $campaign["tax_company_name"] : ''; ?>"
-                                   size="40" maxlength="30"/>
+                                   size="40"/>
                             <span><?= MSG_COMPANY_NAME_DESC; ?></span>
                         </div>
                         <div class="account-row">
@@ -512,7 +512,7 @@ if (!defined('INCLUDED')) {
                             <?php endif; ?>
                             <div id="MultiPowUpload_holder">
                                 <input class="file" name="logo" id="logo" accept="image/*"
-                                       data-url="members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&ajaximageupload=true" type='file' title="logo file"/>
+                                       data-url="members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&ajaximageupload=true" type='file'/>
                                 <span id="remove_logo" class="clear-file-input"><?= MSG_REMOVE_FILE ?></span>
                             </div>
                             <div id="serverresponse">
@@ -535,7 +535,7 @@ if (!defined('INCLUDED')) {
                                     <div>
                                         <input class="file" name="banner" id="banner"  accept="image/*" type='file'
                                                data-url="members_area.php?/page=campaigns&section=edit&campaign_id=<?= $campaign['user_id']; ?>&ajaximageupload=true"
-                                               title="banner file" <?php if (strstr($campaign["banner"], "http://")) {
+                                               <?php if (strstr($campaign["banner"], "http://")) {
                                             echo "style='display:none'";
                                         } ?>/>
                                         <span id="remove_banner" class="clear-file-input"><?= MSG_REMOVE_FILE ?></span>
