@@ -8,18 +8,7 @@
  */
 ?>
 
-<aside class="announcement funders">
-<!--    <div class="inner">-->
-<!--        <div class="post first">-->
-<!--            <div class="user-photo"><img src="themes/bring_it_local/img/user-photo.png" /></div>-->
-<!--            <div class="posted-mess">-->
-<!--                <a href="" >Chris Smith</a>-->
-<!--                <span>12 hours ago</span>-->
-<!--                <span>$222</span>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
+<aside id="funders" class="announcement funders">
     <?php foreach($funders as $funder): ?>
         <div class="inner">
             <div class="post first">
@@ -69,9 +58,28 @@
                     	  	<?=MSG_FUNDERS_DONATION?>
                     	  <?php }?>
                     </span>
-                    
                 </div>
             </div>
         </div>
     <?php endforeach; ?>
+    <div class="holder">
+		<?php 
+		if ($total_pages > 1) {
+            if ($page_selected > 1) {?>
+            	<a href="/funders.php?page_selected=<?= $page_selected-1 ?>&campaign_id=<?=$campaign_id?>&total_pages=<?=$total_pages?>" class="jp-page jp-previous"><?= MSG_PREV ?></a>
+            <? }else{ ?>
+            	<a class="jp-previous jp-disabled"><?= MSG_PREV ?></a>
+            <? }
+            for ($i = 1; $i <= $total_pages; $i++) : ?>
+                <a href="/funders.php?page_selected=<?= $i ?>&campaign_id=<?=$campaign_id?>&total_pages=<?=$total_pages?>"
+                   class="<?php if ($i == $page_selected) echo 'jp-current' ?> jp-page"><?= $i ?></a>
+
+            <?php endfor;
+            if ($page_selected < $total_pages){?>
+            	<a href="/funders.php?page_selected=<?= $page_selected+1 ?>&campaign_id=<?=$campaign_id?>&total_pages=<?=$total_pages?>" class="jp-page jp-next"><?= MSG_NEXT ?></a>
+            <? }else{ ?>
+            	<a class="jp-next jp-disabled"><?= MSG_NEXT ?></a>
+            <? } 
+		} ?>
+	</div>
 </aside>
