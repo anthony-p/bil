@@ -244,8 +244,10 @@ $fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_
 
 //}
 
-if ($campaign['cfc'] == 1 && $_POST['active'] == 1) {
+if ($campaign['cfc'] == 1) {
     $cfc = mysql_fetch_assoc($db->query("SELECT user_id, active FROM np_users WHERE cfc = 1 AND active = 1"));
+    if ($campaign['active'] == 1 && $_POST['active'] != 1)
+        $fv->error_list[] = array('value' => 1, 'msg' => "You can't change status until the end of campaign");
     if (isset($cfc['user_id']) && ($cfc['user_id'] != $campaign['user_id']))
         $fv->error_list[] = array('value' => 1, 'msg' => "CFC campaign already exists.");
     if ($cfc['active'] != 1 && strtotime('today') != strtotime('first day of' . date('F Y', time()))) 
