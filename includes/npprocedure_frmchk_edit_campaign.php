@@ -243,7 +243,7 @@ $fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_
 //	}
 
 //}
-var_dump(strtotime($_POST['certain_date']);
+var_dump(strtotime($_POST['certain_date']));
 var_dump(strtotime('last day of' . date('F Y', time())));
 if ($campaign['cfc'] == 1 && $_POST['active'] == 1) {
     $cfc = mysql_fetch_assoc($db->query("SELECT user_id, active FROM np_users WHERE cfc = 1 AND active = 1"));
