@@ -1,5 +1,6 @@
 <?php
 # ob_start(); // Initiate the output buffer
+session_start();
 function curPageURL() {
  $pageURL = 'http';
  if ( isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
