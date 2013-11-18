@@ -244,7 +244,7 @@ $fv->check_box($frmchk_details['phone'], MSG_PHONE, array('field_empty', 'field_
 
 //}
 var_dump(strtotime($_POST['certain_date']));
-var_dump(strtotime('last day of' . date('F Y', time())));
+var_dump(strtotime('last day of ' . date('F Y', time())));
 var_dump(('last day of' . date('F Y', time())));
 if ($campaign['cfc'] == 1 && $_POST['active'] == 1) {
     $cfc = mysql_fetch_assoc($db->query("SELECT user_id, active FROM np_users WHERE cfc = 1 AND active = 1"));
@@ -252,10 +252,10 @@ if ($campaign['cfc'] == 1 && $_POST['active'] == 1) {
         $fv->error_list[] = array('value' => 1, 'msg' => "CFC campaign already exists.");
     if ($cfc['active'] != 1 && strtotime('today') != strtotime('first day of' . date('F Y', time()))) 
         $fv->error_list[] = array('value' => strtotime('today'), 'msg' => "The CFC campaign must be started on the 1st of the month only");
-    if (isset($_POST['time_period']) && (strtotime('today + ' . $_POST['time_period'] . ' days') != strtotime('last day of' . date('F Y', time())))) {
+    if (isset($_POST['time_period']) && (strtotime('today + ' . $_POST['time_period'] . ' days') != strtotime('last day of ' . date('F Y', time())))) {
         $fv->error_list[] = array('value' => strtotime('today'), 'msg' => "Your CFC campaign ends not on the last day of the month");
     }
-    if (isset($_POST['certain_date']) && (strtotime($_POST['certain_date']) != strtotime('last day of' . date('F Y', time())))) {
+    if (isset($_POST['certain_date']) && (strtotime($_POST['certain_date']) != strtotime('last day of ' . date('F Y', time())))) {
         $fv->error_list[] = array('value' => strtotime('today'), 'msg' => "Your CFC campaign ends not on the last day of the month");
     }
 }
